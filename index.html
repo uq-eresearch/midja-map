@@ -57,16 +57,13 @@
 
 // cartodb.createVis('map', 'http://midja.portal.midja.org/api/v2/viz/b7711414-2111-11e4-96b7-fa163e6cce2e/viz.json');
 
-var sublayer = {
-    sql: "SELECT the_geom_webmercator,cartodb_id FROM iloc_2011_aust",
-    cartocss: "/** simple visualization */ #iloc_2011_aust{ polygon-fill: #FF6600; polygon-opacity: 0.7; line-color: #FFF; line-width: 1; line-opacity: 1; }",
-  };
 
 var map = L.map('map', { 
           zoomControl: false,
-          center: [0, 0],
-          zoom: 3
+          center: [-20.72587006334744, 139.492965],
+          zoom: 5
         });
+
 
 // add a nice baselayer from Stamen 
         L.tileLayer('https://maps.nlp.nokia.com/maptiler/v2/maptile/newest/normal.day/{z}/{x}/{y}/256/png8?lg=eng&token=A7tBPacePg9Mj_zghvKt9Q&app_id=KuYppsdXZznpffJsKT24', {
@@ -84,21 +81,39 @@ tiler_port: "8181",
 // sql_api_port: 8080,
 // cdn_url: null,
 
-  
+ 
   type: 'cartodb',
-  sublayers: [sublayer]
+  sublayers: [{
+    sql: "SELECT the_geom_webmercator,cartodb_id FROM ste_2011_aust ",
+    cartocss: "/** simple visualization */ #iloc_2011_aust{ polygon-fill: #FF6600; polygon-opacity: 0.7; line-color: #FFF; line-width: 1; line-opacity: 1; }",
+  }]
 })
-.addTo(map);
+.addTo(map)
+.done(function(layer) {
+
+  // create and add a new sublayer
+  // layer.createSubLayer({
+  //   sql: "SELECT the_geom_webmercator,cartodb_id FROM iloc_2011_aust;",
+  //   cartocss: "/** simple visualization */ #iloc_2011_aust{ polygon-fill: #00FF00; polygon-opacity: 0.1; line-color: #FFF; line-width: 1; line-opacity: 1; }"
+  // });
+
+  // change the query for the first layer
+  setTimeout(function() {
+  	window.alert('Switching to ILOC');
+layer.getSubLayer(0).setSQL("SELECT the_geom_webmercator,cartodb_id FROM iloc_2011_aust;");
+  }, 5000);
+  
+});
 
 
-setTimeout(function() {
-	sublayer.sql = "SELECT the_geom_webmercator,cartodb_id FROM ste_2011_aust;"
-	console.log('hello');
-}, 5000);
+// setTimeout(function() {
+// 	sublayer.sql = "SELECT the_geom_webmercator,cartodb_id FROM ste_2011_aust;"
+// 	console.log('hello');
+// }, 5000);
 
 
 //   var sql = new cartodb.SQL({ user: 'midja', host: 'portal.midja.org:8080'});
-// sql.execute("SELECT * FROM iloc_2011_aust")
+// sql.execute("SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE';")
 //   .done(function(data) {
 //   	console.log('hello world');
 //     console.log(data.rows);
