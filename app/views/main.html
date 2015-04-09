@@ -1,0 +1,64 @@
+<div>
+    <div class="row">
+        <div class="col-sm-3">
+            <div>
+                <h3>Region</h3>
+                <div ng-hide="vm.tables">
+                    Loading tables...
+                </div>
+                <select ng-show="vm.tables" style="width:100%"
+                        ng-options="table as table.name for table in vm.tables track by table.id"
+                        ng-model="vm.selectedRegionTable" ng-change="vm.selectedRegionTableChanged(vm.selectedRegionTable)">
+                </select>
+
+                <form action="">
+                    <div ng-show="vm.selectedRegionTable && vm.regionColumns.length === 0">
+                        No number columns.
+                    </div>
+                    <ul>
+                        <li data-ng-repeat="column in vm.regionColumns">
+                            <label>
+                                <input type="radio" ng-model="vm.selectedRegionColumn" ng-value="column"
+                                       ng-change="vm.selectedRegionColumnChanged(vm.selectedRegionTable, vm.selectedRegionColumn)"/>
+                                {{ column.name }}
+                            </label>
+
+                        </li>
+                    </ul>
+                </form>
+            </div>
+
+            <div>
+                <h3>Bubble</h3>
+                <div ng-hide="vm.tables">
+                    Loading tables...
+                </div>
+                <select ng-show="vm.tables" style="width:100%"
+                        ng-options="table as table.name for table in vm.tables track by table.id"
+                        ng-model="vm.selectedBubbleTable" ng-change="vm.selectedBubbleTableChanged(vm.selectedBubbleTable)">
+                </select>
+
+                <form action="">
+                    <div ng-show="vm.selectedBubbleTable && vm.bubbleColumns.length === 0">
+                        No number columns.
+                    </div>
+                    <ul>
+                        <li data-ng-repeat="column in vm.bubbleColumns">
+                            <label>
+                                <input type="radio" ng-model="vm.selectedBubbleColumn" ng-value="column"
+                                       ng-change="vm.selectedBubbleColumnChanged(vm.selectedBubbleTable, vm.selectedBubbleColumn)"/>
+                                {{ column.name }}
+                            </label>
+
+                        </li>
+                    </ul>
+                </form>
+            </div>
+
+        </div>
+        <div class="col-sm-9">
+            <cartodb-map top="vm.bubbleLayer" bottom="vm.regionLayer"></cartodb-map>
+        </div>
+    </div>
+
+</div>
