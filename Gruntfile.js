@@ -27,6 +27,14 @@ module.exports = function (grunt) {
         // Project settings
         yeoman: appConfig,
 
+        'gh-pages': {
+            options: {
+                base: 'dist',
+                dotfiles: true
+            },
+            src: ['**']
+        },
+
         // Watches files for changes and runs tasks based on the changed files
         watch: {
             bower: {
@@ -430,7 +438,8 @@ module.exports = function (grunt) {
         'uglify',
         'filerev',
         'usemin',
-        'htmlmin'
+        'htmlmin',
+        'gh-pages'
     ]);
 
     grunt.registerTask('default', [

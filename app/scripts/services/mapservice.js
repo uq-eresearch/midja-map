@@ -95,18 +95,23 @@ angular.module('midjaApp')
          * @returns {string}
          */
         function generateRegionCss(values, table, column) {
-            var cartoCss = '#' + table.name + ' { ' +
+            var cartoCss = '#' + table.name + ' {' +
                 ' polygon-fill: #FFFFB2;' +
                 ' polygon-opacity: 0.8;' +
                 ' line-color: #FFF;' +
                 ' line-width: 1;' +
                 ' line-opacity: 1; ' +
-                '}';
+                '} ';
 
+            // Sort desc
+            values = values.sort(function (a, b) {
+                return b - a;
+            });
+            
             cartoCss += _.map(values, function (value, index) {
                 return '#' + table.name + ' [' + column.name + ' <= ' + value + '] {' +
                     ' polygon-fill: #' + colors[index] + ';' +
-                    '}';
+                    '} ';
             }).join(' ');
             return cartoCss;
         }

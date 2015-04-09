@@ -33,12 +33,12 @@ describe('Service: mapService', function () {
         'WHERE iloc_2011_aust.iloc_code = iloc_pour_popcount_byindstatus_bysex.iloc_code');
     });
 
-    it('should provide a generateCartoCss function', function () {
-        expect(typeof mapService.generateCartoCss).toBe('function');
+    it('should provide a generateRegionCss function', function () {
+        expect(typeof mapService.generateRegionCss).toBe('function');
     });
 
-    it('generateCartoCss should return expectedValue', function() {
-        var result = mapService.generateCartoCss([
+    it('generateRegionCss should return expectedValue', function() {
+        var result = mapService.generateRegionCss([
             1.73, 3.43, 6.03, 12.06, 36.02, 90, 100
         ], {
             name: 'iloc_pour_popcount_byindstatus_bysex'

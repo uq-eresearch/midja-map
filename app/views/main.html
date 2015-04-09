@@ -7,7 +7,7 @@
                     Loading tables...
                 </div>
                 <select ng-show="vm.tables" style="width:100%"
-                        ng-options="table as table.name for table in vm.tables track by table.id"
+                        ng-options="table as table.label for table in vm.tables track by table.id"
                         ng-model="vm.selectedRegionTable" ng-change="vm.selectedRegionTableChanged(vm.selectedRegionTable)">
                 </select>
 
@@ -20,7 +20,7 @@
                             <label>
                                 <input type="radio" ng-model="vm.selectedRegionColumn" ng-value="column"
                                        ng-change="vm.selectedRegionColumnChanged(vm.selectedRegionTable, vm.selectedRegionColumn)"/>
-                                {{ column.name }}
+                                {{ column.label }}
                             </label>
 
                         </li>
@@ -34,7 +34,7 @@
                     Loading tables...
                 </div>
                 <select ng-show="vm.tables" style="width:100%"
-                        ng-options="table as table.name for table in vm.tables track by table.id"
+                        ng-options="table as table.label for table in vm.tables track by table.id"
                         ng-model="vm.selectedBubbleTable" ng-change="vm.selectedBubbleTableChanged(vm.selectedBubbleTable)">
                 </select>
 
@@ -47,7 +47,7 @@
                             <label>
                                 <input type="radio" ng-model="vm.selectedBubbleColumn" ng-value="column"
                                        ng-change="vm.selectedBubbleColumnChanged(vm.selectedBubbleTable, vm.selectedBubbleColumn)"/>
-                                {{ column.name }}
+                                {{ column.label }}
                             </label>
 
                         </li>

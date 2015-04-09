@@ -8,7 +8,7 @@
  * Factory in the midjaApp.
  */
 angular.module('midjaApp')
-    .factory('dataService', function ($http, cartoDbApiKey, cartodb, $q) {
+    .factory('dataService', function ($http, cartoDbApiKey, cartodb, $q, labelService) {
 
         return {
             getTables: getTables,
@@ -26,6 +26,9 @@ angular.module('midjaApp')
 
             function getTablesComplete(response) {
                 var tables = response.data.visualizations;
+                _.each(tables, function(table) {
+                    table.label = labelService.getLabelFromCartoDbName(table.name);
+                });
                 return tables;
             }
         }
@@ -37,7 +40,12 @@ angular.module('midjaApp')
 
             function getColumnsComplete(response) {
                 var schema = response.data.schema;
-                return filterNonNumberColumns(schema);
+                var columns = filterNonNumberColumns(schema);
+
+                _.each(columns, function(column) {
+                    column.label = labelService.getLabelFromCartoDbName(column.name)
+                });
+                return columns;
             }
 
             function filterNonNumberColumns(schema) {
