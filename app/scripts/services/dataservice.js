@@ -28,6 +28,15 @@ angular.module('midjaApp')
                 var tables = response.data.visualizations;
                 _.each(tables, function(table) {
                     table.label = labelService.getLabelFromCartoDbName(table.name);
+
+                    // Add an asterix to 'good tables'
+                    if(table.name.indexOf('iloc') === 0 ||
+                        table.name.indexOf('ireg') === 0 ||
+                        table.name.indexOf('iare') === 0 ||
+                        table.name.indexOf('ste') === 0 ||
+                        table.name.indexOf('lga') === 0) {
+                        table.label = '* ' + table.label;
+                    }
                 });
                 return tables;
             }
