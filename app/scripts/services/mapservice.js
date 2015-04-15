@@ -148,7 +148,7 @@ angular.module('midjaApp')
         function generateBubbleCss(values, table, column) {
 
             var MAX_RADIUS = 31;
-            var MIN_RADIUS = 1;
+            var MIN_RADIUS = 5;
 
             // Sort desc
             values = values.sort(function (a, b) {
