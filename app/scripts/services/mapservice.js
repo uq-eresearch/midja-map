@@ -42,7 +42,16 @@ angular.module('midjaApp')
          * @return {Promise}
          */
         function generateLayerDefinition(table, column, type) {
-            var sql = generateSql(table, column);
+            var sql = '';
+
+            if (type === 'region') {
+                sql = generateSql(table, column);
+            } else if (type === 'bubble') {
+                sql = generateBubbleSql(table, column);
+            } else {
+                throw new Error('Bad type');
+            }
+
 
             if (type === 'region') {
                 return dataService.getBuckets(column, sql, 7).then(getBucketsComplete);
@@ -83,6 +92,26 @@ angular.module('midjaApp')
                 'SELECT ' + tablePrefix + '_2011_aust.*, ' + table.name + '.' + column.name + ' ' +
                 'FROM ' + table.name + ', ' + tablePrefix + '_2011_aust ' +
                 'WHERE ' + tablePrefix + '_2011_aust.' + idColumn + ' = ' + table.name + '.' + idColumn;
+            return sql;
+        }
+
+
+        /**
+         * Generate table SQL for table and column
+         * @param table
+         * @param column
+         * @returns {string}
+         */
+        function generateBubbleSql(table, column) {
+            var tablePrefix = tableService.getTablePrefix(table);
+            var idColumn = tableService.getIdColumnForTable(table);
+
+            var boundaryTableName = tablePrefix + '_2011_aust';
+
+            var sql =
+                'SELECT ' + boundaryTableName + '.' + idColumn + ', ST_Transform(ST_Centroid('+boundaryTableName+'.the_geom), 3857) as the_geom_webmercator, ST_Centroid('+boundaryTableName+'.the_geom) as the_geom, ' + table.name + '.' + column.name + ' ' +
+                'FROM ' + table.name + ', ' + boundaryTableName + ' ' +
+                'WHERE ' + boundaryTableName + '.' + idColumn + ' = ' + table.name + '.' + idColumn;
             return sql;
         }
 
