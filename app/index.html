@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" style="height: 100%;">
   <head>
     <meta charset="utf-8">
     <title></title>
@@ -8,6 +8,8 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/select2/select2.css" />
+    <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -18,27 +20,25 @@
       <script src="http://libs.cartocdn.com/cartodb.js/v3/3.13/cartodb.js"></script>
 
   </head>
-  <body ng-app="midjaApp">
+  <body ng-app="midjaApp" style="height: 100%;">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Map Maker</a></li>
-          <!--<li><a ng-href="#/about">About</a></li>-->
-          <!--<li><a ng-href="#">Contact</a></li>-->
-        </ul>
-        <h3 class="text-muted">midja</h3>
-      </div>
+    <div class="container-fluid" style="height: 100%;">
+      <!--<div class="header">-->
+        <!--<ul class="nav nav-pills pull-right">-->
+          <!--<li class="active"><a ng-href="#">Map Maker</a></li>-->
+        <!--</ul>-->
+        <!--<h3 class="text-muted">midja</h3>-->
+      <!--</div>-->
 
-      <div ng-view=""></div>
+      <div ng-view="" style="height: 100%;"></div>
 
-      <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the eResearch team</p>
-      </div>
+      <!--<div class="footer">-->
+        <!--<p><span class="glyphicon glyphicon-heart"></span> from the eResearch team</p>-->
+      <!--</div>-->
     </div>
 
 
@@ -83,6 +83,9 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/select2/select2.js"></script>
+    <script src="bower_components/ui-select/src/select3.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -95,6 +98,10 @@
         <script src="scripts/services/tableservice.js"></script>
         <script src="scripts/directives/cartodbmap.js"></script>
         <script src="scripts/services/labelservice.js"></script>
+        <script src="scripts/services/polygonlayerdefinitionservice.js"></script>
+        <script src="scripts/services/bubblelayerdefinitionservice.js"></script>
+        <script src="scripts/services/datasetservice.js"></script>
+        <script src="scripts/services/layerservice.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -29,8 +29,20 @@ angular.module('midjaApp')
                 if(part === 't') {
                     return 'total';
                 }
+                if(part === 'a') {
+                    return 'age';
+                }
+                if(part === 'indig') {
+                    return 'indigenous';
+                }
+                if(part === 'p') {
+                    return 'people';
+                }
+                if(part === 'totp') {
+                    return 'total people';
+                }
                 return part;
-            })
+            });
             return parts.join(' ');
         }
     });

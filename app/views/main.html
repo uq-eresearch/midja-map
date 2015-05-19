@@ -1,64 +1,172 @@
-<div>
-    <div class="row">
-        <div class="col-sm-3">
-            <div>
-                <h3>Region</h3>
-                <div ng-hide="vm.tables">
-                    Loading tables...
-                </div>
-                <select ng-show="vm.tables" style="width:100%"
-                        ng-options="table as table.label for table in vm.tables track by table.id"
-                        ng-model="vm.selectedRegionTable" ng-change="vm.selectedRegionTableChanged(vm.selectedRegionTable)">
-                </select>
+<div style="height: 100%;">
+    <div class="row" style="height: 100%">
 
-                <form action="">
-                    <div ng-show="vm.selectedRegionTable && vm.regionColumns.length === 0">
-                        No number columns.
-                    </div>
-                    <ul>
-                        <li data-ng-repeat="column in vm.regionColumns">
-                            <label>
-                                <input type="radio" ng-model="vm.selectedRegionColumn" ng-value="column"
-                                       ng-change="vm.selectedRegionColumnChanged(vm.selectedRegionTable, vm.selectedRegionColumn)"/>
-                                {{ column.label }}
-                            </label>
-
-                        </li>
-                    </ul>
-                </form>
-            </div>
+        <div class="col-sm-3" style="height:100%; overflow: auto;">
 
             <div>
-                <h3>Bubble</h3>
-                <div ng-hide="vm.tables">
-                    Loading tables...
+                <h2>Layers</h2>
+                <div class="alert alert-info">
+                    <i class="fa fa-info-circle"></i> Select datasets for both the bubble and choropleth layers.
                 </div>
-                <select ng-show="vm.tables" style="width:100%"
-                        ng-options="table as table.label for table in vm.tables track by table.id"
-                        ng-model="vm.selectedBubbleTable" ng-change="vm.selectedBubbleTableChanged(vm.selectedBubbleTable)">
-                </select>
 
-                <form action="">
-                    <div ng-show="vm.selectedBubbleTable && vm.bubbleColumns.length === 0">
-                        No number columns.
-                    </div>
-                    <ul>
-                        <li data-ng-repeat="column in vm.bubbleColumns">
-                            <label>
-                                <input type="radio" ng-model="vm.selectedBubbleColumn" ng-value="column"
-                                       ng-change="vm.selectedBubbleColumnChanged(vm.selectedBubbleTable, vm.selectedBubbleColumn)"/>
-                                {{ column.label }}
-                            </label>
 
-                        </li>
-                    </ul>
-                </form>
+                <accordion close-others="true">
+                    <accordion-group heading="" is-open="vm.accordion.bubble.isOpen" is-disabled="status.isFirstDisabled">
+
+                        <accordion-heading>
+                            <i class="fa chevron-right"></i> 1. Bubble Layer
+                        </accordion-heading>
+
+                        <div>
+                            Select a dataset
+                        </div>
+
+                        <div ng-hide="vm.tables">
+                            <i class="fa fa-spin fa-circle-o-notch"></i> <i>Loading datasets...</i>
+                        </div>
+                        <select ng-show="vm.tables" style="width:100%"
+                                ng-options="table as table.label for table in vm.tables track by table.id"
+                                ng-model="vm.selectedBubbleTable" ng-change="vm.selectedBubbleTableChanged(vm.selectedBubbleTable)">
+                        </select>
+
+                        <form action="">
+                            <div ng-show="vm.selectedBubbleTable">
+                                Select a column to plot
+                            </div>
+                            <div ng-show="vm.selectedBubbleTable && vm.bubbleColumns.length === 0">
+                                No number columns.
+                            </div>
+                            <div ng-show="vm.selectedBubbleTable && !vm.bubbleColumns">
+                                <i class="fa fa-spin fa-circle-o-notch"></i> <i>Loading columns</i>
+                            </div>
+                            <ul class="list-unstyled">
+                                <li data-ng-repeat="column in vm.bubbleColumns" class="text-capitalize">
+                                    <label>
+                                        <input type="radio" ng-model="vm.selectedBubbleColumn" ng-value="column"
+                                               ng-change="vm.selectedBubbleColumnChanged(vm.selectedBubbleTable, vm.selectedBubbleColumn)"/>
+                                        {{ column.label }}
+                                    </label>
+
+                                </li>
+                            </ul>
+                        </form>
+
+                    </accordion-group>
+                    <accordion-group heading="2. Choropleth Layer" is-open="vm.accordion.choropleth.isOpen">
+
+                        <div>
+                            Select a dataset
+                        </div>
+                        <div ng-hide="vm.tables">
+                            <i class="fa fa-spin fa-circle-o-notch"></i> <i>Loading datasets...</i>
+                        </div>
+                        <select ng-show="vm.tables" style="width:100%"
+                                ng-options="table as table.label for table in vm.tables track by table.id"
+                                ng-model="vm.selectedRegionTable" ng-change="vm.selectedRegionTableChanged(vm.selectedRegionTable)">
+                        </select>
+
+                        <form action="">
+                            <div ng-show="vm.selectedRegionTable">
+                                Select a column to plot
+                            </div>
+                            <div ng-show="vm.selectedRegionTable && vm.regionColumns.length === 0">
+                                No number columns.
+                            </div>
+                            <div ng-show="vm.selectedRegionTable && !vm.regionColumns">
+                                <i class="fa fa-spin fa-circle-o-notch"></i> <i>Loading columns</i>
+                            </div>
+                            <ul class="list-unstyled">
+                                <li data-ng-repeat="column in vm.regionColumns" class="text-capitalize">
+                                    <label>
+                                        <input type="radio" ng-model="vm.selectedRegionColumn" ng-value="column"
+                                               ng-change="vm.selectedRegionColumnChanged(vm.selectedRegionTable, vm.selectedRegionColumn)"/>
+                                        {{ column.label }}
+                                    </label>
+
+                                </li>
+                            </ul>
+                        </form>
+
+                    </accordion-group>
+                    <!--<accordion-group heading="Dynamic Body Content">-->
+                    <!--<p>The body of the accordion group grows to fit the contents</p>-->
+                    <!--<button class="btn btn-default btn-sm" ng-click="addItem()">Add Item</button>-->
+                    <!--<div ng-repeat="item in items">{{item}}</div>-->
+                    <!--</accordion-group>-->
+                    <!--<accordion-group is-open="status.open">-->
+                    <!--<accordion-heading>-->
+                    <!--I can have markup, too! <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>-->
+                    <!--</accordion-heading>-->
+                    <!--This is just some content to illustrate fancy headings.-->
+                    <!--</accordion-group>-->
+                </accordion>
+
             </div>
 
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-6" style="height: 100%;">
             <cartodb-map top="vm.bubbleLayer" bottom="vm.regionLayer"></cartodb-map>
+        </div>
+        <div class="col-sm-3">
+
+            <div>
+                <h2>Summary</h2>
+                <dl>
+                    <dt>Bubble Layer</dt>
+                    <dd class="text-capitalize">
+                        {{ vm.selectedBubbleTable.label || 'None' }}
+                        - {{ vm.selectedBubbleColumn.label || 'No column selected' }}
+                    </dd>
+
+                    <dt  style="margin-top: 10px;">
+                        Choropleth Layer
+                    </dt>
+                    <dd class="text-capitalize">
+                        {{ vm.selectedRegionTable.label || 'None' }}
+                        - {{ vm.selectedRegionColumn.label || 'No column selected' }}
+                    </dd>
+                </dl>
+
+                <h3>Data</h3>
+
+                <div class="well">
+                    <div ng-repeat="selection in feature">
+                        <div class="text-capitalize">
+                            <strong>{{ selection.label }}</strong>
+                        </div>
+                        <div>
+                            <em>{{ selection.level_name }}</em> - {{ selection.value }}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div ng-hide="test.length || !feature">Click on the map to pin data.</div>
+                <div ng-repeat="selection in test" style="margin-bottom: 10px;">
+                    <div class="text-capitalize">
+                        <strong>{{ selection.label }}</strong>
+                    </div>
+                    <div>
+                        <em>{{ selection.level_name }}</em> - {{ selection.value }}
+                    </div>
+                </div>
+
+                <!--<table>-->
+                <!--<tr ng-repeat="(key, value) in feature">-->
+                <!--<td> {{key}} </td> <td> {{ value }} </td>-->
+                <!--</tr>-->
+                <!--</table>-->
+
+            </div>
         </div>
     </div>
 
+
+
+    <script type="infowindow/html" id="infowindow_template">
+  <div class="cartodb-popup">
+  hello world!!!
+
+  </div>
+</script>
 </div>

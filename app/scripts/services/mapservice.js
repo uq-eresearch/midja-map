@@ -8,174 +8,33 @@
  * Factory in the midjaApp.
  */
 angular.module('midjaApp')
-    .factory('mapService', function (dataService, tableService) {
-
-        var colors = [
-            //'FFFFB2',
-            'B10026',
-            'E31A1C',
-            'FC4E2A',
-            'FD8D3C',
-            'FEB24C',
-            'FED976',
-            'FFFFB2'
-        ];
-
+    .factory('mapService', function (labelService) {
 
         return {
-            generateLayerDefinition: generateLayerDefinition,
-            generateSql: generateSql,
-            generateRegionCss: generateRegionCss,
-            generateBubbleCss: generateBubbleCss
+            transformFeatureData: transformFeatureData
         };
 
-        ////
 
+        function transformFeatureData(data) {
+            // now transform it
 
-        /**
-         * Generate a layer definition for a table, and column
-         *
-         * Uses Quantile for the CSS and 7 buckets
-         *
-         * @param table
-         * @param column
-         * @return {Promise}
-         */
-        function generateLayerDefinition(table, column, type) {
-            var sql = '';
-
-            if (type === 'region') {
-                sql = generateSql(table, column);
-            } else if (type === 'bubble') {
-                sql = generateBubbleSql(table, column);
-            } else {
-                throw new Error('Bad type');
-            }
-
-
-            if (type === 'region') {
-                return dataService.getBuckets(column, sql, 7).then(getBucketsComplete);
-            } else if (type === 'bubble') {
-                return dataService.getBuckets(column, sql, 10).then(getBucketsComplete);
-            } else {
-                throw new Error('Bad type');
-            }
-
-            function getBucketsComplete(buckets) {
-                var cartoCss = '';
-                if (type === 'region') {
-                    cartoCss = generateRegionCss(buckets, table, column);
-                } else if (type === 'bubble') {
-                    cartoCss = generateBubbleCss(buckets, table, column);
-                } else {
-                    throw new Error('Bad type');
+            var newData = {};
+            // okay lets get the data into something useful
+            for(var key in data) {
+                if(key === '$$hashKey') {
+                    continue;
                 }
-
-                return {
-                    sql: sql,
-                    cartocss: cartoCss
-                };
+                if(key.indexOf('_name') >= 0) {
+                    newData.level_name = data[key];
+                } else {
+                    newData.column = key;
+                    newData.label = labelService.getLabelFromCartoDbName(newData.column);
+                    newData.value = data[key];
+                }
             }
-        }
 
-        /**
-         * Generate table SQL for table and column
-         * @param table
-         * @param column
-         * @returns {string}
-         */
-        function generateSql(table, column) {
-            var tablePrefix = tableService.getTablePrefix(table);
-            var idColumn = tableService.getIdColumnForTable(table);
-
-            var sql =
-                'SELECT ' + tablePrefix + '_2011_aust.*, ' + table.name + '.' + column.name + ' ' +
-                'FROM ' + table.name + ', ' + tablePrefix + '_2011_aust ' +
-                'WHERE ' + tablePrefix + '_2011_aust.' + idColumn + ' = ' + table.name + '.' + idColumn;
-            return sql;
+            return newData;
         }
 
 
-        /**
-         * Generate table SQL for table and column
-         * @param table
-         * @param column
-         * @returns {string}
-         */
-        function generateBubbleSql(table, column) {
-            var tablePrefix = tableService.getTablePrefix(table);
-            var idColumn = tableService.getIdColumnForTable(table);
-
-            var boundaryTableName = tablePrefix + '_2011_aust';
-
-            var sql =
-                'SELECT ' + boundaryTableName + '.' + idColumn + ', ST_Transform(ST_Centroid('+boundaryTableName+'.the_geom), 3857) as the_geom_webmercator, ST_Centroid('+boundaryTableName+'.the_geom) as the_geom, ' + table.name + '.' + column.name + ' ' +
-                'FROM ' + table.name + ', ' + boundaryTableName + ' ' +
-                'WHERE ' + boundaryTableName + '.' + idColumn + ' = ' + table.name + '.' + idColumn;
-            return sql;
-        }
-
-        /**
-         * Generates Cartocss for bucket values
-         *
-         * @param buckets 7 bucket values
-         * @param table
-         * @param column
-         * @returns {string}
-         */
-        function generateRegionCss(values, table, column) {
-            var cartoCss = '#' + table.name + ' {' +
-                ' polygon-fill: #FFFFB2;' +
-                ' polygon-opacity: 0.8;' +
-                ' line-color: #FFF;' +
-                ' line-width: 1;' +
-                ' line-opacity: 1; ' +
-                '} ';
-
-            // Sort desc
-            values = values.sort(function (a, b) {
-                return b - a;
-            });
-            
-            cartoCss += _.map(values, function (value, index) {
-                return '#' + table.name + ' [' + column.name + ' <= ' + value + '] {' +
-                    ' polygon-fill: #' + colors[index] + ';' +
-                    '} ';
-            }).join(' ');
-            return cartoCss;
-        }
-
-        function generateBubbleCss(values, table, column) {
-
-            var MAX_RADIUS = 31;
-            var MIN_RADIUS = 5;
-
-            // Sort desc
-            values = values.sort(function (a, b) {
-                return b - a;
-            });
-
-            var cartoCss = '#' + table.name + ' {' +
-                ' marker-fill-opacity: 0.9;' +
-                ' marker-line-color: #FFF;' +
-                ' marker-line-width: 1.5;' +
-                ' marker-line-opacity: 1;' +
-                ' marker-placement: point;' +
-                ' marker-multi-policy: largest;' +
-                ' marker-type: ellipse;' +
-                ' marker-fill: #3E7BB6;' +
-                ' marker-allow-overlap: true;' +
-                ' marker-clip: false; ' +
-                '} ';
-
-
-            var radiusIncrements = (MAX_RADIUS - MIN_RADIUS) / (values.length - 1);
-            cartoCss += _.map(values, function (value, index) {
-                return '#' + table.name + ' [' + column.name + ' <= ' + value + '] {' +
-                    ' marker-width: ' + (MAX_RADIUS - (index * radiusIncrements)) + '; ' +
-                    '}';
-            }).join(' ');
-
-            return cartoCss;
-        }
     });

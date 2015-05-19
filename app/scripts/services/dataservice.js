@@ -12,7 +12,7 @@ angular.module('midjaApp')
 
         return {
             getTables: getTables,
-            getColumns: getColumns,
+            getTableSchema: getTableSchema,
             getBuckets: getBuckets
         };
 
@@ -26,47 +26,18 @@ angular.module('midjaApp')
 
             function getTablesComplete(response) {
                 var tables = response.data.visualizations;
-                _.each(tables, function(table) {
-                    table.label = labelService.getLabelFromCartoDbName(table.name);
-
-                    // Add an asterix to 'good tables'
-                    if(table.name.indexOf('iloc') === 0 ||
-                        table.name.indexOf('ireg') === 0 ||
-                        table.name.indexOf('iare') === 0 ||
-                        table.name.indexOf('ste') === 0 ||
-                        table.name.indexOf('lga') === 0) {
-                        table.label = '* ' + table.label;
-                    }
-                });
                 return tables;
             }
         }
 
-        function getColumns(table) {
+        function getTableSchema(table) {
             var tableName = table.name;
             return $http.get('http://midja.portal.midja.org/api/v1/tables/' + tableName + '?api_key=' + cartoDbApiKey)
-                .then(getColumnsComplete);
+                .then(getTableSchemaComplete);
 
-            function getColumnsComplete(response) {
+            function getTableSchemaComplete(response) {
                 var schema = response.data.schema;
-                var columns = filterNonNumberColumns(schema);
-
-                _.each(columns, function(column) {
-                    column.label = labelService.getLabelFromCartoDbName(column.name)
-                });
-                return columns;
-            }
-
-            function filterNonNumberColumns(schema) {
-                // Keep only number columns (except cartodb id)
-                return _.reduce(schema, function (columns, properties) {
-                    if (properties[1] === 'number' && properties[0] !== 'cartodb_id') {
-                        columns.push({
-                            'name': properties[0]
-                        });
-                    }
-                    return columns;
-                }, []);
+                return schema;
             }
         }
 

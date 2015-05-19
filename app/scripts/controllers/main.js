@@ -8,10 +8,19 @@
  * Controller of the midjaApp
  */
 angular.module('midjaApp')
-    .controller('MainCtrl', function (dataService, mapService) {
+    .controller('MainCtrl', function (datasetService, layerService) {
 
         var vm = this;
         vm.tables = null;
+
+        vm.accordion = {
+            bubble: {
+                isOpen: true
+            },
+            choropleth: {
+                isOpen: false
+            }
+        };
 
         vm.selectedRegionTableChanged = selectedRegionTableChanged;
         vm.selectedRegionColumnChanged = selectedRegionColumnChanged;
@@ -23,21 +32,20 @@ angular.module('midjaApp')
 
         ////
 
-
         function activate() {
             getTables();
         }
 
 
         function getTables() {
-            return dataService.getTables().then(function(data) {
+            return datasetService.getDatasets().then(function(data) {
                 vm.tables = data;
                 return vm.tables;
             });
         }
 
-        function getColumns(table) {
-            return dataService.getColumns(table);
+        function getColumns(dataset) {
+            return datasetService.getColumns(dataset);
         }
 
 
@@ -49,7 +57,7 @@ angular.module('midjaApp')
         }
 
         function selectedRegionColumnChanged(table, column) {
-            mapService.generateLayerDefinition(table, column, 'region').then(function(layerDefinition) {
+            layerService.generateLayerDefinition(table, column, 'polygon').then(function(layerDefinition) {
                 vm.regionLayer = layerDefinition;
             });
         }
@@ -62,7 +70,7 @@ angular.module('midjaApp')
         }
 
         function selectedBubbleColumnChanged(table, column) {
-            mapService.generateLayerDefinition(table, column, 'bubble').then(function(layerDefinition) {
+            layerService.generateLayerDefinition(table, column, 'bubble').then(function(layerDefinition) {
                 vm.bubbleLayer = layerDefinition;
             });
         }
