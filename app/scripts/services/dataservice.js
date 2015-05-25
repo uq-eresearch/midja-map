@@ -13,7 +13,9 @@ angular.module('midjaApp')
         return {
             getTables: getTables,
             getTableSchema: getTableSchema,
-            getBuckets: getBuckets
+            getBuckets: getBuckets,
+            getLocationsStartingWith: getLocationsStartingWith,
+            doQuery: doQuery
         };
 
         /**
@@ -41,11 +43,28 @@ angular.module('midjaApp')
             }
         }
 
+        function getLocationsStartingWith(name) {
+            // get all iloc names from server somehow
+            var sql = 'SELECT iloc_code, iloc_name  FROM iloc_2011_aust WHERE iloc_name ILIKE \'' + name + '%\';';
+            return doQuery(sql).then(function(results) {
+                var values = results.rows;
+                return values;
+            });
+        }
+
         function getBuckets(column, sql, numberOfBuckets) {
             numberOfBuckets = numberOfBuckets || 7;
 
-            var bucketSql = 'select unnest(CDB_QuantileBins(array_agg(distinct((' + column.name + '::numeric))), ' +
+            var sql = 'select unnest(CDB_QuantileBins(array_agg(distinct((' + column.name + '::numeric))), ' +
                 numberOfBuckets + ')) as buckets from (' + sql + ') _table_sql where ' + column.name + ' is not null';
+
+            return doQuery(sql).then(function(results) {
+                var values = _.pluck(results.rows, 'buckets').reverse();
+                return values;
+            });
+        }
+
+        function doQuery(sql) {
             var query = new cartodb.SQL({
                 user: 'midja',
                 host: 'portal.midja.org:8080',
@@ -56,31 +75,11 @@ angular.module('midjaApp')
             });
             var deferred = $q.defer();
 
-            query.execute(bucketSql).done(function(results) {
-                var values = _.pluck(results.rows, 'buckets').reverse();
-                deferred.resolve(values);
+            query.execute(sql).done(function(results) {
+                deferred.resolve(results);
             }).error(function() {
                 deferred.reject();
             });
             return deferred.promise;
-
-            //query.execute(sql)
-            //    .done(function(data) {
-            //        console.log(data.rows);
-            //    })
-            //    .error(function(errors) {
-            //        // errors contains a list of errors
-            //        console.log("errors:" + errors);
-            //    });
-
-            //var url = 'http://midja.portal.midja.org:8080/api/v1/sql';
-            //return $http.post(url, {
-            //    q:
-            //    api_key: cartoDbApiKey
-            //}).then(getBucketsComplete);
-            //
-            //function getBucketsComplete(response) {
-            //    return _.pluck(response.data.rows, 'buckets').reverse();
-            //}
         }
     });

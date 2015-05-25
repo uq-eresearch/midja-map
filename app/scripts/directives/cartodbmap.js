@@ -15,79 +15,81 @@ angular.module('midjaApp')
                 'top': '=',
                 'bottom': '='
             },
-            link: function postLink(scope, element, attrs) {
+            replace: true,
+            link: postLink
+        };
 
-                var layer = null;
-                var subLayers = [{}];
+        function postLink(scope, element, attrs) {
 
-                activate();
+            var layer = null;
+            var map = null;
+            var subLayers = [{}];
 
-                ////
+            activate();
 
-                function activate() {
-                    setupMap();
-                    scope.$watch('top', setTopLayer);
-                    scope.$watch('bottom', setBottomLayer);
-                }
+            ////
 
-                function setupMap() {
-                    var map = L.map('map', {
-                        //zoomControl: true,
-                        center: [-20.72587006334744, 139.492965],
-                        zoom: 4
-                        //legends: true,
-                        //fullscreen: true,
-                        //infowindow: true
-                    });
+            function activate() {
+                setupMap();
+                scope.$watch('top', setTopLayer);
+                scope.$watch('bottom', setBottomLayer);
+            }
 
-                    //L.tileLayer('https://dnv9my2eseobd.cloudfront.net/v3/cartodb.map-4xtxp73f/{z}/{x}/{y}.png', {
-                    //    attribution: 'Mapbox <a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>'
-                    //}).addTo(map);
+            function setupMap() {
+                map = L.map('map', {
+                    //zoomControl: true,
+                    center: [-20.72587006334744, 139.492965],
+                    zoom: 4
+                    //legends: true,
+                    //fullscreen: true,
+                    //infowindow: true
+                });
 
-                    //var layerUrl = 'http://midja.portal.midja.org/api/v2/viz/b7711414-2111-11e4-96b7-fa163e6cce2e/viz.json';
+                //L.tileLayer('https://dnv9my2eseobd.cloudfront.net/v3/cartodb.map-4xtxp73f/{z}/{x}/{y}.png', {
+                //    attribution: 'Mapbox <a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>'
+                //}).addTo(map);
 
-
-                    // add a nice baselayer from Stamen
-                    L.tileLayer('https://maps.nlp.nokia.com/maptiler/v2/maptile/newest/normal.day/{z}/{x}/{y}/' +
-                        '256/png8?lg=eng&token=A7tBPacePg9Mj_zghvKt9Q&app_id=KuYppsdXZznpffJsKT24', {
-                        attribution: 'Stamen'
-                    }).addTo(map);
+                //var layerUrl = 'http://midja.portal.midja.org/api/v2/viz/b7711414-2111-11e4-96b7-fa163e6cce2e/viz.json';
 
 
-                    //cartodb.createLayer(map, layerUrl)
-                    //    .addTo(map)
-                    //    .on('done', function(cartoLayer) {
-                    //        //layer.getSubLayer(0).set(subLayerOptions);
-                    //        layer = cartoLayer;
-                    //    }).on('error', function() {
-                    //        //log the error
-                    //    });
+                // add a nice baselayer from Stamen
+                L.tileLayer('https://maps.nlp.nokia.com/maptiler/v2/maptile/newest/normal.day/{z}/{x}/{y}/' +
+                '256/png8?lg=eng&token=A7tBPacePg9Mj_zghvKt9Q&app_id=KuYppsdXZznpffJsKT24', {
+                    attribution: 'Stamen'
+                }).addTo(map);
 
-                    cartodb.createLayer(map, {
-                        user_name: 'midja',
-                        tiler_protocol: 'http',
-                        tiler_domain: 'portal.midja.org',
-                        tiler_port: '8181',
-                        extra_params: {
-                            map_key: 'da4921d7f2b99244897b313a75f0bd977c775a5e'
-                        },
 
-                        type: 'cartodb',
-                        sublayers: [{
-                            sql: 'SELECT * FROM iloc_2011_aust',
-                            cartocss: '#ste_2011_aust{ polygon-fill: #EEEEEE; polygon-opacity: 0.7; line-color: #67717E;' +
-                            'line-width: 1; line-opacity: 1; }'
-                        }]
-                    }).addTo(map)
+                //cartodb.createLayer(map, layerUrl)
+                //    .addTo(map)
+                //    .on('done', function(cartoLayer) {
+                //        //layer.getSubLayer(0).set(subLayerOptions);
+                //        layer = cartoLayer;
+                //    }).on('error', function() {
+                //        //log the error
+                //    });
 
+                cartodb.createLayer(map, {
+                    user_name: 'midja',
+                    tiler_protocol: 'http',
+                    tiler_domain: 'portal.midja.org',
+                    tiler_port: '8181',
+                    extra_params: {
+                        map_key: 'da4921d7f2b99244897b313a75f0bd977c775a5e'
+                    },
+
+                    type: 'cartodb',
+                    sublayers: [{
+                        sql: 'SELECT * FROM ste_2011_aust',
+                        cartocss: '#ste_2011_aust{ polygon-fill: #EEEEEE; polygon-opacity: 0.7; line-color: #67717E;' +
+                        'line-width: 1; line-opacity: 1; }'
+                    }]
+                }).addTo(map)
 
 
                     .done(function (mapLayer) {
                         layer = mapLayer;
 
                         console.log(cdb.vis);
-
-
 
 
                         //var sublayer = layer.getSubLayer(0);
@@ -125,53 +127,59 @@ angular.module('midjaApp')
                         //});
                         //console.log(sublayer);
                     });
-                }
-                function setTopLayer(layerDefinition) {
-                    setLayer(layerDefinition, 1);
-                }
-                function setBottomLayer(layerDefinition) {
-                    setLayer(layerDefinition, 0);
-                }
-                function setLayer(layerDefinition, position) {
-                    if(!layerDefinition) {
-                        return;
-                    }
-                    //
-                    //setTimeout(function() {
-                    //    cdb.vis.Vis.addInfowindow(map,  layer.getSubLayer(position), ['cartodb_id']);
-                    //}, 5000);
-
-                    var subLayer = null;
-
-                    if(subLayers[position]) {
-                        subLayers[position] = layer.getSubLayer(position).set(layerDefinition);
-                        subLayer = subLayers[position];
-                    } else {
-                        subLayer = layer.createSubLayer(layerDefinition);
-                        subLayers[position] = subLayer;
-                    }
-
-                    subLayer.setInteraction(true);
-                    subLayer.on('featureOver', function(e, latlon, pos, data, subLayerIndex) {
-                        scope.$apply(function() {
-                            $rootScope.feature = [mapService.transformFeatureData(data)];
-                        });
-                    });
-                    //subLayer.infowindow.set('template', $('#infowindow_template').html());
-
-                    subLayer.on('featureClick', function(e, latlng, pos, data) {
-                        scope.$apply(function() {
-                            console.log("clicked over");
-                            $rootScope.test = $rootScope.test || [];
-                            $rootScope.test.unshift(mapService.transformFeatureData(data));
-                        });
-                    });
-
-
-
-                    return subLayer;
-
-                }
             }
-        };
+
+            function setTopLayer(layerDefinition) {
+                setLayer(layerDefinition, 1);
+            }
+
+            function setBottomLayer(layerDefinition) {
+                setLayer(layerDefinition, 0);
+            }
+
+            function setLayer(layerDefinition, position) {
+                if (!layerDefinition) {
+                    return;
+                }
+                //
+                //setTimeout(function() {
+                //    cdb.vis.Vis.addInfowindow(map,  layer.getSubLayer(position), ['cartodb_id']);
+                //}, 5000);
+
+                var subLayer = null;
+
+                if (subLayers[position]) {
+                    subLayers[position] = layer.getSubLayer(position).set(layerDefinition);
+                    subLayer = subLayers[position];
+                } else {
+                    subLayer = layer.createSubLayer(layerDefinition);
+                    subLayers[position] = subLayer;
+                }
+
+                subLayer.setInteraction(true);
+                subLayer.on('featureOver', function (e, latlon, pos, data, subLayerIndex) {
+                    scope.$apply(function () {
+                        $rootScope.feature = [mapService.transformFeatureData(data)];
+                    });
+                });
+                //subLayer.infowindow.set('template', $('#infowindow_template').html());
+
+                subLayer.on('featureClick', function (e, latlng, pos, data) {
+                    scope.$apply(function () {
+                        console.log("clicked over");
+                        $rootScope.test = $rootScope.test || [];
+                        $rootScope.test.unshift(mapService.transformFeatureData(data));
+                    });
+                });
+
+                //setTimeout(function() {
+                //    console.log('panning map now');
+                //    //map.panTo(new L.LatLng(-20.72587006334744, 120));
+                //}, 3000);
+
+
+                return subLayer;
+
+            }
+        }
     });

@@ -35,8 +35,8 @@ angular.module('midjaApp')
             this.interactivity = [column.name, tableService.getTablePrefix(table) + '_name'];
         }
 
-        function build(table, column) {
-            var sql = generateSql(table, column);
+        function build(table, column, locations) {
+            var sql = generateSql(table, column, locations);
             return dataService.getBuckets(column, sql, 7).then(getBucketsComplete);
 
             function getBucketsComplete(buckets) {
@@ -52,14 +52,19 @@ angular.module('midjaApp')
          * @param column
          * @returns {string}
          */
-        function generateSql(table, column) {
+        function generateSql(table, column, locations) {
             var tablePrefix = tableService.getTablePrefix(table);
             var idColumn = tableService.getIdColumnForTable(table);
 
+            var boundaryTableName = tablePrefix + '_2011_aust';
+
+            var ilocNames = '\'' + _.pluck(locations, 'iloc_name').join('\' ,\'') + '\'';
+
             var sql =
-                'SELECT ' + tablePrefix + '_2011_aust.*, ' + table.name + '.' + column.name + ' ' +
+                'SELECT ' + boundaryTableName + '.*, ' + table.name + '.' + column.name + ' ' +
                 'FROM ' + table.name + ', ' + tablePrefix + '_2011_aust ' +
-                'WHERE ' + tablePrefix + '_2011_aust.' + idColumn + ' = ' + table.name + '.' + idColumn;
+                'WHERE ' + boundaryTableName +'.iloc_name IN (' + ilocNames + ') ' +
+                'AND ' + tablePrefix + '_2011_aust.' + idColumn + ' = ' + table.name + '.' + idColumn;
             return sql;
         }
 

@@ -1,0 +1,19 @@
+@include component(navbar) {
+  @extend .navbar-inverse;
+  margin-bottom: 0;
+  background-color: #000033;
+//  color: #300000;
+  border-radius: 0;
+  border: none;
+
+  .navbar-brand {
+    color: white;
+  }
+//  .navbar-nav > li > a {
+//    color: #300000;
+//  }
+//  .navbar-nav > .active > a {
+//    background-color: #FDF973;
+//    color: #300000;
+//  }
+}

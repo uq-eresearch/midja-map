@@ -16,12 +16,14 @@ angular
         'ngRoute',
         'ngSanitize',
         'ngTouch',
-        'ui.bootstrap'
+        'ui.bootstrap',
+        'ui.select'
     ])
     .constant('cartoDbApiKey', 'da4921d7f2b99244897b313a75f0bd977c775a5e')
     .constant('cartodb', cartodb)
     .constant('L', L)
-    .config(function ($routeProvider) {
+    .config(function ($routeProvider, uiSelectConfig) {
+        uiSelectConfig.resetSearchInput = true;
         $routeProvider
             .when('/', {
                 templateUrl: 'views/main.html',

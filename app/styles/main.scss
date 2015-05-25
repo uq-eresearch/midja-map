@@ -1,5 +1,20 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+@import "csstyle/csstyle.scss";
 // endbower
 
+
+@import "components/navbar";
+
+
+@include component(table) {
+  tr:nth-child(1) {
+    font-weight: bold;
+  }
+}
+
+@include tweak(fullheight) {
+  height: 100%;
+  overflow: auto;
+}
