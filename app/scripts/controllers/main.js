@@ -13,7 +13,9 @@ angular.module('midjaApp')
         var vm = this;
 
         vm.vis = {
+            remotenessLevel: 'all',
             locations: [],
+            ilocs: [],
             topics: [],
             bubble: {
                 topic: null
@@ -43,11 +45,23 @@ angular.module('midjaApp')
 
         ////
 
+
+        // select a place
+        // load ilocs for selected places
+        // load the ilocs
+        // generate visualisations
+
+        //
         function activate() {
             getColumns({
                 name: 'iloc_merged_dataset'
             }).then(function (columns) {
                 vm.columns = columns;
+            });
+
+            var sql = 'SELECT DISTINCT ra_name FROM iloc_merged_dataset;';
+            dataService.doQuery(sql).then(function(result) {
+               vm.remotenessLevels = result.rows;
             });
         }
 
@@ -60,20 +74,43 @@ angular.module('midjaApp')
             return datasetService.getColumns(dataset);
         }
 
-        function selectedLocationsChanged($item, $model) {
-            if(!vm.vis.locations.length) {
-                return;
+        function selectedLocationsChanged() {
+
+            console.log('changed!');
+            var sql = 'SELECT DISTINCT iloc_name FROM iloc_merged_dataset ' +
+                'WHERE ' + vm.vis.locations[0].type + '_name = \'' + vm.vis.locations[0].name + '\' ';
+
+            if(vm.vis.locations[1]) {
+                sql += ' OR ' + vm.vis.locations[1].type + '_name = \'' + vm.vis.locations[1].name + '\' ';
+            }
+            if(vm.vis.remotenessLevel && vm.vis.remotenessLevel !== 'all') {
+                sql += ' AND ra_name = \'' + vm.vis.remotenessLevel + '\'';
             }
 
-            if (vm.vis.bubble.topic) {
-                generateBubbleLayer(vm.vis.bubble.topic, vm.vis.locations);
-            }
-            if (vm.vis.choropleth.topic) {
-                generateChoroplethLayer(vm.vis.choropleth.topic, vm.vis.locations);
+            sql += ';';
+
+            dataService.doQuery(sql).then(function(results) {
+                vm.vis.ilocs = results.rows;
+                generateVisualisations();
+            });
+        }
+
+        function generateVisualisations() {
+            if(!vm.vis.ilocs.length) {
+                vm.chartData = [];
+                vm.tableData = [];
+                return;
             }
             if(vm.vis.topics.length) {
                 generateBarChart();
             }
+            if (vm.vis.bubble.topic) {
+                generateBubbleLayer(vm.vis.bubble.topic, vm.vis.ilocs);
+            }
+            if (vm.vis.choropleth.topic) {
+                generateChoroplethLayer(vm.vis.choropleth.topic, vm.vis.ilocs);
+            }
+
         }
         function selectedTopicsChanged($item, $model) {
             generateBarChart();
@@ -83,14 +120,14 @@ angular.module('midjaApp')
                 vm.vis.bubble.topic = topic;
                 vm.vis.choropleth.topic = topic;
 
-                generateBubbleLayer(vm.vis.bubble.topic, vm.vis.locations);
-                generateChoroplethLayer(vm.vis.choropleth.topic, vm.vis.locations);
+                generateBubbleLayer(vm.vis.bubble.topic, vm.vis.ilocs);
+                generateChoroplethLayer(vm.vis.choropleth.topic, vm.vis.ilocs);
             }
         }
 
         function generateBarChart() {
             var topicsList = _.pluck(vm.vis.topics, 'name').join(',');
-            var ilocNames = '\'' + _.pluck(vm.vis.locations, 'iloc_name').join('\' ,\'') + '\'';
+            var ilocNames = '\'' + _.pluck(vm.vis.ilocs, 'iloc_name').join('\' ,\'') + '\'';
 
             var sql = 'SELECT ' + topicsList + ' FROM iloc_merged_dataset WHERE iloc_name IN (' + ilocNames + ');';
 
@@ -104,7 +141,7 @@ angular.module('midjaApp')
 
                 // build data table
                 var data = [
-                    ['Topic'].concat(_.pluck(vm.vis.locations, 'iloc_name'))
+                    ['Topic'].concat(_.pluck(vm.vis.ilocs, 'iloc_name'))
                 ];
 
                 _.forEach(topics, function (topic) {
@@ -122,11 +159,11 @@ angular.module('midjaApp')
 
 
         function selectedBubbleTopicChanged($item, $model) {
-            generateBubbleLayer($item, vm.vis.locations);
+            generateBubbleLayer($item, vm.vis.ilocs);
         }
 
         function selectedRegionTopicChanged($item, $model) {
-            generateChoroplethLayer($item, vm.vis.locations);
+            generateChoroplethLayer($item, vm.vis.ilocs);
         }
 
 

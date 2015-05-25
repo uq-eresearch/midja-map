@@ -6,7 +6,7 @@
             <div class="col-md-3 +fullheight">
 
                 <div>
-                    <h2>Select Region</h2>
+                    <h2>1. Select Region</h2>
                     <ui-select
                             theme="bootstrap"
                             ng-model="vm.vis.locations[0]"
@@ -16,12 +16,19 @@
                             on-select="vm.selectedLocationsChanged($item, $model)"
                             on-remove="vm.selectedLocationsChanged($item, $model)">
                         <ui-select-match placeholder="Select first region">
-                            {{ $select.selected.iloc_name }}
+                            {{ $select.selected.name }}
+                            <span class="text-uppercase text-muted">
+                                {{ $select.selected.type }}
+                            </span>
                         </ui-select-match>
-                        <ui-select-choices repeat="location in vm.locations | propsFilter: {iloc_name: $select.search}"
+                        <ui-select-choices repeat="location in vm.locations | propsFilter: {name: $select.search}"
                                            refresh="vm.refreshLocations($select.search)"
                                            refresh-delay="0">
-                            <div ng-bind-html="location.iloc_name | highlight: $select.search"></div>
+
+                            <span ng-bind-html="location.name | highlight: $select.search"></span>
+                            <span class="text-uppercase text-muted">
+                                {{ location.type }}
+                            </span>
                         </ui-select-choices>
                     </ui-select>
 
@@ -36,17 +43,49 @@
                                 on-select="vm.selectedLocationsChanged($item, $model)"
                                 on-remove="vm.selectedLocationsChanged($item, $model)">
                             <ui-select-match placeholder="Select second region">
-                                {{ $select.selected.iloc_name }}
+                                {{ $select.selected.name }}
+                                <span class="text-uppercase text-muted">
+                                    {{ $select.selected.type }}
+                                </span>
                             </ui-select-match>
                             <ui-select-choices
-                                    repeat="location in vm.locations | propsFilter: {iloc_name: $select.search}"
+                                    repeat="location in vm.locations | propsFilter: {name: $select.search}"
                                     refresh="vm.refreshLocations($select.search)"
                                     refresh-delay="0">
-                                <div ng-bind-html="location.iloc_name | highlight: $select.search"></div>
+                                <span ng-bind-html="location.name | highlight: $select.search"></span>
+                                <span class="text-uppercase text-muted">
+                                    {{ location.type }}
+                                </span>
                             </ui-select-choices>
                         </ui-select>
-                    </div>
 
+
+                        <div style="margin-top: 20px;" ng-show="vm.vis.locations[0].type !== 'iloc' || vm.vis.locations[1] && vm.vis.locations[1].type !== 'iloc'">
+                            <h5>Filter Remoteness</h5>
+                            <p class="text-muted">Only show ILOCs with this remoteness level.</p>
+                            <div>
+                                <label>
+                                    <input type="radio"
+                                           ng-model="vm.vis.remotenessLevel"
+                                           value="all"
+                                           ng-change="vm.selectedLocationsChanged()"
+                                            >
+                                    All
+                                </label>
+                            </div>
+                            <div ng-repeat="remotenessLevel in vm.remotenessLevels">
+                                <label>
+                                    <input type="radio"
+                                           ng-model="vm.vis.remotenessLevel"
+                                           value="{{ remotenessLevel.ra_name }}"
+                                           ng-change="vm.selectedLocationsChanged()"
+                                            >
+                                    {{ remotenessLevel.ra_name }}
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
 
                 <div ng-show="vm.vis.locations.length > 0">
@@ -60,7 +99,8 @@
                                on-select="vm.selectedTopicsChanged($item, $model)"
                                on-remove="vm.selectedTopicsChanged($item, $model)">
                         <ui-select-match placeholder="Select topics of interest(s)">
-                            {{ $item.label }}
+                            <span class="text-capitalize">{{ $item.label }}</span>
+
                         </ui-select-match>
                         <ui-select-choices repeat="column in vm.columns | propsFilter: {label: $select.search}">
                             <div ng-bind-html="column.label | highlight: $select.search"></div>
@@ -78,10 +118,10 @@
                                    style="width: 100%;"
                                    on-select="vm.selectedBubbleTopicChanged($item, $model)">
                             <ui-select-match placeholder="Select topics of interest(s)">
-                                {{$select.selected.label }}
+                                <span class="text-capitalize">{{$select.selected.label }}</span>
                             </ui-select-match>
                             <ui-select-choices repeat="column in vm.vis.topics | propsFilter: {name: $select.search}">
-                                <div ng-bind-html="column.label | highlight: $select.search"></div>
+                                <div ng-bind-html="column.label | highlight: $select.search" ></div>
                             </ui-select-choices>
                         </ui-select>
 
@@ -93,7 +133,7 @@
                                    style="width: 100%;"
                                    on-select="vm.selectedRegionTopicChanged($item, $model)">
                             <ui-select-match placeholder="Select topics of interest(s)">
-                                {{$select.selected.label }}
+                                <span class="text-capitalize">{{$select.selected.label }}</span>
                             </ui-select-match>
                             <ui-select-choices repeat="column in vm.vis.topics | propsFilter: {name: $select.search}">
                                 <div ng-bind-html="column.label | highlight: $select.search"></div>
@@ -129,16 +169,21 @@
                 </p>
                 <div ng-show="vm.isDataSelected()">
                     <h3>Data</h3>
-                    <table class="table table-bordered">
-                        <tr ng-repeat="row in vm.tableData">
-                            <td ng-repeat="cell in row">
-                                {{ cell }}
-                            </td>
-                        </tr>
-                    </table>
+                    <div style="overflow-x: scroll">
+                        <table class="table table-bordered">
+                            <tr ng-repeat="row in vm.tableData">
+                                <td ng-repeat="cell in row track by $index">
+                                    {{ cell }}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
 
                     <!--<h3>Bar Chart</h3>-->
-                    <googlechart data="vm.chartData"></googlechart>
+                    <div ng-show="vm.chartData.length">
+                        <googlechart data="vm.chartData" style="margin-top:20px;"></googlechart>
+                    </div>
+
                 </div>
             </div>
         </div>

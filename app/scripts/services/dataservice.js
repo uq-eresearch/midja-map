@@ -14,7 +14,7 @@ angular.module('midjaApp')
             getTables: getTables,
             getTableSchema: getTableSchema,
             getBuckets: getBuckets,
-            getLocationsStartingWith: getLocationsStartingWith,
+            getLocationsStartingWith: getPlacesStartingWith,
             doQuery: doQuery
         };
 
@@ -43,12 +43,52 @@ angular.module('midjaApp')
             }
         }
 
-        function getLocationsStartingWith(name) {
+        function getPlacesStartingWith(name) {
             // get all iloc names from server somehow
-            var sql = 'SELECT iloc_code, iloc_name  FROM iloc_2011_aust WHERE iloc_name ILIKE \'' + name + '%\';';
-            return doQuery(sql).then(function(results) {
-                var values = results.rows;
-                return values;
+            var iLocSql = 'SELECT iloc_code, iloc_name  FROM iloc_merged_dataset ' +
+                'WHERE iloc_name ILIKE \'' + name + '%\';';
+
+            var iRegSql = 'SELECT DISTINCT ireg_code, ireg_name FROM iloc_merged_dataset ' +
+                'WHERE ireg_name ILIKE \'' + name + '%\';';
+
+            var iAreSql = 'SELECT DISTINCT iare_code, iare_name FROM iloc_merged_dataset ' +
+                'WHERE iare_name ILIKE \'' + name + '%\';';
+
+            var promises = [
+                doQuery(iLocSql),
+                doQuery(iRegSql),
+                doQuery(iAreSql)
+            ];
+            return $q.all(promises).then(function(queries) {
+
+                var ilocs = _.map(queries[0].rows, function(iloc) {
+                    return {
+                        type: 'iloc',
+                        name: iloc.iloc_name,
+                        code: iloc.iloc_code
+                    }
+                });
+
+                var iregs = _.map(queries[1].rows, function(ireg) {
+                    return {
+                        type: 'ireg',
+                        name: ireg.ireg_name,
+                        code: ireg.ireg_code
+                    }
+                });
+
+                var iares = _.map(queries[2].rows, function(iare) {
+                    return {
+                        type: 'iare',
+                        name: iare.iare_name,
+                        code: iare.iare_code
+                    }
+                });
+
+                var places = _.sortBy(ilocs.concat(iregs).concat(iares), function(place) {
+                    return place.name.length;
+                });
+                return places;
             });
         }
 

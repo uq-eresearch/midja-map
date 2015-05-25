@@ -36,8 +36,11 @@ angular.module('midjaApp')
                 if(!data) {
                     return;
                 }
+                if(!data.length) {
+                    return;
+                }
 
-                scope.minHeight = Math.max(minHeight, data.length * 40);
+                scope.minHeight = Math.max(minHeight, data.length * 40 + data[0].length * 10);
 
                 console.log(scope.minHeight);
                 if(!scope.data) {
