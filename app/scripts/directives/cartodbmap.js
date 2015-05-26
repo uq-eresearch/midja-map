@@ -9,7 +9,7 @@
 angular.module('midjaApp')
     .directive('cartodbMap', function (cartodb, L, $rootScope, labelService, mapService) {
         return {
-            template: '<div id="map" style="height:100%; width:100%"></div>',
+            template: '<div id="map" style="min-height: 300px; height:100%; width:100%"></div>',
             restrict: 'E',
             scope: {
                 'top': '=',

@@ -15,10 +15,18 @@ $font-size-base: 16px;
   }
 }
 
-@include tweak(fullheight) {
-  height: 100%;
-  overflow: auto;
+@media (min-width: $screen-md-min) {
+  @include component(entrycolumn) {
+    padding: 10px;
+    padding-top: 0;
+  }
+
+  @include tweak(fullheight) {
+    height: 100%;
+    overflow: auto;
+  }
 }
+
 
 
 h2 {
