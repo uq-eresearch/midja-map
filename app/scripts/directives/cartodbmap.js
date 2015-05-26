@@ -38,7 +38,7 @@ angular.module('midjaApp')
             function setupMap() {
                 map = L.map('map', {
                     //zoomControl: true,
-                    center: [-20.72587006334744, 139.492965],
+                    center: [-27, 134],
                     zoom: 4
                     //legends: true,
                     //fullscreen: true,
@@ -81,7 +81,7 @@ angular.module('midjaApp')
                     sublayers: [{
                         sql: 'SELECT * FROM ste_2011_aust',
                         cartocss: '#ste_2011_aust{ polygon-fill: #EEEEEE; polygon-opacity: 0.7; line-color: #67717E;' +
-                        'line-width: 1; line-opacity: 1; }'
+                        'line-width: 2; line-opacity: 1; }'
                     }]
                 }).addTo(map)
 
