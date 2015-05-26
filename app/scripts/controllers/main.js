@@ -76,16 +76,9 @@ angular.module('midjaApp')
 
         function selectedLocationsChanged() {
 
-            console.log('changed!');
-
-            var sql = '';
-
-            var places = [];
-
-            if(vm.vis.locations[0].type !== 'country' &&
-                (vm.vis.locations.length === 1 || vm.vis.locations[1].type === 'country')) {
-                places = vm.vis.locations;
-            }
+            var places = _.reject(vm.vis.locations, function(location) {
+                return location.type === 'country';
+            });
 
             dataService.getIlocsInPlaces(places, vm.vis.remotenessLevel).then(function(results) {
                 vm.vis.ilocs = results.rows;
