@@ -15,7 +15,9 @@ angular.module('midjaApp')
             getTableSchema: getTableSchema,
             getBuckets: getBuckets,
             getLocationsStartingWith: getPlacesStartingWith,
-            doQuery: doQuery
+            getIlocsInPlaces: getIlocsInPlaces,
+            doQuery: doQuery,
+            mysqlRealEscapeString: mysqlRealEscapeString
         };
 
         /**
@@ -43,16 +45,75 @@ angular.module('midjaApp')
             }
         }
 
+        /**
+         * Get All Ilocs for  Place
+         * @param places            Array of places (if empty, all of australia is used)
+         * @param remotenessLevel   Very Remote etc
+         * @returns {*}
+         */
+        function getIlocsInPlaces(places, remotenessLevel) {
+
+            var sql = 'SELECT DISTINCT iloc_name, iloc_code FROM iloc_merged_dataset ';
+
+            _.forEach(places, function(place, index) {
+                if(index === 0) {
+                    sql += ' WHERE '
+                } else {
+                    sql += ' OR '
+                }
+                sql += place.type + '_name = \'' + mysqlRealEscapeString(place.name) + '\' ';
+            });
+
+            if(remotenessLevel && remotenessLevel !== 'all') {
+                if(places.length === 0) {
+                    sql += ' WHERE '
+                } else {
+                    sql += ' AND '
+                }
+                sql += ' ra_name = \'' + remotenessLevel + '\'';
+            }
+            sql += ';';
+
+            return doQuery(sql);
+        }
+
+        function mysqlRealEscapeString (str) {
+            return str.replace(/[\0\x08\x09\x1a\n\r"'\\\%]/g, function (char) {
+                switch (char) {
+                    case "\0":
+                        return "\\0";
+                    case "\x08":
+                        return "\\b";
+                    case "\x09":
+                        return "\\t";
+                    case "\x1a":
+                        return "\\z";
+                    case "\n":
+                        return "\\n";
+                    case "\r":
+                        return "\\r";
+                    case "\"":
+                    case "'":
+                    case "\\":
+                    case "%":
+                        return "\\"+char; // prepends a backslash to backslash, percent,
+                                          // and double/single quotes
+                }
+            });
+        }
+
+
+
         function getPlacesStartingWith(name) {
             // get all iloc names from server somehow
             var iLocSql = 'SELECT iloc_code, iloc_name  FROM iloc_merged_dataset ' +
-                'WHERE iloc_name ILIKE \'' + name + '%\';';
+                'WHERE iloc_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';
 
             var iRegSql = 'SELECT DISTINCT ireg_code, ireg_name FROM iloc_merged_dataset ' +
-                'WHERE ireg_name ILIKE \'' + name + '%\';';
+                'WHERE ireg_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';
 
             var iAreSql = 'SELECT DISTINCT iare_code, iare_name FROM iloc_merged_dataset ' +
-                'WHERE iare_name ILIKE \'' + name + '%\';';
+                'WHERE iare_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';
 
             var promises = [
                 doQuery(iLocSql),

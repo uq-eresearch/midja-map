@@ -77,19 +77,17 @@ angular.module('midjaApp')
         function selectedLocationsChanged() {
 
             console.log('changed!');
-            var sql = 'SELECT DISTINCT iloc_name FROM iloc_merged_dataset ' +
-                'WHERE ' + vm.vis.locations[0].type + '_name = \'' + vm.vis.locations[0].name + '\' ';
 
-            if(vm.vis.locations[1]) {
-                sql += ' OR ' + vm.vis.locations[1].type + '_name = \'' + vm.vis.locations[1].name + '\' ';
+            var sql = '';
+
+            var places = [];
+
+            if(vm.vis.locations[0].type !== 'country' &&
+                (vm.vis.locations.length === 1 || vm.vis.locations[1].type === 'country')) {
+                places = vm.vis.locations;
             }
-            if(vm.vis.remotenessLevel && vm.vis.remotenessLevel !== 'all') {
-                sql += ' AND ra_name = \'' + vm.vis.remotenessLevel + '\'';
-            }
 
-            sql += ';';
-
-            dataService.doQuery(sql).then(function(results) {
+            dataService.getIlocsInPlaces(places, vm.vis.remotenessLevel).then(function(results) {
                 vm.vis.ilocs = results.rows;
                 generateVisualisations();
             });
@@ -127,9 +125,9 @@ angular.module('midjaApp')
 
         function generateBarChart() {
             var topicsList = _.pluck(vm.vis.topics, 'name').join(',');
-            var ilocNames = '\'' + _.pluck(vm.vis.ilocs, 'iloc_name').join('\' ,\'') + '\'';
+            var ilocCodes = _.pluck(vm.vis.ilocs, 'iloc_code');
 
-            var sql = 'SELECT ' + topicsList + ' FROM iloc_merged_dataset WHERE iloc_name IN (' + ilocNames + ');';
+            var sql = 'SELECT ' + topicsList + ' FROM iloc_merged_dataset WHERE iloc_code IN (\'' + ilocCodes.join('\' ,\'') + '\');';
 
             dataService.doQuery(sql).then(function (results) {
                 if (!results.rows.length) {
@@ -192,6 +190,10 @@ angular.module('midjaApp')
                 return;
             }
             dataService.getLocationsStartingWith(name).then(function (locations) {
+                locations.unshift({
+                    name: 'Australia',
+                    type: 'country'
+                })
                 vm.locations = locations;
             });
         }

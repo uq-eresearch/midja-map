@@ -17,7 +17,8 @@ angular
         'ngSanitize',
         'ngTouch',
         'ui.bootstrap',
-        'ui.select'
+        'ui.select',
+        'angular-loading-bar'
     ])
     .constant('cartoDbApiKey', 'da4921d7f2b99244897b313a75f0bd977c775a5e')
     .constant('cartodb', cartodb)

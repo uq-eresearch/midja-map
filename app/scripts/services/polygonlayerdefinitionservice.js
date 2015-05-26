@@ -58,12 +58,12 @@ angular.module('midjaApp')
 
             var boundaryTableName = tablePrefix + '_2011_aust';
 
-            var ilocNames = '\'' + _.pluck(locations, 'iloc_name').join('\' ,\'') + '\'';
+            var ilocNames = '\'' + _.pluck(locations, 'iloc_code').join('\' ,\'') + '\'';
 
             var sql =
                 'SELECT ' + boundaryTableName + '.*, ' + table.name + '.' + column.name + ' ' +
                 'FROM ' + table.name + ', ' + tablePrefix + '_2011_aust ' +
-                'WHERE ' + boundaryTableName +'.iloc_name IN (' + ilocNames + ') ' +
+                'WHERE ' + boundaryTableName +'.iloc_code IN (' + ilocNames + ') ' +
                 'AND ' + tablePrefix + '_2011_aust.' + idColumn + ' = ' + table.name + '.' + idColumn;
             return sql;
         }

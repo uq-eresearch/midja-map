@@ -20,7 +20,7 @@ angular.module('midjaApp')
 
         function link(scope, element, attrs) {
 
-            var minHeight = 300;
+            var minHeight = 500;
 
             activate();
 
@@ -40,7 +40,7 @@ angular.module('midjaApp')
                     return;
                 }
 
-                scope.minHeight = Math.max(minHeight, data.length * 40 + data[0].length * 10);
+                //scope.minHeight = Math.max(minHeight, data.length * 40 + data[0].length * 10);
 
                 console.log(scope.minHeight);
                 if(!scope.data) {
