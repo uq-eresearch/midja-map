@@ -8,12 +8,16 @@
 
   .navbar-brand {
     color: white;
+    font-size: 22px;
   }
 //  .navbar-nav > li > a {
 //    color: #300000;
 //  }
-//  .navbar-nav > .active > a {
-//    background-color: #FDF973;
-//    color: #300000;
-//  }
+  .navbar-nav > .active > a {
+    background-color: #5486c1;
+    color: white;
+  }
+  .nav > li > a {
+    padding: 15px 10px;
+  }
 }

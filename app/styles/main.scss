@@ -1,13 +1,16 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+
+//** Point at which the navbar becomes uncollapsed.
+$grid-float-breakpoint:     1200px;
+
+$font-family-sans-serif:  "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 @import "csstyle/csstyle.scss";
 // endbower
 
-
 @import "components/navbar";
-
-$font-size-base: 16px;
 
 @include component(table) {
   tr:nth-child(1) {
