@@ -32,7 +32,7 @@ angular.module('midjaApp')
         //
         //vm.selectedBubbleTableChanged = selectedBubbleTableChanged;
         //vm.selectedBubbleColumnChanged = selectedBubbleColumnChanged;
-        vm.selectedLocationsChanged = selectedLocationsChanged;
+        vm.selectedLocationsChanged = selectedPlacesChanged;
         vm.selectedTopicsChanged = selectedTopicsChanged;
         vm.selectedBubbleTopicChanged = selectedBubbleTopicChanged;
         vm.selectedRegionTopicChanged = selectedRegionTopicChanged;
@@ -74,16 +74,34 @@ angular.module('midjaApp')
             return datasetService.getColumns(dataset);
         }
 
-        function selectedLocationsChanged() {
-
-            var places = _.reject(vm.vis.locations, function(location) {
-                return location.type === 'country';
-            });
-
+        /**
+         * The user changed the places they selected
+         */
+        function selectedPlacesChanged() {
+            var places = getSelectedPlaceExcludingAustralia();
             dataService.getIlocsInPlaces(places, vm.vis.remotenessLevel).then(function(results) {
-                vm.vis.ilocs = results.rows;
+                var ilocs = results.rows;
+                if(!ilocs.length) {
+                    window.alert('No ILOCs found.');
+                }
+                vm.vis.ilocs = ilocs;
                 generateVisualisations();
             });
+        }
+
+        /**
+         * Get the places the user has selected
+         *
+         * Filter out australia, because its just EVERYTHING, so we don't
+         * really need it.
+         *
+         * @returns {*} List of places selected
+         */
+        function getSelectedPlaceExcludingAustralia() {
+            var places = _.reject(vm.vis.locations, function (location) {
+                return location.type === 'country';
+            });
+            return places;
         }
 
         function generateVisualisations() {

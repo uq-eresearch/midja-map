@@ -68,6 +68,9 @@
                             </ui-select>
                         </div>
 
+                        <div class="alert alert-info" style="margin-top:20px;">
+                            <strong>{{ vm.vis.ilocs.length }} ILOCs</strong> are selected.
+                        </div>
 
                         <div style="margin-top: 20px;" ng-show="vm.vis.locations[0].type !== 'iloc' || vm.vis.locations[1] && vm.vis.locations[1].type !== 'iloc'">
                             <h5>Remoteness</h5>
@@ -121,7 +124,7 @@
                         </div>
 
 
-                        <div>
+                        <div ng-show="vm.vis.topics.length">
                             <h2><i class="fa fa-map-marker"></i> Map Visualization</h2>
 
                             <div class="form-group">
@@ -189,7 +192,7 @@
                 </div>-->
             </div>
 
-            <div class="col-md-3 +fullheight">
+            <div class="col-md-3 +fullheight" ng-show="vm.vis.ilocs.length">
                 <p class="text-muted" style="margin-top:40px" ng-hide="vm.isDataSelected()">
                     Select a place and a topic to see data.
                 </p>
