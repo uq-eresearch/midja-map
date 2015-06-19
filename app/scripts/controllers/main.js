@@ -8,7 +8,7 @@
  * Controller of the midjaApp
  */
 angular.module('midjaApp')
-    .controller('MainCtrl', function (datasetService, layerService, dataService, labelService) {
+    .controller('MainCtrl', function (datasetService, layerService, dataService, labelService, $http) {
 
         var vm = this;
 
@@ -24,6 +24,10 @@ angular.module('midjaApp')
                 topic: null
             }
         };
+        vm.linearRegression = {
+            dependent: null,
+            independents: []
+        }
         vm.locations = [];
         vm.columns = [];
 
@@ -36,6 +40,8 @@ angular.module('midjaApp')
         vm.selectedTopicsChanged = selectedTopicsChanged;
         vm.selectedBubbleTopicChanged = selectedBubbleTopicChanged;
         vm.selectedRegionTopicChanged = selectedRegionTopicChanged;
+        vm.selectedDependentChanged = selectedDependentChanged;
+        vm.selectedIndependentsChanged = selectedIndependentsChanged;
         vm.isDataSelected = isDataSelected;
 
         activate();
@@ -60,8 +66,8 @@ angular.module('midjaApp')
             });
 
             var sql = 'SELECT DISTINCT ra_name FROM iloc_merged_dataset;';
-            dataService.doQuery(sql).then(function(result) {
-               vm.remotenessLevels = result.rows;
+            dataService.doQuery(sql).then(function (result) {
+                vm.remotenessLevels = result.rows;
             });
         }
 
@@ -79,9 +85,9 @@ angular.module('midjaApp')
          */
         function selectedPlacesChanged() {
             var places = getSelectedPlaceExcludingAustralia();
-            dataService.getIlocsInPlaces(places, vm.vis.remotenessLevel).then(function(results) {
+            dataService.getIlocsInPlaces(places, vm.vis.remotenessLevel).then(function (results) {
                 var ilocs = results.rows;
-                if(!ilocs.length) {
+                if (!ilocs.length) {
                     window.alert('No ILOCs found.');
                 }
                 vm.vis.ilocs = ilocs;
@@ -105,12 +111,12 @@ angular.module('midjaApp')
         }
 
         function generateVisualisations() {
-            if(!vm.vis.ilocs.length) {
+            if (!vm.vis.ilocs.length) {
                 vm.chartData = [];
                 vm.tableData = [];
                 return;
             }
-            if(vm.vis.topics.length) {
+            if (vm.vis.topics.length) {
                 generateBarChart();
             }
             if (vm.vis.bubble.topic) {
@@ -121,9 +127,10 @@ angular.module('midjaApp')
             }
 
         }
+
         function selectedTopicsChanged($item, $model) {
             generateBarChart();
-            if(vm.vis.topics.length === 1) {
+            if (vm.vis.topics.length === 1) {
                 var topic = vm.vis.topics[0];
                 // set the default for the map
                 vm.vis.bubble.topic = topic;
@@ -164,7 +171,6 @@ angular.module('midjaApp')
                 vm.tableData = data;
             });
         }
-
 
 
         function selectedBubbleTopicChanged($item, $model) {
@@ -210,4 +216,52 @@ angular.module('midjaApp')
         }
 
 
+        function selectedDependentChanged($item, $model) {
+            generateLinearRegression();
+        }
+
+        function selectedIndependentsChanged($item, $model) {
+            generateLinearRegression();
+        }
+
+        function generateLinearRegression() {
+            if (!vm.linearRegression.dependent || !vm.linearRegression.independents.length) {
+                return;
+            }
+
+            var data = {
+                "dataset": "iloc_merged_dataset",
+                "depVar": vm.linearRegression.dependent.name,
+                "indepVars": _.pluck(vm.linearRegression.independents, 'name')
+            };
+            $http.post('http://midja.org:4000', data).then(function (response) {
+                vm.linearRegression.results = response.data;
+            });
+
+            //    if()
+            //    ng-model="vm.linearRegression.dependent"
+            //    ng-disabled="disabled"
+            //    reset-search-input="true"
+            //    style="width: 100%;"
+            //    on-select="vm.selectedDependentChanged($item, $model)">
+            //    <ui-select-match placeholder="Select dependent variable">
+            //    <span class="text-capitalize">{{$select.selected.label }}</span>
+            //</ui-select-match>
+            //<ui-select-choices
+            //repeat="column in vm.vis.topics | propsFilter: {name: $select.search}">
+            //<div ng-bind-html="column.label | highlight: $select.search"></div>
+            //</ui-select-choices>
+            //</ui-select>
+            //
+            //</div>
+            //
+            //<div class="form-group">
+            //<label>
+            //Choose independent variables
+            //<small class="text-muted">Optional</small>
+            //</label>
+            //<ui-select theme="bootstrap"
+            //ng-model="vm.linearRegression.independents"
+
+        }
     });
