@@ -12,7 +12,7 @@ In the project directory
 * Install bower packages `bower install`
 
 Running locally
-* Run `grunt serve`. It should open up the map maker in the browser. It uses a proxy to request data from the server.
+* Run `grunt serve`. This will serve the files in `app/`. It should open up the map maker in the browser. It uses a proxy to request data from the server. So now you can edit the files in `app/` and it include live-reload so it should reload the browser as you make changes to the source.
 
 Building
 * Run `grunt build`. This will minify uglify and a bunch of other stuff to the files in `app/` and stick the output files in `dist/`.
