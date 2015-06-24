@@ -1,7 +1,4 @@
-# midja-map
-The map maker for the midja portal
-
-
+# Getting it Running
 So, to get started you need npm, then
 
 * Install yo, bower, grunt `npm install -g yo bower grunt-cli`
@@ -22,3 +19,5 @@ Deploying
 
 Building & Deploying
 * Run `grunt deploy`. This includes the `grunt build` and `grunt gh-pages` steps.G
+
+
