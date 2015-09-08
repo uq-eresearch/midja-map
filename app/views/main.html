@@ -62,7 +62,7 @@
                                     style="width: 100%;"
                                     on-select="vm.selectedLocationsChanged($item, $model)"
                                     on-remove="vm.selectedLocationsChanged($item, $model)">
-                                <ui-select-match placeholder="Search for a place">
+                                <ui-select-match placeholder="Search for a place" allow-clear="true">
                                     {{ $select.selected.name }}
                                 <span class="text-uppercase text-muted">
                                     {{ $select.selected.type }}

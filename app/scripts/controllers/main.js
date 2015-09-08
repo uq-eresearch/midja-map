@@ -84,6 +84,12 @@ angular.module('midjaApp')
          * The user changed the places they selected
          */
         function selectedPlacesChanged() {
+            // angular sets vm.vis.locations[1] to undefined when the
+            // corresponding ui-select is cleared
+            if(vm.vis.locations.length == 2 && !vm.vis.locations[1]) {
+                vm.vis.locations.pop();
+            }
+
             var places = getSelectedPlaceExcludingAustralia();
             dataService.getIlocsInPlaces(places, vm.vis.remotenessLevel).then(function (results) {
                 var ilocs = results.rows;
