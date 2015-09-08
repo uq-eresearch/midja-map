@@ -48,7 +48,7 @@ angular.module('midjaApp')
                     return column.type !== 'number' || column.name === 'cartodb_id';
                 });
                 _.each(columns, function (column) {
-                    column.label = labelService.getLabelFromCartoDbName(column.name);
+                    column.label = labelService.getLabelFromLocalMapping(column.name);
                 });
                 return columns;
             });
