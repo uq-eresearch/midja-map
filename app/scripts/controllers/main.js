@@ -94,10 +94,14 @@ angular.module('midjaApp')
             dataService.getIlocsInPlaces(places, vm.vis.remotenessLevel).then(function (results) {
                 var ilocs = results.rows;
                 if (!ilocs.length) {
+                    // revert back the removenessLevel in the UI when no ILOCs are found
+                    vm.vis.remotenessLevel = vm.vis.currRemotenessLevel;
                     window.alert('No ILOCs found.');
+                } else {
+                    vm.vis.currRemotenessLevel = vm.vis.remotenessLevel;
+                    vm.vis.ilocs = ilocs;
+                    generateVisualisations();
                 }
-                vm.vis.ilocs = ilocs;
-                generateVisualisations();
             });
         }
 
