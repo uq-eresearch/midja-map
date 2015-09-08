@@ -50,3 +50,28 @@ h3, h4 {
 label {
   font-weight: normal;
 }
+
+// ui-select multiple selection mode
+// - automatically wrap selection text to multiple lines without overflow
+// - make selections fit entire width
+// - align text to left
+span.ui-select-match-item.btn.btn-default.btn-xs {
+  white-space: normal;
+  text-align: left;
+  width: 100%;
+}
+
+// ui-select single selection mode
+// - automatically wrap selection text to multiple lines without overflow
+// - auto expand height to contain selected multiple line option
+//   34px when a single line item is selected (switches to wrong height when initiating dropdown)
+span.btn.btn-default.form-control.ui-select-toggle {
+  white-space: normal;
+  height: auto;
+  min-height: 34px;
+}
+
+// ensure the options in the ui-select dropdown are automatically wrapped
+a.ui-select-choices-row-inner > div {
+  white-space: normal;
+}
