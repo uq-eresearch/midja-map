@@ -59,15 +59,23 @@ angular.module('midjaApp')
 
         //
         function activate() {
+            /*
             getColumns({
                 name: 'iloc_merged_dataset'
             }).then(function (columns) {
                 vm.columns = columns;
             });
+            */
 
             var sql = 'SELECT DISTINCT ra_name FROM iloc_merged_dataset;';
             dataService.doQuery(sql).then(function (result) {
                 vm.remotenessLevels = result.rows;
+            });
+
+            $http.get('http://midja.org:3232/datasets/iloc_merged_dataset?expanded').then(function(response) {
+                vm.columns = _.reject(response.data.attributes, function(column) {
+                    return column.data_type !== 'number';
+                });
             });
         }
 

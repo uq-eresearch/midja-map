@@ -133,10 +133,10 @@
                                        on-select="vm.selectedTopicsChanged($item, $model)"
                                        on-remove="vm.selectedTopicsChanged($item, $model)">
                                 <ui-select-match placeholder="Select 1 or More Topics">
-                                    <span class="text-capitalize">{{ $item.label }}</span>
+                                    <span class="text-capitalize">{{ $item.short_desc }}</span>
                                 </ui-select-match>
-                                <ui-select-choices repeat="column in vm.columns | propsFilter: {label: $select.search}">
-                                    <div ng-bind-html="column.label | highlight: $select.search"></div>
+                                <ui-select-choices repeat="column in vm.columns | propsFilter: {short_desc: $select.search} | orderBy: 'short_desc'">
+                                    <div ng-bind-html="column.short_desc | highlight: $select.search"></div>
                                 </ui-select-choices>
                             </ui-select>
 
@@ -169,11 +169,11 @@
                                                style="width: 100%;"
                                                on-select="vm.selectedBubbleTopicChanged($item, $model)">
                                         <ui-select-match placeholder="Select topics of interest(s)">
-                                            <span class="text-capitalize">{{$select.selected.label }}</span>
+                                            <span class="text-capitalize">{{$select.selected.short_desc }}</span>
                                         </ui-select-match>
                                         <ui-select-choices
-                                                repeat="column in vm.vis.topics | propsFilter: {name: $select.search}">
-                                            <div ng-bind-html="column.label | highlight: $select.search"></div>
+                                                repeat="column in vm.vis.topics | propsFilter: {short_desc: $select.search}">
+                                            <div ng-bind-html="column.short_desc | highlight: $select.search"></div>
                                         </ui-select-choices>
                                     </ui-select>
 
@@ -191,11 +191,11 @@
                                                style="width: 100%;"
                                                on-select="vm.selectedRegionTopicChanged($item, $model)">
                                         <ui-select-match placeholder="Select topics of interest(s)">
-                                            <span class="text-capitalize">{{$select.selected.label }}</span>
+                                            <span class="text-capitalize">{{$select.selected.short_desc }}</span>
                                         </ui-select-match>
                                         <ui-select-choices
-                                                repeat="column in vm.vis.topics | propsFilter: {name: $select.search}">
-                                            <div ng-bind-html="column.label | highlight: $select.search"></div>
+                                                repeat="column in vm.vis.topics | propsFilter: {short_desc: $select.search}">
+                                            <div ng-bind-html="column.short_desc | highlight: $select.search"></div>
                                         </ui-select-choices>
                                     </ui-select>
                                 </div>
@@ -233,7 +233,7 @@
                                             <span class="text-capitalize">{{$select.selected.label }}</span>
                                         </ui-select-match>
                                         <ui-select-choices
-                                                repeat="column in vm.vis.topics | propsFilter: {name: $select.search}">
+                                                repeat="column in vm.vis.topics | propsFilter: {short_desc: $select.search}">
                                             <div ng-bind-html="column.label | highlight: $select.search"></div>
                                         </ui-select-choices>
                                     </ui-select>
@@ -256,7 +256,7 @@
                                         <ui-select-match placeholder="Select independent variables">
                                             <span class="text-capitalize">{{ $item.label }}</span>
                                         </ui-select-match>
-                                        <ui-select-choices repeat="column in vm.vis.topics | propsFilter: {label: $select.search}">
+                                        <ui-select-choices repeat="column in vm.vis.topics | propsFilter: {short_desc: $select.search}">
                                             <div ng-bind-html="column.label | highlight: $select.search"></div>
                                         </ui-select-choices>
                                     </ui-select>
