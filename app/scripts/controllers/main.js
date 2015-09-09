@@ -31,6 +31,9 @@ angular.module('midjaApp')
         vm.locations = [];
         vm.columns = [];
 
+        vm.columnsFromMetadata = [];
+        vm.columnsFromMetadataPropCols = [];
+
         //vm.selectedRegionTableChanged = selectedRegionTableChanged;
         //vm.selectedRegionColumnChanged = selectedRegionColumnChanged;
         //
@@ -48,6 +51,8 @@ angular.module('midjaApp')
 
 
         vm.refreshLocations = refreshLocations;
+
+        vm.showPropTopicsOnly = showPropTopicsOnly;
 
         ////
 
@@ -73,8 +78,14 @@ angular.module('midjaApp')
             });
 
             $http.get('http://midja.org:3232/datasets/iloc_merged_dataset?expanded').then(function(response) {
-                vm.columns = _.reject(response.data.attributes, function(column) {
+                vm.columnsFromMetadata = _.reject(response.data.attributes, function(column) {
                     return column.data_type !== 'number';
+                });
+                vm.columns = vm.columnsFromMetadata;
+
+                var regex = /proportion|percentage/i;
+                vm.columnsFromMetadataPropCols = _.filter(vm.columnsFromMetadata, function(column) {
+                    return regex.test(column.short_desc);
                 });
             });
         }
@@ -281,5 +292,14 @@ angular.module('midjaApp')
             //<ui-select theme="bootstrap"
             //ng-model="vm.linearRegression.independents"
 
+        }
+
+
+        function showPropTopicsOnly(isChecked) {
+            if(isChecked) {
+                vm.columns = vm.columnsFromMetadataPropCols;
+            } else {
+                vm.columns = vm.columnsFromMetadata;
+            }
         }
     });

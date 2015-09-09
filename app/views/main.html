@@ -140,6 +140,13 @@
                                 </ui-select-choices>
                             </ui-select>
 
+                            <label>
+                                <input
+                                    ng-model="_propTopicsOnly"
+                                    ng-change="vm.showPropTopicsOnly(_propTopicsOnly)"
+                                    type="checkbox"><small>Show only proportional variables</small>
+                            </label>
+
                             <p class="text-muted" ng-show="vm.vis.topics.length" style="margin-top:10px;">
                                 <small>
                                     <i class="fa fa-info-circle"></i>
