@@ -194,15 +194,16 @@ angular.module('midjaApp')
                     ['Topic'].concat(_.pluck(vm.vis.ilocs, 'iloc_name'))
                 ];
 
-                _.forEach(topics, function (topic) {
-                    var dataRow = [labelService.getLabelFromCartoDbName(topic)];
-                    _.forEach(results.rows, function (row) {
-                        dataRow.push(row[topic]);
-                    });
-                    data.push(dataRow);
-                });
-                vm.chartData = data;
                 vm.tableData = data;
+                vm.chartData = data.slice();
+                _.forEach(vm.vis.topics, function(topic) {
+                    var dataRow = [];
+                    _.forEach(results.rows, function(row) {
+                        dataRow.push(row[topic.name]);
+                    });
+                    vm.tableData.push([topic.short_desc+' ('+topic.name+')'].concat(dataRow));
+                    vm.chartData.push([topic.name].concat(dataRow));
+                });
             });
         }
 
