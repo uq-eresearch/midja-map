@@ -39,6 +39,12 @@ angular.module('midjaApp')
             bubbleVisible: false
         };
 
+        vm.scatterPlot = {
+            xaxis: null,
+            yaxis: null,
+            useRemoteness: false
+        };
+
         //vm.selectedRegionTableChanged = selectedRegionTableChanged;
         //vm.selectedRegionColumnChanged = selectedRegionColumnChanged;
         //
@@ -59,6 +65,9 @@ angular.module('midjaApp')
 
         vm.showPropTopicsOnly = showPropTopicsOnly;
 
+        vm.selectedScatterXChanged = selectedScatterXChanged;
+        vm.selectedScatterYChanged = selectedScatterYChanged;
+        vm.generateScatterPlot = generateScatterPlot;
         ////
 
 
@@ -307,5 +316,34 @@ angular.module('midjaApp')
             } else {
                 vm.columns = vm.columnsFromMetadata;
             }
+        }
+
+
+        function selectedScatterXChanged() {
+            generateScatterPlot();
+        }
+
+        function selectedScatterYChanged() {
+            generateScatterPlot();
+        }
+
+        function generateScatterPlot() {
+            if(!vm.scatterPlot.xaxis || !vm.scatterPlot.yaxis) {
+                return;
+            }
+
+            var data = {
+                "dataset": "iloc_merged_dataset",
+                "xvar": vm.scatterPlot.xaxis.name,
+                "xlabel": vm.scatterPlot.xaxis.short_desc,
+                "yvar": vm.scatterPlot.yaxis.name,
+                "ylabel": vm.scatterPlot.yaxis.short_desc,
+                "useRemoteness": vm.scatterPlot.useRemoteness
+            };
+            console.log(data);
+
+            $http.post('http://midja.org:4000/scatterplot', data).then(function(response) {
+                vm.scatterPlot.results = response.data;
+            });
         }
     });

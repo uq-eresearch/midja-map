@@ -45,6 +45,7 @@ h2 {
 h3, h4 {
   font-size: 16px;
   font-weight: normal;
+  color: rgb(242, 94, 0);
 }
 
 label {
@@ -74,4 +75,9 @@ span.btn.btn-default.form-control.ui-select-toggle {
 // ensure the options in the ui-select dropdown are automatically wrapped
 a.ui-select-choices-row-inner > div {
   white-space: normal;
+}
+
+accordion h2, h3 {
+  margin-top: 0;
+  margin-bottom: 0;
 }

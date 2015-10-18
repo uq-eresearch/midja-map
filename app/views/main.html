@@ -209,89 +209,166 @@
 
                         </div>
 
+
                         <div>
-                            <h2><i class="fa fa-area-chart"></i> Linear Regression</h2>
-                            
-                            <div ng-hide="vm.vis.locations[0].type == 'country' && vm.vis.topics.length > 1">
+                            <h2><i class="fa fa-area-chart"></i> Plots</h2>
+
+                            <div ng-hide="vm.vis.locations.length && vm.vis.topics.length">
                                 <p class="text-muted">
-                                    To perform a linear regression:
+                                You can generate scatter plots and linear regression plots only <b>after</b> you have selected locations and topics!
                                 </p>
-                                <ol>
-                                    <li class="text-muted">Select Australia as the first place.</li>
-                                    <li class="text-muted">Select at least two topics of interest.</li>
-                                </ol>
                             </div>
 
-                            <div ng-show="vm.vis.locations[0].type == 'country' && vm.vis.topics.length > 1">
+                            <accordion ng-show="vm.vis.locations.length && vm.vis.topics.length">
+                                <!-- scatter plot -->
+                                <accordion-group>
+                                    <accordion-heading>
+                                        <h3>Scatter plot</h3>
+                                    </accordion-heading>
+                                    <div ng-hide="vm.vis.topics.length > 1">
+                                        Please choose more than 1 topic of interest!
+                                    </div>
+                                    <div ng-show="vm.vis.topics.length > 1">
+                                        <div class="form-group">
+                                        <label>X-axis</label>
+                                        <ui-select theme="bootstrap"
+                                                   ng-model="vm.scatterPlot.xaxis"
+                                                   ng-disabled="disabled"
+                                                   reset-search-input="true"
+                                                   style="width: 100%;"
+                                                   on-select="vm.selectedScatterXChanged()">
+                                            <ui-select-match placeholder="Select X-axis">
+                                                <span class="text-capitalize">{{$select.selected.short_desc}}</span>
+                                            </ui-select-match>
+                                            <ui-select-choices
+                                                      repeat="column in vm.vis.topics | propsFilter: {short_desc: $select.search}">
+                                                <div ng-bind-html="column.short_desc | highlight: $select.search"></div>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                        </div>
 
-                                <div class="form-group">
-                                    <label>Choose a dependent variable
-                                        <small class="text-muted">Optional</small>
-                                    </label>
+                                        <div class="form-group">
+                                        <label>Y-axis</label>
+                                        <ui-select theme="bootstrap"
+                                                   ng-model="vm.scatterPlot.yaxis"
+                                                   ng-disabled="disabled"
+                                                   reset-search-input="true"
+                                                   style="width: 100%;"
+                                                   on-select="vm.selectedScatterYChanged()">
+                                            <ui-select-match placeholder="Select Y-axis">
+                                                <span class="text-capitalize">{{$select.selected.short_desc}}</span>
+                                            </ui-select-match>
+                                            <ui-select-choices
+                                                      repeat="column in vm.vis.topics | propsFilter: {short_desc: $select.search}">
+                                                <div ng-bind-html="column.short_desc | highlight: $select.search"></div>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                        </div>
 
-                                    <ui-select theme="bootstrap"
-                                               ng-model="vm.linearRegression.dependent"
-                                               ng-disabled="disabled"
-                                               reset-search-input="true"
-                                               style="width: 100%;"
-                                               on-select="vm.selectedDependentChanged($item, $model)">
-                                        <ui-select-match placeholder="Select dependent variable">
-                                            <span class="text-capitalize">{{$select.selected.label }}</span>
-                                        </ui-select-match>
-                                        <ui-select-choices
-                                                repeat="column in vm.vis.topics | propsFilter: {short_desc: $select.search}">
-                                            <div ng-bind-html="column.label | highlight: $select.search"></div>
-                                        </ui-select-choices>
-                                    </ui-select>
+                                        <label>
+                                            <input type="checkbox"
+                                                   ng-change="vm.generateScatterPlot()"
+                                                   ng-model="vm.scatterPlot.useRemoteness">
+                                            Use Remoteness
+                                        </label>
 
-                                </div>
+                                        <div ng-show="vm.scatterPlot.results">
+                                            <a href="http://midja.org:4000/{{ vm.scatterPlot.results.png }}" target="_blank">
+                                                <img ng-src="http://midja.org:4000/{{ vm.scatterPlot.results.png }}" alt="" class="img-responsive"/>
+                                            </a>
+                                            <a class="btn btn-default" ng-href="http://midja.org:4000/{{ vm.scatterPlot.results.pdf }}" download>
+                                                Download PDF
+                                            </a>
+                                        </div>
 
-                                <div class="form-group">
-                                    <label>
-                                        Choose independent variables
-                                        <small class="text-muted">Optional</small>
-                                    </label>
-                                    <ui-select multiple
-                                               theme="bootstrap"
-                                               ng-model="vm.linearRegression.independents"
-                                               ng-disabled="disabled"
-                                               reset-search-input="true"
-                                               style="width: 100%;"
-                                               on-select="vm.selectedIndependentsChanged($item, $model)"
-                                               on-remove="vm.selectedIndependentsChanged($item, $model)">
-                                        <ui-select-match placeholder="Select independent variables">
-                                            <span class="text-capitalize">{{ $item.label }}</span>
-                                        </ui-select-match>
-                                        <ui-select-choices repeat="column in vm.vis.topics | propsFilter: {short_desc: $select.search}">
-                                            <div ng-bind-html="column.label | highlight: $select.search"></div>
-                                        </ui-select-choices>
-                                    </ui-select>
-                                </div>
+                                    </div>
+                                </accordion-group>
 
-                                <div ng-show="vm.linearRegression.results">
-                                    <a href="http://midja.org:4000/{{ vm.linearRegression.results.png }}" target="_blank">
-                                        <img ng-src="http://midja.org:4000/{{ vm.linearRegression.results.png }}" alt="" class="img-responsive"/>
-                                    </a>
 
-                                    <dl>
-                                        <dt>R Squared</dt>
-                                        <dd>
-                                            {{ vm.linearRegression.results.adj_rsquared }}
-                                        </dd>
+                                <accordion-group>
+                                    <accordion-heading>
+                                        <h3>Linear Regression</h3>
+                                    </accordion-heading>
+                                    <div ng-hide="vm.vis.locations[0].type == 'country' && vm.vis.topics.length > 1">
+                                        <p class="text-muted">
+                                            To perform a linear regression:
+                                        </p>
+                                        <ol>
+                                            <li class="text-muted">Select Australia as the first place.</li>
+                                            <li class="text-muted">Select at least two topics of interest.</li>
+                                        </ol>
+                                    </div>
 
-                                        <dt>Equation</dt>
-                                        <dd>{{ vm.linearRegression.results.equation }}</dd>
-                                    </dl>
-                                    <p>
-                                        <a class="btn btn-default" ng-href="http://midja.org:4000/{{ vm.linearRegression.results.pdf }}" download>
-                                            Download PDF
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
+                                    <div ng-show="vm.vis.locations[0].type == 'country' && vm.vis.topics.length > 1">
 
+                                        <div class="form-group">
+                                            <label>Choose a dependent variable
+                                                <small class="text-muted">Optional</small>
+                                            </label>
+
+                                            <ui-select theme="bootstrap"
+                                                       ng-model="vm.linearRegression.dependent"
+                                                       ng-disabled="disabled"
+                                                       reset-search-input="true"
+                                                       style="width: 100%;"
+                                                       on-select="vm.selectedDependentChanged($item, $model)">
+                                                <ui-select-match placeholder="Select dependent variable">
+                                                    <span class="text-capitalize">{{$select.selected.label }}</span>
+                                                </ui-select-match>
+                                                <ui-select-choices
+                                                        repeat="column in vm.vis.topics | propsFilter: {short_desc: $select.search}">
+                                                    <div ng-bind-html="column.label | highlight: $select.search"></div>
+                                                </ui-select-choices>
+                                            </ui-select>
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>
+                                                Choose independent variables
+                                                <small class="text-muted">Optional</small>
+                                            </label>
+                                            <ui-select multiple
+                                                       theme="bootstrap"
+                                                       ng-model="vm.linearRegression.independents"
+                                                       ng-disabled="disabled"
+                                                       reset-search-input="true"
+                                                       style="width: 100%;"
+                                                       on-select="vm.selectedIndependentsChanged($item, $model)"
+                                                       on-remove="vm.selectedIndependentsChanged($item, $model)">
+                                                <ui-select-match placeholder="Select independent variables">
+                                                    <span class="text-capitalize">{{ $item.label }}</span>
+                                                </ui-select-match>
+                                                <ui-select-choices repeat="column in vm.vis.topics | propsFilter: {short_desc: $select.search}">
+                                                    <div ng-bind-html="column.label | highlight: $select.search"></div>
+                                                </ui-select-choices>
+                                            </ui-select>
+                                        </div>
+
+                                        <div ng-show="vm.linearRegression.results">
+                                            <a href="http://midja.org:4000/{{ vm.linearRegression.results.png }}" target="_blank">
+                                                <img ng-src="http://midja.org:4000/{{ vm.linearRegression.results.png }}" alt="" class="img-responsive"/>
+                                            </a>
+
+                                            <dl>
+                                                <dt>R Squared</dt>
+                                                <dd>
+                                                    {{ vm.linearRegression.results.adj_rsquared }}
+                                                </dd>
+
+                                                <dt>Equation</dt>
+                                                <dd>{{ vm.linearRegression.results.equation }}</dd>
+                                            </dl>
+                                            <p>
+                                                <a class="btn btn-default" ng-href="http://midja.org:4000/{{ vm.linearRegression.results.pdf }}" download>
+                                                    Download PDF
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </accordion-group>
+                            </accordion>
                         </div>
-
 
                     </div>
 
