@@ -34,6 +34,11 @@ angular.module('midjaApp')
         vm.columnsFromMetadata = [];
         vm.columnsFromMetadataPropCols = [];
 
+        vm.visStatus = {
+            choroplethVisible: true,
+            bubbleVisible: false
+        };
+
         //vm.selectedRegionTableChanged = selectedRegionTableChanged;
         //vm.selectedRegionColumnChanged = selectedRegionColumnChanged;
         //

@@ -164,47 +164,47 @@
                             </p>
 
                             <div ng-show="vm.vis.topics.length">
-                                <div class="form-group">
-                                    <label>
-                                        Choose topic for choropleth
-                                    </label>
-                                    <ui-select theme="bootstrap"
-                                               ng-model="vm.vis.choropleth.topic"
-                                               ng-disabled="disabled"
-                                               reset-search-input="true"
-                                               style="width: 100%;"
-                                               on-select="vm.selectedRegionTopicChanged($item, $model)">
-                                        <ui-select-match placeholder="Select topics of interest(s)">
-                                            <span class="text-capitalize">{{$select.selected.short_desc }}</span>
-                                        </ui-select-match>
-                                        <ui-select-choices
-                                                repeat="column in vm.vis.topics | propsFilter: {short_desc: $select.search}">
-                                            <div ng-bind-html="column.short_desc | highlight: $select.search"></div>
-                                        </ui-select-choices>
-                                    </ui-select>
-                                </div>
+                                <accordion close-others="false">
+                                    <accordion-group heading="Choropleth" is-open="vm.visStatus.choroplethVisible" ng-click="vm.visStatus.choroplethVisible=true">
+                                        <ui-select theme="bootstrap"
+                                                   ng-model="vm.vis.choropleth.topic"
+                                                   ng-disabled="disabled"
+                                                   reset-search-input="true"
+                                                   style="width: 100%;"
+                                                   on-select="vm.selectedRegionTopicChanged($item, $model)">
+                                            <ui-select-match placeholder="Select topics of interest(s)">
+                                                <span class="text-capitalize">{{$select.selected.short_desc }}</span>
+                                            </ui-select-match>
+                                            <ui-select-choices
+                                                    repeat="column in vm.vis.topics | propsFilter: {short_desc: $select.search}">
+                                                <div ng-bind-html="column.short_desc | highlight: $select.search"></div>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </accordion-group>
 
-                                <div class="form-group">
-                                    <label>Choose topic for bubble
-                                        <small class="text-muted">Optional</small>
-                                    </label>
+                                    <accordion-group is-open="vm.visStatus.bubbleVisible">
+                                        <accordion-heading>
+                                            <span>
+                                            Bubble <small class="text-muted">Optional</small>
+                                            <i class="pull-right glyphicon" ng-class="{'glyphicon-plus': !vm.visStatus.bubbleVisible, 'glyphicon-minus': vm.visStatus.bubbleVisible}"></i>
+                                            </span>
+                                        </accordion-heading>
 
-                                    <ui-select theme="bootstrap"
-                                               ng-model="vm.vis.bubble.topic"
-                                               ng-disabled="disabled"
-                                               reset-search-input="true"
-                                               style="width: 100%;"
-                                               on-select="vm.selectedBubbleTopicChanged($item, $model)">
-                                        <ui-select-match placeholder="Select topics of interest(s)">
-                                            <span class="text-capitalize">{{$select.selected.short_desc }}</span>
-                                        </ui-select-match>
-                                        <ui-select-choices
-                                                repeat="column in vm.vis.topics | propsFilter: {short_desc: $select.search}">
-                                            <div ng-bind-html="column.short_desc | highlight: $select.search"></div>
-                                        </ui-select-choices>
-                                    </ui-select>
-
-                                </div>
+                                        <ui-select theme="bootstrap"
+                                                   ng-model="vm.vis.bubble.topic"
+                                                   ng-disabled="disabled"
+                                                   reset-search-input="true"
+                                                   style="width: 100%;"
+                                                   on-select="vm.selectedBubbleTopicChanged($item, $model)">
+                                            <ui-select-match placeholder="Select topics of interest(s)">
+                                                <span class="text-capitalize">{{$select.selected.short_desc }}</span>
+                                            </ui-select-match>
+                                            <ui-select-choices
+                                                    repeat="column in vm.vis.topics | propsFilter: {short_desc: $select.search}">
+                                                <div ng-bind-html="column.short_desc | highlight: $select.search"></div>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                </accordion>
                             </div>
 
                         </div>
@@ -302,7 +302,7 @@
 
             <div class="col-md-6 +fullheight" style="position: relative;">
                 <!--ng-class="{'col-sm-9': !vm.isDataSelected(), 'col-md-6': vm.isDataSelected()}">-->
-                <cartodb-map top="vm.bubbleLayer" bottom="vm.regionLayer"></cartodb-map>
+                <cartodb-map top="vm.bubbleLayer" topvisible="vm.visStatus.bubbleVisible" bottom="vm.regionLayer" bottomvisible="vm.vis.choroplethVisible"></cartodb-map>
 
                 <div class="well" style="position: absolute; top: 10px; right: 30px" ng-show="feature">
                     <div ng-repeat="selection in feature">

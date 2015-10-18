@@ -13,7 +13,9 @@ angular.module('midjaApp')
             restrict: 'E',
             scope: {
                 'top': '=',
-                'bottom': '='
+                'bottom': '=',
+                'topvisible': '=',
+                'bottomvisible': '='
             },
             replace: true,
             link: postLink
@@ -33,6 +35,8 @@ angular.module('midjaApp')
                 setupMap();
                 scope.$watch('top', setTopLayer);
                 scope.$watch('bottom', setBottomLayer);
+                scope.$watch('topvisible', setTopLayerVisible);
+                scope.$watch('bottomvisible', setBottomLayerVisible);
             }
 
             function setupMap() {
@@ -131,10 +135,29 @@ angular.module('midjaApp')
 
             function setTopLayer(layerDefinition) {
                 setLayer(layerDefinition, 1);
+                if(layer && !scope.topvisible) {
+                    layer.getSubLayer(1).hide();
+                }
             }
 
             function setBottomLayer(layerDefinition) {
                 setLayer(layerDefinition, 0);
+            }
+
+            function setTopLayerVisible(visibility) {
+                if(!layer || !layer.getSubLayer(1)) {
+                    return;
+                }
+
+                if(visibility) {
+                    layer.getSubLayer(1).show();
+                } else {
+                    layer.getSubLayer(1).hide();
+                }
+            }
+
+            function setBottomLayerVisible(visibility) {
+                // do nothing; choropleth layer is always visible
             }
 
             function setLayer(layerDefinition, position) {
