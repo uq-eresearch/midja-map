@@ -165,7 +165,10 @@
 
                             <div ng-show="vm.vis.topics.length">
                                 <accordion close-others="false">
-                                    <accordion-group heading="Choropleth" is-open="vm.visStatus.choroplethVisible" ng-click="vm.visStatus.choroplethVisible=true">
+                                    <accordion-group is-open="vm.visStatus.choroplethVisible" ng-click="vm.visStatus.choroplethVisible=true">
+                                        <accordion-heading>
+                                            <h3>Choropleth</h3>
+                                        </accordion-heading>
                                         <ui-select theme="bootstrap"
                                                    ng-model="vm.vis.choropleth.topic"
                                                    ng-disabled="disabled"
@@ -184,10 +187,9 @@
 
                                     <accordion-group is-open="vm.visStatus.bubbleVisible">
                                         <accordion-heading>
-                                            <span>
-                                            Bubble <small class="text-muted">Optional</small>
+                                            <h3>Bubble <small class="text-muted">Optional</small>
                                             <i class="pull-right glyphicon" ng-class="{'glyphicon-plus': !vm.visStatus.bubbleVisible, 'glyphicon-minus': vm.visStatus.bubbleVisible}"></i>
-                                            </span>
+                                            </h3>
                                         </accordion-heading>
 
                                         <ui-select theme="bootstrap"
