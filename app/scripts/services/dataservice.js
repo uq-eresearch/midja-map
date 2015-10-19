@@ -115,10 +115,14 @@ angular.module('midjaApp')
             var iAreSql = 'SELECT DISTINCT iare_code, iare_name FROM iloc_merged_dataset ' +
                 'WHERE iare_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';
 
+            var stateSql = 'SELECT DISTINCT state_code, state_name FROM iloc_merged_dataset ' +
+                'WHERE state_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';
+
             var promises = [
                 doQuery(iLocSql),
                 doQuery(iRegSql),
-                doQuery(iAreSql)
+                doQuery(iAreSql),
+                doQuery(stateSql)
             ];
             return $q.all(promises).then(function(queries) {
 
@@ -146,7 +150,15 @@ angular.module('midjaApp')
                     }
                 });
 
-                var places = _.sortBy(ilocs.concat(iregs).concat(iares), function(place) {
+                var states = _.map(queries[3].rows, function(state) {
+                    return {
+                        type: 'state',
+                        name: state.state_name,
+                        code: state.state_code
+                    }
+                });
+
+                var places = _.sortBy(ilocs.concat(iregs).concat(iares).concat(states), function(place) {
                     return place.name.length;
                 });
                 return places;
