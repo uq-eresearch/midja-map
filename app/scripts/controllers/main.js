@@ -135,6 +135,7 @@ angular.module('midjaApp')
                     vm.vis.ilocs = ilocs;
                     generateVisualisations();
                     generateScatterPlot();
+                    generateLinearRegression();
                 }
             });
         }
@@ -277,8 +278,10 @@ angular.module('midjaApp')
             var data = {
                 "dataset": "iloc_merged_dataset",
                 "depVar": vm.linearRegression.dependent.name,
-                "indepVars": _.pluck(vm.linearRegression.independents, 'name')
+                "indepVars": _.pluck(vm.linearRegression.independents, 'name'),
+                "iloc_codes": _.pluck(vm.vis.ilocs, 'iloc_code')
             };
+            console.log(data);
             $http.post('http://midja.org:4000', data).then(function (response) {
                 vm.linearRegression.results = response.data;
             });

@@ -227,10 +227,16 @@
                                     <accordion-heading>
                                         <h3>Scatter plot</h3>
                                     </accordion-heading>
-                                    <div ng-hide="vm.vis.topics.length > 1">
-                                        Please choose more than 1 topic of interest!
+                                    <div ng-hide="(vm.vis.ilocs.length > 1) && (vm.vis.topics.length > 1)">
+                                        <p class="text-muted">
+                                            To generate a scatter plot:
+                                        </p>
+                                        <ol>
+                                            <li class="text-muted">Select at least two ILOCs.</li>
+                                            <li class="text-muted">Select at least two topics of interest.</li>
+                                        </ol>
                                     </div>
-                                    <div ng-show="vm.vis.topics.length > 1">
+                                    <div ng-show="(vm.vis.ilocs.length > 1) && (vm.vis.topics.length > 1)">
                                         <div class="form-group">
                                         <label>X-axis</label>
                                         <ui-select theme="bootstrap"
@@ -291,17 +297,17 @@
                                     <accordion-heading>
                                         <h3>Linear Regression</h3>
                                     </accordion-heading>
-                                    <div ng-hide="vm.vis.locations[0].type == 'country' && vm.vis.topics.length > 1">
+                                    <div ng-hide="(vm.vis.ilocs.length > 1) && (vm.vis.topics.length > 1)">
                                         <p class="text-muted">
                                             To perform a linear regression:
                                         </p>
                                         <ol>
-                                            <li class="text-muted">Select Australia as the first place.</li>
+                                            <li class="text-muted">Select at least two ILOCs.</li>
                                             <li class="text-muted">Select at least two topics of interest.</li>
                                         </ol>
                                     </div>
 
-                                    <div ng-show="vm.vis.locations[0].type == 'country' && vm.vis.topics.length > 1">
+                                    <div ng-show="(vm.vis.ilocs.length > 1) && (vm.vis.topics.length > 1)">
 
                                         <div class="form-group">
                                             <label>Choose a dependent variable
@@ -315,11 +321,11 @@
                                                        style="width: 100%;"
                                                        on-select="vm.selectedDependentChanged($item, $model)">
                                                 <ui-select-match placeholder="Select dependent variable">
-                                                    <span class="text-capitalize">{{$select.selected.label }}</span>
+                                                    <span class="text-capitalize">{{$select.selected.short_desc }}</span>
                                                 </ui-select-match>
                                                 <ui-select-choices
                                                         repeat="column in vm.vis.topics | propsFilter: {short_desc: $select.search}">
-                                                    <div ng-bind-html="column.label | highlight: $select.search"></div>
+                                                    <div ng-bind-html="column.short_desc | highlight: $select.search"></div>
                                                 </ui-select-choices>
                                             </ui-select>
 
@@ -339,10 +345,10 @@
                                                        on-select="vm.selectedIndependentsChanged($item, $model)"
                                                        on-remove="vm.selectedIndependentsChanged($item, $model)">
                                                 <ui-select-match placeholder="Select independent variables">
-                                                    <span class="text-capitalize">{{ $item.label }}</span>
+                                                    <span class="text-capitalize">{{ $item.short_desc }}</span>
                                                 </ui-select-match>
                                                 <ui-select-choices repeat="column in vm.vis.topics | propsFilter: {short_desc: $select.search}">
-                                                    <div ng-bind-html="column.label | highlight: $select.search"></div>
+                                                    <div ng-bind-html="column.short_desc | highlight: $select.search"></div>
                                                 </ui-select-choices>
                                             </ui-select>
                                         </div>
