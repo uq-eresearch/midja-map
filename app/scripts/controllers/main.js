@@ -134,6 +134,7 @@ angular.module('midjaApp')
                     vm.vis.currRemotenessLevel = vm.vis.remotenessLevel;
                     vm.vis.ilocs = ilocs;
                     generateVisualisations();
+                    generateScatterPlot();
                 }
             });
         }
@@ -338,7 +339,8 @@ angular.module('midjaApp')
                 "xlabel": vm.scatterPlot.xaxis.short_desc,
                 "yvar": vm.scatterPlot.yaxis.name,
                 "ylabel": vm.scatterPlot.yaxis.short_desc,
-                "useRemoteness": vm.scatterPlot.useRemoteness
+                "useRemoteness": vm.scatterPlot.useRemoteness,
+                "iloc_codes": _.pluck(vm.vis.ilocs, 'iloc_code')
             };
             console.log(data);
 
