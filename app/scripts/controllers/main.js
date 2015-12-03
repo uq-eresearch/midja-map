@@ -42,7 +42,8 @@ angular.module('midjaApp')
         vm.scatterPlot = {
             xaxis: null,
             yaxis: null,
-            useRemoteness: false
+            useRemoteness: false,
+            labelLocations: false
         };
 
         //vm.selectedRegionTableChanged = selectedRegionTableChanged;
@@ -343,6 +344,7 @@ angular.module('midjaApp')
                 "yvar": vm.scatterPlot.yaxis.name,
                 "ylabel": vm.scatterPlot.yaxis.short_desc,
                 "useRemoteness": vm.scatterPlot.useRemoteness,
+                "labelLocations": vm.scatterPlot.labelLocations,
                 "iloc_codes": _.pluck(vm.vis.ilocs, 'iloc_code')
             };
             console.log(data);

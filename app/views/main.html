@@ -279,6 +279,12 @@
                                                    ng-model="vm.scatterPlot.useRemoteness">
                                             Use Remoteness
                                         </label>
+                                        <label>
+                                            <input type="checkbox"
+                                                   ng-change="vm.generateScatterPlot()"
+                                                   ng-model="vm.scatterPlot.labelLocations">
+                                            Label Locations
+                                        </label>
 
                                         <div ng-show="vm.scatterPlot.results">
                                             <a href="http://midja.org:4000/{{ vm.scatterPlot.results.png }}" target="_blank">
