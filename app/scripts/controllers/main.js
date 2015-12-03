@@ -191,7 +191,7 @@ angular.module('midjaApp')
             var topicsList = _.pluck(vm.vis.topics, 'name').join(',');
             var ilocCodes = _.pluck(vm.vis.ilocs, 'iloc_code');
 
-            var sql = 'SELECT ' + topicsList + ' FROM iloc_merged_dataset WHERE iloc_code IN (\'' + ilocCodes.join('\' ,\'') + '\');';
+            var sql = 'SELECT ' + topicsList + ', iloc_name FROM iloc_merged_dataset WHERE iloc_code IN (\'' + ilocCodes.join('\' ,\'') + '\') order by iloc_name;';
 
             dataService.doQuery(sql).then(function (results) {
                 if (!results.rows.length) {
@@ -201,18 +201,14 @@ angular.module('midjaApp')
                 // get the columns
                 var topics = _.keys(results.rows[0]);
 
-                // build data table
-                var data = [
-                    ['Topic'].concat(_.pluck(vm.vis.ilocs, 'iloc_name'))
-                ];
+                // build table header
+                var header = ['Topic'].concat(_.pluck(results.rows, 'iloc_name'));
 
-                vm.tableData = data;
-                vm.chartData = data.slice();
+                // build table
+                vm.tableData = [header];
+                vm.chartData = vm.tableData.slice();
                 _.forEach(vm.vis.topics, function(topic) {
-                    var dataRow = [];
-                    _.forEach(results.rows, function(row) {
-                        dataRow.push(row[topic.name]);
-                    });
+                    var dataRow = _.pluck(results.rows, topic.name);
                     vm.tableData.push([topic.short_desc+' ('+topic.name+')'].concat(dataRow));
                     vm.chartData.push([topic.name].concat(dataRow));
                 });
