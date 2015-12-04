@@ -209,7 +209,12 @@ angular.module('midjaApp')
                 vm.chartData = vm.tableData.slice();
                 _.forEach(vm.vis.topics, function(topic) {
                     var dataRow = _.pluck(results.rows, topic.name);
-                    vm.tableData.push([topic.short_desc+' ('+topic.name+')'].concat(dataRow));
+
+                    var dataRowText = dataRow.map(function(d) {
+                        return d.toFixed(2);
+                    });
+
+                    vm.tableData.push([topic.short_desc+' ('+topic.name+')'].concat(dataRowText));
                     vm.chartData.push([topic.name].concat(dataRow));
                 });
             });
