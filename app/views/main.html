@@ -391,9 +391,16 @@
 
             </div>
 
-            <div class="col-md-6 +fullheight" style="position: relative;">
+            <div id="mapColumn" class="col-md-6 +fullheight" style="position: relative;">
                 <!--ng-class="{'col-sm-9': !vm.isDataSelected(), 'col-md-6': vm.isDataSelected()}">-->
-                <cartodb-map top="vm.bubbleLayer" topvisible="vm.visStatus.bubbleVisible" bottom="vm.regionLayer" bottomvisible="vm.vis.choroplethVisible"></cartodb-map>
+                <cartodb-map top="vm.bubbleLayer" topvisible="vm.visStatus.bubbleVisible" bottom="vm.regionLayer" bottomvisible="vm.vis.choroplethVisible" map="vm.map"></cartodb-map>
+
+                <i id="columnToggleIcon"
+                   class="fa fa-2x"
+                   style="position:absolute; right:0px; top:0px;"
+                   ng-click="vm.toggleDataColumn()"
+                   ng-class="{'fa-chevron-circle-right': vm.dataColumnVisible, 'fa-chevron-circle-left': !vm.dataColumnVisible}">
+                </i>
 
                 <div class="well" style="position: absolute; top: 10px; right: 30px" ng-show="feature">
                     <div ng-repeat="selection in feature">
@@ -411,7 +418,7 @@
                 </div>-->
             </div>
 
-            <div class="col-md-3 +fullheight" ng-show="vm.vis.ilocs.length">
+            <div id="dataColumn" class="col-md-3 +fullheight" ng-show="vm.vis.ilocs.length">
                 <p class="text-muted" style="margin-top:40px" ng-hide="vm.isDataSelected()">
                     Select a place and a topic to see data.
                 </p>

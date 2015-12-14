@@ -71,6 +71,16 @@ angular.module('midjaApp')
         vm.generateScatterPlot = generateScatterPlot;
         ////
 
+        vm.map = null;
+        vm.dataColumnVisible = true;
+        vm.toggleDataColumn = function() {
+            $('#dataColumn').toggle();
+            $('#mapColumn').toggleClass('col-md-6', 'col-md-9');
+            vm.dataColumnVisible = !vm.dataColumnVisible;
+
+            vm.map.invalidateSize();
+        };
+
 
         // select a place
         // load ilocs for selected places

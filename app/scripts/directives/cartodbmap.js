@@ -15,7 +15,8 @@ angular.module('midjaApp')
                 'top': '=',
                 'bottom': '=',
                 'topvisible': '=',
-                'bottomvisible': '='
+                'bottomvisible': '=',
+                'map': '='
             },
             replace: true,
             link: postLink
@@ -28,6 +29,8 @@ angular.module('midjaApp')
             var subLayers = [{}];
 
             activate();
+            // export the map reference back
+            scope.map = map;
 
             ////
 

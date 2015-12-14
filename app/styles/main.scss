@@ -81,3 +81,11 @@ accordion h2, h3 {
   margin-top: 0;
   margin-bottom: 0;
 }
+
+#columnToggleIcon {
+  opacity: 0.5;
+}
+
+#columnToggleIcon:hover {
+  opacity: 1.0;
+}
