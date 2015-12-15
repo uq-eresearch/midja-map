@@ -14,7 +14,8 @@ angular.module('midjaApp')
             link: link,
             replace: true,
             scope: {
-                data: '='
+                data: '=',
+                chartobj: '='
             }
         };
 
@@ -22,14 +23,23 @@ angular.module('midjaApp')
 
             var minHeight = 500;
 
+            // export a chartobj back for triggers
+            scope.chartobj = {};
+
             activate();
 
+            scope.chartobj.redraw = redraw;
             ////
 
             function activate() {
                 scope.minHeight = minHeight;
                 scope.$watch('data', drawStuff);
             }
+
+            var options = {
+                legend: { position: "none" },
+                bars: 'horizontal'
+            };
 
             function drawStuff(data) {
 
@@ -48,6 +58,7 @@ angular.module('midjaApp')
                     return;
                 }
 
+                /*
                 var options = {
                     //width: 300,
                     legend: { position: "none" },
@@ -67,9 +78,16 @@ angular.module('midjaApp')
                     //    }
                     //}
                 };
+                */
 
                 var chart = new google.charts.Bar(element[0]);
                 chart.draw(new google.visualization.arrayToDataTable(data), options);
+
+                scope.chartobj.chart = chart;
+            }
+
+            function redraw() {
+                scope.chartobj.chart.draw(new google.visualization.arrayToDataTable(scope.data), options);
             }
 
 

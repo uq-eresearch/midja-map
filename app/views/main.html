@@ -418,7 +418,7 @@
                 </div>-->
             </div>
 
-            <div id="dataColumn" class="col-md-3 +fullheight" ng-show="vm.vis.ilocs.length">
+            <div id="dataColumn" class="col-md-3 +fullheight" ng-show="vm.dataColumnVisible && vm.vis.ilocs.length">
                 <p class="text-muted" style="margin-top:40px" ng-hide="vm.isDataSelected()">
                     Select a place and a topic to see data.
                 </p>
@@ -438,7 +438,7 @@
 
                     <!--<h3>Bar Chart</h3>-->
                     <div ng-show="vm.chartData.length">
-                        <googlechart data="vm.chartData" style="margin-top:20px;"></googlechart>
+                        <googlechart chartobj="vm.chartobj" data="vm.chartData" style="margin-top:20px;"></googlechart>
                     </div>
 
                 </div>

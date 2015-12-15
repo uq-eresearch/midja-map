@@ -8,7 +8,7 @@
  * Controller of the midjaApp
  */
 angular.module('midjaApp')
-    .controller('MainCtrl', function (datasetService, layerService, dataService, labelService, $http) {
+    .controller('MainCtrl', function (datasetService, layerService, dataService, labelService, $http, $timeout, $window) {
 
         var vm = this;
 
@@ -72,14 +72,29 @@ angular.module('midjaApp')
         ////
 
         vm.map = null;
+        vm.chartobj = null;
+
         vm.dataColumnVisible = true;
         vm.toggleDataColumn = function() {
-            $('#dataColumn').toggle();
+            $('#dataColumn').fadeToggle("fast");
             $('#mapColumn').toggleClass('col-md-6', 'col-md-9');
             vm.dataColumnVisible = !vm.dataColumnVisible;
 
-            vm.map.invalidateSize();
+            vm.map.invalidateSize(true);
+
+            if(vm.dataColumnVisible && vm.chartobj.chart) {
+                $timeout(function() {
+                    vm.chartobj.redraw();
+                }, 100);
+            }
         };
+
+        // google chart does not refresh on window resize
+        angular.element($window).bind('resize', function() {
+            if(vm.chartobj.chart) {
+                vm.chartobj.redraw();
+            }
+        });
 
 
         // select a place
