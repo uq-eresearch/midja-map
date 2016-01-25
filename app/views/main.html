@@ -287,13 +287,51 @@
                                         </label>
 
                                         <div ng-show="vm.scatterPlot.results">
-                                            <a href="http://midja.org:4000/{{ vm.scatterPlot.results.png }}" target="_blank">
-                                                <img ng-src="http://midja.org:4000/{{ vm.scatterPlot.results.png }}" alt="" class="img-responsive"/>
-                                            </a>
-                                            <a class="btn btn-default" ng-href="http://midja.org:4000/{{ vm.scatterPlot.results.pdf }}" download>
-                                                Download PDF
-                                            </a>
-                                        </div>
+											<div>
+													<nvd3 id="scatterGraph" options="vm.scatterOptions" data="vm.scatterPlot.results"></nvd3>
+											</div>	
+											<button ng-click="vm.requestScatterDownload('pdf')">Request PDF</button>
+											<button ng-click="vm.requestScatterDownload('png')">Request PNG</button>
+											
+											<script type="text/ng-template" id="scatter.html">
+												<div class="modal-header">
+													<h3 class="modal-title">Scatter Plot</h3>
+												</div>
+												<div class="modal-body">
+													<div>
+														<label>
+															<input type="checkbox"
+																   ng-change="vm.generateScatterPlot()"
+																   ng-model="vm.scatterPlot.useRemoteness">
+															Use Remoteness
+														</label>
+														<label>
+															<input type="checkbox"
+																   ng-change="vm.generateScatterPlot()"
+																   ng-model="vm.scatterPlot.labelLocations">
+															Label Locations
+														</label>
+													</div>
+													<div>
+														<nvd3 id="scatterGraphModal" options="modalCfg" data="vm.scatterPlot.results"></nvd3>
+													</div>
+													<button ng-click="vm.requestScatterDownload('pdf')">Request PDF</button>
+													<button ng-click="vm.requestScatterDownload('png')">Request PNG</button>
+													<!--
+													<a class="btn btn-default" ng-show="vm.scatterPlot.filename" ng-href="http://midja.org:3333/{{ vm.scatterPlot.filename }}" download>Download</a>
+													-->
+												</div>
+												<div class="modal-footer">
+													<button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+												</div>
+											</script>
+
+											<button type="button" class="btn btn-default" ng-click="openScatterModal()">Enlarge</button>
+											
+											<!--
+											<a class="btn btn-default" ng-show="vm.scatterPlot.filename" ng-href="http://midja.org:3333/{{ vm.scatterPlot.filename }}" download>Download</a>
+											-->
+										</div>
 
                                     </div>
                                 </accordion-group>
@@ -360,9 +398,12 @@
                                         </div>
 
                                         <div ng-show="vm.linearRegression.results">
-                                            <a href="http://midja.org:4000/{{ vm.linearRegression.results.png }}" target="_blank">
-                                                <img ng-src="http://midja.org:4000/{{ vm.linearRegression.results.png }}" alt="" class="img-responsive"/>
-                                            </a>
+											<div ng-show="vm.linearRegression.sendData.indepVars.length==1">
+													<nvd3 id="RegressionGraph" options="vm.regressionOptions" data="vm.linearRegression.resultsData"></nvd3>
+											</div>
+											<div ng-show="vm.linearRegression.sendData.indepVars.length>1">
+													<nvd3 id="RegressionGraph" options="vm.barRegressionOptions" data="vm.linearRegression.resultsData"></nvd3>
+											</div>	   											
 
                                             <dl>
                                                 <dt>R Squared</dt>
@@ -374,10 +415,33 @@
                                                 <dd>{{ vm.linearRegression.results.equation }}</dd>
                                             </dl>
                                             <p>
-                                                <a class="btn btn-default" ng-href="http://midja.org:4000/{{ vm.linearRegression.results.pdf }}" download>
-                                                    Download PDF
-                                                </a>
-                                            </p>
+												<button ng-click="vm.requestLinearRegressionDownload('pdf')">Request PDF</button>
+												<button ng-click="vm.requestLinearRegressionDownload('png')">Request PNG</button>
+
+												<script type="text/ng-template" id="regression.html">
+													<div class="modal-header">
+														<h3 class="modal-title">Linear Regression</h3>
+													</div>
+													<div class="modal-body">												
+														<div>
+															<nvd3 id="RegressionGraphModal" options="modalCfg" data="vm.linearRegression.resultsData"></nvd3>
+														</div>
+														<button ng-click="vm.requestScatterDownload('pdf')">Request PDF</button>
+														<button ng-click="vm.requestScatterDownload('png')">Request PNG</button>
+														<!--
+														<a class="btn btn-default" ng-show="vm.scatterPlot.filename" ng-href="http://midja.org:3333/{{ vm.scatterPlot.filename }}" download>Download</a>
+														-->
+													</div>
+													<div class="modal-footer">
+														<button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+													</div>
+												</script>
+
+												<button type="button" class="btn btn-default" ng-click="openRegModal()">Enlarge</button>												
+												<!--
+												<a class="btn btn-default" ng-show="vm.linearRegression.filename" ng-href="http://midja.org:3333/{{ vm.linearRegression.filename }}" download>Download</a>
+												-->
+											</p>
                                         </div>
                                     </div>
                                 </accordion-group>
@@ -393,14 +457,14 @@
 
             <div id="mapColumn" class="col-md-6 +fullheight" style="position: relative;">
                 <!--ng-class="{'col-sm-9': !vm.isDataSelected(), 'col-md-6': vm.isDataSelected()}">-->
-                <cartodb-map top="vm.bubbleLayer" topvisible="vm.visStatus.bubbleVisible" bottom="vm.regionLayer" bottomvisible="vm.vis.choroplethVisible" map="vm.map"></cartodb-map>
+				<cartodb-map top="vm.bubbleLayer" topvisible="vm.visStatus.bubbleVisible" bottom="vm.regionLayer" bottomvisible="vm.vis.choroplethVisible" map="vm.map"></cartodb-map>
 
-                <i id="columnToggleIcon"
-                   class="fa fa-2x"
-                   style="position:absolute; right:0px; top:0px;"
-                   ng-click="vm.toggleDataColumn()"
-                   ng-class="{'fa-chevron-circle-right': vm.dataColumnVisible, 'fa-chevron-circle-left': !vm.dataColumnVisible}">
-                </i>
+				<i id="columnToggleIcon"
+					class="fa fa-2x"
+					style="position:absolute; right:0px; top:0px;"
+					ng-click="vm.toggleDataColumn()"
+					ng-class="{'fa-chevron-circle-right': vm.dataColumnVisible, 'fa-chevron-circle-left': !vm.dataColumnVisible}">
+				</i>                
 
                 <div class="well" style="position: absolute; top: 10px; right: 30px" ng-show="feature">
                     <div ng-repeat="selection in feature">

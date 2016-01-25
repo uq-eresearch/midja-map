@@ -18,7 +18,8 @@ angular
         'ngTouch',
         'ui.bootstrap',
         'ui.select',
-        'angular-loading-bar'
+        'angular-loading-bar',
+		'nvd3'
     ])
     .constant('cartoDbApiKey', 'da4921d7f2b99244897b313a75f0bd977c775a5e')
     .constant('cartodb', cartodb)
