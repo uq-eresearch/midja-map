@@ -10,7 +10,7 @@
 angular.module('midjaApp')
     .controller('MainCtrl', function (datasetService, layerService, dataService, labelService, $http, $scope, $uibModal, $timeout, $window) {
 	var vm = this;
-	
+	vm.propTopicsOnly = false;
 	vm.scatterOptions = {
 		chart: {
 			type: 'scatterChart',
@@ -111,11 +111,14 @@ angular.module('midjaApp')
 	//TODO: Explain
 	vm.curRemoteness = [];
 	vm.iRemoteness = {};
+
+	vm.categories = [];
 	
 	vm.vis = {
 		remotenessLevel: 'all',
 		locations: [],
 		ilocs: [],
+		categories: [],
 		topics: [],
 		bubble: {
 			topic: null
@@ -150,6 +153,7 @@ angular.module('midjaApp')
 
 	vm.selectedLocationsChanged = selectedPlacesChanged;
 	vm.selectedTopicsChanged = selectedTopicsChanged;
+	vm.selectedCategoryChanged = selectedCategoryChanged;
 	vm.selectedBubbleTopicChanged = selectedBubbleTopicChanged;
 	vm.selectedRegionTopicChanged = selectedRegionTopicChanged;
 	vm.selectedDependentChanged = selectedDependentChanged;
@@ -259,6 +263,10 @@ angular.module('midjaApp')
 				return regex.test(column.short_desc);
 			});
 		});
+		
+		$http.get('http://midja.org:3232/categories/all').then(function(response) {
+			vm.categories = response.data;
+		});		
 	}
 
 	function isDataSelected() {
@@ -342,7 +350,23 @@ angular.module('midjaApp')
 			generateChoroplethLayer(vm.vis.choropleth.topic, vm.vis.ilocs);
 		}
 	}
-
+	
+	function selectedCategoryChanged($item, $model) {
+		if (vm.vis.category.length < 1) {
+			showPropTopicsOnly(vm.propTopicsOnly);
+		} else {
+			if (vm.propTopicsOnly) {
+				vm.columns = _.filter(vm.columnsFromMetadataPropCols, function(item) {
+					return _.contains(_.pluck(vm.vis.category, 'cat_id'), item.cat_id); 
+				});
+			} else {
+				vm.columns = _.filter(vm.columnsFromMetadata, function(item) {
+					return _.contains(_.pluck(vm.vis.category, 'cat_id'), item.cat_id); 
+				});			
+			}
+		}
+	}
+	
 	function generateBarChart() {
 		var topicsList = _.pluck(vm.vis.topics, 'name').join(',');
 		var ilocCodes = _.pluck(vm.vis.ilocs, 'iloc_code');
@@ -519,10 +543,23 @@ angular.module('midjaApp')
 
 
 	function showPropTopicsOnly(isChecked) {
-		if(isChecked) {
-			vm.columns = vm.columnsFromMetadataPropCols;
+		
+		if (vm.vis.category.length < 1) {
+			if(isChecked) {
+				vm.columns = vm.columnsFromMetadataPropCols;
+			} else {
+				vm.columns = vm.columnsFromMetadata;
+			}
 		} else {
-			vm.columns = vm.columnsFromMetadata;
+			if (vm.propTopicsOnly) {
+				vm.columns = _.filter(vm.columnsFromMetadataPropCols, function(item) {
+					return _.contains(_.pluck(vm.vis.category, 'cat_id'), item.cat_id); 
+				});
+			} else {
+				vm.columns = _.filter(vm.columnsFromMetadata, function(item) {
+					return _.contains(_.pluck(vm.vis.category, 'cat_id'), item.cat_id); 
+				});			
+			}		
 		}
 	}
 
