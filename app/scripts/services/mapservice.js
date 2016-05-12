@@ -28,7 +28,7 @@ angular.module('midjaApp')
                     newData.level_name = data[key];
                 } else {
                     newData.column = key;
-                    newData.label = labelService.getLabelFromCartoDbName(newData.column);
+                    newData.label = labelService.getLabelFromLocalMapping(newData.column);
                     newData.value = data[key];
                 }
             }

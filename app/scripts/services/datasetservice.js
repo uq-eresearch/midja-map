@@ -27,7 +27,7 @@ angular.module('midjaApp')
                     table.name.indexOf('lga') === 0);
                 });
                 _.each(datasets, function (dataset) {
-                    dataset.label = labelService.getLabelFromCartoDbName(dataset.name);
+                    dataset.label = labelService.getLabelFromLocalMapping(dataset.name);
                 });
                 return datasets;
             });

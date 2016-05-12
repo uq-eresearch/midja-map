@@ -273,10 +273,28 @@ angular.module('midjaApp')
                 "me_ps_in_wk_no_in_ps_ot_hh": "Median Weekly Personal Income – no Indigenous person in household",
                 "me_p_in_wk_in_ps_hh_in_p": "Median Weekly Personal Income – Indigenous persons",
                 "med_age_psns_tot": "Median Age",
-                "me_ag_ps_n_in_ps_ot_hh": "Median Age – no Indigenous person in household",
+                "composite_183": "Composite",
+				"composite_156": "Composite",
+				"composite_99_1": "Composite 1",
+				"composite_99_2": "Composite 2",
+				"composite_99_3": "Composite 2",				
+				"full_time_183": "Full-time Employment Index",
+				"full_time_156": "Full-time Employment Index",
+				"full_time_99": "Full-time Employment Index",
+				"household_size_index_183": "Household Size Index",
+				"home_ownership_index_156": "Home Ownership Index",
+				"not_own_home_index_183": "Not Own Home Index",
+				"not_own_home_index_156": "Not Own Home Index",
+				"not_own_home_index_99": "Not Own Home Index",
+				"affordability_185": "Affordability Index",
+				"affordability_156": "Affordability",
+				"affordability_index_156": "Affordability Index",
+				"affordability_index_99": "Affordability Index",
+				"year_12_index_99": "Year 12 Index",
+				"age_16_60_index_99": "Age 16-60 Index",
+				"me_ag_ps_n_in_ps_ot_hh": "Median Age – no Indigenous person in household",
                 "med_ag_pe_in_pe_h_i_p": "Median Age – Indigenous persons"
             };
-
             var lbl = localMap[name];
             if(!lbl) {
                 lbl = getLabelFromCartoDbName(name);

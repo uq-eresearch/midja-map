@@ -13,11 +13,11 @@ angular.module('midjaApp')
         var colors = [
             //'FFFFB2',
             'B10026',
-            'E31A1C',
+            //'E31A1C',
             'FC4E2A',
-            'FD8D3C',
+            //'FD8D3C',
             'FEB24C',
-            'FED976',
+            //'FED976',
             'FFFFB2'
         ];
 
@@ -37,7 +37,7 @@ angular.module('midjaApp')
 
         function build(table, column, locations) {
             var sql = generateSql(table, column, locations);
-            return dataService.getBuckets(column, sql, 7).then(getBucketsComplete);
+            return dataService.getBuckets(column, sql, 4).then(getBucketsComplete);
 
             function getBucketsComplete(buckets) {
                 var cartoCss = generateCss(buckets, table, column);
@@ -58,12 +58,12 @@ angular.module('midjaApp')
 
             var boundaryTableName = tablePrefix + '_2011_aust';
 
-            var ilocNames = '\'' + _.pluck(locations, 'iloc_code').join('\' ,\'') + '\'';
+            var unitNames = '\'' + _.pluck(locations, tablePrefix + '_code').join('\' ,\'') + '\'';
 
             var sql =
                 'SELECT ' + boundaryTableName + '.*, ' + table.name + '.' + column.name + ' ' +
                 'FROM ' + table.name + ', ' + tablePrefix + '_2011_aust ' +
-                'WHERE ' + boundaryTableName +'.iloc_code IN (' + ilocNames + ') ' +
+                'WHERE ' + boundaryTableName +'.' + tablePrefix + '_code IN (' + unitNames + ') ' +
                 'AND ' + tablePrefix + '_2011_aust.' + idColumn + ' = ' + table.name + '.' + idColumn;
             return sql;
         }
@@ -80,7 +80,7 @@ angular.module('midjaApp')
             var cartoCss = '#' + table.name + ' {' +
                 ' polygon-fill: #FFFFB2;' +
                 ' polygon-opacity: 0.8;' +
-                ' line-color: #67717E;' +
+                ' line-color: #000000;' +
                 ' line-width: 1;' +
                 ' line-opacity: 1; ' +
                 '} ';

@@ -25,7 +25,7 @@ angular.module('midjaApp')
 
         function build(table, column, locations) {
             var sql = generateSql(table, column, locations);
-            return dataService.getBuckets(column, sql, 7).then(getBucketsComplete);
+            return dataService.getBuckets(column, sql, 3).then(getBucketsComplete);
 
             function getBucketsComplete(buckets) {
                 var cartocss = generateCss(buckets, table, column);
@@ -46,14 +46,14 @@ angular.module('midjaApp')
 
             var boundaryTableName = tablePrefix + '_2011_aust';
 
-            var ilocNames = '\'' + _.pluck(locations, 'iloc_code').join('\' ,\'') + '\'';
+            var unitNames = '\'' + _.pluck(locations, tablePrefix+'_code').join('\' ,\'') + '\'';
 
             var sql =
                 'SELECT ' + boundaryTableName + '.' + idColumn + ', ' + boundaryTableName + '.' + tablePrefix + '_name' +
                 ', ST_Transform(ST_Centroid('+boundaryTableName+'.the_geom), 3857) as the_geom_webmercator' +
                 ', ST_Centroid('+boundaryTableName+'.the_geom) as the_geom, ' + table.name + '.' + column.name + ' ' +
                 'FROM ' + table.name + ', ' + boundaryTableName + ' ' +
-                'WHERE ' + boundaryTableName +'.iloc_code IN (' + ilocNames + ') ' +
+                'WHERE ' + boundaryTableName +'.' + tablePrefix + '_code IN (' + unitNames + ') ' +
                 'AND ' + boundaryTableName + '.' + idColumn + ' = ' + table.name + '.' + idColumn;
             return sql;
         }

@@ -14,8 +14,10 @@ angular.module('midjaApp')
             getTables: getTables,
             getTableSchema: getTableSchema,
             getBuckets: getBuckets,
-            getLocationsStartingWith: getPlacesStartingWith,
+            getIlocLocationsStartingWith: getIlocPlacesStartingWith,
+			getLgaLocationsStartingWith: getLgaPlacesStartingWith,
             getIlocsInPlaces: getIlocsInPlaces,
+			getLgasInPlaces: getLgasInPlaces,
             doQuery: doQuery,
             mysqlRealEscapeString: mysqlRealEscapeString
         };
@@ -76,6 +78,38 @@ angular.module('midjaApp')
 
             return doQuery(sql);
         }
+		
+        /**
+         * Get All LGAs for  Place
+         * @param places            Array of places (if empty, all of australia is used)
+         * @returns {*}
+         */
+        function getLgasInPlaces(places, block) {
+			if (block == '565') {
+				var sql = 'SELECT DISTINCT lga_name, lga_code FROM lga_merged_dataset ';
+			} else if (block == '73') {
+				var sql = 'SELECT DISTINCT lga_name, lga_code FROM lga_merged_dataset_preexp ';
+			} else if (block == '183') {
+				var sql = 'SELECT DISTINCT lga_name, lga_code FROM composite_measure_183_lgas ';
+			} else if (block == '99') {
+				var sql = 'SELECT DISTINCT lga_name, lga_code FROM final_99_lgas ';
+			} else if (block == '156') {
+				var sql = 'SELECT DISTINCT lga_name, lga_code FROM new_156_lgas ';
+			}
+
+            _.forEach(places, function(place, index) {
+                if(index === 0) {
+                    sql += ' WHERE '
+                } else {
+                    sql += ' OR '
+                }
+                sql += place.type + '_name = \'' + mysqlRealEscapeString(place.name) + '\' ';
+            });
+
+            sql += ';';
+
+            return doQuery(sql);
+        }
 
         function mysqlRealEscapeString (str) {
             return str.replace(/[\0\x08\x09\x1a\n\r"'\\\%]/g, function (char) {
@@ -102,9 +136,7 @@ angular.module('midjaApp')
             });
         }
 
-
-
-        function getPlacesStartingWith(name) {
+        function getIlocPlacesStartingWith(name) {
             // get all iloc names from server somehow
             var iLocSql = 'SELECT iloc_code, iloc_name  FROM iloc_merged_dataset ' +
                 'WHERE iloc_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';
@@ -159,6 +191,56 @@ angular.module('midjaApp')
                 });
 
                 var places = _.sortBy(ilocs.concat(iregs).concat(iares).concat(states), function(place) {
+                    return place.name.length;
+                });
+                return places;
+            });
+        }
+		
+        function getLgaPlacesStartingWith(name, block) {
+            // get all lga names from server somehow
+			
+			if (block = '565') {
+				var LGASql = 'SELECT lga_code, lga_name  FROM lga_merged_dataset ' +
+					'WHERE lga_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';
+			} else  if (block = '73'){
+				var LGASql = 'SELECT lga_code, lga_name  FROM lga_merged_dataset_preexp ' +
+					'WHERE lga_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';
+			} else  if (block = '183'){
+				var LGASql = 'SELECT lga_code, lga_name  FROM composite_measure_183_lgas ' +
+					'WHERE lga_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';	
+			} else  if (block = '99'){
+				var LGASql = 'SELECT lga_code, lga_name  FROM final_99_lgas ' +
+					'WHERE lga_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';	
+			} else  if (block = '156'){
+				var LGASql = 'SELECT lga_code, lga_name  FROM new_156_lgas ' +
+					'WHERE lga_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';	
+			}
+			var stateSql = 'SELECT DISTINCT state_code, state_name FROM lga_merged_dataset ' +
+					'WHERE state_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';	
+            var promises = [
+                doQuery(LGASql),
+                doQuery(stateSql)
+            ];
+            return $q.all(promises).then(function(queries) {
+
+                var lgas = _.map(queries[0].rows, function(lga) {
+                    return {
+                        type: 'lga',
+                        name: lga.lga_name,
+                        code: lga.lga_code
+                    }
+                });
+
+                var states = _.map(queries[1].rows, function(state) {
+                    return {
+                        type: 'state',
+                        name: state.state_name,
+                        code: state.state_code
+                    }
+                });
+
+                var places = _.sortBy(lgas.concat(states), function(place) {
                     return place.name.length;
                 });
                 return places;
