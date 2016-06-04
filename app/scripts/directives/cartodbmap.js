@@ -183,45 +183,53 @@ angular.module('midjaApp')
                 }
 
                 subLayer.setInteraction(true);
+				//TODO: Fix hover bug
                 subLayer.on('featureOver', function (e, latlon, pos, data, subLayerIndex) {
                     scope.$apply(function () {
 						if (!$rootScope.feature || $rootScope.feature[0].level_name != mapService.transformFeatureData(data).level_name) {
 							$rootScope.feature = [mapService.transformFeatureData(data)];
 							var newData = {}
 							var vm = $rootScope.$$childHead.vm;
-							if ($rootScope.feature[0].column != vm.vis.bubble.topic.name && vm.vis.bubble.topic.name) {
-								// pleth
-								// now make feature2 the bubble details
-								newData.level_name = $rootScope.feature[0].level_name;
-								newData.label = labelService.getLabelFromLocalMapping(vm.vis.bubble.topic.name);
-								if (!$rootScope.feature2 || ($rootScope.feature2 && newData.level_name != $rootScope.feature2.level_name)) {
-									$rootScope.feature2 = "temp";
-									console.log(newData.level_name);
-									var sql = "SELECT " + vm.vis.bubble.topic.name + " FROM " + vm.selectedTable + " WHERE " +  vm.tablePrefix + "_name='" + newData.level_name + "';";
-									dataService.doQuery(sql).then(function (result) {
-										var topicName = vm.vis.bubble.topic.name;
-										newData.value = result.rows[0][topicName];
-										$rootScope.feature2 = [newData];
-									});
+							if (vm.vis.choropleth.topic.name != vm.vis.bubble.topic.name) {
+							
+								if ($rootScope.feature[0].column != vm.vis.bubble.topic.name && vm.vis.bubble.topic.name) {
+									// pleth
+									// now make feature2 the bubble details
+									newData.level_name = $rootScope.feature[0].level_name;
+									newData.label = labelService.getLabelFromLocalMapping(vm.vis.bubble.topic.name);
+									if (!$rootScope.feature2 || ($rootScope.feature2 && newData.level_name != $rootScope.feature2.level_name)) {
+										$rootScope.feature2 = "temp";
+										console.log(newData.level_name);
+										var sql = "SELECT " + vm.vis.bubble.topic.name + " FROM " + vm.selectedTable + " WHERE " +  vm.tablePrefix + "_name='" + newData.level_name + "';";
+										dataService.doQuery(sql).then(function (result) {
+											var topicName = vm.vis.bubble.topic.name;
+											newData.value = result.rows[0][topicName];
+											$rootScope.feature2 = [newData];
+										});
+									}
+								} else if ($rootScope.feature[0].column != vm.vis.choropleth.topic.name) {
+									// bubble
+									// now make feature2 the pleth details
+									//$rootScope.feature2 = 
+									//vm.vis.choropleth.topic, vm.vis.units
+									newData.level_name = $rootScope.feature[0].level_name;
+									newData.label = labelService.getLabelFromLocalMapping(vm.vis.choropleth.topic.name);
+									if (!$rootScope.feature2 || ($rootScope.feature2 && newData.level_name != $rootScope.feature2.level_name)) {
+										$rootScope.feature2 = "temp";
+										console.log(newData.level_name);
+										var sql = "SELECT " + vm.vis.choropleth.topic.name + " FROM " + vm.selectedTable + " WHERE " +  vm.tablePrefix + "_name='" + newData.level_name + "';";
+										dataService.doQuery(sql).then(function (result) {
+											var topicName = vm.vis.choropleth.topic.name;
+											newData.value = result.rows[0][topicName];
+											$rootScope.feature2 = [newData];
+										});
+									}							
 								}
-							} else if ($rootScope.feature[0].column != vm.vis.choropleth.topic.name && vm.vis.choropleth.topic.name) {
-								// bubble
-								// now make feature2 the pleth details
-								//$rootScope.feature2 = 
-								//vm.vis.choropleth.topic, vm.vis.units
-								newData.level_name = $rootScope.feature[0].level_name;
-								newData.label = labelService.getLabelFromLocalMapping(vm.vis.choropleth.topic.name);
-								if (!$rootScope.feature2 || ($rootScope.feature2 && newData.level_name != $rootScope.feature2.level_name)) {
-									$rootScope.feature2 = "temp";
-									console.log(newData.level_name);
-									var sql = "SELECT " + vm.vis.choropleth.topic.name + " FROM " + vm.selectedTable + " WHERE " +  vm.tablePrefix + "_name='" + newData.level_name + "';";
-									dataService.doQuery(sql).then(function (result) {
-										var topicName = vm.vis.choropleth.topic.name;
-										newData.value = result.rows[0][topicName];
-										$rootScope.feature2 = [newData];
-									});
-								}							
-							}							
+							} else {
+									newData.level_name = $rootScope.feature[0].level_name;
+									newData.label = labelService.getLabelFromLocalMapping(vm.vis.choropleth.topic.name);
+									$rootScope.feature2 = null;
+							}
 						}
 
                     });
@@ -230,20 +238,21 @@ angular.module('midjaApp')
 
                 subLayer.on('featureClick', function (e, latlng, pos, data) {
                     scope.$apply(function () {
-                        $rootScope.test = $rootScope.test || [];
-                        $rootScope.test.unshift(mapService.transformFeatureData(data));					
+                        //$rootScope.test = $rootScope.test || [];
+                        //$rootScope.test.unshift(mapService.transformFeatureData(data));					
 						if ($rootScope.placeDetails == null) {
 							$rootScope.placeDetails = 1;
 							var vm = $rootScope.$$childHead.vm;
 							if (vm.tablePrefix == 'iloc') {
 								var sql = "SELECT iloc_name, total_loan, num_apps FROM iloc_merged_dataset WHERE iloc_name='" + data.iloc_name + "';";
 							} else if (vm.tablePrefix == 'lga') {
-								var sql = "SELECT annual_median_household_income, not_own_home_index_99, composite_99_1, composite_99_2, composite_99_3, full_time_99, affordability_index_99, year_12_index_99, age_16_60_index_99, home_ownership_index_156, affordability_156, affordability_index_156, not_own_home_index_156, full_time_156, composite_156, full_time_183, household_size_index, household_size_index_183, affordability_index, affordability_185, not_own_home_index, not_own_home_index_183, percentage_indigenous_fulltime_employment, indigenous_population, median_age_residents_indigenous_household, lga_name, composite, composite_183, iba_total_number_of_loans, iba_total_amount_of_loans FROM lga_merged_dataset WHERE lga_name='" + data.lga_name + "';";
+								var sql = "SELECT lga_name, ra_name, piho, f_time, iba_a_loan, iba_n_loan, ave_h_s, n_indig_h, own_home, indigenous, median_inc, median_mor, afford FROM lga_565_iba_final WHERE lga_name='" + data.lga_name + "';";
 							}
 							dataService.doQuery(sql).then(function (result) {
-							
 								var modalInstance = $uibModal.open({
 								  animation: true,
+								  backdrop: 'static',
+								  keyboard: 'false',
 								  templateUrl: 'details.html',
 								  controller: 'DetailsModalInstanceCtrl',
 								  resolve: {

@@ -16,8 +16,7 @@ angular.module('midjaApp')
             getBuckets: getBuckets,
             getIlocLocationsStartingWith: getIlocPlacesStartingWith,
 			getLgaLocationsStartingWith: getLgaPlacesStartingWith,
-            getIlocsInPlaces: getIlocsInPlaces,
-			getLgasInPlaces: getLgasInPlaces,
+            getLocsInPlaces: getLocsInPlaces,
             doQuery: doQuery,
             mysqlRealEscapeString: mysqlRealEscapeString
         };
@@ -48,16 +47,15 @@ angular.module('midjaApp')
         }
 
         /**
-         * Get All Ilocs for  Place
+         * Get All Locations for  Place
          * @param places            Array of places (if empty, all of australia is used)
          * @param remotenessLevel   Very Remote etc
          * @returns {*}
          */
-        function getIlocsInPlaces(places, remotenessLevel) {
+        function getLocsInPlaces(places, dataset, placetype, remotenessLevel) {
 
-            var sql = 'SELECT DISTINCT iloc_name, iloc_code FROM iloc_merged_dataset ';
-
-            _.forEach(places, function(place, index) {
+            var sql = 'SELECT DISTINCT ' + placetype + '_name, ' + placetype + '_code FROM ' + dataset + ' ';
+			_.forEach(places, function(place, index) {
                 if(index === 0) {
                     sql += ' WHERE '
                 } else {
@@ -75,39 +73,6 @@ angular.module('midjaApp')
                 sql += ' ra_name = \'' + remotenessLevel + '\'';
             }
             sql += ';';
-
-            return doQuery(sql);
-        }
-		
-        /**
-         * Get All LGAs for  Place
-         * @param places            Array of places (if empty, all of australia is used)
-         * @returns {*}
-         */
-        function getLgasInPlaces(places, block) {
-			if (block == '565') {
-				var sql = 'SELECT DISTINCT lga_name, lga_code FROM lga_merged_dataset ';
-			} else if (block == '73') {
-				var sql = 'SELECT DISTINCT lga_name, lga_code FROM lga_merged_dataset_preexp ';
-			} else if (block == '183') {
-				var sql = 'SELECT DISTINCT lga_name, lga_code FROM composite_measure_183_lgas ';
-			} else if (block == '99') {
-				var sql = 'SELECT DISTINCT lga_name, lga_code FROM final_99_lgas ';
-			} else if (block == '156') {
-				var sql = 'SELECT DISTINCT lga_name, lga_code FROM new_156_lgas ';
-			}
-
-            _.forEach(places, function(place, index) {
-                if(index === 0) {
-                    sql += ' WHERE '
-                } else {
-                    sql += ' OR '
-                }
-                sql += place.type + '_name = \'' + mysqlRealEscapeString(place.name) + '\' ';
-            });
-
-            sql += ';';
-
             return doQuery(sql);
         }
 
@@ -200,23 +165,10 @@ angular.module('midjaApp')
         function getLgaPlacesStartingWith(name, block) {
             // get all lga names from server somehow
 			
-			if (block = '565') {
-				var LGASql = 'SELECT lga_code, lga_name  FROM lga_merged_dataset ' +
+			var LGASql = 'SELECT lga_code, lga_name FROM lga_565_iba_final ' +
 					'WHERE lga_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';
-			} else  if (block = '73'){
-				var LGASql = 'SELECT lga_code, lga_name  FROM lga_merged_dataset_preexp ' +
-					'WHERE lga_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';
-			} else  if (block = '183'){
-				var LGASql = 'SELECT lga_code, lga_name  FROM composite_measure_183_lgas ' +
-					'WHERE lga_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';	
-			} else  if (block = '99'){
-				var LGASql = 'SELECT lga_code, lga_name  FROM final_99_lgas ' +
-					'WHERE lga_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';	
-			} else  if (block = '156'){
-				var LGASql = 'SELECT lga_code, lga_name  FROM new_156_lgas ' +
-					'WHERE lga_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';	
-			}
-			var stateSql = 'SELECT DISTINCT state_code, state_name FROM lga_merged_dataset ' +
+					
+			var stateSql = 'SELECT DISTINCT state_code, state_name FROM lga_565_iba_final ' +
 					'WHERE state_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';	
             var promises = [
                 doQuery(LGASql),

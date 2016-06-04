@@ -293,7 +293,21 @@ angular.module('midjaApp')
 				"year_12_index_99": "Year 12 Index",
 				"age_16_60_index_99": "Age 16-60 Index",
 				"me_ag_ps_n_in_ps_ot_hh": "Median Age – no Indigenous person in household",
-                "med_ag_pe_in_pe_h_i_p": "Median Age – Indigenous persons"
+                "med_ag_pe_in_pe_h_i_p": "Median Age – Indigenous persons",
+				"afford": "Affordability",
+				"afford_in": "Affordability Index",
+				"f_time": "% Indigenous Full-Time Employment",
+				"f_time_in": "Full-Time Employment Index",
+				"home_o_in": "Home Ownership Index",
+				"iba_a_loan": "IBA Total Amount of Loans",
+				"iba_n_loan": "IBA Total Number of Loans",
+				"indigenous": "Indigenous Population",
+				"median_inc": "Median Indigenous Household Income",
+				"median_mor": "Median Annual Mortgage",
+				"n_indig_h": "Indigenous Households",
+				"no_home": "% Indigenous Households Without Own Home",
+				"own_home": "% Indigenous Households Own Home",
+				"piho": "Potential Indigenous Home Ownership"
             };
             var lbl = localMap[name];
             if(!lbl) {

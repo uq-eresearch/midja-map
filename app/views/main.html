@@ -21,110 +21,46 @@
 			Name: {{vm.placeDetails.lga_name}}
 			</div>
 			<div>
-			Median Age of Usual Resident of Indigenous Household: {{vm.placeDetails.median_age_residents_indigenous_household}}
-			</div>
-			<div>
-			Indigenous Population: {{vm.placeDetails.indigenous_population}}
-			</div>
-			<div>
-			Annual Median Indigenous Household Income: {{vm.placeDetails.annual_median_household_income}}
-			</div>
-			<div>
-			Percent of Indigenous Population with Full-time Employment: {{vm.placeDetails.percentage_indigenous_fulltime_employment}}
-			</div>
-			<div>
-			Total IBA Loans: {{vm.placeDetails.iba_total_number_of_loans}}
-			</div>		
-			<div>
-			Total Amount of IBA Loans: {{vm.placeDetails.iba_total_amount_of_loans}}
-			</div>
-		</div>
-		<div ng-show="vm.placeDetails.household_size_index != null" style="margin-top: 30px;">
-			<div>Affordability > 4, residents <= 4</div>
-			<div>
-			Household Size Index: {{vm.placeDetails.household_size_index}}
-			</div>
-			<div>
-			Affordability Index: {{vm.placeDetails.affordability_index}}
-			</div>
-			<div>
-			Not Own Home Index: {{vm.placeDetails.not_own_home_index}}
-			</div>		
-			<div>
-			Composite Index: {{vm.placeDetails.composite}}
-			</div>
-		</div>
-		<div ng-show="vm.placeDetails.household_size_index_183 != null" style="margin-top: 30px;">
-			<div>Affordability > 3.33, residents <= 6</div>
-			<div>
-			Household Size Index: {{vm.placeDetails.household_size_index_183}}
-			</div>
-			<div>
-			Affordability Index: {{vm.placeDetails.affordability_185}}
-			</div>
-			<div>
-			Not Own Home Index: {{vm.placeDetails.not_own_home_index_183}}
-			</div>		
-			<div>
-			Full-time Employment Index: {{vm.placeDetails.full_time_183}}
-			</div>				
-			<div>
-			Composite Index: {{vm.placeDetails.composite_183}}
-			</div>
-		</div>
-
-		<div ng-show="vm.placeDetails.home_ownership_index_156 != null" style="margin-top: 30px;">
-			<div>Affordability > 3.33, population > 150</div>
-			<div>
-			Home Ownership Index: {{vm.placeDetails.home_ownership_index_156}}
-			</div>
-			<div>
-			Affordability Index: {{vm.placeDetails.affordability_index_99}}
-			</div>
-			<div>
-			Not Own Home Index: {{vm.placeDetails.not_own_home_index_99}}
-			</div>		
-			<div>
-			Full-time Employment Index: {{vm.placeDetails.full_time_99}}
-			</div>		
-			<div>
-			Year 12 Index: {{vm.placeDetails.year_12_index_99}}
-			</div>	
-			<div>
-			Age 16-60 Index: {{vm.placeDetails.age_16_60_index_99}}
-			</div>				
-			<div>
-			Composite Index 1: {{vm.placeDetails.composite_99_1}}
-			</div>
-			<div>
-			Composite Index 2: {{vm.placeDetails.composite_99_2}}
-			</div>
-			<div>
-			Composite Index 3: {{vm.placeDetails.composite_99_3}}
+			Remoteness: {{vm.placeDetails.ra_name}}
 			</div>			
-		</div>				
-		
-		<div ng-show="vm.placeDetails.home_ownership_index_156 != null" style="margin-top: 30px;">
-			<div>Affordability > 3, population > 150, aged 16-60 > 33%</div>
 			<div>
-			Home Ownership Index: {{vm.placeDetails.home_ownership_index_156}}
+			Number of Indigenous Households: {{vm.placeDetails.n_indig_h}}
 			</div>
 			<div>
-			Affordability Index: {{vm.placeDetails.affordability_index_156}}
+			Percentage Indigenous households who own their own homes: {{vm.placeDetails.own_home}}
 			</div>
 			<div>
-			Not Own Home Index: {{vm.placeDetails.not_own_home_index_156}}
+			Indigenous Population: {{vm.placeDetails.indigenous}}
+			</div>
+			<div>
+			Median Indigenous Household Income: {{vm.placeDetails.median_inc}}
+			</div>
+			<div>
+			Median Annual Mortgage: {{vm.placeDetails.median_mor}}
 			</div>		
 			<div>
-			Full-time Employment Index: {{vm.placeDetails.full_time_156}}
-			</div>				
-			<div>
-			Composite Index: {{vm.placeDetails.composite_156}}
+			Percentage Indigenous in Full-time employment: {{vm.placeDetails.f_time}}
 			</div>
-		</div>			
+			<div>
+			Affordability: {{vm.placeDetails.afford}}
+			</div>
+			<div>
+			Composite Index: {{vm.placeDetails.piho}}
+			</div>
+			<div>
+			Average Indigenous Household Size: {{vm.placeDetails.ave_h_s}}
+			</div>
+			<div>
+			IBA Total Number of Loans: {{vm.placeDetails.iba_n_loan}}
+			</div>
+			<div>
+			IBA Total Amount of Loans: {{vm.placeDetails.iba_a_loan}}
+			</div>
+		
+		</div>
 	</div>
 	<div class="modal-footer">
-		<button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+		<button class="btn btn-primary" type="button" ng-click="ok()">Close</button>
 	</div>
 </script>
 
@@ -150,21 +86,6 @@
 										>
 								{{ sel }}
 							</label>
-						</div>
-						<div style="margin-top: 20px;" ng-if="vm.vis.unitSel == 'LGAs'">
-							<label>LGA Filter
-								<small class="text-muted">Required</small>
-							</label>						
-							<div ng-repeat="block in vm.lgaBlocks">
-								<label>
-									<input type="radio"
-										   ng-model="vm.vis.lgaBlock"
-										   value="{{ block.value }}"
-										   ng-change="vm.selectedLocationsChanged()"
-											>
-									{{ block.description }}
-								</label>
-							</div>	
 						</div>
                         <label style="margin-top: 20px;">Choose a Place
                             <small class="text-muted">Required</small>
@@ -241,7 +162,7 @@
                         </div>
 
                         <div style="margin-top: 20px;"
-                             ng-show="(vm.vis.locations[0].type !== 'iloc' || vm.vis.locations[1] && vm.vis.locations[1].type !== 'iloc') && vm.vis.unitSel == 'ILOCs'">
+                             ng-show="(vm.vis.locations[0].type !== 'iloc' || vm.vis.locations[1] && vm.vis.locations[1].type !== 'iloc')">
                             <h5>Remoteness</h5>
 
                             <p class="text-muted">Only show locations with this
@@ -276,6 +197,8 @@
                         <h2><i class="fa fa-list-alt"></i> Topics of interest</h2>
 
                         <div class="form-group">
+						
+							<!--
 							<label>Category filter
                                 <small class="text-muted">Optional</small>
                             </label>
@@ -294,7 +217,9 @@
                                 <ui-select-choices repeat="column in vm.categories | propsFilter: {description: $select.search} | orderBy: 'description'">
                                     <div ng-bind-html="column.description | highlight: $select.search"></div>
                                 </ui-select-choices>
-                            </ui-select>							
+                            </ui-select>
+
+							-->
 							
                             <label>Choose topic(s) of interest
                                 <small class="text-muted">Required</small>
