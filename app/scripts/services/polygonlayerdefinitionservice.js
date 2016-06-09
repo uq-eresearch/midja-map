@@ -24,6 +24,7 @@ angular.module('midjaApp')
         // Public API here
         return {
             build: build,
+			legendPoints: legendPoints,
             generateSql: generateSql,
             generateCss: generateCss
         };
@@ -45,6 +46,12 @@ angular.module('midjaApp')
                 return new PolygonLayerDefinition(sql, cartoCss, table, column);
             }
         }
+		
+        function legendPoints(table, column, locations) {
+            var sql = generateSql(table, column, locations);
+			
+            return dataService.getBuckets(column, sql, 4).then(function(buckets){return buckets});
+        }		
 
         /**
          * Generate table SQL for table and column
@@ -79,7 +86,7 @@ angular.module('midjaApp')
         function generateCss(values, table, column) {
             var cartoCss = '#' + table.name + ' {' +
                 ' polygon-fill: #FFFFB2;' +
-                ' polygon-opacity: 0.8;' +
+                ' polygon-opacity: 0.70;' +
                 ' line-color: #000000;' +
                 ' line-width: 1;' +
                 ' line-opacity: 1; ' +

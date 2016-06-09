@@ -183,51 +183,50 @@ angular.module('midjaApp')
                 }
 
                 subLayer.setInteraction(true);
-				//TODO: Fix hover bug
+
                 subLayer.on('featureOver', function (e, latlon, pos, data, subLayerIndex) {
                     scope.$apply(function () {
 						if (!$rootScope.feature || $rootScope.feature[0].level_name != mapService.transformFeatureData(data).level_name) {
-							$rootScope.feature = [mapService.transformFeatureData(data)];
+							var mouseOverFeature = [mapService.transformFeatureData(data)];
 							var newData = {}
-							var vm = $rootScope.$$childHead.vm;
+							console.log($rootScope)
+							var vm = $rootScope.$$childTail.vm;
 							if (vm.vis.choropleth.topic.name != vm.vis.bubble.topic.name) {
 							
-								if ($rootScope.feature[0].column != vm.vis.bubble.topic.name && vm.vis.bubble.topic.name) {
+								if (mouseOverFeature[0].column != vm.vis.bubble.topic.name && vm.vis.bubble.topic.name) {
 									// pleth
-									// now make feature2 the bubble details
-									newData.level_name = $rootScope.feature[0].level_name;
+									$rootScope.feature = mouseOverFeature;
+									newData.level_name = mouseOverFeature[0].level_name;
 									newData.label = labelService.getLabelFromLocalMapping(vm.vis.bubble.topic.name);
+									
+									var topicShort = _.findWhere(vm.vis.topics, {'name': vm.vis.bubble.topic.name})['short_desc']
+									var fullTopic = topicShort+' ('+vm.vis.bubble.topic.name+')'
+									var placeIndex = _.indexOf(vm.tableData[0], newData.level_name);
+									var topicIndex = _.findIndex(vm.tableData, function(row) {return row[0] == fullTopic;});									
 									if (!$rootScope.feature2 || ($rootScope.feature2 && newData.level_name != $rootScope.feature2.level_name)) {
 										$rootScope.feature2 = "temp";
-										console.log(newData.level_name);
-										var sql = "SELECT " + vm.vis.bubble.topic.name + " FROM " + vm.selectedTable + " WHERE " +  vm.tablePrefix + "_name='" + newData.level_name + "';";
-										dataService.doQuery(sql).then(function (result) {
-											var topicName = vm.vis.bubble.topic.name;
-											newData.value = result.rows[0][topicName];
-											$rootScope.feature2 = [newData];
-										});
+										newData.value = vm.tableData[topicIndex][placeIndex];
+										$rootScope.feature2 = [newData];
 									}
-								} else if ($rootScope.feature[0].column != vm.vis.choropleth.topic.name) {
+								} else if (mouseOverFeature[0].column != vm.vis.choropleth.topic.name) {
 									// bubble
-									// now make feature2 the pleth details
-									//$rootScope.feature2 = 
-									//vm.vis.choropleth.topic, vm.vis.units
-									newData.level_name = $rootScope.feature[0].level_name;
+									$rootScope.feature2 = mouseOverFeature;
+									newData.level_name = mouseOverFeature[0].level_name;
 									newData.label = labelService.getLabelFromLocalMapping(vm.vis.choropleth.topic.name);
-									if (!$rootScope.feature2 || ($rootScope.feature2 && newData.level_name != $rootScope.feature2.level_name)) {
-										$rootScope.feature2 = "temp";
-										console.log(newData.level_name);
-										var sql = "SELECT " + vm.vis.choropleth.topic.name + " FROM " + vm.selectedTable + " WHERE " +  vm.tablePrefix + "_name='" + newData.level_name + "';";
-										dataService.doQuery(sql).then(function (result) {
-											var topicName = vm.vis.choropleth.topic.name;
-											newData.value = result.rows[0][topicName];
-											$rootScope.feature2 = [newData];
-										});
+
+									var topicShort = _.findWhere(vm.vis.topics, {'name': vm.vis.choropleth.topic.name})['short_desc']
+									var fullTopic = topicShort+' ('+vm.vis.choropleth.topic.name+')'
+									var placeIndex = _.indexOf(vm.tableData[0], newData.level_name);
+									var topicIndex = _.findIndex(vm.tableData, function(row) {return row[0] == fullTopic;});	
+									
+									if (!$rootScope.feature || ($rootScope.feature && newData.level_name != $rootScope.feature.level_name)) {
+										$rootScope.feature = "temp";
+										newData.value = vm.tableData[topicIndex][placeIndex];
+										$rootScope.feature = [newData];
 									}							
 								}
 							} else {
-									newData.level_name = $rootScope.feature[0].level_name;
-									newData.label = labelService.getLabelFromLocalMapping(vm.vis.choropleth.topic.name);
+									$rootScope.feature = [mapService.transformFeatureData(data)];
 									$rootScope.feature2 = null;
 							}
 						}
@@ -242,7 +241,7 @@ angular.module('midjaApp')
                         //$rootScope.test.unshift(mapService.transformFeatureData(data));					
 						if ($rootScope.placeDetails == null) {
 							$rootScope.placeDetails = 1;
-							var vm = $rootScope.$$childHead.vm;
+							var vm = $rootScope.$$childTail.vm;
 							if (vm.tablePrefix == 'iloc') {
 								var sql = "SELECT iloc_name, total_loan, num_apps FROM iloc_merged_dataset WHERE iloc_name='" + data.iloc_name + "';";
 							} else if (vm.tablePrefix == 'lga') {
@@ -251,8 +250,6 @@ angular.module('midjaApp')
 							dataService.doQuery(sql).then(function (result) {
 								var modalInstance = $uibModal.open({
 								  animation: true,
-								  backdrop: 'static',
-								  keyboard: 'false',
 								  templateUrl: 'details.html',
 								  controller: 'DetailsModalInstanceCtrl',
 								  resolve: {
@@ -266,8 +263,9 @@ angular.module('midjaApp')
 								});
 
 								modalInstance.result.then(function () {
+									$rootScope.placeDetails = null;
 								}, function () {
-									$rootScope.placeDetails == null;
+									$rootScope.placeDetails = null;
 								});
 							});	
 						}

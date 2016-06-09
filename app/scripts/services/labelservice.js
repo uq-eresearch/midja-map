@@ -302,12 +302,13 @@ angular.module('midjaApp')
 				"iba_a_loan": "IBA Total Amount of Loans",
 				"iba_n_loan": "IBA Total Number of Loans",
 				"indigenous": "Indigenous Population",
+				"ave_h_s": "Average Indigenous Household Size",
 				"median_inc": "Median Indigenous Household Income",
-				"median_mor": "Median Annual Mortgage",
-				"n_indig_h": "Indigenous Households",
-				"no_home": "% Indigenous Households Without Own Home",
-				"own_home": "% Indigenous Households Own Home",
-				"piho": "Potential Indigenous Home Ownership"
+				"median_mor": "Annual Median Mortgage Repayment",
+				"n_indig_h": "Number of Indigenous Households",
+				"no_home": "Percentage of Indigenous Households Without Own Home",
+				"own_home": "Percentage of Indigenous Households Own Home",
+				"piho": "Potential Indigenous Home Ownership Index"
             };
             var lbl = localMap[name];
             if(!lbl) {

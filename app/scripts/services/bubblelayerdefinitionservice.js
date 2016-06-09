@@ -25,7 +25,7 @@ angular.module('midjaApp')
 
         function build(table, column, locations) {
             var sql = generateSql(table, column, locations);
-            return dataService.getBuckets(column, sql, 3).then(getBucketsComplete);
+            return dataService.getBuckets(column, sql, 4).then(getBucketsComplete);
 
             function getBucketsComplete(buckets) {
                 var cartocss = generateCss(buckets, table, column);
@@ -69,7 +69,7 @@ angular.module('midjaApp')
             });
 
             var cartoCss = '#' + table.name + ' {' +
-                ' marker-fill-opacity: 0.9;' +
+                ' marker-fill-opacity: 0.70;' +
                 ' marker-line-color: #FFF;' +
                 ' marker-line-width: 1.5;' +
                 ' marker-line-opacity: 1;' +

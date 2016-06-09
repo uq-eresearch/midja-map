@@ -118,6 +118,11 @@ angular.module('midjaApp')
 		remotenessLevel: 'all',
 		lgaBlock: '565',
 		unitSel: "LGAs",
+		filter: {
+				"Population >= 150": false,
+				"Households >= 20": false,
+				"Affordability >= 3": false
+				} ,
 		locations: [],
 		units: [],
 		categories: [],
@@ -154,6 +159,7 @@ angular.module('midjaApp')
 	};
 
 	vm.selectedLocationsChanged = selectedPlacesChanged;
+	vm.selectedFiltersChanged = selectedFiltersChanged;
 	vm.selectedTopicsChanged = selectedTopicsChanged;
 	vm.selectedCategoryChanged = selectedCategoryChanged;
 	vm.selectedBubbleTopicChanged = selectedBubbleTopicChanged;
@@ -165,6 +171,9 @@ angular.module('midjaApp')
 	vm.selectedTable = 'lga_565_iba_final'; // TODO: tie to a GUI option, do change handler
 	vm.tablePrefix = 'lga';
 	vm.unitSels = ['LGAs', 'ILOCs'];
+	vm.filters = ['Population >= 150', 'Households >= 20', 'Affordability >= 3']
+	vm.filterPlaces = [];
+	vm.mapLegend = null;
 	
 	activate(vm.selectedTable);
 
@@ -184,6 +193,8 @@ angular.module('midjaApp')
 	vm.showLabel = showLabel;
 	
 	vm.placeDetails = null;
+	
+	vm.addOr - addOr;
 	
 	function clearLabels(){
 		d3.selectAll(".label").remove();
@@ -253,12 +264,43 @@ angular.module('midjaApp')
 
 	//
 	
+	function addOr(num) {
+		if (num > 0) {
+			return " OR ";
+		} else {
+			return ""
+		}
+	}
 	
 	function activate(table) {
 		var sql = 'SELECT DISTINCT ra_name FROM ' + table + ';';
 		dataService.doQuery(sql).then(function (result) {
 			vm.remotenessLevels = result.rows;
-		});		
+		});	
+		if ( vm.vis.unitSel == 'LGAs' && (vm.vis.filter['Population >= 150']
+				|| vm.vis.filter['Households >= 20'] || vm.vis.filter['Affordability >= 3'])) {
+			var query = 'SELECT lga_code FROM ' + table + ' WHERE ';
+			var constraints = "";
+			if (vm.vis.filter["Population >= 150"]) {
+				constraints += "indigenous < 150";
+			}
+			if (vm.vis.filter["Households >= 20"]) {
+				constraints += addOr(constraints.length) + "n_indig_h < 20";
+			}			
+			if (vm.vis.filter["Affordability >= 3"]) {
+				constraints += addOr(constraints.length) + "afford < 3";
+			}
+			
+			query = query + constraints + ";";
+			
+			console.log(query);
+			dataService.doQuery(query).then(function (result) {
+				vm.filterPlaces = _.pluck(result.rows, 'lga_code');
+			});
+		} else {
+			vm.filterPlaces = []
+		}
+		
 
 		$http.get('http://midja.org:3232/datasets/' + table + '?expanded').then(function(response) {
 			vm.columnsFromMetadata = _.reject(response.data.attributes, function(column) {
@@ -286,6 +328,10 @@ angular.module('midjaApp')
 	function getColumns(dataset) {
 		return datasetService.getColumns(dataset);
 	}
+	
+	function selectedFiltersChanged() {
+		selectedPlacesChanged()
+	}
 
 	/**
 	 * The user changed the places they selected
@@ -297,10 +343,10 @@ angular.module('midjaApp')
 			vm.vis.locations.pop();
 		}
 		
-		vm.vis.topics = [];
+		//vm.vis.topics = [];
 		
-		vm.choroplethLayer = null;
-		vm.bubbleLayer = null;
+		//vm.choroplethLayer = null;
+		//vm.bubbleLayer = null;
 		
 		if (vm.vis.unitSel == 'ILOCs') {
 			vm.tablePrefix = "iloc";
@@ -316,6 +362,11 @@ angular.module('midjaApp')
 		var places = getSelectedPlaceExcludingAustralia();
 		dataService.getLocsInPlaces(places, vm.selectedTable, vm.tablePrefix, vm.vis.remotenessLevel).then(function (results) {
 			var units = results.rows;
+			
+			if (vm.filterPlaces.length > 0) {
+				units = _.filter(units, function(row) { return !_.contains(vm.filterPlaces, row['lga_code']);});
+			}
+			
 			if (!units.length) {
 				// revert back the removenessLevel in the UI when no ILOCs are found
 				vm.vis.remotenessLevel = vm.vis.currRemotenessLevel;
@@ -424,7 +475,48 @@ angular.module('midjaApp')
                 vm.tableData.push([topic.short_desc+' ('+topic.name+')'].concat(dataRowText));				
 				vm.chartData.push([topic.name].concat(dataRow));
 			});
+			generateLegend();
 		});
+	}
+	
+	
+	function generateLegend() {
+        if (vm.tableData[0].length > 1) {
+            var range = [];
+            var i = 0;
+			            
+            var colors = ['rgba(177, 0, 38, 0.70)','rgba(252, 78, 42, 0.70)','rgba(254, 178, 76, 0.70)','rgba(255, 255, 178, 0.70)'];
+            var temp=vm.tableData[1];
+            var leg_title= _.findWhere(vm.vis.topics, {'name': vm.vis.choropleth.topic.name})['short_desc']
+            
+			var bubbleLayerService = layerService.build('polygon');
+			
+			bubbleLayerService.legendPoints({
+				name: vm.selectedTable
+			}, vm.vis.choropleth.topic, vm.vis.units).then(function (buckets) {
+				vm.classBreaks = buckets.concat(0);
+				vm.classBreaks.reverse();
+				var legjsonObj = [];                        
+				for (i = 1; i < vm.classBreaks.length; i++) {
+					var jsonData = {};
+					jsonData['name'] = vm.classBreaks[i - 1] + ' - ' + vm.classBreaks[i];
+					jsonData['value'] = colors[vm.classBreaks.length - i - 1];
+					legjsonObj.push(jsonData);
+				}
+				var legend = new cdb.geo.ui.Legend({
+					title: leg_title,
+					show_title: false,
+					type: "custom",
+					opacity: 0.2,
+					data: legjsonObj
+				});
+				if (vm.mapLegend != null) {
+					$(vm.mapLegend).hide()
+				}
+				vm.mapLegend = legend.render().el
+				$('#map').append(vm.mapLegend);
+			});
+        }	
 	}
 
 
@@ -433,6 +525,7 @@ angular.module('midjaApp')
 	}
 
 	function selectedRegionTopicChanged($item, $model) {
+		generateLegend();
 		generateChoroplethLayer($item, vm.vis.units);
 	}
 
@@ -786,10 +879,23 @@ angular.module('midjaApp').controller('RegModalInstanceCtrl', function ($scope, 
 });
 
 angular.module('midjaApp')
-    .controller( 'LoginCtrl', function ( $scope, auth) {
-
-  $scope.auth = auth;
-  $scope.auth.signin();
+    .controller( 'LoginCtrl', function ( $scope, auth, $http, $location, store, $rootScope) {
+	$scope.auth = auth;
+	if ($location.$$path == "/login") {
+	  $scope.logStatus = false
+	  $scope.auth.signin();
+	} else {
+		$scope.logStatus = true
+	}
+	//$scope.logStatus = true
+	$scope.logout = function() {
+		$scope.logStatus = null
+		auth.signout();
+		store.remove('profile');
+		store.remove('token');
+		$location.path('/login');
+		$scope.auth.signin();
+  }  
 
 });
 
@@ -797,13 +903,14 @@ angular.module('midjaApp').controller('DetailsModalInstanceCtrl', function ($sco
 	$scope.vm = vm;
 	// insert data
 	$scope.ok = function () {
-		$uibModalInstance.close();
 		$scope.vm.placeDetails = null;
+		$uibModalInstance.close();
+
 	};
 
 	$scope.cancel = function () {
-		$uibModalInstance.dismiss('cancel');
 		$scope.vm.placeDetails = null;
+		$uibModalInstance.dismiss('cancel');
 	};
 	$scope.vm.placeDetails = stats.rows[0];
 });		

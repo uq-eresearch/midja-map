@@ -45,10 +45,10 @@
 			Affordability: {{vm.placeDetails.afford}}
 			</div>
 			<div>
-			Composite Index: {{vm.placeDetails.piho}}
-			</div>
-			<div>
 			Average Indigenous Household Size: {{vm.placeDetails.ave_h_s}}
+			</div>			
+			<div>
+			Potential Indigenous Home Ownership Index: {{vm.placeDetails.piho}}
 			</div>
 			<div>
 			IBA Total Number of Loans: {{vm.placeDetails.iba_n_loan}}
@@ -87,6 +87,23 @@
 								{{ sel }}
 							</label>
 						</div>
+						<div ng-show="vm.vis.unitSel === 'LGAs'">
+							<label>Filter
+								<small class="text-muted">Optional</small>
+							</label>					
+							<div ng-repeat="filter in vm.filters">
+								<label>
+									<input type="checkbox"
+										   ng-model="vm.vis.filter[filter]"
+										   value="{{ filter }}"
+										   id= "{{filter}}"
+										   ng-change="vm.selectedFiltersChanged()"
+											>
+									{{ filter }}
+								</label>
+							</div>
+						</div>
+						
                         <label style="margin-top: 20px;">Choose a Place
                             <small class="text-muted">Required</small>
                         </label>
