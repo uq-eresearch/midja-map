@@ -17,7 +17,8 @@ Building
 Deploying
 * Run `grunt gh-pages`. This will upload the files in `dist/` to the Github Pages branch of hte repo.
 
-Building & Deploying
-* Run `grunt deploy`. This includes the `grunt build` and `grunt gh-pages` steps.G
+Building & Deploying to GitHub Pages
+* Run `grunt deploy`. This includes the `grunt build` and `grunt gh-pages` steps.
 
-
+Building & Deploying as Docker container
+* Run `grunt build`, then `docker build -t midja-map .`
