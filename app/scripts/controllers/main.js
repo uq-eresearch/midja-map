@@ -35,14 +35,14 @@ angular.module('midjaApp')
 			},				
 			useInteractiveGuideline: false,
 			interactive: true,
-			tooltip: {
-				position: {"top": 200},
-				contentGenerator: function (d) { //return html content
-					var html = "<h3>"+d.point.name+"</h3>";
-					html += "<p>x: " + d.point.x + ", y: " + d.point.y + "</p>"
-					return html;
-				}
-			},
+		/*	tooltip: 
+{ position : function () {
+                        return function (d) {
+                            var html = "<h3>" + d.point.name + "</h3>";
+                            html += "<p>x: " + d.point.x + ", y: " + d.point.y + "</p>"
+                            return html;
+                        }
+                    }} ,*/
 			zoom: {
 				enabled: false
 			}
@@ -67,13 +67,14 @@ angular.module('midjaApp')
 			useInteractiveGuideline: false,
 			interactive: true,
 			tooltip: {
-				position: {"top": 200},
-				contentGenerator: function (d) { //return html content
+				position: function(){ //{"top": 200},
+				//contentGenerator: 
+				return 	function (d) { //return html content
 				  var html = "<h3>"+d.point.name+"</h3>";
 				  html += "<p>x: " + d.point.x + ", y: " + d.point.y + "</p>"
 				  return html;
 				}
-			},
+			}},
 			zoom: {
 				enabled: false
 			}
@@ -599,9 +600,10 @@ angular.module('midjaApp')
 			"unit_codes": _.pluck(vm.vis.units, vm.tablePrefix + '_code'),
 			"unit_type": vm.tablePrefix
 		};
-
-		$http.post('http://midja.org:4000', data).then(function (response) {
+		console.debug(data);
+		$http.post('http://uadi.project.uq.edu.au/sdmx/', data).then(function (response) {
 			var iDep = -1;
+			console.debug('response',response);
 			var iInds = Array.apply(null, Array(data.indepVars.length)).map(Number.prototype.valueOf,0);
 			var indVarLabels = _.pluck(vm.linearRegression.independents, 'short_desc');
 			if (data.indepVars.length > 1) {
@@ -652,7 +654,8 @@ angular.module('midjaApp')
 				});
 			}
 
-			
+		  	console.debug(response.data);
+	
 			var equationParts = response.data.equation.split(" ");
 		
 			resultsData.push({

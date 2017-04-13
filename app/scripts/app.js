@@ -35,7 +35,7 @@ angular
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl',
                 controllerAs: 'vm',
-				requiresLogin: true
+				requiresLogin: false
             })
 			.when('/login', {
 				controller: 'LoginCtrl',
@@ -45,6 +45,11 @@ angular
             .when('/about', {
                 templateUrl: 'views/about.html',
                 controller: 'AboutCtrl'
+            })
+            .when('/about', {
+              templateUrl: 'views/about.html',
+              controller: 'AboutCtrl',
+              controllerAs: 'about'
             })
             .otherwise({
                 redirectTo: '/'

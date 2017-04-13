@@ -27,12 +27,13 @@
     "grunt-svgmin": "^0.4.0",
     "grunt-usemin": "^2.1.1",
     "grunt-wiredep": "^1.7.0",
-    "jasmine-core": "^2.2.0",
+    "jasmine-core": "^2.4.1",
     "jshint-stylish": "^0.2.0",
-    "karma": "^0.12.31",
-    "karma-jasmine": "^0.3.5",
+    "karma": "^0.12.37",
+    "karma-jasmine": "^0.3.8",
     "karma-phantomjs-launcher": "^0.1.4",
     "load-grunt-tasks": "^0.4.0",
+    "phantomjs-prebuilt": "^2.1.12",
     "time-grunt": "^0.3.1"
   },
   "engines": {
