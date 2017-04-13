@@ -32,10 +32,10 @@ angular.module('midjaApp')
 						vm.showLabel("#scatterGraph", vm.scatterPlot.second);
 					}
 				}
-			},				
+			},
 			useInteractiveGuideline: false,
 			interactive: true,
-		/*	tooltip: 
+		/*	tooltip:
 { position : function () {
                         return function (d) {
                             var html = "<h3>" + d.point.name + "</h3>";
@@ -48,7 +48,7 @@ angular.module('midjaApp')
 			}
 		}
 	};
-		
+
 	vm.regressionOptions = {
 		chart: {
 			type: 'scatterChart',
@@ -61,14 +61,14 @@ angular.module('midjaApp')
 			},
 			legend: {
 				updateState: false
-			},					
+			},
 			duration: 350,
-			margin: {right: 60}, // a bit hacky					
+			margin: {right: 60}, // a bit hacky
 			useInteractiveGuideline: false,
 			interactive: true,
 			tooltip: {
 				position: function(){ //{"top": 200},
-				//contentGenerator: 
+				//contentGenerator:
 				return 	function (d) { //return html content
 				  var html = "<h3>"+d.point.name+"</h3>";
 				  html += "<p>x: " + d.point.x + ", y: " + d.point.y + "</p>"
@@ -79,7 +79,7 @@ angular.module('midjaApp')
 				enabled: false
 			}
 		}
-	};	
+	};
 
 	vm.barRegressionOptions = {
 		chart: {
@@ -97,7 +97,7 @@ angular.module('midjaApp')
 			},
 			legend: {
 				updateState: false
-			},						
+			},
 			duration: 500,
 			forceY: [0,1],
 			yAxis: {
@@ -106,15 +106,15 @@ angular.module('midjaApp')
 			},
 			xAxis: {
 				tickPadding: 10
-			}						
+			}
 		}
-	};			
+	};
 	//TODO: Explain
 	vm.curRemoteness = [];
 	vm.iRemoteness = {};
 
 	vm.categories = [];
-	
+
 	vm.vis = {
 		remotenessLevel: 'all',
 		lgaBlock: '565',
@@ -175,7 +175,7 @@ angular.module('midjaApp')
 	vm.filters = ['Population >= 150', 'Households >= 20', 'Affordability >= 3']
 	vm.filterPlaces = [];
 	vm.mapLegend = null;
-	
+
 	activate(vm.selectedTable);
 
 	vm.refreshLocations = refreshLocations;
@@ -185,22 +185,22 @@ angular.module('midjaApp')
 	vm.selectedScatterXChanged = selectedScatterXChanged;
 	vm.selectedScatterYChanged = selectedScatterYChanged;
 	vm.generateScatterPlot = generateScatterPlot;
-	
+
 	vm.requestScatterDownload = requestScatterDownload;
 	vm.requestLinearRegressionDownload = requestLinearRegressionDownload;
 
 	vm.clearLabels = clearLabels;
-	
+
 	vm.showLabel = showLabel;
-	
+
 	vm.placeDetails = null;
-	
+
 	vm.addOr - addOr;
-	
+
 	function clearLabels(){
 		d3.selectAll(".label").remove();
-	}		
-		
+	}
+
 	function showLabel(id, id2){ // make general
 		vm.clearLabels();
 		d3.select(id).selectAll(".nv-group path")[0].forEach(function(d){
@@ -214,7 +214,7 @@ angular.module('midjaApp')
 				.attr("style", "font: normal 10px Arial")
 				.text(d3.select(d).data()[0][0].name)
 				.attr("transform", "translate("+t[0]+","+t[1]+")");
-				
+
 		});
 		if (typeof id2 !== 'undefined') {
 			d3.select(id2).selectAll(".nv-group path")[0].forEach(function(d){
@@ -228,11 +228,11 @@ angular.module('midjaApp')
 					.attr("style", "font: normal 10px Arial")
 					.text(d3.select(d).data()[0][0].name)
 					.attr("transform", "translate("+t[0]+","+t[1]+")");
-					
+
 			});
 		}
 	}
-	
+
     vm.map = null;
     vm.dataColumnVisible = true;
     vm.toggleDataColumn = function() {
@@ -241,7 +241,7 @@ angular.module('midjaApp')
         vm.dataColumnVisible = !vm.dataColumnVisible;
 
         vm.map.invalidateSize(true);
-		
+
 		if(vm.dataColumnVisible && vm.chartobj.chart) {
 			$timeout(function() {
 				vm.chartobj.redraw();
@@ -264,7 +264,7 @@ angular.module('midjaApp')
 	// TODO: Generalise comment
 
 	//
-	
+
 	function addOr(num) {
 		if (num > 0) {
 			return " OR ";
@@ -272,12 +272,12 @@ angular.module('midjaApp')
 			return ""
 		}
 	}
-	
+
 	function activate(table) {
 		var sql = 'SELECT DISTINCT ra_name FROM ' + table + ';';
 		dataService.doQuery(sql).then(function (result) {
 			vm.remotenessLevels = result.rows;
-		});	
+		});
 		if ( vm.vis.unitSel == 'LGAs' && (vm.vis.filter['Population >= 150']
 				|| vm.vis.filter['Households >= 20'] || vm.vis.filter['Affordability >= 3'])) {
 			var query = 'SELECT lga_code FROM ' + table + ' WHERE ';
@@ -287,13 +287,13 @@ angular.module('midjaApp')
 			}
 			if (vm.vis.filter["Households >= 20"]) {
 				constraints += addOr(constraints.length) + "n_indig_h < 20";
-			}			
+			}
 			if (vm.vis.filter["Affordability >= 3"]) {
 				constraints += addOr(constraints.length) + "afford < 3";
 			}
-			
+
 			query = query + constraints + ";";
-			
+
 			console.log(query);
 			dataService.doQuery(query).then(function (result) {
 				vm.filterPlaces = _.pluck(result.rows, 'lga_code');
@@ -301,9 +301,9 @@ angular.module('midjaApp')
 		} else {
 			vm.filterPlaces = []
 		}
-		
 
-		$http.get('http://midja.org:3232/datasets/' + table + '?expanded').then(function(response) {
+
+		$http.get('https://metaservice.map.midja.org/datasets/' + table + '?expanded').then(function(response) {
 			vm.columnsFromMetadata = _.reject(response.data.attributes, function(column) {
 				return column.data_type !== 'number';
 			});
@@ -315,7 +315,7 @@ angular.module('midjaApp')
 			});
 		});
 		/*
-		$http.get('http://midja.org:3232/categories/all').then(function(response) {
+		$http.get('https://metaservice.map.midja.org/categories/all').then(function(response) {
 			vm.categories = response.data;
 		});
 		*/
@@ -329,7 +329,7 @@ angular.module('midjaApp')
 	function getColumns(dataset) {
 		return datasetService.getColumns(dataset);
 	}
-	
+
 	function selectedFiltersChanged() {
 		selectedPlacesChanged()
 	}
@@ -343,31 +343,31 @@ angular.module('midjaApp')
 		if(vm.vis.locations.length == 2 && !vm.vis.locations[1]) {
 			vm.vis.locations.pop();
 		}
-		
+
 		//vm.vis.topics = [];
-		
+
 		//vm.choroplethLayer = null;
 		//vm.bubbleLayer = null;
-		
+
 		if (vm.vis.unitSel == 'ILOCs') {
 			vm.tablePrefix = "iloc";
 			vm.selectedTable = "iloc_merged_dataset";
-			activate("iloc_merged_dataset")		
+			activate("iloc_merged_dataset")
 		} else {
 			vm.tablePrefix = "lga";
 			vm.selectedTable = "lga_565_iba_final";
 			activate("lga_565_iba_final")
 		}
-		
-		
+
+
 		var places = getSelectedPlaceExcludingAustralia();
 		dataService.getLocsInPlaces(places, vm.selectedTable, vm.tablePrefix, vm.vis.remotenessLevel).then(function (results) {
 			var units = results.rows;
-			
+
 			if (vm.filterPlaces.length > 0) {
 				units = _.filter(units, function(row) { return !_.contains(vm.filterPlaces, row['lga_code']);});
 			}
-			
+
 			if (!units.length) {
 				// revert back the removenessLevel in the UI when no ILOCs are found
 				vm.vis.remotenessLevel = vm.vis.currRemotenessLevel;
@@ -379,7 +379,7 @@ angular.module('midjaApp')
 				generateScatterPlot();
 				generateLinearRegression();
 			}
-		});		
+		});
 	}
 
 	/**
@@ -427,31 +427,31 @@ angular.module('midjaApp')
 			generateChoroplethLayer(vm.vis.choropleth.topic, vm.vis.units);
 		}
 	}
-	
+
 	function selectedCategoryChanged($item, $model) {
 		if (vm.vis.category.length < 1) {
 			showPropTopicsOnly(vm.propTopicsOnly);
 		} else {
 			if (vm.propTopicsOnly) {
 				vm.columns = _.filter(vm.columnsFromMetadataPropCols, function(item) {
-					return _.contains(_.pluck(vm.vis.category, 'cat_id'), item.cat_id); 
+					return _.contains(_.pluck(vm.vis.category, 'cat_id'), item.cat_id);
 				});
 			} else {
 				vm.columns = _.filter(vm.columnsFromMetadata, function(item) {
-					return _.contains(_.pluck(vm.vis.category, 'cat_id'), item.cat_id); 
+					return _.contains(_.pluck(vm.vis.category, 'cat_id'), item.cat_id);
 				});
 			}
 		}
 	}
-	
+
 	// TODO: deal with remoteness
 	function generateBarChart() {
 		var topicsList = _.pluck(vm.vis.topics, 'name').join(',');
 		var unitCodes = _.pluck(vm.vis.units, vm.tablePrefix + '_code');
-		
+
 		var sql = 'SELECT ' + topicsList + ', ra_name, ' + vm.tablePrefix + '_name FROM ' + vm.selectedTable
 				+ ' WHERE ' + vm.tablePrefix + '_code IN (\'' + unitCodes.join('\' ,\'') + '\') order by ' + vm.tablePrefix + '_name;';
-		
+
 		dataService.doQuery(sql).then(function (results) {
 			if (!results.rows.length) {
 				return;
@@ -473,31 +473,31 @@ angular.module('midjaApp')
                     return d.toFixed(2);
                 });
 
-                vm.tableData.push([topic.short_desc+' ('+topic.name+')'].concat(dataRowText));				
+                vm.tableData.push([topic.short_desc+' ('+topic.name+')'].concat(dataRowText));
 				vm.chartData.push([topic.name].concat(dataRow));
 			});
 			generateLegend();
 		});
 	}
-	
-	
+
+
 	function generateLegend() {
         if (vm.tableData[0].length > 1) {
             var range = [];
             var i = 0;
-			            
+
             var colors = ['rgba(177, 0, 38, 0.70)','rgba(252, 78, 42, 0.70)','rgba(254, 178, 76, 0.70)','rgba(255, 255, 178, 0.70)'];
             var temp=vm.tableData[1];
             var leg_title= _.findWhere(vm.vis.topics, {'name': vm.vis.choropleth.topic.name})['short_desc']
-            
+
 			var bubbleLayerService = layerService.build('polygon');
-			
+
 			bubbleLayerService.legendPoints({
 				name: vm.selectedTable
 			}, vm.vis.choropleth.topic, vm.vis.units).then(function (buckets) {
 				vm.classBreaks = buckets.concat(0);
 				vm.classBreaks.reverse();
-				var legjsonObj = [];                        
+				var legjsonObj = [];
 				for (i = 1; i < vm.classBreaks.length; i++) {
 					var jsonData = {};
 					jsonData['name'] = vm.classBreaks[i - 1] + ' - ' + vm.classBreaks[i];
@@ -517,7 +517,7 @@ angular.module('midjaApp')
 				vm.mapLegend = legend.render().el
 				$('#map').append(vm.mapLegend);
 			});
-        }	
+        }
 	}
 
 
@@ -555,7 +555,7 @@ angular.module('midjaApp')
 			vm.locations = [];
 			return;
 		}
-		
+
 		if (vm.tablePrefix == "iloc") {
 			dataService.getIlocLocationsStartingWith(name).then(function (locations) {
 				locations.unshift({
@@ -563,7 +563,7 @@ angular.module('midjaApp')
 					type: 'country'
 				})
 				vm.locations = locations;
-			});		
+			});
 		} else { // check for lga
 			dataService.getLgaLocationsStartingWith(name, vm.vis.lgaBlock).then(function (locations) {
 				locations.unshift({
@@ -571,7 +571,7 @@ angular.module('midjaApp')
 					type: 'country'
 				})
 				vm.locations = locations;
-			});		
+			});
 		}
 
 	}
@@ -601,13 +601,13 @@ angular.module('midjaApp')
 			"unit_type": vm.tablePrefix
 		};
 		console.debug(data);
-		$http.post('http://uadi.project.uq.edu.au/sdmx/', data).then(function (response) {
+		$http.post('https://map.midja.org/sdmx/', data).then(function (response) {
 			var iDep = -1;
 			console.debug('response',response);
 			var iInds = Array.apply(null, Array(data.indepVars.length)).map(Number.prototype.valueOf,0);
 			var indVarLabels = _.pluck(vm.linearRegression.independents, 'short_desc');
 			if (data.indepVars.length > 1) {
-				vm.barRegressionOptions["chart"]["yAxis"]["axisLabel"] = "Adjusted R-square";	
+				vm.barRegressionOptions["chart"]["yAxis"]["axisLabel"] = "Adjusted R-square";
 				resultsData.push({
 					key: "Data",
 					values: [
@@ -621,20 +621,20 @@ angular.module('midjaApp')
 				vm.linearRegression.results = response.data;
 				data.raw = vm.linearRegression.resultsData;
 				data.modelType = "bar";
-				vm.linearRegression.sendData = data;					
+				vm.linearRegression.sendData = data;
 				return
 			}
 			vm.regressionOptions["chart"]["xAxis"] = {"axisLabel": indVarLabels[0]}; // TODO: fix
-			vm.regressionOptions["chart"]["yAxis"] = {"axisLabel": vm.linearRegression.dependent.short_desc};	
-			
+			vm.regressionOptions["chart"]["yAxis"] = {"axisLabel": vm.linearRegression.dependent.short_desc};
+
 			for (var i = 0; i < vm.remotenessLevels.length; i++) {
 				resultsData.push({
 					key: vm.remotenessLevels[i].ra_name,
 					values: []
 				});
 				vm.iRemoteness[vm.remotenessLevels[i].ra_name] = i;
-			}			
-			
+			}
+
 			for (var k = 1; k < vm.tableData.length; k++) {
 				if (vm.tableData[k][0] == vm.linearRegression.dependent.short_desc + " (" + data.depVar + ")") {
 					iDep = k;
@@ -642,10 +642,10 @@ angular.module('midjaApp')
 				for (var v = 0; v < indVarLabels.length; v++) {
 					if (vm.tableData[k][0] == indVarLabels[v] + " (" + data.indepVars[v] + ")") {
 						iInds[v] = k;
-					}			
+					}
 				}
 			}
-			
+
 			for (var i = 1; i < vm.tableData[0].length - 1; i++) { // vm.tableData[0].length - 1
 				resultsData[0].values.push({ //put into first one
 					x: parseFloat(vm.tableData[iInds[0]][i]), //TODO: FIX
@@ -655,27 +655,27 @@ angular.module('midjaApp')
 			}
 
 		  	console.debug(response.data);
-	
+
 			var equationParts = response.data.equation.split(" ");
-		
+
 			resultsData.push({
 					key: "Line",
 					values: [],
 					intercept: equationParts[2],
 					slope: equationParts[4]
 				});
-			
+
 			vm.linearRegression.resultsData = resultsData;
 			vm.linearRegression.results = response.data;
 			data.raw = vm.linearRegression.resultsData;
-			vm.linearRegression.sendData = data;				
+			vm.linearRegression.sendData = data;
 		});
 
 	}
 
 
 	function showPropTopicsOnly(isChecked) {
-		
+
 		if (vm.vis.category.length < 1) {
 			if(isChecked) {
 				vm.columns = vm.columnsFromMetadataPropCols;
@@ -685,13 +685,13 @@ angular.module('midjaApp')
 		} else {
 			if (vm.propTopicsOnly) {
 				vm.columns = _.filter(vm.columnsFromMetadataPropCols, function(item) {
-					return _.contains(_.pluck(vm.vis.category, 'cat_id'), item.cat_id); 
+					return _.contains(_.pluck(vm.vis.category, 'cat_id'), item.cat_id);
 				});
 			} else {
 				vm.columns = _.filter(vm.columnsFromMetadata, function(item) {
-					return _.contains(_.pluck(vm.vis.category, 'cat_id'), item.cat_id); 
-				});			
-			}		
+					return _.contains(_.pluck(vm.vis.category, 'cat_id'), item.cat_id);
+				});
+			}
 		}
 	}
 
@@ -724,11 +724,11 @@ angular.module('midjaApp')
 			"labelLocations": vm.scatterPlot.labelLocations,
 			"unit_codes": _.pluck(vm.vis.units, vm.tablePrefix + '_code')
 		};
-		
+
 		var resultsData = []
 		var ix = -1;
 		var iy = -1;
-		
+
 		for (var i = 0; i < vm.remotenessLevels.length; i++) {
 			resultsData.push({
 				key: vm.remotenessLevels[i].ra_name,
@@ -736,8 +736,8 @@ angular.module('midjaApp')
 			});
 			vm.iRemoteness[vm.remotenessLevels[i].ra_name] = i;
 		}
-		
-		
+
+
 		for (var k = 1; k < vm.tableData.length; k++) {
 			if (vm.tableData[k][0] == data.xlabel + " (" + data.xvar + ")") {
 				ix = k;
@@ -765,43 +765,43 @@ angular.module('midjaApp')
 				});
 			}
 		}
-		
+
 		vm.scatterOptions["chart"]["showLegend"] = vm.scatterPlot.useRemoteness;
-		
+
 		if (vm.scatterPlot.second != null) {
 			vm.scatterPlot.secondOptions["chart"]["showLegend"] = vm.scatterPlot.useRemoteness;
 		}
-		
+
 		vm.scatterPlot.results = resultsData;
-		
+
 		data.raw = resultsData;
 		vm.scatterPlot.sendData = data;
-		
+
 		vm.scatterOptions["chart"]["xAxis"] = {"axisLabel": data.xlabel};
 		vm.scatterOptions["chart"]["yAxis"] = {"axisLabel": data.ylabel};
-		
+
 	}
-	
+
 	function requestScatterDownload(fileType) {
 		vm.scatterPlot.filename = null;
 		vm.scatterPlot.sendData.fileType = fileType
-		$http.post('http://midja.org:3333/receive', vm.scatterPlot.sendData).then(function(response) {
+		$http.post('https://phantomjs.map.midja.org/receive', vm.scatterPlot.sendData).then(function(response) {
 			vm.scatterPlot.filename = response.data;
 			var newWindow = window.open('')
-			newWindow.location = "http://www.midja.org:3333/"+response.data;
-		});		
+			newWindow.location = "https://phantomjs.map.midja.org/"+response.data;
+		});
 	}
-	
+
 	function requestLinearRegressionDownload(fileType) {
 		vm.linearRegression.filename = null;
 		vm.linearRegression.sendData.fileType = fileType
-		$http.post('http://midja.org:3333/receive', vm.linearRegression.sendData).then(function(response) {
+		$http.post('https://phantomjs.map.midja.org/receive', vm.linearRegression.sendData).then(function(response) {
 			vm.linearRegression.filename = response.data;
 			var newWindow = window.open('')
-			newWindow.location = "http://www.midja.org:3333/"+response.data;			
-		});		
+			newWindow.location = "https://phantomjs.map.midja.org/"+response.data;
+		});
 	}
-	
+
 	$scope.openScatterModal = function () {
 
 		var modalInstance = $uibModal.open({
@@ -818,7 +818,7 @@ angular.module('midjaApp')
 
 		modalInstance.result.then(function () {
 		}, function () {
-		
+
 		});
 	};
 
@@ -838,15 +838,15 @@ angular.module('midjaApp')
 		//TODO: try without
 		modalInstance.result.then(function () {
 		}, function () {
-		
+
 		});
 	};
-	
-});	
-	
+
+});
+
 angular.module('midjaApp').controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, vm) {
 	$scope.vm = vm;
-	
+
 	vm.scatterPlot.second = "#scatterGraphModal";
 	$scope.modalCfg = angular.copy(vm.scatterOptions);
 	$scope.modalCfg["chart"]["width"] = 800;
@@ -858,11 +858,11 @@ angular.module('midjaApp').controller('ModalInstanceCtrl', function ($scope, $ui
 		vm.scatterPlot.secondOptions = null;
 		$uibModalInstance.close();
 	};
-});	
+});
 
 angular.module('midjaApp').controller('RegModalInstanceCtrl', function ($scope, $uibModalInstance, vm) {
 	$scope.vm = vm;
-	
+
 	if (vm.linearRegression.sendData.modelType == "bar") {
 		$scope.modalCfg = angular.copy(vm.barRegressionOptions);
 	} else {
@@ -898,7 +898,7 @@ angular.module('midjaApp')
 		store.remove('token');
 		$location.path('/login');
 		$scope.auth.signin();
-  }  
+  }
 
 });
 
@@ -916,4 +916,4 @@ angular.module('midjaApp').controller('DetailsModalInstanceCtrl', function ($sco
 		$uibModalInstance.dismiss('cancel');
 	};
 	$scope.vm.placeDetails = stats.rows[0];
-});		
+});

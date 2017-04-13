@@ -161,15 +161,15 @@ angular.module('midjaApp')
                 return places;
             });
         }
-		
+
         function getLgaPlacesStartingWith(name, block) {
             // get all lga names from server somehow
-			
+
 			var LGASql = 'SELECT lga_code, lga_name FROM lga_565_iba_final ' +
 					'WHERE lga_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';
-					
+
 			var stateSql = 'SELECT DISTINCT state_code, state_name FROM lga_565_iba_final ' +
-					'WHERE state_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';	
+					'WHERE state_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';
             var promises = [
                 doQuery(LGASql),
                 doQuery(stateSql)
@@ -213,8 +213,9 @@ angular.module('midjaApp')
 
         function doQuery(sql) {
             var query = new cartodb.SQL({
+                protocol: 'https',
                 user: 'midja',
-                host: 'portal.midja.org:8080',
+                host: 'portal.midja.org',
                 api_key: 'da4921d7f2b99244897b313a75f0bd977c775a5e',
                 extra_params: {
                     map_key: 'da4921d7f2b99244897b313a75f0bd977c775a5e'

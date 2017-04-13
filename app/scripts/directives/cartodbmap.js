@@ -77,9 +77,9 @@ angular.module('midjaApp')
 
                 cartodb.createLayer(map, {
                     user_name: 'midja',
-                    tiler_protocol: 'http',
+                    tiler_protocol: 'https',
                     tiler_domain: 'portal.midja.org',
-                    tiler_port: '8181',
+                    tiler_port: '443',
                     extra_params: {
                         map_key: 'da4921d7f2b99244897b313a75f0bd977c775a5e'
                     },
@@ -192,17 +192,17 @@ angular.module('midjaApp')
 							console.log($rootScope)
 							var vm = $rootScope.$$childTail.vm;
 							if (vm.vis.choropleth.topic.name != vm.vis.bubble.topic.name) {
-							
+
 								if (mouseOverFeature[0].column != vm.vis.bubble.topic.name && vm.vis.bubble.topic.name) {
 									// pleth
 									$rootScope.feature = mouseOverFeature;
 									newData.level_name = mouseOverFeature[0].level_name;
 									newData.label = labelService.getLabelFromLocalMapping(vm.vis.bubble.topic.name);
-									
+
 									var topicShort = _.findWhere(vm.vis.topics, {'name': vm.vis.bubble.topic.name})['short_desc']
 									var fullTopic = topicShort+' ('+vm.vis.bubble.topic.name+')'
 									var placeIndex = _.indexOf(vm.tableData[0], newData.level_name);
-									var topicIndex = _.findIndex(vm.tableData, function(row) {return row[0] == fullTopic;});									
+									var topicIndex = _.findIndex(vm.tableData, function(row) {return row[0] == fullTopic;});
 									if (!$rootScope.feature2 || ($rootScope.feature2 && newData.level_name != $rootScope.feature2.level_name)) {
 										$rootScope.feature2 = "temp";
 										newData.value = vm.tableData[topicIndex][placeIndex];
@@ -217,13 +217,13 @@ angular.module('midjaApp')
 									var topicShort = _.findWhere(vm.vis.topics, {'name': vm.vis.choropleth.topic.name})['short_desc']
 									var fullTopic = topicShort+' ('+vm.vis.choropleth.topic.name+')'
 									var placeIndex = _.indexOf(vm.tableData[0], newData.level_name);
-									var topicIndex = _.findIndex(vm.tableData, function(row) {return row[0] == fullTopic;});	
-									
+									var topicIndex = _.findIndex(vm.tableData, function(row) {return row[0] == fullTopic;});
+
 									if (!$rootScope.feature || ($rootScope.feature && newData.level_name != $rootScope.feature.level_name)) {
 										$rootScope.feature = "temp";
 										newData.value = vm.tableData[topicIndex][placeIndex];
 										$rootScope.feature = [newData];
-									}							
+									}
 								}
 							} else {
 									$rootScope.feature = [mapService.transformFeatureData(data)];
@@ -238,7 +238,7 @@ angular.module('midjaApp')
                 subLayer.on('featureClick', function (e, latlng, pos, data) {
                     scope.$apply(function () {
                         //$rootScope.test = $rootScope.test || [];
-                        //$rootScope.test.unshift(mapService.transformFeatureData(data));					
+                        //$rootScope.test.unshift(mapService.transformFeatureData(data));
 						if ($rootScope.placeDetails == null) {
 							$rootScope.placeDetails = 1;
 							var vm = $rootScope.$$childTail.vm;
@@ -267,7 +267,7 @@ angular.module('midjaApp')
 								}, function () {
 									$rootScope.placeDetails = null;
 								});
-							});	
+							});
 						}
                     });
                 });
