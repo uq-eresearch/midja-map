@@ -601,7 +601,7 @@ angular.module('midjaApp')
 			"unit_type": vm.tablePrefix
 		};
 		console.debug(data);
-		$http.post('https://map.midja.org/sdmx/', data).then(function (response) {
+		$http.post('https://stats.map.midja.org/', data).then(function (response) {
 			var iDep = -1;
 			console.debug('response',response);
 			var iInds = Array.apply(null, Array(data.indepVars.length)).map(Number.prototype.valueOf,0);
