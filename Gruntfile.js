@@ -27,6 +27,17 @@ module.exports = function (grunt) {
         // Project settings
         yeoman: appConfig,
 
+        favicons: {
+            options: {
+              apple: false,
+              windowsTile: false,
+            },
+            icons: {
+              src: 'app/images/noun_888659.png',
+              dest: '<%= yeoman.dist %>'
+            }
+        },
+
         'gh-pages': {
             options: {
                 base: 'dist',
@@ -471,6 +482,7 @@ module.exports = function (grunt) {
         'concurrent:dist',
         'autoprefixer',
         'concat',
+        'favicons',
         'ngAnnotate',
         'copy:dist',
         'cdnify',
