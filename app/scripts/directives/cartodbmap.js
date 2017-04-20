@@ -52,13 +52,6 @@ angular.module('midjaApp')
                     //infowindow: true
                 });
 
-                //L.tileLayer('https://dnv9my2eseobd.cloudfront.net/v3/cartodb.map-4xtxp73f/{z}/{x}/{y}.png', {
-                //    attribution: 'Mapbox <a href="http://mapbox.com/about/maps" target="_blank">Terms &amp; Feedback</a>'
-                //}).addTo(map);
-
-                //var layerUrl = 'http://midja.portal.midja.org/api/v2/viz/b7711414-2111-11e4-96b7-fa163e6cce2e/viz.json';
-
-
                 // add a nice baselayer from Stamen
                 L.tileLayer('https://maps.nlp.nokia.com/maptiler/v2/maptile/newest/normal.day/{z}/{x}/{y}/' +
                 '256/png8?lg=eng&token=A7tBPacePg9Mj_zghvKt9Q&app_id=KuYppsdXZznpffJsKT24', {

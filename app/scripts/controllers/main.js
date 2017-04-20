@@ -303,7 +303,7 @@ angular.module('midjaApp')
 		}
 
 
-		$http.get('https://metaservice.map.midja.org/datasets/' + table + '?expanded').then(function(response) {
+		$http.get('/metaservice/datasets/' + table + '?expanded').then(function(response) {
 			vm.columnsFromMetadata = _.reject(response.data.attributes, function(column) {
 				return column.data_type !== 'number';
 			});
@@ -315,7 +315,7 @@ angular.module('midjaApp')
 			});
 		});
 		/*
-		$http.get('https://metaservice.map.midja.org/categories/all').then(function(response) {
+		$http.get('/metaservice/categories/all').then(function(response) {
 			vm.categories = response.data;
 		});
 		*/
@@ -601,7 +601,7 @@ angular.module('midjaApp')
 			"unit_type": vm.tablePrefix
 		};
 		console.debug(data);
-		$http.post('https://stats.map.midja.org/', data).then(function (response) {
+		$http.post('/stats/', data).then(function (response) {
 			var iDep = -1;
 			console.debug('response',response);
 			var iInds = Array.apply(null, Array(data.indepVars.length)).map(Number.prototype.valueOf,0);
@@ -785,20 +785,20 @@ angular.module('midjaApp')
 	function requestScatterDownload(fileType) {
 		vm.scatterPlot.filename = null;
 		vm.scatterPlot.sendData.fileType = fileType
-		$http.post('https://phantomjs.map.midja.org/receive', vm.scatterPlot.sendData).then(function(response) {
+		$http.post('/phantomjs/receive', vm.scatterPlot.sendData).then(function(response) {
 			vm.scatterPlot.filename = response.data;
 			var newWindow = window.open('')
-			newWindow.location = "https://phantomjs.map.midja.org/"+response.data;
+			newWindow.location = "/phantomjs/"+response.data;
 		});
 	}
 
 	function requestLinearRegressionDownload(fileType) {
 		vm.linearRegression.filename = null;
 		vm.linearRegression.sendData.fileType = fileType
-		$http.post('https://phantomjs.map.midja.org/receive', vm.linearRegression.sendData).then(function(response) {
+		$http.post('/phantomjs/receive', vm.linearRegression.sendData).then(function(response) {
 			vm.linearRegression.filename = response.data;
 			var newWindow = window.open('')
-			newWindow.location = "https://phantomjs.map.midja.org/"+response.data;
+			newWindow.location = "/phantomjs/"+response.data;
 		});
 	}
 

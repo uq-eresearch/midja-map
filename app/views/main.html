@@ -8,21 +8,21 @@
 		<div ng-show="vm.placeDetails.iloc_name != null">
 			<div>
 			Name: {{vm.placeDetails.iloc_name}}
-			</div>		
+			</div>
 			<div>
 			Total Number of IBA Loans: {{vm.placeDetails.num_apps}}
-			</div>		
+			</div>
 			<div>
 			Total Amount of IBA Loans: {{vm.placeDetails.total_loan}}
 			</div>
-		</div>	
+		</div>
 		<div ng-show="vm.placeDetails.lga_name != null">
 			<div>
 			Name: {{vm.placeDetails.lga_name}}
 			</div>
 			<div>
 			Remoteness: {{vm.placeDetails.ra_name}}
-			</div>			
+			</div>
 			<div>
 			Number of Indigenous Households: {{vm.placeDetails.n_indig_h}}
 			</div>
@@ -37,7 +37,7 @@
 			</div>
 			<div>
 			Median Annual Mortgage: {{vm.placeDetails.median_mor}}
-			</div>		
+			</div>
 			<div>
 			Percentage Indigenous in Full-time employment: {{vm.placeDetails.f_time}}
 			</div>
@@ -46,7 +46,7 @@
 			</div>
 			<div>
 			Average Indigenous Household Size: {{vm.placeDetails.ave_h_s}}
-			</div>			
+			</div>
 			<div>
 			Potential Indigenous Home Ownership Index: {{vm.placeDetails.piho}}
 			</div>
@@ -56,7 +56,7 @@
 			<div>
 			IBA Total Amount of Loans: {{vm.placeDetails.iba_a_loan}}
 			</div>
-		
+
 		</div>
 	</div>
 	<div class="modal-footer">
@@ -76,7 +76,7 @@
                     <div class="form-group">
                         <label>Location Type
                             <small class="text-muted">Required</small>
-                        </label>					
+                        </label>
 						<div ng-repeat="sel in vm.unitSels">
 							<label>
 								<input type="radio"
@@ -90,7 +90,7 @@
 						<div ng-show="vm.vis.unitSel === 'LGAs'">
 							<label>Filter
 								<small class="text-muted">Optional</small>
-							</label>					
+							</label>
 							<div ng-repeat="filter in vm.filters">
 								<label>
 									<input type="checkbox"
@@ -103,7 +103,7 @@
 								</label>
 							</div>
 						</div>
-						
+
                         <label style="margin-top: 20px;">Choose a Place
                             <small class="text-muted">Required</small>
                         </label>
@@ -214,12 +214,12 @@
                         <h2><i class="fa fa-list-alt"></i> Topics of interest</h2>
 
                         <div class="form-group">
-						
+
 							<!--
 							<label>Category filter
                                 <small class="text-muted">Optional</small>
                             </label>
-							
+
                             <ui-select multiple
                                        theme="bootstrap"
                                        ng-model="vm.vis.category"
@@ -237,7 +237,7 @@
                             </ui-select>
 
 							-->
-							
+
                             <label>Choose topic(s) of interest
                                 <small class="text-muted">Required</small>
                             </label>
@@ -407,10 +407,10 @@
                                         <div ng-show="vm.scatterPlot.results">
 											<div>
 													<nvd3 id="scatterGraph" options="vm.scatterOptions" data="vm.scatterPlot.results"></nvd3>
-											</div>	
+											</div>
 											<button ng-click="vm.requestScatterDownload('pdf')">Request PDF</button>
 											<button ng-click="vm.requestScatterDownload('png')">Request PNG</button>
-											
+
 											<script type="text/ng-template" id="scatter.html">
 												<div class="modal-header">
 													<h3 class="modal-title">Scatter Plot</h3>
@@ -435,9 +435,6 @@
 													</div>
 													<button ng-click="vm.requestScatterDownload('pdf')">Request PDF</button>
 													<button ng-click="vm.requestScatterDownload('png')">Request PNG</button>
-													<!--
-													<a class="btn btn-default" ng-show="vm.scatterPlot.filename" ng-href="http://midja.org:3333/{{ vm.scatterPlot.filename }}" download>Download</a>
-													-->
 												</div>
 												<div class="modal-footer">
 													<button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
@@ -445,10 +442,7 @@
 											</script>
 
 											<button type="button" class="btn btn-default" ng-click="openScatterModal()">Enlarge</button>
-											
-											<!--
-											<a class="btn btn-default" ng-show="vm.scatterPlot.filename" ng-href="http://midja.org:3333/{{ vm.scatterPlot.filename }}" download>Download</a>
-											-->
+
 										</div>
 
                                     </div>
@@ -521,7 +515,7 @@
 											</div>
 											<div ng-show="vm.linearRegression.sendData.indepVars.length>1">
 													<nvd3 id="RegressionGraph" options="vm.barRegressionOptions" data="vm.linearRegression.resultsData"></nvd3>
-											</div>	   											
+											</div>
 
                                             <dl>
                                                 <dt>R Squared</dt>
@@ -540,25 +534,19 @@
 													<div class="modal-header">
 														<h3 class="modal-title">Linear Regression</h3>
 													</div>
-													<div class="modal-body">												
+													<div class="modal-body">
 														<div>
 															<nvd3 id="RegressionGraphModal" options="modalCfg" data="vm.linearRegression.resultsData"></nvd3>
 														</div>
 														<button ng-click="vm.requestScatterDownload('pdf')">Request PDF</button>
 														<button ng-click="vm.requestScatterDownload('png')">Request PNG</button>
-														<!--
-														<a class="btn btn-default" ng-show="vm.scatterPlot.filename" ng-href="http://midja.org:3333/{{ vm.scatterPlot.filename }}" download>Download</a>
-														-->
 													</div>
 													<div class="modal-footer">
 														<button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
 													</div>
 												</script>
 
-												<button type="button" class="btn btn-default" ng-click="openRegModal()">Enlarge</button>												
-												<!--
-												<a class="btn btn-default" ng-show="vm.linearRegression.filename" ng-href="http://midja.org:3333/{{ vm.linearRegression.filename }}" download>Download</a>
-												-->
+												<button type="button" class="btn btn-default" ng-click="openRegModal()">Enlarge</button>
 											</p>
                                         </div>
                                     </div>
@@ -582,7 +570,7 @@
 					style="position:absolute; right:0px; top:0px;"
 					ng-click="vm.toggleDataColumn()"
 					ng-class="{'fa-chevron-circle-right': vm.dataColumnVisible, 'fa-chevron-circle-left': !vm.dataColumnVisible}">
-				</i>                
+				</i>
 
                 <div class="well" style="position: absolute; top: 10px; right: 30px" ng-show="feature">
                     <div ng-repeat="selection in feature">
@@ -594,7 +582,7 @@
                         </div>
                         <div ng-repeat="selection2 in feature2">
                             <em>{{ selection2.label }}</em> = {{ selection2.value }}
-                        </div>						
+                        </div>
                     </div>
                 </div>
 

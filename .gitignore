@@ -5,3 +5,5 @@ dist
 bower_components
 .grunt
 .idea
+/*.aci
+/*.docker

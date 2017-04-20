@@ -54,13 +54,13 @@ angular
             .otherwise({
                 redirectTo: '/'
             });
-			
+
 		authProvider.init({
 			domain: 'midja.au.auth0.com',
 			clientID: 'G1uK0s3MIrQEqeNkfKkGs4IxWpnWxjef',
 			loginUrl: '/login'
 		});
-		
+
 		//Called when login is successful
 		authProvider.on('loginSuccess', function($location, profilePromise, idToken, store) {
 		  console.log("Login Success");
@@ -75,15 +75,15 @@ angular
 		authProvider.on('loginFailure', function() {
 		  console.log("Error");
 		  $location.path('/login');
-		});		
-		
+		});
+
 		//Angular HTTP Interceptor function
 		jwtInterceptorProvider.tokenGetter = function(store) {
 			return store.get('token');
 		}
 		//Push interceptor function to $httpProvider's interceptors
-		//$httpProvider.interceptors.push('jwtInterceptor');		
-		
+		//$httpProvider.interceptors.push('jwtInterceptor');
+
     })
 	.run(function($rootScope, auth, store, jwtHelper, $location) {
 	  $rootScope.$on('$locationChangeStart', function() {
@@ -101,4 +101,4 @@ angular
 		  }
 		}
 	  });
-	});	
+	});
