@@ -11,8 +11,6 @@ angular.module('midjaApp')
     .factory('dataService', function ($http, cartoDbApiKey, cartodb, $q, labelService) {
 
         return {
-            getTables: getTables,
-            getTableSchema: getTableSchema,
             getBuckets: getBuckets,
             getIlocLocationsStartingWith: getIlocPlacesStartingWith,
 			getLgaLocationsStartingWith: getLgaPlacesStartingWith,
@@ -20,31 +18,6 @@ angular.module('midjaApp')
             doQuery: doQuery,
             mysqlRealEscapeString: mysqlRealEscapeString
         };
-
-        /**
-         * Get all the tables
-         * @returns {*}
-         */
-        function getTables() {
-            var tableUrl = 'http://midja.portal.midja.org/api/v1/viz/?tag_name=&q=&page=1&type=table&per_page=10000&tags=&order=updated_at&o%5Bupdated_at%5D=desc&api_key=' + cartoDbApiKey; // jshint ignore:line
-            return $http.get(tableUrl).then(getTablesComplete);
-
-            function getTablesComplete(response) {
-                var tables = response.data.visualizations;
-                return tables;
-            }
-        }
-
-        function getTableSchema(table) {
-            var tableName = table.name;
-            return $http.get('http://midja.portal.midja.org/api/v1/tables/' + tableName + '?api_key=' + cartoDbApiKey)
-                .then(getTableSchemaComplete);
-
-            function getTableSchemaComplete(response) {
-                var schema = response.data.schema;
-                return schema;
-            }
-        }
 
         /**
          * Get All Locations for  Place
@@ -212,22 +185,11 @@ angular.module('midjaApp')
         }
 
         function doQuery(sql) {
-            var query = new cartodb.SQL({
-                protocol: 'https',
-                user: 'midja',
-                host: 'portal.midja.org',
-                api_key: 'da4921d7f2b99244897b313a75f0bd977c775a5e',
-                extra_params: {
-                    map_key: 'da4921d7f2b99244897b313a75f0bd977c775a5e'
-                }
+          return $http
+            .get("/sql/?q="+encodeURI(sql))
+            .then(function(result) {
+              console.log(result);
+              return result.data;
             });
-            var deferred = $q.defer();
-
-            query.execute(sql).done(function(results) {
-                deferred.resolve(results);
-            }).error(function() {
-                deferred.reject();
-            });
-            return deferred.promise;
         }
     });

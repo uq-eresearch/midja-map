@@ -21,6 +21,54 @@ module.exports = function (grunt) {
         dist: 'dist'
     };
 
+    var proxy = require('http-proxy-middleware');
+
+    function commonMiddlewares(connect) {
+      return [
+        proxy('/metaservice/', {
+          target: 'http://127.0.0.1:9001',
+          changeOrigin: true,
+          pathRewrite: {
+            '^/metaservice/': '/'
+          }
+        }),
+        proxy('/phantomjs/', {
+          target: 'http://127.0.0.1:9002',
+          changeOrigin: true,
+          pathRewrite: {
+            '^/phantomjs/': '/'
+          }
+        }),
+        proxy('/sql/', {
+          target: 'http://127.0.0.1:9003',
+          changeOrigin: true,
+          pathRewrite: {
+            '^/sql/': '/'
+          }
+        }),
+        proxy('/stats/', {
+          target: 'http://127.0.0.1:9004',
+          changeOrigin: true,
+          pathRewrite: {
+            '^/stats/': '/'
+          }
+        }),
+        proxy('/windshaft/', {
+          target: 'http://127.0.0.1:9005',
+          changeOrigin: true,
+          pathRewrite: {
+            '^/windshaft/': '/'
+          }
+        }),
+        connect.static('.tmp'),
+        connect().use(
+            '/bower_components',
+            connect.static('./bower_components')
+        ),
+        connect.static(appConfig.app)
+      ]
+    }
+
     // Define the configuration for all the tasks
     grunt.initConfig({
 
@@ -67,24 +115,9 @@ module.exports = function (grunt) {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
                 tasks: ['sass:server', 'autoprefixer']
             },
-            //compass: {
-            //    files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
-            //    tasks: ['compass:server', 'autoprefixer']
-            //},
             gruntfile: {
                 files: ['Gruntfile.js']
-            },
-//            livereload: {
- //               options: {
-                //    livereload: '<%= connect.options.livereload %>'
-  //                  livereload: false
-   //             },
-    //            files: [
-    //                '<%= yeoman.app %>/{,*/}*.html',
-     //               '.tmp/styles/{,*/}*.css',
-      //              '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-       //         ]
-        //    }
+            }
         },
 
         // The actual grunt server settings
@@ -99,15 +132,8 @@ module.exports = function (grunt) {
             livereload: {
                 options: {
                     open: false,
-                    middleware: function (connect) {
-                        return [
-                            connect.static('.tmp'),
-                            connect().use(
-                                '/bower_components',
-                                connect.static('./bower_components')
-                            ),
-                            connect.static(appConfig.app)
-                        ];
+                    middleware: function (connect, options, middlewares) {
+                        return [].concat(commonMiddlewares(connect));
                     }
                 }
             },
@@ -116,14 +142,8 @@ module.exports = function (grunt) {
                     port: 9001,
                     middleware: function (connect) {
                         return [
-                            connect.static('.tmp'),
-                            connect.static('test'),
-                            connect().use(
-                                '/bower_components',
-                                connect.static('./bower_components')
-                            ),
-                            connect.static(appConfig.app)
-                        ];
+                          connect.static('test')
+                        ].concat(commonMiddlewares(connect));
                     }
                 }
             },

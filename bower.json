@@ -21,7 +21,8 @@
     "nvd3": "^1.7.1",
     "angular-nvd3": "^1.0.5",
     "auth0-lock": ">= 6.3.0",
-    "auth0.js": ">= 5.2.2"
+    "auth0.js": ">= 5.2.2",
+    "Leaflet.utfgrid": "*"
   },
   "devDependencies": {
     "angular-mocks": ">=1.3.0",
