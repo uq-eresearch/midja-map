@@ -144,6 +144,7 @@ angular.module('midjaApp')
           }
 
           this.setTopLayer = function RegionLayers$setTopLayer(defn) {
+            if (!self._isValidDefn(defn)) return;
             self._definitions.top = defn;
             self._updateLayers();
           };
@@ -155,9 +156,27 @@ angular.module('midjaApp')
             }
 
           this.setBottomLayer = function RegionLayers$setBottomLayer(defn) {
+            if (!self._isValidDefn(defn)) return;
             self._definitions.bottom = defn;
             self._updateLayers();
           };
+
+          this._isValidDefn = function RegionLayers$_isValidDefn(defn) {
+            try {
+              var reqAttrs = ["sql", "cartocss", "interactivity"];
+              for (var i = 0; i < reqAttrs.length; i++) {
+                var attr = reqAttrs[i];
+                if (!defn[attr]) {
+                  console.log(JSON.stringify(defn) + " is missing " + attr);
+                  return false;
+                }
+              }
+              return true;
+            } catch (err) {
+              console.log(err.message);
+              return false;
+            }
+          }
 
           // Init
           this._updateLayers();
