@@ -1,8 +1,12 @@
-# Getting it Running
+# midja-map
+
+[![Build Status](https://travis-ci.org/uq-eresearch/midja-map.svg?branch=master)](https://travis-ci.org/uq-eresearch/midja-map)
+
+## Getting it Running
+
 So, to get started you need npm, then
 
-* Install yo, bower, grunt `npm install -g yo bower grunt-cli`
-* Install scaffolding `npm install -g generator-angular` (more info here http://yeoman.io/learning/index.html)
+* Install bower, grunt `npm install -g yo bower grunt-cli`
 
 In the project directory
 * Install node modules `npm install`
@@ -14,8 +18,8 @@ Running locally
 Building
 * Run `grunt build`. This will minify uglify and a bunch of other stuff to the files in `app/` and stick the output files in `dist/`.
 
-Deploying
-* Run `grunt gh-pages`. This will upload the files in `dist/` to the Github Pages branch of hte repo.
+Testing
+* Run `grunt test`. This will run Karma/Jasmine tests using PhantomJS.
 
 Building & Deploying to GitHub Pages
 * Run `grunt deploy`. This includes the `grunt build` and `grunt gh-pages` steps.
