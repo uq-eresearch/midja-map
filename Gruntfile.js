@@ -25,13 +25,6 @@ module.exports = function(grunt) {
 
   function commonMiddlewares(connect) {
     return [
-      proxy('/metaservice/', {
-        target: 'http://127.0.0.1:9001',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/metaservice/': '/'
-        }
-      }),
       proxy('/phantomjs/', {
         target: 'http://127.0.0.1:9002',
         changeOrigin: true,

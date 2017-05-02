@@ -317,8 +317,7 @@ angular.module('midjaApp')
       }
 
 
-      $http.get('/metaservice/datasets/' + table + '?expanded').then(function(
-        response) {
+      $http.get('/metadata/' + table + '.json').then(function(response) {
         console.log(response.data);
         vm.columnsFromMetadata = _.reject(response.data.attributes,
           function(column) {
