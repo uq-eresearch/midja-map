@@ -9,6 +9,10 @@
 angular.module('midjaApp')
   .directive('cartodbMap', function(L, $http, $rootScope, dataService,
     labelService, mapService, $uibModal) {
+
+    var map = null;
+    var regionLayers = null;
+
     return {
       template: '<div id="map" style="min-height: 300px; height:100%; width:100%"></div>',
       restrict: 'E',
@@ -24,9 +28,6 @@ angular.module('midjaApp')
     };
 
     function postLink(scope, element, attrs) {
-
-      var map = null;
-      var regionLayers = null;
 
       activate();
       // export the map reference back

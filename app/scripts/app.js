@@ -26,28 +26,10 @@ angular
     $httpProvider, $locationProvider) {
     uiSelectConfig.resetSearchInput = true;
     $routeProvider
-      .when('/', {
+      .otherwise({
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-        controllerAs: 'vm',
-        requiresLogin: false
-      })
-      .when('/login', {
-        controller: 'LoginCtrl',
-        templateUrl: 'views/login.html',
-        pageTitle: 'Login'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
-      .otherwise({
-        redirectTo: '/'
+        controllerAs: 'vm'
       });
   })
   .run(function($rootScope, $location) {
