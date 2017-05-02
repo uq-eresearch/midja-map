@@ -7,7 +7,7 @@
  * # cartodbMap
  */
 angular.module('midjaApp')
-  .directive('cartodbMap', function(cartodb, L, $http, $rootScope, dataService,
+  .directive('cartodbMap', function(L, $http, $rootScope, dataService,
     labelService, mapService, $uibModal) {
     return {
       template: '<div id="map" style="min-height: 300px; height:100%; width:100%"></div>',
