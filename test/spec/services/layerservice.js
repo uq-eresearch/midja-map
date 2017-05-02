@@ -1,22 +1,18 @@
 'use strict';
 
-describe('Service: layerService', function () {
+describe('Service: layerService', function() {
 
-    // load the service's module
-    beforeEach(module('midjaApp'));
+  // load the service's module
+  beforeEach(module('midjaApp'));
 
-    // instantiate service
-    var layerService;
-    beforeEach(inject(function (_layerService_) {
-        layerService = _layerService_;
-    }));
+  // instantiate service
+  var layerService;
+  beforeEach(inject(function(_layerService_) {
+    layerService = _layerService_;
+  }));
 
-    it('should do something', function () {
-        expect(!!layerService).toBe(true);
-    });
-
-    it('should provide a generateLayerDefinition function', function () {
-        expect(typeof layerService.generateLayerDefinition).toBe('function');
-    });
+  it('should do something', function() {
+    expect(!!layerService).toBe(true);
+  });
 
 });

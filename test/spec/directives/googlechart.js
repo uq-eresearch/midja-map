@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Directive: googlechart', function () {
+describe('Directive: googlechart', function() {
 
   // load the directive's module
   beforeEach(module('midjaApp'));
@@ -8,13 +8,13 @@ describe('Directive: googlechart', function () {
   var element,
     scope;
 
-  beforeEach(inject(function ($rootScope) {
+  beforeEach(inject(function($rootScope) {
     scope = $rootScope.$new();
   }));
 
-  it('should make hidden element visible', inject(function ($compile) {
+  it('should make hidden element visible', inject(function($compile) {
     element = angular.element('<googlechart></googlechart>');
     element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the googlechart directive');
+    expect(element.prop("tagName")).toBe('DIV');
   }));
 });
