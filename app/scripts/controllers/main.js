@@ -133,7 +133,8 @@ angular.module('midjaApp')
       filter: {
         "Population >= 150": false,
         "Households >= 20": false,
-        "Affordability >= 3": false
+        "Affordability >= 3": false,
+        "Indigenous QLD LGAs": false
       },
       locations: [],
       units: [],
@@ -183,8 +184,11 @@ angular.module('midjaApp')
     vm.selectedTable = 'lga_565_iba_final'; // TODO: tie to a GUI option, do change handler
     vm.tablePrefix = 'lga';
     vm.unitSels = ['LGAs', 'ILOCs'];
-    vm.filters = ['Population >= 150', 'Households >= 20',
-      'Affordability >= 3'
+    vm.filters = [
+      'Population >= 150',
+      'Households >= 20',
+      'Affordability >= 3',
+      'Indigenous QLD LGAs'
     ]
     vm.filterPlaces = [];
     vm.mapLegend = null;
@@ -291,9 +295,11 @@ angular.module('midjaApp')
       dataService.doQuery(sql).then(function(result) {
         vm.remotenessLevels = result.rows;
       });
-      if (vm.vis.unitSel == 'LGAs' && (vm.vis.filter['Population >= 150'] ||
-          vm.vis.filter['Households >= 20'] || vm.vis.filter[
-            'Affordability >= 3'])) {
+      if (vm.vis.unitSel == 'LGAs' && (
+          vm.vis.filter['Population >= 150'] ||
+          vm.vis.filter['Households >= 20'] ||
+          vm.vis.filter['Affordability >= 3'] ||
+          vm.vis.filter['Indigenous QLD LGAs'])) {
         var query = 'SELECT lga_code FROM ' + table + ' WHERE ';
         var constraints = "";
         if (vm.vis.filter["Population >= 150"]) {
@@ -305,6 +311,33 @@ angular.module('midjaApp')
         if (vm.vis.filter["Affordability >= 3"]) {
           constraints += addOr(constraints.length) + "afford < 3";
         }
+        if (vm.vis.filter["Indigenous QLD LGAs"]) {
+          var indigenousCouncilCodes = [
+            'LGA30250', // Aurukun Shire Council
+            'LGA32330', // Cherbourg Aboriginal Shire Council
+            'LGA32770', // Doomadgee Aboriginal Shire Council
+            'LGA33830', // Hope Vale Aboriginal Shire Council
+            'LGA34420', // Kowanyama Aboriginal Shire Council
+            'LGA34570', // Lockhart River Aboriginal Shire Council
+            'LGA34830', // Mapoon Aboriginal Shire Council
+            'LGA35250', // Mornington Shire Council
+            'LGA35670', // Napranum Aboriginal Shire Council
+            'LGA35780', // Northern Peninsula Area Regional Council
+            'LGA35790', // Palm Island Aboriginal Shire Council
+            'LGA36070', // Pormpuraaw Aboriginal Shire Council
+            'LGA36960', // Torres Strait Island Regional Council
+            'LGA37550', // Woorabinda Aboriginal Shire Council
+            'LGA37570', // Wujal Wujal Aboriginal Shire Council
+            'LGA37600' // Yarrabah Aboriginal Shire Council
+          ];
+          var constraint = "lga_code not in (" + indigenousCouncilCodes.map(
+            function(code) {
+              return "'" + code + "'";
+            }).join(",") + ")";
+          console.log(constraint);
+          constraints += addOr(constraints.length) + constraint;
+        }
+        console.log(constraints);
 
         query = query + constraints + ";";
 
