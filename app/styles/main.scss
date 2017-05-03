@@ -89,3 +89,31 @@ accordion h2, h3 {
 #columnToggleIcon:hover {
   opacity: 1.0;
 }
+
+.leaflet-control.legend {
+  padding: 1ex;
+  font-size: 11px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  box-shadow: rgba(0,0,0,.2) 0 0 4px 2px;
+  background-color: rgba(255,255,255,0.9);
+}
+
+.leaflet-control.legend ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.leaflet-control.legend li {
+  padding: 2px;
+}
+
+.leaflet-control.legend .bullet {
+  width: 15px;
+  height: 15px;
+  margin-right: 1ex;
+  float: left;
+  border: 1px solid #888888;
+  border-radius: 50%;
+}

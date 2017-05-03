@@ -55,7 +55,6 @@
     "angular": false,
     "$": false,
     "_": false,
-    "cartodb": false,
     "L": false,
     "google": false
   }

@@ -523,18 +523,26 @@ angular.module('midjaApp')
             jsonData['value'] = colors[vm.classBreaks.length - i - 1];
             legjsonObj.push(jsonData);
           }
-          var legend = new cdb.geo.ui.Legend({
-            title: leg_title,
-            show_title: false,
-            type: "custom",
-            opacity: 0.2,
-            data: legjsonObj
+          var legend = L.control({
+            position: 'bottomright'
           });
+          legend.onAdd = function(map) {
+            var div = L.DomUtil.create('div', 'legend');
+            var ul = L.DomUtil.create('ul', '', div);
+            legjsonObj.forEach(function(data) {
+              var li = L.DomUtil.create('li', '', ul);
+              var bullet = L.DomUtil.create('div', 'bullet', li);
+              bullet.style = "background: " + data.value;
+              var text = L.DomUtil.create('span', '', li);
+              text.innerHTML = data.name;
+            });
+            return div;
+          };
           if (vm.mapLegend != null) {
-            $(vm.mapLegend).hide()
+            vm.mapLegend.removeFrom(vm.map);
           }
-          vm.mapLegend = legend.render().el
-          $('#map').append(vm.mapLegend);
+          vm.mapLegend = legend;
+          vm.map.addControl(legend);
         });
       }
     }
@@ -714,7 +722,8 @@ angular.module('midjaApp')
         }
       } else {
         if (vm.propTopicsOnly) {
-          vm.columns = _.filter(vm.columnsFromMetadataPropCols, function(item) {
+          vm.columns = _.filter(vm.columnsFromMetadataPropCols, function(
+            item) {
             return _.contains(_.pluck(vm.vis.category, 'cat_id'), item.cat_id);
           });
         } else {
@@ -799,7 +808,8 @@ angular.module('midjaApp')
       vm.scatterOptions["chart"]["showLegend"] = vm.scatterPlot.useRemoteness;
 
       if (vm.scatterPlot.second != null) {
-        vm.scatterPlot.secondOptions["chart"]["showLegend"] = vm.scatterPlot.useRemoteness;
+        vm.scatterPlot.secondOptions["chart"]["showLegend"] = vm.scatterPlot
+          .useRemoteness;
       }
 
       vm.scatterPlot.results = resultsData;
@@ -819,12 +829,13 @@ angular.module('midjaApp')
     function requestScatterDownload(fileType) {
       vm.scatterPlot.filename = null;
       vm.scatterPlot.sendData.fileType = fileType
-      $http.post('/phantomjs/receive', vm.scatterPlot.sendData).then(function(
-        response) {
-        vm.scatterPlot.filename = response.data;
-        var newWindow = window.open('')
-        newWindow.location = "/phantomjs/" + response.data;
-      });
+      $http.post('/phantomjs/receive', vm.scatterPlot.sendData).then(
+        function(
+          response) {
+          vm.scatterPlot.filename = response.data;
+          var newWindow = window.open('')
+          newWindow.location = "/phantomjs/" + response.data;
+        });
     }
 
     function requestLinearRegressionDownload(fileType) {
@@ -895,7 +906,8 @@ angular.module('midjaApp').controller('ModalInstanceCtrl', function($scope,
   };
 });
 
-angular.module('midjaApp').controller('RegModalInstanceCtrl', function($scope,
+angular.module('midjaApp').controller('RegModalInstanceCtrl', function(
+  $scope,
   $uibModalInstance, vm) {
   $scope.vm = vm;
 
