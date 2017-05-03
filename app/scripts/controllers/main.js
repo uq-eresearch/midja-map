@@ -8,7 +8,7 @@
  * Controller of the midjaApp
  */
 angular.module('midjaApp')
-  .controller('MainCtrl', function(datasetService, layerService,
+  .controller('MainCtrl', function(metadataService, layerService,
     dataService, labelService, $http, $scope, $uibModal, $timeout, $window) {
     var vm = this;
     vm.propTopicsOnly = false;
@@ -316,10 +316,9 @@ angular.module('midjaApp')
         vm.filterPlaces = []
       }
 
-
-      $http.get('/metadata/' + table + '.json').then(function(response) {
-        console.log(response.data);
-        vm.columnsFromMetadata = _.reject(response.data.attributes,
+      metadataService.getDataset(table).then(function(data) {
+        console.log(data);
+        vm.columnsFromMetadata = _.reject(data.attributes,
           function(column) {
             return column.data_type !== 'number';
           });
@@ -335,11 +334,6 @@ angular.module('midjaApp')
 
     function isDataSelected() {
       return vm.vis.topics.length && vm.vis.locations.length;
-    }
-
-
-    function getColumns(dataset) {
-      return datasetService.getColumns(dataset);
     }
 
     function selectedFiltersChanged() {

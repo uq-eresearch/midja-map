@@ -204,13 +204,12 @@ angular.module('midjaApp')
       }
 
       $rootScope.$on('featureOver', function(e, data) {
-        scope.$apply(function() {
+        labelService.getResolver().then(function(getLabel) {
+          var transform = mapService.getFeatureTransformer(getLabel);
           if (!$rootScope.feature || $rootScope.feature[0].level_name !=
-            mapService.transformFeatureData(data).level_name) {
-            var mouseOverFeature = [mapService.transformFeatureData(
-              data)];
-            var newData = {}
-            console.log($rootScope)
+            transform(data).level_name) {
+            var mouseOverFeature = [transform(data)];
+            var newData = {};
             var vm = $rootScope.$$childTail.vm;
             if (vm.vis.choropleth.topic.name != vm.vis.bubble.topic
               .name) {
@@ -220,20 +219,20 @@ angular.module('midjaApp')
                 // pleth
                 $rootScope.feature = mouseOverFeature;
                 newData.level_name = mouseOverFeature[0].level_name;
-                newData.label = labelService.getLabelFromLocalMapping(
-                  vm.vis.bubble.topic.name);
+                newData.label = getLabel(vm.vis.bubble.topic.name);
 
                 var topicShort = _.findWhere(vm.vis.topics, {
                   'name': vm.vis.bubble.topic.name
                 })['short_desc']
-                var fullTopic = topicShort + ' (' + vm.vis.bubble.topic
-                  .name + ')'
-                var placeIndex = _.indexOf(vm.tableData[0], newData
+                var fullTopic = topicShort +
+                  ' (' + vm.vis.bubble.topic.name + ')';
+                var placeIndex = _.indexOf(vm.tableData[0],
+                  newData
                   .level_name);
-                var topicIndex = _.findIndex(vm.tableData, function(
-                  row) {
-                  return row[0] == fullTopic;
-                });
+                var topicIndex = _.findIndex(vm.tableData,
+                  function(row) {
+                    return row[0] == fullTopic;
+                  });
                 if (!$rootScope.feature2 || ($rootScope.feature2 &&
                     newData.level_name != $rootScope.feature2.level_name
                   )) {
@@ -248,20 +247,21 @@ angular.module('midjaApp')
                 // bubble
                 $rootScope.feature2 = mouseOverFeature;
                 newData.level_name = mouseOverFeature[0].level_name;
-                newData.label = labelService.getLabelFromLocalMapping(
-                  vm.vis.choropleth.topic.name);
+                newData.label = getLabel(vm.vis.choropleth.topic.name);
 
                 var topicShort = _.findWhere(vm.vis.topics, {
                   'name': vm.vis.choropleth.topic.name
                 })['short_desc']
                 var fullTopic = topicShort + ' (' + vm.vis.choropleth
                   .topic.name + ')'
-                var placeIndex = _.indexOf(vm.tableData[0], newData
+                var placeIndex = _.indexOf(vm.tableData[0],
+                  newData
                   .level_name);
-                var topicIndex = _.findIndex(vm.tableData, function(
-                  row) {
-                  return row[0] == fullTopic;
-                });
+                var topicIndex = _.findIndex(vm.tableData,
+                  function(
+                    row) {
+                    return row[0] == fullTopic;
+                  });
 
                 if (!$rootScope.feature || ($rootScope.feature &&
                     newData.level_name != $rootScope.feature.level_name
@@ -274,19 +274,16 @@ angular.module('midjaApp')
                 }
               }
             } else {
-              $rootScope.feature = [mapService.transformFeatureData(
+              $rootScope.feature = [transform(
                 data)];
               $rootScope.feature2 = null;
             }
           }
-
         });
       });
 
       $rootScope.$on('featureClick', function(e, data) {
         scope.$apply(function() {
-          //$rootScope.test = $rootScope.test || [];
-          //$rootScope.test.unshift(mapService.transformFeatureData(data));
           if ($rootScope.placeDetails == null) {
             $rootScope.placeDetails = 1;
             var vm = $rootScope.$$childTail.vm;
