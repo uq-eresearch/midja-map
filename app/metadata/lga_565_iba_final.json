@@ -105,6 +105,12 @@
       "short_desc": "Number of Indigenous Households",
       "long_desc": "Number of Indigenous Households",
       "data_type": "number"
+    },
+    {
+      "name": "avg_persons_per_bedroom_2011",
+      "short_desc": "Average Persons per bedroom in dwellings (2011)",
+      "long_desc": "Average Persons per bedroom in dwellings (2011)",
+      "data_type": "number"
     }
   ]
 }
