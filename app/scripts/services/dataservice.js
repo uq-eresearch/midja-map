@@ -182,7 +182,7 @@ angular.module('midjaApp')
     function getBuckets(column, sql, numberOfBuckets) {
       numberOfBuckets = numberOfBuckets || 7;
 
-      var sql = 'select unnest(CDB_QuantileBins(array_agg(distinct((' +
+      var sql = 'select unnest(cartodb.CDB_QuantileBins(array_agg(distinct((' +
         column.name + '::numeric))), ' +
         numberOfBuckets + ')) as buckets from (' + sql +
         ') _table_sql where ' + column.name + ' is not null';
