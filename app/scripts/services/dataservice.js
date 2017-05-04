@@ -8,13 +8,16 @@
  * Factory in the midjaApp.
  */
 angular.module('midjaApp')
-  .factory('dataService', function($http, $q, labelService) {
+  .factory('dataService', function($http, $q, metadataService, labelService) {
 
     return {
       getBuckets: getBuckets,
+      getQuantileBuckets: getQuantileBuckets,
       getIlocLocationsStartingWith: getIlocPlacesStartingWith,
       getLgaLocationsStartingWith: getLgaPlacesStartingWith,
       getLocsInPlaces: getLocsInPlaces,
+      getGeoData: getGeoData,
+      getTopicData: getTopicData,
       doQuery: doQuery,
       mysqlRealEscapeString: mysqlRealEscapeString
     };
@@ -191,6 +194,82 @@ angular.module('midjaApp')
         var values = _.pluck(results.rows, 'buckets').reverse();
         return values;
       });
+    }
+
+    function getGeoData(dataset, attributes, locations) {
+      return metadataService.getDataset(dataset).then(function(metadata) {
+        var table = metadata.geolevel + "_2011_aust";
+        var regionColumn = metadata.region_column;
+        var columns = [regionColumn].concat(attributes);
+
+        var sql = [
+          'SELECT ' + columns.join(', '),
+          'FROM ' + table,
+          'WHERE ' + sqlCondition(regionColumn, locations)
+        ].join(" ");
+        return doQuery(sql).then(function(result) {
+          return _.zipObject(
+            _.map(result.rows, _.property(regionColumn)),
+            result.rows
+          );
+        });
+      });
+    }
+
+    function getTopicData(dataset, attributes, locations) {
+      console.log(dataset, attributes, locations);
+      return metadataService.getDataset(dataset).then(function(metadata) {
+        if (!metadata) {
+          console.log('Dataset "' + dataset + '" not found!');
+          return {};
+        }
+        var table = metadata.name;
+        var regionColumn = metadata.region_column;
+        var availableAttributes =
+          _.map(metadata.attributes, _.property('name')).concat([
+            'ra_name'
+          ]);
+        var columns = [regionColumn].concat(
+          _.intersection(availableAttributes, attributes));
+
+        var sql = [
+          'SELECT ' + columns.join(', '),
+          'FROM ' + table,
+          'WHERE ' + sqlCondition(regionColumn, locations)
+        ].join(" ");
+        return doQuery(sql).then(function(result) {
+          return _.zipObject(
+            _.map(result.rows, _.property(regionColumn)),
+            result.rows
+          );
+        });
+      });
+    }
+
+    function sqlCondition(regionColumn, locations) {
+      if (!locations) {
+        return regionColumn + "IS NOT NULL";
+      }
+      var regions = _.uniq(_.pluck(locations, regionColumn));
+      return regionColumn +
+        ' IN (' +
+        regions.map(function(region) {
+          return "'" + region + "'";
+        }).join(",") +
+        ')';
+    }
+
+    function getQuantileBuckets(values, numberOfBuckets) {
+      var breakPoints = _.map(_.range(0, numberOfBuckets + 1), function(i) {
+        var quantile = 1.0 / numberOfBuckets * i;
+        return ss.quantile(values, quantile);
+      });
+      return _.map(_.range(0, numberOfBuckets), function(i) {
+        return {
+          min: breakPoints[i],
+          max: breakPoints[i + 1]
+        };
+      })
     }
 
     function doQuery(sql) {

@@ -20,7 +20,7 @@ angular.module('midjaApp')
     // Public API here
     return {
       build: build,
-      legendPoints: legendPoints,
+      getBuckets: getBuckets,
       generateSql: generateSql,
       generateCss: generateCss
     };
@@ -36,21 +36,19 @@ angular.module('midjaApp')
 
     function build(table, column, locations) {
       var sql = generateSql(table, column, locations);
-      return dataService.getBuckets(column, sql, 4).then(getBucketsComplete);
-
-      function getBucketsComplete(buckets) {
-        var cartoCss = generateCss(buckets, table, column);
-
-        return new PolygonLayerDefinition(sql, cartoCss, table, column);
-      }
+      return getBuckets(table, column, locations)
+        .then(function(buckets) {
+          var cartoCss = generateCss(buckets, table, column);
+          return new PolygonLayerDefinition(sql, cartoCss, table, column);
+        });
     }
 
-    function legendPoints(table, column, locations) {
-      var sql = generateSql(table, column, locations);
-
-      return dataService.getBuckets(column, sql, 4).then(function(buckets) {
-        return buckets
-      });
+    function getBuckets(table, column, locations) {
+      return dataService.getTopicData(table.name, [column.name], locations)
+        .then(function(data) {
+          var series = _.map(_.values(data), _.property(column.name));
+          return dataService.getQuantileBuckets(series, 4);
+        });
     }
 
     /**
@@ -87,7 +85,7 @@ angular.module('midjaApp')
      * @param column
      * @returns {string}
      */
-    function generateCss(values, table, column) {
+    function generateCss(buckets, table, column) {
       var cartoCss = '#' + table.name + ' {' +
         ' polygon-fill: #FFFFB2;' +
         ' polygon-opacity: 0.70;' +
@@ -96,16 +94,11 @@ angular.module('midjaApp')
         ' line-opacity: 1; ' +
         '} ';
 
-      // Sort desc
-      values = values.sort(function(a, b) {
-        return b - a;
-      });
-
-      cartoCss += _.map(values, function(value, index) {
-        return '#' + table.name + ' [' + column.name + ' <= ' + value +
+      cartoCss += _.map(buckets.reverse(), function(bucket, index) {
+        return '#' + table.name + ' [' + column.name + ' <= ' + bucket.max +
           '] {' +
           ' polygon-fill: #' + colors[index] + ';' +
-          '} ';
+          '}';
       }).join(' ');
       return cartoCss;
     }

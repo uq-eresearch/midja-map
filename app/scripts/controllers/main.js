@@ -8,8 +8,8 @@
  * Controller of the midjaApp
  */
 angular.module('midjaApp')
-  .controller('MainCtrl', function(metadataService, layerService,
-    dataService, labelService, $http, $scope, $uibModal, $timeout, $window) {
+  .controller('MainCtrl', function(metadataService, layerService, dataService,
+    labelService, $q, $http, $scope, $uibModal, $timeout, $window) {
     var vm = this;
     vm.propTopicsOnly = false;
     vm.scatterOptions = {
@@ -488,43 +488,95 @@ angular.module('midjaApp')
 
     // TODO: deal with remoteness
     function generateBarChart() {
-      var topicsList = _.pluck(vm.vis.topics, 'name').join(',');
-      var unitCodes = _.pluck(vm.vis.units, vm.tablePrefix + '_code');
+      var dataset = vm.selectedTable;
+      var topics = _.map(vm.vis.topics, _.property('name')).concat(['ra_name']);
+      var locations = vm.vis.units;
 
-      var sql = 'SELECT ' + topicsList + ', ra_name, ' + vm.tablePrefix +
-        '_name FROM ' + vm.selectedTable + ' WHERE ' + vm.tablePrefix +
-        '_code IN (\'' + unitCodes.join('\' ,\'') + '\') order by ' + vm.tablePrefix +
-        '_name;';
+      metadataService.getDataset(dataset)
+        .then(function(metadata) {
+          var geoAttrs = [metadata.geolevel + '_name'];
+          return $q.all({
+            metadata: $q(function(resolve) {
+              return resolve(metadata);
+            }),
+            geo: dataService.getGeoData(dataset, geoAttrs, locations),
+            topics: dataService.getTopicData(dataset, topics, locations)
+          })
+        })
+        .then(function(data) {
+          if (!Object.keys(data.topics).length) {
+            return;
+          }
 
-      dataService.doQuery(sql).then(function(results) {
-        if (!results.rows.length) {
-          return;
-        }
-        vm.curRemoteness = _.pluck(results.rows, 'ra_name');
+          var regionNameAttr = data.metadata.geolevel + '_name';
 
-        // get the columns
-        var topics = _.keys(results.rows[0]);
+          var sortedRegionCodes =
+            _.map(
+              _.sortBy(
+                _.values(data.geo),
+                _.property(regionNameAttr)),
+              _.property(data.metadata.region_column));
 
-        // build table header
-        var header = ['Topic'].concat(_.pluck(results.rows, vm.tablePrefix +
-          '_name'));
-
-        // build table
-        vm.tableData = [header];
-        vm.chartData = vm.tableData.slice();
-        _.forEach(vm.vis.topics, function(topic) {
-          var dataRow = _.pluck(results.rows, topic.name);
-          var dataRowText = dataRow.map(function(d) {
-            return d.toFixed(2);
+          // Remoteness values ordered by location
+          vm.curRemoteness = _.map(sortedRegionCodes, function(r) {
+            return data.topics[r].ra_name;
           });
 
-          vm.tableData.push([topic.short_desc + ' (' + topic.name +
-            ')'
-          ].concat(dataRowText));
-          vm.chartData.push([topic.name].concat(dataRow));
+          // build table header for chart
+          var header = [{
+            label: 'Topic',
+            type: 'string'
+          }].concat(_.map(
+            sortedRegionCodes,
+            function(r) {
+              return {
+                label: data.geo[r][regionNameAttr],
+                type: 'number'
+              };
+            }
+          ));
+
+          var dataSeries = _.map(vm.vis.topics, function(topic) {
+            return {
+              topic: topic,
+              row: _.map(sortedRegionCodes, function(r) {
+                return data.topics[r][topic.name];
+              })
+            };
+          });
+
+          function title(topic) {
+            return topic.short_desc + ' (' + topic.name + ')';
+          };
+
+          function wrapAtSpace(text) {
+            var parts = text.split(/ +/);
+            var maxLength = _.max(parts, _.property('length')).length;
+            var lines = _.reduce(parts, function(m, part) {
+              var appendCandidate = [_.last(m), part].join(" ");
+              if (appendCandidate.length > maxLength) {
+                return m.concat(part);
+              } else {
+                return _.initial(m).concat(appendCandidate);
+              }
+            }, [""]);
+            return lines.join("\n");
+          };
+
+          // build table
+          vm.tableData = [
+            _.map(header, _.property('label'))
+          ].concat(_.map(dataSeries, function(data) {
+            var asText = function(d) {
+              return d.toFixed(2);
+            };
+            return [title(data.topic)].concat(_.map(data.row, asText));
+          }));
+          vm.chartData = [header].concat(_.map(dataSeries, function(data) {
+            return [wrapAtSpace(title(data.topic))].concat(data.row);
+          }));
+          generateLegend();
         });
-        generateLegend();
-      });
     }
 
 
@@ -533,29 +585,29 @@ angular.module('midjaApp')
         var range = [];
         var i = 0;
 
-        var colors = ['rgba(177, 0, 38, 0.70)', 'rgba(252, 78, 42, 0.70)',
-          'rgba(254, 178, 76, 0.70)', 'rgba(255, 255, 178, 0.70)'
+        var colors = [
+          'rgba(255, 255, 178, 0.70)',
+          'rgba(254, 178, 76, 0.70)',
+          'rgba(252, 78, 42, 0.70)',
+          'rgba(177, 0, 38, 0.70)'
         ];
         var temp = vm.tableData[1];
         var leg_title = _.findWhere(vm.vis.topics, {
           'name': vm.vis.choropleth.topic.name
         })['short_desc']
 
-        var bubbleLayerService = layerService.build('polygon');
+        var polygonLayerService = layerService.build('polygon');
 
-        bubbleLayerService.legendPoints({
+        polygonLayerService.getBuckets({
           name: vm.selectedTable
         }, vm.vis.choropleth.topic, vm.vis.units).then(function(buckets) {
-          vm.classBreaks = buckets.concat(0);
-          vm.classBreaks.reverse();
-          var legjsonObj = [];
-          for (i = 1; i < vm.classBreaks.length; i++) {
-            var jsonData = {};
-            jsonData['name'] = vm.classBreaks[i - 1] + ' - ' + vm.classBreaks[
-              i];
-            jsonData['value'] = colors[vm.classBreaks.length - i - 1];
-            legjsonObj.push(jsonData);
-          }
+          var legjsonObj = _.filter(_.map(buckets, function(bucket, i) {
+            return {
+              label: bucket.min + " - " + bucket.max,
+              color: colors[i],
+              valid: bucket.min < bucket.max
+            };
+          }), _.property('valid'));
           var legend = L.control({
             position: 'bottomright'
           });
@@ -565,9 +617,9 @@ angular.module('midjaApp')
             legjsonObj.forEach(function(data) {
               var li = L.DomUtil.create('li', '', ul);
               var bullet = L.DomUtil.create('div', 'bullet', li);
-              bullet.style = "background: " + data.value;
+              bullet.style = "background: " + data.color;
               var text = L.DomUtil.create('span', '', li);
-              text.innerHTML = data.name;
+              text.innerHTML = data.label;
             });
             return div;
           };
@@ -668,8 +720,8 @@ angular.module('midjaApp')
       $http.post('/stats/', data).then(function(response) {
         var iDep = -1;
         console.debug('response', response);
-        var iInds = Array.apply(null, Array(data.indepVars.length)).map(
-          Number.prototype.valueOf, 0);
+        var iInds = Array.apply(null, Array(data.indepVars.length))
+          .map(Number.prototype.valueOf, 0);
         var indVarLabels = _.pluck(vm.linearRegression.independents,
           'short_desc');
         if (data.indepVars.length > 1) {
