@@ -20,7 +20,8 @@
     "angular-loading-bar": ">=0.7.1",
     "nvd3": "^1.7.1",
     "angular-nvd3": "^1.0.5",
-    "Leaflet.utfgrid": "*"
+    "Leaflet.utfgrid": "*",
+    "palette.js": "https://github.com/google/palette.js.git"
   },
   "devDependencies": {
     "angular-mocks": ">=1.3.0",

@@ -10,12 +10,8 @@
 angular.module('midjaApp')
   .factory('polygonLayerDefinitionService', function(dataService, tableService) {
 
-    var colors = [
-      'B10026',
-      'FC4E2A',
-      'FEB24C',
-      'FFFFB2'
-    ];
+    // see https://google.github.io/palette.js/
+    var colorPaletteName = "cb-YlOrBr";
 
     // Public API here
     return {
@@ -47,7 +43,25 @@ angular.module('midjaApp')
       return dataService.getTopicData(table.name, [column.name], locations)
         .then(function(data) {
           var series = _.map(_.values(data), _.property(column.name));
-          return dataService.getQuantileBuckets(series, 4);
+          return _.first(
+            _(_.range(5, 0, -1))
+            .map(function(n) {
+              return dataService.getQuantileBuckets(series, n);
+            })
+            .filter(function(buckets) {
+              return _.every(buckets, function(bucket) {
+                return bucket.min != bucket.max;
+              });
+            })
+            .value());
+        })
+        .then(function(buckets) {
+          var colors = palette(colorPaletteName, buckets.length);
+          return _.map(buckets, function(bucket, i) {
+            return _.defaults({
+              color: colors[i]
+            }, bucket);
+          });
         });
     }
 
@@ -87,7 +101,7 @@ angular.module('midjaApp')
      */
     function generateCss(buckets, table, column) {
       var cartoCss = '#' + table.name + ' {' +
-        ' polygon-fill: #FFFFB2;' +
+        ' polygon-fill: #000000;' +
         ' polygon-opacity: 0.70;' +
         ' line-color: #000000;' +
         ' line-width: 1;' +
@@ -97,7 +111,7 @@ angular.module('midjaApp')
       cartoCss += _.map(buckets.reverse(), function(bucket, index) {
         return '#' + table.name + ' [' + column.name + ' <= ' + bucket.max +
           '] {' +
-          ' polygon-fill: #' + colors[index] + ';' +
+          ' polygon-fill: #' + bucket.color + ';' +
           '}';
       }).join(' ');
       return cartoCss;

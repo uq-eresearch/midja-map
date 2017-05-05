@@ -50,6 +50,7 @@ module.exports = function(config) {
       'bower_components/angular-nvd3/dist/angular-nvd3.js',
       'bower_components/leaflet/dist/leaflet-src.js',
       'bower_components/Leaflet.utfgrid/dist/leaflet.utfgrid.js',
+      'bower_components/palette.js/palette.js',
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
       'test/spec/**/*.js'

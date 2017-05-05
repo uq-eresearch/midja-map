@@ -47,10 +47,12 @@ describe('Service: polygonLayerDefinitionService', function() {
 
   it('generateCss should return expectedValue', function() {
     var breakPoints = [1.2, 1.73, 3.43, 12.06, 100];
+    var colors = palette('cb-YlOrBr', breakPoints.length - 1);
     var buckets = _.map(_.range(0, breakPoints.length - 1), function(i) {
       return {
         min: breakPoints[i],
-        max: breakPoints[i + 1]
+        max: breakPoints[i + 1],
+        color: colors[i]
       };
     });
 
@@ -61,11 +63,11 @@ describe('Service: polygonLayerDefinitionService', function() {
     });
 
     expect(result).toBe(
-      '#iloc_pour_popcount_byindstatus_bysex { polygon-fill: #FFFFB2; polygon-opacity: 0.70; line-color: #000000; line-width: 1; line-opacity: 1; } ' +
-      '#iloc_pour_popcount_byindstatus_bysex [indigenoustotal_t_percent <= 100] { polygon-fill: #B10026;} ' +
-      '#iloc_pour_popcount_byindstatus_bysex [indigenoustotal_t_percent <= 12.06] { polygon-fill: #FC4E2A;} ' +
-      '#iloc_pour_popcount_byindstatus_bysex [indigenoustotal_t_percent <= 3.43] { polygon-fill: #FEB24C;} ' +
-      '#iloc_pour_popcount_byindstatus_bysex [indigenoustotal_t_percent <= 1.73] { polygon-fill: #FFFFB2;}'
+      '#iloc_pour_popcount_byindstatus_bysex { polygon-fill: #000000; polygon-opacity: 0.70; line-color: #000000; line-width: 1; line-opacity: 1; } ' +
+      '#iloc_pour_popcount_byindstatus_bysex [indigenoustotal_t_percent <= 100] { polygon-fill: #cc4c02;} ' +
+      '#iloc_pour_popcount_byindstatus_bysex [indigenoustotal_t_percent <= 12.06] { polygon-fill: #fe9929;} ' +
+      '#iloc_pour_popcount_byindstatus_bysex [indigenoustotal_t_percent <= 3.43] { polygon-fill: #fed98e;} ' +
+      '#iloc_pour_popcount_byindstatus_bysex [indigenoustotal_t_percent <= 1.73] { polygon-fill: #ffffd4;}'
     );
   });
 

@@ -582,44 +582,23 @@ angular.module('midjaApp')
 
     function generateLegend() {
       if (vm.tableData[0].length > 1) {
-        var range = [];
-        var i = 0;
-
-        var colors = [
-          'rgba(255, 255, 178, 0.70)',
-          'rgba(254, 178, 76, 0.70)',
-          'rgba(252, 78, 42, 0.70)',
-          'rgba(177, 0, 38, 0.70)'
-        ];
-        var temp = vm.tableData[1];
-        var leg_title = _.findWhere(vm.vis.topics, {
-          'name': vm.vis.choropleth.topic.name
-        })['short_desc']
-
         var polygonLayerService = layerService.build('polygon');
 
         polygonLayerService.getBuckets({
           name: vm.selectedTable
         }, vm.vis.choropleth.topic, vm.vis.units).then(function(buckets) {
-          var legjsonObj = _.filter(_.map(buckets, function(bucket, i) {
-            return {
-              label: bucket.min + " - " + bucket.max,
-              color: colors[i],
-              valid: bucket.min < bucket.max
-            };
-          }), _.property('valid'));
           var legend = L.control({
             position: 'bottomright'
           });
           legend.onAdd = function(map) {
             var div = L.DomUtil.create('div', 'legend');
             var ul = L.DomUtil.create('ul', '', div);
-            legjsonObj.forEach(function(data) {
+            buckets.forEach(function(bucket) {
               var li = L.DomUtil.create('li', '', ul);
               var bullet = L.DomUtil.create('div', 'bullet', li);
-              bullet.style = "background: " + data.color;
+              bullet.style = "background: #" + bucket.color;
               var text = L.DomUtil.create('span', '', li);
-              text.innerHTML = data.label;
+              text.innerHTML = bucket.min + " - " + bucket.max;
             });
             return div;
           };
