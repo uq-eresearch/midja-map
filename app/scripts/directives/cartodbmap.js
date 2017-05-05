@@ -135,7 +135,19 @@ angular.module('midjaApp')
                   $rootScope.$emit('featureClick', e.data);
                 });
                 utfGrid.on('mouseover', function utfGridMouseOver(e) {
-                  $rootScope.$emit('featureOver', e.data);
+                  var defs = _.filter(
+                    _.values(self._definitions),
+                    _.isObject);
+                  var dataSources = [_.identity].concat(
+                    _.filter(
+                      _.map(defs, _.property('getRegionData'))),
+                    _.isFunction);
+                  var data = _(dataSources)
+                    .map(function(ds) {
+                      return ds(e.data);
+                    })
+                    .reduce(_.defaults, {});
+                  $rootScope.$emit('featureOver', data);
                 });
                 map.addLayer(utfGrid);
               }

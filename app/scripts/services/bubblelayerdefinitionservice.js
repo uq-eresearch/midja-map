@@ -8,72 +8,110 @@
  * Factory in the midjaApp.
  */
 angular.module('midjaApp')
-  .factory('bubbleLayerDefinitionService', function(dataService, tableService) {
+  .factory('bubbleLayerDefinitionService', function($q, metadataService,
+    dataService, tableService) {
 
     return {
-      build: build,
-      generateSql: generateSql,
-      generateCss: generateCss
+      build: build
     };
 
-    function BubbleLayerDefinition(sql, cartocss, table, column) {
-      this.type = 'bubble';
+    function BubbleLayerDefinition(sql, cartocss, table, allRegionData) {
+      var regionCodeAttribute = tableService.getTablePrefix(table) + '_code';
       this.sql = sql;
       this.cartocss = cartocss;
-      this.interactivity = [column.name, tableService.getTablePrefix(table) +
-        '_name'
+      this.interactivity = [
+        regionCodeAttribute
       ];
+      this.getRegionData = function(interactiveData) {
+        var regionCode = interactiveData[regionCodeAttribute];
+        return allRegionData[regionCode];
+      };
     }
 
     function build(table, column, locations) {
-      var sql = generateSql(table, column, locations);
+      return $q.all({
+        buckets: getBuckets(table, column, locations),
+        metadata: metadataService.getDataset(table.name),
+        data: dataService.getTopicData(table.name, [column.name],
+          locations)
+      }).then(function(data) {
+        var geoTable = data.metadata.geolevel + "_2011_aust";
+        var regionAttribute = data.metadata.region_column;
+        var regions = _.uniq(_.pluck(locations, regionAttribute)).sort();
+        var radiusF = function(region) {
+          var v = data.data[region][column.name];
+          // Get radius using bucket ranges (min: inclusive, max: exclusive)
+          // Last bucket max == max series value, so last bucket if no match.
+          return _.first(
+            _.filter(data.buckets, function(bucket) {
+              return v >= bucket.min && v < bucket.max;
+            }).concat([_.last(data.buckets)])
+          ).radius;
+        };
+        var sql = generateMapnikSQL(geoTable, regionAttribute, regions);
+        var style = generateCartoCSS(
+          geoTable, regionAttribute, regions, radiusF);
+        return new BubbleLayerDefinition(sql, style, table, data.data);
+      });
+    }
+
+    function getBuckets(table, column, locations) {
+      return getSeries(table, column, locations).then(generateBuckets);
+    }
+
+    function getSeries(table, column, locations) {
       return dataService.getTopicData(table.name, [column.name], locations)
-        .then(function(data) {
-          var series = _.map(_.values(data), _.property(column.name));
-          return dataService.getQuantileBuckets(series, 4);
-        })
-        .then(function(buckets) {
-          var cartoCss = generateCss(buckets, table, column);
-          return new BubbleLayerDefinition(sql, cartoCss, table, column);
+        .then(function(topicData) {
+          return _.map(_.values(topicData), _.property(column.name));
         });
     }
 
-    /**
-     * Generate table SQL for table and column
-     * @param table
-     * @param column
-     * @returns {string}
-     */
-    function generateSql(table, column, locations) {
-      var tablePrefix = tableService.getTablePrefix(table);
-      var idColumn = tableService.getIdColumnForTable(table);
-
-      var boundaryTableName = tablePrefix + '_2011_aust';
-
-      var unitNames = '\'' + _.pluck(locations, tablePrefix + '_code').join(
-        '\' ,\'') + '\'';
-
-      var sql =
-        'SELECT ' + boundaryTableName + '.' + idColumn + ', ' +
-        boundaryTableName + '.' + tablePrefix + '_name' +
-        ', ST_Transform(ST_Centroid(' + boundaryTableName +
-        '.the_geom), 3857) as the_geom_webmercator' +
-        ', ST_Centroid(' + boundaryTableName + '.the_geom) as the_geom, ' +
-        table.name + '.' + column.name + ' ' +
-        'FROM ' + table.name + ', ' + boundaryTableName + ' ' +
-        'WHERE ' + boundaryTableName + '.' + tablePrefix + '_code IN (' +
-        unitNames + ') ' +
-        'AND ' + boundaryTableName + '.' + idColumn + ' = ' + table.name +
-        '.' + idColumn;
-      return sql;
+    function generateBuckets(series) {
+      var buckets = _.first(
+        _(_.range(5, 0, -1))
+        .map(function(n) {
+          return dataService.getQuantileBuckets(series, n);
+        })
+        .filter(function(buckets) {
+          return _.every(buckets, function(bucket) {
+            return bucket.min != bucket.max;
+          });
+        })
+        .value()
+      );
+      var radius = (function() {
+        var MAX_RADIUS = 31;
+        var MIN_RADIUS = 5;
+        var increment = (MAX_RADIUS - MIN_RADIUS) / (buckets.length - 1);
+        return function(bucketIndex) {
+          return MIN_RADIUS + (increment * bucketIndex);
+        };
+      })();
+      return _.map(buckets, function(bucket, i) {
+        return _.defaults({
+          radius: radius(i)
+        }, bucket);
+      });
     }
 
-    function generateCss(buckets, table, column) {
+    function generateMapnikSQL(geoTable, regionAttribute, regionValues) {
+      var sqlTemplate = _.template(
+        "SELECT <%=attr%>, \
+          ST_Centroid(the_geom) as the_geom, \
+          ST_Transform(ST_Centroid(the_geom), 3857) as the_geom_webmercator \
+        FROM <%=table%> \
+        WHERE <%=attr%> IN (<%=valueList%>)"
+      );
+      return sqlTemplate({
+        table: geoTable,
+        attr: regionAttribute,
+        valueList: regionValues.map(singleQuote).join(",")
+      })
+    }
 
-      var MAX_RADIUS = 31;
-      var MIN_RADIUS = 5;
-
-      var cartoCss = '#' + table.name + ' {' +
+    function generateCartoCSS(geoTable, regionAttribute, regionCodes, radiusF) {
+      var baseStyle =
+        '#' + geoTable + ' {' +
         ' marker-fill-opacity: 0.70;' +
         ' marker-line-color: #FFF;' +
         ' marker-line-width: 1.5;' +
@@ -84,20 +122,22 @@ angular.module('midjaApp')
         ' marker-fill: #3E7BB6;' +
         ' marker-allow-overlap: true;' +
         ' marker-clip: false; ' +
-        '} ';
+        '}';
+      var regionStyleTemplate = _.template(
+        '#<%=table%> [<%=attr%>="<%=value%>"] { marker-width: <%=radius%>; }'
+      );
+      var regionStyles = _.map(regionCodes, function(regionCode) {
+        return regionStyleTemplate({
+          table: geoTable,
+          attr: regionAttribute,
+          value: regionCode,
+          radius: radiusF(regionCode)
+        })
+      });
+      return [baseStyle].concat(regionStyles).join(" ");
+    }
 
-      var radiusIncrements = (MAX_RADIUS - MIN_RADIUS) / (buckets.length - 1);
-      cartoCss += _.map(
-        buckets.reverse(),
-        function(bucket, index) {
-          return '#' + table.name + ' [' + column.name + ' <= ' + bucket.max +
-            '] {' +
-            ' marker-width: ' + Math.round(MAX_RADIUS - (index *
-              radiusIncrements)) +
-            '; ' +
-            '}';
-        }).join(' ');
-
-      return cartoCss;
+    function singleQuote(str) {
+      return "'" + str + "'"
     }
   });
