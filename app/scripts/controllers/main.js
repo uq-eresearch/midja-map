@@ -8,8 +8,9 @@
  * Controller of the midjaApp
  */
 angular.module('midjaApp')
-  .controller('MainCtrl', function(metadataService, layerService, dataService,
-    labelService, $q, $http, $scope, $uibModal, $timeout, $window) {
+  .controller('MainCtrl', function(
+    metadataService, layerService, dataService, labelService, statsService,
+    $q, $http, $scope, $uibModal, $timeout, $window) {
     var vm = this;
     vm.propTopicsOnly = false;
     vm.scatterOptions = {
@@ -661,9 +662,9 @@ angular.module('midjaApp')
         "unit_type": vm.tablePrefix
       };
       console.debug(data);
-      $http.post('/stats/', data).then(function(response) {
+      statsService.linearRegression(data).then(function(lrResult) {
         var iDep = -1;
-        console.debug('response', response);
+        console.debug('lrResult', lrResult);
         var iInds = Array.apply(null, Array(data.indepVars.length))
           .map(Number.prototype.valueOf, 0);
         var indVarLabels = _.pluck(vm.linearRegression.independents,
@@ -675,11 +676,11 @@ angular.module('midjaApp')
             key: "Data",
             values: [{
               "label": data.depLabel,
-              "value": response.data.adj_rsquared
+              "value": lrResult.adj_rsquared
             }]
           });
           vm.linearRegression.resultsData = resultsData;
-          vm.linearRegression.results = response.data;
+          vm.linearRegression.results = lrResult;
           data.raw = vm.linearRegression.resultsData;
           data.modelType = "bar";
           vm.linearRegression.sendData = data;
@@ -721,9 +722,7 @@ angular.module('midjaApp')
           });
         }
 
-        console.debug(response.data);
-
-        var equationParts = response.data.equation.split(" ");
+        var equationParts = lrResult.equation.split(" ");
 
         resultsData.push({
           key: "Line",
@@ -733,7 +732,7 @@ angular.module('midjaApp')
         });
 
         vm.linearRegression.resultsData = resultsData;
-        vm.linearRegression.results = response.data;
+        vm.linearRegression.results = lrResult;
         data.raw = vm.linearRegression.resultsData;
         vm.linearRegression.sendData = data;
       });
