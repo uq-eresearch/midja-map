@@ -12,6 +12,8 @@ angular.module('midjaApp')
     dataService, tableService) {
 
     return {
+      _generateMapnikSQL: generateMapnikSQL,
+      _generateCartoCSS: generateCartoCSS,
       build: build
     };
 
@@ -91,6 +93,7 @@ angular.module('midjaApp')
           ST_Transform(ST_Centroid(the_geom), 3857) as the_geom_webmercator \
         FROM <%=table%> \
         WHERE <%=attr%> IN (<%=valueList%>)"
+        .replace(/ +/g, " ")
       );
       return sqlTemplate({
         table: geoTable,

@@ -16,6 +16,8 @@ angular.module('midjaApp')
 
     // Public API here
     return {
+      _generateMapnikSQL: generateMapnikSQL,
+      _generateCartoCSS: generateCartoCSS,
       build: build
     };
 
