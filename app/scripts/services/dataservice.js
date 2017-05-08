@@ -217,7 +217,6 @@ angular.module('midjaApp')
     }
 
     function getTopicData(dataset, attributes, locations) {
-      console.log(dataset, attributes, locations);
       return metadataService.getDataset(dataset).then(function(metadata) {
         if (!metadata) {
           console.log('Dataset "' + dataset + '" not found!');
@@ -276,7 +275,6 @@ angular.module('midjaApp')
       return $http
         .get("/sql/?q=" + encodeURI(sql))
         .then(function(result) {
-          console.log(result);
           return result.data;
         });
     }

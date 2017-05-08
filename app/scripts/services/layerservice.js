@@ -8,15 +8,15 @@
  * Factory in the midjaApp.
  */
 angular.module('midjaApp')
-    .factory('layerService', function ($injector) {
+  .factory('layerService', function($injector) {
 
-        return {
-            build: build
-        };
+    return {
+      build: build
+    };
 
-        ////
+    ////
 
-        function build(type) {
-            return $injector.get(type + 'LayerDefinitionService');
-        }
-    });
+    function build(type) {
+      return $injector.get(type + 'LayerDefinitionService');
+    }
+  });

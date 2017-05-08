@@ -30,11 +30,12 @@ angular.module('midjaApp')
 
     function build(table, column, locations) {
       return $q.all({
-        buckets: getBuckets(table, column, locations),
         metadata: metadataService.getDataset(table.name),
         data: dataService.getTopicData(table.name, [column.name],
           locations)
       }).then(function(data) {
+        var series = _.map(_.values(data.data), _.property(column.name));
+        var buckets = generateBuckets(series)
         var geoTable = data.metadata.geolevel + "_2011_aust";
         var regionAttribute = data.metadata.region_column;
         var regions = _.uniq(_.pluck(locations, regionAttribute)).sort();
@@ -43,9 +44,9 @@ angular.module('midjaApp')
           // Get radius using bucket ranges (min: inclusive, max: exclusive)
           // Last bucket max == max series value, so last bucket if no match.
           return _.first(
-            _.filter(data.buckets, function(bucket) {
+            _.filter(buckets, function(bucket) {
               return v >= bucket.min && v < bucket.max;
-            }).concat([_.last(data.buckets)])
+            }).concat([_.last(buckets)])
           ).radius;
         };
         var sql = generateMapnikSQL(geoTable, regionAttribute, regions);
@@ -53,17 +54,6 @@ angular.module('midjaApp')
           geoTable, regionAttribute, regions, radiusF);
         return new BubbleLayerDefinition(sql, style, table, data.data);
       });
-    }
-
-    function getBuckets(table, column, locations) {
-      return getSeries(table, column, locations).then(generateBuckets);
-    }
-
-    function getSeries(table, column, locations) {
-      return dataService.getTopicData(table.name, [column.name], locations)
-        .then(function(topicData) {
-          return _.map(_.values(topicData), _.property(column.name));
-        });
     }
 
     function generateBuckets(series) {

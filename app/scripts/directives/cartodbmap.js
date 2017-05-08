@@ -76,7 +76,8 @@ angular.module('midjaApp')
 
           this._leafletLayers = {
             tiles: null,
-            utfGrid: null
+            utfGrid: null,
+            legend: null
           };
 
           this._updateLayers = function() {
@@ -150,6 +151,19 @@ angular.module('midjaApp')
                   $rootScope.$emit('featureOver', data);
                 });
                 map.addLayer(utfGrid);
+              }
+              if (self._leafletLayers.legend) {
+                self._leafletLayers.legend.removeFrom(map);
+              }
+              if (self._definitions.bottom.getLegend) {
+                var legend = L.control({
+                  position: 'bottomright'
+                });
+                legend.onAdd = function(map) {
+                  return self._definitions.bottom.getLegend();
+                };
+                self._leafletLayers.legend = legend;
+                map.addControl(legend);
               }
             }, function errorCreatingLayerGroup(response) {
               console.log(response);

@@ -16,15 +16,14 @@ angular.module('midjaApp')
 
     // Public API here
     return {
-      build: build,
-      getBuckets: getBuckets
+      build: build
     };
 
-    function PolygonLayerDefinition(sql, cartocss, table, allRegionData) {
+    function PolygonLayerDefinition(sql, style, table, allRegionData, buckets) {
       var regionCodeAttribute = tableService.getTablePrefix(table) + '_code';
       var regionNameAttribute = tableService.getTablePrefix(table) + '_name';
       this.sql = sql;
-      this.cartocss = cartocss;
+      this.cartocss = style;
       this.interactivity = [
         regionCodeAttribute,
         regionNameAttribute
@@ -33,15 +32,28 @@ angular.module('midjaApp')
         var regionCode = interactiveData[regionCodeAttribute];
         return allRegionData[regionCode];
       };
+      this.getLegend = function() {
+        var div = L.DomUtil.create('div', 'legend');
+        var ul = L.DomUtil.create('ul', '', div);
+        buckets.forEach(function(bucket) {
+          var li = L.DomUtil.create('li', '', ul);
+          var bullet = L.DomUtil.create('div', 'bullet', li);
+          bullet.style = "background: #" + bucket.color;
+          var text = L.DomUtil.create('span', '', li);
+          text.innerHTML = bucket.min + " - " + bucket.max;
+        });
+        return div;
+      };
     }
 
     function build(table, column, locations) {
       return $q.all({
-        buckets: getBuckets(table, column, locations),
         metadata: metadataService.getDataset(table.name),
         data: dataService.getTopicData(table.name, [column.name],
           locations)
       }).then(function(data) {
+        var series = _.map(_.values(data.data), _.property(column.name));
+        var buckets = generateBuckets(series)
         var geoTable = data.metadata.geolevel + "_2011_aust";
         var regionAttribute = data.metadata.region_column;
         var regions = _.uniq(_.pluck(locations, regionAttribute)).sort();
@@ -50,27 +62,17 @@ angular.module('midjaApp')
           // Get color using bucket ranges (min: inclusive, max: exclusive)
           // Last bucket max == max series value, so last bucket if no match.
           return _.first(
-            _.filter(data.buckets, function(bucket) {
+            _.filter(buckets, function(bucket) {
               return v >= bucket.min && v < bucket.max;
-            }).concat([_.last(data.buckets)])
+            }).concat([_.last(buckets)])
           ).color;
         };
         var sql = generateMapnikSQL(geoTable, regionAttribute, regions);
         var style = generateCartoCSS(
           geoTable, regionAttribute, regions, colorF);
-        return new PolygonLayerDefinition(sql, style, table, data.data);
+        return new PolygonLayerDefinition(sql, style, table, data.data,
+          buckets);
       });
-    }
-
-    function getBuckets(table, column, locations) {
-      return getSeries(table, column, locations).then(generateBuckets);
-    }
-
-    function getSeries(table, column, locations) {
-      return dataService.getTopicData(table.name, [column.name], locations)
-        .then(function(topicData) {
-          return _.map(_.values(topicData), _.property(column.name));
-        });
     }
 
     function generateBuckets(series) {

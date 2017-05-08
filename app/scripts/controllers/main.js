@@ -191,7 +191,6 @@ angular.module('midjaApp')
       'Indigenous QLD LGAs'
     ]
     vm.filterPlaces = [];
-    vm.mapLegend = null;
 
     activate(vm.selectedTable);
 
@@ -575,40 +574,7 @@ angular.module('midjaApp')
           vm.chartData = [header].concat(_.map(dataSeries, function(data) {
             return [wrapAtSpace(title(data.topic))].concat(data.row);
           }));
-          generateLegend();
         });
-    }
-
-
-    function generateLegend() {
-      if (vm.tableData[0].length > 1) {
-        var polygonLayerService = layerService.build('polygon');
-
-        polygonLayerService.getBuckets({
-          name: vm.selectedTable
-        }, vm.vis.choropleth.topic, vm.vis.units).then(function(buckets) {
-          var legend = L.control({
-            position: 'bottomright'
-          });
-          legend.onAdd = function(map) {
-            var div = L.DomUtil.create('div', 'legend');
-            var ul = L.DomUtil.create('ul', '', div);
-            buckets.forEach(function(bucket) {
-              var li = L.DomUtil.create('li', '', ul);
-              var bullet = L.DomUtil.create('div', 'bullet', li);
-              bullet.style = "background: #" + bucket.color;
-              var text = L.DomUtil.create('span', '', li);
-              text.innerHTML = bucket.min + " - " + bucket.max;
-            });
-            return div;
-          };
-          if (vm.mapLegend != null) {
-            vm.mapLegend.removeFrom(vm.map);
-          }
-          vm.mapLegend = legend;
-          vm.map.addControl(legend);
-        });
-      }
     }
 
 
@@ -617,7 +583,6 @@ angular.module('midjaApp')
     }
 
     function selectedRegionTopicChanged($item, $model) {
-      generateLegend();
       generateChoroplethLayer($item, vm.vis.units);
     }
 
