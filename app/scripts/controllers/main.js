@@ -650,92 +650,113 @@ angular.module('midjaApp')
         return;
       }
       var resultsData = [];
+
+
+      var dataset = vm.selectedTable;
+      var topics = _.map(
+        [vm.linearRegression.dependent].concat(
+          vm.linearRegression.independents),
+        _.property('name'));
+      var locations = vm.vis.units;
+
       var data = {
-        "dataset": vm.selectedTable,
         "depVar": vm.linearRegression.dependent.name,
         "depLabel": vm.linearRegression.dependent.short_desc,
-        "indepVars": _.pluck(vm.linearRegression.independents, 'name'),
-        "indepVarLabels": _.pluck(vm.linearRegression.independents,
-          'short_desc'),
-        "unit_prefix": vm.tablePrefix,
-        "unit_codes": _.pluck(vm.vis.units, vm.tablePrefix + '_code'),
-        "unit_type": vm.tablePrefix
+        "indepVars": _.map(
+          vm.linearRegression.independents,
+          _.property('name')),
+        "indepVarLabels": _.map(
+          vm.linearRegression.independents,
+          _.property('short_desc'))
       };
-      console.debug(data);
-      statsService.linearRegression(data).then(function(lrResult) {
-        var iDep = -1;
-        console.debug('lrResult', lrResult);
-        var iInds = Array.apply(null, Array(data.indepVars.length))
-          .map(Number.prototype.valueOf, 0);
-        var indVarLabels = _.pluck(vm.linearRegression.independents,
-          'short_desc');
-        if (data.indepVars.length > 1) {
-          vm.barRegressionOptions["chart"]["yAxis"]["axisLabel"] =
-            "Adjusted R-square";
+
+      dataService.getTopicData(dataset, topics, locations)
+        .then(function(topicData) {
+          var topicSeries = _.chain(_.values(topicData))
+            // Get region's data for topics (like a row)
+            .map(_.flow(_.propertyOf, _.partial(_.map, topics)))
+            // Use only regions where all data is defined & numeric
+            .filter(_.partial(_.every, _, _.isNumber))
+            // Convert region rows to columns of topic data
+            .unzip()
+            .value();
+          data.data = _.zipObject(topics, topicSeries);
+          return statsService.linearRegression(data);
+        })
+        .then(function(lrResult) {
+          var iDep = -1;
+          console.debug('lrResult', lrResult);
+          var iInds = Array.apply(null, Array(data.indepVars.length))
+            .map(Number.prototype.valueOf, 0);
+          var indVarLabels = _.pluck(vm.linearRegression.independents,
+            'short_desc');
+          if (data.indepVars.length > 1) {
+            vm.barRegressionOptions["chart"]["yAxis"]["axisLabel"] =
+              "Adjusted R-square";
+            resultsData.push({
+              key: "Data",
+              values: [{
+                "label": vm.linearRegression.dependent.short_desc,
+                "value": lrResult.adj_rsquared
+              }]
+            });
+            vm.linearRegression.resultsData = resultsData;
+            vm.linearRegression.results = lrResult;
+            data.raw = vm.linearRegression.resultsData;
+            data.modelType = "bar";
+            vm.linearRegression.sendData = data;
+            return
+          }
+          vm.regressionOptions["chart"]["xAxis"] = {
+            "axisLabel": indVarLabels[0]
+          }; // TODO: fix
+          vm.regressionOptions["chart"]["yAxis"] = {
+            "axisLabel": vm.linearRegression.dependent.short_desc
+          };
+
+          for (var i = 0; i < vm.remotenessLevels.length; i++) {
+            resultsData.push({
+              key: vm.remotenessLevels[i].ra_name,
+              values: []
+            });
+            vm.iRemoteness[vm.remotenessLevels[i].ra_name] = i;
+          }
+
+          for (var k = 1; k < vm.tableData.length; k++) {
+            if (vm.tableData[k][0] == vm.linearRegression.dependent.short_desc +
+              " (" + data.depVar + ")") {
+              iDep = k;
+            }
+            for (var v = 0; v < indVarLabels.length; v++) {
+              if (vm.tableData[k][0] == indVarLabels[v] + " (" + data.indepVars[
+                  v] + ")") {
+                iInds[v] = k;
+              }
+            }
+          }
+
+          for (var i = 1; i < vm.tableData[0].length - 1; i++) { // vm.tableData[0].length - 1
+            resultsData[0].values.push({ //put into first one
+              x: parseFloat(vm.tableData[iInds[0]][i]), //TODO: FIX
+              y: parseFloat(vm.tableData[iDep][i]),
+              name: vm.tableData[0][i]
+            });
+          }
+
+          var equationParts = lrResult.equation.split(" ");
+
           resultsData.push({
-            key: "Data",
-            values: [{
-              "label": data.depLabel,
-              "value": lrResult.adj_rsquared
-            }]
+            key: "Line",
+            values: [],
+            intercept: equationParts[2],
+            slope: equationParts[4]
           });
+
           vm.linearRegression.resultsData = resultsData;
           vm.linearRegression.results = lrResult;
           data.raw = vm.linearRegression.resultsData;
-          data.modelType = "bar";
           vm.linearRegression.sendData = data;
-          return
-        }
-        vm.regressionOptions["chart"]["xAxis"] = {
-          "axisLabel": indVarLabels[0]
-        }; // TODO: fix
-        vm.regressionOptions["chart"]["yAxis"] = {
-          "axisLabel": vm.linearRegression.dependent.short_desc
-        };
-
-        for (var i = 0; i < vm.remotenessLevels.length; i++) {
-          resultsData.push({
-            key: vm.remotenessLevels[i].ra_name,
-            values: []
-          });
-          vm.iRemoteness[vm.remotenessLevels[i].ra_name] = i;
-        }
-
-        for (var k = 1; k < vm.tableData.length; k++) {
-          if (vm.tableData[k][0] == vm.linearRegression.dependent.short_desc +
-            " (" + data.depVar + ")") {
-            iDep = k;
-          }
-          for (var v = 0; v < indVarLabels.length; v++) {
-            if (vm.tableData[k][0] == indVarLabels[v] + " (" + data.indepVars[
-                v] + ")") {
-              iInds[v] = k;
-            }
-          }
-        }
-
-        for (var i = 1; i < vm.tableData[0].length - 1; i++) { // vm.tableData[0].length - 1
-          resultsData[0].values.push({ //put into first one
-            x: parseFloat(vm.tableData[iInds[0]][i]), //TODO: FIX
-            y: parseFloat(vm.tableData[iDep][i]),
-            name: vm.tableData[0][i]
-          });
-        }
-
-        var equationParts = lrResult.equation.split(" ");
-
-        resultsData.push({
-          key: "Line",
-          values: [],
-          intercept: equationParts[2],
-          slope: equationParts[4]
         });
-
-        vm.linearRegression.resultsData = resultsData;
-        vm.linearRegression.results = lrResult;
-        data.raw = vm.linearRegression.resultsData;
-        vm.linearRegression.sendData = data;
-      });
 
     }
 
