@@ -69,7 +69,8 @@ angular.module('midjaApp')
       }).then(function(data) {
         var series = _.map(_.values(data.data), _.property(column.name));
         var buckets = generateBuckets(series)
-        var geoTable = data.metadata.geolevel + "_2011_aust";
+        var geolevel = data.metadata.geolevel;
+        var geoTable = geolevel + "_2011_aust";
         var regionAttribute = data.metadata.region_column;
         var regions = _.uniq(_.pluck(locations, regionAttribute)).sort();
         var colorF = function(region) {
