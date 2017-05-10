@@ -183,6 +183,7 @@ angular.module('midjaApp')
     vm.isDataSelected = isDataSelected;
 
     vm.selectedTable = 'lga_565_iba_final'; // TODO: tie to a GUI option, do change handler
+    selectedPlacesChanged();
     vm.tablePrefix = 'lga';
     vm.unitSels = ['LGAs', 'ILOCs'];
     vm.filters = [
@@ -192,8 +193,6 @@ angular.module('midjaApp')
       'Indigenous QLD LGAs'
     ]
     vm.filterPlaces = [];
-
-    activate(vm.selectedTable);
 
     vm.refreshLocations = refreshLocations;
 
@@ -398,6 +397,11 @@ angular.module('midjaApp')
         activate("lga_565_iba_final")
       }
 
+      // Clear map but show boundaries
+      layerService.build('polygon')
+        .buildEmpty(vm.tablePrefix).then(function(layer) {
+          vm.regionLayer = layer;
+        });
 
       var places = getSelectedPlaceExcludingAustralia();
       dataService.getLocsInPlaces(places, vm.selectedTable, vm.tablePrefix,
@@ -598,8 +602,8 @@ angular.module('midjaApp')
     }
 
     function generateChoroplethLayer(topic, locations) {
-      var bubbleLayerService = layerService.build('polygon');
-      bubbleLayerService.build({
+      var choroplethService = layerService.build('polygon');
+      choroplethService.build({
         name: vm.selectedTable
       }, topic, locations).then(function(layerDefinition) {
         vm.regionLayer = layerDefinition;

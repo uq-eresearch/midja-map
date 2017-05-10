@@ -62,11 +62,7 @@ angular.module('midjaApp')
 
           this._definitions = {
             top: null,
-            bottom: {
-              "sql": 'SELECT * FROM ste_2011_aust',
-              "cartocss": '#ste_2011_aust{ polygon-fill: #EEEEEE; polygon-opacity: 0.7; line-color: #67717E; line-width: 1; line-opacity: 1; }',
-              "interactivity": ["state_name"]
-            }
+            bottom: null
           };
 
           this._hasVisibleTopLayer = {
@@ -84,12 +80,14 @@ angular.module('midjaApp')
             function layers() {
               var layers = [];
               var cartoCssVersion = "2.1.0";
-              layers.push({
-                "type": "mapnik",
-                "options": angular.extend({
-                  "cartocss_version": cartoCssVersion
-                }, self._definitions.bottom)
-              });
+              if (self._definitions.bottom) {
+                layers.push({
+                  "type": "mapnik",
+                  "options": angular.extend({
+                    "cartocss_version": cartoCssVersion
+                  }, self._definitions.bottom)
+                });
+              }
               if (self._definitions.top && self._hasVisibleTopLayer) {
                 layers.push({
                   "type": "mapnik",
@@ -100,6 +98,8 @@ angular.module('midjaApp')
               }
               return layers;
             }
+
+            if (_.isEmpty(layers())) return;
 
             $http({
               method: 'POST',
@@ -204,9 +204,6 @@ angular.module('midjaApp')
               return false;
             }
           }
-
-          // Init
-          this._updateLayers();
         }
 
         regionLayers = new RegionLayers(map);
@@ -237,7 +234,9 @@ angular.module('midjaApp')
             var mouseOverFeature = [transform(data)];
             var newData = {};
             var vm = $rootScope.$$childTail.vm;
-            if (vm.vis.choropleth.topic.name != vm.vis.bubble.topic
+            if (!vm.vis.choropleth.topic) {
+              $rootScope.feature = mouseOverFeature;
+            } else if (vm.vis.choropleth.topic.name != vm.vis.bubble.topic
               .name) {
 
               if (mouseOverFeature[0].column != vm.vis.bubble.topic

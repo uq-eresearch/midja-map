@@ -18,12 +18,14 @@ angular.module('midjaApp')
     return {
       _generateMapnikSQL: generateMapnikSQL,
       _generateCartoCSS: generateCartoCSS,
-      build: build
+      build: build,
+      buildEmpty: buildEmpty
     };
 
-    function PolygonLayerDefinition(sql, style, table, allRegionData, buckets) {
-      var regionCodeAttribute = tableService.getTablePrefix(table) + '_code';
-      var regionNameAttribute = tableService.getTablePrefix(table) + '_name';
+    function PolygonLayerDefinition(sql, style, geolevel, allRegionData,
+      buckets) {
+      var regionCodeAttribute = geolevel + '_code';
+      var regionNameAttribute = geolevel + '_name';
       this.sql = sql;
       this.cartocss = style;
       this.interactivity = [
@@ -32,20 +34,31 @@ angular.module('midjaApp')
       ];
       this.getRegionData = function(interactiveData) {
         var regionCode = interactiveData[regionCodeAttribute];
-        return allRegionData[regionCode];
+        return allRegionData[regionCode] || interactiveData;
       };
-      this.getLegend = function() {
-        var div = L.DomUtil.create('div', 'legend');
-        var ul = L.DomUtil.create('ul', '', div);
-        buckets.forEach(function(bucket) {
-          var li = L.DomUtil.create('li', '', ul);
-          var bullet = L.DomUtil.create('div', 'bullet', li);
-          bullet.style = "background: #" + bucket.color;
-          var text = L.DomUtil.create('span', '', li);
-          text.innerHTML = bucket.min + " - " + bucket.max;
-        });
-        return div;
-      };
+      if (!_.isEmpty(buckets)) {
+        this.getLegend = function() {
+          var div = L.DomUtil.create('div', 'legend');
+          var ul = L.DomUtil.create('ul', '', div);
+          buckets.forEach(function(bucket) {
+            var li = L.DomUtil.create('li', '', ul);
+            var bullet = L.DomUtil.create('div', 'bullet', li);
+            bullet.style = "background: #" + bucket.color;
+            var text = L.DomUtil.create('span', '', li);
+            text.innerHTML = bucket.min + " - " + bucket.max;
+          });
+          return div;
+        };
+      }
+    }
+
+    function buildEmpty(geolevel) {
+      return $q(function(resolve) {
+        var geoTable = geolevel + "_2011_aust";
+        var sql = "SELECT * FROM " + geoTable;
+        var style = generateCartoCSS(geoTable, "", [], _.identity);
+        resolve(new PolygonLayerDefinition(sql, style, geolevel, {}, []));
+      });
     }
 
     function build(table, column, locations) {
@@ -72,7 +85,7 @@ angular.module('midjaApp')
         var sql = generateMapnikSQL(geoTable, regionAttribute, regions);
         var style = generateCartoCSS(
           geoTable, regionAttribute, regions, colorF);
-        return new PolygonLayerDefinition(sql, style, table, data.data,
+        return new PolygonLayerDefinition(sql, style, geolevel, data.data,
           buckets);
       });
     }
@@ -112,7 +125,7 @@ angular.module('midjaApp')
     function generateCartoCSS(geoTable, regionAttribute, regionCodes, colorF) {
       var baseStyle =
         '#' + geoTable + ' {' +
-        ' polygon-fill: #000000;' +
+        ' polygon-fill: #bbbbbb;' +
         ' polygon-opacity: 0.70;' +
         ' line-color: #000000;' +
         ' line-width: 1;' +
