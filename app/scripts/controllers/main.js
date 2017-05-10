@@ -185,7 +185,7 @@ angular.module('midjaApp')
     vm.selectedTable = 'lga_565_iba_final'; // TODO: tie to a GUI option, do change handler
     selectedPlacesChanged();
     vm.tablePrefix = 'lga';
-    vm.unitSels = ['LGAs', 'ILOCs'];
+    vm.unitSels = ['LGAs', 'ILOCs', 'SA2s', 'SA3s'];
     vm.filters = [
       'Population >= 150',
       'Households >= 20',
@@ -387,14 +387,27 @@ angular.module('midjaApp')
       //vm.choroplethLayer = null;
       //vm.bubbleLayer = null;
 
-      if (vm.vis.unitSel == 'ILOCs') {
-        vm.tablePrefix = "iloc";
-        vm.selectedTable = "iloc_merged_dataset";
-        activate("iloc_merged_dataset")
-      } else {
-        vm.tablePrefix = "lga";
-        vm.selectedTable = "lga_565_iba_final";
-        activate("lga_565_iba_final")
+      switch (vm.vis.unitSel) {
+        case 'ILOCs':
+          vm.tablePrefix = "iloc";
+          vm.selectedTable = "iloc_merged_dataset";
+          activate(vm.selectedTable);
+          break;
+        case 'LGAs':
+          vm.tablePrefix = "lga";
+          vm.selectedTable = "lga_565_iba_final";
+          activate(vm.selectedTable);
+          break;
+        case 'SA2s':
+          vm.tablePrefix = "sa2";
+          vm.selectedTable = "sa2_nonexistent_dataset";
+          break;
+        case 'SA3s':
+          vm.tablePrefix = "sa3";
+          vm.selectedTable = "sa3_nonexistent_dataset";
+          break;
+        default:
+          return;
       }
 
       // Clear map but show boundaries
