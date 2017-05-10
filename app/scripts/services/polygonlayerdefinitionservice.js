@@ -12,7 +12,7 @@ angular.module('midjaApp')
     dataService, tableService) {
 
     // see https://google.github.io/palette.js/
-    var colorPaletteName = "cb-YlOrBr";
+    var colorPaletteName = "cb-YlOrRd";
 
     // Public API here
     return {
