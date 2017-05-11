@@ -52,10 +52,12 @@ angular.module('midjaApp')
       }
     }
 
-    function buildEmpty(geolevel) {
+    function buildEmpty(geolevel, locations) {
       return $q(function(resolve) {
         var geoTable = geolevel + "_2011_aust";
-        var sql = "SELECT * FROM " + geoTable;
+        var regionAttribute = geolevel+'_code';
+        var regions = _.uniq(_.map(locations, _.property('code'))).sort();
+        var sql = generateMapnikSQL(geoTable, regionAttribute, regions);
         var style = generateCartoCSS(geoTable, "", [], _.identity);
         resolve(new PolygonLayerDefinition(sql, style, geolevel, {}, []));
       });
@@ -72,7 +74,7 @@ angular.module('midjaApp')
         var geolevel = data.metadata.geolevel;
         var geoTable = geolevel + "_2011_aust";
         var regionAttribute = data.metadata.region_column;
-        var regions = _.uniq(_.pluck(locations, regionAttribute)).sort();
+        var regions = _.uniq(_.pluck(locations, 'code')).sort();
         var colorF = function(region) {
           var v = data.data[region][column.name];
           // Get color using bucket ranges (min: inclusive, max: exclusive)

@@ -294,74 +294,80 @@ angular.module('midjaApp')
       dataService.doQuery(sql).then(function(result) {
         vm.remotenessLevels = result.rows;
       });
-      if (vm.vis.unitSel == 'LGAs' && (
-          vm.vis.filter['Population >= 150'] ||
-          vm.vis.filter['Households >= 20'] ||
-          vm.vis.filter['Affordability >= 3'] ||
-          vm.vis.filter['Indigenous QLD LGAs'])) {
-        var query = 'SELECT lga_code FROM ' + table + ' WHERE ';
-        var constraints = "";
-        if (vm.vis.filter["Population >= 150"]) {
-          constraints += "indigenous < 150";
-        }
-        if (vm.vis.filter["Households >= 20"]) {
-          constraints += addOr(constraints.length) + "n_indig_h < 20";
-        }
-        if (vm.vis.filter["Affordability >= 3"]) {
-          constraints += addOr(constraints.length) + "afford < 3";
-        }
-        if (vm.vis.filter["Indigenous QLD LGAs"]) {
-          var indigenousCouncilCodes = [
-            'LGA30250', // Aurukun Shire Council
-            'LGA32330', // Cherbourg Aboriginal Shire Council
-            'LGA32770', // Doomadgee Aboriginal Shire Council
-            'LGA33830', // Hope Vale Aboriginal Shire Council
-            'LGA34420', // Kowanyama Aboriginal Shire Council
-            'LGA34570', // Lockhart River Aboriginal Shire Council
-            'LGA34830', // Mapoon Aboriginal Shire Council
-            'LGA35250', // Mornington Shire Council
-            'LGA35670', // Napranum Aboriginal Shire Council
-            'LGA35780', // Northern Peninsula Area Regional Council
-            'LGA35790', // Palm Island Aboriginal Shire Council
-            'LGA36070', // Pormpuraaw Aboriginal Shire Council
-            'LGA36960', // Torres Strait Island Regional Council
-            'LGA37550', // Woorabinda Aboriginal Shire Council
-            'LGA37570', // Wujal Wujal Aboriginal Shire Council
-            'LGA37600' // Yarrabah Aboriginal Shire Council
-          ];
-          var constraint = "lga_code not in (" + indigenousCouncilCodes.map(
-            function(code) {
-              return "'" + code + "'";
-            }).join(",") + ")";
-          console.log(constraint);
-          constraints += addOr(constraints.length) + constraint;
-        }
-        console.log(constraints);
+      return $q(function(resolve) {
+          if (vm.vis.unitSel == 'LGAs' && (
+              vm.vis.filter['Population >= 150'] ||
+              vm.vis.filter['Households >= 20'] ||
+              vm.vis.filter['Affordability >= 3'] ||
+              vm.vis.filter['Indigenous QLD LGAs'])) {
+            var query = 'SELECT lga_code FROM ' + table + ' WHERE ';
+            var constraints = "";
+            if (vm.vis.filter["Population >= 150"]) {
+              constraints += "indigenous < 150";
+            }
+            if (vm.vis.filter["Households >= 20"]) {
+              constraints += addOr(constraints.length) + "n_indig_h < 20";
+            }
+            if (vm.vis.filter["Affordability >= 3"]) {
+              constraints += addOr(constraints.length) + "afford < 3";
+            }
+            if (vm.vis.filter["Indigenous QLD LGAs"]) {
+              var indigenousCouncilCodes = [
+                'LGA30250', // Aurukun Shire Council
+                'LGA32330', // Cherbourg Aboriginal Shire Council
+                'LGA32770', // Doomadgee Aboriginal Shire Council
+                'LGA33830', // Hope Vale Aboriginal Shire Council
+                'LGA34420', // Kowanyama Aboriginal Shire Council
+                'LGA34570', // Lockhart River Aboriginal Shire Council
+                'LGA34830', // Mapoon Aboriginal Shire Council
+                'LGA35250', // Mornington Shire Council
+                'LGA35670', // Napranum Aboriginal Shire Council
+                'LGA35780', // Northern Peninsula Area Regional Council
+                'LGA35790', // Palm Island Aboriginal Shire Council
+                'LGA36070', // Pormpuraaw Aboriginal Shire Council
+                'LGA36960', // Torres Strait Island Regional Council
+                'LGA37550', // Woorabinda Aboriginal Shire Council
+                'LGA37570', // Wujal Wujal Aboriginal Shire Council
+                'LGA37600' // Yarrabah Aboriginal Shire Council
+              ];
+              var constraint = "lga_code not in (" + indigenousCouncilCodes
+                .map(
+                  function(code) {
+                    return "'" + code + "'";
+                  }).join(",") + ")";
+              console.log(constraint);
+              constraints += addOr(constraints.length) + constraint;
+            }
+            console.log(constraints);
 
-        query = query + constraints + ";";
+            query = query + constraints + ";";
 
-        console.log(query);
-        dataService.doQuery(query).then(function(result) {
-          vm.filterPlaces = _.pluck(result.rows, 'lga_code');
+            console.log(query);
+            dataService.doQuery(query).then(function(result) {
+              vm.filterPlaces = _.pluck(result.rows, 'lga_code');
+              resolve();
+            });
+          } else {
+            vm.filterPlaces = []
+            resolve();
+          }
+        }).then(function() {
+          return metadataService.getDataset(table)
+        })
+        .then(function(data) {
+          console.log(data);
+          vm.columnsFromMetadata = _.reject(data.attributes,
+            function(column) {
+              return column.data_type !== 'number';
+            });
+          vm.columns = vm.columnsFromMetadata;
+
+          var regex = /proportion|percentage/i;
+          vm.columnsFromMetadataPropCols = _.filter(vm.columnsFromMetadata,
+            function(column) {
+              return regex.test(column.short_desc);
+            });
         });
-      } else {
-        vm.filterPlaces = []
-      }
-
-      metadataService.getDataset(table).then(function(data) {
-        console.log(data);
-        vm.columnsFromMetadata = _.reject(data.attributes,
-          function(column) {
-            return column.data_type !== 'number';
-          });
-        vm.columns = vm.columnsFromMetadata;
-
-        var regex = /proportion|percentage/i;
-        vm.columnsFromMetadataPropCols = _.filter(vm.columnsFromMetadata,
-          function(column) {
-            return regex.test(column.short_desc);
-          });
-      });
     }
 
     function isDataSelected() {
@@ -382,78 +388,83 @@ angular.module('midjaApp')
         vm.vis.locations.pop();
       }
 
-      //vm.vis.topics = [];
+      $q(function(resolve) {
+          switch (vm.vis.unitSel) {
+            case 'ILOCs':
+              vm.tablePrefix = "iloc";
+              vm.selectedTable = "iloc_merged_dataset";
+              return activate(vm.selectedTable).then(resolve);
+              break;
+            case 'LGAs':
+              vm.tablePrefix = "lga";
+              vm.selectedTable = "lga_565_iba_final";
+              return activate(vm.selectedTable).then(resolve);
+            case 'SA2s':
+              vm.tablePrefix = "sa2";
+              vm.selectedTable = "sa2_nonexistent_dataset";
+              return resolve();
+            case 'SA3s':
+              vm.tablePrefix = "sa3";
+              vm.selectedTable = "sa3_nonexistent_dataset";
+              return resolve();
+            default:
+              return;
+          }
+        }).then(function() {
+          return $q(function(resolve) {
+            // Set first location to Australia if unpopulated
+            if (!_.isObject(vm.vis.locations[0])) {
+              dataService.getRegionsAtOrAbove('country')
+                .then(_.first)
+                .then(function(location) {
+                  vm.vis.locations[0] = location;
+                  resolve(vm.vis.locations);
+                });
+            } else {
+              resolve(vm.vis.locations);
+            }
+          })
+        })
+        .then(function(regions) {
+          return $q.all(_.map(
+            regions,
+            _.partial(dataService.getSubregions, vm.tablePrefix)))
+        }).then(_.flatten)
+        .then(_.partial(_.uniq, _, false, _.property('code')))
+        .then(_.partial(_.filter, _,
+          function(region) {
+            return !_.includes(vm.filterPlaces, region.code)
+          }
+        ))
+        .then(function(regions) {
+          if (vm.vis.remotenessLevel == 'all')
+            return regions;
+          else
+            return dataService.filterByRemotenessArea(
+              regions,
+              vm.tablePrefix,
+              vm.vis.remotenessLevel);
+        }).then(function(regions) {
+          var units = regions;
 
-      //vm.choroplethLayer = null;
-      //vm.bubbleLayer = null;
+          // Clear map but show boundaries
+          layerService.build('polygon')
+            .buildEmpty(vm.tablePrefix, regions).then(function(layer) {
+              vm.regionLayer = layer;
+            });
 
-      switch (vm.vis.unitSel) {
-        case 'ILOCs':
-          vm.tablePrefix = "iloc";
-          vm.selectedTable = "iloc_merged_dataset";
-          activate(vm.selectedTable);
-          break;
-        case 'LGAs':
-          vm.tablePrefix = "lga";
-          vm.selectedTable = "lga_565_iba_final";
-          activate(vm.selectedTable);
-          break;
-        case 'SA2s':
-          vm.tablePrefix = "sa2";
-          vm.selectedTable = "sa2_nonexistent_dataset";
-          break;
-        case 'SA3s':
-          vm.tablePrefix = "sa3";
-          vm.selectedTable = "sa3_nonexistent_dataset";
-          break;
-        default:
-          return;
-      }
-
-      // Clear map but show boundaries
-      layerService.build('polygon')
-        .buildEmpty(vm.tablePrefix).then(function(layer) {
-          vm.regionLayer = layer;
+          if (!units.length) {
+            // revert back the removenessLevel in the UI when no ILOCs are found
+            vm.vis.remotenessLevel = vm.vis.currRemotenessLevel;
+            window.alert('No ' + vm.vis.unitSel + ' found.');
+          } else {
+            vm.vis.currRemotenessLevel = vm.vis.remotenessLevel;
+            vm.vis.units = units;
+            generateVisualisations();
+            generateScatterPlot();
+            generateLinearRegression();
+          }
         });
-
-      var places = getSelectedPlaceExcludingAustralia();
-      dataService.getLocsInPlaces(places, vm.selectedTable, vm.tablePrefix,
-        vm.vis.remotenessLevel).then(function(results) {
-        var units = results.rows;
-
-        if (vm.filterPlaces.length > 0) {
-          units = _.filter(units, function(row) {
-            return !_.contains(vm.filterPlaces, row['lga_code']);
-          });
-        }
-
-        if (!units.length) {
-          // revert back the removenessLevel in the UI when no ILOCs are found
-          vm.vis.remotenessLevel = vm.vis.currRemotenessLevel;
-          window.alert('No ' + vm.vis.unitSel + ' found.');
-        } else {
-          vm.vis.currRemotenessLevel = vm.vis.remotenessLevel;
-          vm.vis.units = units;
-          generateVisualisations();
-          generateScatterPlot();
-          generateLinearRegression();
-        }
-      });
-    }
-
-    /**
-     * Get the places the user has selected
-     *
-     * Filter out australia, because its just EVERYTHING, so we don't
-     * really need it.
-     *
-     * @returns {*} List of places selected
-     */
-    function getSelectedPlaceExcludingAustralia() {
-      var places = _.reject(vm.vis.locations, function(location) {
-        return location.type === 'country';
-      });
-      return places;
     }
 
     function generateVisualisations() {
@@ -530,9 +541,9 @@ angular.module('midjaApp')
           var sortedRegionCodes =
             _.map(
               _.sortBy(
-                _.values(data.geo),
-                _.property(regionNameAttr)),
-              _.property(data.metadata.region_column));
+                _.values(locations),
+                _.property('name')),
+              _.property('code'));
 
           // Remoteness values ordered by location
           vm.curRemoteness = _.map(sortedRegionCodes, function(r) {
@@ -630,25 +641,10 @@ angular.module('midjaApp')
         return;
       }
 
-      if (vm.tablePrefix == "iloc") {
-        dataService.getIlocLocationsStartingWith(name).then(function(
-          locations) {
-          locations.unshift({
-            name: 'Australia',
-            type: 'country'
-          })
+      dataService.getRegionsStartingWith(vm.tablePrefix, name)
+        .then(function(locations) {
           vm.locations = locations;
         });
-      } else { // check for lga
-        dataService.getLgaLocationsStartingWith(name, vm.vis.lgaBlock).then(
-          function(locations) {
-            locations.unshift({
-              name: 'Australia',
-              type: 'country'
-            })
-            vm.locations = locations;
-          });
-      }
 
     }
 
@@ -827,7 +823,7 @@ angular.module('midjaApp')
         "ylabel": vm.scatterPlot.yaxis.short_desc,
         "useRemoteness": vm.scatterPlot.useRemoteness,
         "labelLocations": vm.scatterPlot.labelLocations,
-        "unit_codes": _.pluck(vm.vis.units, vm.tablePrefix + '_code')
+        "unit_codes": _.map(vm.vis.units, _.property('code'))
       };
 
       var resultsData = []
@@ -1019,8 +1015,8 @@ angular.module('midjaApp')
 
 angular.module('midjaApp').controller('DetailsModalInstanceCtrl', function(
   $scope, $uibModalInstance, context) {
-    console.log(context);
-    $scope.context = context;
+  console.log(context);
+  $scope.context = context;
 
   // insert data
   $scope.ok = function() {

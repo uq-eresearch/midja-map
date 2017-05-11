@@ -1,0 +1,9 @@
+{
+  "attributes": [
+    {
+      "name": "region_name",
+      "description": "Statistical Area Level 3 (SA3) name",
+      "type": "string"
+    }
+  ]
+}

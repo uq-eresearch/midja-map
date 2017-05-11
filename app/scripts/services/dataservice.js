@@ -9,177 +9,170 @@
  */
 angular.module('midjaApp')
   .factory('dataService', function($http, $q, metadataService, labelService) {
+    // Tests to determine if child region is in parent
+    var subregionTests = (function() {
+      function commonNumericPrefix(sourceRegion) {
+        function removeNonNumericCharacters(s) {
+          return s.replace(/[^\d]/g, '');
+        }
+        return _.flow(
+          _.property('code'),
+          removeNonNumericCharacters,
+          _.partial(_.startsWith, _,
+            removeNonNumericCharacters(sourceRegion.code)));
+      }
+      return {
+        'country': {
+          'state': _.constant(_.constant(true))
+        },
+        'state': {
+          'ireg': commonNumericPrefix,
+          'sa4': commonNumericPrefix,
+          'lga': commonNumericPrefix
+        },
+        'sa4': {
+          'sa3': commonNumericPrefix
+        },
+        'sa3': {
+          'sa2': commonNumericPrefix
+        },
+        'ireg': {
+          'iare': commonNumericPrefix
+        },
+        'iare': {
+          'iloc': commonNumericPrefix
+        }
+      };
+    }());
+
+    // Map child back to parent
+    var parentRegionTypes = _(subregionTests)
+      .map(function(fMap, parentType) {
+        return _.map(
+          fMap,
+          function(f, childType) {
+            return [childType, parentType];
+          });
+      })
+      .flatten()
+      .zipObject()
+      .value();
+
+    var getAttribute = _.memoize(
+      _.ary(getAttributeFromRemote, 2),
+      function() {
+        return _.map(arguments, _.identity).join(":");
+      });
 
     return {
+      getSubregions: getSubregions,
+      getRegionsAtOrAbove: getRegionsAtOrAbove,
       getBuckets: getBuckets,
       getQuantileBuckets: getQuantileBuckets,
-      getIlocLocationsStartingWith: getIlocPlacesStartingWith,
-      getLgaLocationsStartingWith: getLgaPlacesStartingWith,
-      getLocsInPlaces: getLocsInPlaces,
+      getRegionsStartingWith: getRegionsStartingWith,
+      filterByRemotenessArea: filterByRemotenessArea,
       getGeoData: getGeoData,
       getTopicData: getTopicData,
-      doQuery: doQuery,
-      mysqlRealEscapeString: mysqlRealEscapeString
+      doQuery: doQuery
     };
 
-    /**
-     * Get All Locations for  Place
-     * @param places            Array of places (if empty, all of australia is used)
-     * @param remotenessLevel   Very Remote etc
-     * @returns {*}
-     */
-    function getLocsInPlaces(places, dataset, placetype, remotenessLevel) {
-
-      var sql = 'SELECT DISTINCT ' + placetype + '_name, ' + placetype +
-        '_code FROM ' + dataset + ' ';
-      _.forEach(places, function(place, index) {
-        if (index === 0) {
-          sql += ' WHERE '
-        } else {
-          sql += ' OR '
-        }
-        sql += place.type + '_name = \'' + mysqlRealEscapeString(place.name) +
-          '\' ';
-      });
-
-      if (remotenessLevel && remotenessLevel !== 'all') {
-        if (places.length === 0) {
-          sql += ' WHERE '
-        } else {
-          sql += ' AND '
-        }
-        sql += ' ra_name = \'' + remotenessLevel + '\'';
+    function getSubregions(targetRegionType, region) {
+      var transitions =
+        _.chain(getRegionTypeHeirarchy(targetRegionType))
+        .reverse()
+        .dropWhile(_.negate(_.partial(_.isEqual, region.type)))
+        .value();
+      if (_.isEmpty(transitions)) {
+        throw "Cannot convert " + region.type + " to " + targetRegionType;
+      } else if (_.size(transitions) == 1) {
+        return [region];
+      } else {
+        var immediateTargetRegionType = transitions[1];
+        var testF =
+          subregionTests[region.type][immediateTargetRegionType](region);
+        return getRegions(immediateTargetRegionType)
+          .then(_.partial(_.filter, _, testF))
+          .then(function(subregions) {
+            return $q.all(
+              _.map(subregions,
+                _.partial(getSubregions, targetRegionType))
+            ).then(_.flatten);
+          })
       }
-      sql += ';';
-      return doQuery(sql);
     }
 
-    function mysqlRealEscapeString(str) {
-      return str.replace(/[\0\x08\x09\x1a\n\r"'\\\%]/g, function(char) {
-        switch (char) {
-          case "\0":
-            return "\\0";
-          case "\x08":
-            return "\\b";
-          case "\x09":
-            return "\\t";
-          case "\x1a":
-            return "\\z";
-          case "\n":
-            return "\\n";
-          case "\r":
-            return "\\r";
-          case "\"":
-          case "'":
-          case "\\":
-          case "%":
-            return "\\" + char; // prepends a backslash to backslash, percent,
-            // and double/single quotes
-        }
-      });
+    function filterByRemotenessArea(regions, regionType, remotenessAreaName) {
+      return getAttribute(regionType, 'ra_name')
+        .then(_.propertyOf)
+        .then(function(raNameLookup) {
+          return _.filter(
+            regions,
+            _.flow(
+              _.property('code'),
+              raNameLookup,
+              _.partial(_.isEqual, remotenessAreaName)));
+        })
     }
 
-    function getIlocPlacesStartingWith(name) {
-      // get all iloc names from server somehow
-      var iLocSql = 'SELECT iloc_code, iloc_name  FROM iloc_merged_dataset ' +
-        'WHERE iloc_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';
-
-      var iRegSql =
-        'SELECT DISTINCT ireg_code, ireg_name FROM iloc_merged_dataset ' +
-        'WHERE ireg_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';
-
-      var iAreSql =
-        'SELECT DISTINCT iare_code, iare_name FROM iloc_merged_dataset ' +
-        'WHERE iare_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';
-
-      var stateSql =
-        'SELECT DISTINCT state_code, state_name FROM iloc_merged_dataset ' +
-        'WHERE state_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';
-
-      var promises = [
-        doQuery(iLocSql),
-        doQuery(iRegSql),
-        doQuery(iAreSql),
-        doQuery(stateSql)
-      ];
-      return $q.all(promises).then(function(queries) {
-
-        var ilocs = _.map(queries[0].rows, function(iloc) {
-          return {
-            type: 'iloc',
-            name: iloc.iloc_name,
-            code: iloc.iloc_code
-          }
-        });
-
-        var iregs = _.map(queries[1].rows, function(ireg) {
-          return {
-            type: 'ireg',
-            name: ireg.ireg_name,
-            code: ireg.ireg_code
-          }
-        });
-
-        var iares = _.map(queries[2].rows, function(iare) {
-          return {
-            type: 'iare',
-            name: iare.iare_name,
-            code: iare.iare_code
-          }
-        });
-
-        var states = _.map(queries[3].rows, function(state) {
-          return {
-            type: 'state',
-            name: state.state_name,
-            code: state.state_code
-          }
-        });
-
-        var places = _.sortBy(ilocs.concat(iregs).concat(iares).concat(
-          states), function(place) {
-          return place.name.length;
-        });
-        return places;
-      });
+    function caseInsensitiveStartsWith(prefix) {
+      function toLowerCase(s) {
+        return s.toLowerCase();
+      }
+      return _.flow(
+        toLowerCase,
+        _.partial(_.startsWith, _, toLowerCase(prefix)));
     }
 
-    function getLgaPlacesStartingWith(name, block) {
-      // get all lga names from server somehow
+    function getRegionsStartingWith(regionType, prefix) {
+      return getRegionsAtOrAbove(regionType)
+        .then(function(regions) {
+          return _.filter(regions,
+            _.flow(
+              _.property('name'),
+              caseInsensitiveStartsWith(prefix)));
+        })
+        .then(function(regions) {
+          return _.sortBy(
+            regions,
+            _.flow(_.property('name'), _.size));
+        })
+    }
 
-      var LGASql = 'SELECT lga_code, lga_name FROM lga_565_iba_final ' +
-        'WHERE lga_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';
+    function getRegionTypeHeirarchy(regionType) {
+      var r = regionType;
+      var rs = [r];
+      while (r = parentRegionTypes[r]) {
+        rs.push(r);
+      }
+      return rs;
+    }
 
-      var stateSql =
-        'SELECT DISTINCT state_code, state_name FROM lga_565_iba_final ' +
-        'WHERE state_name ILIKE \'' + mysqlRealEscapeString(name) + '%\';';
-      var promises = [
-        doQuery(LGASql),
-        doQuery(stateSql)
-      ];
-      return $q.all(promises).then(function(queries) {
+    function getRegions(regionType) {
+      function locBuilder(name, code) {
+        return {
+          code: code,
+          name: name,
+          type: regionType
+        };
+      }
+      switch (regionType) {
+        case 'country':
+          return $q(function(resolve) {
+            resolve(locBuilder('Australia', ''));
+          });
+        default:
+          return getAttribute(regionType, 'region_name')
+            .then(_.partial(_.map, _, locBuilder));
+      }
+    }
 
-        var lgas = _.map(queries[0].rows, function(lga) {
-          return {
-            type: 'lga',
-            name: lga.lga_name,
-            code: lga.lga_code
-          }
-        });
-
-        var states = _.map(queries[1].rows, function(state) {
-          return {
-            type: 'state',
-            name: state.state_name,
-            code: state.state_code
-          }
-        });
-
-        var places = _.sortBy(lgas.concat(states), function(place) {
-          return place.name.length;
-        });
-        return places;
-      });
+    function getRegionsAtOrAbove(regionType) {
+      var regionTypes = getRegionTypeHeirarchy(regionType);
+      return $q.all(
+        _.map(
+          regionTypes,
+          getRegions)
+      ).then(_.flatten);
     }
 
     function getBuckets(column, sql, numberOfBuckets) {
@@ -196,7 +189,7 @@ angular.module('midjaApp')
       });
     }
 
-    function getGeoData(dataset, attributes, locations) {
+    function getGeoData(dataset, attributes, regions) {
       return metadataService.getDataset(dataset).then(function(metadata) {
         var table = metadata.geolevel + "_2011_aust";
         var regionColumn = metadata.region_column;
@@ -205,7 +198,8 @@ angular.module('midjaApp')
         var sql = [
           'SELECT ' + columns.join(', '),
           'FROM ' + table,
-          'WHERE ' + sqlCondition(regionColumn, locations)
+          'WHERE ' + sqlCondition(regionColumn,
+            _.map(regions, _.property('code')))
         ].join(" ");
         return doQuery(sql).then(function(result) {
           return _.zipObject(
@@ -216,7 +210,13 @@ angular.module('midjaApp')
       });
     }
 
-    function getTopicData(dataset, attributes, locations) {
+    function getAttributeFromRemote(regionType, attribute) {
+      return $http
+        .get('/data/' + regionType + '/' + attribute)
+        .then(_.property('data'));
+    }
+
+    function getTopicData(dataset, attributes, regions) {
       return metadataService.getDataset(dataset).then(function(metadata) {
         if (!metadata) {
           console.log('Dataset "' + dataset + '" not found!');
@@ -234,7 +234,8 @@ angular.module('midjaApp')
         var sql = [
           'SELECT ' + columns.join(', '),
           'FROM ' + table,
-          'WHERE ' + sqlCondition(regionColumn, locations)
+          'WHERE ' + sqlCondition(regionColumn,
+            _.map(regions, _.property('code')))
         ].join(" ");
         return doQuery(sql).then(function(result) {
           return _.zipObject(
@@ -245,15 +246,15 @@ angular.module('midjaApp')
       });
     }
 
-    function sqlCondition(regionColumn, locations) {
-      if (!locations) {
+    function sqlCondition(regionColumn, regions) {
+      if (!regions) {
         return regionColumn + "IS NOT NULL";
       }
       var regions = _.uniq(_.map(
-        locations,
-        _.isObject(_.first(locations)) ?
-          _.property(regionColumn) :
-          _.identity));
+        regions,
+        _.isObject(_.first(regions)) ?
+        _.property(regionColumn) :
+        _.identity));
       return regionColumn +
         ' IN (' +
         regions.map(function(region) {
@@ -278,8 +279,6 @@ angular.module('midjaApp')
     function doQuery(sql) {
       return $http
         .get("/sql/?q=" + encodeURI(sql))
-        .then(function(result) {
-          return result.data;
-        });
+        .then(_.property('data'));
     }
   });

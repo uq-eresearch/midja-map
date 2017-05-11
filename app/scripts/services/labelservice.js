@@ -12,9 +12,7 @@ angular.module('midjaApp')
 
     function labelService$getResolver(regionType) {
       return metadataService.getDataset(regionType)
-        .then(function(v) { console.log(v); return v; })
         .then(_.property('attributes'))
-        .then(function(v) { console.log(v); return v; })
         .then(function(attributes) {
           return _.zipObject(
             _.map(attributes, _.property('name')),

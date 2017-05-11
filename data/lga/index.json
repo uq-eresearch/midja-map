@@ -1,0 +1,9 @@
+{
+  "attributes": [
+    {
+      "name": "region_name",
+      "description": "Local Government Area name",
+      "type": "string"
+    }
+  ]
+}

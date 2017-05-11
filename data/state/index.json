@@ -1,0 +1,9 @@
+{
+  "attributes": [
+    {
+      "name": "region_name",
+      "description": "State/Territory name",
+      "type": "string"
+    }
+  ]
+}

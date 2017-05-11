@@ -40,7 +40,7 @@ angular.module('midjaApp')
         var buckets = generateBuckets(series)
         var geoTable = data.metadata.geolevel + "_2011_aust";
         var regionAttribute = data.metadata.region_column;
-        var regions = _.uniq(_.pluck(locations, regionAttribute)).sort();
+        var regionCodes = _.uniq(_.pluck(locations, 'code')).sort();
         var radiusF = function(region) {
           var v = data.data[region][column.name];
           // Get radius using bucket ranges (min: inclusive, max: exclusive)
@@ -51,9 +51,9 @@ angular.module('midjaApp')
             }).concat([_.last(buckets)])
           ).radius;
         };
-        var sql = generateMapnikSQL(geoTable, regionAttribute, regions);
+        var sql = generateMapnikSQL(geoTable, regionAttribute, regionCodes);
         var style = generateCartoCSS(
-          geoTable, regionAttribute, regions, radiusF);
+          geoTable, regionAttribute, regionCodes, radiusF);
         return new BubbleLayerDefinition(sql, style, table, data.data);
       });
     }
@@ -88,7 +88,7 @@ angular.module('midjaApp')
       });
     }
 
-    function generateMapnikSQL(geoTable, regionAttribute, regionValues) {
+    function generateMapnikSQL(geoTable, regionAttribute, regionCodes) {
       var sqlTemplate = _.template(
         "SELECT <%=attr%>, \
           ST_Centroid(the_geom) as the_geom, \
@@ -100,7 +100,7 @@ angular.module('midjaApp')
       return sqlTemplate({
         table: geoTable,
         attr: regionAttribute,
-        valueList: regionValues.map(singleQuote).join(",")
+        valueList: regionCodes.map(singleQuote).join(",")
       })
     }
 

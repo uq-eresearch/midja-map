@@ -22,6 +22,7 @@ module.exports = function(grunt) {
   };
 
   var proxy = require('http-proxy-middleware');
+  var serveStatic = require('serve-static');
 
   function commonMiddlewares(connect) {
     return [
@@ -57,6 +58,14 @@ module.exports = function(grunt) {
       connect().use(
         '/bower_components',
         connect.static('./bower_components')
+      ),
+      connect().use(
+        '/data',
+        serveStatic('./data', {
+          index: 'index.json',
+          extensions: 'json',
+          redirect: true
+        })
       ),
       connect.static(appConfig.app)
     ]
@@ -411,6 +420,11 @@ module.exports = function(grunt) {
           cwd: '.tmp/images',
           dest: '<%= yeoman.dist %>/images',
           src: ['generated/*']
+        }, {
+          expand: true,
+          cwd: '.',
+          src: 'data/*',
+          dest: '<%= yeoman.dist %>'
         }, {
           expand: true,
           cwd: '.',
