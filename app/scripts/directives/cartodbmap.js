@@ -7,7 +7,7 @@
  * # cartodbMap
  */
 angular.module('midjaApp')
-  .directive('cartodbMap', function(L, $http, $rootScope, dataService,
+  .directive('cartodbMap', function(L, $http, $rootScope, $q, dataService,
     labelService, mapService, $uibModal) {
 
     var map = null;
@@ -227,13 +227,13 @@ angular.module('midjaApp')
       }
 
       $rootScope.$on('featureOver', function(e, data) {
-        labelService.getResolver().then(function(getLabel) {
+        var vm = $rootScope.$$childTail.vm;
+        labelService.getResolver(vm.selectedTable).then(function(getLabel) {
           var transform = mapService.getFeatureTransformer(getLabel);
           if (!$rootScope.feature || $rootScope.feature[0].level_name !=
             transform(data).level_name) {
             var mouseOverFeature = [transform(data)];
             var newData = {};
-            var vm = $rootScope.$$childTail.vm;
             if (!vm.vis.choropleth.topic) {
               $rootScope.feature = mouseOverFeature;
             } else if (vm.vis.choropleth.topic.name != vm.vis.bubble.topic
@@ -308,41 +308,32 @@ angular.module('midjaApp')
       });
 
       $rootScope.$on('featureClick', function(e, data) {
-        scope.$apply(function() {
-          if ($rootScope.placeDetails == null) {
-            $rootScope.placeDetails = 1;
-            var vm = $rootScope.$$childTail.vm;
-            if (vm.tablePrefix == 'iloc') {
-              var sql =
-                "SELECT iloc_name, total_loan, num_apps FROM iloc_merged_dataset WHERE iloc_name='" +
-                data.iloc_name + "';";
-            } else if (vm.tablePrefix == 'lga') {
-              var sql =
-                "SELECT lga_name, ra_name, piho, f_time, iba_a_loan, iba_n_loan, ave_h_s, n_indig_h, own_home, indigenous, median_inc, median_mor, afford FROM lga_565_iba_final WHERE lga_name='" +
-                data.lga_name + "';";
-            }
-            dataService.doQuery(sql).then(function(result) {
-              var modalInstance = $uibModal.open({
-                animation: true,
-                templateUrl: 'details.html',
-                controller: 'DetailsModalInstanceCtrl',
-                resolve: {
-                  vm: function() {
-                    return $rootScope;
-                  },
-                  stats: function() {
-                    return result;
-                  }
-                }
-              });
+        var vm = $rootScope.$$childTail.vm;
+        var regionType = vm.tablePrefix;
+        var regionCodeAttribute = regionType+'_code';
+        var dataset = vm.selectedTable;
+        var attributes = _.map(vm.vis.topics, _.property('name'));
+        var region = data[regionCodeAttribute];
 
-              modalInstance.result.then(function() {
-                $rootScope.placeDetails = null;
-              }, function() {
-                $rootScope.placeDetails = null;
-              });
-            });
-          }
+        $q.all({
+          data: dataService.getTopicData(dataset, attributes, [data]),
+          getLabel: labelService.getResolver(vm.selectedTable)
+        }).then(function(context) {
+          var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: 'details.html',
+            controller: 'DetailsModalInstanceCtrl',
+            resolve: {
+              context: {
+                attributes: _.keys(data).concat(attributes),
+                getLabel: context.getLabel,
+                getValue: _.propertyOf(
+                  _.defaults(
+                    _.first(_.values(context.data)),
+                    data))
+              }
+            }
+          });
         });
       });
     }

@@ -1018,18 +1018,16 @@ angular.module('midjaApp')
   });
 
 angular.module('midjaApp').controller('DetailsModalInstanceCtrl', function(
-  $scope, $uibModalInstance, vm, stats) {
-  $scope.vm = vm;
+  $scope, $uibModalInstance, context) {
+    console.log(context);
+    $scope.context = context;
+
   // insert data
   $scope.ok = function() {
-    $scope.vm.placeDetails = null;
     $uibModalInstance.close();
-
   };
 
   $scope.cancel = function() {
-    $scope.vm.placeDetails = null;
     $uibModalInstance.dismiss('cancel');
   };
-  $scope.vm.placeDetails = stats.rows[0];
 });

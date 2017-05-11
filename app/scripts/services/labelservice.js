@@ -9,26 +9,22 @@
  */
 angular.module('midjaApp')
   .factory('labelService', function(metadataService) {
-    var pLabels = metadataService.getDatasets().then(function(datasets) {
-      var labels = {};
-      for (var k in datasets) {
-        while (datasets[k].attributes.length > 0) {
-          var attr = datasets[k].attributes.pop();
-          labels[attr["name"]] = attr["short_desc"];
-        }
-      }
-      return labels;
-    });
 
-    function labelService$getResolver() {
-      return pLabels.then(function(labels) {
-        return function(name) {
-          return labels[name];
-        }
-      });
+    function labelService$getResolver(regionType) {
+      return metadataService.getDataset(regionType)
+        .then(function(v) { console.log(v); return v; })
+        .then(_.property('attributes'))
+        .then(function(v) { console.log(v); return v; })
+        .then(function(attributes) {
+          return _.zipObject(
+            _.map(attributes, _.property('name')),
+            _.map(attributes, _.property('short_desc')));
+        })
+        .then(function(v) { console.log(v); return v; })
+        .then(_.propertyOf);
     }
 
     return {
-      getResolver: labelService$getResolver
+      getResolver: _.memoize(labelService$getResolver)
     };
   });

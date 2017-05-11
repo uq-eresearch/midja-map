@@ -249,7 +249,11 @@ angular.module('midjaApp')
       if (!locations) {
         return regionColumn + "IS NOT NULL";
       }
-      var regions = _.uniq(_.pluck(locations, regionColumn));
+      var regions = _.uniq(_.map(
+        locations,
+        _.isObject(_.first(locations)) ?
+          _.property(regionColumn) :
+          _.identity));
       return regionColumn +
         ' IN (' +
         regions.map(function(region) {

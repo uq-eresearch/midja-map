@@ -5,58 +5,10 @@
 		<h3 class="modal-title">Place Details</h3>
 	</div>
 	<div class="modal-body">
-		<div ng-show="vm.placeDetails.iloc_name != null">
+		<div ng-repeat="attr in context.attributes">
 			<div>
-			Name: {{vm.placeDetails.iloc_name}}
+			{{context.getLabel(attr)}}: {{context.getValue(attr)}}
 			</div>
-			<div>
-			Total Number of IBA Loans: {{vm.placeDetails.num_apps}}
-			</div>
-			<div>
-			Total Amount of IBA Loans: {{vm.placeDetails.total_loan}}
-			</div>
-		</div>
-		<div ng-show="vm.placeDetails.lga_name != null">
-			<div>
-			Name: {{vm.placeDetails.lga_name}}
-			</div>
-			<div>
-			Remoteness: {{vm.placeDetails.ra_name}}
-			</div>
-			<div>
-			Number of Indigenous Households: {{vm.placeDetails.n_indig_h}}
-			</div>
-			<div>
-			Percentage Indigenous households who own their own homes: {{vm.placeDetails.own_home}}
-			</div>
-			<div>
-			Indigenous Population: {{vm.placeDetails.indigenous}}
-			</div>
-			<div>
-			Median Indigenous Household Income: {{vm.placeDetails.median_inc}}
-			</div>
-			<div>
-			Median Annual Mortgage: {{vm.placeDetails.median_mor}}
-			</div>
-			<div>
-			Percentage Indigenous in Full-time employment: {{vm.placeDetails.f_time}}
-			</div>
-			<div>
-			Affordability: {{vm.placeDetails.afford}}
-			</div>
-			<div>
-			Average Indigenous Household Size: {{vm.placeDetails.ave_h_s}}
-			</div>
-			<div>
-			Potential Indigenous Home Ownership Index: {{vm.placeDetails.piho}}
-			</div>
-			<div>
-			IBA Total Number of Loans: {{vm.placeDetails.iba_n_loan}}
-			</div>
-			<div>
-			IBA Total Amount of Loans: {{vm.placeDetails.iba_a_loan}}
-			</div>
-
 		</div>
 	</div>
 	<div class="modal-footer">
