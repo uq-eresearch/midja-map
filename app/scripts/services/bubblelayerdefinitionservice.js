@@ -60,21 +60,23 @@ angular.module('midjaApp')
 
     function generateBuckets(series) {
       var buckets = _.first(
-        _(_.range(5, 0, -1))
-        .map(function(n) {
-          return dataService.getQuantileBuckets(series, n);
-        })
-        .filter(function(buckets) {
-          return _.every(buckets, function(bucket) {
-            return bucket.min != bucket.max;
-          });
-        })
-        .value()
+        _.chain(_.range(5, 0, -1))
+          .map(function(n) {
+            return dataService.getQuantileBuckets(series, n);
+          })
+          .filter(function(buckets) {
+            return buckets.length == 1 ||
+              _.every(buckets, function(bucket) {
+                return bucket.min != bucket.max;
+              });
+          })
+          .value()
       );
       var radius = (function() {
         var MAX_RADIUS = 31;
         var MIN_RADIUS = 5;
-        var increment = (MAX_RADIUS - MIN_RADIUS) / (buckets.length - 1);
+        var increment =
+          (MAX_RADIUS - MIN_RADIUS) / Math.max(1, buckets.length - 1);
         return function(bucketIndex) {
           return MIN_RADIUS + (increment * bucketIndex);
         };

@@ -93,16 +93,17 @@ angular.module('midjaApp')
 
     function generateBuckets(series) {
       var buckets = _.first(
-        _(_.range(5, 0, -1))
-        .map(function(n) {
-          return dataService.getQuantileBuckets(series, n);
-        })
-        .filter(function(buckets) {
-          return _.every(buckets, function(bucket) {
-            return bucket.min != bucket.max;
-          });
-        })
-        .value()
+        _.chain(_.range(5, 0, -1))
+          .map(function(n) {
+            return dataService.getQuantileBuckets(series, n);
+          })
+          .filter(function(buckets) {
+            return buckets.length == 1 ||
+              _.every(buckets, function(bucket) {
+                return bucket.min != bucket.max;
+              });
+          })
+          .value()
       );
       var colors = palette(colorPaletteName, buckets.length);
       return _.map(buckets, function(bucket, i) {
