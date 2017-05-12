@@ -61,10 +61,20 @@ module.exports = function(grunt) {
       ),
       connect().use(
         '/data',
-        serveStatic('./data', {
+        serveStatic('./data/public', {
           index: 'index.json',
           extensions: 'json',
-          redirect: true
+          redirect: true,
+          fallthrough: true
+        })
+      ),
+      connect().use(
+        '/data',
+        serveStatic('./data/private', {
+          index: 'index.json',
+          extensions: 'json',
+          redirect: true,
+          fallthrough: false
         })
       ),
       connect.static(appConfig.app)
@@ -422,9 +432,14 @@ module.exports = function(grunt) {
           src: ['generated/*']
         }, {
           expand: true,
-          cwd: '.',
-          src: 'data/*',
-          dest: '<%= yeoman.dist %>'
+          cwd: 'data/public',
+          src: '**',
+          dest: '<%= yeoman.dist %>/data'
+        }, {
+          expand: true,
+          cwd: 'data/private',
+          src: '**',
+          dest: '<%= yeoman.dist %>/data'
         }, {
           expand: true,
           cwd: '.',
