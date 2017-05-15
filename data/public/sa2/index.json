@@ -24,6 +24,266 @@
       }
     },
     {
+      "name": "gipop_chronic_acscs_10yr_avg_admissions",
+      "description": "Grattan Institute \"Perils of Place\" Chronic ACSCs admissions (10 year average)",
+      "type": "number",
+      "source": {
+        "name": "Grattan Institute",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
+        },
+        "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
+      }
+    },
+    {
+      "name": "gipop_chronic_acscs_lq",
+      "description": "Grattan Institute \"Perils of Place\" Chronic ACSCs location quotient",
+      "type": "number",
+      "source": {
+        "name": "Grattan Institute",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
+        },
+        "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
+      }
+    },
+    {
+      "name": "gipop_angina_10yr_avg_admissions",
+      "description": "Grattan Institute \"Perils of Place\" Angina admissions (10 year average)",
+      "type": "number",
+      "source": {
+        "name": "Grattan Institute",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
+        },
+        "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
+      }
+    },
+    {
+      "name": "gipop_angina_lq",
+      "description": "Grattan Institute \"Perils of Place\" Angina location quotient",
+      "type": "number",
+      "source": {
+        "name": "Grattan Institute",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
+        },
+        "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
+      }
+    },
+    {
+      "name": "gipop_ccf_10yr_avg_admissions",
+      "description": "Grattan Institute \"Perils of Place\" CCF admissions (10 year average)",
+      "type": "number",
+      "source": {
+        "name": "Grattan Institute",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
+        },
+        "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
+      }
+    },
+    {
+      "name": "gipop_ccf_lq",
+      "description": "Grattan Institute \"Perils of Place\" CCF location quotient",
+      "type": "number",
+      "source": {
+        "name": "Grattan Institute",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
+        },
+        "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
+      }
+    },
+    {
+      "name": "gipop_cellulitis_10yr_avg_admissions",
+      "description": "Grattan Institute \"Perils of Place\" Cellulitis admissions (10 year average)",
+      "type": "number",
+      "source": {
+        "name": "Grattan Institute",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
+        },
+        "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
+      }
+    },
+    {
+      "name": "gipop_cellulitis_lq",
+      "description": "Grattan Institute \"Perils of Place\" Cellulitis location quotient",
+      "type": "number",
+      "source": {
+        "name": "Grattan Institute",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
+        },
+        "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
+      }
+    },
+    {
+      "name": "gipop_copd_10yr_avg_admissions",
+      "description": "Grattan Institute \"Perils of Place\" COPD admissions (10 year average)",
+      "type": "number",
+      "source": {
+        "name": "Grattan Institute",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
+        },
+        "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
+      }
+    },
+    {
+      "name": "gipop_copd_lq",
+      "description": "Grattan Institute \"Perils of Place\" COPD location quotient",
+      "type": "number",
+      "source": {
+        "name": "Grattan Institute",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
+        },
+        "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
+      }
+    },
+    {
+      "name": "gipop_dental_10yr_avg_admissions",
+      "description": "Grattan Institute \"Perils of Place\" Dental admissions (10 year average)",
+      "type": "number",
+      "source": {
+        "name": "Grattan Institute",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
+        },
+        "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
+      }
+    },
+    {
+      "name": "gipop_dental_lq",
+      "description": "Grattan Institute \"Perils of Place\" Dental location quotient",
+      "type": "number",
+      "source": {
+        "name": "Grattan Institute",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
+        },
+        "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
+      }
+    },
+    {
+      "name": "gipop_diabetes_10yr_avg_admissions",
+      "description": "Grattan Institute \"Perils of Place\" Diabetes admissions (10 year average)",
+      "type": "number",
+      "source": {
+        "name": "Grattan Institute",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
+        },
+        "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
+      }
+    },
+    {
+      "name": "gipop_diabetes_lq",
+      "description": "Grattan Institute \"Perils of Place\" Diabetes location quotient",
+      "type": "number",
+      "source": {
+        "name": "Grattan Institute",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
+        },
+        "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
+      }
+    },
+    {
+      "name": "gipop_ent_10yr_avg_admissions",
+      "description": "Grattan Institute \"Perils of Place\" ENT admissions (10 year average)",
+      "type": "number",
+      "source": {
+        "name": "Grattan Institute",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
+        },
+        "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
+      }
+    },
+    {
+      "name": "gipop_ent_lq",
+      "description": "Grattan Institute \"Perils of Place\" ENT location quotient",
+      "type": "number",
+      "source": {
+        "name": "Grattan Institute",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
+        },
+        "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
+      }
+    },
+    {
+      "name": "gipop_epilepsy_10yr_avg_admissions",
+      "description": "Grattan Institute \"Perils of Place\" Epilepsy admissions (10 year average)",
+      "type": "number",
+      "source": {
+        "name": "Grattan Institute",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
+        },
+        "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
+      }
+    },
+    {
+      "name": "gipop_epilepsy_lq",
+      "description": "Grattan Institute \"Perils of Place\" Epilepsy location quotient",
+      "type": "number",
+      "source": {
+        "name": "Grattan Institute",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
+        },
+        "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
+      }
+    },
+    {
+      "name": "gipop_uti_10yr_avg_admissions",
+      "description": "Grattan Institute \"Perils of Place\" UTI admissions (10 year average)",
+      "type": "number",
+      "source": {
+        "name": "Grattan Institute",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
+        },
+        "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
+      }
+    },
+    {
+      "name": "gipop_uti_lq",
+      "description": "Grattan Institute \"Perils of Place\" UTI location quotient",
+      "type": "number",
+      "source": {
+        "name": "Grattan Institute",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
+        },
+        "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
+      }
+    },
+    {
       "name": "males_0to4_total",
       "description": "Age 0-4 years old - Total Males",
       "type": "number",
