@@ -132,7 +132,7 @@ angular.module('midjaApp')
     function generateCartoCSS(geoTable, regionAttribute, regionCodes, colorF) {
       var baseStyle =
         '#' + geoTable + ' {' +
-        ' polygon-fill: #bbbbbb;' +
+        ' polygon-fill: #ffffff;' +
         ' polygon-opacity: 0.70;' +
         ' line-color: #000000;' +
         ' line-width: 1;' +

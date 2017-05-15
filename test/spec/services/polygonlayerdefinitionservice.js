@@ -43,7 +43,7 @@ describe('Service: polygonLayerDefinitionService', function() {
 
     expect(style).toBe([
       '#iloc_2011_aust {' +
-      ' polygon-fill: #000000;' +
+      ' polygon-fill: #ffffff;' +
       ' polygon-opacity: 0.70;' +
       ' line-color: #000000;' +
       ' line-width: 1;' +
