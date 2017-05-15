@@ -8,17 +8,15 @@
  * Factory in the midjaApp.
  */
 angular.module('midjaApp')
-  .factory('labelService', function(metadataService) {
+  .factory('labelService', function(dataService) {
 
     function labelService$getResolver(regionType) {
-      return metadataService.getDataset(regionType)
-        .then(_.property('attributes'))
+      return dataService.getAvailableAttributes(regionType)
         .then(function(attributes) {
           return _.zipObject(
             _.map(attributes, _.property('name')),
-            _.map(attributes, _.property('short_desc')));
+            _.map(attributes, _.property('description')));
         })
-        .then(function(v) { console.log(v); return v; })
         .then(_.propertyOf);
     }
 

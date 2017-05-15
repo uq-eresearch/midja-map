@@ -228,7 +228,8 @@ angular.module('midjaApp')
 
       $rootScope.$on('featureOver', function(e, data) {
         var vm = $rootScope.$$childTail.vm;
-        labelService.getResolver(vm.selectedTable).then(function(getLabel) {
+        var regionType = vm.tablePrefix;
+        labelService.getResolver(regionType).then(function(getLabel) {
           var transform = mapService.getFeatureTransformer(getLabel);
           if (!$rootScope.feature || $rootScope.feature[0].level_name !=
             transform(data).level_name) {
@@ -317,7 +318,7 @@ angular.module('midjaApp')
 
         $q.all({
           data: dataService.getAttributesForRegions(regionType, attributes, [data]),
-          getLabel: labelService.getResolver(vm.selectedTable)
+          getLabel: labelService.getResolver(regionType)
         }).then(function(context) {
           var modalInstance = $uibModal.open({
             animation: true,

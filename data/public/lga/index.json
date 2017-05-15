@@ -4,6 +4,91 @@
       "name": "region_name",
       "description": "Local Government Area name",
       "type": "string"
+    },
+    {
+      "name": "ra_name",
+      "description": "Remoteness Area name",
+      "type": "string"
+    },
+    {
+      "name": "afford",
+      "description": "Affordability",
+      "type": "number"
+    },
+    {
+      "name": "afford_in",
+      "description": "Affordability Index",
+      "type": "number"
+    },
+    {
+      "name": "ave_h_s",
+      "description": "Average Indigenous Household Size",
+      "type": "number"
+    },
+    {
+      "name": "f_time",
+      "description": "Percentage of Indigenous in Full-time Employment",
+      "type": "number"
+    },
+    {
+      "name": "f_time_in",
+      "description": "Full-time Employment Index",
+      "type": "number"
+    },
+    {
+      "name": "home_o_in",
+      "description": "Home Ownership Index",
+      "type": "number"
+    },
+    {
+      "name": "iba_a_loan",
+      "description": "IBA Total Amount of Loans",
+      "type": "number"
+    },
+    {
+      "name": "iba_n_loan",
+      "description": "IBA Total Number of Loans",
+      "type": "number"
+    },
+    {
+      "name": "indigenous",
+      "description": "Indigenous Population",
+      "type": "number"
+    },
+    {
+      "name": "median_inc",
+      "description": "Annual Median Indigenous Household Income",
+      "type": "number"
+    },
+    {
+      "name": "median_mor",
+      "description": "Annual Median Mortgage Repayment",
+      "type": "number"
+    },
+    {
+      "name": "no_home",
+      "description": "Percentage of Indigenous households without own home",
+      "type": "number"
+    },
+    {
+      "name": "own_home",
+      "description": "Percentage of Indigenous households with own home",
+      "type": "number"
+    },
+    {
+      "name": "piho",
+      "description": "Potential Indigenous Home Ownership",
+      "type": "number"
+    },
+    {
+      "name": "n_indig_h",
+      "description": "Number of Indigenous Households",
+      "type": "number"
+    },
+    {
+      "name": "avg_persons_per_bedroom_2011",
+      "description": "Average Persons per bedroom in dwellings (2011)",
+      "type": "number"
     }
   ]
 }

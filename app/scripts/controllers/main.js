@@ -9,7 +9,7 @@
  */
 angular.module('midjaApp')
   .controller('MainCtrl', function(
-    metadataService, layerService, dataService, labelService, statsService,
+    layerService, dataService, labelService, statsService,
     $q, $http, $scope, $uibModal, $timeout, $window) {
     var vm = this;
     vm.propTopicsOnly = false;
@@ -132,8 +132,8 @@ angular.module('midjaApp')
       lgaBlock: '565',
       unitSel: "LGAs",
       filter: {
-        "Population >= 150": false,
-        "Households >= 20": false,
+        "Indigenous Population >= 150": false,
+        "Indigenous Households >= 20": false,
         "Affordability >= 3": false,
         "Indigenous QLD LGAs": false
       },
@@ -187,8 +187,8 @@ angular.module('midjaApp')
     vm.tablePrefix = 'lga';
     vm.unitSels = ['LGAs', 'ILOCs', 'SA2s', 'SA3s'];
     vm.filters = [
-      'Population >= 150',
-      'Households >= 20',
+      'Indigenous Population >= 150',
+      'Indigenous Households >= 20',
       'Affordability >= 3',
       'Indigenous QLD LGAs'
     ]
@@ -210,8 +210,6 @@ angular.module('midjaApp')
     vm.showLabel = showLabel;
 
     vm.placeDetails = null;
-
-    vm.addOr - addOr;
 
     function clearLabels() {
       d3.selectAll(".label").remove();
@@ -272,44 +270,54 @@ angular.module('midjaApp')
       }
     });
 
-
-    // select a place
-    // load ilocs for selected places
-    // load the ilocs
-    // generate visualisations
-    // TODO: Generalise comment
-
-    //
-
-    function addOr(num) {
-      if (num > 0) {
-        return " OR ";
-      } else {
-        return ""
-      }
-    }
-
-    function activate(table) {
-      var sql = 'SELECT DISTINCT ra_name FROM ' + table + ';';
-      dataService.doQuery(sql).then(function(result) {
-        vm.remotenessLevels = result.rows;
+    function activate(regionType) {
+      dataService.getAttribute(regionType, 'ra_name').then(function(data) {
+        vm.remotenessLevels = _.uniq(_.values(data)).sort();
       });
       return $q(function(resolve) {
-          if (vm.vis.unitSel == 'LGAs' && (
-              vm.vis.filter['Population >= 150'] ||
-              vm.vis.filter['Households >= 20'] ||
-              vm.vis.filter['Affordability >= 3'] ||
-              vm.vis.filter['Indigenous QLD LGAs'])) {
-            var query = 'SELECT lga_code FROM ' + table + ' WHERE ';
-            var constraints = "";
-            if (vm.vis.filter["Population >= 150"]) {
-              constraints += "indigenous < 150";
+          var excludeOps = [];
+          if (vm.vis.unitSel == 'LGAs') {
+            if (vm.vis.filter["Indigenous Population >= 150"]) {
+              excludeOps.push(
+                dataService.getAttribute(regionType, 'indigenous')
+                .then(function(data) {
+                  return _.chain(data)
+                    .pairs()
+                    .filter(function(p) {
+                      return p[1] < 150;
+                    })
+                    .map(_.first)
+                    .value();
+                })
+              );
             }
-            if (vm.vis.filter["Households >= 20"]) {
-              constraints += addOr(constraints.length) + "n_indig_h < 20";
+            if (vm.vis.filter["Indigenous Households >= 20"]) {
+              excludeOps.push(
+                dataService.getAttribute(regionType, 'n_indig_h')
+                .then(function(data) {
+                  return _.chain(data)
+                    .pairs()
+                    .filter(function(p) {
+                      return p[1] < 20;
+                    })
+                    .map(_.first)
+                    .value();
+                })
+              );
             }
             if (vm.vis.filter["Affordability >= 3"]) {
-              constraints += addOr(constraints.length) + "afford < 3";
+              excludeOps.push(
+                dataService.getAttribute(regionType, 'afford')
+                .then(function(data) {
+                  return _.chain(data)
+                    .pairs()
+                    .filter(function(p) {
+                      return p[1] < 3;
+                    })
+                    .map(_.first)
+                    .value();
+                })
+              );
             }
             if (vm.vis.filter["Indigenous QLD LGAs"]) {
               var indigenousCouncilCodes = [
@@ -330,42 +338,42 @@ angular.module('midjaApp')
                 'LGA37570', // Wujal Wujal Aboriginal Shire Council
                 'LGA37600' // Yarrabah Aboriginal Shire Council
               ];
-              var constraint = "lga_code not in (" + indigenousCouncilCodes
-                .map(
-                  function(code) {
-                    return "'" + code + "'";
-                  }).join(",") + ")";
-              console.log(constraint);
-              constraints += addOr(constraints.length) + constraint;
+              excludeOps.push(
+                dataService.getAttribute(regionType, 'region_name')
+                .then(function(data) {
+                  return _.chain(data)
+                    .keys()
+                    .difference(indigenousCouncilCodes)
+                    .value();
+                })
+              );
             }
-            console.log(constraints);
-
-            query = query + constraints + ";";
-
-            console.log(query);
-            dataService.doQuery(query).then(function(result) {
-              vm.filterPlaces = _.pluck(result.rows, 'lga_code');
-              resolve();
-            });
-          } else {
-            vm.filterPlaces = []
+          }
+          if (_.isEmpty(excludeOps)) {
+            vm.filterPlaces = [];
             resolve();
+          } else {
+            $q.all(excludeOps)
+              .then(_.flow(_.flatten, _.uniq))
+              .then(function(excludedRegionCodes) {
+                vm.filterPlaces = excludedRegionCodes;
+                resolve();
+              })
           }
         }).then(function() {
-          return metadataService.getDataset(table)
+          return dataService.getAvailableAttributes(regionType)
         })
-        .then(function(data) {
-          console.log(data);
-          vm.columnsFromMetadata = _.reject(data.attributes,
+        .then(function(availableAttributes) {
+          vm.columnsFromMetadata = _.reject(availableAttributes,
             function(column) {
-              return column.data_type !== 'number';
+              return column.type !== 'number';
             });
           vm.columns = vm.columnsFromMetadata;
 
           var regex = /proportion|percentage/i;
           vm.columnsFromMetadataPropCols = _.filter(vm.columnsFromMetadata,
             function(column) {
-              return regex.test(column.short_desc);
+              return regex.test(column.description);
             });
         });
     }
@@ -393,20 +401,19 @@ angular.module('midjaApp')
             case 'ILOCs':
               vm.tablePrefix = "iloc";
               vm.selectedTable = "iloc_merged_dataset";
-              return activate(vm.selectedTable).then(resolve);
-              break;
+              return activate(vm.tablePrefix).then(resolve);
             case 'LGAs':
               vm.tablePrefix = "lga";
               vm.selectedTable = "lga_565_iba_final";
-              return activate(vm.selectedTable).then(resolve);
+              return activate(vm.tablePrefix).then(resolve);
             case 'SA2s':
               vm.tablePrefix = "sa2";
               vm.selectedTable = "sa2_nonexistent_dataset";
-              return resolve();
+              return activate(vm.tablePrefix).then(resolve);
             case 'SA3s':
               vm.tablePrefix = "sa3";
               vm.selectedTable = "sa3_nonexistent_dataset";
-              return resolve();
+              return activate(vm.tablePrefix).then(resolve);
             default:
               return;
           }
@@ -522,18 +529,9 @@ angular.module('midjaApp')
         .concat(['region_name', 'ra_name']);
       var locations = vm.vis.units;
 
-      metadataService.getDataset(dataset)
-        .then(function(metadata) {
-          return $q.all({
-            metadata: $q(function(resolve) {
-              return resolve(metadata);
-            }),
-            attrs: dataService.getAttributesForRegions(
-              regionType, attributeNames, locations)
-          })
-        })
-        .then(function(data) {
-          if (!Object.keys(data.attrs).length) {
+      dataService.getAttributesForRegions(regionType, attributeNames, locations)
+        .then(function(attrs) {
+          if (!Object.keys(attrs).length) {
             return;
           }
 
@@ -546,7 +544,7 @@ angular.module('midjaApp')
 
           // Remoteness values ordered by location
           vm.curRemoteness = _.map(sortedRegionCodes, function(r) {
-            return data.attrs[r].ra_name;
+            return attrs[r].ra_name;
           });
 
           // build table header for chart
@@ -557,7 +555,7 @@ angular.module('midjaApp')
             sortedRegionCodes,
             function(r) {
               return {
-                label: data.attrs[r]['region_name'],
+                label: attrs[r]['region_name'],
                 type: 'number'
               };
             }
@@ -567,13 +565,13 @@ angular.module('midjaApp')
             return {
               topic: topic,
               row: _.map(sortedRegionCodes, function(r) {
-                return data.attrs[r][topic.name];
+                return attrs[r][topic.name];
               })
             };
           });
 
           function title(topic) {
-            return topic.short_desc + ' (' + topic.name + ')';
+            return topic.description + ' (' + topic.name + ')';
           };
 
           function wrapAtSpace(text) {
@@ -595,7 +593,11 @@ angular.module('midjaApp')
             _.map(header, _.property('label'))
           ].concat(_.map(dataSeries, function(data) {
             var asText = function(d) {
-              return d.toFixed(2);
+              if (_.isNumber(d)) {
+                return d.toFixed(2);
+              } else {
+                return '\u2014';
+              }
             };
             return [title(data.topic)].concat(_.map(data.row, asText));
           }));
@@ -617,18 +619,20 @@ angular.module('midjaApp')
 
     function generateBubbleLayer(topic, locations) {
       var bubbleLayerService = layerService.build('bubble');
-      bubbleLayerService.build({
-        name: vm.selectedTable
-      }, topic, locations).then(function(layerDefinition) {
+      (topic ?
+        bubbleLayerService.build(vm.tablePrefix, topic, locations) :
+        bubbleLayerService.buildEmpty(vm.tablePrefix, locations)
+      ).then(function(layerDefinition) {
         vm.bubbleLayer = layerDefinition;
       });
     }
 
     function generateChoroplethLayer(topic, locations) {
       var choroplethService = layerService.build('polygon');
-      choroplethService.build({
-        name: vm.selectedTable
-      }, topic, locations).then(function(layerDefinition) {
+      (topic ?
+        choroplethService.build(vm.tablePrefix, topic, locations) :
+        choroplethService.buildEmpty(vm.tablePrefix, locations)
+      ).then(function(layerDefinition) {
         vm.regionLayer = layerDefinition;
       });
     }
@@ -671,13 +675,13 @@ angular.module('midjaApp')
 
       var data = {
         "depVar": vm.linearRegression.dependent.name,
-        "depLabel": vm.linearRegression.dependent.short_desc,
+        "depLabel": vm.linearRegression.dependent.description,
         "indepVars": _.map(
           vm.linearRegression.independents,
           _.property('name')),
         "indepVarLabels": _.map(
           vm.linearRegression.independents,
-          _.property('short_desc'))
+          _.property('description'))
       };
 
       dataService.getAttributesForRegions(vm.tablePrefix, topics, locations)
@@ -699,14 +703,14 @@ angular.module('midjaApp')
           var iInds = Array.apply(null, Array(data.indepVars.length))
             .map(Number.prototype.valueOf, 0);
           var indVarLabels = _.pluck(vm.linearRegression.independents,
-            'short_desc');
+            'description');
           if (data.indepVars.length > 1) {
             vm.barRegressionOptions["chart"]["yAxis"]["axisLabel"] =
               "Adjusted R-square";
             resultsData.push({
               key: "Data",
               values: [{
-                "label": vm.linearRegression.dependent.short_desc,
+                "label": vm.linearRegression.dependent.description,
                 "value": lrResult.adj_rsquared
               }]
             });
@@ -721,19 +725,19 @@ angular.module('midjaApp')
             "axisLabel": indVarLabels[0]
           }; // TODO: fix
           vm.regressionOptions["chart"]["yAxis"] = {
-            "axisLabel": vm.linearRegression.dependent.short_desc
+            "axisLabel": vm.linearRegression.dependent.description
           };
 
           for (var i = 0; i < vm.remotenessLevels.length; i++) {
             resultsData.push({
-              key: vm.remotenessLevels[i].ra_name,
+              key: vm.remotenessLevels,
               values: []
             });
-            vm.iRemoteness[vm.remotenessLevels[i].ra_name] = i;
+            vm.iRemoteness[vm.remotenessLevels] = i;
           }
 
           for (var k = 1; k < vm.tableData.length; k++) {
-            if (vm.tableData[k][0] == vm.linearRegression.dependent.short_desc +
+            if (vm.tableData[k][0] == vm.linearRegression.dependent.description +
               " (" + data.depVar + ")") {
               iDep = k;
             }
@@ -815,9 +819,9 @@ angular.module('midjaApp')
       var data = {
         "dataset": vm.selectedTable,
         "xvar": vm.scatterPlot.xaxis.name,
-        "xlabel": vm.scatterPlot.xaxis.short_desc,
+        "xlabel": vm.scatterPlot.xaxis.description,
         "yvar": vm.scatterPlot.yaxis.name,
-        "ylabel": vm.scatterPlot.yaxis.short_desc,
+        "ylabel": vm.scatterPlot.yaxis.description,
         "useRemoteness": vm.scatterPlot.useRemoteness,
         "labelLocations": vm.scatterPlot.labelLocations,
         "unit_codes": _.map(vm.vis.units, _.property('code'))
@@ -829,10 +833,10 @@ angular.module('midjaApp')
 
       for (var i = 0; i < vm.remotenessLevels.length; i++) {
         resultsData.push({
-          key: vm.remotenessLevels[i].ra_name,
+          key: vm.remotenessLevels,
           values: []
         });
-        vm.iRemoteness[vm.remotenessLevels[i].ra_name] = i;
+        vm.iRemoteness[vm.remotenessLevels] = i;
       }
 
 

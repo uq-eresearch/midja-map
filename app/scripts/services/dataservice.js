@@ -8,7 +8,7 @@
  * Factory in the midjaApp.
  */
 angular.module('midjaApp')
-  .factory('dataService', function($http, $q, metadataService, labelService) {
+  .factory('dataService', function($http, $q) {
     // Tests to determine if child region is in parent
     var subregionTests = (function() {
       function commonNumericPrefix(sourceRegion) {
@@ -64,16 +64,22 @@ angular.module('midjaApp')
         return _.map(arguments, _.identity).join(":");
       });
 
+    var getMetadata = _.memoize(getMetadataFromRemote);
+
     return {
+      getAvailableAttributes: getAvailableAttributes,
+      getAttribute: getAttribute,
       getSubregions: getSubregions,
       getRegionsAtOrAbove: getRegionsAtOrAbove,
-      getBuckets: getBuckets,
       getQuantileBuckets: getQuantileBuckets,
       getRegionsStartingWith: getRegionsStartingWith,
       filterByRemotenessArea: filterByRemotenessArea,
-      getAttributesForRegions: getAttributesForRegions,
-      doQuery: doQuery
+      getAttributesForRegions: getAttributesForRegions
     };
+
+    function getAvailableAttributes(regionType) {
+      return getMetadata(regionType).then(_.property('attributes'));
+    }
 
     function getSubregions(targetRegionType, region) {
       var transitions =
@@ -174,23 +180,15 @@ angular.module('midjaApp')
       ).then(_.flatten);
     }
 
-    function getBuckets(column, sql, numberOfBuckets) {
-      numberOfBuckets = numberOfBuckets || 7;
-
-      var sql = 'select unnest(cartodb.CDB_QuantileBins(array_agg(distinct((' +
-        column.name + '::numeric))), ' +
-        numberOfBuckets + ')) as buckets from (' + sql +
-        ') _table_sql where ' + column.name + ' is not null';
-
-      return doQuery(sql).then(function(results) {
-        var values = _.pluck(results.rows, 'buckets').reverse();
-        return values;
-      });
-    }
-
     function getAttributeFromRemote(regionType, attribute) {
       return $http
         .get('/data/' + regionType + '/' + attribute)
+        .then(_.property('data'));
+    }
+
+    function getMetadataFromRemote(regionType) {
+      return $http
+        .get('/data/' + regionType + '/')
         .then(_.property('data'));
     }
 
@@ -242,11 +240,5 @@ angular.module('midjaApp')
           max: breakPoints[i + 1]
         };
       })
-    }
-
-    function doQuery(sql) {
-      return $http
-        .get("/sql/?q=" + encodeURI(sql))
-        .then(_.property('data'));
     }
   });

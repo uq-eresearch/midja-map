@@ -4,7 +4,6 @@
  * @ngdoc service
  * @name midjaApp.statsService
  * @description
- * # tableService
  * Factory in the midjaApp.
  */
 angular.module('midjaApp')

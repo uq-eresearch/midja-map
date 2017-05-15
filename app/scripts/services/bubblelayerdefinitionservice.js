@@ -8,8 +8,7 @@
  * Factory in the midjaApp.
  */
 angular.module('midjaApp')
-  .factory('bubbleLayerDefinitionService', function($q, metadataService,
-    dataService, tableService) {
+  .factory('bubbleLayerDefinitionService', function($q, dataService) {
 
     return {
       _generateMapnikSQL: generateMapnikSQL,
@@ -17,8 +16,8 @@ angular.module('midjaApp')
       build: build
     };
 
-    function BubbleLayerDefinition(sql, cartocss, table, allRegionData) {
-      var regionCodeAttribute = tableService.getTablePrefix(table) + '_code';
+    function BubbleLayerDefinition(regionType, sql, cartocss, allRegionData) {
+      var regionCodeAttribute = regionType + '_code';
       this.sql = sql;
       this.cartocss = cartocss;
       this.interactivity = [
@@ -30,20 +29,17 @@ angular.module('midjaApp')
       };
     }
 
-    function build(table, column, locations) {
-      var regionType = _.first(locations).type
-      return $q.all({
-        metadata: metadataService.getDataset(table.name),
-        data: dataService.getAttributesForRegions(regionType, [column.name],
-          locations)
-      }).then(function(data) {
-        var series = _.map(_.values(data.data), _.property(column.name));
+    function build(regionType, attribute, locations) {
+      return dataService.getAttributesForRegions(
+        regionType, [attribute.name], locations
+      ).then(function(data) {
+        var series = _.map(_.values(data), _.property(attribute.name));
         var buckets = generateBuckets(series)
-        var geoTable = data.metadata.geolevel + "_2011_aust";
-        var regionAttribute = data.metadata.region_column;
+        var geoTable = regionType + "_2011_aust";
+        var regionAttribute = regionType + "_code";
         var regionCodes = _.uniq(_.pluck(locations, 'code')).sort();
         var radiusF = function(region) {
-          var v = data.data[region][column.name];
+          var v = data[region][attribute.name];
           // Get radius using bucket ranges (min: inclusive, max: exclusive)
           // Last bucket max == max series value, so last bucket if no match.
           return _.first(
@@ -55,7 +51,7 @@ angular.module('midjaApp')
         var sql = generateMapnikSQL(geoTable, regionAttribute, regionCodes);
         var style = generateCartoCSS(
           geoTable, regionAttribute, regionCodes, radiusF);
-        return new BubbleLayerDefinition(sql, style, table, data.data);
+        return new BubbleLayerDefinition(regionType, sql, style, data);
       });
     }
 

@@ -8,8 +8,7 @@
  * Factory in the midjaApp.
  */
 angular.module('midjaApp')
-  .factory('polygonLayerDefinitionService', function($q, metadataService,
-    dataService, tableService) {
+  .factory('polygonLayerDefinitionService', function($q, dataService) {
 
     // see https://google.github.io/palette.js/
     var colorPaletteName = "cb-YlOrRd";
@@ -22,10 +21,10 @@ angular.module('midjaApp')
       buildEmpty: buildEmpty
     };
 
-    function PolygonLayerDefinition(sql, style, geolevel, allRegionData,
+    function PolygonLayerDefinition(regionType, sql, style, allRegionData,
       buckets) {
-      var regionCodeAttribute = geolevel + '_code';
-      var regionNameAttribute = geolevel + '_name';
+      var regionCodeAttribute = regionType + '_code';
+      var regionNameAttribute = regionType + '_name';
       this.sql = sql;
       this.cartocss = style;
       this.interactivity = [
@@ -52,46 +51,42 @@ angular.module('midjaApp')
       }
     }
 
-    function buildEmpty(geolevel, locations) {
+    function buildEmpty(regionType, locations) {
       return $q(function(resolve) {
-        var geoTable = geolevel + "_2011_aust";
-        var regionAttribute = geolevel+'_code';
+        var geoTable = regionType + "_2011_aust";
+        var regionAttribute = regionType+'_code';
         var regions = _.uniq(_.map(locations, _.property('code'))).sort();
         var sql = generateMapnikSQL(geoTable, regionAttribute, regions);
         var style = generateCartoCSS(geoTable, "", [], _.identity);
-        resolve(new PolygonLayerDefinition(sql, style, geolevel, {}, []));
+        resolve(new PolygonLayerDefinition(regionType, sql, style, {}, []));
       });
     }
 
-    function build(table, column, locations) {
-      var regionType = _.first(locations).type
-      return $q.all({
-        metadata: metadataService.getDataset(table.name),
-        data: dataService.getAttributesForRegions(regionType, [column.name],
-          locations)
-      }).then(function(data) {
-        var series = _.map(_.values(data.data), _.property(column.name));
-        var buckets = generateBuckets(series)
-        var geolevel = data.metadata.geolevel;
-        var geoTable = geolevel + "_2011_aust";
-        var regionAttribute = data.metadata.region_column;
-        var regions = _.uniq(_.pluck(locations, 'code')).sort();
-        var colorF = function(region) {
-          var v = data.data[region][column.name];
-          // Get color using bucket ranges (min: inclusive, max: exclusive)
-          // Last bucket max == max series value, so last bucket if no match.
-          return _.first(
-            _.filter(buckets, function(bucket) {
-              return v >= bucket.min && v < bucket.max;
-            }).concat([_.last(buckets)])
-          ).color;
-        };
-        var sql = generateMapnikSQL(geoTable, regionAttribute, regions);
-        var style = generateCartoCSS(
-          geoTable, regionAttribute, regions, colorF);
-        return new PolygonLayerDefinition(sql, style, geolevel, data.data,
-          buckets);
-      });
+    function build(regionType, attribute, locations) {
+      return dataService.getAttributesForRegions(
+          regionType, [attribute.name], locations
+        ).then(function(data) {
+          var series = _.map(_.values(data), _.property(attribute.name));
+          var buckets = generateBuckets(series)
+          var geoTable = regionType + "_2011_aust";
+          var regionAttribute = regionType + "_code";
+          var regions = _.uniq(_.pluck(locations, 'code')).sort();
+          var colorF = function(region) {
+            var v = data[region][attribute.name];
+            // Get color using bucket ranges (min: inclusive, max: exclusive)
+            // Last bucket max == max series value, so last bucket if no match.
+            return _.first(
+              _.filter(buckets, function(bucket) {
+                return v >= bucket.min && v < bucket.max;
+              }).concat([_.last(buckets)])
+            ).color;
+          };
+          var sql = generateMapnikSQL(geoTable, regionAttribute, regions);
+          var style = generateCartoCSS(
+            geoTable, regionAttribute, regions, colorF);
+          return new PolygonLayerDefinition(regionType, sql, style, data,
+            buckets);
+        });
     }
 
     function generateBuckets(series) {
