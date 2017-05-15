@@ -66,8 +66,9 @@ angular.module('midjaApp')
       return dataService.getAttributesForRegions(
         regionType, [attribute.name], locations
       ).then(function(data) {
-        var series = _.uniq(_.map(
-          _.values(data), _.property(attribute.name)));
+        var series = _.filter(
+          _.map(_.values(data), _.property(attribute.name)),
+          _.isNumber);
         var buckets = generateBuckets(series)
         var geoTable = regionType + "_2011_aust";
         var regionAttribute = regionType + "_code";
