@@ -249,7 +249,7 @@ angular.module('midjaApp')
 
                 var topicShort = _.findWhere(vm.vis.topics, {
                   'name': vm.vis.bubble.topic.name
-                })['short_desc']
+                })['description']
                 var fullTopic = topicShort +
                   ' (' + vm.vis.bubble.topic.name + ')';
                 var placeIndex = _.indexOf(vm.tableData[0],
@@ -277,7 +277,7 @@ angular.module('midjaApp')
 
                 var topicShort = _.findWhere(vm.vis.topics, {
                   'name': vm.vis.choropleth.topic.name
-                })['short_desc']
+                })['description']
                 var fullTopic = topicShort + ' (' + vm.vis.choropleth
                   .topic.name + ')'
                 var placeIndex = _.indexOf(vm.tableData[0],
