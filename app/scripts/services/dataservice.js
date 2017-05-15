@@ -181,9 +181,21 @@ angular.module('midjaApp')
     }
 
     function getAttributeFromRemote(regionType, attribute) {
-      return $http
-        .get('/data/' + regionType + '/' + attribute)
-        .then(_.property('data'));
+      return getAvailableAttributes(regionType)
+        .then(function(availableAttributes) {
+          var attributeMetadata = _.find(
+            availableAttributes,
+            _.flow(
+              _.property('name'),
+              _.partial(_.isEqual, attribute)));
+          if (!attributeMetadata) {
+            return {};
+          } else {
+            return $http
+              .get('/data/' + regionType + '/' + attribute)
+              .then(_.property('data'));
+          }
+        });
     }
 
     function getMetadataFromRemote(regionType) {
