@@ -64,9 +64,10 @@ angular.module('midjaApp')
     }
 
     function build(table, column, locations) {
+      var regionType = _.first(locations).type
       return $q.all({
         metadata: metadataService.getDataset(table.name),
-        data: dataService.getTopicData(table.name, [column.name],
+        data: dataService.getAttributesForRegions(regionType, [column.name],
           locations)
       }).then(function(data) {
         var series = _.map(_.values(data.data), _.property(column.name));

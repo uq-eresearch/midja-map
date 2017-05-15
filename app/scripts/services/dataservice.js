@@ -71,8 +71,7 @@ angular.module('midjaApp')
       getQuantileBuckets: getQuantileBuckets,
       getRegionsStartingWith: getRegionsStartingWith,
       filterByRemotenessArea: filterByRemotenessArea,
-      getGeoData: getGeoData,
-      getTopicData: getTopicData,
+      getAttributesForRegions: getAttributesForRegions,
       doQuery: doQuery
     };
 
@@ -189,60 +188,29 @@ angular.module('midjaApp')
       });
     }
 
-    function getGeoData(dataset, attributes, regions) {
-      return metadataService.getDataset(dataset).then(function(metadata) {
-        var table = metadata.geolevel + "_2011_aust";
-        var regionColumn = metadata.region_column;
-        var columns = [regionColumn].concat(attributes);
-
-        var sql = [
-          'SELECT ' + columns.join(', '),
-          'FROM ' + table,
-          'WHERE ' + sqlCondition(regionColumn,
-            _.map(regions, _.property('code')))
-        ].join(" ");
-        return doQuery(sql).then(function(result) {
-          return _.zipObject(
-            _.map(result.rows, _.property(regionColumn)),
-            result.rows
-          );
-        });
-      });
-    }
-
     function getAttributeFromRemote(regionType, attribute) {
       return $http
         .get('/data/' + regionType + '/' + attribute)
         .then(_.property('data'));
     }
 
-    function getTopicData(dataset, attributes, regions) {
-      return metadataService.getDataset(dataset).then(function(metadata) {
-        if (!metadata) {
-          console.log('Dataset "' + dataset + '" not found!');
-          return {};
-        }
-        var table = metadata.name;
-        var regionColumn = metadata.region_column;
-        var availableAttributes =
-          _.map(metadata.attributes, _.property('name')).concat([
-            'ra_name'
-          ]);
-        var columns = [regionColumn].concat(
-          _.intersection(availableAttributes, attributes));
-
-        var sql = [
-          'SELECT ' + columns.join(', '),
-          'FROM ' + table,
-          'WHERE ' + sqlCondition(regionColumn,
-            _.map(regions, _.property('code')))
-        ].join(" ");
-        return doQuery(sql).then(function(result) {
-          return _.zipObject(
-            _.map(result.rows, _.property(regionColumn)),
-            result.rows
-          );
-        });
+    function getAttributesForRegions(regionType, attributeNames, regions) {
+      return $q.all(_.zipObject(
+        attributeNames,
+        _.map(attributeNames, _.partial(getAttribute, regionType))
+      )).then(function(data) {
+        var regionCodes = _.map(regions, _.property('code'));
+        return _.zipObject(
+          regionCodes,
+          _.map(regionCodes, function(regionCode) {
+            return _.zipObject(
+              attributeNames,
+              _.map(attributeNames, function(attrName) {
+                return data[attrName][regionCode];
+              })
+            );
+          })
+        );
       });
     }
 

@@ -316,7 +316,7 @@ angular.module('midjaApp')
         var region = data[regionCodeAttribute];
 
         $q.all({
-          data: dataService.getTopicData(dataset, attributes, [data]),
+          data: dataService.getAttributesForRegions(regionType, attributes, [data]),
           getLabel: labelService.getResolver(vm.selectedTable)
         }).then(function(context) {
           var modalInstance = $uibModal.open({

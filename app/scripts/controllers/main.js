@@ -516,27 +516,26 @@ angular.module('midjaApp')
 
     // TODO: deal with remoteness
     function generateBarChart() {
+      var regionType = vm.tablePrefix;
       var dataset = vm.selectedTable;
-      var topics = _.map(vm.vis.topics, _.property('name')).concat(['ra_name']);
+      var attributeNames = _.map(vm.vis.topics, _.property('name'))
+        .concat(['region_name', 'ra_name']);
       var locations = vm.vis.units;
 
       metadataService.getDataset(dataset)
         .then(function(metadata) {
-          var geoAttrs = [metadata.geolevel + '_name'];
           return $q.all({
             metadata: $q(function(resolve) {
               return resolve(metadata);
             }),
-            geo: dataService.getGeoData(dataset, geoAttrs, locations),
-            topics: dataService.getTopicData(dataset, topics, locations)
+            attrs: dataService.getAttributesForRegions(
+              regionType, attributeNames, locations)
           })
         })
         .then(function(data) {
-          if (!Object.keys(data.topics).length) {
+          if (!Object.keys(data.attrs).length) {
             return;
           }
-
-          var regionNameAttr = data.metadata.geolevel + '_name';
 
           var sortedRegionCodes =
             _.map(
@@ -547,7 +546,7 @@ angular.module('midjaApp')
 
           // Remoteness values ordered by location
           vm.curRemoteness = _.map(sortedRegionCodes, function(r) {
-            return data.topics[r].ra_name;
+            return data.attrs[r].ra_name;
           });
 
           // build table header for chart
@@ -558,7 +557,7 @@ angular.module('midjaApp')
             sortedRegionCodes,
             function(r) {
               return {
-                label: data.geo[r][regionNameAttr],
+                label: data.attrs[r]['region_name'],
                 type: 'number'
               };
             }
@@ -568,7 +567,7 @@ angular.module('midjaApp')
             return {
               topic: topic,
               row: _.map(sortedRegionCodes, function(r) {
-                return data.topics[r][topic.name];
+                return data.attrs[r][topic.name];
               })
             };
           });
@@ -664,8 +663,6 @@ angular.module('midjaApp')
       }
       var resultsData = [];
 
-
-      var dataset = vm.selectedTable;
       var topics = _.map(
         [vm.linearRegression.dependent].concat(
           vm.linearRegression.independents),
@@ -683,7 +680,7 @@ angular.module('midjaApp')
           _.property('short_desc'))
       };
 
-      dataService.getTopicData(dataset, topics, locations)
+      dataService.getAttributesForRegions(vm.tablePrefix, topics, locations)
         .then(function(topicData) {
           var topicSeries = _.chain(_.values(topicData))
             // Get region's data for topics (like a row)
