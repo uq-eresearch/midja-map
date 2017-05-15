@@ -11,6 +11,19 @@
       "type": "string"
     },
     {
+      "name": "gipop_10yr_avg_population",
+      "description": "Grattan Institute \"Perils of Place\" population (10 year average)",
+      "type": "number",
+      "source": {
+        "name": "Grattan Institute",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported",
+          "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
+        },
+        "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
+      }
+    },
+    {
       "name": "males_0to4_total",
       "description": "Age 0-4 years old - Total Males",
       "type": "number",
