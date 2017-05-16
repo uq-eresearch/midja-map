@@ -776,24 +776,10 @@ angular.module('midjaApp')
 
 
     function showPropTopicsOnly(isChecked) {
-
-      if (vm.vis.category.length < 1) {
-        if (isChecked) {
-          vm.columns = vm.columnsFromMetadataPropCols;
-        } else {
-          vm.columns = vm.columnsFromMetadata;
-        }
+      if (isChecked) {
+        vm.columns = vm.columnsFromMetadataPropCols;
       } else {
-        if (vm.propTopicsOnly) {
-          vm.columns = _.filter(vm.columnsFromMetadataPropCols, function(
-            item) {
-            return _.contains(_.pluck(vm.vis.category, 'cat_id'), item.cat_id);
-          });
-        } else {
-          vm.columns = _.filter(vm.columnsFromMetadata, function(item) {
-            return _.contains(_.pluck(vm.vis.category, 'cat_id'), item.cat_id);
-          });
-        }
+        vm.columns = vm.columnsFromMetadata;
       }
     }
 
