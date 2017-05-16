@@ -1179,6 +1179,19 @@
         },
         "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.O65.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
       }
+    },
+    {
+      "name": "proportion_persons_indigenous",
+      "description": "Indigenous proportion of population",
+      "type": "number",
+      "expression": "1.0 * persons_all_indigenous / persons_all_total",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
     }
   ]
 }

@@ -1454,7 +1454,7 @@
       }
     },
     {
-      "name": "percentage_persons_indigenous",
+      "name": "proportion_persons_indigenous",
       "description": "Indigenous proportion of population",
       "type": "number",
       "expression": "1.0 * persons_all_indigenous / persons_all_total",
