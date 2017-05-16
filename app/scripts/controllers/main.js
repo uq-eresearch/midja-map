@@ -670,7 +670,7 @@ angular.module('midjaApp')
         [vm.linearRegression.dependent].concat(
           vm.linearRegression.independents),
         _.property('name'));
-      var locations = vm.vis.units;
+      var regions = vm.vis.units;
 
       var data = {
         "depVar": vm.linearRegression.dependent.name,
@@ -683,92 +683,92 @@ angular.module('midjaApp')
           _.property('description'))
       };
 
-      dataService.getAttributesForRegions(vm.tablePrefix, topics, locations)
+      function buildBarChart(context) {
+        vm.linearRegression.resultsData = [{
+          key: "Data",
+          values: [{
+            "label": vm.linearRegression.dependent.description,
+            "value": context.lrResult.adj_rsquared
+          }]
+        }];
+        vm.linearRegression.results = context.lrResult;
+        data.raw = vm.linearRegression.resultsData;
+        data.modelType = "bar";
+        vm.linearRegression.sendData = data;
+      }
+
+      function buildPlot(context) {
+        var lrResult = context.lrResult;
+        var depVar = vm.linearRegression.dependent;
+        var indepVar = _.first(vm.linearRegression.independents);
+
+        vm.regressionOptions["chart"]["xAxis"] = {
+          "axisLabel": indepVar.description
+        };
+        vm.regressionOptions["chart"]["yAxis"] = {
+          "axisLabel": depVar.description
+        };
+
+        var resultsData = [
+          {
+            key: 'Data',
+            values: _.map(
+              _.zip(
+                context.topicSeries[indepVar.name],
+                context.topicSeries[depVar.name],
+                _.map(context.regions, _.property('name'))),
+              _.partial(_.zipObject, ['x', 'y', 'name']))
+          },
+          {
+            key: "Line",
+            values: [],
+            intercept: lrResult.coefficients['(Intercept)'],
+            slope: lrResult.coefficients[indepVar.name]
+          }
+        ];
+
+        vm.linearRegression.resultsData = resultsData;
+        vm.linearRegression.results = lrResult;
+        data.raw = vm.linearRegression.resultsData;
+        vm.linearRegression.sendData = data;
+      }
+
+      var buildF =
+        vm.linearRegression.independents.length > 1 ?
+        buildBarChart :
+        buildPlot;
+
+      dataService.getAttributesForRegions(vm.tablePrefix, topics, regions)
         .then(function(topicData) {
-          var topicSeries = _.chain(_.values(topicData))
+          var depVar = vm.linearRegression.dependent;
+          var indepVar = _.first(vm.linearRegression.independents);
+          var lookupAttributesForRegion =_.flow(
+            _.property('code'), // Get region code
+            _.propertyOf(topicData), // Get region data
+            _.propertyOf) // Turn dictionary object into lookup function
+          var doesRegionHaveValidXY = _.flow(
+            lookupAttributesForRegion,
+            _.partial(_.map, [depVar.name, indepVar.name]), // Lookup X/Y values
+            _.partial(_.every, _, _.isNumber)); // Check they're a number
+          var usableRegions = _.filter(regions, doesRegionHaveValidXY);
+          var topicSeries = _.chain(usableRegions)
+            .map(lookupAttributesForRegion)
             // Get region's data for topics (like a row)
-            .map(_.flow(_.propertyOf, _.partial(_.map, topics)))
-            // Use only regions where all data is defined & numeric
-            .filter(_.partial(_.every, _, _.isNumber))
+            .map(_.partial(_.map, topics))
             // Convert region rows to columns of topic data
             .unzip()
             .value();
           data.data = _.zipObject(topics, topicSeries);
-          return statsService.linearRegression(data);
+          return statsService.linearRegression(data)
+            .then(function(lrResult) {
+              return {
+                regions: usableRegions,
+                topicSeries: _.zipObject(topics, topicSeries),
+                lrResult: lrResult
+              };
+            });
         })
-        .then(function(lrResult) {
-          var iDep = -1;
-          console.debug('lrResult', lrResult);
-          var iInds = Array.apply(null, Array(data.indepVars.length))
-            .map(Number.prototype.valueOf, 0);
-          var indVarLabels = _.pluck(vm.linearRegression.independents,
-            'description');
-          if (data.indepVars.length > 1) {
-            vm.barRegressionOptions["chart"]["yAxis"]["axisLabel"] =
-              "Adjusted R-square";
-            resultsData.push({
-              key: "Data",
-              values: [{
-                "label": vm.linearRegression.dependent.description,
-                "value": lrResult.adj_rsquared
-              }]
-            });
-            vm.linearRegression.resultsData = resultsData;
-            vm.linearRegression.results = lrResult;
-            data.raw = vm.linearRegression.resultsData;
-            data.modelType = "bar";
-            vm.linearRegression.sendData = data;
-            return
-          }
-          vm.regressionOptions["chart"]["xAxis"] = {
-            "axisLabel": indVarLabels[0]
-          }; // TODO: fix
-          vm.regressionOptions["chart"]["yAxis"] = {
-            "axisLabel": vm.linearRegression.dependent.description
-          };
-
-          for (var i = 0; i < vm.remotenessLevels.length; i++) {
-            resultsData.push({
-              key: vm.remotenessLevels,
-              values: []
-            });
-          }
-
-          for (var k = 1; k < vm.tableData.length; k++) {
-            if (vm.tableData[k][0] == vm.linearRegression.dependent.description +
-              " (" + data.depVar + ")") {
-              iDep = k;
-            }
-            for (var v = 0; v < indVarLabels.length; v++) {
-              if (vm.tableData[k][0] == indVarLabels[v] + " (" + data.indepVars[
-                  v] + ")") {
-                iInds[v] = k;
-              }
-            }
-          }
-
-          for (var i = 1; i < vm.tableData[0].length - 1; i++) { // vm.tableData[0].length - 1
-            resultsData[0].values.push({ //put into first one
-              x: parseFloat(vm.tableData[iInds[0]][i]), //TODO: FIX
-              y: parseFloat(vm.tableData[iDep][i]),
-              name: vm.tableData[0][i]
-            });
-          }
-
-          var equationParts = lrResult.equation.split(" ");
-
-          resultsData.push({
-            key: "Line",
-            values: [],
-            intercept: equationParts[2],
-            slope: equationParts[4]
-          });
-
-          vm.linearRegression.resultsData = resultsData;
-          vm.linearRegression.results = lrResult;
-          data.raw = vm.linearRegression.resultsData;
-          vm.linearRegression.sendData = data;
-        });
+        .then(buildF);
 
     }
 
