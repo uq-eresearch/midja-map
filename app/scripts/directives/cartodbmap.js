@@ -312,12 +312,14 @@ angular.module('midjaApp')
         var vm = $rootScope.$$childTail.vm;
         var regionType = vm.tablePrefix;
         var regionCodeAttribute = regionType+'_code';
-        var dataset = vm.selectedTable;
-        var attributes = _.map(vm.vis.topics, _.property('name'));
-        var region = data[regionCodeAttribute];
+        var attrNames = ['region_name'].concat(
+          _.map(vm.vis.topics, _.property('name')));
+        var regionCode = data[regionCodeAttribute];
 
         $q.all({
-          data: dataService.getAttributesForRegions(regionType, attributes, [data]),
+          data: dataService.getAttributesForRegions(regionType, attrNames, [{
+            'code': regionCode
+          }]),
           getLabel: labelService.getResolver(regionType)
         }).then(function(context) {
           var modalInstance = $uibModal.open({
@@ -326,12 +328,12 @@ angular.module('midjaApp')
             controller: 'DetailsModalInstanceCtrl',
             resolve: {
               context: {
-                attributes: _.keys(data).concat(attributes),
+                attributes: ['region_code'].concat(attrNames),
                 getLabel: context.getLabel,
                 getValue: _.propertyOf(
                   _.defaults(
                     _.first(_.values(context.data)),
-                    data))
+                    { 'region_code': regionCode }))
               }
             }
           });

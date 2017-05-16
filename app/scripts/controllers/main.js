@@ -1002,7 +1002,6 @@ angular.module('midjaApp')
 
 angular.module('midjaApp').controller('DetailsModalInstanceCtrl', function(
   $scope, $uibModalInstance, context) {
-  console.log(context);
   $scope.context = context;
 
   // insert data
