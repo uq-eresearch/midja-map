@@ -123,7 +123,6 @@ angular.module('midjaApp')
     };
     //TODO: Explain
     vm.curRemoteness = [];
-    vm.iRemoteness = {};
 
     vm.categories = [];
 
@@ -733,7 +732,6 @@ angular.module('midjaApp')
               key: vm.remotenessLevels,
               values: []
             });
-            vm.iRemoteness[vm.remotenessLevels] = i;
           }
 
           for (var k = 1; k < vm.tableData.length; k++) {
@@ -802,77 +800,74 @@ angular.module('midjaApp')
         vm.clearLabels();
       }
       vm.scatterPlot.filename = null;
-      var data = {
-        "dataset": vm.selectedTable,
-        "xvar": vm.scatterPlot.xaxis.name,
-        "xlabel": vm.scatterPlot.xaxis.description,
-        "yvar": vm.scatterPlot.yaxis.name,
-        "ylabel": vm.scatterPlot.yaxis.description,
-        "useRemoteness": vm.scatterPlot.useRemoteness,
-        "labelLocations": vm.scatterPlot.labelLocations,
-        "unit_codes": _.map(vm.vis.units, _.property('code'))
-      };
+      var xVar = vm.scatterPlot.xaxis.name;
+      var yVar = vm.scatterPlot.yaxis.name;
+      var useRemoteness = vm.scatterPlot.useRemoteness;
+      var regions = vm.vis.units;
 
-      var resultsData = []
-      var ix = -1;
-      var iy = -1;
+      return dataService.getAttributesForRegions(
+        vm.tablePrefix, [xVar, yVar, 'ra_name'], regions
+      ).then(function(data) {
+        var lookupAttributesForRegion =_.flow(
+          _.property('code'), // Get region code
+          _.propertyOf(data), // Get region data
+          _.propertyOf) // Turn dictionary object into lookup function
+        var doesRegionHaveValidXY = _.flow(
+          lookupAttributesForRegion,
+          _.partial(_.map, [xVar, yVar]), // Lookup X/Y values
+          _.partial(_.every, _, _.isNumber)); // Check they're a number
+        var lookupRemotenessForRegion = _.flow(
+          lookupAttributesForRegion,
+          function (f) { return f('ra_name') || "Unknown Remoteness"; })
+        var usableRegions = _.filter(regions, doesRegionHaveValidXY);
+        var groupedRegions = _.groupBy(
+          usableRegions,
+          useRemoteness ?
+            lookupRemotenessForRegion :
+            _.constant('All Regions'));
+        var createPointForRegion = function(region) {
+          var attrLookup = lookupAttributesForRegion(region);
+          return {
+            x: attrLookup(xVar),
+            y: attrLookup(yVar),
+            name: region.name
+          };
+        };
+        return _.map(_.keys(groupedRegions).sort(), function(k) {
+          return {
+            key: k,
+            values: _.map(groupedRegions[k], createPointForRegion)
+          };
+        })
+      }).then(function (resultsData) {
+        var data = {
+          "raw": resultsData,
+          "xvar": vm.scatterPlot.xaxis.name,
+          "xlabel": vm.scatterPlot.xaxis.description,
+          "yvar": vm.scatterPlot.yaxis.name,
+          "ylabel": vm.scatterPlot.yaxis.description,
+          "useRemoteness": vm.scatterPlot.useRemoteness,
+          "labelLocations": vm.scatterPlot.labelLocations,
+          "unit_codes": _.map(vm.vis.units, _.property('code'))
+        };
 
-      for (var i = 0; i < vm.remotenessLevels.length; i++) {
-        resultsData.push({
-          key: vm.remotenessLevels,
-          values: []
-        });
-        vm.iRemoteness[vm.remotenessLevels] = i;
-      }
+        vm.scatterOptions["chart"]["showLegend"] = vm.scatterPlot.useRemoteness;
 
-
-      for (var k = 1; k < vm.tableData.length; k++) {
-        if (vm.tableData[k][0] == data.xlabel + " (" + data.xvar + ")") {
-          ix = k;
+        if (vm.scatterPlot.second != null) {
+          vm.scatterPlot.secondOptions["chart"]["showLegend"] = vm.scatterPlot
+            .useRemoteness;
         }
-        if (vm.tableData[k][0] == data.ylabel + " (" + data.yvar + ")") {
-          iy = k;
-        }
-      }
 
-      if (vm.scatterPlot.useRemoteness) {
-        for (var i = 1; i < vm.tableData[0].length - 1; i++) { // vm.tableData[0].length - 1
-          resultsData[vm.iRemoteness[vm.curRemoteness[i - 1]]].values.push({
-            x: parseFloat(vm.tableData[ix][i]),
-            y: parseFloat(vm.tableData[iy][i]),
-            name: vm.tableData[0][i]
-          });
-        }
-      } else {
-        for (var i = 1; i < vm.tableData[0].length - 1; i++) { // vm.tableData[0].length - 1
-          resultsData[0].values.push({
-            x: parseFloat(vm.tableData[ix][i]),
-            y: parseFloat(vm.tableData[iy][i]),
-            text: "fooLabelsOfScatterPoints",
-            name: vm.tableData[0][i]
-          });
-        }
-      }
+        vm.scatterPlot.results = resultsData;
+        vm.scatterPlot.sendData = data;
 
-      vm.scatterOptions["chart"]["showLegend"] = vm.scatterPlot.useRemoteness;
-
-      if (vm.scatterPlot.second != null) {
-        vm.scatterPlot.secondOptions["chart"]["showLegend"] = vm.scatterPlot
-          .useRemoteness;
-      }
-
-      vm.scatterPlot.results = resultsData;
-
-      data.raw = resultsData;
-      vm.scatterPlot.sendData = data;
-
-      vm.scatterOptions["chart"]["xAxis"] = {
-        "axisLabel": data.xlabel
-      };
-      vm.scatterOptions["chart"]["yAxis"] = {
-        "axisLabel": data.ylabel
-      };
-
+        vm.scatterOptions["chart"]["xAxis"] = {
+          "axisLabel": data.xlabel
+        };
+        vm.scatterOptions["chart"]["yAxis"] = {
+          "axisLabel": data.ylabel
+        };
+      });
     }
 
     function requestScatterDownload(fileType) {
