@@ -33,11 +33,18 @@ angular.module('midjaApp')
       return dataService.getAttributesForRegions(
         regionType, [attribute.name], locations
       ).then(function(data) {
-        var series = _.map(_.values(data), _.property(attribute.name));
+        var series = _.filter(
+          _.map(_.values(data), _.property(attribute.name)),
+          _.isNumber);
         var buckets = generateBuckets(series)
         var geoTable = regionType + "_2011_aust";
         var regionAttribute = regionType + "_code";
-        var regionCodes = _.uniq(_.pluck(locations, 'code')).sort();
+        var regionCodes = _.filter(
+          _.uniq(_.pluck(locations, 'code')).sort(),
+          _.flow(
+            _.propertyOf(data),
+            _.property(attribute.name),
+            _.isNumber));
         var radiusF = function(region) {
           var v = data[region][attribute.name];
           // Get radius using bucket ranges (min: inclusive, max: exclusive)
