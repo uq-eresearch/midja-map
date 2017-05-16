@@ -200,7 +200,6 @@ angular.module('midjaApp')
             ).then(function(attributesData) {
               var commonRegions = _.intersection.apply(null,
                 _.map(attributesData, _.keys)).sort();
-              console.log(commonRegions);
               var series = _.chain(commonRegions)
                 .map(function(region) {
                   return _.zipObject(
@@ -209,7 +208,6 @@ angular.module('midjaApp')
                 })
                 .map(expr.evaluate)
                 .value();
-              console.log(series);
               return _.zipObject(commonRegions, series);
             });
           } else {
