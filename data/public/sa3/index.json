@@ -1,6 +1,11 @@
 {
   "attributes": [
     {
+      "name": "region_code",
+      "description": "Statistical Area Level 3 (SA3) code",
+      "type": "string"
+    },
+    {
       "name": "region_name",
       "description": "Statistical Area Level 3 (SA3) name",
       "type": "string"

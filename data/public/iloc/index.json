@@ -1,6 +1,11 @@
 {
   "attributes": [
     {
+      "name": "region_code",
+      "description": "Indigenous Location code",
+      "type": "string"
+    },
+    {
       "name": "region_name",
       "description": "Indigenous Location name",
       "type": "string"

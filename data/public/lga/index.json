@@ -1,6 +1,11 @@
 {
   "attributes": [
     {
+      "name": "region_code",
+      "description": "Local Government Area code",
+      "type": "string"
+    },
+    {
       "name": "region_name",
       "description": "Local Government Area name",
       "type": "string"
