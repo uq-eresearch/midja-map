@@ -8,7 +8,7 @@
  * Factory in the midjaApp.
  */
 angular.module('midjaApp')
-  .factory('dataService', function($http, $q) {
+  .factory('dataService', function($http, $q, expressionService) {
     // Tests to determine if child region is in parent
     var subregionTests = (function() {
       function commonNumericPrefix(sourceRegion) {
@@ -190,6 +190,28 @@ angular.module('midjaApp')
               _.partial(_.isEqual, attribute)));
           if (!attributeMetadata) {
             return {};
+          } else if (attributeMetadata.expression) {
+            // Collect dependant variables and evaluate expression
+            var expr = expressionService.parse(attributeMetadata.expression);
+            return $q.all(
+              _.map(
+                expr.dependantVariables,
+                _.partial(getAttribute, regionType))
+            ).then(function(attributesData) {
+              var commonRegions = _.intersection.apply(null,
+                _.map(attributesData, _.keys)).sort();
+              console.log(commonRegions);
+              var series = _.chain(commonRegions)
+                .map(function(region) {
+                  return _.zipObject(
+                    expr.dependantVariables,
+                    _.map(attributesData, _.property(region)));
+                })
+                .map(expr.evaluate)
+                .value();
+              console.log(series);
+              return _.zipObject(commonRegions, series);
+            });
           } else {
             return $http
               .get('/data/' + regionType + '/' + attribute)
