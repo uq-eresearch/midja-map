@@ -396,26 +396,30 @@ angular.module('midjaApp')
       }
 
       $q(function(resolve) {
+          var previousRegionType = vm.tablePrefix;
           switch (vm.vis.unitSel) {
             case 'ILOCs':
               vm.tablePrefix = "iloc";
               vm.selectedTable = "iloc_merged_dataset";
-              return activate(vm.tablePrefix).then(resolve);
+              break;
             case 'LGAs':
               vm.tablePrefix = "lga";
               vm.selectedTable = "lga_565_iba_final";
-              return activate(vm.tablePrefix).then(resolve);
+              break;
             case 'SA2s':
               vm.tablePrefix = "sa2";
               vm.selectedTable = "sa2_nonexistent_dataset";
-              return activate(vm.tablePrefix).then(resolve);
+              break;
             case 'SA3s':
               vm.tablePrefix = "sa3";
               vm.selectedTable = "sa3_nonexistent_dataset";
-              return activate(vm.tablePrefix).then(resolve);
-            default:
-              return;
+              break;
           }
+          if (previousRegionType != vm.tablePrefix) {
+            vm.vis.topics = [];
+          }
+          // Clear topics if region type changed
+          return activate(vm.tablePrefix).then(resolve);
         }).then(function() {
           return $q(function(resolve) {
             // Set first location to Australia if unpopulated
