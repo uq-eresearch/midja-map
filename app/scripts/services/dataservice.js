@@ -66,6 +66,14 @@ angular.module('midjaApp')
 
     var getMetadata = _.memoize(getMetadataFromRemote);
 
+    var formatNumber = _.partial(_.ary(math.format, 2), _, {
+      precision: 5,
+      exponential: {
+        upper: 1e9,
+        lower: 1e-9
+      }
+    });
+
     return {
       getAvailableAttributes: getAvailableAttributes,
       getAttribute: getAttribute,
@@ -74,6 +82,7 @@ angular.module('midjaApp')
       getQuantileBuckets: getQuantileBuckets,
       getRegionsStartingWith: getRegionsStartingWith,
       filterByRemotenessArea: filterByRemotenessArea,
+      formatNumber: formatNumber,
       getAttributesForRegions: getAttributesForRegions
     };
 

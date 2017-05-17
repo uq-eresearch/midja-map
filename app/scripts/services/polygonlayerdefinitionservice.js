@@ -44,7 +44,10 @@ angular.module('midjaApp')
             var bullet = L.DomUtil.create('div', 'bullet', li);
             bullet.style = "background: #" + bucket.color;
             var text = L.DomUtil.create('span', '', li);
-            text.innerHTML = bucket.min + " - " + bucket.max;
+            text.innerHTML = _.map(
+              [bucket.min, bucket.max],
+              dataService.formatNumber
+            ).join(" - ");
           });
           return div;
         };

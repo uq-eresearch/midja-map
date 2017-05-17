@@ -153,7 +153,11 @@ angular.module('midjaApp')
                 map.addLayer(utfGrid);
               }
               if (self._leafletLayers.legend) {
-                self._leafletLayers.legend.removeFrom(map);
+                try {
+                  self._leafletLayers.legend.removeFrom(map);
+                } catch (e) {
+                  console.log(e);
+                }
               }
               if (self._definitions.bottom.getLegend) {
                 var legend = L.control({

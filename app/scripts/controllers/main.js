@@ -593,7 +593,7 @@ angular.module('midjaApp')
           ].concat(_.map(dataSeries, function(data) {
             var asText = function(d) {
               if (_.isNumber(d)) {
-                return d.toFixed(2);
+                return dataService.formatNumber(d);
               } else {
                 return '\u2014';
               }
