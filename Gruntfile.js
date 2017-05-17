@@ -253,35 +253,6 @@ module.exports = function(grunt) {
       }
     },
 
-    // Compiles Sass to CSS and generates necessary files if requested
-    //compass: {
-    //    options: {
-    //        sassDir: '<%= yeoman.app %>/styles',
-    //        cssDir: '.tmp/styles',
-    //        generatedImagesDir: '.tmp/images/generated',
-    //        imagesDir: '<%= yeoman.app %>/images',
-    //        javascriptsDir: '<%= yeoman.app %>/scripts',
-    //        fontsDir: '<%= yeoman.app %>/styles/fonts',
-    //        importPath: './bower_components',
-    //        httpImagesPath: '/images',
-    //        httpGeneratedImagesPath: '/images/generated',
-    //        httpFontsPath: '/styles/fonts',
-    //        relativeAssets: false,
-    //        assetCacheBuster: false,
-    //        raw: 'Sass::Script::Number.precision = 10\n'
-    //    },
-    //    dist: {
-    //        options: {
-    //            generatedImagesDir: '<%= yeoman.dist %>/images/generated'
-    //        }
-    //    },
-    //    server: {
-    //        options: {
-    //            debugInfo: true
-    //        }
-    //    }
-    //},
-
     // Renames files for browser caching purposes
     filerev: {
       dist: {
@@ -321,32 +292,6 @@ module.exports = function(grunt) {
         assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/images']
       }
     },
-
-    // The following *-min tasks will produce minified files in the dist folder
-    // By default, your `index.html`'s <!-- Usemin block --> will take care of
-    // minification. These next options are pre-configured if you do not wish
-    // to use the Usemin blocks.
-    // cssmin: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/styles/main.css': [
-    //         '.tmp/styles/{,*/}*.css'
-    //       ]
-    //     }
-    //   }
-    // },
-    // uglify: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/scripts/scripts.js': [
-    //         '<%= yeoman.dist %>/scripts/scripts.js'
-    //       ]
-    //     }
-    //   }
-    // },
-    // concat: {
-    //   dist: {}
-    // },
 
     imagemin: {
       dist: {
