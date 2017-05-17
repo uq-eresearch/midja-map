@@ -278,7 +278,16 @@ module.exports = function(grunt) {
               js: ['concat', 'uglifyjs'],
               css: ['cssmin']
             },
-            post: {}
+            post: {
+              js: [{
+                name: 'uglify',
+                createConfig: function (context, block) {
+                  context.options.generated.options = {
+                    compress: false
+                  };
+                }
+              }]
+            }
           }
         }
       }
