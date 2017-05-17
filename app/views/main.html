@@ -21,7 +21,7 @@
         <div class="row +fullheight">
             <div class="col-md-3 +fullheight">
 
-                <div class="entrycolumn">
+                <div class="entryattribute">
                     <h2 style="margin-top: 30px;">
                         <i class="fa fa-globe"></i> Places</h2>
 
@@ -182,8 +182,8 @@
                                 <ui-select-match placeholder="Select 1 or More Topics">
                                     <span class="text-capitalize">{{ $item.description }}</span>
                                 </ui-select-match>
-                                <ui-select-choices repeat="column in vm.columns | propsFilter: {description: $select.search} | orderBy: 'description'">
-                                    <div ng-bind-html="column.description | highlight: $select.search"></div>
+                                <ui-select-choices repeat="attribute in vm.attributes | propsFilter: {description: $select.search} | orderBy: 'description'">
+                                    <div ng-bind-html="attribute.description | highlight: $select.search"></div>
                                 </ui-select-choices>
                             </ui-select>
 
@@ -226,8 +226,8 @@
                                                 <span class="text-capitalize">{{$select.selected.description }}</span>
                                             </ui-select-match>
                                             <ui-select-choices
-                                                    repeat="column in vm.vis.topics | propsFilter: {description: $select.search}">
-                                                <div ng-bind-html="column.description | highlight: $select.search"></div>
+                                                    repeat="attribute in vm.vis.topics | propsFilter: {description: $select.search}">
+                                                <div ng-bind-html="attribute.description | highlight: $select.search"></div>
                                             </ui-select-choices>
                                         </ui-select>
                                     </accordion-group>
@@ -249,8 +249,8 @@
                                                 <span class="text-capitalize">{{$select.selected.description }}</span>
                                             </ui-select-match>
                                             <ui-select-choices
-                                                    repeat="column in vm.vis.topics | propsFilter: {description: $select.search}">
-                                                <div ng-bind-html="column.description | highlight: $select.search"></div>
+                                                    repeat="attribute in vm.vis.topics | propsFilter: {description: $select.search}">
+                                                <div ng-bind-html="attribute.description | highlight: $select.search"></div>
                                             </ui-select-choices>
                                         </ui-select>
                                 </accordion>
@@ -296,8 +296,8 @@
                                                 <span class="text-capitalize">{{$select.selected.description}}</span>
                                             </ui-select-match>
                                             <ui-select-choices
-                                                      repeat="column in vm.vis.topics | propsFilter: {description: $select.search}">
-                                                <div ng-bind-html="column.description | highlight: $select.search"></div>
+                                                      repeat="attribute in vm.vis.topics | propsFilter: {description: $select.search}">
+                                                <div ng-bind-html="attribute.description | highlight: $select.search"></div>
                                             </ui-select-choices>
                                         </ui-select>
                                         </div>
@@ -314,8 +314,8 @@
                                                 <span class="text-capitalize">{{$select.selected.description}}</span>
                                             </ui-select-match>
                                             <ui-select-choices
-                                                      repeat="column in vm.vis.topics | propsFilter: {description: $select.search}">
-                                                <div ng-bind-html="column.description | highlight: $select.search"></div>
+                                                      repeat="attribute in vm.vis.topics | propsFilter: {description: $select.search}">
+                                                <div ng-bind-html="attribute.description | highlight: $select.search"></div>
                                             </ui-select-choices>
                                         </ui-select>
                                         </div>
@@ -409,8 +409,8 @@
                                                     <span class="text-capitalize">{{$select.selected.description }}</span>
                                                 </ui-select-match>
                                                 <ui-select-choices
-                                                        repeat="column in vm.vis.topics | propsFilter: {description: $select.search}">
-                                                    <div ng-bind-html="column.description | highlight: $select.search"></div>
+                                                        repeat="attribute in vm.vis.topics | propsFilter: {description: $select.search}">
+                                                    <div ng-bind-html="attribute.description | highlight: $select.search"></div>
                                                 </ui-select-choices>
                                             </ui-select>
 
@@ -432,8 +432,8 @@
                                                 <ui-select-match placeholder="Select independent variables">
                                                     <span class="text-capitalize">{{ $item.description }}</span>
                                                 </ui-select-match>
-                                                <ui-select-choices repeat="column in vm.vis.topics | propsFilter: {description: $select.search}">
-                                                    <div ng-bind-html="column.description | highlight: $select.search"></div>
+                                                <ui-select-choices repeat="attribute in vm.vis.topics | propsFilter: {description: $select.search}">
+                                                    <div ng-bind-html="attribute.description | highlight: $select.search"></div>
                                                 </ui-select-choices>
                                             </ui-select>
                                         </div>
@@ -499,7 +499,7 @@
                 <!--ng-class="{'col-sm-9': !vm.isDataSelected(), 'col-md-6': vm.isDataSelected()}">-->
 				<cartodb-map top="vm.bubbleLayer" topvisible="vm.visStatus.bubbleVisible" bottom="vm.regionLayer" bottomvisible="vm.vis.choroplethVisible" map="vm.map"></cartodb-map>
 
-				<i id="columnToggleIcon"
+				<i id="attributeToggleIcon"
 					class="fa fa-2x"
 					style="position:absolute; right:0px; top:0px;"
 					ng-click="vm.toggleDataColumn()"

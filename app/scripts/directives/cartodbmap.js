@@ -232,7 +232,7 @@ angular.module('midjaApp')
 
       $rootScope.$on('featureOver', function(e, data) {
         var vm = $rootScope.$$childTail.vm;
-        var regionType = vm.tablePrefix;
+        var regionType = vm.regionType;
         labelService.getResolver(regionType).then(function(getLabel) {
           var transform = mapService.getFeatureTransformer(getLabel);
           if (!$rootScope.feature || $rootScope.feature[0].level_name !=
@@ -244,7 +244,7 @@ angular.module('midjaApp')
             } else if (vm.vis.choropleth.topic.name != vm.vis.bubble.topic
               .name) {
 
-              if (mouseOverFeature[0].column != vm.vis.bubble.topic
+              if (mouseOverFeature[0].attribute != vm.vis.bubble.topic
                 .name && vm.vis.bubble.topic.name) {
                 // pleth
                 $rootScope.feature = mouseOverFeature;
@@ -272,7 +272,7 @@ angular.module('midjaApp')
                   ];
                   $rootScope.feature2 = [newData];
                 }
-              } else if (mouseOverFeature[0].column != vm.vis.choropleth
+              } else if (mouseOverFeature[0].attribute != vm.vis.choropleth
                 .topic.name) {
                 // bubble
                 $rootScope.feature2 = mouseOverFeature;
@@ -314,7 +314,7 @@ angular.module('midjaApp')
 
       $rootScope.$on('featureClick', function(e, data) {
         var vm = $rootScope.$$childTail.vm;
-        var regionType = vm.tablePrefix;
+        var regionType = vm.regionType;
         var regionCodeAttribute = regionType+'_code';
         var attrNames = ['region_name'].concat(
           _.map(vm.vis.topics, _.property('name')));

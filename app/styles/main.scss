@@ -19,7 +19,7 @@ $font-family-sans-serif:  "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-
 }
 
 @media (min-width: $screen-md-min) {
-  @include component(entrycolumn) {
+  @include component(entryattribute) {
     padding: 10px;
     padding-top: 0;
   }
@@ -82,11 +82,11 @@ accordion h2, h3 {
   margin-bottom: 0;
 }
 
-#columnToggleIcon {
+#attributeToggleIcon {
   opacity: 0.5;
 }
 
-#columnToggleIcon:hover {
+#attributeToggleIcon:hover {
   opacity: 1.0;
 }
 

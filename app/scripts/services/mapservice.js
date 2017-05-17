@@ -21,8 +21,8 @@ angular.module('midjaApp')
           if (key.indexOf('_name') >= 0) {
             newData.level_name = data[key];
           } else {
-            newData.column = key;
-            newData.label = resolver(newData.column);
+            newData.attribute = key;
+            newData.label = resolver(newData.attribute);
             newData.value = data[key];
           }
         }

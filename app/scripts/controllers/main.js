@@ -124,8 +124,6 @@ angular.module('midjaApp')
     //TODO: Explain
     vm.curRemoteness = [];
 
-    vm.categories = [];
-
     vm.vis = {
       remotenessLevel: 'all',
       lgaBlock: '565',
@@ -153,10 +151,10 @@ angular.module('midjaApp')
       independents: []
     }
     vm.locations = [];
-    vm.columns = [];
+    vm.attributes = [];
 
-    vm.columnsFromMetadata = [];
-    vm.columnsFromMetadataPropCols = [];
+    vm.attributesFromMetadata = [];
+    vm.attributesFromMetadataPropCols = [];
 
     vm.visStatus = {
       choroplethVisible: true,
@@ -181,9 +179,8 @@ angular.module('midjaApp')
     vm.selectedIndependentsChanged = selectedIndependentsChanged;
     vm.isDataSelected = isDataSelected;
 
-    vm.selectedTable = 'lga_565_iba_final'; // TODO: tie to a GUI option, do change handler
     selectedPlacesChanged();
-    vm.tablePrefix = 'lga';
+    vm.regionType = 'lga';
     vm.unitSels = ['LGAs', 'ILOCs', 'SA2s', 'SA3s'];
     vm.filters = [
       'Indigenous Population >= 150',
@@ -363,16 +360,16 @@ angular.module('midjaApp')
           return dataService.getAvailableAttributes(regionType)
         })
         .then(function(availableAttributes) {
-          vm.columnsFromMetadata = _.reject(availableAttributes,
-            function(column) {
-              return column.type !== 'number';
+          vm.attributesFromMetadata = _.reject(availableAttributes,
+            function(attribute) {
+              return attribute.type !== 'number';
             });
-          vm.columns = vm.columnsFromMetadata;
+          vm.attributes = vm.attributesFromMetadata;
 
           var regex = /proportion|percentage/i;
-          vm.columnsFromMetadataPropCols = _.filter(vm.columnsFromMetadata,
-            function(column) {
-              return regex.test(column.description);
+          vm.attributesFromMetadataPropCols = _.filter(vm.attributesFromMetadata,
+            function(attribute) {
+              return regex.test(attribute.description);
             });
         });
     }
@@ -396,30 +393,26 @@ angular.module('midjaApp')
       }
 
       $q(function(resolve) {
-          var previousRegionType = vm.tablePrefix;
+          var previousRegionType = vm.regionType;
           switch (vm.vis.unitSel) {
             case 'ILOCs':
-              vm.tablePrefix = "iloc";
-              vm.selectedTable = "iloc_merged_dataset";
+              vm.regionType = "iloc";
               break;
             case 'LGAs':
-              vm.tablePrefix = "lga";
-              vm.selectedTable = "lga_565_iba_final";
+              vm.regionType = "lga";
               break;
             case 'SA2s':
-              vm.tablePrefix = "sa2";
-              vm.selectedTable = "sa2_nonexistent_dataset";
+              vm.regionType = "sa2";
               break;
             case 'SA3s':
-              vm.tablePrefix = "sa3";
-              vm.selectedTable = "sa3_nonexistent_dataset";
+              vm.regionType = "sa3";
               break;
           }
-          if (previousRegionType != vm.tablePrefix) {
+          if (previousRegionType != vm.regionType) {
             vm.vis.topics = [];
           }
           // Clear topics if region type changed
-          return activate(vm.tablePrefix).then(resolve);
+          return activate(vm.regionType).then(resolve);
         }).then(function() {
           return $q(function(resolve) {
             // Set first location to Australia if unpopulated
@@ -438,7 +431,7 @@ angular.module('midjaApp')
         .then(function(regions) {
           return $q.all(_.map(
             regions,
-            _.partial(dataService.getSubregions, vm.tablePrefix)))
+            _.partial(dataService.getSubregions, vm.regionType)))
         }).then(_.flatten)
         .then(_.partial(_.uniq, _, false, _.property('code')))
         .then(_.partial(_.filter, _,
@@ -452,14 +445,14 @@ angular.module('midjaApp')
           else
             return dataService.filterByRemotenessArea(
               regions,
-              vm.tablePrefix,
+              vm.regionType,
               vm.vis.remotenessLevel);
         }).then(function(regions) {
           var units = regions;
 
           // Clear map but show boundaries
           layerService.build('polygon')
-            .buildEmpty(vm.tablePrefix, regions).then(function(layer) {
+            .buildEmpty(vm.regionType, regions).then(function(layer) {
               vm.regionLayer = layer;
             });
 
@@ -513,11 +506,11 @@ angular.module('midjaApp')
         showPropTopicsOnly(vm.propTopicsOnly);
       } else {
         if (vm.propTopicsOnly) {
-          vm.columns = _.filter(vm.columnsFromMetadataPropCols, function(item) {
+          vm.attributes = _.filter(vm.attributesFromMetadataPropCols, function(item) {
             return _.contains(_.pluck(vm.vis.category, 'cat_id'), item.cat_id);
           });
         } else {
-          vm.columns = _.filter(vm.columnsFromMetadata, function(item) {
+          vm.attributes = _.filter(vm.attributesFromMetadata, function(item) {
             return _.contains(_.pluck(vm.vis.category, 'cat_id'), item.cat_id);
           });
         }
@@ -526,8 +519,7 @@ angular.module('midjaApp')
 
     // TODO: deal with remoteness
     function generateBarChart() {
-      var regionType = vm.tablePrefix;
-      var dataset = vm.selectedTable;
+      var regionType = vm.regionType;
       var attributeNames = _.map(vm.vis.topics, _.property('name'))
         .concat(['region_name', 'ra_name']);
       var locations = vm.vis.units;
@@ -623,8 +615,8 @@ angular.module('midjaApp')
     function generateBubbleLayer(topic, locations) {
       var bubbleLayerService = layerService.build('bubble');
       (topic ?
-        bubbleLayerService.build(vm.tablePrefix, topic, locations) :
-        bubbleLayerService.buildEmpty(vm.tablePrefix, locations)
+        bubbleLayerService.build(vm.regionType, topic, locations) :
+        bubbleLayerService.buildEmpty(vm.regionType, locations)
       ).then(function(layerDefinition) {
         vm.bubbleLayer = layerDefinition;
       });
@@ -633,8 +625,8 @@ angular.module('midjaApp')
     function generateChoroplethLayer(topic, locations) {
       var choroplethService = layerService.build('polygon');
       (topic ?
-        choroplethService.build(vm.tablePrefix, topic, locations) :
-        choroplethService.buildEmpty(vm.tablePrefix, locations)
+        choroplethService.build(vm.regionType, topic, locations) :
+        choroplethService.buildEmpty(vm.regionType, locations)
       ).then(function(layerDefinition) {
         vm.regionLayer = layerDefinition;
       });
@@ -647,7 +639,7 @@ angular.module('midjaApp')
         return;
       }
 
-      dataService.getRegionsStartingWith(vm.tablePrefix, name)
+      dataService.getRegionsStartingWith(vm.regionType, name)
         .then(function(locations) {
           vm.locations = locations;
         });
@@ -742,7 +734,7 @@ angular.module('midjaApp')
         buildBarChart :
         buildPlot;
 
-      dataService.getAttributesForRegions(vm.tablePrefix, topics, regions)
+      dataService.getAttributesForRegions(vm.regionType, topics, regions)
         .then(function(topicData) {
           var depVar = vm.linearRegression.dependent;
           var indepVar = _.first(vm.linearRegression.independents);
@@ -759,7 +751,7 @@ angular.module('midjaApp')
             .map(lookupAttributesForRegion)
             // Get region's data for topics (like a row)
             .map(_.partial(_.map, topics))
-            // Convert region rows to columns of topic data
+            // Convert region rows to attributes of topic data
             .unzip()
             .value();
           data.data = _.zipObject(topics, topicSeries);
@@ -779,9 +771,9 @@ angular.module('midjaApp')
 
     function showPropTopicsOnly(isChecked) {
       if (isChecked) {
-        vm.columns = vm.columnsFromMetadataPropCols;
+        vm.attributes = vm.attributesFromMetadataPropCols;
       } else {
-        vm.columns = vm.columnsFromMetadata;
+        vm.attributes = vm.attributesFromMetadata;
       }
     }
 
@@ -810,7 +802,7 @@ angular.module('midjaApp')
       var regions = vm.vis.units;
 
       return dataService.getAttributesForRegions(
-        vm.tablePrefix, [xVar, yVar, 'ra_name'], regions
+        vm.regionType, [xVar, yVar, 'ra_name'], regions
       ).then(function(data) {
         var lookupAttributesForRegion =_.flow(
           _.property('code'), // Get region code
