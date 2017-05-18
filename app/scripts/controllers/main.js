@@ -13,6 +13,17 @@ angular.module('midjaApp')
     $q, $http, $scope, $uibModal, $timeout, $window) {
     var vm = this;
     vm.propTopicsOnly = false;
+
+    var scatterPlotTooltipTemplate =
+      _.template(
+        "<h3><%= name %></h3>"+
+        "<dl>"+
+        "<dt><%=x.name%></dt>"+
+        "<dd><%=x.value%></dd>"+
+        "<dt><%=y.name%></dt>"+
+        "<dd><%=y.value%></dd>"+
+        "</dl>"
+      );
     vm.scatterOptions = {
       chart: {
         type: 'scatterChart',
@@ -37,16 +48,25 @@ angular.module('midjaApp')
             }
           }
         },
+        tooltip: {
+          contentGenerator: _.flow(
+            function(d) {
+              return {
+                name: d.point.name,
+                x: {
+                  name: vm.scatterOptions["chart"]["xAxis"]["axisLabel"],
+                  value: d.point.x
+                },
+                y: {
+                  name: vm.scatterOptions["chart"]["yAxis"]["axisLabel"],
+                  value: d.point.y
+                }
+              };
+            },
+            scatterPlotTooltipTemplate)
+        },
         useInteractiveGuideline: false,
         interactive: true,
-        /*	tooltip:
-{ position : function () {
-                        return function (d) {
-                            var html = "<h3>" + d.point.name + "</h3>";
-                            html += "<p>x: " + d.point.x + ", y: " + d.point.y + "</p>"
-                            return html;
-                        }
-                    }} ,*/
         zoom: {
           enabled: false
         }
@@ -73,15 +93,21 @@ angular.module('midjaApp')
         useInteractiveGuideline: false,
         interactive: true,
         tooltip: {
-          position: function() { //{"top": 200},
-            //contentGenerator:
-            return function(d) { //return html content
-              var html = "<h3>" + d.point.name + "</h3>";
-              html += "<p>x: " + d.point.x + ", y: " + d.point.y +
-                "</p>"
-              return html;
-            }
-          }
+          contentGenerator: _.flow(
+            function(d) {
+              return {
+                name: d.point.name,
+                x: {
+                  name: vm.regressionOptions["chart"]["xAxis"]["axisLabel"],
+                  value: d.point.x
+                },
+                y: {
+                  name: vm.regressionOptions["chart"]["yAxis"]["axisLabel"],
+                  value: d.point.y
+                }
+              };
+            },
+            scatterPlotTooltipTemplate)
         },
         zoom: {
           enabled: false
