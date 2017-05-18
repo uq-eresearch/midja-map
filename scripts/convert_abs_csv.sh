@@ -6,7 +6,7 @@
 # Need csv2json (https://www.npmjs.com/package/csv2json) and
 # jq (https://stedolan.github.io/jq/) installed!
 
-CSV_FILE=$1
+CSV_FILE="$1"
 TMPFILE=$(mktemp series.XXXXXX)
 trap "rm -f $TMPFILE" EXIT
 
@@ -16,7 +16,7 @@ def extractKeys:
 
 def extractSeries(k):
   k as $k |
-  map({ key: .["region_id"], value: .[$k] }) | from_entries;
+  map({ key: (.["region_id"] | tostring), value: .[$k] }) | from_entries;
 
 . as $data
 | ($data | extractKeys) as $keys
@@ -24,11 +24,11 @@ def extractSeries(k):
 SCRIPT
 )
 
-csv2json $CSV_FILE | jq "$JQ_EXTRACT_SERIES" > $TMPFILE
+csv2json -d "$CSV_FILE" | jq "$JQ_EXTRACT_SERIES" > "$TMPFILE"
 
 IFS=$'\n' &&
 for k in $(jq -r 'keys | .[]' $TMPFILE)
 do
   LOWERCASE_K=$(echo $k | tr '[[:upper:]]' '[[:lower:]]')
-  jq '.["'$k'"]' $TMPFILE > "$LOWERCASE_K.json"
+  jq '.["'$k'"]' "$TMPFILE" > "$LOWERCASE_K.json"
 done
