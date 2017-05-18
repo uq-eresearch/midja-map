@@ -91,9 +91,121 @@
       "type": "number"
     },
     {
-      "name": "avg_persons_per_bedroom_2011",
-      "description": "Average Persons per bedroom in dwellings (2011)",
-      "type": "number"
+      "name": "average_household_size_indigenous_persons_households_with_indigenous_persons",
+      "description": "Average household size - households with indigenous persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "https://www.censusdata.abs.gov.au/datapacks/DataPacks?action=getzip&file=2011_IP_LGA_for_AUST_long-header.zip#2011%20Census%20IP%20Local%20Government%20Areas%20for%20AUST/AUST/2011Census_I04_AUST_LGA_long.csv"
+      }
+    },
+    {
+      "name": "average_household_size_non_indigenous_persons_other_households",
+      "description": "Average household size - non-indigenous households",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "https://www.censusdata.abs.gov.au/datapacks/DataPacks?action=getzip&file=2011_IP_LGA_for_AUST_long-header.zip#2011%20Census%20IP%20Local%20Government%20Areas%20for%20AUST/AUST/2011Census_I04_AUST_LGA_long.csv"
+      }
+    },
+    {
+      "name": "average_household_size_total",
+      "description": "Average household size - total",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "https://www.censusdata.abs.gov.au/datapacks/DataPacks?action=getzip&file=2011_IP_LGA_for_AUST_long-header.zip#2011%20Census%20IP%20Local%20Government%20Areas%20for%20AUST/AUST/2011Census_I04_AUST_LGA_long.csv"
+      }
+    },
+    {
+      "name": "average_number_of_persons_per_bedroom_indigenous_persons_households_with_indigenous_persons",
+      "description": "Average number of persons per bedroom - households with indigenous persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "https://www.censusdata.abs.gov.au/datapacks/DataPacks?action=getzip&file=2011_IP_LGA_for_AUST_long-header.zip#2011%20Census%20IP%20Local%20Government%20Areas%20for%20AUST/AUST/2011Census_I04_AUST_LGA_long.csv"
+      }
+    },
+    {
+      "name": "average_number_of_persons_per_bedroom_non_indigenous_persons_other_households",
+      "description": "Average number of persons per bedroom - non-indigenous households",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "https://www.censusdata.abs.gov.au/datapacks/DataPacks?action=getzip&file=2011_IP_LGA_for_AUST_long-header.zip#2011%20Census%20IP%20Local%20Government%20Areas%20for%20AUST/AUST/2011Census_I04_AUST_LGA_long.csv"
+      }
+    },
+    {
+      "name": "average_number_of_persons_per_bedroom_total",
+      "description": "Average number of persons per bedroom - total",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "https://www.censusdata.abs.gov.au/datapacks/DataPacks?action=getzip&file=2011_IP_LGA_for_AUST_long-header.zip#2011%20Census%20IP%20Local%20Government%20Areas%20for%20AUST/AUST/2011Census_I04_AUST_LGA_long.csv"
+      }
+    },
+    {
+      "name": "proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_indigenous_persons_households_with_indigenous_persons",
+      "description": "Proportion of dwellings that need 1 or more extra bedrooms - households with indigenous persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "https://www.censusdata.abs.gov.au/datapacks/DataPacks?action=getzip&file=2011_IP_LGA_for_AUST_long-header.zip#2011%20Census%20IP%20Local%20Government%20Areas%20for%20AUST/AUST/2011Census_I04_AUST_LGA_long.csv"
+      }
+    },
+    {
+      "name": "proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_non_indigenous_persons_other_households",
+      "description": "Proportion of dwellings that need 1 or more extra bedrooms - non-indigenous households",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "https://www.censusdata.abs.gov.au/datapacks/DataPacks?action=getzip&file=2011_IP_LGA_for_AUST_long-header.zip#2011%20Census%20IP%20Local%20Government%20Areas%20for%20AUST/AUST/2011Census_I04_AUST_LGA_long.csv"
+      }
+    },
+    {
+      "name": "proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_total",
+      "description": "Proportion of dwellings that need 1 or more extra bedrooms - total",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "https://www.censusdata.abs.gov.au/datapacks/DataPacks?action=getzip&file=2011_IP_LGA_for_AUST_long-header.zip#2011%20Census%20IP%20Local%20Government%20Areas%20for%20AUST/AUST/2011Census_I04_AUST_LGA_long.csv"
+      }
     }
   ]
 }
