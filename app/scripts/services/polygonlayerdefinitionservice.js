@@ -69,27 +69,27 @@ angular.module('midjaApp')
       return dataService.getAttributesForRegions(
         regionType, [attribute.name], locations
       ).then(function(data) {
+        var isValidNumber = function(v) {
+          return _.isNumber(v) && !_.isNaN(v);
+        };
         var series = _.filter(
           _.map(_.values(data), _.property(attribute.name)),
-          _.isNumber);
+          isValidNumber);
         var buckets = generateBuckets(series)
         var geoTable = regionType + "_2011_aust";
         var regionAttribute = regionType + "_code";
         var regions = _.uniq(_.pluck(locations, 'code')).sort();
         var colorF = function(region) {
           var v = data[region][attribute.name];
-          if (_.isNumber(v)) {
-            // Get color using bucket ranges (min: inclusive, max: exclusive)
-            // Last bucket max == max series value,
-            // so last bucket if no match.
-            return _.first(
-              _.filter(buckets, function(bucket) {
-                return v >= bucket.min && v < bucket.max;
-              }).concat([_.last(buckets)])
-            ).color;
-          } else {
-            return null;
-          }
+          // Get color using bucket ranges (min: inclusive, max: inclusive)
+          // This should cover all valid values, so null if no match.
+          return _.chain(buckets)
+            .filter(function(bucket) {
+              return v >= bucket.min && v <= bucket.max;
+            })
+            .map(_.property('color'))
+            .first()
+            .value();
         };
         var sql = generateMapnikSQL(geoTable, regionAttribute, regions);
         var style = generateCartoCSS(
@@ -100,16 +100,14 @@ angular.module('midjaApp')
     }
 
     function generateBuckets(series) {
+      var maxBuckets = Math.min(5, _.uniq(series).length)
       var buckets = _.first(
-        _.chain(_.range(5, 0, -1))
+        _.chain(_.range(maxBuckets, 0, -1))
         .map(function(n) {
-          return dataService.getQuantileBuckets(series, n);
+          return dataService.getCkmeansBuckets(series, n);
         })
         .filter(function(buckets) {
-          return buckets.length == 1 ||
-            _.every(buckets, function(bucket) {
-              return bucket.min != bucket.max;
-            });
+          return _.uniq(buckets, _.property('min')).length == buckets.length;
         })
         .value()
       );

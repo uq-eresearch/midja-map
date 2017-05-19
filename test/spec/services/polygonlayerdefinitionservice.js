@@ -36,9 +36,12 @@ describe('Service: polygonLayerDefinitionService', function() {
   it('_generateCartoCSS should return expectedValue', function() {
     var style = polygonLayerDefinitionService._generateCartoCSS(
       "iloc_2011_aust",
-      "iloc_code", ['ILOC50400602', 'ILOC50400603'],
+      "iloc_code", ['ILOC50400601','ILOC50400602', 'ILOC50400603'],
       function(region) {
-        return _.repeat(region[region.length - 1], 6);
+        var lastChr = region[region.length - 1];
+        return lastChr == '1' ?
+          null :
+          _.repeat(region[region.length - 1], 6);
       });
 
     expect(style).toBe([

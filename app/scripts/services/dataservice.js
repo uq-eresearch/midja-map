@@ -79,7 +79,7 @@ angular.module('midjaApp')
       getAttribute: getAttribute,
       getSubregions: getSubregions,
       getRegionsAtOrAbove: getRegionsAtOrAbove,
-      getQuantileBuckets: getQuantileBuckets,
+      getCkmeansBuckets: getCkmeansBuckets,
       getRegionsStartingWith: getRegionsStartingWith,
       filterByRemotenessArea: filterByRemotenessArea,
       formatNumber: formatNumber,
@@ -253,33 +253,13 @@ angular.module('midjaApp')
       });
     }
 
-    function sqlCondition(regionColumn, regions) {
-      if (!regions) {
-        return regionColumn + "IS NOT NULL";
-      }
-      var regions = _.uniq(_.map(
-        regions,
-        _.isObject(_.first(regions)) ?
-        _.property(regionColumn) :
-        _.identity));
-      return regionColumn +
-        ' IN (' +
-        regions.map(function(region) {
-          return "'" + region + "'";
-        }).join(",") +
-        ')';
-    }
-
-    function getQuantileBuckets(values, numberOfBuckets) {
-      var breakPoints = _.map(_.range(0, numberOfBuckets + 1), function(i) {
-        var quantile = 1.0 / numberOfBuckets * i;
-        return ss.quantile(values, quantile);
-      });
-      return _.map(_.range(0, numberOfBuckets), function(i) {
+    function getCkmeansBuckets(values, numberOfBuckets) {
+      var groups = ss.ckmeans(values, numberOfBuckets);
+      return _.map(groups, function(group) {
         return {
-          min: breakPoints[i],
-          max: breakPoints[i + 1]
+          min: _.min(group),
+          max: _.max(group)
         };
-      })
+      });
     }
   });

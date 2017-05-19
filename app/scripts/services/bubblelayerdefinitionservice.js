@@ -33,9 +33,12 @@ angular.module('midjaApp')
       return dataService.getAttributesForRegions(
         regionType, [attribute.name], locations
       ).then(function(data) {
+        var isValidNumber = function(v) {
+          return _.isNumber(v) && !_.isNaN(v);
+        };
         var series = _.filter(
           _.map(_.values(data), _.property(attribute.name)),
-          _.isNumber);
+          isValidNumber);
         var buckets = generateBuckets(series)
         var geoTable = regionType + "_2011_aust";
         var regionAttribute = regionType + "_code";
@@ -47,13 +50,15 @@ angular.module('midjaApp')
             _.isNumber));
         var radiusF = function(region) {
           var v = data[region][attribute.name];
-          // Get radius using bucket ranges (min: inclusive, max: exclusive)
-          // Last bucket max == max series value, so last bucket if no match.
-          return _.first(
-            _.filter(buckets, function(bucket) {
-              return v >= bucket.min && v < bucket.max;
-            }).concat([_.last(buckets)])
-          ).radius;
+          // Get radius using bucket ranges (min: inclusive, max: inclusive)
+          // This should cover all valid values, so null if no match.
+          return _.chain(buckets)
+            .filter(function(bucket) {
+              return v >= bucket.min && v <= bucket.max;
+            })
+            .map(_.property('radius'))
+            .first()
+            .value();
         };
         var sql = generateMapnikSQL(geoTable, regionAttribute, regionCodes);
         var style = generateCartoCSS(
@@ -63,10 +68,11 @@ angular.module('midjaApp')
     }
 
     function generateBuckets(series) {
+      var maxBuckets = Math.min(5, _.uniq(series).length)
       var buckets = _.first(
-        _.chain(_.range(5, 0, -1))
+        _.chain(_.range(maxBuckets, 0, -1))
           .map(function(n) {
-            return dataService.getQuantileBuckets(series, n);
+            return dataService.getCkmeansBuckets(series, n);
           })
           .filter(function(buckets) {
             return buckets.length == 1 ||
@@ -125,14 +131,22 @@ angular.module('midjaApp')
       var regionStyleTemplate = _.template(
         '#<%=table%> [<%=attr%>="<%=value%>"] { marker-width: <%=radius%>; }'
       );
-      var regionStyles = _.map(regionCodes, function(regionCode) {
-        return regionStyleTemplate({
-          table: geoTable,
-          attr: regionAttribute,
-          value: regionCode,
-          radius: radiusF(regionCode)
+      var regionStyles = _.chain(regionCodes)
+        .map(function(regionCode) {
+          return {
+            table: geoTable,
+            attr: regionAttribute,
+            value: regionCode,
+            radius: radiusF(regionCode)
+          };
         })
-      });
+        // Filter out missing values
+        .filter(_.flow(_.values, _.partial(_.every, _, function(v) {
+          return _.isString(v) || _.isNumber(v);
+        })))
+        // Apply template
+        .map(regionStyleTemplate)
+        .value();
       return [baseStyle].concat(regionStyles).join(" ");
     }
 
