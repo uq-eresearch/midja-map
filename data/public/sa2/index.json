@@ -289,6 +289,110 @@
       }
     },
     {
+      "name": "phidu_admissions_for_circulatory_system_diseases_persons_public_hospitals_asr_per_100k",
+      "description": "Admissions for circulatory system diseases, persons - Public hospitals - ASR per 100,000",
+      "type": "number",
+      "source": {
+        "name": "Public Health Information Development Unit (PHIDU) Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_admissions_for_circulatory_system_diseases_persons_all_hospitals_asr_per_100k",
+      "description": "Admissions for circulatory system diseases, persons - All hospitals - ASR per 100,000",
+      "type": "number",
+      "source": {
+        "name": "Public Health Information Development Unit (PHIDU) Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_admissions_for_respiratory_system_diseases_persons_public_hospitals_asr_per_100k",
+      "description": "Admissions for respiratory system diseases, persons - Public hospitals - ASR per 100,000",
+      "type": "number",
+      "source": {
+        "name": "Public Health Information Development Unit (PHIDU) Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_admissions_for_respiratory_system_diseases_persons_all_hospitals_asr_per_100k",
+      "description": "Admissions for respiratory system diseases, persons - All hospitals - ASR per 100,000",
+      "type": "number",
+      "source": {
+        "name": "Public Health Information Development Unit (PHIDU) Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_admissions_for_digestive_system_diseases_persons_public_hospitals_asr_per_100k",
+      "description": "Admissions for digestive system diseases, persons - Public hospitals - ASR per 100,000",
+      "type": "number",
+      "source": {
+        "name": "Public Health Information Development Unit (PHIDU) Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_admissions_for_digestive_system_diseases_persons_all_hospitals_asr_per_100k",
+      "description": "Admissions for digestive system diseases, persons - All hospitals - ASR per 100,000",
+      "type": "number",
+      "source": {
+        "name": "Public Health Information Development Unit (PHIDU) Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_admissions_for_injury_poisoning_and_other_external_causes_persons_public_hospitals_asr_per_100k",
+      "description": "Admissions for injury, poisoning and other external causes, persons - Public hospitals - ASR per 100,000",
+      "type": "number",
+      "source": {
+        "name": "Public Health Information Development Unit (PHIDU) Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_admissions_for_injury_poisoning_and_other_external_causes_persons_all_hospitals_asr_per_100k",
+      "description": "Admissions for injury, poisoning and other external causes, persons - All hospitals - ASR per 100,000",
+      "type": "number",
+      "source": {
+        "name": "Public Health Information Development Unit (PHIDU) Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
       "name": "males_0to4_total",
       "description": "Age 0-4 years old - Total Males",
       "type": "number",
