@@ -497,7 +497,11 @@
 
             <div id="mapColumn" class="col-md-6 +fullheight" style="position: relative;">
                 <!--ng-class="{'col-sm-9': !vm.isDataSelected(), 'col-md-6': vm.isDataSelected()}">-->
-				<cartodb-map top="vm.bubbleLayer" topvisible="vm.visStatus.bubbleVisible" bottom="vm.regionLayer" bottomvisible="vm.vis.choroplethVisible" map="vm.map"></cartodb-map>
+				<region-map region-type="vm.regionType" regions="vm.vis.units"
+					choropleth-topic="vm.vis.choropleth.topic"
+					choropleth-visible="vm.visStatus.choroplethVisible"
+					bubbles-topic="vm.vis.bubble.topic"
+					bubbles-visible="vm.visStatus.bubbleVisible"></region-map>
 
 				<i id="attributeToggleIcon"
 					class="fa fa-2x"
@@ -506,19 +510,6 @@
 					ng-class="{'fa-chevron-circle-right': vm.dataColumnVisible, 'fa-chevron-circle-left': !vm.dataColumnVisible}">
 				</i>
 
-                <div class="well" style="position: absolute; top: 10px; right: 30px" ng-show="feature">
-                    <div ng-repeat="selection in feature">
-                        <div class="text-capitalize">
-                            <strong>{{ selection.level_name }}</strong>
-                        </div>
-                        <div>
-                            <em>{{ selection.label }}</em> = {{ selection.value }}
-                        </div>
-                        <div ng-repeat="selection2 in feature2">
-                            <em>{{ selection2.label }}</em> = {{ selection2.value }}
-                        </div>
-                    </div>
-                </div>
 
                 <!--<div style="position:relative">
 

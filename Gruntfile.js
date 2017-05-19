@@ -77,6 +77,10 @@ module.exports = function(grunt) {
           fallthrough: false
         })
       ),
+      connect().use(
+        '/tiles',
+        serveStatic('./tiles')
+      ),
       connect.static(appConfig.app)
     ]
   }
@@ -394,6 +398,11 @@ module.exports = function(grunt) {
           cwd: 'data/private',
           src: '**',
           dest: '<%= yeoman.dist %>/data'
+        }, {
+          expand: true,
+          cwd: 'tiles',
+          src: '**',
+          dest: '<%= yeoman.dist %>/tiles'
         }, {
           expand: true,
           cwd: '.',

@@ -18,6 +18,7 @@ angular.module('midjaApp')
 
     function BubbleLayerDefinition(regionType, sql, cartocss, allRegionData) {
       var regionCodeAttribute = regionType + '_code';
+      this.regionType = regionType;
       this.sql = sql;
       this.cartocss = cartocss;
       this.interactivity = [

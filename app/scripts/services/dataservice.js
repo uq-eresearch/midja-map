@@ -253,13 +253,21 @@ angular.module('midjaApp')
       });
     }
 
+    function Bucket(min, max) {
+      this.min = min;
+      this.max = max;
+      this.name = min + " - " + max;
+      this.contains = function(v) {
+        return v >= min && v <= max;
+      };
+    }
+
     function getCkmeansBuckets(values, numberOfBuckets) {
       var groups = ss.ckmeans(values, numberOfBuckets);
       return _.map(groups, function(group) {
-        return {
-          min: _.min(group),
-          max: _.max(group)
-        };
+        return new Bucket(_.min(group), _.max(group));
       });
     }
+
+
   });

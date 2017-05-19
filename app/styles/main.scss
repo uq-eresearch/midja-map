@@ -30,7 +30,11 @@ $font-family-sans-serif:  "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-
   }
 }
 
-
+.region-map {
+  min-height: 300px;
+  height:100%;
+  width:100%;
+}
 
 h2 {
   font-size: 20px;
@@ -90,13 +94,32 @@ accordion h2, h3 {
   opacity: 1.0;
 }
 
-.leaflet-control.legend {
+.leaflet-control.legend, .leaflet-control.feature-hover {
   padding: 1ex;
   font-size: 11px;
-  text-transform: uppercase;
   border-radius: 4px;
   box-shadow: rgba(0,0,0,.2) 0 0 4px 2px;
   background-color: rgba(255,255,255,0.9);
+}
+
+.leaflet-control.feature-hover {
+  text-align: right;
+  max-width: 30em;
+}
+
+.leaflet-control.feature-hover h1 {
+  font-size: 150%;
+  line-height: 100%;
+  margin: 0;
+}
+
+.leaflet-control.feature-hover dl {
+  margin: 1ex 0 0 0;
+}
+
+.leaflet-control.feature-hover dt {
+  font-weight: normal;
+  font-style: italic;
 }
 
 .leaflet-control.legend ul {

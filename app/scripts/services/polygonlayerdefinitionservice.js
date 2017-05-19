@@ -23,8 +23,9 @@ angular.module('midjaApp')
 
     function PolygonLayerDefinition(regionType, sql, style, allRegionData,
       buckets) {
-      var regionCodeAttribute = regionType + '_code';
+      var regionCodeAttribute = 'region_code';
       var regionNameAttribute = regionType + '_name';
+      this.regionType = regionType;
       this.sql = sql;
       this.cartocss = style;
       this.interactivity = [
@@ -32,7 +33,7 @@ angular.module('midjaApp')
         regionNameAttribute
       ];
       this.getRegionData = function(interactiveData) {
-        var regionCode = interactiveData[regionCodeAttribute];
+        var regionCode = interactiveData['region_code'];
         return allRegionData[regionCode] || interactiveData;
       };
       if (!_.isEmpty(buckets)) {

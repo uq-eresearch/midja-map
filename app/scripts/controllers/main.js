@@ -197,9 +197,6 @@ angular.module('midjaApp')
     vm.selectedLocationsChanged = selectedPlacesChanged;
     vm.selectedFiltersChanged = selectedFiltersChanged;
     vm.selectedTopicsChanged = selectedTopicsChanged;
-    vm.selectedCategoryChanged = selectedCategoryChanged;
-    vm.selectedBubbleTopicChanged = selectedBubbleTopicChanged;
-    vm.selectedRegionTopicChanged = selectedRegionTopicChanged;
     vm.selectedDependentChanged = selectedDependentChanged;
     vm.selectedIndependentsChanged = selectedIndependentsChanged;
     vm.isDataSelected = isDataSelected;
@@ -268,14 +265,11 @@ angular.module('midjaApp')
       }
     }
 
-    vm.map = null;
     vm.dataColumnVisible = true;
     vm.toggleDataColumn = function() {
       $('#dataColumn').fadeToggle("fast");
       $('#mapColumn').toggleClass('col-md-6', 'col-md-9');
       vm.dataColumnVisible = !vm.dataColumnVisible;
-
-      vm.map.invalidateSize(true);
 
       if (vm.dataColumnVisible && vm.chartobj.chart) {
         $timeout(function() {
@@ -475,12 +469,6 @@ angular.module('midjaApp')
         }).then(function(regions) {
           var units = regions;
 
-          // Clear map but show boundaries
-          layerService.build('polygon')
-            .buildEmpty(vm.regionType, regions).then(function(layer) {
-              vm.regionLayer = layer;
-            });
-
           if (!units.length) {
             // revert back the removenessLevel in the UI when no ILOCs are found
             vm.vis.remotenessLevel = vm.vis.currRemotenessLevel;
@@ -504,12 +492,6 @@ angular.module('midjaApp')
       if (vm.vis.topics.length) {
         generateBarChart();
       }
-      if (vm.vis.bubble.topic) {
-        generateBubbleLayer(vm.vis.bubble.topic, vm.vis.units);
-      }
-      if (vm.vis.choropleth.topic) {
-        generateChoroplethLayer(vm.vis.choropleth.topic, vm.vis.units);
-      }
 
     }
 
@@ -521,24 +503,16 @@ angular.module('midjaApp')
         vm.vis.bubble.topic = topic;
         vm.vis.choropleth.topic = topic;
 
-        generateBubbleLayer(vm.vis.bubble.topic, vm.vis.units);
-        generateChoroplethLayer(vm.vis.choropleth.topic, vm.vis.units);
-      }
-    }
-
-    function selectedCategoryChanged($item, $model) {
-      if (vm.vis.category.length < 1) {
-        showPropTopicsOnly(vm.propTopicsOnly);
+        //generateBubbleLayer(vm.vis.bubble.topic, vm.vis.units);
+        //generateChoroplethLayer(vm.vis.choropleth.topic, vm.vis.units);
       } else {
-        if (vm.propTopicsOnly) {
-          vm.attributes = _.filter(vm.attributesFromMetadataPropCols, function(item) {
-            return _.contains(_.pluck(vm.vis.category, 'cat_id'), item.cat_id);
-          });
-        } else {
-          vm.attributes = _.filter(vm.attributesFromMetadata, function(item) {
-            return _.contains(_.pluck(vm.vis.category, 'cat_id'), item.cat_id);
+        function onlyIfSelected(topic) {
+          return _.find(vm.vis.topics, function(selectedTopic) {
+            return selectedTopic.name == topic.name;
           });
         }
+        vm.vis.bubble.topic = onlyIfSelected(vm.vis.bubble.topic);
+        vm.vis.choropleth.topic = onlyIfSelected(vm.vis.choropleth.topic);
       }
     }
 
@@ -626,37 +600,6 @@ angular.module('midjaApp')
           }));
         });
     }
-
-
-    function selectedBubbleTopicChanged($item, $model) {
-      generateBubbleLayer($item, vm.vis.units);
-    }
-
-    function selectedRegionTopicChanged($item, $model) {
-      generateChoroplethLayer($item, vm.vis.units);
-    }
-
-
-    function generateBubbleLayer(topic, locations) {
-      var bubbleLayerService = layerService.build('bubble');
-      (topic ?
-        bubbleLayerService.build(vm.regionType, topic, locations) :
-        bubbleLayerService.buildEmpty(vm.regionType, locations)
-      ).then(function(layerDefinition) {
-        vm.bubbleLayer = layerDefinition;
-      });
-    }
-
-    function generateChoroplethLayer(topic, locations) {
-      var choroplethService = layerService.build('polygon');
-      (topic ?
-        choroplethService.build(vm.regionType, topic, locations) :
-        choroplethService.buildEmpty(vm.regionType, locations)
-      ).then(function(layerDefinition) {
-        vm.regionLayer = layerDefinition;
-      });
-    }
-
 
     function refreshLocations(name) {
       if (!name || !name.length) {
