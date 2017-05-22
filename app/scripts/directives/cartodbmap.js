@@ -46,7 +46,8 @@ angular.module('midjaApp')
       function setupMap() {
         map = L.map('map', {
           center: [-27, 134],
-          zoom: 4
+          zoom: 4,
+          zoomControl: false
         });
 
         // add a nice baselayer from Stamen
