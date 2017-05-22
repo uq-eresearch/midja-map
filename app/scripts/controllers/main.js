@@ -152,7 +152,6 @@ angular.module('midjaApp')
 
     vm.vis = {
       remotenessLevel: 'all',
-      lgaBlock: '565',
       unitSel: "LGAs",
       filter: {
         "Indigenous Population >= 150": false,
