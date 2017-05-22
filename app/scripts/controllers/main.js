@@ -768,10 +768,13 @@ angular.module('midjaApp')
             _.property('code'), // Get region code
             _.propertyOf(topicData), // Get region data
             _.propertyOf) // Turn dictionary object into lookup function
+          var isValidNumber = function(v) {
+            return _.isNumber(v) && !_.isNaN(v);
+          };
           var doesRegionHaveValidXY = _.flow(
             lookupAttributesForRegion,
             _.partial(_.map, [depVar.name, indepVar.name]), // Lookup X/Y values
-            _.partial(_.every, _, _.isNumber)); // Check they're a number
+            _.partial(_.every, _, isValidNumber));
           var usableRegions = _.filter(regions, doesRegionHaveValidXY);
           var topicSeries = _.chain(usableRegions)
             .map(lookupAttributesForRegion)
@@ -834,10 +837,13 @@ angular.module('midjaApp')
           _.property('code'), // Get region code
           _.propertyOf(data), // Get region data
           _.propertyOf) // Turn dictionary object into lookup function
+        var isValidNumber = function(v) {
+          return _.isNumber(v) && !_.isNaN(v);
+        };
         var doesRegionHaveValidXY = _.flow(
           lookupAttributesForRegion,
           _.partial(_.map, [xVar, yVar]), // Lookup X/Y values
-          _.partial(_.every, _, _.isNumber)); // Check they're a number
+          _.partial(_.every, _, isValidNumber));
         var lookupRemotenessForRegion = _.flow(
           lookupAttributesForRegion,
           function (f) { return f('ra_name') || "Unknown Remoteness"; })
