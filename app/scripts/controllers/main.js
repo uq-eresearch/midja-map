@@ -9,7 +9,7 @@
  */
 angular.module('midjaApp')
   .controller('MainCtrl', function(
-    layerService, dataService, labelService, statsService,
+    dataService, labelService, statsService,
     $q, $http, $scope, $uibModal, $timeout, $window) {
     var vm = this;
     vm.propTopicsOnly = false;
