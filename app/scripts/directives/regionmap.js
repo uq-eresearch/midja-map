@@ -228,9 +228,15 @@ angular.module('midjaApp')
             'regions', 'right', getLegend(buckets, colorer));
           scope.styles = _.defaults({
             regions: function(region) {
-              return _.defaults({
-                fillColor: regionColor(region)
-              }, defaultStyles['regions'](region));
+              var color = regionColor(region);
+              var baseStyle = defaultStyles['regions'](region);
+              if (color) {
+                return _.defaults({
+                  fillColor: color
+                }, baseStyle);
+              } else {
+                return baseStyle;
+              }
             }
           }, scope.styles);
         } else {
@@ -258,12 +264,18 @@ angular.module('midjaApp')
           };
           scope.styles = _.defaults({
             points: function(region) {
-              return _.defaults({
-                fill: true,
-                fillColor: regionColor(region),
-                fillOpacity: 1,
-                opacity: 1
-              }, defaultStyles['points'](region));
+              var color = regionColor(region);
+              var baseStyle = defaultStyles['points'](region);
+              if (color) {
+                return _.defaults({
+                  fill: true,
+                  fillColor: color,
+                  fillOpacity: 1,
+                  opacity: 1
+                }, baseStyle);
+              } else {
+                return baseStyle;
+              }
             }
           }, scope.styles);
           scope.$emit('legend:set',
