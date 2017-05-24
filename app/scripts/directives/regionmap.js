@@ -189,7 +189,6 @@ angular.module('midjaApp')
           scope.$emit('vector-grid:change', vectorGrid, previousVectorGrid);
         });
       });
-      scope.$on('regions:change', redrawVectorGrid);
       var refreshData = function _refreshData(evt) {
         return $q(function(resolve) {
           var attributes = _.chain([scope.choroplethTopic, scope.bubblesTopic])
@@ -282,6 +281,7 @@ angular.module('midjaApp')
           .then(updateBubbles)
           .then(redrawVectorGrid);
       }, 50);
+      scope.$on('regions:change', redraw);
       scope.$on('choropleth-topic:change', redraw);
       scope.$on('choropleth-visible:change', redraw);
       scope.$on('bubbles-topic:change', redraw);
