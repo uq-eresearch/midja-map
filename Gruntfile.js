@@ -33,25 +33,11 @@ module.exports = function(grunt) {
           '^/phantomjs/': '/'
         }
       }),
-      proxy('/sql/', {
-        target: 'http://127.0.0.1:9003',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/sql/': '/'
-        }
-      }),
       proxy('/stats/', {
         target: 'http://127.0.0.1:9004',
         changeOrigin: true,
         pathRewrite: {
           '^/stats/': '/'
-        }
-      }),
-      proxy('/windshaft/', {
-        target: 'http://127.0.0.1:9005',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/windshaft/': '/'
         }
       }),
       connect.static('.tmp'),
