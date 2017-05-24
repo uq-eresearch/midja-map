@@ -506,11 +506,11 @@ angular.module('midjaApp')
         //generateBubbleLayer(vm.vis.bubble.topic, vm.vis.units);
         //generateChoroplethLayer(vm.vis.choropleth.topic, vm.vis.units);
       } else {
-        function onlyIfSelected(topic) {
+        var onlyIfSelected = function (topic) {
           return _.find(vm.vis.topics, function(selectedTopic) {
             return selectedTopic.name == topic.name;
           });
-        }
+        };
         vm.vis.bubble.topic = onlyIfSelected(vm.vis.bubble.topic);
         vm.vis.choropleth.topic = onlyIfSelected(vm.vis.choropleth.topic);
       }
