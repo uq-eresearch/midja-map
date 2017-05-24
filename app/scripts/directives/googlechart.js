@@ -7,7 +7,7 @@
  * # googlechart
  */
 angular.module('midjaApp')
-  .directive('googlechart', function(dataService) {
+  .directive('googlechart', function() {
     return {
       template: '<div style="height:{{ minHeight }}px;"></div>',
       restrict: 'E',
