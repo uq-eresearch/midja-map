@@ -30,6 +30,7 @@ angular.module('midjaApp')
         opacity: 0
       })
     };
+    var regionHeadingTmpl = _.template("<%=name%> (<%=code%>)");
 
     // Modified VectorGrid which can take a layer order, so our points can be
     // consistently rendered above regions.
@@ -387,7 +388,7 @@ angular.module('midjaApp')
         newFeatureControl.onAdd = function(map) {
           var div = L.DomUtil.create('div', 'feature-hover');
           var heading = L.DomUtil.create('h1', '', div);
-          heading.innerHTML = _.template("<%=name%> (<%=code%>)")(region);
+          heading.innerHTML = regionHeadingTmpl(region);
           var topics = _.chain([scope.choroplethTopic, scope.bubblesTopic])
             .filter(_.isObject)
             .uniq(_.property('name'))
@@ -410,6 +411,33 @@ angular.module('midjaApp')
         featureControl = newFeatureControl;
         featureControl.addTo(map);
       });
+
+      scope.$on('vector-grid:click', _.debounce(function(e, region) {
+        var vm = $rootScope.$$childTail.vm;
+        var regionType = region.type;
+        var regionCodeAttribute = regionType+'_code';
+        var attributes = vm.vis.topics;
+        var attrNames = _.map(vm.vis.topics, _.property('name'));
+
+        dataService.getAttributesForRegions(regionType, attrNames, [{
+          'code': region.code
+        }]).then(function(data) {
+          console.log(data);
+          var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: 'details.html',
+            controller: 'DetailsModalInstanceCtrl',
+            resolve: {
+              context: {
+                heading: regionHeadingTmpl(region),
+                attributes: attributes,
+                getValue: _.propertyOf(
+                    _.first(_.values(data)))
+              }
+            }
+          });
+        });
+      }, 100));
 
       var legends = {};
       scope.$on('legend:set', function(evt, type, position, legendEl) {
