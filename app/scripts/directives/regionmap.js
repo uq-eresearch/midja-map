@@ -26,7 +26,6 @@ angular.module('midjaApp')
       'points': _.constant({
         weight: 0.1,
         color: '#000000',
-        radius: 3,
         opacity: 0
       })
     };
@@ -255,6 +254,7 @@ angular.module('midjaApp')
               _.values(regionData),
               _.property(bubblesTopic.name)));
           var colorer = colorerForBuckets("cb-Blues", buckets);
+          var sizer = sizerForBuckets(2, 6, buckets);
           var regionColor = function(region) {
             try {
               return colorer(regionData[region.code][bubblesTopic.name]);
@@ -262,16 +262,25 @@ angular.module('midjaApp')
               return null;
             }
           };
+          var regionSize = function(region) {
+            try {
+              return sizer(regionData[region.code][bubblesTopic.name]);
+            } catch (e) {
+              return null;
+            }
+          };
           scope.styles = _.defaults({
             points: function(region) {
               var color = regionColor(region);
+              var size = regionSize(region);
               var baseStyle = defaultStyles['points'](region);
-              if (color) {
+              if (color && size) {
                 return _.defaults({
                   fill: true,
                   fillColor: color,
                   fillOpacity: 1,
-                  opacity: 1
+                  opacity: 1,
+                  radius: size
                 }, baseStyle);
               } else {
                 return baseStyle;
@@ -322,6 +331,19 @@ angular.module('midjaApp')
           return bucket.contains(v);
         });
         return i == -1 ? null : '#' + colors[i];
+      };
+    }
+
+    function sizerForBuckets(min, max, buckets) {
+      var n = buckets.length;
+      var sizes = (n >= 2) ?
+        _.range(min, max, (max - min) / (n - 1)).concat([max]) :
+        _.take([min, max], n);
+      return function(v) {
+        var i = _.findIndex(buckets, function(bucket) {
+          return bucket.contains(v);
+        });
+        return i == -1 ? null : sizes[i];
       };
     }
 
