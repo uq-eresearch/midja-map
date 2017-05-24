@@ -8,7 +8,7 @@
  */
 angular.module('midjaApp')
   .directive('regionMap', function(L, $http, $rootScope, $q, dataService,
-    labelService, $uibModal) {
+    $uibModal) {
 
     // tileserver-gl-light URL
     var tileserverBaseUrl = "https://tiles.map.midja.org";
