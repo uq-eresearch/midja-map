@@ -191,11 +191,8 @@ angular.module('midjaApp')
       scope.$on('regions:change', redrawVectorGrid);
       var refreshData = function _refreshData(evt) {
         return $q(function(resolve) {
-          var visibility = [scope.choroplethVisible, scope.bubblesVisible];
           var attributes = _.chain([scope.choroplethTopic, scope.bubblesTopic])
-            .filter(function(v, i) {
-              return visibility[i] && _.isObject(v);
-            })
+            .filter(_.isObject)
             .map(_.property('name'))
             .value();
           if (_.isEmpty(attributes)) {
