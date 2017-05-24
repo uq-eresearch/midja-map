@@ -224,6 +224,8 @@ angular.module('midjaApp')
               return null;
             }
           };
+          scope.$emit('legend:set',
+            'regions', 'right', getLegend(buckets, colorer));
           scope.styles = _.defaults({
             regions: function(region) {
               return _.defaults({
@@ -232,6 +234,7 @@ angular.module('midjaApp')
             }
           }, scope.styles);
         } else {
+          scope.$emit('legend:clear', 'regions');
           scope.styles = _.defaults({
             regions: null
           }, scope.styles);
@@ -240,7 +243,6 @@ angular.module('midjaApp')
       var updateBubbles = function _updateBubbles(evt) {
         var regionData = scope.regionData;
         var bubblesTopic = scope.bubblesTopic;
-        console.log(scope.bubblesTopic, scope.bubblesVisible);
         if (_.isObject(bubblesTopic) && scope.bubblesVisible) {
           var buckets = generateBuckets(
             _.map(
@@ -264,10 +266,13 @@ angular.module('midjaApp')
               }, defaultStyles['points'](region));
             }
           }, scope.styles);
+          scope.$emit('legend:set',
+            'points', 'left', getLegend(buckets, colorer));
         } else {
           scope.styles = _.defaults({
             points: null
           }, scope.styles);
+          scope.$emit('legend:clear', 'points');
         }
       };
       var redraw = _.debounce(function() {
@@ -307,6 +312,22 @@ angular.module('midjaApp')
       };
     }
 
+    function getLegend(buckets, colorer) {
+      var div = L.DomUtil.create('div', 'legend');
+      var ul = L.DomUtil.create('ul', '', div);
+      buckets.forEach(function(bucket) {
+        var li = L.DomUtil.create('li', '', ul);
+        var bullet = L.DomUtil.create('div', 'bullet', li);
+        angular.element(bullet).css("background", colorer(bucket.min));
+        var text = L.DomUtil.create('span', '', li);
+        text.innerHTML = _.map(
+          [bucket.min, bucket.max],
+          dataService.formatNumber
+        ).join(" - ");
+      });
+      return div;
+    }
+
     function postLink(scope, element, attrs) {
       setupEvents(scope);
       setupHooks(scope);
@@ -323,6 +344,30 @@ angular.module('midjaApp')
           attribution: 'Stamen'
         }).addTo(map);
 
+      var topicAttribution = L.control.attribution({
+        prefix: false,
+        position: 'bottomleft'
+      })
+      topicAttribution.onAdd = function() {
+        this._container =
+          L.DomUtil.create('div', 'leaflet-control-attribution');
+	      L.DomEvent.disableClickPropagation(this._container);
+        this._update();
+        return this._container;
+      };
+      topicAttribution.addTo(map);
+      var topicAttributionHandler = function(e, newTopic, oldTopic) {
+        if (oldTopic && oldTopic.source) {
+          topicAttribution.removeAttribution(oldTopic.source.name);
+        }
+        if (newTopic && newTopic.source) {
+          topicAttribution.addAttribution(newTopic.source.name);
+        }
+      }
+      scope.$on('choropleth-topic:change', topicAttributionHandler);
+      scope.$on('bubbles-topic:change', topicAttributionHandler);
+
+
       scope.$on('vector-grid:change', function(evt, newLayer, oldLayer) {
         if (oldLayer) {
           try {
@@ -335,7 +380,7 @@ angular.module('midjaApp')
       });
 
       var featureControl = null;
-      $rootScope.$on('vector-grid:mouseover', function(e, region, data) {
+      scope.$on('vector-grid:mouseover', function(e, region, data) {
         var newFeatureControl = L.control({
           position: 'topright'
         });
@@ -351,7 +396,6 @@ angular.module('midjaApp')
           if (!_.isEmpty(topics)) {
             var dl = L.DomUtil.create('dl', '', div);
             _.forEach(topics, function(topic) {
-              console.log(region, data);
               var dt = L.DomUtil.create('dt', '', dl);
               dt.innerHTML=topic.description;
               var dd = L.DomUtil.create('dd', '', dl);
@@ -367,6 +411,23 @@ angular.module('midjaApp')
         featureControl.addTo(map);
       });
 
+      var legends = {};
+      scope.$on('legend:set', function(evt, type, position, legendEl) {
+        var legend = L.control({
+          position: 'bottom'+position
+        });
+        legend.onAdd = _.constant(legendEl);
+        if (legends[type]) {
+          legends[type].remove();
+        }
+        legends[type] = legend;
+        legend.addTo(map);
+      });
+      scope.$on('legend:clear', function(evt, type) {
+        if (legends[type]) {
+          legends[type].remove();
+        }
+      });
 
       scope.$emit('region-type:change', scope.regionType);
     }

@@ -296,7 +296,7 @@
       "description": "Median age at death of males",
       "type": "number",
       "source": {
-        "name": "Public Health Information Development Unit (PHIDU) Social Health Atlas of Australia",
+        "name": "PHIDU Social Health Atlas of Australia",
         "license": {
           "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
           "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
@@ -309,7 +309,7 @@
       "description": "Median age at death of females",
       "type": "number",
       "source": {
-        "name": "Public Health Information Development Unit (PHIDU) Social Health Atlas of Australia",
+        "name": "PHIDU Social Health Atlas of Australia",
         "license": {
           "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
           "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
@@ -322,7 +322,7 @@
       "description": "Median age at death of persons",
       "type": "number",
       "source": {
-        "name": "Public Health Information Development Unit (PHIDU) Social Health Atlas of Australia",
+        "name": "PHIDU Social Health Atlas of Australia",
         "license": {
           "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
           "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
@@ -335,7 +335,7 @@
       "description": "Admissions for circulatory system diseases, persons - Public hospitals - ASR per 100,000",
       "type": "number",
       "source": {
-        "name": "Public Health Information Development Unit (PHIDU) Social Health Atlas of Australia",
+        "name": "PHIDU Social Health Atlas of Australia",
         "license": {
           "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
           "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
@@ -348,7 +348,7 @@
       "description": "Admissions for circulatory system diseases, persons - All hospitals - ASR per 100,000",
       "type": "number",
       "source": {
-        "name": "Public Health Information Development Unit (PHIDU) Social Health Atlas of Australia",
+        "name": "PHIDU Social Health Atlas of Australia",
         "license": {
           "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
           "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
@@ -361,7 +361,7 @@
       "description": "Admissions for respiratory system diseases, persons - Public hospitals - ASR per 100,000",
       "type": "number",
       "source": {
-        "name": "Public Health Information Development Unit (PHIDU) Social Health Atlas of Australia",
+        "name": "PHIDU Social Health Atlas of Australia",
         "license": {
           "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
           "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
@@ -374,7 +374,7 @@
       "description": "Admissions for respiratory system diseases, persons - All hospitals - ASR per 100,000",
       "type": "number",
       "source": {
-        "name": "Public Health Information Development Unit (PHIDU) Social Health Atlas of Australia",
+        "name": "PHIDU Social Health Atlas of Australia",
         "license": {
           "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
           "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
@@ -387,7 +387,7 @@
       "description": "Admissions for digestive system diseases, persons - Public hospitals - ASR per 100,000",
       "type": "number",
       "source": {
-        "name": "Public Health Information Development Unit (PHIDU) Social Health Atlas of Australia",
+        "name": "PHIDU Social Health Atlas of Australia",
         "license": {
           "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
           "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
@@ -400,7 +400,7 @@
       "description": "Admissions for digestive system diseases, persons - All hospitals - ASR per 100,000",
       "type": "number",
       "source": {
-        "name": "Public Health Information Development Unit (PHIDU) Social Health Atlas of Australia",
+        "name": "PHIDU Social Health Atlas of Australia",
         "license": {
           "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
           "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
@@ -413,7 +413,7 @@
       "description": "Admissions for injury, poisoning and other external causes, persons - Public hospitals - ASR per 100,000",
       "type": "number",
       "source": {
-        "name": "Public Health Information Development Unit (PHIDU) Social Health Atlas of Australia",
+        "name": "PHIDU Social Health Atlas of Australia",
         "license": {
           "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
           "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
@@ -426,7 +426,7 @@
       "description": "Admissions for injury, poisoning and other external causes, persons - All hospitals - ASR per 100,000",
       "type": "number",
       "source": {
-        "name": "Public Health Information Development Unit (PHIDU) Social Health Atlas of Australia",
+        "name": "PHIDU Social Health Atlas of Australia",
         "license": {
           "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
           "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
