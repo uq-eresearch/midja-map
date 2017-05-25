@@ -11,7 +11,7 @@ angular.module('midjaApp')
 
     service.formatNumber = function formattingService$formatNumber(n, fmt) {
       if (_.isFinite(n)) {
-        return numeral(n).format(fmt || '0,0[.]00000');
+        return numeral(n).format(fmt || '0,0[.]00');
       } else {
         switch (n) {
           case Number.POSITIVE_INFINITY:  return '\u221E';

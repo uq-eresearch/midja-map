@@ -31,7 +31,7 @@ describe('Service: formattingService', function() {
 
     it('should have a default', function() {
       var n = Math.PI * 100000;
-      var defaultFormat = '0,0[.]00000'
+      var defaultFormat = '0,0[.]00'
       var output = service.formatNumber(n);
       expect(output).toEqual(numeral(n).format(defaultFormat));
     });
