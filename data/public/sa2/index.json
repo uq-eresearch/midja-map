@@ -22,6 +22,7 @@
       "name": "gipop_10yr_avg_population",
       "description": "Population (10 year average)",
       "type": "number",
+      "format": "0,0",
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -35,6 +36,7 @@
       "name": "gipop_chronic_acscs_10yr_avg_admissions",
       "description": "Chronic ACSCs admissions (10 year average)",
       "type": "number",
+      "format": "0,0",
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -48,6 +50,7 @@
       "name": "gipop_chronic_acscs_lq",
       "description": "Chronic ACSCs location quotient",
       "type": "number",
+      "format": "0.0",
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -61,6 +64,7 @@
       "name": "gipop_angina_10yr_avg_admissions",
       "description": "Angina admissions (10 year average)",
       "type": "number",
+      "format": "0,0",
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -74,6 +78,7 @@
       "name": "gipop_angina_lq",
       "description": "Angina location quotient",
       "type": "number",
+      "format": "0.0",
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -87,6 +92,7 @@
       "name": "gipop_ccf_10yr_avg_admissions",
       "description": "CCF admissions (10 year average)",
       "type": "number",
+      "format": "0,0",
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -100,6 +106,7 @@
       "name": "gipop_ccf_lq",
       "description": "CCF location quotient",
       "type": "number",
+      "format": "0.0",
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -113,6 +120,7 @@
       "name": "gipop_cellulitis_10yr_avg_admissions",
       "description": "Cellulitis admissions (10 year average)",
       "type": "number",
+      "format": "0,0",
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -126,6 +134,7 @@
       "name": "gipop_cellulitis_lq",
       "description": "Cellulitis location quotient",
       "type": "number",
+      "format": "0.0",
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -139,6 +148,7 @@
       "name": "gipop_copd_10yr_avg_admissions",
       "description": "COPD admissions (10 year average)",
       "type": "number",
+      "format": "0,0",
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -152,6 +162,7 @@
       "name": "gipop_copd_lq",
       "description": "COPD location quotient",
       "type": "number",
+      "format": "0.0",
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -165,6 +176,7 @@
       "name": "gipop_dental_10yr_avg_admissions",
       "description": "Dental admissions (10 year average)",
       "type": "number",
+      "format": "0,0",
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -178,6 +190,7 @@
       "name": "gipop_dental_lq",
       "description": "Dental location quotient",
       "type": "number",
+      "format": "0.0",
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -191,6 +204,7 @@
       "name": "gipop_diabetes_10yr_avg_admissions",
       "description": "Diabetes admissions (10 year average)",
       "type": "number",
+      "format": "0,0",
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -204,6 +218,7 @@
       "name": "gipop_diabetes_lq",
       "description": "Diabetes location quotient",
       "type": "number",
+      "format": "0.0",
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -217,6 +232,7 @@
       "name": "gipop_ent_10yr_avg_admissions",
       "description": "ENT admissions (10 year average)",
       "type": "number",
+      "format": "0,0",
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -230,6 +246,7 @@
       "name": "gipop_ent_lq",
       "description": "ENT location quotient",
       "type": "number",
+      "format": "0.0",
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -243,6 +260,7 @@
       "name": "gipop_epilepsy_10yr_avg_admissions",
       "description": "Epilepsy admissions (10 year average)",
       "type": "number",
+      "format": "0,0",
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -256,6 +274,7 @@
       "name": "gipop_epilepsy_lq",
       "description": "Epilepsy location quotient",
       "type": "number",
+      "format": "0.0",
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -269,6 +288,7 @@
       "name": "gipop_uti_10yr_avg_admissions",
       "description": "UTI admissions (10 year average)",
       "type": "number",
+      "format": "0,0",
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -282,6 +302,7 @@
       "name": "gipop_uti_lq",
       "description": "UTI location quotient",
       "type": "number",
+      "format": "0.0",
       "source": {
         "name": "Grattan Institute",
         "license": {
