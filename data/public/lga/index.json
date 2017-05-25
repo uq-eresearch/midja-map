@@ -43,7 +43,8 @@
     {
       "name": "iba_a_loan",
       "description": "IBA Total Amount of Loans",
-      "type": "number"
+      "type": "number",
+      "format": "$0,0[,]00"
     },
     {
       "name": "iba_n_loan",

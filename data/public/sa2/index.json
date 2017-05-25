@@ -1778,6 +1778,7 @@
       "description": "Indigenous proportion of population",
       "type": "number",
       "expression": "1.0 * persons_all_indigenous / persons_all_total",
+      "format": "0[.]00%",
       "source": {
         "name": "Australian Bureau of Statistics",
         "license": {

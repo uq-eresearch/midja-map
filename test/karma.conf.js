@@ -52,6 +52,7 @@ module.exports = function(config) {
       'bower_components/Leaflet.utfgrid/dist/leaflet.utfgrid.js',
       'bower_components/palette.js/palette.js',
       'bower_components/mathjs/dist/math.min.js',
+      'bower_components/numeral/numeral.js',
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
       'test/spec/**/*.js'

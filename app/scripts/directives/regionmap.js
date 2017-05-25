@@ -8,7 +8,7 @@
  */
 angular.module('midjaApp')
   .directive('regionMap', function(L, $http, $rootScope, $q, dataService,
-    $uibModal) {
+    formattingService, $uibModal) {
 
     // tileserver-gl-light URL
     var tileserverBaseUrl = "https://tiles.map.midja.org";
@@ -224,7 +224,7 @@ angular.module('midjaApp')
             }
           };
           scope.$emit('legend:set',
-            'regions', 'right', getLegend(buckets, colorer));
+            'regions', 'right', getLegend(choroplethTopic, buckets, colorer));
           scope.styles = _.defaults({
             regions: function(region) {
               var color = regionColor(region);
@@ -288,7 +288,7 @@ angular.module('midjaApp')
             }
           }, scope.styles);
           scope.$emit('legend:set',
-            'points', 'left', getLegend(buckets, colorer));
+            'points', 'left', getLegend(bubblesTopic, buckets, colorer));
         } else {
           scope.styles = _.defaults({
             points: null
@@ -347,7 +347,7 @@ angular.module('midjaApp')
       };
     }
 
-    function getLegend(buckets, colorer) {
+    function getLegend(topic, buckets, colorer) {
       var div = L.DomUtil.create('div', 'legend');
       var ul = L.DomUtil.create('ul', '', div);
       buckets.forEach(function(bucket) {
@@ -357,7 +357,7 @@ angular.module('midjaApp')
         var text = L.DomUtil.create('span', '', li);
         text.innerHTML = _.map(
           [bucket.min, bucket.max],
-          dataService.formatNumber
+          _.partial(formattingService.formatNumber, _, topic.format)
         ).join(" - ");
       });
       return div;
@@ -434,7 +434,8 @@ angular.module('midjaApp')
               var dt = L.DomUtil.create('dt', '', dl);
               dt.innerHTML=topic.description;
               var dd = L.DomUtil.create('dd', '', dl);
-              dd.innerHTML=dataService.formatNumber(data[topic.name]);
+              dd.innerHTML=formattingService.formatNumber(
+                data[topic.name], topic.format);
             })
           }
           return div;

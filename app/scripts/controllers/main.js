@@ -9,7 +9,7 @@
  */
 angular.module('midjaApp')
   .controller('MainCtrl', function(
-    dataService, statsService,
+    dataService, formattingService, statsService,
     $q, $http, $scope, $uibModal, $timeout, $window) {
     var vm = this;
     vm.propTopicsOnly = false;
@@ -588,7 +588,7 @@ angular.module('midjaApp')
           ].concat(_.map(dataSeries, function(data) {
             var asText = function(d) {
               if (_.isNumber(d)) {
-                return dataService.formatNumber(d);
+                return formattingService.formatNumber(d, data.topic.format);
               } else {
                 return '\u2014';
               }
