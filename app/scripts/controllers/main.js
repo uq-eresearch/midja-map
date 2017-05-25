@@ -593,11 +593,7 @@ angular.module('midjaApp')
             _.map(header, _.property('label'))
           ].concat(_.map(dataSeries, function(data) {
             var asText = function(d) {
-              if (_.isNumber(d)) {
-                return formattingService.formatNumber(d, data.topic.format);
-              } else {
-                return '\u2014';
-              }
+              return formattingService.formatNumber(d, data.topic.format);
             };
             return [title(data.topic)].concat(_.map(data.row, asText));
           }));
