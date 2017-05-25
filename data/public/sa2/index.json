@@ -1660,6 +1660,7 @@
       "name": "average_household_size_indigenous_persons_households_with_indigenous_persons",
       "description": "Average household size - households with indigenous persons",
       "type": "number",
+      "format": "0.0",
       "source": {
         "name": "Australian Bureau of Statistics",
         "license": {
@@ -1673,6 +1674,7 @@
       "name": "average_household_size_non_indigenous_persons_other_households",
       "description": "Average household size - non-indigenous households",
       "type": "number",
+      "format": "0.0",
       "source": {
         "name": "Australian Bureau of Statistics",
         "license": {
@@ -1686,6 +1688,7 @@
       "name": "average_household_size_total",
       "description": "Average household size - total",
       "type": "number",
+      "format": "0.0",
       "source": {
         "name": "Australian Bureau of Statistics",
         "license": {
