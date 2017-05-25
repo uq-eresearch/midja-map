@@ -502,18 +502,24 @@ angular.module('midjaApp')
         // set the default for the map
         vm.vis.bubble.topic = topic;
         vm.vis.choropleth.topic = topic;
-
-        //generateBubbleLayer(vm.vis.bubble.topic, vm.vis.units);
-        //generateChoroplethLayer(vm.vis.choropleth.topic, vm.vis.units);
-      } else {
-        var onlyIfSelected = function (topic) {
-          return _.find(vm.vis.topics, function(selectedTopic) {
-            return selectedTopic.name == topic.name;
-          });
-        };
-        vm.vis.bubble.topic = onlyIfSelected(vm.vis.bubble.topic);
-        vm.vis.choropleth.topic = onlyIfSelected(vm.vis.choropleth.topic);
       }
+      // Ensure fields are depopulated if topic is no longer selected
+      var onlyIfSelected = function (topic) {
+        if (!topic) return topic;
+        return _.find(vm.vis.topics, function(selectedTopic) {
+          return selectedTopic.name == topic.name;
+        });
+      };
+      vm.vis.bubble.topic = onlyIfSelected(vm.vis.bubble.topic);
+      vm.vis.choropleth.topic = onlyIfSelected(vm.vis.choropleth.topic);
+      vm.linearRegression.dependent =
+        onlyIfSelected(vm.linearRegression.dependent);
+      vm.linearRegression.independents =
+        _.filter(
+          vm.linearRegression.independents,
+          _.flow(onlyIfSelected, _.isObject));
+      vm.scatterPlot.xaxis = onlyIfSelected(vm.scatterPlot.xaxis);
+      vm.scatterPlot.yaxis = onlyIfSelected(vm.scatterPlot.yaxis);
     }
 
     // TODO: deal with remoteness
