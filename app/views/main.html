@@ -5,11 +5,10 @@
 		<h3 class="modal-title">{{context.heading}}</h3>
 	</div>
 	<div class="modal-body">
-		<div ng-repeat="attr in context.attributes">
-			<div>
-			{{attr.description}}: {{context.getValue(attr.name)}}
-			</div>
-		</div>
+		<dl ng-repeat="attr in context.attributes">
+			<dt>{{attr.description}}</dt>
+			<dd>{{context.getValue(attr.name)}}</dd>
+		</dl>
 	</div>
 	<div class="modal-footer">
 		<button class="btn btn-primary" type="button" ng-click="ok()">Close</button>
