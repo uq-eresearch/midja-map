@@ -1304,6 +1304,7 @@
       "name": "proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_indigenous_persons_households_with_indigenous_persons",
       "description": "Proportion of dwellings that need 1 or more extra bedrooms - households with indigenous persons",
       "type": "number",
+      "format": "0[.]00%",
       "source": {
         "name": "Australian Bureau of Statistics",
         "license": {
@@ -1317,6 +1318,7 @@
       "name": "proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_non_indigenous_persons_other_households",
       "description": "Proportion of dwellings that need 1 or more extra bedrooms - non-indigenous households",
       "type": "number",
+      "format": "0[.]00%",
       "source": {
         "name": "Australian Bureau of Statistics",
         "license": {
@@ -1330,6 +1332,7 @@
       "name": "proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_total",
       "description": "Proportion of dwellings that need 1 or more extra bedrooms - total",
       "type": "number",
+      "format": "0[.]00%",
       "source": {
         "name": "Australian Bureau of Statistics",
         "license": {
@@ -1344,6 +1347,7 @@
       "description": "Indigenous proportion of population",
       "type": "number",
       "expression": "1.0 * persons_all_indigenous / persons_all_total",
+      "format": "0[.]00%",
       "source": {
         "name": "Australian Bureau of Statistics",
         "license": {
@@ -1357,6 +1361,7 @@
       "description": "Proportion of dwellings owned (outright/mortgage)",
       "type": "number",
       "expression": "1.0 * (dwelling_owned + dwellings_mortgage) / dwelling_all",
+      "format": "0[.]00%",
       "source": {
         "name": "Australian Bureau of Statistics",
         "license": {
