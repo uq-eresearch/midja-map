@@ -55,7 +55,7 @@ angular.module('midjaApp')
           });
       })
       .flatten()
-      .zipObject()
+      .fromPairs()
       .value();
 
     var getAttribute = _.memoize(

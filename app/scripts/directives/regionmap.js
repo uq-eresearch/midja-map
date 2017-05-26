@@ -137,7 +137,7 @@ angular.module('midjaApp')
       scope.$on('region-type:change', function _regionTypeChange(evt, regionType) {
         // Create new VectorGrid
         getTileJSON(regionType).then(function(metadata) {
-          var styles = _.zipObject(_.map(
+          var styles = _.fromPairs(_.map(
             metadata.vector_layers,
             _.flow(
               _.property('id'),
