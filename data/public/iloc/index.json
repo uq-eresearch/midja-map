@@ -226,56 +226,6 @@
       "type": "number"
     },
     {
-      "name": "state_name",
-      "description": "State name",
-      "type": "string"
-    },
-    {
-      "name": "state_code",
-      "description": "State code",
-      "type": "string"
-    },
-    {
-      "name": "ra_name",
-      "description": "Remoteness Area name",
-      "type": "string"
-    },
-    {
-      "name": "ra_code",
-      "description": "Remoteness Area code",
-      "type": "string"
-    },
-    {
-      "name": "ireg_name",
-      "description": "Indigenous Region name",
-      "type": "string"
-    },
-    {
-      "name": "ireg_code",
-      "description": "Indigenous Region code",
-      "type": "string"
-    },
-    {
-      "name": "iare_name",
-      "description": "Indigenous Area name",
-      "type": "string"
-    },
-    {
-      "name": "iare_code",
-      "description": "Indigenous Area code",
-      "type": "string"
-    },
-    {
-      "name": "iloc_name",
-      "description": "Indigenous Location name",
-      "type": "string"
-    },
-    {
-      "name": "iloc_code",
-      "description": "Indigenous Location code",
-      "type": "string"
-    },
-    {
       "name": "avg_household_size_tot",
       "description": "Average household size",
       "type": "number",
