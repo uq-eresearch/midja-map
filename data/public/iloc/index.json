@@ -137,7 +137,7 @@
     },
     {
       "name": "tot_p_totp",
-      "description": "Total persons",
+      "description": "All ages - Total persons",
       "type": "number"
     },
     {
@@ -192,7 +192,7 @@
     },
     {
       "name": "tot_p_indig_m",
-      "description": "Total persons – Indigenous males",
+      "description": "All ages - Indigenous males",
       "type": "number"
     },
     {
@@ -1269,52 +1269,52 @@
     },
     {
       "name": "tot_p_totf",
-      "description": "Total persons – females",
+      "description": "All ages - Total females",
       "type": "number"
     },
     {
       "name": "tot_p_totm",
-      "description": "Total persons – males",
+      "description": "All ages - Total males",
       "type": "number"
     },
     {
       "name": "tot_p_indigstat_nsp",
-      "description": "Total persons – Indigenous status not stated persons",
+      "description": "All ages - Total \"indigenous status not stated\" persons",
       "type": "number"
     },
     {
       "name": "tot_p_indigstat_nsf",
-      "description": "Total persons – Indigenous status not stated females",
+      "description": "All ages - Total \"indigenous status not stated\" females",
       "type": "number"
     },
     {
       "name": "tot_p_indigstat_nsm",
-      "description": "Total persons – Indigenous status not stated males",
+      "description": "All ages - Total \"indigenous status not stated\" males",
       "type": "number"
     },
     {
       "name": "tot_p_nonind_p",
-      "description": "Total persons – Non-Indigenous persons",
+      "description": "All Ages - Total Non-Indigenous persons",
       "type": "number"
     },
     {
       "name": "tot_p_nonind_f",
-      "description": "Total persons – Non-Indigenous females",
+      "description": "All Ages - Total Non-Indigenous females",
       "type": "number"
     },
     {
       "name": "tot_p_nonind_m",
-      "description": "Total persons – Non-Indigenous males",
+      "description": "All Ages - Total Non-Indigenous males",
       "type": "number"
     },
     {
       "name": "tot_p_indig_p",
-      "description": "Total persons – Indigenous persons",
+      "description": "All Ages - Indigenous persons",
       "type": "number"
     },
     {
       "name": "tot_p_indig_f",
-      "description": "Total persons – Indigenous females",
+      "description": "All Ages - Indigenous females",
       "type": "number"
     }
   ]
