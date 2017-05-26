@@ -1360,7 +1360,7 @@
       "name": "proportion_dwellings_owned_or_mortgaged",
       "description": "Proportion of dwellings owned (outright/mortgage)",
       "type": "number",
-      "expression": "1.0 * (dwelling_owned + dwellings_mortgage) / dwelling_all",
+      "expression": "1.0 * (dwellings_owned + dwellings_mortgage) / dwellings_all",
       "format": "0[.]00%",
       "source": {
         "name": "Australian Bureau of Statistics",

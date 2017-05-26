@@ -191,11 +191,11 @@ angular.module('midjaApp')
           if (!attributeMetadata) {
             return {};
           } else if (attributeMetadata.expression) {
-            // Collect dependant variables and evaluate expression
+            // Collect variables and evaluate expression
             var expr = expressionService.parse(attributeMetadata.expression);
             return $q.all(
               _.map(
-                expr.dependantVariables,
+                expr.variables,
                 _.partial(getAttribute, regionType))
             ).then(function(attributesData) {
               var commonRegions = _.intersection.apply(null,
@@ -203,7 +203,7 @@ angular.module('midjaApp')
               var series = _.chain(commonRegions)
                 .map(function(region) {
                   return _.zipObject(
-                    expr.dependantVariables,
+                    expr.variables,
                     _.map(attributesData, _.property(region)));
                 })
                 .map(expr.evaluate)

@@ -16,9 +16,9 @@ describe('Service: expressionService', function() {
       expect(expressionService.parse).toBeTruthy();
     });
 
-    it('should extract dependant variables', function() {
+    it('should extract variables', function() {
       var expr = expressionService.parse("z * x + c");
-      expect(expr.dependantVariables).toEqual(['c', 'x', 'z']);
+      expect(expr.variables).toEqual(['c', 'x', 'z']);
     });
 
     it('should provide evaluation', function() {

@@ -16,7 +16,7 @@ angular.module('midjaApp')
       var isSymbolNode = _.flow(
         _.property('type'),
         _.partial(_.isEqual, 'SymbolNode'));
-      obj.dependantVariables =
+      obj.variables =
         _.uniq(_.map(fNode.filter(isSymbolNode), _.property('name'))).sort();
       obj.evaluate = function(scope) {
         return code.eval(scope);
