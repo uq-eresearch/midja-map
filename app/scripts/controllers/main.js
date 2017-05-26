@@ -707,7 +707,7 @@ angular.module('midjaApp')
       dataService.getAttributesForRegions(vm.regionType, topics, regions)
         .then(function(topicData) {
           var depVar = vm.linearRegression.dependent;
-          var indepVar = _.first(vm.linearRegression.independents);
+          var indepVars = vm.linearRegression.independents;
           var lookupAttributesForRegion =_.flow(
             _.property('code'), // Get region code
             _.propertyOf(topicData), // Get region data
@@ -715,11 +715,12 @@ angular.module('midjaApp')
           var isValidNumber = function(v) {
             return _.isNumber(v) && !_.isNaN(v);
           };
-          var doesRegionHaveValidXY = _.flow(
-            lookupAttributesForRegion,
-            _.partial(_.map, [depVar.name, indepVar.name]), // Lookup X/Y values
-            _.partial(_.every, _, isValidNumber));
-          var usableRegions = _.filter(regions, doesRegionHaveValidXY);
+          var doesRegionHaveCompleteData = _.flow(
+            lookupAttributesForRegion, // Create lookup by topic name
+            _.partial(_.flow, _.property('name')), // Handle topic as input
+            _.partial(_.map, [depVar].concat(indepVars)), // Lookup values
+            _.partial(_.every, _, isValidNumber)); // Check all values are OK
+          var usableRegions = _.filter(regions, doesRegionHaveCompleteData);
           var topicSeries = _.chain(usableRegions)
             .map(lookupAttributesForRegion)
             // Get region's data for topics (like a row)
