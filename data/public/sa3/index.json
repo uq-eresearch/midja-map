@@ -1,1226 +1,6 @@
 {
   "attributes": [
     {
-      "name": "region_name",
-      "description": "Statistical Area Level 3 (SA3) name",
-      "type": "string"
-    },
-    {
-      "name": "ra_name",
-      "description": "Remoteness Area name",
-      "type": "string"
-    },
-    {
-      "name": "males_0to4_total",
-      "description": "Age 0-4 years old - Total Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A04.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_0to4_total",
-      "description": "Age 0-4 years old - Total Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A04.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_0to4_total",
-      "description": "Age 0-4 years old - Total Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A04.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_5to9_total",
-      "description": "Age 5-9 years old - Total Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A59.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_5to9_total",
-      "description": "Age 5-9 years old - Total Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A59.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_5to9_total",
-      "description": "Age 5-9 years old - Total Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A59.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_10to14_total",
-      "description": "Age 10-14 years old - Total Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A10.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_10to14_total",
-      "description": "Age 10-14 years old - Total Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A10.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_10to14_total",
-      "description": "Age 10-14 years old - Total Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A10.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_15to19_total",
-      "description": "Age 15-19 years old - Total Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A15.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_15to19_total",
-      "description": "Age 15-19 years old - Total Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A15.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_15to19_total",
-      "description": "Age 15-19 years old - Total Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A15.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_20to24_total",
-      "description": "Age 20-24 years old - Total Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A20.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_20to24_total",
-      "description": "Age 20-24 years old - Total Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A20.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_20to24_total",
-      "description": "Age 20-24 years old - Total Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A20.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_25to29_total",
-      "description": "Age 25-29 years old - Total Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A25.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_25to29_total",
-      "description": "Age 25-29 years old - Total Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A25.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_25to29_total",
-      "description": "Age 25-29 years old - Total Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A25.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_30to34_total",
-      "description": "Age 30-34 years old - Total Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A30.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_30to34_total",
-      "description": "Age 30-34 years old - Total Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A30.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_30to34_total",
-      "description": "Age 30-34 years old - Total Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A30.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_35to39_total",
-      "description": "Age 35-39 years old - Total Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A35.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_35to39_total",
-      "description": "Age 35-39 years old - Total Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A35.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_35to39_total",
-      "description": "Age 35-39 years old - Total Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A35.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_40to44_total",
-      "description": "Age 40-44 years old - Total Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A40.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_40to44_total",
-      "description": "Age 40-44 years old - Total Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A40.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_40to44_total",
-      "description": "Age 40-44 years old - Total Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A40.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_45to49_total",
-      "description": "Age 45-49 years old - Total Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A45.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_45to49_total",
-      "description": "Age 45-49 years old - Total Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A45.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_45to49_total",
-      "description": "Age 45-49 years old - Total Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A45.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_50to54_total",
-      "description": "Age 50-54 years old - Total Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A50.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_50to54_total",
-      "description": "Age 50-54 years old - Total Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A50.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_50to54_total",
-      "description": "Age 50-54 years old - Total Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A50.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_55to59_total",
-      "description": "Age 55-59 years old - Total Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A55.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_55to59_total",
-      "description": "Age 55-59 years old - Total Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A55.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_55to59_total",
-      "description": "Age 55-59 years old - Total Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A55.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_60to64_total",
-      "description": "Age 60-64 years old - Total Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A60.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_60to64_total",
-      "description": "Age 60-64 years old - Total Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A60.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_60to64_total",
-      "description": "Age 60-64 years old - Total Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A60.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_all_total",
-      "description": "All Ages - Total Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.TT.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_all_total",
-      "description": "All Ages - Total Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.TT.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_all_total",
-      "description": "All Ages - Total Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.TT.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_65plus_total",
-      "description": "Age 65 years and over - Total Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.O65.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_65plus_total",
-      "description": "Age 65 years and over - Total Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.O65.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_65plus_total",
-      "description": "Age 65 years and over - Total Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.O65.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_0to4_indigenous",
-      "description": "Age 0-4 years old - Indigenous Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A04.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_0to4_indigenous",
-      "description": "Age 0-4 years old - Indigenous Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A04.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_0to4_indigenous",
-      "description": "Age 0-4 years old - Indigenous Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A04.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_5to9_indigenous",
-      "description": "Age 5-9 years old - Indigenous Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A59.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_5to9_indigenous",
-      "description": "Age 5-9 years old - Indigenous Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A59.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_5to9_indigenous",
-      "description": "Age 5-9 years old - Indigenous Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A59.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_10to14_indigenous",
-      "description": "Age 10-14 years old - Indigenous Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A10.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_10to14_indigenous",
-      "description": "Age 10-14 years old - Indigenous Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A10.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_10to14_indigenous",
-      "description": "Age 10-14 years old - Indigenous Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A10.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_15to19_indigenous",
-      "description": "Age 15-19 years old - Indigenous Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A15.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_15to19_indigenous",
-      "description": "Age 15-19 years old - Indigenous Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A15.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_15to19_indigenous",
-      "description": "Age 15-19 years old - Indigenous Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A15.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_20to24_indigenous",
-      "description": "Age 20-24 years old - Indigenous Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A20.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_20to24_indigenous",
-      "description": "Age 20-24 years old - Indigenous Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A20.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_20to24_indigenous",
-      "description": "Age 20-24 years old - Indigenous Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A20.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_25to29_indigenous",
-      "description": "Age 25-29 years old - Indigenous Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A25.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_25to29_indigenous",
-      "description": "Age 25-29 years old - Indigenous Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A25.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_25to29_indigenous",
-      "description": "Age 25-29 years old - Indigenous Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A25.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_30to34_indigenous",
-      "description": "Age 30-34 years old - Indigenous Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A30.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_30to34_indigenous",
-      "description": "Age 30-34 years old - Indigenous Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A30.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_30to34_indigenous",
-      "description": "Age 30-34 years old - Indigenous Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A30.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_35to39_indigenous",
-      "description": "Age 35-39 years old - Indigenous Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A35.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_35to39_indigenous",
-      "description": "Age 35-39 years old - Indigenous Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A35.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_35to39_indigenous",
-      "description": "Age 35-39 years old - Indigenous Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A35.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_40to44_indigenous",
-      "description": "Age 40-44 years old - Indigenous Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A40.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_40to44_indigenous",
-      "description": "Age 40-44 years old - Indigenous Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A40.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_40to44_indigenous",
-      "description": "Age 40-44 years old - Indigenous Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A40.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_45to49_indigenous",
-      "description": "Age 45-49 years old - Indigenous Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A45.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_45to49_indigenous",
-      "description": "Age 45-49 years old - Indigenous Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A45.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_45to49_indigenous",
-      "description": "Age 45-49 years old - Indigenous Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A45.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_50to54_indigenous",
-      "description": "Age 50-54 years old - Indigenous Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A50.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_50to54_indigenous",
-      "description": "Age 50-54 years old - Indigenous Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A50.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_50to54_indigenous",
-      "description": "Age 50-54 years old - Indigenous Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A50.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_55to59_indigenous",
-      "description": "Age 55-59 years old - Indigenous Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A55.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_55to59_indigenous",
-      "description": "Age 55-59 years old - Indigenous Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A55.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_55to59_indigenous",
-      "description": "Age 55-59 years old - Indigenous Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A55.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_60to64_indigenous",
-      "description": "Age 60-64 years old - Indigenous Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A60.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_60to64_indigenous",
-      "description": "Age 60-64 years old - Indigenous Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A60.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_60to64_indigenous",
-      "description": "Age 60-64 years old - Indigenous Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A60.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_all_indigenous",
-      "description": "All Ages - Indigenous Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.TT.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_all_indigenous",
-      "description": "All Ages - Indigenous Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.TT.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_all_indigenous",
-      "description": "All Ages - Indigenous Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.TT.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "males_65plus_indigenous",
-      "description": "Age 65 years and over - Indigenous Males",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.O65.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "females_65plus_indigenous",
-      "description": "Age 65 years and over - Indigenous Females",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.O65.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "persons_65plus_indigenous",
-      "description": "Age 65 years and over - Indigenous Persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.O65.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "dwellings_all",
-      "description": "Occupied private dwellings - All tenures",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B32/TOT.OPD..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "dwellings_owned",
-      "description": "Occupied private dwellings - Owned outright",
-      "type": "number",
-      "format": "0.0",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B32/1.OPD..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "dwellings_mortgage",
-      "description": "Occupied private dwellings - Owned with a mortgage",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B32/2.OPD..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
       "name": "average_household_size_indigenous_persons_households_with_indigenous_persons",
       "description": "Average household size - households with indigenous persons",
       "type": "number",
@@ -1301,6 +81,1230 @@
       }
     },
     {
+      "name": "dwellings_all",
+      "description": "Occupied private dwellings - All tenures",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B32/TOT.OPD..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "dwellings_mortgage",
+      "description": "Occupied private dwellings - Owned with a mortgage",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B32/2.OPD..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "dwellings_owned",
+      "description": "Occupied private dwellings - Owned outright",
+      "type": "number",
+      "format": "0.0",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B32/1.OPD..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_0to4_indigenous",
+      "description": "Age 0-4 years old - Indigenous Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A04.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_0to4_total",
+      "description": "Age 0-4 years old - Total Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A04.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_10to14_indigenous",
+      "description": "Age 10-14 years old - Indigenous Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A10.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_10to14_total",
+      "description": "Age 10-14 years old - Total Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A10.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_15to19_indigenous",
+      "description": "Age 15-19 years old - Indigenous Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A15.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_15to19_total",
+      "description": "Age 15-19 years old - Total Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A15.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_20to24_indigenous",
+      "description": "Age 20-24 years old - Indigenous Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A20.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_20to24_total",
+      "description": "Age 20-24 years old - Total Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A20.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_25to29_indigenous",
+      "description": "Age 25-29 years old - Indigenous Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A25.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_25to29_total",
+      "description": "Age 25-29 years old - Total Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A25.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_30to34_indigenous",
+      "description": "Age 30-34 years old - Indigenous Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A30.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_30to34_total",
+      "description": "Age 30-34 years old - Total Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A30.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_35to39_indigenous",
+      "description": "Age 35-39 years old - Indigenous Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A35.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_35to39_total",
+      "description": "Age 35-39 years old - Total Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A35.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_40to44_indigenous",
+      "description": "Age 40-44 years old - Indigenous Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A40.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_40to44_total",
+      "description": "Age 40-44 years old - Total Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A40.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_45to49_indigenous",
+      "description": "Age 45-49 years old - Indigenous Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A45.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_45to49_total",
+      "description": "Age 45-49 years old - Total Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A45.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_50to54_indigenous",
+      "description": "Age 50-54 years old - Indigenous Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A50.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_50to54_total",
+      "description": "Age 50-54 years old - Total Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A50.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_55to59_indigenous",
+      "description": "Age 55-59 years old - Indigenous Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A55.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_55to59_total",
+      "description": "Age 55-59 years old - Total Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A55.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_5to9_indigenous",
+      "description": "Age 5-9 years old - Indigenous Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A59.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_5to9_total",
+      "description": "Age 5-9 years old - Total Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A59.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_60to64_indigenous",
+      "description": "Age 60-64 years old - Indigenous Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A60.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_60to64_total",
+      "description": "Age 60-64 years old - Total Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.A60.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_65plus_indigenous",
+      "description": "Age 65 years and over - Indigenous Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.O65.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_65plus_total",
+      "description": "Age 65 years and over - Total Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.O65.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_all_indigenous",
+      "description": "All Ages - Indigenous Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.TT.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "females_all_total",
+      "description": "All Ages - Total Females",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/2.TT.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_0to4_indigenous",
+      "description": "Age 0-4 years old - Indigenous Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A04.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_0to4_total",
+      "description": "Age 0-4 years old - Total Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A04.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_10to14_indigenous",
+      "description": "Age 10-14 years old - Indigenous Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A10.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_10to14_total",
+      "description": "Age 10-14 years old - Total Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A10.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_15to19_indigenous",
+      "description": "Age 15-19 years old - Indigenous Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A15.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_15to19_total",
+      "description": "Age 15-19 years old - Total Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A15.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_20to24_indigenous",
+      "description": "Age 20-24 years old - Indigenous Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A20.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_20to24_total",
+      "description": "Age 20-24 years old - Total Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A20.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_25to29_indigenous",
+      "description": "Age 25-29 years old - Indigenous Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A25.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_25to29_total",
+      "description": "Age 25-29 years old - Total Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A25.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_30to34_indigenous",
+      "description": "Age 30-34 years old - Indigenous Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A30.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_30to34_total",
+      "description": "Age 30-34 years old - Total Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A30.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_35to39_indigenous",
+      "description": "Age 35-39 years old - Indigenous Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A35.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_35to39_total",
+      "description": "Age 35-39 years old - Total Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A35.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_40to44_indigenous",
+      "description": "Age 40-44 years old - Indigenous Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A40.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_40to44_total",
+      "description": "Age 40-44 years old - Total Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A40.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_45to49_indigenous",
+      "description": "Age 45-49 years old - Indigenous Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A45.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_45to49_total",
+      "description": "Age 45-49 years old - Total Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A45.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_50to54_indigenous",
+      "description": "Age 50-54 years old - Indigenous Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A50.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_50to54_total",
+      "description": "Age 50-54 years old - Total Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A50.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_55to59_indigenous",
+      "description": "Age 55-59 years old - Indigenous Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A55.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_55to59_total",
+      "description": "Age 55-59 years old - Total Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A55.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_5to9_indigenous",
+      "description": "Age 5-9 years old - Indigenous Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A59.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_5to9_total",
+      "description": "Age 5-9 years old - Total Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A59.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_60to64_indigenous",
+      "description": "Age 60-64 years old - Indigenous Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A60.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_60to64_total",
+      "description": "Age 60-64 years old - Total Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.A60.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_65plus_indigenous",
+      "description": "Age 65 years and over - Indigenous Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.O65.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_65plus_total",
+      "description": "Age 65 years and over - Total Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.O65.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_all_indigenous",
+      "description": "All Ages - Indigenous Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.TT.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "males_all_total",
+      "description": "All Ages - Total Males",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/1.TT.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_0to4_indigenous",
+      "description": "Age 0-4 years old - Indigenous Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A04.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_0to4_total",
+      "description": "Age 0-4 years old - Total Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A04.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_10to14_indigenous",
+      "description": "Age 10-14 years old - Indigenous Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A10.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_10to14_total",
+      "description": "Age 10-14 years old - Total Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A10.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_15to19_indigenous",
+      "description": "Age 15-19 years old - Indigenous Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A15.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_15to19_total",
+      "description": "Age 15-19 years old - Total Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A15.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_20to24_indigenous",
+      "description": "Age 20-24 years old - Indigenous Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A20.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_20to24_total",
+      "description": "Age 20-24 years old - Total Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A20.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_25to29_indigenous",
+      "description": "Age 25-29 years old - Indigenous Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A25.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_25to29_total",
+      "description": "Age 25-29 years old - Total Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A25.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_30to34_indigenous",
+      "description": "Age 30-34 years old - Indigenous Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A30.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_30to34_total",
+      "description": "Age 30-34 years old - Total Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A30.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_35to39_indigenous",
+      "description": "Age 35-39 years old - Indigenous Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A35.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_35to39_total",
+      "description": "Age 35-39 years old - Total Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A35.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_40to44_indigenous",
+      "description": "Age 40-44 years old - Indigenous Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A40.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_40to44_total",
+      "description": "Age 40-44 years old - Total Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A40.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_45to49_indigenous",
+      "description": "Age 45-49 years old - Indigenous Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A45.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_45to49_total",
+      "description": "Age 45-49 years old - Total Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A45.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_50to54_indigenous",
+      "description": "Age 50-54 years old - Indigenous Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A50.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_50to54_total",
+      "description": "Age 50-54 years old - Total Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A50.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_55to59_indigenous",
+      "description": "Age 55-59 years old - Indigenous Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A55.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_55to59_total",
+      "description": "Age 55-59 years old - Total Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A55.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_5to9_indigenous",
+      "description": "Age 5-9 years old - Indigenous Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A59.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_5to9_total",
+      "description": "Age 5-9 years old - Total Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A59.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_60to64_indigenous",
+      "description": "Age 60-64 years old - Indigenous Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A60.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_60to64_total",
+      "description": "Age 60-64 years old - Total Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A60.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_65plus_indigenous",
+      "description": "Age 65 years and over - Indigenous Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.O65.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_65plus_total",
+      "description": "Age 65 years and over - Total Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.O65.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_all_indigenous",
+      "description": "All Ages - Indigenous Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.TT.4..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "persons_all_total",
+      "description": "All Ages - Total Persons",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.TT.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
+      }
+    },
+    {
+      "name": "proportion_dwellings_owned_or_mortgaged",
+      "description": "Proportion of dwellings owned (outright/mortgage)",
+      "type": "number",
+      "expression": "1.0 * (dwellings_owned + dwellings_mortgage) / dwellings_all",
+      "format": "0[.]00%",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
       "name": "proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_indigenous_persons_households_with_indigenous_persons",
       "description": "Proportion of dwellings that need 1 or more extra bedrooms - households with indigenous persons",
       "type": "number",
@@ -1357,18 +1361,14 @@
       }
     },
     {
-      "name": "proportion_dwellings_owned_or_mortgaged",
-      "description": "Proportion of dwellings owned (outright/mortgage)",
-      "type": "number",
-      "expression": "1.0 * (dwellings_owned + dwellings_mortgage) / dwellings_all",
-      "format": "0[.]00%",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        }
-      }
+      "name": "ra_name",
+      "description": "Remoteness Area name",
+      "type": "string"
+    },
+    {
+      "name": "region_name",
+      "description": "Statistical Area Level 3 (SA3) name",
+      "type": "string"
     }
   ]
 }
