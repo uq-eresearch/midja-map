@@ -131,7 +131,7 @@ angular.module('midjaApp')
     function setupHooks(scope) {
       var redrawVectorGrid = function redrawVectorGrid() {
         if (scope.vectorGrid) {
-          scope.vectorGrid.redraw();
+          scope.vectorGrid.smartRedraw();
         }
       };
       scope.$on('region-type:change', function _regionTypeChange(evt, regionType) {
@@ -157,8 +157,22 @@ angular.module('midjaApp')
             interactive: true,
             layerOrder: ['regions', 'points'],
             rendererFactory: L.canvas.tile,
-            vectorTileLayerStyles: styles
+            vectorTileLayerStyles: styles,
+            getFeatureId: function(feature) {
+              var randomId = 'feature-'+(Math.random()+"").slice(2);
+              return randomId;
+            }
           });
+          // This uses internal APIs in VectorGrid,
+          // but is *much* faster than vectorGrid.redraw().
+          vectorGrid.smartRedraw = _.debounce(function() {
+            _.values(vectorGrid._vectorTiles).forEach(function(tile) {
+              _.keys(tile._features).forEach(function(featureId) {
+                vectorGrid.resetFeatureStyle(featureId);
+              });
+              tile._redraw();
+            });
+          }, 100);
           var resolveRegion = function (regionCode) {
             return _.find(
               scope.regions,
