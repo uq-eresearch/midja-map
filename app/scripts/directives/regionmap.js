@@ -467,7 +467,8 @@ angular.module('midjaApp')
                 heading: regionHeadingTmpl(region),
                 attributes: attributes,
                 getValue: _.propertyOf(
-                    _.first(_.values(data)))
+                    _.first(_.values(data))),
+                formatNumber: formattingService.formatNumber
               }
             }
           });

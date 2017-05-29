@@ -7,7 +7,7 @@
 	<div class="modal-body">
 		<dl ng-repeat="attr in context.attributes">
 			<dt>{{attr.description}}</dt>
-			<dd>{{context.getValue(attr.name)}}</dd>
+			<dd>{{context.formatNumber(context.getValue(attr.name))}}</dd>
 		</dl>
 	</div>
 	<div class="modal-footer">
