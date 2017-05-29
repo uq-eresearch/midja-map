@@ -77,8 +77,9 @@ span.btn.btn-default.form-control.ui-select-toggle {
 }
 
 // ensure the options in the ui-select dropdown are automatically wrapped
-a.ui-select-choices-row-inner > div {
+.ui-select-bootstrap .ui-select-choices-row > span.ui-select-choices-row-inner > div {
   white-space: normal;
+  padding: 1rem 0;
 }
 
 accordion h2, h3 {

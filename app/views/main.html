@@ -182,7 +182,7 @@
                                     <span class="text-capitalize">{{ $item.description }}</span>
                                 </ui-select-match>
                                 <ui-select-choices repeat="attribute in vm.attributes | propsFilter: {description: $select.search} | orderBy: 'description'">
-                                    <div title="{{attribute.description}}" ng-bind-html="attribute.description | highlight: $select.search"></div>
+                                    <div ng-bind-html="attribute.description | highlight: $select.search"></div>
                                 </ui-select-choices>
                             </ui-select>
 
