@@ -429,6 +429,7 @@ angular.module('midjaApp')
           }
           if (previousRegionType != vm.regionType) {
             vm.vis.topics = [];
+            selectedTopicsChanged();
           }
           // Clear topics if region type changed
           return activate(vm.regionType).then(resolve);
