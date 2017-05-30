@@ -597,49 +597,73 @@
       "name": "me_hh_in_wk_in_ps_hh_in_ps",
       "description": "Median Household Income – Indigenous persons",
       "type": "number",
-      "format": "$0,0[.]00"
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      }
     },
     {
       "name": "me_hh_in_wk_no_in_ps_ot_hh",
       "description": "Median Household Income – no Indigenous person in household",
       "type": "number",
-      "format": "$0,0[.]00"
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      }
     },
     {
       "name": "me_mo_re_mt_in_ps_hh_in_ps",
       "description": "Median Monthly mortgage repayment – Indigenous persons",
       "type": "number",
-      "format": "$0,0[.]00"
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      }
     },
     {
       "name": "me_mo_re_mt_no_in_ps_ot_hh",
       "description": "Median Monthly mortgage repayment – no Indigenous person in household",
       "type": "number",
-      "format": "$0,0[.]00"
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      }
     },
     {
       "name": "me_p_in_wk_in_ps_hh_in_p",
       "description": "Median Weekly Personal Income – Indigenous persons",
       "type": "number",
-      "format": "$0,0[.]00"
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      }
     },
     {
       "name": "me_ps_in_wk_no_in_ps_ot_hh",
       "description": "Median Weekly Personal Income – no Indigenous person in household",
       "type": "number",
-      "format": "$0,0[.]00"
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      }
     },
     {
       "name": "me_re_wk_in_ps_hh_ind_psns",
       "description": "Median Weekly Rent – Indigenous persons",
       "type": "number",
-      "format": "$0,0[.]00"
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      }
     },
     {
       "name": "me_re_wk_no_in_psns_oth_hh",
       "description": "Median Weekly Rent – no Indigenous person in household",
       "type": "number",
-      "format": "$0,0[.]00"
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      }
     },
     {
       "name": "med_ag_pe_in_pe_h_i_p",
@@ -655,25 +679,37 @@
       "name": "med_hhd_inc_wk_tot",
       "description": "Median Household Income",
       "type": "number",
-      "format": "$0,0[.]00"
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      }
     },
     {
       "name": "med_mort_repay_mth_tot",
       "description": "Median Monthly mortgage repayment",
       "type": "number",
-      "format": "$0,0[.]00"
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      }
     },
     {
       "name": "med_psnl_inc_wk_tot",
       "description": "Median Weekly Personal Income",
       "type": "number",
-      "format": "$0,0[.]00"
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      }
     },
     {
       "name": "med_rent_wk_tot",
       "description": "Median Weekly Rent",
       "type": "number",
-      "format": "$0,0[.]00"
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      }
     },
     {
       "name": "medincome_atsi",
@@ -684,7 +720,10 @@
       "name": "normalized_amount_of_loans",
       "description": "Total Amount of IBA loans per Indigenous person",
       "type": "number",
-      "format": "$0,0[.]00"
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      }
     },
     {
       "name": "normalized_number_of_loans",
@@ -830,7 +869,10 @@
       "name": "total_loan",
       "description": "Total combined IBA loan amount",
       "type": "number",
-      "format": "$0,0[.]00"
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      }
     },
     {
       "name": "uni_atsi",

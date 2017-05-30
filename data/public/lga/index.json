@@ -14,13 +14,19 @@
       "name": "ave_h_s",
       "description": "Average Indigenous Household Size",
       "type": "number",
-      "format": "0.0"
+      "format": {
+        "maximumFractionDigits": 1,
+        "minimumFractionDigits": 1
+      }
     },
     {
       "name": "average_household_size_indigenous_persons_households_with_indigenous_persons",
       "description": "Average household size - households with indigenous persons",
       "type": "number",
-      "format": "0.0",
+      "format": {
+        "maximumFractionDigits": 1,
+        "minimumFractionDigits": 1
+      },
       "source": {
         "name": "Australian Bureau of Statistics",
         "license": {
@@ -34,7 +40,10 @@
       "name": "average_household_size_non_indigenous_persons_other_households",
       "description": "Average household size - non-indigenous households",
       "type": "number",
-      "format": "0.0",
+      "format": {
+        "maximumFractionDigits": 1,
+        "minimumFractionDigits": 1
+      },
       "source": {
         "name": "Australian Bureau of Statistics",
         "license": {
@@ -48,7 +57,10 @@
       "name": "average_household_size_total",
       "description": "Average household size - total",
       "type": "number",
-      "format": "0.0",
+      "format": {
+        "maximumFractionDigits": 1,
+        "minimumFractionDigits": 1
+      },
       "source": {
         "name": "Australian Bureau of Statistics",
         "license": {
@@ -116,7 +128,10 @@
       "name": "iba_a_loan",
       "description": "IBA Total Amount of Loans",
       "type": "number",
-      "format": "$0,0[.]00"
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      }
     },
     {
       "name": "iba_n_loan",

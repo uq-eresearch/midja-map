@@ -4,7 +4,10 @@
       "name": "average_household_size_indigenous_persons_households_with_indigenous_persons",
       "description": "Average household size - households with indigenous persons",
       "type": "number",
-      "format": "0.0",
+      "format": {
+        "maximumFractionDigits": 1,
+        "minimumFractionDigits": 1
+      },
       "source": {
         "name": "Australian Bureau of Statistics",
         "license": {
@@ -18,7 +21,10 @@
       "name": "average_household_size_non_indigenous_persons_other_households",
       "description": "Average household size - non-indigenous households",
       "type": "number",
-      "format": "0.0",
+      "format": {
+        "maximumFractionDigits": 1,
+        "minimumFractionDigits": 1
+      },
       "source": {
         "name": "Australian Bureau of Statistics",
         "license": {
@@ -32,7 +38,10 @@
       "name": "average_household_size_total",
       "description": "Average household size - total",
       "type": "number",
-      "format": "0.0",
+      "format": {
+        "maximumFractionDigits": 1,
+        "minimumFractionDigits": 1
+      },
       "source": {
         "name": "Australian Bureau of Statistics",
         "license": {
@@ -514,7 +523,9 @@
       "name": "gipop_10yr_avg_population",
       "description": "Population (10 year average)",
       "type": "number",
-      "format": "0,0",
+      "format": {
+        "maximumFractionDigits": 0
+      },
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -528,7 +539,9 @@
       "name": "gipop_angina_10yr_avg_admissions",
       "description": "Angina admissions (10 year average)",
       "type": "number",
-      "format": "0,0",
+      "format": {
+        "maximumFractionDigits": 0
+      },
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -542,7 +555,10 @@
       "name": "gipop_angina_lq",
       "description": "Angina location quotient",
       "type": "number",
-      "format": "0.0",
+      "format": {
+        "maximumFractionDigits": 1,
+        "minimumFractionDigits": 1
+      },
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -556,7 +572,9 @@
       "name": "gipop_ccf_10yr_avg_admissions",
       "description": "CCF admissions (10 year average)",
       "type": "number",
-      "format": "0,0",
+      "format": {
+        "maximumFractionDigits": 0
+      },
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -570,7 +588,10 @@
       "name": "gipop_ccf_lq",
       "description": "CCF location quotient",
       "type": "number",
-      "format": "0.0",
+      "format": {
+        "maximumFractionDigits": 1,
+        "minimumFractionDigits": 1
+      },
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -584,7 +605,9 @@
       "name": "gipop_cellulitis_10yr_avg_admissions",
       "description": "Cellulitis admissions (10 year average)",
       "type": "number",
-      "format": "0,0",
+      "format": {
+        "maximumFractionDigits": 0
+      },
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -598,7 +621,10 @@
       "name": "gipop_cellulitis_lq",
       "description": "Cellulitis location quotient",
       "type": "number",
-      "format": "0.0",
+      "format": {
+        "maximumFractionDigits": 1,
+        "minimumFractionDigits": 1
+      },
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -612,7 +638,9 @@
       "name": "gipop_chronic_acscs_10yr_avg_admissions",
       "description": "Chronic ACSCs admissions (10 year average)",
       "type": "number",
-      "format": "0,0",
+      "format": {
+        "maximumFractionDigits": 0
+      },
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -626,7 +654,10 @@
       "name": "gipop_chronic_acscs_lq",
       "description": "Chronic ACSCs location quotient",
       "type": "number",
-      "format": "0.0",
+      "format": {
+        "maximumFractionDigits": 1,
+        "minimumFractionDigits": 1
+      },
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -640,7 +671,9 @@
       "name": "gipop_copd_10yr_avg_admissions",
       "description": "COPD admissions (10 year average)",
       "type": "number",
-      "format": "0,0",
+      "format": {
+        "maximumFractionDigits": 0
+      },
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -654,7 +687,10 @@
       "name": "gipop_copd_lq",
       "description": "COPD location quotient",
       "type": "number",
-      "format": "0.0",
+      "format": {
+        "maximumFractionDigits": 1,
+        "minimumFractionDigits": 1
+      },
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -668,7 +704,9 @@
       "name": "gipop_dental_10yr_avg_admissions",
       "description": "Dental admissions (10 year average)",
       "type": "number",
-      "format": "0,0",
+      "format": {
+        "maximumFractionDigits": 0
+      },
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -682,7 +720,10 @@
       "name": "gipop_dental_lq",
       "description": "Dental location quotient",
       "type": "number",
-      "format": "0.0",
+      "format": {
+        "maximumFractionDigits": 1,
+        "minimumFractionDigits": 1
+      },
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -696,7 +737,9 @@
       "name": "gipop_diabetes_10yr_avg_admissions",
       "description": "Diabetes admissions (10 year average)",
       "type": "number",
-      "format": "0,0",
+      "format": {
+        "maximumFractionDigits": 0
+      },
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -710,7 +753,10 @@
       "name": "gipop_diabetes_lq",
       "description": "Diabetes location quotient",
       "type": "number",
-      "format": "0.0",
+      "format": {
+        "maximumFractionDigits": 1,
+        "minimumFractionDigits": 1
+      },
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -724,7 +770,9 @@
       "name": "gipop_ent_10yr_avg_admissions",
       "description": "ENT admissions (10 year average)",
       "type": "number",
-      "format": "0,0",
+      "format": {
+        "maximumFractionDigits": 0
+      },
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -738,7 +786,10 @@
       "name": "gipop_ent_lq",
       "description": "ENT location quotient",
       "type": "number",
-      "format": "0.0",
+      "format": {
+        "maximumFractionDigits": 1,
+        "minimumFractionDigits": 1
+      },
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -752,7 +803,9 @@
       "name": "gipop_epilepsy_10yr_avg_admissions",
       "description": "Epilepsy admissions (10 year average)",
       "type": "number",
-      "format": "0,0",
+      "format": {
+        "maximumFractionDigits": 0
+      },
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -766,7 +819,10 @@
       "name": "gipop_epilepsy_lq",
       "description": "Epilepsy location quotient",
       "type": "number",
-      "format": "0.0",
+      "format": {
+        "maximumFractionDigits": 1,
+        "minimumFractionDigits": 1
+      },
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -780,7 +836,9 @@
       "name": "gipop_uti_10yr_avg_admissions",
       "description": "UTI admissions (10 year average)",
       "type": "number",
-      "format": "0,0",
+      "format": {
+        "maximumFractionDigits": 0
+      },
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -794,7 +852,10 @@
       "name": "gipop_uti_lq",
       "description": "UTI location quotient",
       "type": "number",
-      "format": "0.0",
+      "format": {
+        "maximumFractionDigits": 1,
+        "minimumFractionDigits": 1
+      },
       "source": {
         "name": "Grattan Institute",
         "license": {
@@ -1732,7 +1793,9 @@
       "description": "Proportion of dwellings owned (outright/mortgage)",
       "type": "number",
       "expression": "1.0 * (dwellings_owned + dwellings_mortgage) / dwellings_all",
-      "format": "0[.]00%",
+      "format": {
+        "style": "percent"
+      },
       "source": {
         "name": "Australian Bureau of Statistics",
         "license": {
@@ -1745,7 +1808,9 @@
       "name": "proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_indigenous_persons_households_with_indigenous_persons",
       "description": "Proportion of dwellings that need 1 or more extra bedrooms - households with indigenous persons",
       "type": "number",
-      "format": "0[.]00%",
+      "format": {
+        "style": "percent"
+      },
       "source": {
         "name": "Australian Bureau of Statistics",
         "license": {
@@ -1759,7 +1824,9 @@
       "name": "proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_non_indigenous_persons_other_households",
       "description": "Proportion of dwellings that need 1 or more extra bedrooms - non-indigenous households",
       "type": "number",
-      "format": "0[.]00%",
+      "format": {
+        "style": "percent"
+      },
       "source": {
         "name": "Australian Bureau of Statistics",
         "license": {
@@ -1773,7 +1840,9 @@
       "name": "proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_total",
       "description": "Proportion of dwellings that need 1 or more extra bedrooms - total",
       "type": "number",
-      "format": "0[.]00%",
+      "format": {
+        "style": "percent"
+      },
       "source": {
         "name": "Australian Bureau of Statistics",
         "license": {
@@ -1788,7 +1857,9 @@
       "description": "Indigenous proportion of population",
       "type": "number",
       "expression": "1.0 * persons_all_indigenous / persons_all_total",
-      "format": "0[.]00%",
+      "format": {
+        "style": "percent"
+      },
       "source": {
         "name": "Australian Bureau of Statistics",
         "license": {
