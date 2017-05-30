@@ -178,22 +178,20 @@ angular.module('midjaApp')
               scope.regions,
               _.matchesProperty('code', regionCode));
           }
-          vectorGrid.on('mouseover', function(evt) {
-            var region = resolveRegion(evt.layer.properties.region_code);
-            if (region) {
-              var data =
-                scope.regionData && scope.regionData[region.code];
-              scope.$emit('vector-grid:mouseover', region, data);
-            }
-          });
-          vectorGrid.on('click', function(evt) {
-            var region = resolveRegion(evt.layer.properties.region_code);
-            if (region) {
-              var data =
-                scope.regionData && scope.regionData[region.code];
-              scope.$emit('vector-grid:click', region, data);
-            }
-          });
+          var evtEmitHook = function(eventName) {
+            return function(evt) {
+              var region = resolveRegion(evt.layer.properties.region_code);
+              if (region) {
+                var data =
+                  scope.regionData && scope.regionData[region.code];
+                scope.$emit(eventName, region, data);
+              }
+            };
+          };
+          vectorGrid.on('mouseover', evtEmitHook('vector-grid:mouseover'));
+          vectorGrid.on('click', evtEmitHook('vector-grid:click'));
+          vectorGrid.on('dblclick', evtEmitHook('vector-grid:dblclick'));
+          vectorGrid.on('contextmenu', evtEmitHook('vector-grid:contextmenu'));
 
           // Trigger replacement
           scope.styles = {};
@@ -383,6 +381,7 @@ angular.module('midjaApp')
 
       var map = L.map(mapId, {
         center: [-27, 134],
+        doubleClickZoom: false,
         zoom: 4
       });
 
@@ -429,7 +428,7 @@ angular.module('midjaApp')
       });
 
       var featureControl = null;
-      scope.$on('vector-grid:mouseover', function(e, region, data) {
+      var showRegionHover = function(e, region, data) {
         var newFeatureControl = L.control({
           position: 'topright'
         });
@@ -459,9 +458,11 @@ angular.module('midjaApp')
         }
         featureControl = newFeatureControl;
         featureControl.addTo(map);
-      });
+      };
+      scope.$on('vector-grid:mouseover', showRegionHover);
+      scope.$on('vector-grid:click', showRegionHover);
 
-      scope.$on('vector-grid:click', _.debounce(function(e, region) {
+      var showRegionModal = _.debounce(function(e, region) {
         var vm = $rootScope.$$childTail.vm;
         var regionType = region.type;
         var regionCodeAttribute = regionType+'_code';
@@ -487,7 +488,9 @@ angular.module('midjaApp')
             }
           });
         });
-      }, 100));
+      }, 100);
+      scope.$on('vector-grid:dblclick', showRegionModal);
+      scope.$on('vector-grid:contextmenu', showRegionModal);
 
       var legends = {};
       scope.$on('legend:set', function(evt, type, position, legendEl) {
