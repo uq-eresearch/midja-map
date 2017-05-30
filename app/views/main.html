@@ -28,17 +28,17 @@
                         <label>Location Type
                             <small class="text-muted">Required</small>
                         </label>
-						<div ng-repeat="sel in vm.unitSels">
+						<div ng-repeat="sel in vm.regionTypeSelectorOptions">
 							<label>
 								<input type="radio"
-									   ng-model="vm.vis.unitSel"
+									   ng-model="vm.vis.regionTypeSelection"
 									   value="{{ sel }}"
 									   ng-change="vm.selectedLocationsChanged()"
 										>
 								{{ sel }}
 							</label>
 						</div>
-						<div ng-show="vm.vis.unitSel === 'LGAs'">
+						<div ng-show="vm.vis.regionTypeSelection === 'LGAs'">
 							<label>Filter
 								<small class="text-muted">Optional</small>
 							</label>
@@ -126,7 +126,7 @@
                         </div>
 
                         <div class="alert alert-info" style="margin-top:20px;">
-                            <strong>{{ vm.vis.units.length }} locations</strong> are selected.
+                            <strong>{{ vm.vis.regions.length }} locations</strong> are selected.
                         </div>
 
                         <div style="margin-top: 20px;"
@@ -273,7 +273,7 @@
                                     <accordion-heading>
                                         <h3>Scatter plot</h3>
                                     </accordion-heading>
-                                    <div ng-hide="(vm.vis.units.length > 1) && (vm.vis.topics.length > 1)">
+                                    <div ng-hide="(vm.vis.regions.length > 1) && (vm.vis.topics.length > 1)">
                                         <p class="text-muted">
                                             To generate a scatter plot:
                                         </p>
@@ -282,7 +282,7 @@
                                             <li class="text-muted">Select at least two topics of interest.</li>
                                         </ol>
                                     </div>
-                                    <div ng-show="(vm.vis.units.length > 1) && (vm.vis.topics.length > 1)">
+                                    <div ng-show="(vm.vis.regions.length > 1) && (vm.vis.topics.length > 1)">
                                         <div class="form-group">
                                         <label>X-axis</label>
                                         <ui-select theme="bootstrap"
@@ -381,7 +381,7 @@
                                     <accordion-heading>
                                         <h3>Linear Regression</h3>
                                     </accordion-heading>
-                                    <div ng-hide="(vm.vis.units.length > 1) && (vm.vis.topics.length > 1)">
+                                    <div ng-hide="(vm.vis.regions.length > 1) && (vm.vis.topics.length > 1)">
                                         <p class="text-muted">
                                             To perform a linear regression:
                                         </p>
@@ -391,7 +391,7 @@
                                         </ol>
                                     </div>
 
-                                    <div ng-show="(vm.vis.units.length > 1) && (vm.vis.topics.length > 1)">
+                                    <div ng-show="(vm.vis.regions.length > 1) && (vm.vis.topics.length > 1)">
 
                                         <div class="form-group">
                                             <label>Choose a dependent variable
@@ -496,7 +496,7 @@
 
             <div id="mapColumn" class="col-md-6 +fullheight" style="position: relative;">
                 <!--ng-class="{'col-sm-9': !vm.isDataSelected(), 'col-md-6': vm.isDataSelected()}">-->
-				<region-map region-type="vm.regionType" regions="vm.vis.units"
+				<region-map region-type="vm.regionType" regions="vm.vis.regions"
 					choropleth-topic="vm.vis.choropleth.topic"
 					choropleth-visible="vm.visStatus.choroplethVisible"
 					bubbles-topic="vm.vis.bubble.topic"
@@ -515,7 +515,7 @@
                 </div>-->
             </div>
 
-            <div id="dataColumn" class="col-md-3 +fullheight" ng-show="vm.dataColumnVisible && vm.vis.units.length">
+            <div id="dataColumn" class="col-md-3 +fullheight" ng-show="vm.dataColumnVisible && vm.vis.regions.length">
                 <p class="text-muted" style="margin-top:40px" ng-hide="vm.isDataSelected()">
                     Select a place and a topic to see data.
                 </p>

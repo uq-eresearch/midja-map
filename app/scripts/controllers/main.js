@@ -152,7 +152,7 @@ angular.module('midjaApp')
 
     vm.vis = {
       remotenessLevel: 'all',
-      unitSel: "LGAs",
+      regionTypeSelection: "LGAs",
       filter: {
         "Indigenous Population >= 150": false,
         "Indigenous Households >= 20": false,
@@ -160,7 +160,7 @@ angular.module('midjaApp')
         "Indigenous QLD LGAs": false
       },
       locations: [],
-      units: [],
+      regions: [],
       categories: [],
       topics: [],
       bubble: {
@@ -203,7 +203,7 @@ angular.module('midjaApp')
 
     selectedPlacesChanged();
     vm.regionType = 'lga';
-    vm.unitSels = ['LGAs', 'ILOCs', 'SA2s', 'SA3s'];
+    vm.regionTypeSelectorOptions = ['LGAs', 'ILOCs', 'SA2s', 'SA3s'];
     vm.filters = [
       'Indigenous Population >= 150',
       'Indigenous Households >= 20',
@@ -291,7 +291,7 @@ angular.module('midjaApp')
       });
       return $q(function(resolve) {
           var excludeOps = [];
-          if (vm.vis.unitSel == 'LGAs') {
+          if (vm.vis.regionTypeSelection == 'LGAs') {
             if (vm.vis.filter["Indigenous Population >= 150"]) {
               excludeOps.push(
                 dataService.getAttribute(regionType, 'indigenous')
@@ -413,7 +413,7 @@ angular.module('midjaApp')
 
       $q(function(resolve) {
           var previousRegionType = vm.regionType;
-          switch (vm.vis.unitSel) {
+          switch (vm.vis.regionTypeSelection) {
             case 'ILOCs':
               vm.regionType = "iloc";
               break;
@@ -468,15 +468,13 @@ angular.module('midjaApp')
               vm.regionType,
               vm.vis.remotenessLevel);
         }).then(function(regions) {
-          var units = regions;
-
-          if (!units.length) {
+          if (!regions.length) {
             // revert back the removenessLevel in the UI when no ILOCs are found
             vm.vis.remotenessLevel = vm.vis.currRemotenessLevel;
-            window.alert('No ' + vm.vis.unitSel + ' found.');
+            window.alert('No ' + vm.vis.regionTypeSelection + ' found.');
           } else {
             vm.vis.currRemotenessLevel = vm.vis.remotenessLevel;
-            vm.vis.units = units;
+            vm.vis.regions = regions;
             generateVisualisations();
             generateScatterPlot();
             generateLinearRegression();
@@ -485,7 +483,7 @@ angular.module('midjaApp')
     }
 
     function generateVisualisations() {
-      if (!vm.vis.units.length) {
+      if (!vm.vis.regions.length) {
         vm.chartData = [];
         vm.tableData = [];
         return;
@@ -528,7 +526,7 @@ angular.module('midjaApp')
       var regionType = vm.regionType;
       var attributeNames = _.map(vm.vis.topics, _.property('name'))
         .concat(['region_name', 'ra_name']);
-      var locations = vm.vis.units;
+      var locations = vm.vis.regions;
 
       dataService.getAttributesForRegions(regionType, attributeNames, locations)
         .then(function(attrs) {
@@ -637,7 +635,7 @@ angular.module('midjaApp')
         [vm.linearRegression.dependent].concat(
           vm.linearRegression.independents),
         _.property('name'));
-      var regions = vm.vis.units;
+      var regions = vm.vis.regions;
 
       var data = {
         "depVar": vm.linearRegression.dependent.name,
@@ -774,7 +772,7 @@ angular.module('midjaApp')
       var xVar = vm.scatterPlot.xaxis.name;
       var yVar = vm.scatterPlot.yaxis.name;
       var useRemoteness = vm.scatterPlot.useRemoteness;
-      var regions = vm.vis.units;
+      var regions = vm.vis.regions;
 
       return dataService.getAttributesForRegions(
         vm.regionType, [xVar, yVar, 'ra_name'], regions
@@ -822,7 +820,7 @@ angular.module('midjaApp')
           "ylabel": vm.scatterPlot.yaxis.description,
           "useRemoteness": vm.scatterPlot.useRemoteness,
           "labelLocations": vm.scatterPlot.labelLocations,
-          "unit_codes": _.map(vm.vis.units, _.property('code'))
+          "unit_codes": _.map(vm.vis.regions, _.property('code'))
         };
 
         vm.scatterOptions["chart"]["showLegend"] = vm.scatterPlot.useRemoteness;
