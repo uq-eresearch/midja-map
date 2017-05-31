@@ -129,97 +129,104 @@ angular.module('midjaApp')
     }
 
     function setupHooks(scope) {
-      var redrawVectorGrid = function redrawVectorGrid() {
-        if (scope.vectorGrid) {
-          scope.vectorGrid.smartRedraw();
-        }
-      };
-      scope.$on('region-type:change', function _regionTypeChange(evt, regionType) {
+      function initVectorGrid(regionType) {
         // Create new VectorGrid
-        getTileJSON(regionType).then(function(metadata) {
-          var styles = _.fromPairs(_.map(
-            metadata.vector_layers,
-            _.flow(
-              _.property('id'),
-              function(layerId) {
-                return [layerId, featureStyleCreator(scope,
-                  layerId)];
-              }
-            )));
-          var bounds = L.latLngBounds(_.map(
-            _.chunk(metadata.bounds, 2),
-            function(p) {
-              return L.latLng(p[1], p[0]);
-            }));
-          var vectorGrid = new ModifiedVectorGrid(metadata.tiles[0], {
-            attribution: metadata.attribution,
-            bounds: bounds,
-            interactive: true,
-            layerOrder: ['regions', 'points'],
-            rendererFactory: L.canvas.tile,
-            vectorTileLayerStyles: styles,
-            getFeatureId: function(feature) {
-              var randomId = 'feature-'+(Math.random()+"").slice(2);
-              return randomId;
-            }
-          });
-          // This uses internal APIs in VectorGrid,
-          // but is *much* faster than vectorGrid.redraw().
-          vectorGrid.smartRedraw = _.debounce(function() {
-            _.values(vectorGrid._vectorTiles).forEach(function(tile) {
-              _.keys(tile._features).forEach(function(featureId) {
-                vectorGrid.resetFeatureStyle(featureId);
-              });
-              tile._redraw();
-            });
-          }, 100);
-          var resolveRegion = function (regionCode) {
-            return _.find(
-              scope.regions,
-              _.matchesProperty('code', regionCode));
-          }
-          var evtEmitHook = function(eventName) {
-            return function(evt) {
-              var region = resolveRegion(evt.layer.properties.region_code);
-              if (region) {
-                var data =
-                  scope.regionData && scope.regionData[region.code];
-                scope.$emit(eventName, region, data);
-              }
-            };
-          };
-          vectorGrid.on('mouseover', evtEmitHook('vector-grid:mouseover'));
-          vectorGrid.on('click', evtEmitHook('vector-grid:click'));
-          vectorGrid.on('dblclick', evtEmitHook('vector-grid:dblclick'));
-          vectorGrid.on('contextmenu', evtEmitHook('vector-grid:contextmenu'));
+        return getTileJSON(regionType).then(function(metadata) {
+         var styles = _.fromPairs(_.map(
+           metadata.vector_layers,
+           _.flow(
+             _.property('id'),
+             function(layerId) {
+               return [layerId, featureStyleCreator(scope,
+                 layerId)];
+             }
+           )));
+         var bounds = L.latLngBounds(_.map(
+           _.chunk(metadata.bounds, 2),
+           function(p) {
+             return L.latLng(p[1], p[0]);
+           }));
+         var vectorGrid = new ModifiedVectorGrid(metadata.tiles[0], {
+           attribution: metadata.attribution,
+           bounds: bounds,
+           interactive: true,
+           layerOrder: ['regions', 'points'],
+           rendererFactory: L.canvas.tile,
+           vectorTileLayerStyles: styles,
+           getFeatureId: function(feature) {
+             var randomId = 'feature-'+(Math.random()+"").slice(2);
+             return randomId;
+           }
+         });
+         // This uses internal APIs in VectorGrid,
+         // but is *much* faster than vectorGrid.redraw().
+         vectorGrid.smartRedraw = _.debounce(function() {
+           _.values(vectorGrid._vectorTiles).forEach(function(tile) {
+             _.keys(tile._features).forEach(function(featureId) {
+               vectorGrid.resetFeatureStyle(featureId);
+             });
+             tile._redraw();
+           });
+         }, 100);
+         var resolveRegion = function (regionCode) {
+           return _.find(
+             scope.regions,
+             _.matchesProperty('code', regionCode));
+         }
+         var evtEmitHook = function(eventName) {
+           return function(evt) {
+             var region = resolveRegion(evt.layer.properties.region_code);
+             if (region) {
+               var data =
+                 scope.regionData && scope.regionData[region.code];
+               scope.$emit(eventName, region, data);
+             }
+           };
+         };
+         vectorGrid.on('mouseover', evtEmitHook('vector-grid:mouseover'));
+         vectorGrid.on('click', evtEmitHook('vector-grid:click'));
+         vectorGrid.on('dblclick', evtEmitHook('vector-grid:dblclick'));
+         vectorGrid.on('contextmenu', evtEmitHook('vector-grid:contextmenu'));
 
-          // Trigger replacement
-          scope.styles = {};
-          var previousVectorGrid = scope.vectorGrid;
-          scope.vectorGrid = vectorGrid;
-          scope.$emit('vector-grid:change', vectorGrid, previousVectorGrid);
-        });
-      });
-      var refreshData = function _refreshData(evt) {
-        return $q(function(resolve) {
-          var attributes = _.chain([scope.choroplethTopic, scope.bubblesTopic])
-            .filter(_.isObject)
-            .map(_.property('name'))
-            .value();
-          if (_.isEmpty(attributes)) {
-            scope.regionData = {};
-            resolve(scope.regionData);
-          } else {
-            dataService.getAttributesForRegions(
-              scope.regionType, attributes, scope.regions
-            ).then(function(data) {
-              scope.regionData = data;
-              resolve(scope.regionData);
-            });
-          }
-        });
+         // Trigger replacement
+         scope.styles = {};
+         var previousVectorGrid = scope.vectorGrid;
+         scope.vectorGrid = vectorGrid;
+         scope.$emit('vector-grid:change', vectorGrid, previousVectorGrid);
+         // Add property to allow easier change detection
+         vectorGrid.regionType = regionType;
+         return vectorGrid;
+       });
       }
-      var updateChoropleth = function _updateChoropleth(evt) {
+      function redrawVectorGrid(vectorGrid) {
+        vectorGrid.smartRedraw();
+        return vectorGrid;
+      }
+      function checkVectorGrid(regionType) {
+        if (scope.vectorGrid && scope.vectorGrid.regionType == regionType) {
+          return $q(function(resolve) { resolve(scope.vectorGrid); });
+        } else {
+          return initVectorGrid(regionType);
+        }
+      }
+      function refreshData(vectorGrid) {
+        var attributes = _.chain([scope.choroplethTopic, scope.bubblesTopic])
+          .filter(_.isObject)
+          .map(_.property('name'))
+          .value();
+        if (_.isEmpty(attributes)) {
+          scope.regionData = {};
+          return vectorGrid;
+        } else {
+          return dataService.getAttributesForRegions(
+            scope.regionType, attributes, scope.regions
+          ).then(function(data) {
+            scope.regionData = data;
+            return vectorGrid;
+          });
+        }
+      }
+      function updateChoropleth(vectorGrid) {
         var regionData = scope.regionData;
         var choroplethTopic = scope.choroplethTopic;
         if (_.isObject(choroplethTopic) && scope.choroplethVisible) {
@@ -256,8 +263,9 @@ angular.module('midjaApp')
             regions: null
           }, scope.styles);
         }
+        return vectorGrid;
       };
-      var updateBubbles = function _updateBubbles(evt) {
+      function updateBubbles(vectorGrid) {
         var regionData = scope.regionData;
         var bubblesTopic = scope.bubblesTopic;
         if (_.isObject(bubblesTopic) && scope.bubblesVisible) {
@@ -307,13 +315,16 @@ angular.module('midjaApp')
           }, scope.styles);
           scope.$emit('legend:clear', 'points');
         }
+        return vectorGrid;
       };
       var redraw = _.debounce(function() {
-        refreshData()
+        checkVectorGrid(scope.regionType)
+          .then(refreshData)
           .then(updateChoropleth)
           .then(updateBubbles)
           .then(redrawVectorGrid);
       }, 50);
+      scope.$on('region-type:change', redraw);
       scope.$on('regions:change', redraw);
       scope.$on('choropleth-topic:change', redraw);
       scope.$on('choropleth-visible:change', redraw);
@@ -472,7 +483,6 @@ angular.module('midjaApp')
         dataService.getAttributesForRegions(regionType, attrNames, [{
           'code': region.code
         }]).then(function(data) {
-          console.log(data);
           var modalInstance = $uibModal.open({
             animation: true,
             templateUrl: 'details.html',
@@ -509,8 +519,6 @@ angular.module('midjaApp')
           legends[type].remove();
         }
       });
-
-      scope.$emit('region-type:change', scope.regionType);
     }
 
   });

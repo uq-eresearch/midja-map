@@ -129,31 +129,17 @@
                             <strong>{{ vm.vis.regions.length }} locations</strong> are selected.
                         </div>
 
-                        <div style="margin-top: 20px;"
-                             ng-show="(vm.vis.locations[0].type !== 'iloc' || vm.vis.locations[1] && vm.vis.locations[1].type !== 'iloc')">
+                        <div style="margin-top: 20px;" ng-show="vm.getAvailableRemotenessAreas().length > 0">
                             <h5>Remoteness</h5>
 
                             <p class="text-muted">Only show locations with this
                                 remoteness level.</p>
-
-                            <div>
+                            <div ng-repeat="remotenessArea in vm.getAvailableRemotenessAreas()">
                                 <label>
-                                    <input type="radio"
-                                           ng-model="vm.vis.remotenessLevel"
-                                           value="all"
-                                           ng-change="vm.selectedLocationsChanged()"
-                                            >
-                                    All
-                                </label>
-                            </div>
-                            <div ng-repeat="remotenessLevel in vm.remotenessLevels">
-                                <label>
-                                    <input type="radio"
-                                           ng-model="vm.vis.remotenessLevel"
-                                           value="{{ remotenessLevel }}"
-                                           ng-change="vm.selectedLocationsChanged()"
-                                            >
-                                    {{ remotenessLevel }}
+                                    <input type="checkbox"
+                                           ng-model="vm.remotenessAreas[remotenessArea]"
+                                           ng-change="vm.selectedLocationsChanged()">
+                                    {{ remotenessArea }}
                                 </label>
                             </div>
                         </div>

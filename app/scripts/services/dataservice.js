@@ -106,7 +106,7 @@ angular.module('midjaApp')
       }
     }
 
-    function filterByRemotenessArea(regions, regionType, remotenessAreaName) {
+    function filterByRemotenessArea(regions, regionType, remotenessAreaNames) {
       return getAttribute(regionType, 'ra_name')
         .then(_.propertyOf)
         .then(function(raNameLookup) {
@@ -115,7 +115,7 @@ angular.module('midjaApp')
             _.flow(
               _.property('code'),
               raNameLookup,
-              _.partial(_.isEqual, remotenessAreaName)));
+              _.partial(_.includes, remotenessAreaNames)));
         })
     }
 

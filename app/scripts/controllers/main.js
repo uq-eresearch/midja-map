@@ -147,11 +147,21 @@ angular.module('midjaApp')
         }
       }
     };
-    //TODO: Explain
-    vm.curRemoteness = [];
+
+    vm.remotenessAreas = {};
+    vm.getAvailableRemotenessAreas = function() {
+      // applyRegexTo(value)(regex) = (true|false)
+      var applyRegexTo = _.partial(_.method, 'test');
+      // Note: Tick sorts earlier than cross
+      var asCheckOrCross = function (b) { return b ? '\u2713' : '\u274c'; };
+      return _.sortBy(_.keys(vm.remotenessAreas), function(v) {
+        var patterns = [/cities/i, /regional/i, /remote/i];
+        var applyTest = _.flow(applyRegexTo(v), asCheckOrCross);
+        return _.map(patterns, applyTest).join('');
+      });
+    }
 
     vm.vis = {
-      remotenessLevel: 'all',
       regionTypeSelection: "LGAs",
       filter: {
         "Indigenous Population >= 150": false,
@@ -202,7 +212,6 @@ angular.module('midjaApp')
     vm.isDataSelected = isDataSelected;
 
     selectedPlacesChanged();
-    vm.regionType = 'lga';
     vm.regionTypeSelectorOptions = ['LGAs', 'ILOCs', 'SA2s', 'SA3s'];
     vm.filters = [
       'Indigenous Population >= 150',
@@ -286,9 +295,6 @@ angular.module('midjaApp')
     });
 
     function activate(regionType) {
-      dataService.getAttribute(regionType, 'ra_name').then(function(data) {
-        vm.remotenessLevels = _.uniq(_.values(data)).sort();
-      });
       return $q(function(resolve) {
           var excludeOps = [];
           if (vm.vis.regionTypeSelection == 'LGAs') {
@@ -410,30 +416,38 @@ angular.module('midjaApp')
       if (vm.vis.locations.length == 2 && !vm.vis.locations[1]) {
         vm.vis.locations.pop();
       }
+      console.log(vm.remotenessAreas);
 
       $q(function(resolve) {
+          resolve((function() {
+            switch (vm.vis.regionTypeSelection) {
+              case 'ILOCs': return "iloc";
+              case 'LGAs':  return "lga";
+              case 'SA2s':  return "sa2";
+              case 'SA3s':  return "sa3";
+              default:      return vm.regionType;
+            }
+          })());
+        }).then(function(regionType) {
           var previousRegionType = vm.regionType;
-          switch (vm.vis.regionTypeSelection) {
-            case 'ILOCs':
-              vm.regionType = "iloc";
-              break;
-            case 'LGAs':
-              vm.regionType = "lga";
-              break;
-            case 'SA2s':
-              vm.regionType = "sa2";
-              break;
-            case 'SA3s':
-              vm.regionType = "sa3";
-              break;
-          }
-          if (previousRegionType != vm.regionType) {
+          vm.regionType = regionType;
+          if (regionType == previousRegionType) {
+            return regionType;
+          } else {
             vm.vis.topics = [];
-            selectedTopicsChanged();
+            return dataService.getAttribute(regionType, 'ra_name')
+              .then(function(data) {
+                vm.remotenessAreas = _.fromPairs(
+                  _.map(
+                    _.uniq(_.values(data)).sort(),
+                    function(v) { return [v, true] }));
+              })
+              .then(selectedTopicsChanged)
+              .then(_.constant(regionType));
           }
-          // Clear topics if region type changed
-          return activate(vm.regionType).then(resolve);
-        }).then(function() {
+        }).then(
+          activate
+        ).then(function() {
           return $q(function(resolve) {
             // Set first location to Australia if unpopulated
             if (!_.isObject(vm.vis.locations[0])) {
@@ -460,25 +474,21 @@ angular.module('midjaApp')
           }
         ))
         .then(function(regions) {
-          if (vm.vis.remotenessLevel == 'all')
-            return regions;
-          else
+          if (_.size(vm.remotenessAreas) > 0) {
             return dataService.filterByRemotenessArea(
               regions,
               vm.regionType,
-              vm.vis.remotenessLevel);
-        }).then(function(regions) {
-          if (!regions.length) {
-            // revert back the removenessLevel in the UI when no ILOCs are found
-            vm.vis.remotenessLevel = vm.vis.currRemotenessLevel;
-            window.alert('No ' + vm.vis.regionTypeSelection + ' found.');
+              _.filter(
+                _.keys(vm.remotenessAreas),
+                _.propertyOf(vm.remotenessAreas)));
           } else {
-            vm.vis.currRemotenessLevel = vm.vis.remotenessLevel;
-            vm.vis.regions = regions;
-            generateVisualisations();
-            generateScatterPlot();
-            generateLinearRegression();
+            return regions;
           }
+        }).then(function(regions) {
+          vm.vis.regions = regions;
+          generateVisualisations();
+          generateScatterPlot();
+          generateLinearRegression();
         });
     }
 
