@@ -72,7 +72,8 @@ angular.module('midjaApp')
       'choroplethTopic': '=',
       'bubblesTopic': '=',
       'choroplethVisible': '=',
-      'bubblesVisible': '='
+      'bubblesVisible': '=',
+      'watchForResize': '='
     }
 
     return {
@@ -395,6 +396,16 @@ angular.module('midjaApp')
         doubleClickZoom: false,
         zoom: 4
       });
+      // Debounce so other elements have a chance to resize first
+      var resizeMap = _.debounce(function() {
+        map.invalidateSize({
+          pan: true,
+          debounceMoveend: true
+        });
+        _.forEach(map.layers, _.method('redraw'));
+      }, 10);
+      scope.$on('watch-for-resize:change', resizeMap);
+      resizeMap();
 
       // add a nice baselayer from Stamen
       L.tileLayer(

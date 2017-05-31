@@ -95,6 +95,29 @@ accordion h2, h3 {
   opacity: 1.0;
 }
 
+#mapColumn {
+  padding: 0;
+}
+
+#map-toggle {
+  background-color: white;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('data:image/svg+xml;utf8,<svg height="10" width="5" xmlns="http://www.w3.org/2000/svg"><path d="M0 5 L5 0 L5 10 Z" /></svg>');
+  opacity: 0.1;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 20px;
+  position: absolute;
+  margin: 0;
+  z-index: 1000;
+}
+
+#map-toggle:hover {
+  opacity: 0.8;
+}
+
 .leaflet-control.legend, .leaflet-control.feature-hover {
   padding: 1ex;
   font-size: 11px;

@@ -274,18 +274,7 @@ angular.module('midjaApp')
       }
     }
 
-    vm.dataColumnVisible = true;
-    vm.toggleDataColumn = function() {
-      $('#dataColumn').fadeToggle("fast");
-      $('#mapColumn').toggleClass('col-md-6', 'col-md-9');
-      vm.dataColumnVisible = !vm.dataColumnVisible;
-
-      if (vm.dataColumnVisible && vm.chartobj.chart) {
-        $timeout(function() {
-          vm.chartobj.redraw();
-        }, 100);
-      }
-    };
+    vm.dataColumnVisible = false;
 
     // google chart does not refresh on window resize
     angular.element($window).bind('resize', function() {

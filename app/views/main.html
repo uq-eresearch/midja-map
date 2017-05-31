@@ -480,28 +480,29 @@
 
             </div>
 
-            <div id="mapColumn" class="col-md-6 +fullheight" style="position: relative;">
-                <!--ng-class="{'col-sm-9': !vm.isDataSelected(), 'col-md-6': vm.isDataSelected()}">-->
-				<region-map region-type="vm.regionType" regions="vm.vis.regions"
-					choropleth-topic="vm.vis.choropleth.topic"
-					choropleth-visible="vm.visStatus.choroplethVisible"
-					bubbles-topic="vm.vis.bubble.topic"
-					bubbles-visible="vm.visStatus.bubbleVisible"></region-map>
+            <div id="mapColumn" ng-class="['col-md-6','+fullheight', { 'col-md-9': (!vm.dataColumnVisible) }]">
+							<region-map region-type="vm.regionType" regions="vm.vis.regions"
+								choropleth-topic="vm.vis.choropleth.topic"
+								choropleth-visible="vm.visStatus.choroplethVisible"
+								bubbles-topic="vm.vis.bubble.topic"
+								bubbles-visible="vm.visStatus.bubbleVisible"
+								watch-for-resize="vm.dataColumnVisible"></region-map>
 
-				<i id="attributeToggleIcon"
-					class="fa fa-2x"
-					style="position:absolute; right:0px; top:0px;"
-					ng-click="vm.toggleDataColumn()"
-					ng-class="{'fa-chevron-circle-right': vm.dataColumnVisible, 'fa-chevron-circle-left': !vm.dataColumnVisible}">
-				</i>
+              <div id="map-toggle"
+								title="Show data column"
+								ng-click="vm.dataColumnVisible = true"
+								ng-hide="vm.dataColumnVisible">
 
-
-                <!--<div style="position:relative">
-
-                </div>-->
+							</div>
             </div>
 
-            <div id="dataColumn" class="col-md-3 +fullheight" ng-show="vm.dataColumnVisible && vm.vis.regions.length">
+            <div id="dataColumn" class="col-md-3 +fullheight" ng-show="vm.dataColumnVisible">
+							<div style="position: absolute; right: 5px; cursor: pointer"
+								title="Hide data column"
+								ng-click="vm.dataColumnVisible = false">
+								&#x1f5d9;
+							</div>
+
                 <p class="text-muted" style="margin-top:40px" ng-hide="vm.isDataSelected()">
                     Select a place and a topic to see data.
                 </p>
