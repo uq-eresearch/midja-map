@@ -1,5 +1,7 @@
 'use strict';
 
+var math = require('mathjs');
+
 /**
  * @ngdoc service
  * @name midjaApp.expressionService

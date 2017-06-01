@@ -21,7 +21,6 @@
     "nvd3": "^1.7.1",
     "angular-nvd3": "^1.0.5",
     "palette.js": "https://github.com/google/palette.js.git",
-    "mathjs": "^3.13.1",
     "leaflet": "Leaflet#^1.0.3",
     "intl": "^1.2.5"
   },
