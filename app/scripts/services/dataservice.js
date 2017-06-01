@@ -212,7 +212,7 @@ angular.module('midjaApp')
             });
           } else {
             return $http
-              .get('/data/' + regionType + '/' + attribute)
+              .get('/data/' + regionType + '/' + attribute + '.json')
               .then(_.property('data'));
           }
         });
@@ -220,7 +220,7 @@ angular.module('midjaApp')
 
     function getMetadataFromRemote(regionType) {
       return $http
-        .get('/data/' + regionType + '/')
+        .get('/data/' + regionType + '/index.json')
         .then(_.property('data'));
     }
 

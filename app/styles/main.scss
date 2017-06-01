@@ -1,4 +1,4 @@
-$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+$icon-font-path: "../../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 
 //** Point at which the navbar becomes uncollapsed.
 $grid-float-breakpoint:     1200px;
@@ -6,8 +6,8 @@ $grid-float-breakpoint:     1200px;
 $font-family-sans-serif:  "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 
 // bower:scss
-@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
-@import "csstyle/csstyle.scss";
+@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+@import "../../bower_components/csstyle/csstyle.scss";
 // endbower
 
 @import "components/navbar";

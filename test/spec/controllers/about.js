@@ -1,9 +1,11 @@
 'use strict';
 
+require('../../../app/scripts/app.js');
+
 describe('Controller: AboutCtrl', function () {
 
     // load the controller's module
-    beforeEach(module('midjaApp'));
+    beforeEach(angular.mock.module('midjaApp'));
 
     var AboutCtrl,
         scope;
