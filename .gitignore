@@ -9,4 +9,3 @@ bower_components
 /*.docker
 /data/private
 /tiles/*/
-/webpack-report.txt
