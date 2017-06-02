@@ -8,7 +8,6 @@ describe('Service: expressionService', function() {
   // instantiate service
   var expressionService;
   beforeEach(inject(function(_expressionService_) {
-    console.log(_expressionService_);
     expressionService = _expressionService_;
   }));
 
