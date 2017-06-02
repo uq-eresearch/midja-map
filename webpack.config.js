@@ -1,4 +1,5 @@
 var path = require('path');
+var webpack = require('webpack');
 var CleanObsoleteChunks = require('webpack-clean-obsolete-chunks');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
@@ -120,6 +121,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'app/index.ejs',
       filename: 'index.html'
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      mangle: false
     }),
     new Visualizer({
       filename: 'webpack-stats.html'

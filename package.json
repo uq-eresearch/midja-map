@@ -56,7 +56,7 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-    "build": "$(npm bin)/webpack -p --progress",
+    "build": "$(npm bin)/webpack --progress",
     "serve": "$(npm bin)/webpack-dev-server --open",
     "test": "NODE_ENV=testing $(npm bin)/karma start --single-run",
     "test:watch": "NODE_ENV=testing $(npm bin)/karma start"
