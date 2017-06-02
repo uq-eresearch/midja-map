@@ -1,5 +1,9 @@
 'use strict';
 
+import * as _ from 'lodash-es'
+const _p = _.partial.placeholder
+import 'leaflet.vectorgrid'
+
 /**
  * @ngdoc function
  * @name midjaApp.controller:MainCtrl
@@ -407,17 +411,15 @@ angular.module('midjaApp')
       }
       console.log(vm.remotenessAreas);
 
-      $q(function(resolve) {
-          resolve((function() {
-            switch (vm.vis.regionTypeSelection) {
-              case 'ILOCs': return "iloc";
-              case 'LGAs':  return "lga";
-              case 'SA2s':  return "sa2";
-              case 'SA3s':  return "sa3";
-              default:      return vm.regionType;
-            }
-          })());
-        }).then(function(regionType) {
+      Promise.resolve(function() {
+          switch (vm.vis.regionTypeSelection) {
+            case 'ILOCs': return "iloc";
+            case 'LGAs':  return "lga";
+            case 'SA2s':  return "sa2";
+            case 'SA3s':  return "sa3";
+            default:      return vm.regionType;
+          }
+        }()).then(function(regionType) {
           var previousRegionType = vm.regionType;
           vm.regionType = regionType;
           if (regionType == previousRegionType) {
@@ -452,12 +454,18 @@ angular.module('midjaApp')
           })
         })
         .then(function(regions) {
-          return $q.all(_.map(
-            regions,
-            _.partial(dataService.getSubregions, vm.regionType)))
-        }).then(_.flatten)
-        .then(_.partial(_.uniq, _, false, _.property('code')))
-        .then(_.partial(_.filter, _,
+          if (vm.regionType) {
+            return $q.all(_.map(
+              regions,
+              _.partial(dataService.getSubregions, vm.regionType)))
+          } else {
+            // No region type => no selected regions
+            return [];
+          }
+        })
+        .then(_.flatten)
+        .then(_.partial(_.uniq, _p, false, _.property('code')))
+        .then(_.partial(_.filter, _p,
           function(region) {
             return !_.includes(vm.filterPlaces, region.code)
           }
@@ -478,7 +486,8 @@ angular.module('midjaApp')
           generateVisualisations();
           generateScatterPlot();
           generateLinearRegression();
-        });
+        })
+        .catch((e) => { console.log(e, e.stack) });
     }
 
     function generateVisualisations() {
@@ -717,7 +726,7 @@ angular.module('midjaApp')
             lookupAttributesForRegion, // Create lookup by topic name
             _.partial(_.flow, _.property('name')), // Handle topic as input
             _.partial(_.map, [depVar].concat(indepVars)), // Lookup values
-            _.partial(_.every, _, isValidNumber)); // Check all values are OK
+            _.partial(_.every, _p, isValidNumber)); // Check all values are OK
           var usableRegions = _.filter(regions, doesRegionHaveCompleteData);
           var topicSeries = _.chain(usableRegions)
             .map(lookupAttributesForRegion)
@@ -786,7 +795,7 @@ angular.module('midjaApp')
         var doesRegionHaveValidXY = _.flow(
           lookupAttributesForRegion,
           _.partial(_.map, [xVar, yVar]), // Lookup X/Y values
-          _.partial(_.every, _, isValidNumber));
+          _.partial(_.every, _p, isValidNumber));
         var lookupRemotenessForRegion = _.flow(
           lookupAttributesForRegion,
           function (f) { return f('ra_name') || "Unknown Remoteness"; })

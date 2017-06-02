@@ -1,7 +1,5 @@
 'use strict';
 
-require('../../../app/scripts/app.js');
-
 describe('Directive: googlechart', function() {
 
   // load the directive's module

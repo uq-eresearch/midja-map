@@ -1,7 +1,5 @@
 'use strict';
 
-require('../../../app/scripts/app.js');
-
 describe('Filter: propsFilter', function() {
 
   // load the filter's module

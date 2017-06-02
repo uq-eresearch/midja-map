@@ -1,7 +1,5 @@
 'use strict';
 
-require('../../../app/scripts/app.js');
-
 describe('Directive: cartodbMap', function () {
 
     // load the directive's module

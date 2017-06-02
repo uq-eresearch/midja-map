@@ -1,7 +1,5 @@
 'use strict';
 
-require('../../../app/scripts/app.js');
-
 describe('Service: expressionService', function() {
 
   // load the service's module
@@ -10,6 +8,7 @@ describe('Service: expressionService', function() {
   // instantiate service
   var expressionService;
   beforeEach(inject(function(_expressionService_) {
+    console.log(_expressionService_);
     expressionService = _expressionService_;
   }));
 

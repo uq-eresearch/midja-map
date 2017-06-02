@@ -1,5 +1,7 @@
 'use strict';
 
+import * as _ from 'lodash-es'
+
 /**
  * @ngdoc service
  * @name midjaApp.formattingService

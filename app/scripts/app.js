@@ -22,7 +22,7 @@ import './services/statsservice'
  *
  * Main module of the application.
  */
-angular
+export default angular
   .module('midjaApp')
   .config(function($routeProvider, uiSelectConfig,
     $httpProvider, $locationProvider) {

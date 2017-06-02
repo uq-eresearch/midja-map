@@ -1,14 +1,17 @@
-$icon-font-path: "../../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+$icon-font-path: "../../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
 
 //** Point at which the navbar becomes uncollapsed.
 $grid-float-breakpoint:     1200px;
 
 $font-family-sans-serif:  "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 
-// bower:scss
-@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
-@import "../../bower_components/csstyle/csstyle.scss";
-// endbower
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "../../node_modules/csstyle/csstyle.scss";
+@import "../../node_modules/ui-select/dist/select.css";
+@import "../../node_modules/font-awesome/css/font-awesome.css";
+@import "../../node_modules/angular-loading-bar/build/loading-bar.css";
+@import "../../node_modules/nvd3/build/nv.d3.css";
+@import "../../node_modules/leaflet/dist/leaflet.css";
 
 @import "components/navbar";
 

@@ -1,7 +1,5 @@
 'use strict';
 
-require('../../../app/scripts/app.js');
-
 describe('Controller: AboutCtrl', function () {
 
     // load the controller's module

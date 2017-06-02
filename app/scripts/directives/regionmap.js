@@ -1,5 +1,9 @@
 'use strict';
 
+import * as _ from 'lodash-es'
+const _p = _.partial.placeholder
+import * as colorbrewer from "colorbrewer"
+
 /**
  * @ngdoc directive
  * @name midjaApp.directive:cartodbMap
@@ -205,7 +209,7 @@ angular.module('midjaApp')
       }
       function checkVectorGrid(regionType) {
         if (scope.vectorGrid && scope.vectorGrid.regionType == regionType) {
-          return $q(function(resolve) { resolve(scope.vectorGrid); });
+          return Promise.resolve(scope.vectorGrid);
         } else {
           return initVectorGrid(regionType);
         }
@@ -235,7 +239,7 @@ angular.module('midjaApp')
             _.map(
               _.values(regionData),
               _.property(choroplethTopic.name)));
-          var colorer = colorerForBuckets("cb-YlOrRd", buckets);
+          var colorer = colorerForBuckets("YlOrRd", buckets);
           var regionColor = function(region) {
             try {
               return colorer(regionData[region.code][choroplethTopic.name]);
@@ -274,7 +278,7 @@ angular.module('midjaApp')
             _.map(
               _.values(regionData),
               _.property(bubblesTopic.name)));
-          var colorer = colorerForBuckets("cb-Blues", buckets);
+          var colorer = colorerForBuckets("Blues", buckets);
           var sizer = sizerForBuckets(2, 6, buckets);
           var regionColor = function(region) {
             try {
@@ -323,7 +327,8 @@ angular.module('midjaApp')
           .then(refreshData)
           .then(updateChoropleth)
           .then(updateBubbles)
-          .then(redrawVectorGrid);
+          .then(redrawVectorGrid)
+          .catch((e) => { throw e });
       }, 50);
       scope.$on('region-type:change', redraw);
       scope.$on('regions:change', redraw);
@@ -349,12 +354,12 @@ angular.module('midjaApp')
     }
 
     function colorerForBuckets(colorPaletteName, buckets) {
-      var colors = palette(colorPaletteName, buckets.length);
+      var colors = colorbrewer[colorPaletteName][Math.max(buckets.length, 3)];
       return function(v) {
         var i = _.findIndex(buckets, function(bucket) {
           return bucket.contains(v);
         });
-        return i == -1 ? null : '#' + colors[i];
+        return i == -1 ? null : colors[i];
       };
     }
 
@@ -381,7 +386,7 @@ angular.module('midjaApp')
         var text = L.DomUtil.create('span', '', li);
         text.innerHTML = _.map(
           [bucket.min, bucket.max],
-          _.partial(formattingService.formatNumber, _, topic.format)
+          _.partial(formattingService.formatNumber, _p, topic.format)
         ).join(" - ");
       });
       return div;

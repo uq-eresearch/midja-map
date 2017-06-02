@@ -1,6 +1,7 @@
 'use strict';
 
-var math = require('mathjs');
+import * as _ from 'lodash-es'
+import { parse as mathjsParse } from 'mathjs'
 
 /**
  * @ngdoc service
@@ -13,7 +14,7 @@ angular.module('midjaApp')
 
     service.parse = function expressionService$parse(expr) {
       var obj = {};
-      var fNode = math.parse(expr);
+      var fNode = mathjsParse(expr);
       var code = fNode.compile();
       var isSymbolNode = _.flow(
         _.property('type'),
