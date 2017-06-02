@@ -3,6 +3,7 @@
 import * as _ from 'lodash-es'
 const _p = _.partial.placeholder
 import 'leaflet.vectorgrid'
+import csvStringify from 'csv-stringify'
 
 /**
  * @ngdoc function
@@ -14,7 +15,7 @@ import 'leaflet.vectorgrid'
 angular.module('midjaApp')
   .controller('MainCtrl', function(
     dataService, formattingService, statsService,
-    $q, $http, $scope, $uibModal, $timeout, $window) {
+    $q, $http, $scope, $uibModal, $timeout, $window, $document) {
     var vm = this;
     vm.propTopicsOnly = false;
 
@@ -378,6 +379,8 @@ angular.module('midjaApp')
           return dataService.getAvailableAttributes(regionType)
         })
         .then(function(availableAttributes) {
+          vm.regionNameAttribute =
+            availableAttributes.find(_.matchesProperty('name', 'region_name'));
           vm.attributesFromMetadata = _.reject(availableAttributes,
             function(attribute) {
               return attribute.type !== 'number';
@@ -528,6 +531,36 @@ angular.module('midjaApp')
       vm.scatterPlot.xaxis = onlyIfSelected(vm.scatterPlot.xaxis);
       vm.scatterPlot.yaxis = onlyIfSelected(vm.scatterPlot.yaxis);
     }
+
+    vm.downloadCSV = function _downloadCSV() {
+      var regionType = vm.regionType;
+      var attributes = [vm.regionNameAttribute].concat(vm.vis.topics)
+      var attributeNames = _.map(attributes, _.property('name'));
+      var locations = vm.vis.regions;
+
+      return dataService.getAttributesForRegions(
+        regionType, attributeNames, locations
+      ).then(function(attrs) {
+        var header = _.map(attributes, _.property('description'));
+        var rowFor = _.flow(
+          _.property('code'),
+          _.propertyOf(attrs),
+          _.propertyOf,
+          _.partial(_.map, attributeNames)
+        );
+        var sortedRegions = _.sortBy(_.values(locations), _.property('name'));
+        var table = [header].concat(_.map(sortedRegions, rowFor));
+        return new Promise(function(resolve, reject) {
+          csvStringify(table, function(err, s) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(s);
+            }
+          });
+        });
+      });
+    };
 
     // TODO: deal with remoteness
     function generateBarChart() {

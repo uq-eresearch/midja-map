@@ -384,6 +384,19 @@
             </div>
             <!-- Plots -->
 
+            <div>
+              <h2><i class="fa fa-table"></i> Tabular Data</h2>
+              <a data-download-link
+                role="button" class="btn btn-default"
+                filename="'data.csv'"
+                mime-type="'text/csv'"
+                content="vm.downloadCSV"
+                ng-disabled="!vm.vis.locations.length || !vm.vis.topics.length">
+                <i class="fa fa-download"></i>
+                Download (CSV)
+              </a>
+            </div>
+
           </div>
 
         </div>
