@@ -3,7 +3,7 @@
 describe('Filter: propsFilter', function() {
 
   // load the filter's module
-  beforeEach(module('midjaApp'));
+  beforeEach(angular.mock.module('midjaApp'));
 
   // initialize a new instance of the filter before each test
   var propsFilter;

@@ -1,5 +1,9 @@
 'use strict';
 
+import * as _ from 'lodash-es'
+import 'intl'
+import 'intl/locale-data/jsonp/en.js'
+
 /**
  * @ngdoc service
  * @name midjaApp.formattingService

@@ -1,5 +1,19 @@
 'use strict';
 
+import '../styles/main.scss'
+import '../views/main.html'
+
+import './midjaApp'
+import './controllers/about'
+import './controllers/main'
+import './directives/googlechart'
+import './directives/regionmap'
+import './filters/propsfilter'
+import './services/dataservice'
+import './services/expressionservice'
+import './services/formattingservice'
+import './services/statsservice'
+
 /**
  * @ngdoc overview
  * @name midjaApp
@@ -8,26 +22,14 @@
  *
  * Main module of the application.
  */
-angular
-  .module('midjaApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch',
-    'ui.bootstrap',
-    'ui.select',
-    'angular-loading-bar',
-    'nvd3'
-  ])
-  .constant('L', L)
+export default angular
+  .module('midjaApp')
   .config(function($routeProvider, uiSelectConfig,
     $httpProvider, $locationProvider) {
     uiSelectConfig.resetSearchInput = true;
     $routeProvider
       .otherwise({
-        templateUrl: 'views/main.html',
+        template: require('../views/main.html'),
         controller: 'MainCtrl',
         controllerAs: 'vm'
       });

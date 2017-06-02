@@ -1,532 +1,433 @@
 <div class="+fullheight">
 
-<script type="text/ng-template" id="details.html">
-	<div class="modal-header">
-		<h3 class="modal-title">{{context.heading}}</h3>
-	</div>
-	<div class="modal-body">
-		<dl ng-repeat="attr in context.attributes">
-			<dt>{{attr.description}}</dt>
-			<dd>{{context.formatNumber(context.getValue(attr.name))}}</dd>
-		</dl>
-	</div>
-	<div class="modal-footer">
-		<button class="btn btn-primary" type="button" ng-click="ok()">Close</button>
-	</div>
-</script>
+  <script type="text/ng-template" id="details.html">
+    <div class="modal-header">
+      <h3 class="modal-title">{{context.heading}}</h3>
+    </div>
+    <div class="modal-body">
+      <dl ng-repeat="attr in context.attributes">
+        <dt>{{attr.description}}</dt>
+        <dd>{{context.formatNumber(context.getValue(attr.name))}}</dd>
+      </dl>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" type="button" ng-click="ok()">Close</button>
+    </div>
+  </script>
 
-    <div class="container-fluid +fullheight">
+  <div class="container-fluid +fullheight">
 
-        <div class="row +fullheight">
-            <div class="col-md-3 +fullheight">
+    <div class="row +fullheight">
+      <div class="col-md-3 +fullheight">
 
-                <div class="entryattribute">
-                    <h2 style="margin-top: 30px;">
+        <div class="entryattribute">
+          <h2 style="margin-top: 30px;">
                         <i class="fa fa-globe"></i> Places</h2>
 
-                    <div class="form-group">
-                        <label>Location Type
-                            <small class="text-muted">Required</small>
-                        </label>
-						<div ng-repeat="sel in vm.regionTypeSelectorOptions">
-							<label>
-								<input type="radio"
-									   ng-model="vm.vis.regionTypeSelection"
-									   value="{{ sel }}"
-									   ng-change="vm.selectedLocationsChanged()"
-										>
-								{{ sel }}
-							</label>
-						</div>
-						<div ng-show="vm.vis.regionTypeSelection === 'LGAs'">
-							<label>Filter
-								<small class="text-muted">Optional</small>
-							</label>
-							<div ng-repeat="filter in vm.filters">
-								<label>
-									<input type="checkbox"
-										   ng-model="vm.vis.filter[filter]"
-										   value="{{ filter }}"
-										   id= "{{filter}}"
-										   ng-change="vm.selectedFiltersChanged()"
-											>
-									{{ filter }}
-								</label>
-							</div>
-						</div>
+          <div class="form-group">
+            <label>Location Type
+              <small class="text-muted">Required</small>
+            </label>
+            <div ng-repeat="sel in vm.regionTypeSelectorOptions">
+              <label>
+                <input type="radio" ng-model="vm.vis.regionTypeSelection" value="{{ sel }}" ng-change="vm.selectedLocationsChanged()"> {{ sel }}
+              </label>
+            </div>
+            <div ng-show="vm.vis.regionTypeSelection === 'LGAs'">
+              <label>Filter
+                <small class="text-muted">Optional</small>
+              </label>
+              <div ng-repeat="filter in vm.filters">
+                <label>
+                  <input type="checkbox" ng-model="vm.vis.filter[filter]" value="{{ filter }}" id="{{filter}}" ng-change="vm.selectedFiltersChanged()"> {{ filter }}
+                </label>
+              </div>
+            </div>
 
-                        <label style="margin-top: 20px;">Choose a Place
-                            <small class="text-muted">Required</small>
-                        </label>
-                        <ui-select
-                                theme="bootstrap"
-                                ng-model="vm.vis.locations[0]"
-                                ng-disabled="disabled"
-                                reset-search-input="true"
-                                style="width: 100%;"
-                                on-select="vm.selectedLocationsChanged($item, $model)"
-                                on-remove="vm.selectedLocationsChanged($item, $model)">
-                            <ui-select-match placeholder="Search for a place">
-                                {{ $select.selected.name }}
-                            <span class="text-uppercase text-muted">
+            <label style="margin-top: 20px;">Choose a Place
+              <small class="text-muted">Required</small>
+            </label>
+            <ui-select theme="bootstrap" ng-model="vm.vis.locations[0]" ng-disabled="disabled" reset-search-input="true" style="width: 100%;" on-select="vm.selectedLocationsChanged($item, $model)" on-remove="vm.selectedLocationsChanged($item, $model)">
+              <ui-select-match placeholder="Search for a place">
+                {{ $select.selected.name }}
+                <span class="text-uppercase text-muted">
                                 {{ $select.selected.type }}
                             </span>
-                            </ui-select-match>
-                            <ui-select-choices repeat="location in vm.locations | propsFilter: {name: $select.search}"
-                                               refresh="vm.refreshLocations($select.search)"
-                                               refresh-delay="0">
+              </ui-select-match>
+              <ui-select-choices repeat="location in vm.locations | propsFilter: {name: $select.search}" refresh="vm.refreshLocations($select.search)" refresh-delay="0">
 
-                                <span ng-bind-html="location.name | highlight: $select.search"></span>
-                            <span class="text-uppercase text-muted">
+                <span ng-bind-html="location.name | highlight: $select.search"></span>
+                <span class="text-uppercase text-muted">
                                 {{ location.type }}
                             </span>
-                            </ui-select-choices>
-                        </ui-select>
+              </ui-select-choices>
+            </ui-select>
 
-                        <p class="text-muted" style="margin-top:10px;" ng-hide="vm.vis.locations[0]">
-                            <small>
-                                <i class="fa fa-info-circle"></i>
-                                Simply start typing into the box to choose a place, e.g. Australia, Queensland, Toowoomba, Mount Isa, etc.
-                            </small>
-                        </p>
+            <p class="text-muted" style="margin-top:10px;" ng-hide="vm.vis.locations[0]">
+              <small>
+                <i class="fa fa-info-circle"></i>
+                Simply start typing into the box to choose a place, e.g. Australia, Queensland, Toowoomba, Mount Isa, etc.
+              </small>
+            </p>
 
-                    </div>
+          </div>
 
 
-                    <div ng-show="vm.vis.locations.length > 0">
+          <div ng-show="vm.vis.locations.length > 0">
 
-                        <div ng-hide="vm.vis.locations[0].type === 'country'">
-                            <p>Choose a comparison place
-                                <small class="text-muted">Optional</small>
-                            </p>
-                            <ui-select
-                                    theme="bootstrap"
-                                    ng-model="vm.vis.locations[1]"
-                                    ng-disabled="disabled"
-                                    reset-search-input="true"
-                                    style="width: 100%;"
-                                    on-select="vm.selectedLocationsChanged($item, $model)"
-                                    on-remove="vm.selectedLocationsChanged($item, $model)">
-                                <ui-select-match placeholder="Search for a place" allow-clear="true">
-                                    {{ $select.selected.name }}
-                                <span class="text-uppercase text-muted">
+            <div ng-hide="vm.vis.locations[0].type === 'country'">
+              <p>Choose a comparison place
+                <small class="text-muted">Optional</small>
+              </p>
+              <ui-select theme="bootstrap" ng-model="vm.vis.locations[1]" ng-disabled="disabled" reset-search-input="true" style="width: 100%;" on-select="vm.selectedLocationsChanged($item, $model)" on-remove="vm.selectedLocationsChanged($item, $model)">
+                <ui-select-match placeholder="Search for a place" allow-clear="true">
+                  {{ $select.selected.name }}
+                  <span class="text-uppercase text-muted">
                                     {{ $select.selected.type }}
                                 </span>
-                                </ui-select-match>
-                                <ui-select-choices
-                                        repeat="location in vm.locations | propsFilter: {name: $select.search}"
-                                        refresh="vm.refreshLocations($select.search)"
-                                        refresh-delay="0">
-                                    <span ng-bind-html="location.name | highlight: $select.search"></span>
-                                <span class="text-uppercase text-muted">
+                </ui-select-match>
+                <ui-select-choices repeat="location in vm.locations | propsFilter: {name: $select.search}" refresh="vm.refreshLocations($select.search)" refresh-delay="0">
+                  <span ng-bind-html="location.name | highlight: $select.search"></span>
+                  <span class="text-uppercase text-muted">
                                     {{ location.type }}
                                 </span>
-                                </ui-select-choices>
-                            </ui-select>
-                        </div>
+                </ui-select-choices>
+              </ui-select>
+            </div>
 
-                        <div class="alert alert-info" style="margin-top:20px;">
-                            <strong>{{ vm.vis.regions.length }} locations</strong> are selected.
-                        </div>
+            <div class="alert alert-info" style="margin-top:20px;">
+              <strong>{{ vm.vis.regions.length }} locations</strong> are selected.
+            </div>
 
-                        <div style="margin-top: 20px;" ng-show="vm.getAvailableRemotenessAreas().length > 0">
-                            <h5>Remoteness</h5>
+            <div style="margin-top: 20px;" ng-show="vm.getAvailableRemotenessAreas().length > 0">
+              <h5>Remoteness</h5>
 
-                            <p class="text-muted">Only show locations with this
-                                remoteness level.</p>
-                            <div ng-repeat="remotenessArea in vm.getAvailableRemotenessAreas()">
-                                <label>
-                                    <input type="checkbox"
-                                           ng-model="vm.remotenessAreas[remotenessArea]"
-                                           ng-change="vm.selectedLocationsChanged()">
-                                    {{ remotenessArea }}
-                                </label>
-                            </div>
-                        </div>
+              <p class="text-muted">Only show locations with this remoteness level.</p>
+              <div ng-repeat="remotenessArea in vm.getAvailableRemotenessAreas()">
+                <label>
+                  <input type="checkbox" ng-model="vm.remotenessAreas[remotenessArea]" ng-change="vm.selectedLocationsChanged()"> {{ remotenessArea }}
+                </label>
+              </div>
+            </div>
 
+          </div>
+
+
+          <div ng-show="vm.vis.locations.length > 0">
+            <h2><i class="fa fa-list-alt"></i> Topics of interest</h2>
+
+            <div class="form-group">
+
+              <label>Choose topic(s) of interest
+                <small class="text-muted">Required</small>
+              </label>
+
+              <ui-select multiple theme="bootstrap" ng-model="vm.vis.topics" ng-disabled="disabled" reset-search-input="true" style="width: 100%;" on-select="vm.selectedTopicsChanged($item, $model)" on-remove="vm.selectedTopicsChanged($item, $model)">
+                <ui-select-match placeholder="Select 1 or More Topics">
+                  <span class="text-capitalize">{{ $item.description }}</span>
+                </ui-select-match>
+                <ui-select-choices repeat="attribute in vm.attributes | propsFilter: {description: $select.search} | orderBy: 'description'">
+                  <div ng-bind-html="attribute.description | highlight: $select.search"></div>
+                </ui-select-choices>
+              </ui-select>
+
+              <label>
+                <input ng-model="vm.propTopicsOnly" ng-change="vm.showPropTopicsOnly(vm.propTopicsOnly)" type="checkbox"><small>Show only proportional variables</small>
+              </label>
+
+              <p class="text-muted" ng-show="vm.vis.topics.length" style="margin-top:10px;">
+                <small>
+                  <i class="fa fa-info-circle"></i>
+                  Click in the box again to add another topic of interest.
+                </small>
+              </p>
+            </div>
+            <!-- topic choice -->
+
+
+            <div>
+              <h2><i class="fa fa-map-marker"></i> Map Visualisation</h2>
+
+              <p class="text-muted" ng-hide="vm.vis.topics.length">
+                Select at least one topic of interest to view a map visualisation.
+              </p>
+
+              <div ng-show="vm.vis.topics.length">
+                <div uib-accordion close-others="false">
+                  <div uib-accordion-group is-open="vm.visStatus.choroplethVisible" ng-click="vm.visStatus.choroplethVisible=true">
+                    <div uib-accordion-heading>
+                      <h3>Choropleth</h3>
+                    </div>
+                    <ui-select theme="bootstrap" ng-model="vm.vis.choropleth.topic" ng-disabled="disabled" reset-search-input="true" style="width: 100%;" on-select="vm.selectedRegionTopicChanged($item, $model)">
+                      <ui-select-match placeholder="Select topics of interest(s)">
+                        <span class="text-capitalize">{{$select.selected.description }}</span>
+                      </ui-select-match>
+                      <ui-select-choices repeat="attribute in vm.vis.topics | propsFilter: {description: $select.search}">
+                        <div ng-bind-html="attribute.description | highlight: $select.search"></div>
+                      </ui-select-choices>
+                    </ui-select>
+                  </div>
+
+                  <div uib-accordion-group is-open="vm.visStatus.bubbleVisible">
+                    <div uib-accordion-heading>
+                      <h3>Bubble <small class="text-muted">Optional</small>
+                      <i class="pull-right glyphicon" ng-class="{'glyphicon-plus': !vm.visStatus.bubbleVisible, 'glyphicon-minus': vm.visStatus.bubbleVisible}"></i>
+                      </h3>
                     </div>
 
-
-                    <div ng-show="vm.vis.locations.length > 0">
-                        <h2><i class="fa fa-list-alt"></i> Topics of interest</h2>
-
-                        <div class="form-group">
-
-                            <label>Choose topic(s) of interest
-                                <small class="text-muted">Required</small>
-                            </label>
-
-                            <ui-select multiple
-                                       theme="bootstrap"
-                                       ng-model="vm.vis.topics"
-                                       ng-disabled="disabled"
-                                       reset-search-input="true"
-                                       style="width: 100%;"
-                                       on-select="vm.selectedTopicsChanged($item, $model)"
-                                       on-remove="vm.selectedTopicsChanged($item, $model)">
-                                <ui-select-match placeholder="Select 1 or More Topics">
-                                    <span class="text-capitalize">{{ $item.description }}</span>
-                                </ui-select-match>
-                                <ui-select-choices repeat="attribute in vm.attributes | propsFilter: {description: $select.search} | orderBy: 'description'">
-                                    <div ng-bind-html="attribute.description | highlight: $select.search"></div>
-                                </ui-select-choices>
-                            </ui-select>
-
-                            <label>
-                                <input
-                                    ng-model="vm.propTopicsOnly"
-                                    ng-change="vm.showPropTopicsOnly(vm.propTopicsOnly)"
-                                    type="checkbox"><small>Show only proportional variables</small>
-                            </label>
-
-                            <p class="text-muted" ng-show="vm.vis.topics.length" style="margin-top:10px;">
-                                <small>
-                                    <i class="fa fa-info-circle"></i>
-                                    Click in the box again to add another topic of interest.
-                                </small>
-                            </p>
-                        </div> <!-- topic choice -->
-
-
-                        <div>
-                            <h2><i class="fa fa-map-marker"></i> Map Visualisation</h2>
-
-                            <p class="text-muted" ng-hide="vm.vis.topics.length">
-                                Select at least one topic of interest to view a map visualisation.
-                            </p>
-
-                            <div ng-show="vm.vis.topics.length">
-                                <accordion close-others="false">
-                                    <accordion-group is-open="vm.visStatus.choroplethVisible" ng-click="vm.visStatus.choroplethVisible=true">
-                                        <accordion-heading>
-                                            <h3>Choropleth</h3>
-                                        </accordion-heading>
-                                        <ui-select theme="bootstrap"
-                                                   ng-model="vm.vis.choropleth.topic"
-                                                   ng-disabled="disabled"
-                                                   reset-search-input="true"
-                                                   style="width: 100%;"
-                                                   on-select="vm.selectedRegionTopicChanged($item, $model)">
-                                            <ui-select-match placeholder="Select topics of interest(s)">
-                                                <span class="text-capitalize">{{$select.selected.description }}</span>
-                                            </ui-select-match>
-                                            <ui-select-choices
-                                                    repeat="attribute in vm.vis.topics | propsFilter: {description: $select.search}">
-                                                <div ng-bind-html="attribute.description | highlight: $select.search"></div>
-                                            </ui-select-choices>
-                                        </ui-select>
-                                    </accordion-group>
-
-                                    <accordion-group is-open="vm.visStatus.bubbleVisible">
-                                        <accordion-heading>
-                                            <h3>Bubble <small class="text-muted">Optional</small>
-                                            <i class="pull-right glyphicon" ng-class="{'glyphicon-plus': !vm.visStatus.bubbleVisible, 'glyphicon-minus': vm.visStatus.bubbleVisible}"></i>
-                                            </h3>
-                                        </accordion-heading>
-
-                                        <ui-select theme="bootstrap"
-                                                   ng-model="vm.vis.bubble.topic"
-                                                   ng-disabled="disabled"
-                                                   reset-search-input="true"
-                                                   style="width: 100%;"
-                                                   on-select="vm.selectedBubbleTopicChanged($item, $model)">
-                                            <ui-select-match placeholder="Select topics of interest(s)">
-                                                <span class="text-capitalize">{{$select.selected.description }}</span>
-                                            </ui-select-match>
-                                            <ui-select-choices
-                                                    repeat="attribute in vm.vis.topics | propsFilter: {description: $select.search}">
-                                                <div ng-bind-html="attribute.description | highlight: $select.search"></div>
-                                            </ui-select-choices>
-                                        </ui-select>
-                                </accordion>
-                            </div>
-
-                        </div> <!-- Map Visualisation -->
-
-
-                        <div>
-                            <h2><i class="fa fa-area-chart"></i> Plots</h2>
-
-                            <div ng-hide="vm.vis.locations.length && vm.vis.topics.length">
-                                <p class="text-muted">
-                                You can generate scatter plots and linear regression plots only <b>after</b> you have selected locations and topics!
-                                </p>
-                            </div>
-
-                            <accordion ng-show="vm.vis.locations.length && vm.vis.topics.length">
-                                <!-- scatter plot -->
-                                <accordion-group>
-                                    <accordion-heading>
-                                        <h3>Scatter plot</h3>
-                                    </accordion-heading>
-                                    <div ng-hide="(vm.vis.regions.length > 1) && (vm.vis.topics.length > 1)">
-                                        <p class="text-muted">
-                                            To generate a scatter plot:
-                                        </p>
-                                        <ol>
-                                            <li class="text-muted">Select at least two locations.</li>
-                                            <li class="text-muted">Select at least two topics of interest.</li>
-                                        </ol>
-                                    </div>
-                                    <div ng-show="(vm.vis.regions.length > 1) && (vm.vis.topics.length > 1)">
-                                        <div class="form-group">
-                                        <label>X-axis</label>
-                                        <ui-select theme="bootstrap"
-                                                   ng-model="vm.scatterPlot.xaxis"
-                                                   ng-disabled="disabled"
-                                                   reset-search-input="true"
-                                                   style="width: 100%;"
-                                                   on-select="vm.selectedScatterXChanged()">
-                                            <ui-select-match placeholder="Select X-axis">
-                                                <span class="text-capitalize">{{$select.selected.description}}</span>
-                                            </ui-select-match>
-                                            <ui-select-choices
-                                                      repeat="attribute in vm.vis.topics | propsFilter: {description: $select.search}">
-                                                <div ng-bind-html="attribute.description | highlight: $select.search"></div>
-                                            </ui-select-choices>
-                                        </ui-select>
-                                        </div>
-
-                                        <div class="form-group">
-                                        <label>Y-axis</label>
-                                        <ui-select theme="bootstrap"
-                                                   ng-model="vm.scatterPlot.yaxis"
-                                                   ng-disabled="disabled"
-                                                   reset-search-input="true"
-                                                   style="width: 100%;"
-                                                   on-select="vm.selectedScatterYChanged()">
-                                            <ui-select-match placeholder="Select Y-axis">
-                                                <span class="text-capitalize">{{$select.selected.description}}</span>
-                                            </ui-select-match>
-                                            <ui-select-choices
-                                                      repeat="attribute in vm.vis.topics | propsFilter: {description: $select.search}">
-                                                <div ng-bind-html="attribute.description | highlight: $select.search"></div>
-                                            </ui-select-choices>
-                                        </ui-select>
-                                        </div>
-
-                                        <label>
-                                            <input type="checkbox"
-                                                   ng-change="vm.generateScatterPlot()"
-                                                   ng-model="vm.scatterPlot.useRemoteness">
-                                            Use Remoteness
-                                        </label>
-                                        <label>
-                                            <input type="checkbox"
-                                                   ng-change="vm.generateScatterPlot()"
-                                                   ng-model="vm.scatterPlot.labelLocations">
-                                            Label Locations
-                                        </label>
-
-                                        <div ng-show="vm.scatterPlot.results">
-											<div>
-													<nvd3 id="scatterGraph" options="vm.scatterOptions" data="vm.scatterPlot.results"></nvd3>
-											</div>
-											<button ng-click="vm.requestScatterDownload('pdf')">Request PDF</button>
-											<button ng-click="vm.requestScatterDownload('png')">Request PNG</button>
-
-											<script type="text/ng-template" id="scatter.html">
-												<div class="modal-header">
-													<h3 class="modal-title">Scatter Plot</h3>
-												</div>
-												<div class="modal-body">
-													<div>
-														<label>
-															<input type="checkbox"
-																   ng-change="vm.generateScatterPlot()"
-																   ng-model="vm.scatterPlot.useRemoteness">
-															Use Remoteness
-														</label>
-														<label>
-															<input type="checkbox"
-																   ng-change="vm.generateScatterPlot()"
-																   ng-model="vm.scatterPlot.labelLocations">
-															Label Locations
-														</label>
-													</div>
-													<div>
-														<nvd3 id="scatterGraphModal" options="modalCfg" data="vm.scatterPlot.results"></nvd3>
-													</div>
-													<button ng-click="vm.requestScatterDownload('pdf')">Request PDF</button>
-													<button ng-click="vm.requestScatterDownload('png')">Request PNG</button>
-												</div>
-												<div class="modal-footer">
-													<button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-												</div>
-											</script>
-
-											<button type="button" class="btn btn-default" ng-click="openScatterModal()">Enlarge</button>
-
-										</div>
-
-                                    </div>
-                                </accordion-group>
-
-
-                                <accordion-group>
-                                    <accordion-heading>
-                                        <h3>Linear Regression</h3>
-                                    </accordion-heading>
-                                    <div ng-hide="(vm.vis.regions.length > 1) && (vm.vis.topics.length > 1)">
-                                        <p class="text-muted">
-                                            To perform a linear regression:
-                                        </p>
-                                        <ol>
-                                            <li class="text-muted">Select at least two locations.</li>
-                                            <li class="text-muted">Select at least two topics of interest.</li>
-                                        </ol>
-                                    </div>
-
-                                    <div ng-show="(vm.vis.regions.length > 1) && (vm.vis.topics.length > 1)">
-
-                                        <div class="form-group">
-                                            <label>Choose a dependent variable
-                                                <small class="text-muted">Optional</small>
-                                            </label>
-
-                                            <ui-select theme="bootstrap"
-                                                       ng-model="vm.linearRegression.dependent"
-                                                       ng-disabled="disabled"
-                                                       reset-search-input="true"
-                                                       style="width: 100%;"
-                                                       on-select="vm.selectedDependentChanged($item, $model)">
-                                                <ui-select-match placeholder="Select dependent variable">
-                                                    <span class="text-capitalize">{{$select.selected.description }}</span>
-                                                </ui-select-match>
-                                                <ui-select-choices
-                                                        repeat="attribute in vm.vis.topics | propsFilter: {description: $select.search}">
-                                                    <div ng-bind-html="attribute.description | highlight: $select.search"></div>
-                                                </ui-select-choices>
-                                            </ui-select>
-
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>
-                                                Choose independent variables
-                                                <small class="text-muted">Optional</small>
-                                            </label>
-                                            <ui-select multiple
-                                                       theme="bootstrap"
-                                                       ng-model="vm.linearRegression.independents"
-                                                       ng-disabled="disabled"
-                                                       reset-search-input="true"
-                                                       style="width: 100%;"
-                                                       on-select="vm.selectedIndependentsChanged($item, $model)"
-                                                       on-remove="vm.selectedIndependentsChanged($item, $model)">
-                                                <ui-select-match placeholder="Select independent variables">
-                                                    <span class="text-capitalize">{{ $item.description }}</span>
-                                                </ui-select-match>
-                                                <ui-select-choices repeat="attribute in vm.vis.topics | propsFilter: {description: $select.search}">
-                                                    <div ng-bind-html="attribute.description | highlight: $select.search"></div>
-                                                </ui-select-choices>
-                                            </ui-select>
-                                        </div>
-
-                                        <div ng-show="vm.linearRegression.results">
-											<div ng-show="vm.linearRegression.sendData.indepVars.length==1">
-													<nvd3 id="RegressionGraph" options="vm.regressionOptions" data="vm.linearRegression.resultsData"></nvd3>
-											</div>
-											<div ng-show="vm.linearRegression.sendData.indepVars.length>1">
-													<nvd3 id="RegressionGraph" options="vm.barRegressionOptions" data="vm.linearRegression.resultsData"></nvd3>
-											</div>
-
-                                            <dl>
-                                                <dt>Adjusted R&sup2;</dt>
-                                                <dd>
-                                                    {{ vm.linearRegression.results.adj_rsquared }}
-                                                </dd>
-
-                                                <dt>p</dt>
-                                                <dd>
-                                                    {{ vm.linearRegression.results.p }}
-                                                </dd>
-
-                                                <dt>Equation</dt>
-                                                <dd>{{ vm.linearRegression.results.equation }}</dd>
-                                            </dl>
-                                            <p>
-												<button ng-click="vm.requestLinearRegressionDownload('pdf')">Request PDF</button>
-												<button ng-click="vm.requestLinearRegressionDownload('png')">Request PNG</button>
-
-												<script type="text/ng-template" id="regression.html">
-													<div class="modal-header">
-														<h3 class="modal-title">Linear Regression</h3>
-													</div>
-													<div class="modal-body">
-														<div>
-															<nvd3 id="RegressionGraphModal" options="modalCfg" data="vm.linearRegression.resultsData"></nvd3>
-														</div>
-														<button ng-click="vm.requestScatterDownload('pdf')">Request PDF</button>
-														<button ng-click="vm.requestScatterDownload('png')">Request PNG</button>
-													</div>
-													<div class="modal-footer">
-														<button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-													</div>
-												</script>
-
-												<button type="button" class="btn btn-default" ng-click="openRegModal()">Enlarge</button>
-											</p>
-                                        </div>
-                                    </div>
-                                </accordion-group>
-                            </accordion>
-                        </div> <!-- Plots -->
-
-                    </div>
-
+                    <ui-select theme="bootstrap" ng-model="vm.vis.bubble.topic" ng-disabled="disabled" reset-search-input="true" style="width: 100%;" on-select="vm.selectedBubbleTopicChanged($item, $model)">
+                      <ui-select-match placeholder="Select topics of interest(s)">
+                        <span class="text-capitalize">{{$select.selected.description }}</span>
+                      </ui-select-match>
+                      <ui-select-choices repeat="attribute in vm.vis.topics | propsFilter: {description: $select.search}">
+                        <div ng-bind-html="attribute.description | highlight: $select.search"></div>
+                      </ui-select-choices>
+                    </ui-select>
+                  </div>
                 </div>
-
+              </div>
 
             </div>
+            <!-- Map Visualisation -->
 
-            <div id="mapColumn" ng-class="['col-md-6','+fullheight', { 'col-md-9': (!vm.dataColumnVisible) }]">
-							<region-map region-type="vm.regionType" regions="vm.vis.regions"
-								choropleth-topic="vm.vis.choropleth.topic"
-								choropleth-visible="vm.visStatus.choroplethVisible"
-								bubbles-topic="vm.vis.bubble.topic"
-								bubbles-visible="vm.visStatus.bubbleVisible"
-								watch-for-resize="vm.dataColumnVisible"></region-map>
 
-              <div id="map-toggle"
-								title="Show data column"
-								ng-click="vm.dataColumnVisible = true"
-								ng-hide="vm.dataColumnVisible">
+            <div>
+              <h2><i class="fa fa-area-chart"></i> Plots</h2>
 
-							</div>
-            </div>
-
-            <div id="dataColumn" class="col-md-3 +fullheight" ng-show="vm.dataColumnVisible">
-							<div style="position: absolute; right: 5px; cursor: pointer"
-								title="Hide data column"
-								ng-click="vm.dataColumnVisible = false">
-								&#x1f5d9;
-							</div>
-
-                <p class="text-muted" style="margin-top:40px" ng-hide="vm.isDataSelected()">
-                    Select a place and a topic to see data.
+              <div ng-hide="vm.vis.locations.length && vm.vis.topics.length">
+                <p class="text-muted">
+                  You can generate scatter plots and linear regression plots only <b>after</b> you have selected locations and topics!
                 </p>
+              </div>
 
-                <div ng-show="vm.isDataSelected()">
-                    <h2 style="margin-top: 30px;">Data</h2>
-
-                    <div style="overflow-x: scroll">
-                        <table class="table table-bordered">
-                            <tr ng-repeat="row in vm.tableData">
-                                <td ng-repeat="cell in row track by $index">
-                                    {{ cell }}
-                                </td>
-                            </tr>
-                        </table>
+              <div uib-accordion ng-show="vm.vis.locations.length && vm.vis.topics.length">
+                <!-- scatter plot -->
+                <div uib-accordion-group>
+                  <div uib-accordion-heading>
+                    <h3>Scatter plot</h3>
+                  </div>
+                  <div ng-hide="(vm.vis.regions.length > 1) && (vm.vis.topics.length > 1)">
+                    <p class="text-muted">
+                      To generate a scatter plot:
+                    </p>
+                    <ol>
+                      <li class="text-muted">Select at least two locations.</li>
+                      <li class="text-muted">Select at least two topics of interest.</li>
+                    </ol>
+                  </div>
+                  <div ng-show="(vm.vis.regions.length > 1) && (vm.vis.topics.length > 1)">
+                    <div class="form-group">
+                      <label>X-axis</label>
+                      <ui-select theme="bootstrap" ng-model="vm.scatterPlot.xaxis" ng-disabled="disabled" reset-search-input="true" style="width: 100%;" on-select="vm.selectedScatterXChanged()">
+                        <ui-select-match placeholder="Select X-axis">
+                          <span class="text-capitalize">{{$select.selected.description}}</span>
+                        </ui-select-match>
+                        <ui-select-choices repeat="attribute in vm.vis.topics | propsFilter: {description: $select.search}">
+                          <div ng-bind-html="attribute.description | highlight: $select.search"></div>
+                        </ui-select-choices>
+                      </ui-select>
                     </div>
 
-                    <!--<h3>Bar Chart</h3>-->
-                    <div ng-show="vm.chartData.length">
-                        <googlechart chartobj="vm.chartobj" data="vm.chartData" style="margin-top:20px;"></googlechart>
+                    <div class="form-group">
+                      <label>Y-axis</label>
+                      <ui-select theme="bootstrap" ng-model="vm.scatterPlot.yaxis" ng-disabled="disabled" reset-search-input="true" style="width: 100%;" on-select="vm.selectedScatterYChanged()">
+                        <ui-select-match placeholder="Select Y-axis">
+                          <span class="text-capitalize">{{$select.selected.description}}</span>
+                        </ui-select-match>
+                        <ui-select-choices repeat="attribute in vm.vis.topics | propsFilter: {description: $select.search}">
+                          <div ng-bind-html="attribute.description | highlight: $select.search"></div>
+                        </ui-select-choices>
+                      </ui-select>
                     </div>
 
+                    <label>
+                      <input type="checkbox" ng-change="vm.generateScatterPlot()" ng-model="vm.scatterPlot.useRemoteness"> Use Remoteness
+                    </label>
+                    <label>
+                      <input type="checkbox" ng-change="vm.generateScatterPlot()" ng-model="vm.scatterPlot.labelLocations"> Label Locations
+                    </label>
+
+                    <div ng-show="vm.scatterPlot.results">
+                      <div>
+                        <nvd3 id="scatterGraph" options="vm.scatterOptions" data="vm.scatterPlot.results"></nvd3>
+                      </div>
+                      <button ng-click="vm.requestScatterDownload('pdf')">Request PDF</button>
+                      <button ng-click="vm.requestScatterDownload('png')">Request PNG</button>
+
+                      <script type="text/ng-template" id="scatter.html">
+                        <div class="modal-header">
+                          <h3 class="modal-title">Scatter Plot</h3>
+                        </div>
+                        <div class="modal-body">
+                          <div>
+                            <label>
+                              <input type="checkbox" ng-change="vm.generateScatterPlot()" ng-model="vm.scatterPlot.useRemoteness"> Use Remoteness
+                            </label>
+                            <label>
+                              <input type="checkbox" ng-change="vm.generateScatterPlot()" ng-model="vm.scatterPlot.labelLocations"> Label Locations
+                            </label>
+                          </div>
+                          <div>
+                            <nvd3 id="scatterGraphModal" options="modalCfg" data="vm.scatterPlot.results"></nvd3>
+                          </div>
+                          <button ng-click="vm.requestScatterDownload('pdf')">Request PDF</button>
+                          <button ng-click="vm.requestScatterDownload('png')">Request PNG</button>
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+                        </div>
+                      </script>
+
+                      <button type="button" class="btn btn-default" ng-click="openScatterModal()">Enlarge</button>
+
+                    </div>
+
+                  </div>
                 </div>
+
+
+                <div uib-accordion-group>
+                  <div uib-accordion-heading>
+                    <h3>Linear Regression</h3>
+                  </div>
+                  <div ng-hide="(vm.vis.regions.length > 1) && (vm.vis.topics.length > 1)">
+                    <p class="text-muted">
+                      To perform a linear regression:
+                    </p>
+                    <ol>
+                      <li class="text-muted">Select at least two locations.</li>
+                      <li class="text-muted">Select at least two topics of interest.</li>
+                    </ol>
+                  </div>
+
+                  <div ng-show="(vm.vis.regions.length > 1) && (vm.vis.topics.length > 1)">
+
+                    <div class="form-group">
+                      <label>Choose a dependent variable
+                        <small class="text-muted">Optional</small>
+                      </label>
+
+                      <ui-select theme="bootstrap" ng-model="vm.linearRegression.dependent" ng-disabled="disabled" reset-search-input="true" style="width: 100%;" on-select="vm.selectedDependentChanged($item, $model)">
+                        <ui-select-match placeholder="Select dependent variable">
+                          <span class="text-capitalize">{{$select.selected.description }}</span>
+                        </ui-select-match>
+                        <ui-select-choices repeat="attribute in vm.vis.topics | propsFilter: {description: $select.search}">
+                          <div ng-bind-html="attribute.description | highlight: $select.search"></div>
+                        </ui-select-choices>
+                      </ui-select>
+
+                    </div>
+
+                    <div class="form-group">
+                      <label>
+                        Choose independent variables
+                        <small class="text-muted">Optional</small>
+                      </label>
+                      <ui-select multiple theme="bootstrap" ng-model="vm.linearRegression.independents" ng-disabled="disabled" reset-search-input="true" style="width: 100%;" on-select="vm.selectedIndependentsChanged($item, $model)" on-remove="vm.selectedIndependentsChanged($item, $model)">
+                        <ui-select-match placeholder="Select independent variables">
+                          <span class="text-capitalize">{{ $item.description }}</span>
+                        </ui-select-match>
+                        <ui-select-choices repeat="attribute in vm.vis.topics | propsFilter: {description: $select.search}">
+                          <div ng-bind-html="attribute.description | highlight: $select.search"></div>
+                        </ui-select-choices>
+                      </ui-select>
+                    </div>
+
+                    <div ng-show="vm.linearRegression.results">
+                      <div ng-show="vm.linearRegression.sendData.indepVars.length==1">
+                        <nvd3 id="RegressionGraph" options="vm.regressionOptions" data="vm.linearRegression.resultsData"></nvd3>
+                      </div>
+                      <div ng-show="vm.linearRegression.sendData.indepVars.length>1">
+                        <nvd3 id="RegressionGraph" options="vm.barRegressionOptions" data="vm.linearRegression.resultsData"></nvd3>
+                      </div>
+
+                      <dl>
+                        <dt>Adjusted R&sup2;</dt>
+                        <dd>
+                          {{ vm.linearRegression.results.adj_rsquared }}
+                        </dd>
+
+                        <dt>p</dt>
+                        <dd>
+                          {{ vm.linearRegression.results.p }}
+                        </dd>
+
+                        <dt>Equation</dt>
+                        <dd>{{ vm.linearRegression.results.equation }}</dd>
+                      </dl>
+                      <p>
+                        <button ng-click="vm.requestLinearRegressionDownload('pdf')">Request PDF</button>
+                        <button ng-click="vm.requestLinearRegressionDownload('png')">Request PNG</button>
+
+                        <script type="text/ng-template" id="regression.html">
+                          <div class="modal-header">
+                            <h3 class="modal-title">Linear Regression</h3>
+                          </div>
+                          <div class="modal-body">
+                            <div>
+                              <nvd3 id="RegressionGraphModal" options="modalCfg" data="vm.linearRegression.resultsData"></nvd3>
+                            </div>
+                            <button ng-click="vm.requestScatterDownload('pdf')">Request PDF</button>
+                            <button ng-click="vm.requestScatterDownload('png')">Request PNG</button>
+                          </div>
+                          <div class="modal-footer">
+                            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+                          </div>
+                        </script>
+
+                        <button type="button" class="btn btn-default" ng-click="openRegModal()">Enlarge</button>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+            <!-- Plots -->
+
+          </div>
+
         </div>
+
+
+      </div>
+
+      <div id="mapColumn" ng-class="['col-md-6','+fullheight', { 'col-md-9': (!vm.dataColumnVisible) }]">
+        <region-map region-type="vm.regionType" regions="vm.vis.regions" choropleth-topic="vm.vis.choropleth.topic" choropleth-visible="vm.visStatus.choroplethVisible" bubbles-topic="vm.vis.bubble.topic" bubbles-visible="vm.visStatus.bubbleVisible" watch-for-resize="vm.dataColumnVisible"></region-map>
+
+        <div id="map-toggle" title="Show data column" ng-click="vm.dataColumnVisible = true" ng-hide="vm.dataColumnVisible">
+
+        </div>
+      </div>
+
+      <div id="dataColumn" class="col-md-3 +fullheight" ng-show="vm.dataColumnVisible">
+        <div style="position: absolute; right: 5px; cursor: pointer" title="Hide data column" ng-click="vm.dataColumnVisible = false">
+          &#x1f5d9;
+        </div>
+
+        <p class="text-muted" style="margin-top:40px" ng-hide="vm.isDataSelected()">
+          Select a place and a topic to see data.
+        </p>
+
+        <div ng-show="vm.isDataSelected()">
+          <h2 style="margin-top: 30px;">Data</h2>
+
+          <div style="overflow-x: scroll">
+            <table class="table table-bordered">
+              <tr ng-repeat="row in vm.tableData">
+                <td ng-repeat="cell in row track by $index">
+                  {{ cell }}
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <!--<h3>Bar Chart</h3>-->
+          <div ng-show="vm.chartData.length">
+            <googlechart chartobj="vm.chartobj" data="vm.chartData" style="margin-top:20px;"></googlechart>
+          </div>
+
+        </div>
+      </div>
     </div>
+  </div>
 </div>

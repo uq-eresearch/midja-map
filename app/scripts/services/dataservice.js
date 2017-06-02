@@ -1,5 +1,9 @@
 'use strict';
 
+import * as _ from 'lodash-es'
+const _p = _.partial.placeholder
+import * as ss from 'simple-statistics'
+
 /**
  * @ngdoc service
  * @name midjaApp.dataService
@@ -18,7 +22,7 @@ angular.module('midjaApp')
         return _.flow(
           _.property('code'),
           removeNonNumericCharacters,
-          _.partial(_.startsWith, _,
+          _.partial(_.startsWith, _p,
             removeNonNumericCharacters(sourceRegion.code)));
       }
       return {
@@ -46,7 +50,7 @@ angular.module('midjaApp')
     }());
 
     // Map child back to parent
-    var parentRegionTypes = _(subregionTests)
+    var parentRegionTypes = _.chain(subregionTests)
       .map(function(fMap, parentType) {
         return _.map(
           fMap,
@@ -88,7 +92,9 @@ angular.module('midjaApp')
         .dropWhile(_.negate(_.partial(_.isEqual, region.type)))
         .value();
       if (_.isEmpty(transitions)) {
-        throw "Cannot convert " + region.type + " to " + targetRegionType;
+        throw Error(
+          "Cannot convert " + region.type +
+          " to " + targetRegionType);
       } else if (_.size(transitions) == 1) {
         return [region];
       } else {
@@ -96,13 +102,14 @@ angular.module('midjaApp')
         var testF =
           subregionTests[region.type][immediateTargetRegionType](region);
         return getRegions(immediateTargetRegionType)
-          .then(_.partial(_.filter, _, testF))
+          .then(_.partial(_.filter, _p, testF))
           .then(function(subregions) {
             return $q.all(
               _.map(subregions,
                 _.partial(getSubregions, targetRegionType))
             ).then(_.flatten);
           })
+          .catch(console.log)
       }
     }
 
@@ -125,7 +132,7 @@ angular.module('midjaApp')
       }
       return _.flow(
         toLowerCase,
-        _.partial(_.startsWith, _, toLowerCase(prefix)));
+        _.partial(_.startsWith, _p, toLowerCase(prefix)));
     }
 
     function getRegionsStartingWith(regionType, prefix) {
@@ -167,7 +174,7 @@ angular.module('midjaApp')
           });
         default:
           return getAttribute(regionType, 'region_name')
-            .then(_.partial(_.map, _, locBuilder));
+            .then(_.partial(_.map, _p, locBuilder));
       }
     }
 
@@ -212,7 +219,7 @@ angular.module('midjaApp')
             });
           } else {
             return $http
-              .get('/data/' + regionType + '/' + attribute)
+              .get('/data/' + regionType + '/' + attribute + '.json')
               .then(_.property('data'));
           }
         });
@@ -220,7 +227,7 @@ angular.module('midjaApp')
 
     function getMetadataFromRemote(regionType) {
       return $http
-        .get('/data/' + regionType + '/')
+        .get('/data/' + regionType + '/index.json')
         .then(_.property('data'));
     }
 

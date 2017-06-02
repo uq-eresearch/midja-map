@@ -3,7 +3,7 @@
 describe('Service: dataService', function () {
 
     // load the service's module
-    beforeEach(module('midjaApp'));
+    beforeEach(angular.mock.module('midjaApp'));
 
     // instantiate service
     var dataService;

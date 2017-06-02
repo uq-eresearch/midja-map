@@ -3,7 +3,7 @@
 describe('Directive: googlechart', function() {
 
   // load the directive's module
-  beforeEach(module('midjaApp'));
+  beforeEach(angular.mock.module('midjaApp'));
 
   var element,
     scope;
