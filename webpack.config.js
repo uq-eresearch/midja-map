@@ -14,7 +14,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '',
-    filename: '[name]-[chunkhash].js'
+    filename: 'assets/[name]-[chunkhash].js'
   },
   module: {
     rules: [
@@ -39,14 +39,18 @@ module.exports = {
         use: ExtractTextWebpackPlugin.extract({
           fallback: 'style-loader',
           //resolve-url-loader may be chained before sass-loader if necessary
-          use: ['css-loader', 'sass-loader']
+          use: ['css-loader', 'sass-loader'],
+          // Somewhat terrible hack to allow CSS to go in assets/
+          publicPath: '../'
         })
       },
       {
         test: /\.css$/,
         use: ExtractTextWebpackPlugin.extract({
           fallback: 'style-loader',
-          use: 'css-loader'
+          use: 'css-loader',
+          // Somewhat terrible hack to allow CSS to go in assets/
+          publicPath: '../'
         })
       },
       {
@@ -58,11 +62,11 @@ module.exports = {
       },
       {
         test: /\.(png|gif)$/,
-        loader: 'file-loader'
+        loader: 'file-loader?name=./assets/[name]-[sha512:hash:base32:16].[ext]'
       },
       {
         test: /\.(woff2?|ttf|eot|svg)$/,
-        loader: 'file-loader'
+        loader: 'file-loader?name=./assets/[name]-[sha512:hash:base32:16].[ext]'
       }
     ]
   },
@@ -93,9 +97,12 @@ module.exports = {
       { from: 'data/public', to: 'data' },
       { from: 'data/private', to: 'data' }
     ]),
-    new ExtractTextWebpackPlugin('style-[contenthash].css'),
+    new ExtractTextWebpackPlugin({
+      filename: 'assets/style-[contenthash].css'
+    }),
     new FaviconsWebpackPlugin({
       logo: './app/images/noun_888659.png',
+      prefix: 'assets/icons-[hash]/',
       inject: true,
       icons: {
         android: false,
@@ -114,6 +121,8 @@ module.exports = {
       template: 'app/index.ejs',
       filename: 'index.html'
     }),
-    new Visualizer()
+    new Visualizer({
+      filename: 'webpack-stats.html'
+    })
   ]
 };
