@@ -122,9 +122,6 @@ module.exports = {
       template: 'app/index.ejs',
       filename: 'index.html'
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      mangle: false
-    }),
     new Visualizer({
       filename: 'webpack-stats.html'
     })
