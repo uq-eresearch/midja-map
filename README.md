@@ -1,5 +1,6 @@
 # midja-map
 
+[![Licence](https://img.shields.io/github/license/uq-eresearch/midja-map.svg)](https://github.com/uq-eresearch/midja-map/blob/master/COPYING)
 [![Build Status](https://travis-ci.org/uq-eresearch/midja-map.svg?branch=master)](https://travis-ci.org/uq-eresearch/midja-map)
 
 ## Getting it Running
