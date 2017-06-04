@@ -1,6 +1,11 @@
 {
-  "name": "midja",
-  "version": "0.0.0",
+  "name": "midja-map",
+  "version": "0.1.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uq-eresearch/midja-map.git"
+  },
   "dependencies": {},
   "devDependencies": {
     "angular-animate": "^1.6.4",
