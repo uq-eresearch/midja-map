@@ -1,6 +1,6 @@
 {
-  "name": "midja",
-  "version": "0.0.0",
+  "name": "midja-map",
+  "version": "0.1.0",
   "dependencies": {
     "abbrev": {
       "version": "1.1.0",
@@ -1792,6 +1792,12 @@
       "resolved": "https://registry.npmjs.org/encodeurl/-/encodeurl-1.0.1.tgz",
       "dev": true
     },
+    "encoding": {
+      "version": "0.1.12",
+      "from": "encoding@>=0.1.11 <0.2.0",
+      "resolved": "https://registry.npmjs.org/encoding/-/encoding-0.1.12.tgz",
+      "dev": true
+    },
     "engine.io": {
       "version": "1.8.3",
       "from": "engine.io@1.8.3",
@@ -2306,7 +2312,7 @@
     },
     "fs-extra": {
       "version": "0.26.7",
-      "from": "fs-extra@>=0.26.4 <0.27.0",
+      "from": "https://registry.npmjs.org/fs-extra/-/fs-extra-0.26.7.tgz",
       "resolved": "https://registry.npmjs.org/fs-extra/-/fs-extra-0.26.7.tgz",
       "dev": true
     },
@@ -3086,6 +3092,20 @@
         }
       }
     },
+    "isomorphic-fetch": {
+      "version": "2.2.1",
+      "from": "isomorphic-fetch@2.2.1",
+      "resolved": "https://registry.npmjs.org/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz",
+      "dev": true,
+      "dependencies": {
+        "whatwg-fetch": {
+          "version": "2.0.3",
+          "from": "whatwg-fetch@>=0.10.0",
+          "resolved": "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-2.0.3.tgz",
+          "dev": true
+        }
+      }
+    },
     "isstream": {
       "version": "0.1.2",
       "from": "isstream@>=0.1.2 <0.2.0",
@@ -3742,6 +3762,12 @@
       "version": "0.1.17",
       "from": "node-dir@>=0.1.10 <0.2.0",
       "resolved": "https://registry.npmjs.org/node-dir/-/node-dir-0.1.17.tgz",
+      "dev": true
+    },
+    "node-fetch": {
+      "version": "1.7.1",
+      "from": "node-fetch@>=1.0.1 <2.0.0",
+      "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-1.7.1.tgz",
       "dev": true
     },
     "node-gyp": {
@@ -5102,6 +5128,20 @@
           "version": "0.4.4",
           "from": "source-map@>=0.4.2 <0.5.0",
           "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.4.4.tgz",
+          "dev": true
+        }
+      }
+    },
+    "sdmx-rest": {
+      "version": "2.5.1",
+      "from": "sdmx-rest@latest",
+      "resolved": "https://registry.npmjs.org/sdmx-rest/-/sdmx-rest-2.5.1.tgz",
+      "dev": true,
+      "dependencies": {
+        "es6-promise": {
+          "version": "4.0.5",
+          "from": "es6-promise@4.0.5",
+          "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-4.0.5.tgz",
           "dev": true
         }
       }
