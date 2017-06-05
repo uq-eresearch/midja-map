@@ -110,10 +110,27 @@ fs.readJson(path.resolve(__dirname, 'abs-sdmx-dump-config.json'))
   .then(queries => {
     return Promise.all(_.map(
       _.groupBy(queries, _.property('group')),
-      function(queries, group) {
-        console.log("Writing index for " + group)
-        const attributes = _.map(queries, _.property('attribute'))
-        writeJsonDict(path.join(outputDir, group + '.json'))(attributes)
+      (queries, group) => {
+        const indexFile = path.join(outputDir, group, 'index.json')
+        return fs.readJson(indexFile)
+          .then((index) => {
+            console.log(index);
+            const attributes = _.map(queries, _.property('attribute'))
+            return _.assign({},
+              index,
+              {
+                attributes:
+                  _.sortBy(
+                    _.unionBy(
+                      attributes, index.attributes,
+                      _.property('name')),
+                    _.property('name'))
+              })
+          })
+          .then((modifiedIndex) => {
+            console.log("Updating index for " + group)
+            return writeJsonDict(indexFile)(modifiedIndex)
+          })
       }))
   })
   .catch(e => console.log(e))
