@@ -6,7 +6,8 @@ const DataFormat = require("sdmx-rest").data.DataFormat
 const absService = sdmxrest.getService({
   url: "http://stat.data.abs.gov.au/sdmx-json/"
 })
-const outputDir = path.resolve(__dirname, '..', 'data', 'public')
+const outputDir = path.relative('.',
+  path.resolve(__dirname, '..', 'data', 'public'))
 
 const headers = {
   headers: {
