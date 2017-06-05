@@ -6,7 +6,7 @@ const DataFormat = require("sdmx-rest").data.DataFormat
 const absService = sdmxrest.getService({
   url: "http://stat.data.abs.gov.au/sdmx-json/"
 })
-const outputDir = "output"
+const outputDir = path.resolve(__dirname, '..', 'data', 'public')
 
 const headers = {
   headers: {
@@ -103,7 +103,7 @@ function doQuery(attrQuery) {
 }
 
 // Run
-fs.readJson('config.json')
+fs.readJson(path.resolve(__dirname, 'abs-sdmx-dump-config.json'))
   .then(configs => _.flatMap(configs, buildQueries))
   .then(queries => Promise.all(queries.map(doQuery)))
   .then(queries => {
