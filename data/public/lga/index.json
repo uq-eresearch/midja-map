@@ -1319,6 +1319,22 @@
       }
     },
     {
+      "name": "census2011_proportion_all_persons_indigenous",
+      "description": "Indigenous proportion of population (Census 2011)",
+      "type": "number",
+      "expression": "1.0 * census2011_all_persons_indigenous / census2011_all_persons_total",
+      "format": {
+        "style": "percent"
+      },
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
       "name": "f_time",
       "description": "Percentage of Indigenous in Full-time Employment",
       "type": "number"

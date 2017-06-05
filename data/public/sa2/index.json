@@ -1300,10 +1300,10 @@
       }
     },
     {
-      "name": "census2011_proportion_dwellings_owned_or_mortgaged",
-      "description": "Proportion of dwellings owned (outright/mortgage) (Census 2011)",
+      "name": "census2011_proportion_all_persons_indigenous",
+      "description": "Indigenous proportion of population (Census 2011)",
       "type": "number",
-      "expression": "1.0 * (census2011_dwellings_owned + census2011_dwellings_mortgage) / census2011_dwellings_all",
+      "expression": "1.0 * census2011_all_persons_indigenous / census2011_all_persons_total",
       "format": {
         "style": "percent"
       },
@@ -1316,10 +1316,10 @@
       }
     },
     {
-      "name": "census2011_proportion_persons_indigenous",
-      "description": "Indigenous proportion of population (Census 2011)",
+      "name": "census2011_proportion_dwellings_owned_or_mortgaged",
+      "description": "Proportion of dwellings owned (outright/mortgage) (Census 2011)",
       "type": "number",
-      "expression": "1.0 * census2011_all_persons_indigenous / census2011_all_persons_total",
+      "expression": "1.0 * (census2011_dwellings_owned + census2011_dwellings_mortgage) / census2011_dwellings_all",
       "format": {
         "style": "percent"
       },
