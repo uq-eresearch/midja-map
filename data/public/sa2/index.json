@@ -1300,6 +1300,38 @@
       }
     },
     {
+      "name": "census2011_proportion_dwellings_owned_or_mortgaged",
+      "description": "Proportion of dwellings owned (outright/mortgage) (Census 2011)",
+      "type": "number",
+      "expression": "1.0 * (census2011_dwellings_owned + census2011_dwellings_mortgage) / census2011_dwellings_all",
+      "format": {
+        "style": "percent"
+      },
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
+      "name": "census2011_proportion_persons_indigenous",
+      "description": "Indigenous proportion of population (Census 2011)",
+      "type": "number",
+      "expression": "1.0 * census2011_all_persons_indigenous / census2011_all_persons_total",
+      "format": {
+        "style": "percent"
+      },
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
       "name": "erp2011_persons_all",
       "description": "Estimated Resident Population All Ages - Persons (2011)",
       "type": "number",
@@ -2826,22 +2858,6 @@
       }
     },
     {
-      "name": "census2011_proportion_dwellings_owned_or_mortgaged",
-      "description": "Proportion of dwellings owned (outright/mortgage) (Census 2011)",
-      "type": "number",
-      "expression": "1.0 * (census2011_dwellings_owned + census2011_dwellings_mortgage) / census2011_dwellings_all",
-      "format": {
-        "style": "percent"
-      },
-      "source": {
-        "name": "ABS Data",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        }
-      }
-    },
-    {
       "name": "proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_indigenous_persons_households_with_indigenous_persons",
       "description": "Proportion of dwellings that need 1 or more extra bedrooms - households with indigenous persons",
       "type": "number",
@@ -2887,22 +2903,6 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "url": "https://www.censusdata.abs.gov.au/datapacks/DataPacks?action=getzip&file=2011_IP_SA2_for_AUST_long-header.zip#2011%20Census%20IP%20Statistical%20Areas%20Level%202%20for%20AUST/AUST/2011Census_I04_AUST_SA2_long.csv"
-      }
-    },
-    {
-      "name": "census2011_proportion_persons_indigenous",
-      "description": "Indigenous proportion of population (Census 2011)",
-      "type": "number",
-      "expression": "1.0 * census2011_all_persons_indigenous / census2011_all_persons_total",
-      "format": {
-        "style": "percent"
-      },
-      "source": {
-        "name": "ABS Data",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        }
       }
     },
     {

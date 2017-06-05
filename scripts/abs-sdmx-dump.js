@@ -58,6 +58,7 @@ function buildQueries(config) {
           config.templates, (tmpl) => _.template(tmpl)(templateContext)
         ), {
           keyDimensionIndex: kdi,
+          keyTransform: (v => (config.keyPrefix || "") + v),
           query: sdmxJsonQuery
         })
     })
@@ -71,11 +72,13 @@ const writeJsonDict = filepath => data => {
     .then(() => filepath)
 }
 
-const extractDataFromSdmxJson = keyIndex => dataStr => {
+const extractDataFromSdmxJson = (keyIndex, keyTransform) => dataStr => {
   const data = JSON.parse(dataStr)
   const keys = _.map(
     data.structure.dimensions.series[keyIndex].values,
-    _.property('id'))
+    _.flow(
+      _.property('id'),
+      keyTransform))
   const values = _.map(
     _.values(data.dataSets[0].series),
     v => v.observations["0"][0])
@@ -93,7 +96,8 @@ function doQuery(attrQuery) {
       return exists ?
         attrQuery :
         sdmxrest.request(attrQuery.query, absService, headers)
-          .then(extractDataFromSdmxJson(attrQuery.keyDimensionIndex))
+          .then(extractDataFromSdmxJson(
+            attrQuery.keyDimensionIndex, attrQuery.keyTransform))
           .then(writeJsonDict(filepath))
           .then(_.constant(attrQuery))
           .catch((e) => {
@@ -114,7 +118,6 @@ fs.readJson(path.resolve(__dirname, 'abs-sdmx-dump-config.json'))
         const indexFile = path.join(outputDir, group, 'index.json')
         return fs.readJson(indexFile)
           .then((index) => {
-            console.log(index);
             const attributes = _.map(queries, _.property('attribute'))
             return _.assign({},
               index,

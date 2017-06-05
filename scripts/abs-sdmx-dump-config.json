@@ -420,6 +420,7 @@
     }
   },
   "keyDimension": "region",
+  "keyPrefix": "LGA",
   "dimensions": [
     {
       "name": "gender",
@@ -657,6 +658,7 @@
     }
   },
   "keyDimension": "region",
+  "keyPrefix": "LGA",
   "dimensions": [
     {
       "name": "tenure",
