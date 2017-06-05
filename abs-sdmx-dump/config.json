@@ -1,0 +1,771 @@
+[{
+  "flow": "ABS_ERP_ASGS",
+  "templates": {
+    "filepath": "<%=regionType.name%>/<%=measure.name%><%=period%>_<%=gender.name%>_<%=age.name%>.json",
+    "group": "<%=regionType.name%>",
+    "attribute": {
+      "name": "<%=measure.name%><%=period%>_<%=gender.name%>_<%=age.name%>",
+      "description": "<%= measure.description %> <%=age.description%> - <%=gender.description%> (<%=period%>)",
+      "type": "number",
+      "hidden": true,
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "<%=query.url%>"
+      }
+    }
+  },
+  "keyDimension": "region",
+  "dimensions": [
+    {
+      "name": "measure",
+      "values": [{
+        "code": "ERP",
+        "name": "erp",
+        "description": "Estimated Resident Population"
+      }]
+    },
+    {
+      "name": "gender",
+      "values": [{
+        "code": "1",
+        "name": "males",
+        "description": "Males"
+      }, {
+        "code": "2",
+        "name": "females",
+        "description": "Females"
+      }, {
+        "code": "3",
+        "name": "persons",
+        "description": "Persons"
+      }]
+    },
+    {
+      "name": "age",
+      "values": [{
+        "code": "A04",
+        "name": "0to4",
+        "description": "Age 0-4"
+      }, {
+        "code": "A59",
+        "name": "5to9",
+        "description": "Age 5-9"
+      }, {
+        "code": "A10",
+        "name": "10to14",
+        "description": "Age 10-14"
+      }, {
+        "code": "A15",
+        "name": "15to19",
+        "description": "Age 15-19"
+      }, {
+        "code": "A20",
+        "name": "20to24",
+        "description": "Age 20-24"
+      }, {
+        "code": "A25",
+        "name": "25to29",
+        "description": "Age 25-29"
+      }, {
+        "code": "A30",
+        "name": "30to34",
+        "description": "Age 30-34"
+      }, {
+        "code": "A35",
+        "name": "35to39",
+        "description": "Age 35-39"
+      }, {
+        "code": "A40",
+        "name": "40to44",
+        "description": "Age 40-44"
+      }, {
+        "code": "A45",
+        "name": "45to49",
+        "description": "Age 45-49"
+      }, {
+        "code": "A50",
+        "name": "50to54",
+        "description": "Age 50-54"
+      }, {
+        "code": "A55",
+        "name": "55to59",
+        "description": "Age 55-59"
+      }, {
+        "code": "A60",
+        "name": "60to64",
+        "description": "Age 60-64"
+      }, {
+        "code": "A65",
+        "name": "65to69",
+        "description": "Age 65-69"
+      }, {
+        "code": "A70",
+        "name": "70to74",
+        "description": "Age 70-74"
+      }, {
+        "code": "A75",
+        "name": "75to79",
+        "description": "Age 75-79"
+      }, {
+        "code": "A80",
+        "name": "80to84",
+        "description": "Age 80-84"
+      }, {
+        "code": "8599",
+        "name": "85andover",
+        "description": "85 and over"
+      }, {
+        "code": "TT",
+        "name": "all",
+        "description": "All Ages"
+      }]
+    },
+    {
+      "name": "regionType",
+      "values": [{
+        "code": "SA2",
+        "name": "sa2",
+        "description": "Statistical Area Level 2"
+      },
+      {
+        "code": "SA3",
+        "name": "sa3",
+        "description": "Statistical Area Level 3"
+      }]
+    },
+    {
+      "name": "region",
+      "values": [{
+        "code": "",
+        "name": "all",
+        "description": "All Regions"
+      }]
+    },
+    {
+      "name": "frequency",
+      "values": [{
+        "code": "A",
+        "name": "annual",
+        "description": "Annual"
+      }]
+    }
+  ],
+  "periods": [
+    "2015"
+  ]
+},{
+  "flow": "ABS_ERP_ASGS",
+  "templates": {
+    "filepath": "<%=regionType.name%>/<%=measure.name%><%=period%>_<%=gender.name%>_<%=age.name%>.json",
+    "group": "<%=regionType.name%>",
+    "attribute": {
+      "name": "<%=measure.name%><%=period%>_<%=gender.name%>_<%=age.name%>",
+      "description": "<%= measure.description %> <%=age.description%> - <%=gender.description%> (<%=period%>)",
+      "type": "number",
+      "hidden": true,
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "<%=query.url%>"
+      }
+    }
+  },
+  "keyDimension": "region",
+  "dimensions": [
+    {
+      "name": "measure",
+      "values": [{
+        "code": "ERP",
+        "name": "erp",
+        "description": "Estimated Resident Population"
+      }]
+    },
+    {
+      "name": "gender",
+      "values": [{
+        "code": "3",
+        "name": "persons",
+        "description": "Persons"
+      }]
+    },
+    {
+      "name": "age",
+      "values": [{
+        "code": "TT",
+        "name": "all",
+        "description": "All Ages"
+      }]
+    },
+    {
+      "name": "regionType",
+      "values": [{
+        "code": "SA2",
+        "name": "sa2",
+        "description": "Statistical Area Level 2"
+      },
+      {
+        "code": "SA3",
+        "name": "sa3",
+        "description": "Statistical Area Level 3"
+      }]
+    },
+    {
+      "name": "region",
+      "values": [{
+        "code": "",
+        "name": "all",
+        "description": "All Regions"
+      }]
+    },
+    {
+      "name": "frequency",
+      "values": [{
+        "code": "A",
+        "name": "annual",
+        "description": "Annual"
+      }]
+    }
+  ],
+  "periods": [
+    "2011",
+    "2012",
+    "2013",
+    "2014"
+  ]
+},{
+  "flow": "ABS_CENSUS2011_B07",
+  "templates": {
+    "filepath": "<%=regionType.name%>/census<%=period%>_<%=age.name%>_<%=gender.name%>_<%=status.name%>.json",
+    "group": "<%=regionType.name%>",
+    "attribute": {
+      "name": "census<%=period%>_<%=age.name%>_<%=gender.name%>_<%=status.name%>",
+      "description": "<%=status.description%> <%=gender.description%> - <%=age.description%> (Census <%=period%>)",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "<%=query.url%>"
+      }
+    }
+  },
+  "keyDimension": "region",
+  "dimensions": [
+    {
+      "name": "gender",
+      "values": [{
+        "code": "1",
+        "name": "males",
+        "description": "Males"
+      }, {
+        "code": "2",
+        "name": "females",
+        "description": "Females"
+      }, {
+        "code": "3",
+        "name": "persons",
+        "description": "Persons"
+      }]
+    },
+    {
+      "name": "age",
+      "values": [{
+        "code": "A04",
+        "name": "0to4",
+        "description": "Age 0-4"
+      }, {
+        "code": "A59",
+        "name": "5to9",
+        "description": "Age 5-9"
+      }, {
+        "code": "A10",
+        "name": "10to14",
+        "description": "Age 10-14"
+      }, {
+        "code": "A15",
+        "name": "15to19",
+        "description": "Age 15-19"
+      }, {
+        "code": "A20",
+        "name": "20to24",
+        "description": "Age 20-24"
+      }, {
+        "code": "A25",
+        "name": "25to29",
+        "description": "Age 25-29"
+      }, {
+        "code": "A30",
+        "name": "30to34",
+        "description": "Age 30-34"
+      }, {
+        "code": "A35",
+        "name": "35to39",
+        "description": "Age 35-39"
+      }, {
+        "code": "A40",
+        "name": "40to44",
+        "description": "Age 40-44"
+      }, {
+        "code": "A45",
+        "name": "45to49",
+        "description": "Age 45-49"
+      }, {
+        "code": "A50",
+        "name": "50to54",
+        "description": "Age 50-54"
+      }, {
+        "code": "A55",
+        "name": "55to59",
+        "description": "Age 55-59"
+      }, {
+        "code": "A60",
+        "name": "60to64",
+        "description": "Age 60-64"
+      }, {
+        "code": "TT",
+        "name": "all",
+        "description": "All Ages"
+      }, {
+        "code": "O65",
+        "name": "65plus",
+        "description": "Age 65 years and over"
+      }]
+    },
+    {
+      "name": "status",
+      "values": [{
+        "code": "TOT",
+        "name": "total",
+        "description": "Total"
+      }, {
+        "code": "4",
+        "name": "indigenous",
+        "description": "Indigenous"
+      }]
+    },
+    {
+      "name": "state",
+      "values": [{
+        "code": "",
+        "name": "all",
+        "description": "All States"
+      }]
+    },
+    {
+      "name": "regionType",
+      "values": [{
+        "code": "SA2",
+        "name": "sa2",
+        "description": "Statistical Area Level 2"
+      },
+      {
+        "code": "SA3",
+        "name": "sa3",
+        "description": "Statistical Area Level 3"
+      }]
+    },
+    {
+      "name": "region",
+      "values": [{
+        "code": "",
+        "name": "all",
+        "description": "All Regions"
+      }]
+    },
+    {
+      "name": "frequency",
+      "values": [{
+        "code": "A",
+        "name": "annual",
+        "description": "Annual"
+      }]
+    }
+  ],
+  "periods": [
+    "2011"
+  ]
+},
+{
+  "flow": "ABS_CENSUS2011_B07_LGA",
+  "templates": {
+    "filepath": "<%=regionType.name%>/census<%=period%>_<%=age.name%>_<%=gender.name%>_<%=status.name%>.json",
+    "group": "<%=regionType.name%>",
+    "attribute": {
+      "name": "census<%=period%>_<%=age.name%>_<%=gender.name%>_<%=status.name%>",
+      "description": "<%=status.description%> <%=gender.description%> - <%=age.description%> (Census <%=period%>)",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "<%=query.url%>"
+      }
+    }
+  },
+  "keyDimension": "region",
+  "dimensions": [
+    {
+      "name": "gender",
+      "values": [{
+        "code": "1",
+        "name": "males",
+        "description": "Males"
+      }, {
+        "code": "2",
+        "name": "females",
+        "description": "Females"
+      }, {
+        "code": "3",
+        "name": "persons",
+        "description": "Persons"
+      }]
+    },
+    {
+      "name": "age",
+      "values": [{
+        "code": "A04",
+        "name": "0to4",
+        "description": "Age 0-4"
+      }, {
+        "code": "A59",
+        "name": "5to9",
+        "description": "Age 5-9"
+      }, {
+        "code": "A10",
+        "name": "10to14",
+        "description": "Age 10-14"
+      }, {
+        "code": "A15",
+        "name": "15to19",
+        "description": "Age 15-19"
+      }, {
+        "code": "A20",
+        "name": "20to24",
+        "description": "Age 20-24"
+      }, {
+        "code": "A25",
+        "name": "25to29",
+        "description": "Age 25-29"
+      }, {
+        "code": "A30",
+        "name": "30to34",
+        "description": "Age 30-34"
+      }, {
+        "code": "A35",
+        "name": "35to39",
+        "description": "Age 35-39"
+      }, {
+        "code": "A40",
+        "name": "40to44",
+        "description": "Age 40-44"
+      }, {
+        "code": "A45",
+        "name": "45to49",
+        "description": "Age 45-49"
+      }, {
+        "code": "A50",
+        "name": "50to54",
+        "description": "Age 50-54"
+      }, {
+        "code": "A55",
+        "name": "55to59",
+        "description": "Age 55-59"
+      }, {
+        "code": "A60",
+        "name": "60to64",
+        "description": "Age 60-64"
+      }, {
+        "code": "TT",
+        "name": "all",
+        "description": "All Ages"
+      }, {
+        "code": "O65",
+        "name": "65plus",
+        "description": "Age 65 years and over"
+      }]
+    },
+    {
+      "name": "status",
+      "values": [{
+        "code": "TOT",
+        "name": "total",
+        "description": "Total"
+      }, {
+        "code": "4",
+        "name": "indigenous",
+        "description": "Indigenous"
+      }]
+    },
+    {
+      "name": "state",
+      "values": [{
+        "code": "",
+        "name": "all",
+        "description": "All States"
+      }]
+    },
+    {
+      "name": "regionType",
+      "values": [{
+        "code": "LGA2011",
+        "name": "lga",
+        "description": "Local Government Area"
+      }]
+    },
+    {
+      "name": "region",
+      "values": [{
+        "code": "",
+        "name": "all",
+        "description": "All Regions"
+      }]
+    },
+    {
+      "name": "frequency",
+      "values": [{
+        "code": "A",
+        "name": "annual",
+        "description": "Annual"
+      }]
+    }
+  ],
+  "periods": [
+    "2011"
+  ]
+},
+{
+  "flow": "ABS_CENSUS2011_B32",
+  "templates": {
+    "filepath": "<%=regionType.name%>/census<%=period%>_<%=type.name%>_<%=tenure.name%>.json",
+    "group": "<%=regionType.name%>",
+    "attribute": {
+      "name": "census<%=period%>_<%=type.name%>_<%=tenure.name%>",
+      "description": "<%=type.description%> - <%=tenure.description%> (<%=period%>)",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "<%=query.url%>"
+      }
+    }
+  },
+  "keyDimension": "region",
+  "dimensions": [
+    {
+      "name": "tenure",
+      "values": [{
+        "code": "TOT",
+        "name": "all",
+        "description": "All tenures"
+      }, {
+        "code": "1",
+        "name": "owned",
+        "description": "Owned outright"
+      }, {
+        "code": "2",
+        "name": "mortgage",
+        "description": "Owned with a mortgage"
+      }]
+    },
+    {
+      "name": "type",
+      "values": [{
+        "code": "OPD",
+        "name": "dwellings",
+        "description": "Occupied private dwellings"
+      }]
+    },
+    {
+      "name": "state",
+      "values": [{
+        "code": "",
+        "name": "all",
+        "description": "All States"
+      }]
+    },
+    {
+      "name": "regionType",
+      "values": [{
+        "code": "SA2",
+        "name": "sa2",
+        "description": "Statistical Area Level 2"
+      },
+      {
+        "code": "SA3",
+        "name": "sa3",
+        "description": "Statistical Area Level 3"
+      }]
+    },
+    {
+      "name": "region",
+      "values": [{
+        "code": "",
+        "name": "all",
+        "description": "All Regions"
+      }]
+    },
+    {
+      "name": "frequency",
+      "values": [{
+        "code": "A",
+        "name": "annual",
+        "description": "Annual"
+      }]
+    }
+  ],
+  "periods": [
+    "2011"
+  ]
+},
+{
+  "flow": "ABS_CENSUS2011_B32_LGA",
+  "templates": {
+    "filepath": "<%=regionType.name%>/census<%=period%>_<%=type.name%>_<%=tenure.name%>.json",
+    "group": "<%=regionType.name%>",
+    "attribute": {
+      "name": "census<%=period%>_<%=type.name%>_<%=tenure.name%>",
+      "description": "<%=type.description%> - <%=tenure.description%> (<%=period%>)",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "<%=query.url%>"
+      }
+    }
+  },
+  "keyDimension": "region",
+  "dimensions": [
+    {
+      "name": "tenure",
+      "values": [{
+        "code": "TOT",
+        "name": "all",
+        "description": "All tenures"
+      }, {
+        "code": "1",
+        "name": "owned",
+        "description": "Owned outright"
+      }, {
+        "code": "2",
+        "name": "mortgage",
+        "description": "Owned with a mortgage"
+      }]
+    },
+    {
+      "name": "type",
+      "values": [{
+        "code": "OPD",
+        "name": "dwellings",
+        "description": "Occupied private dwellings"
+      }]
+    },
+    {
+      "name": "state",
+      "values": [{
+        "code": "",
+        "name": "all",
+        "description": "All States"
+      }]
+    },
+    {
+      "name": "regionType",
+      "values": [{
+        "code": "LGA2011",
+        "name": "lga",
+        "description": "Local Government Area"
+      }]
+    },
+    {
+      "name": "region",
+      "values": [{
+        "code": "",
+        "name": "all",
+        "description": "All Regions"
+      }]
+    },
+    {
+      "name": "frequency",
+      "values": [{
+        "code": "A",
+        "name": "annual",
+        "description": "Annual"
+      }]
+    }
+  ],
+  "periods": [
+    "2011"
+  ]
+},
+{
+  "flow": "ABS_SEIFA_SA2",
+  "templates": {
+    "filepath": "sa2/seifa<%=period%>_<%=index.name%>_<%=measure.name%>.json",
+    "group": "sa2",
+    "attribute": {
+      "name": "seifa<%=period%>_<%=index.name%>_<%=measure.name%>",
+      "description": "SEIFA <%=index.description%> <%=measure.description%> (<%=period%>)",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "<%=query.url%>"
+      }
+    }
+  },
+  "keyDimension": "region",
+  "dimensions": [
+    {
+      "name": "region",
+      "values": [{
+        "code": "",
+        "name": "all",
+        "description": "All Regions"
+      }]
+    },
+    {
+      "name": "index",
+      "values": [{
+        "code": "IRSD",
+        "name": "irsd",
+        "description": "Index of Relative Socio-economic Disadvantage"
+      }]
+    },
+    {
+      "name": "measure",
+      "values": [{
+        "code": "SCORE",
+        "name": "score",
+        "description": "score"
+      }]
+    }
+  ],
+  "periods": [
+    "2011"
+  ]
+}]
