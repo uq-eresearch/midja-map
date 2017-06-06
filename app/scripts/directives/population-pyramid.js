@@ -85,10 +85,12 @@ angular.module('midjaApp')
                         removeCommon(_.map(
                           maleAttributes,
                           _.property('description'))))))
+                var maxValue =
+                  _.max(_.map(attributes, _.flow(valueFor, Math.abs)))
                 scope.chart = {
                   data: [{
                     "key": "male",
-                    "color": "#0000ff",
+                    "color": "#4444ff",
                     "values": _.map(
                       maleAttributes,
                       attribute => {
@@ -99,7 +101,7 @@ angular.module('midjaApp')
                       })
                   }, {
                     "key": "female",
-                    "color": "#ff0000",
+                    "color": "#ff4444",
                     "values": _.map(
                       femaleAttributes,
                       attribute => {
@@ -112,6 +114,7 @@ angular.module('midjaApp')
                   options: {
                     chart: {
                       type: 'multiBarHorizontalChart',
+                      height: 250,
                       x: _.property('label'),
                       y: _.property('value'),
                       showControls: false,
@@ -122,11 +125,12 @@ angular.module('midjaApp')
                         formattingService.formatNumber
                       ),
                       stacked: true,
-                      showXAxis: false,
+                      showXAxis: true,
                       margin: {
-                        left: 20,
+                        left: 40,
                         bottom: 20
                       },
+                      forceY: [-1*maxValue, 0, maxValue],
                       yAxis: {
                         tickFormat: _.flow(
                           Math.abs,
