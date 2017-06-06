@@ -281,6 +281,22 @@ angular.module('midjaApp')
 
     vm.dataColumnVisible = true;
 
+    vm.sortByAttributeNameNumbers = (xs) => {
+      const rows = _.map(
+        xs,
+        _.flow(
+          _.property('name'),
+          v => _.map(v.match(/\d+/g), _.toNumber)))
+      const columns = _.unzip(rows)
+      const iteratees = _.map(
+        columns,
+        _.flow( // Create (attribute -> column value) lookup
+          _.partial(_.zipObject, _.map(xs, _.property('name'))), // Name map
+          _.propertyOf, // Name-based lookup
+          _.partial(_.flow, _.property('name')))) // Pre-apply name extraction
+      return _.orderBy(xs, iteratees)
+    }
+
     // google chart does not refresh on window resize
     angular.element($window).bind('resize', function() {
       if (vm.chartobj.chart) {

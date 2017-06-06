@@ -120,7 +120,7 @@
       }, {
         "code": "8599",
         "name": "85andover",
-        "description": "85 and over"
+        "description": "Age 85+"
       }, {
         "code": "TT",
         "name": "all",
@@ -343,7 +343,7 @@
       }, {
         "code": "O65",
         "name": "65plus",
-        "description": "Age 65 years and over"
+        "description": "Age 65+"
       }]
     },
     {
@@ -499,7 +499,7 @@
       }, {
         "code": "O65",
         "name": "65plus",
-        "description": "Age 65 years and over"
+        "description": "Age 65+"
       }]
     },
     {

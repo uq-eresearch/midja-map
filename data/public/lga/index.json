@@ -1125,7 +1125,7 @@
     },
     {
       "name": "census2011_65plus_females_indigenous",
-      "description": "Indigenous Females - Age 65 years and over (Census 2011)",
+      "description": "Indigenous Females - Age 65+ (Census 2011)",
       "type": "number",
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -1138,7 +1138,7 @@
     },
     {
       "name": "census2011_65plus_females_total",
-      "description": "Total Females - Age 65 years and over (Census 2011)",
+      "description": "Total Females - Age 65+ (Census 2011)",
       "type": "number",
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -1151,7 +1151,7 @@
     },
     {
       "name": "census2011_65plus_males_indigenous",
-      "description": "Indigenous Males - Age 65 years and over (Census 2011)",
+      "description": "Indigenous Males - Age 65+ (Census 2011)",
       "type": "number",
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -1164,7 +1164,7 @@
     },
     {
       "name": "census2011_65plus_males_total",
-      "description": "Total Males - Age 65 years and over (Census 2011)",
+      "description": "Total Males - Age 65+ (Census 2011)",
       "type": "number",
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -1177,7 +1177,7 @@
     },
     {
       "name": "census2011_65plus_persons_indigenous",
-      "description": "Indigenous Persons - Age 65 years and over (Census 2011)",
+      "description": "Indigenous Persons - Age 65+ (Census 2011)",
       "type": "number",
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -1190,7 +1190,7 @@
     },
     {
       "name": "census2011_65plus_persons_total",
-      "description": "Total Persons - Age 65 years and over (Census 2011)",
+      "description": "Total Persons - Age 65+ (Census 2011)",
       "type": "number",
       "source": {
         "name": "Australian Bureau of Statistics",

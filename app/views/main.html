@@ -432,17 +432,25 @@
         <div ng-show="selectedRegion != null">
           <h2 style="margin-top: 30px;">{{selectedRegion.name}}</h2>
           <highlighted-topic
-            description="Residents"
-            region-type="vm.regionType"
-            region="selectedRegion"
-            attribute-selector="'census2011_all_persons_total'">
-          </highlighted-topic>
-          <highlighted-topic
             description="Indigenous"
             region-type="vm.regionType"
             region="selectedRegion"
             attribute-selector="'census2011_proportion_all_persons_indigenous'">
           </highlighted-topic>
+          <topic-breakdown-bar
+            description="Indigenous persons by age (2011)"
+            region-type="vm.regionType"
+            region="selectedRegion"
+            attribute-selector="'census2011_\\d+\\w+_persons_indigenous'"
+            sorter="vm.sortByAttributeNameNumbers">
+          </topic-breakdown-bar>
+          <topic-breakdown-bar
+            description="All persons by age (2011)"
+            region-type="vm.regionType"
+            region="selectedRegion"
+            attribute-selector="'census2011_\\d+\\w+_persons_total'"
+            sorter="vm.sortByAttributeNameNumbers">
+          </topic-breakdown-bar>
         </div>
       </div>
     </div>
