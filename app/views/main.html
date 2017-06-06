@@ -451,6 +451,13 @@
             attribute-selector="'census2011_\\d+\\w+_persons_total'"
             sorter="vm.sortByAttributeNameNumbers">
           </topic-breakdown-bar>
+          <population-pyramid
+            description="All residents by age/sex (2015)"
+            region-type="vm.regionType"
+            region="selectedRegion"
+            attribute-selector="'erp2015_(fe|)males_\\d+\\w+'"
+            sorter="vm.sortByAttributeNameNumbers">
+          </topic-breakdown-bar>
         </div>
       </div>
     </div>

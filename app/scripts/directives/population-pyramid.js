@@ -1,7 +1,7 @@
 'use strict';
 
 import _ from 'lodash-es'
-import './styles/topic-breakdown-bar.css'
+import './styles/population-pyramid.css'
 
 /**
  * @ngdoc directive
@@ -9,7 +9,7 @@ import './styles/topic-breakdown-bar.css'
  * @description
  */
 angular.module('midjaApp')
-  .directive('topicBreakdownBar', function(
+  .directive('populationPyramid', function(
     dataService, formattingService, $compile, $timeout) {
 
     function attributeMatcher(attributeSelector) {
@@ -26,6 +26,7 @@ angular.module('midjaApp')
       return dataService.getAvailableAttributes(scope.regionType)
         .then(attributeMatcher(scope.attributeSelector))
         .then(scope.sorter || _.identity)
+        .then(v => v.reverse())
         .then((attributes) => {
           const attributeNames =_.map(attributes, _.property('name'))
           return dataService.getAttributesForRegions(
@@ -42,6 +43,17 @@ angular.module('midjaApp')
                   scope.chart = null
                   return
                 }
+                const valueFor =
+                  _.flow(
+                    _.property('name'),
+                    _.propertyOf(
+                      _.zipObject(attributeNames, vs)))
+                const isFemaleAttribute = _.flow(
+                  _.property('description'), v => /female/i.test(v))
+                const femaleAttributes =
+                  _.filter(attributes, isFemaleAttribute)
+                const maleAttributes =
+                  _.filter(attributes, _.negate(isFemaleAttribute))
                 const firstChar = v => v.slice(0, 1)
                 const tailChars = v => v.slice(1)
                 const lastChar = v => v.slice(v.length - 1)
@@ -55,46 +67,71 @@ angular.module('midjaApp')
                     return vs;
                   }
                 }
-                const labelFor =
+                const labelForFemale =
                   _.flow(
                     _.property('name'),
                     _.propertyOf(
                       _.zipObject(
-                        _.map(attributes, _.property('name')),
+                        _.map(femaleAttributes, _.property('name')),
                         removeCommon(_.map(
-                          attributes,
+                          femaleAttributes,
+                          _.property('description'))))))
+                const labelForMale =
+                  _.flow(
+                    _.property('name'),
+                    _.propertyOf(
+                      _.zipObject(
+                        _.map(maleAttributes, _.property('name')),
+                        removeCommon(_.map(
+                          maleAttributes,
                           _.property('description'))))))
                 scope.chart = {
-                  data: _.map(
-                    _.zip(attributes, vs),
-                    _.spread(function (attribute, v) {
-                      return {
-                        "key": labelFor(attribute),
-                        "values": [
-                          {
-                            "value": v
-                          }
-                        ]
-                      };
-                    })
-                  ),
+                  data: [{
+                    "key": "male",
+                    "color": "#0000ff",
+                    "values": _.map(
+                      maleAttributes,
+                      attribute => {
+                        return {
+                          "label": labelForMale(attribute),
+                          "value": -1*valueFor(attribute)
+                        }
+                      })
+                  }, {
+                    "key": "female",
+                    "color": "#ff0000",
+                    "values": _.map(
+                      femaleAttributes,
+                      attribute => {
+                        return {
+                          "label": labelForFemale(attribute),
+                          "value": valueFor(attribute)
+                        }
+                      })
+                  }],
                   options: {
                     chart: {
                       type: 'multiBarHorizontalChart',
-                      x: _.constant(''),
+                      x: _.property('label'),
                       y: _.property('value'),
                       showControls: false,
                       showLegend: true,
                       showValues: true,
-                      valueFormat: formattingService.formatNumber,
+                      valueFormat: _.flow(
+                        Math.abs,
+                        formattingService.formatNumber
+                      ),
                       stacked: true,
                       showXAxis: false,
                       margin: {
-                        left: 10,
+                        left: 20,
                         bottom: 20
                       },
                       yAxis: {
-                        tickFormat: formattingService.formatNumber
+                        tickFormat: _.flow(
+                          Math.abs,
+                          formattingService.formatNumber
+                        )
                       }
                     },
                     caption: {
@@ -122,7 +159,7 @@ angular.module('midjaApp')
     }
 
     return {
-      template: require('./templates/topic-breakdown-bar.html'),
+      template: require('./templates/population-pyramid.html'),
       restrict: 'E',
       link: link,
       replace: true,
