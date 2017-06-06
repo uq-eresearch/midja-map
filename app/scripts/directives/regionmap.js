@@ -77,7 +77,8 @@ angular.module('midjaApp')
       'bubblesTopic': '=',
       'choroplethVisible': '=',
       'bubblesVisible': '=',
-      'watchForResize': '='
+      'watchForResize': '=',
+      'selectedRegion': '=?'
     }
 
     return {
@@ -456,6 +457,7 @@ angular.module('midjaApp')
 
       var featureControl = null;
       var showRegionHover = function(e, region, data) {
+        scope.$apply(() => scope.selectedRegion = region)
         var newFeatureControl = L.control({
           position: 'topright'
         });

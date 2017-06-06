@@ -279,7 +279,7 @@ angular.module('midjaApp')
       }
     }
 
-    vm.dataColumnVisible = false;
+    vm.dataColumnVisible = true;
 
     // google chart does not refresh on window resize
     angular.element($window).bind('resize', function() {
@@ -486,27 +486,13 @@ angular.module('midjaApp')
           }
         }).then(function(regions) {
           vm.vis.regions = regions;
-          generateVisualisations();
           generateScatterPlot();
           generateLinearRegression();
         })
         .catch((e) => { console.log(e, e.stack) });
     }
 
-    function generateVisualisations() {
-      if (!vm.vis.regions.length) {
-        vm.chartData = [];
-        vm.tableData = [];
-        return;
-      }
-      if (vm.vis.topics.length) {
-        generateBarChart();
-      }
-
-    }
-
     function selectedTopicsChanged($item, $model) {
-      generateBarChart();
       if (vm.vis.topics.length === 1) {
         var topic = vm.vis.topics[0];
         // set the default for the map
@@ -561,87 +547,6 @@ angular.module('midjaApp')
         });
       });
     };
-
-    // TODO: deal with remoteness
-    function generateBarChart() {
-      var regionType = vm.regionType;
-      var attributeNames = _.map(vm.vis.topics, _.property('name'))
-        .concat(['region_name', 'ra_name']);
-      var locations = vm.vis.regions;
-
-      dataService.getAttributesForRegions(regionType, attributeNames, locations)
-        .then(function(attrs) {
-          if (!Object.keys(attrs).length) {
-            return;
-          }
-
-          var sortedRegionCodes =
-            _.map(
-              _.sortBy(
-                _.values(locations),
-                _.property('name')),
-              _.property('code'));
-
-          // Remoteness values ordered by location
-          vm.curRemoteness = _.map(sortedRegionCodes, function(r) {
-            return attrs[r].ra_name;
-          });
-
-          // build table header for chart
-          var header = [{
-            label: 'Topic',
-            type: 'string'
-          }].concat(_.map(
-            sortedRegionCodes,
-            function(r) {
-              return {
-                label: attrs[r]['region_name'],
-                type: 'number'
-              };
-            }
-          ));
-
-          var dataSeries = _.map(vm.vis.topics, function(topic) {
-            return {
-              topic: topic,
-              row: _.map(sortedRegionCodes, function(r) {
-                return attrs[r][topic.name];
-              })
-            };
-          });
-
-          function title(topic) {
-            return topic.description + ' (' + topic.name + ')';
-          };
-
-          function wrapAtSpace(text) {
-            var parts = text.split(/ +/);
-            var maxLength = _.max(parts, _.property('length')).length;
-            var lines = _.reduce(parts, function(m, part) {
-              var appendCandidate = [_.last(m), part].join(" ");
-              if (appendCandidate.length > maxLength) {
-                return m.concat(part);
-              } else {
-                return _.initial(m).concat(appendCandidate);
-              }
-            }, [""]);
-            return lines.join("\n");
-          };
-
-          // build table
-          vm.tableData = [
-            _.map(header, _.property('label'))
-          ].concat(_.map(dataSeries, function(data) {
-            var asText = function(d) {
-              return formattingService.formatNumber(d, data.topic.format);
-            };
-            return [title(data.topic)].concat(_.map(data.row, asText));
-          }));
-          vm.chartData = [header].concat(_.map(dataSeries, function(data) {
-            return [wrapAtSpace(title(data.topic))].concat(data.row);
-          }));
-        });
-    }
 
     function refreshLocations(name) {
       if (!name || !name.length) {

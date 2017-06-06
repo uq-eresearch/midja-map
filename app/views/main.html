@@ -405,7 +405,15 @@
       </div>
 
       <div id="mapColumn" ng-class="['col-md-6','+fullheight', { 'col-md-9': (!vm.dataColumnVisible) }]">
-        <region-map region-type="vm.regionType" regions="vm.vis.regions" choropleth-topic="vm.vis.choropleth.topic" choropleth-visible="vm.visStatus.choroplethVisible" bubbles-topic="vm.vis.bubble.topic" bubbles-visible="vm.visStatus.bubbleVisible" watch-for-resize="vm.dataColumnVisible"></region-map>
+        <region-map
+          region-type="vm.regionType"
+          regions="vm.vis.regions"
+          choropleth-topic="vm.vis.choropleth.topic"
+          choropleth-visible="vm.visStatus.choroplethVisible"
+          bubbles-topic="vm.vis.bubble.topic"
+          bubbles-visible="vm.visStatus.bubbleVisible"
+          watch-for-resize="vm.dataColumnVisible"
+          selected-region="selectedRegion"></region-map>
 
         <div id="map-toggle" title="Show data column" ng-click="vm.dataColumnVisible = true" ng-hide="vm.dataColumnVisible">
 
@@ -417,28 +425,24 @@
           &#x1f5d9;
         </div>
 
-        <p class="text-muted" style="margin-top:40px" ng-hide="vm.isDataSelected()">
+        <p class="text-muted" style="margin-top:40px" ng-hide="selectedRegion">
           Select a place and a topic to see data.
         </p>
 
-        <div ng-show="vm.isDataSelected()">
-          <h2 style="margin-top: 30px;">Data</h2>
-
-          <div style="overflow-x: scroll">
-            <table class="table table-bordered">
-              <tr ng-repeat="row in vm.tableData">
-                <td ng-repeat="cell in row track by $index">
-                  {{ cell }}
-                </td>
-              </tr>
-            </table>
-          </div>
-
-          <!--<h3>Bar Chart</h3>-->
-          <div ng-show="vm.chartData.length">
-            <googlechart chartobj="vm.chartobj" data="vm.chartData" style="margin-top:20px;"></googlechart>
-          </div>
-
+        <div ng-show="selectedRegion != null">
+          <h2 style="margin-top: 30px;">{{selectedRegion.name}}</h2>
+          <highlighted-topic
+            description="Residents"
+            region-type="vm.regionType"
+            region="selectedRegion"
+            attribute-selector="'census2011_all_persons_total'">
+          </highlighted-topic>
+          <highlighted-topic
+            description="Indigenous"
+            region-type="vm.regionType"
+            region="selectedRegion"
+            attribute-selector="'census2011_proportion_all_persons_indigenous'">
+          </highlighted-topic>
         </div>
       </div>
     </div>
