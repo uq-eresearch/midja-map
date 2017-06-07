@@ -81,6 +81,8 @@ angular.module('midjaApp')
                   options: {
                     chart: {
                       type: 'multiBarHorizontalChart',
+                      color: d3.scale.category10().range(),
+                      height: 80,
                       x: _.constant(''),
                       y: _.property('value'),
                       showControls: false,

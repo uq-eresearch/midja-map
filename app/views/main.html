@@ -441,14 +441,14 @@
             description="Indigenous persons by age (2011)"
             region-type="vm.regionType"
             region="selectedRegion"
-            attribute-selector="'census2011_\\d+\\w+_persons_indigenous'"
+            attribute-selector="'census2011_(aggregate_\\d+\\w+|\\d+plus)_persons_indigenous'"
             sorter="vm.sortByAttributeNameNumbers">
           </topic-breakdown-bar>
           <topic-breakdown-bar
             description="All persons by age (2011)"
             region-type="vm.regionType"
             region="selectedRegion"
-            attribute-selector="'census2011_\\d+\\w+_persons_total'"
+            attribute-selector="'census2011_(aggregate_\\d+\\w+|\\d+plus)_persons_total'"
             sorter="vm.sortByAttributeNameNumbers">
           </topic-breakdown-bar>
           <population-pyramid

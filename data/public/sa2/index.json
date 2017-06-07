@@ -1183,6 +1183,62 @@
       }
     },
     {
+      "name": "census2011_aggregate_0to14_persons_indigenous",
+      "description": "Indigenous Persons - Age 0-14 (Census 2011)",
+      "expression": "census2011_0to4_persons_indigenous + census2011_5to9_persons_indigenous + census2011_10to14_persons_indigenous",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07_LGA/3.A15.4..LGA2011..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false&startPeriod=2011&endPeriod=2011"
+      }
+    },
+    {
+      "name": "census2011_aggregate_0to14_persons_total",
+      "description": "Total Persons - Age 0-14 (Census 2011)",
+      "expression": "census2011_0to4_persons_total + census2011_5to9_persons_total + census2011_10to14_persons_total",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07_LGA/3.A15.4..LGA2011..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false&startPeriod=2011&endPeriod=2011"
+      }
+    },
+    {
+      "name": "census2011_aggregate_15to64_persons_indigenous",
+      "description": "Indigenous Persons - Age 15-64 (Census 2011)",
+      "expression": "census2011_15to19_persons_indigenous + census2011_20to24_persons_indigenous + census2011_25to29_persons_indigenous + census2011_30to34_persons_indigenous + census2011_35to39_persons_indigenous + census2011_40to44_persons_indigenous + census2011_45to49_persons_indigenous + census2011_50to54_persons_indigenous + census2011_55to59_persons_indigenous",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07_LGA/3.A15.4..LGA2011..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false&startPeriod=2011&endPeriod=2011"
+      }
+    },
+    {
+      "name": "census2011_aggregate_15to64_persons_total",
+      "description": "Total Persons - Age 15-64 (Census 2011)",
+      "expression": "census2011_15to19_persons_total + census2011_20to24_persons_total + census2011_25to29_persons_total + census2011_30to34_persons_total + census2011_35to39_persons_total + census2011_40to44_persons_total + census2011_45to49_persons_total + census2011_50to54_persons_total + census2011_55to59_persons_total",
+      "type": "number",
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07_LGA/3.A15.4..LGA2011..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false&startPeriod=2011&endPeriod=2011"
+      }
+    },
+    {
       "name": "census2011_all_females_indigenous",
       "description": "Indigenous Females - All Ages (Census 2011)",
       "type": "number",
