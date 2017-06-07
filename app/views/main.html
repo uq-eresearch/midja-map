@@ -430,13 +430,20 @@
         </p>
 
         <div ng-show="selectedRegion != null">
-          <h2 style="margin-top: 30px;">{{selectedRegion.name}}</h2>
+          <h2 style="margin-top: 10px;">{{selectedRegion.name}}</h2>
           <highlighted-topic
             description="Indigenous"
             region-type="vm.regionType"
             region="selectedRegion"
             attribute-selector="'census2011_proportion_all_persons_indigenous'">
           </highlighted-topic>
+          <time-series-chart
+            description="Population (estimated)"
+            region-type="vm.regionType"
+            region="selectedRegion"
+            attribute-selector="'erp\\d+_persons_all'"
+            sorter="vm.sortByAttributeNameNumbers">
+          </time-series-chart>
           <topic-breakdown-bar
             description="Indigenous persons by age (2011)"
             region-type="vm.regionType"
@@ -452,7 +459,7 @@
             sorter="vm.sortByAttributeNameNumbers">
           </topic-breakdown-bar>
           <population-pyramid
-            description="All residents by age/sex (2015)"
+            description="All residents by age/sex (2015 estimate)"
             region-type="vm.regionType"
             region="selectedRegion"
             attribute-selector="'erp2015_(fe|)males_\\d+\\w+'"

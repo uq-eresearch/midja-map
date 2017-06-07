@@ -1,0 +1,20 @@
+.time-series-chart {
+  margin-top: 1em;
+  margin-bottom: 2em;
+  text-align: right;
+}
+
+.time-series-chart .description {
+  text-transform: uppercase;
+  font-size: 125%;
+  color: #444444;
+  display: inline-block;
+  width: 50%;
+  text-align: left;
+  padding-left: 1em;
+}
+
+.time-series-chart .chart {
+  display: inline-block;
+  max-width: 45%;
+}
