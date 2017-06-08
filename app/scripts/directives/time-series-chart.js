@@ -47,15 +47,15 @@ angular.module('midjaApp')
                     _.property('name'),
                     _.propertyOf(
                       _.zipObject(attributeNames, vs)))
-                const firstChar = v => v.slice(0, 1)
-                const tailChars = v => v.slice(1)
-                const lastChar = v => v.slice(v.length - 1)
-                const initChars = v => v.slice(0, v.length - 1)
+                const firstWord = v => _.head(_.words(v))
+                const tailWords = v => _.tail(_.words(v)).join(" ")
+                const lastWord = v => _.last(_.words(v))
+                const initWords = v => _.initial(_.words(v)).join(" ")
                 function removeCommon(vs) {
-                  if (_.uniqBy(vs, firstChar).length <= 1) {
-                    return removeCommon(_.map(vs, tailChars));
-                  } else if (_.uniqBy(vs, lastChar).length <= 1) {
-                    return removeCommon(_.map(vs, initChars));
+                  if (_.uniqBy(vs, firstWord).length <= 1) {
+                    return removeCommon(_.map(vs, tailWords));
+                  } else if (_.uniqBy(vs, lastWord).length <= 1) {
+                    return removeCommon(_.map(vs, initWords));
                   } else {
                     return vs;
                   }
@@ -92,11 +92,11 @@ angular.module('midjaApp')
                       showLegend: false,
                       showValues: false,
                       stacked: true,
-                      showXAxis: false,
+                      showXAxis: true,
                       margin: {
                         left: 40,
-                        bottom: 10,
-                        right: 0
+                        bottom: 20,
+                        right: 20
                       },
                       yAxis: {
                         tickFormat: formattingService.formatNumber
