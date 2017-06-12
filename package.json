@@ -60,7 +60,6 @@
     "sdmx-rest": "^2.5.1",
     "simple-statistics": "^4.1.0",
     "style-loader": "^0.18.1",
-    "typify": "^0.2.9",
     "ui-select": "^0.19.8",
     "webpack": "^2.6.1",
     "webpack-clean-obsolete-chunks": "^0.1.9",

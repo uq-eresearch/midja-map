@@ -5941,12 +5941,6 @@
       "resolved": "https://registry.npmjs.org/typedarray/-/typedarray-0.0.6.tgz",
       "dev": true
     },
-    "typify": {
-      "version": "0.2.9",
-      "from": "typify@latest",
-      "resolved": "https://registry.npmjs.org/typify/-/typify-0.2.9.tgz",
-      "dev": true
-    },
     "ua-parser-js": {
       "version": "0.7.12",
       "from": "ua-parser-js@>=0.7.9 <0.8.0",

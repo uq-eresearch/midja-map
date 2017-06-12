@@ -1,32 +1,15 @@
 import fs from 'fs'
 import path from 'path'
+import { writeJson } from 'fs-extra'
 const R = require('ramda')
 import { Future, IO, Maybe } from 'ramda-fantasy'
 const parseCSV = require('csv-parser');
-const typify = require('typify').create()
-
-typify.type('attributeType', v => v === 'number' || v === 'string')
-typify.alias('filename', 'string')
-typify.alias('field', 'string')
-typify.alias('regionType', 'string')
-typify.record('attribute', {
-  name: 'string',
-  description: 'string',
-  type: 'attributeType'
-})
-typify.record('regionAttribute', {
-  regionType: 'regionType',
-  attribute: 'attribute'
-})
-//typify.alias('attributeMatcher', 'filename -> field -> array regionAttribute')
-//typify.alias('attributeMatcher', 'string -> string -> array regionAttribute')
-
 const extract = R.curry((p, ...ks) => R.pipe(
   R.match(p), R.ifElse(R.has('input'), R.tail, R.identity), R.zipObj(ks)))
 const hasKeys = (...ks) => R.allPass(R.map(R.has)(ks))
 
 const matchers = [
-  typify("medianHouseholdIncomeMatcher :: filename -> field -> array regionAttribute", function(filename, field) {
+  filename => field => {
     const params =
       R.merge(
         extract(
@@ -69,20 +52,20 @@ const matchers = [
     } else {
       return []
     }
-  })
+  }
 ]
 
-const regionAttributesForField = typify(
-  "regionAttributesForField :: array function -> filename -> field -> array regionAttribute",
-  (matchers, filename, field) => R.chain(f => f(filename, field))(matchers)
-)
+// regionAttributesForField :: [(String -> String -> Object)] -> (String -> String -> [Object])
+const regionAttributesForField =
+  matchers => filename => field => R.chain(f => f(filename)(field))(matchers)
 
-const readCSV = regionColumnName => filepath => IO(() => {
-  return Future((reject, resolve) => {
+// readCSV :: String -> String -> Promise [Object]
+const readCSV = regionColumnName => filepath => {
+  return new Promise((resolve, reject) => {
     // TODO: make this more functional
     // (At least all the mutability is contained here.)
-    const attributeRetreiver = (field) =>
-      regionAttributesForField(matchers, path.basename(filepath), field)
+    const attributeRetreiver =
+      regionAttributesForField(matchers)(path.basename(filepath))
     let attributeData = null
     const reader = fs.createReadStream(filepath)
     const parser = parseCSV({ columns: false })
@@ -123,18 +106,40 @@ const readCSV = regionColumnName => filepath => IO(() => {
     })
     reader.pipe(parser)
   })
-})
+}
 
-const debugOut = future => IO(() => {
-  future.fork(err => console.error(err), data => console.log(data))
-})
+// attributeDataTargetFile :: Object => String
+const attributeDataTargetFile = regionAttribute => path.resolve(
+  __dirname, '..', 'data', 'public',
+  regionAttribute.regionType,
+  regionAttribute.attribute.name + '.json'
+)
 
-const argsIO = IO(() => process.argv.slice(2))
+// writeToFile :: Object -> Promise Object
+const writeToFile = regionAttribute => {
+  return writeJson(
+      attributeDataTargetFile(regionAttribute),
+      regionAttribute.data
+    ).then(v => { console.log(v); return regionAttribute })
+}
 
-var prog =
-  argsIO.chain(R.traverse(IO.of, readCSV('region_id')))
-        .map(R.sequence(Future.of))
-        .map(R.map(R.unnest))
-        .chain(debugOut)
+// combinedPromise :: (a -> [Promise b]) -> (a -> Promise [b])
+const combinedPromise = f => R.pipe(f, vs => Promise.all(vs))
 
-prog.runIO()
+// readCSVs :: [String] -> Promise [Object]
+const readCSVs =
+  R.pipeP(
+    combinedPromise(R.map(readCSV('region_id'))),
+    R.unnest)
+
+// writeAttributes :: [Object] -> Promise [Object]
+const writeAttributes = combinedPromise(R.map(writeToFile))
+
+// prog :: [String] -> Promise [Object]
+const prog =
+  R.pipeP(
+    readCSVs,
+    writeAttributes)
+
+const argsIO = process.argv.slice(2)
+prog(argsIO).catch(console.err)
