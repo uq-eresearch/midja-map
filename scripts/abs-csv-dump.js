@@ -2,7 +2,6 @@ import fs from 'fs'
 import path from 'path'
 import { readJson, writeJson } from 'fs-extra'
 const R = require('ramda')
-import { Future, IO, Maybe } from 'ramda-fantasy'
 const parseCSV = require('csv-parser');
 const extract = R.curry((p, ...ks) => R.pipe(
   R.match(p), R.ifElse(R.has('input'), R.tail, R.identity), R.zipObj(ks)))
