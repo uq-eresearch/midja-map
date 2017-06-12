@@ -9,6 +9,9 @@ const hasKeys = (...ks) => R.allPass(R.map(R.has)(ks))
 const chainApplyToAll =
   (...fs) => (...args) => R.chain(f => R.apply(f)(args))(fs)
 
+const integerFormat = {
+  "maximumFractionDigits": 0
+}
 const currencyFormat = {
   "style": "currency",
   "currency": "AUD"
@@ -67,6 +70,87 @@ const matchers = [
               "description": `Median weekly household income - indigenous households (Census ${params.year})`,
               "type": "number",
               "format": currencyFormat,
+              "source": sourceDetails(filename)
+            }
+          }]
+        )
+      )
+    )(params)
+  },
+  (filename, field) => {
+    const params =
+      R.merge(
+        extract(
+          /(\d{4})Census_I06_AUST_(\w+)_long/,
+          'year',
+          'regionType')(filename),
+        extract(
+          /^persons_(year_12|total)_.*(indigenous|total)$/i,
+          'prefix',
+          'suffix')(field));
+    return orEmpty(
+      hasKeys('year', 'regionType', 'prefix', 'suffix'),
+      chainApplyToAll(
+        orEmpty(
+          R.where({
+            'prefix': R.test(/^year_12$/i),
+            'suffix': R.test(/^indigenous$/i)
+          }),
+          params => [{
+            regionType: params.regionType.toLowerCase(),
+            attribute: {
+              "name": `census${params.year}_year_12_educated_indigenous_persons`,
+              "description": `Year 12 educated - indigenous persons (Census ${params.year})`,
+              "type": "number",
+              "format": integerFormat,
+              "source": sourceDetails(filename)
+            }
+          }]
+        ),
+        orEmpty(
+          R.where({
+            'prefix': R.test(/^total$/i),
+            'suffix': R.test(/^indigenous$/i)
+          }),
+          params => [{
+            regionType: params.regionType.toLowerCase(),
+            attribute: {
+              "name": `census${params.year}_total_possibly_educated_indigenous_persons`,
+              "description": `Total possibly educated persons - indigenous persons (Census ${params.year})`,
+              "type": "number",
+              "format": integerFormat,
+              "source": sourceDetails(filename)
+            }
+          }]
+        ),
+        orEmpty(
+          R.where({
+            'prefix': R.test(/^year_12$/i),
+            'suffix': R.test(/^total$/i)
+          }),
+          params => [{
+            regionType: params.regionType.toLowerCase(),
+            attribute: {
+              "name": `census${params.year}_year_12_educated_all_persons`,
+              "description": `Year 12 educated - all persons (Census ${params.year})`,
+              "type": "number",
+              "format": integerFormat,
+              "source": sourceDetails(filename)
+            }
+          }]
+        ),
+        orEmpty(
+          R.where({
+            'prefix': R.test(/^total$/i),
+            'suffix': R.test(/^total$/i)
+          }),
+          params => [{
+            regionType: params.regionType.toLowerCase(),
+            attribute: {
+              "name": `census${params.year}_total_possibly_educated_all_persons`,
+              "description": `Total possibly educated persons - all persons (Census ${params.year})`,
+              "type": "number",
+              "format": integerFormat,
               "source": sourceDetails(filename)
             }
           }]
