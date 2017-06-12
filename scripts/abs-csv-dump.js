@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { writeJson } from 'fs-extra'
+import { readJson, writeJson } from 'fs-extra'
 const R = require('ramda')
 import { Future, IO, Maybe } from 'ramda-fantasy'
 const parseCSV = require('csv-parser');
@@ -55,11 +55,11 @@ const matchers = [
   }
 ]
 
-// regionAttributesForField :: [(String -> String -> Object)] -> (String -> String -> [Object])
+// regionAttributesForField :: [(String → String → Object)] → (String → String → [Object])
 const regionAttributesForField =
   matchers => filename => field => R.chain(f => f(filename)(field))(matchers)
 
-// readCSV :: String -> String -> Promise [Object]
+// readCSV :: String → String → Promise [Object]
 const readCSV = regionColumnName => filepath => {
   return new Promise((resolve, reject) => {
     // TODO: make this more functional
@@ -108,38 +108,85 @@ const readCSV = regionColumnName => filepath => {
   })
 }
 
-// attributeDataTargetFile :: Object => String
-const attributeDataTargetFile = regionAttribute => path.resolve(
-  __dirname, '..', 'data', 'public',
-  regionAttribute.regionType,
-  regionAttribute.attribute.name + '.json'
-)
-
-// writeToFile :: Object -> Promise Object
-const writeToFile = regionAttribute => {
-  return writeJson(
-      attributeDataTargetFile(regionAttribute),
-      regionAttribute.data
-    ).then(v => { console.log(v); return regionAttribute })
+const jsonOptions = {
+  spaces: 2
 }
 
-// combinedPromise :: (a -> [Promise b]) -> (a -> Promise [b])
+// targetFile :: (String, String) → String
+const targetFile = (regionType, filename) => path.resolve(
+  __dirname, '..', 'data', 'public',
+  regionType,
+  filename
+)
+
+// indexTargetFile :: String → String
+const indexTargetFile = regionType => targetFile(regionType, 'index.json')
+
+// attributeDataTargetFile :: Object → String
+const attributeDataTargetFile = regionAttribute => targetFile(
+  regionAttribute.regionType,
+  regionAttribute.attribute.name + '.json')
+
+// writeAttributeToFile :: Object → Promise Object
+const writeAttributeDataToFile = regionAttribute => {
+  return writeJson(
+      attributeDataTargetFile(regionAttribute),
+      regionAttribute.data,
+      jsonOptions
+    ).then(R.always(regionAttribute))
+}
+
+// writeIndex :: (String, [Object]) → Promise [Object]
+const writeIndex = (regionType, updatedAttributes) => {
+  const modifyAttributes = (currentAttributes) => R.sortBy(
+    R.prop('name'),
+    R.unionWith(
+      R.eqBy(R.prop('name')),
+      updatedAttributes,
+      currentAttributes)
+  )
+  const attrsLens = R.lensProp('attributes')
+  const indexFile = indexTargetFile(regionType)
+  R.pipeP(
+    () => readJson(indexFile),
+    R.over(attrsLens, modifyAttributes),
+    R.curryN(3, writeJson)(indexFile, R.__, jsonOptions)
+  )()
+}
+
+// combinedPromise :: (a → [Promise b]) → (a → Promise [b])
 const combinedPromise = f => R.pipe(f, vs => Promise.all(vs))
 
-// readCSVs :: [String] -> Promise [Object]
+// readCSVs :: [String] → Promise [Object]
 const readCSVs =
   R.pipeP(
     combinedPromise(R.map(readCSV('region_id'))),
     R.unnest)
 
-// writeAttributes :: [Object] -> Promise [Object]
-const writeAttributes = combinedPromise(R.map(writeToFile))
+// writeAttributes :: [Object] → Promise [Object]
+const writeAttributes = combinedPromise(R.map(writeAttributeDataToFile))
 
-// prog :: [String] -> Promise [Object]
+// writeIndexes :: [Object] -> Promise [Object]
+const writeIndexes =
+  R.pipe(
+    R.groupBy(R.prop('regionType')), // [{k: v}]
+    R.toPairs,                       // [[k, v]]
+    R.map(
+      R.over(
+        R.lensIndex(1),
+        R.map(R.prop('attribute'))
+      )
+    ),                               // [[k, v]]
+    R.map(R.apply(writeIndex)),      // [Promise Object]
+    combinedPromise                  // Promise [Object]
+  )
+
+// prog :: [String] → Promise [Object]
 const prog =
   R.pipeP(
     readCSVs,
-    writeAttributes)
+    writeAttributes,
+    writeIndexes)
 
 const argsIO = process.argv.slice(2)
-prog(argsIO).catch(console.err)
+prog(argsIO).catch(e => console.error(e))
