@@ -6,9 +6,33 @@ const parseCSV = require('csv-parser');
 const extract = R.curry((p, ...ks) => R.pipe(
   R.match(p), R.ifElse(R.has('input'), R.tail, R.identity), R.zipObj(ks)))
 const hasKeys = (...ks) => R.allPass(R.map(R.has)(ks))
+const chainApplyToAll =
+  (...fs) => (...args) => R.chain(f => R.apply(f)(args))(fs)
+
+const currencyFormat = {
+  "style": "currency",
+  "currency": "AUD"
+}
+const sourceDetails = filename => {
+  return {
+    "name": "Australian Bureau of Statistics",
+    "license": {
+      "type": "Creative Commons Attribution 2.5 Australia",
+      "url": "https://creativecommons.org/licenses/by/2.5/au/"
+    },
+    "notes": `from DataPack CSV: ${filename}`
+  }
+}
+
+// orEmpty :: (*... → Boolean, *... → [Object]) => (*... → [Object])
+const orEmpty = (predicate, action) => R.ifElse(
+  predicate,
+  action,
+  R.always([])
+)
 
 const matchers = [
-  filename => field => {
+  (filename, field) => {
     const params =
       R.merge(
         extract(
@@ -17,54 +41,148 @@ const matchers = [
           'regionType')(filename),
         extract(
           /median_total_household_income_weekly_(.+)$/i,
-          'suffix')(field))
-    if (hasKeys('year', 'regionType', 'suffix')(params)) {
-      return R.cond([
-        [
+          'suffix')(field));
+    return orEmpty(
+      hasKeys('year', 'regionType', 'suffix'),
+      chainApplyToAll(
+        orEmpty(
           R.pipe(R.prop('suffix'), R.test(/total$/i)),
           params => [{
             regionType: params.regionType.toLowerCase(),
             attribute: {
-              "name": `census${params.year}_median_household_income_total`,
-              "description": `Median household income - all households (Census ${params.year})`,
+              "name": `census${params.year}_median_weekly_household_income_all`,
+              "description": `Median weekly household income - all households (Census ${params.year})`,
               "type": "number",
-              "format": {
-                "maximumFractionDigits": 1,
-                "minimumFractionDigits": 1
-              },
-              "source": {
-                "name": "Australian Bureau of Statistics",
-                "license": {
-                  "type": "Creative Commons Attribution 2.5 Australia",
-                  "url": "https://creativecommons.org/licenses/by/2.5/au/"
-                },
-                "notes": `from ${filename}`
-              }
+              "format": currencyFormat,
+              "source": sourceDetails(filename)
             }
           }]
-        ],
-        [
-          R.T,
-          R.always([])
-        ]
-      ])(params)
-    } else {
-      return []
-    }
+        ),
+        orEmpty(
+          R.pipe(R.prop('suffix'), R.test(/with_indigenous_persons$/i)),
+          params => [{
+            regionType: params.regionType.toLowerCase(),
+            attribute: {
+              "name": `census${params.year}_median_weekly_household_income_indigenous`,
+              "description": `Median weekly household income - indigenous households (Census ${params.year})`,
+              "type": "number",
+              "format": currencyFormat,
+              "source": sourceDetails(filename)
+            }
+          }]
+        )
+      )
+    )(params)
+  },
+  (filename, field) => {
+    const params =
+      R.evolve(
+        {
+          suffix: v => /indigenous/i.test(v) ? 'indigenous' : 'all'
+        },
+        R.merge(
+          extract(
+            /(\d{4})Census_I13_AUST_(\w+)_long/,
+            'year',
+            'regionType')(filename),
+          extract(
+            /^(\d+|negative|partial|all)_(\d+|nil_income|or_more|income.*_stated)_(households_with_indigenous_persons|total_households)$/i,
+            'low',
+            'high',
+            'suffix')(field)
+        )
+      )
+    return orEmpty(
+      hasKeys('year', 'regionType', 'low', 'high'),
+      chainApplyToAll(
+        orEmpty(
+          R.where({
+            'low': R.test(/^partial$/i)
+          }),
+          params => [{
+            regionType: params.regionType.toLowerCase(),
+            attribute: {
+              "name": `census${params.year}_partially_unstated_weekly_household_income_${params.suffix}`,
+              "description": `Partially-unstated weekly household income - ${params.suffix} households (Census ${params.year})`,
+              "type": "number",
+              "format": currencyFormat,
+              "source": sourceDetails(filename)
+            }
+          }]
+        ),
+        orEmpty(
+          R.where({
+            'low': R.test(/^all$/i)
+          }),
+          params => [{
+            regionType: params.regionType.toLowerCase(),
+            attribute: {
+              "name": `census${params.year}_completely_unstated_weekly_household_income_${params.suffix}`,
+              "description": `Completely-unstated weekly household income - ${params.suffix} households (Census ${params.year})`,
+              "type": "number",
+              "format": currencyFormat,
+              "source": sourceDetails(filename)
+            }
+          }]
+        ),
+        orEmpty(
+          R.where({
+            'high': R.test(/^\d+$/)
+          }),
+          params => [{
+            regionType: params.regionType.toLowerCase(),
+            attribute: {
+              "name": `census${params.year}_${params.low}to${params.high}_weekly_household_income_${params.suffix}`,
+              "description": `\$${params.low} - \$${params.high} weekly household income - ${params.suffix} households (Census ${params.year})`,
+              "type": "number",
+              "format": currencyFormat,
+              "source": sourceDetails(filename)
+            }
+          }]
+        ),
+        orEmpty(
+          R.where({
+            'high': R.test(/more$/)
+          }),
+          params => [{
+            regionType: params.regionType.toLowerCase(),
+            attribute: {
+              "name": `census${params.year}_${params.low}plus_weekly_household_income_${params.suffix}`,
+              "description": `\$${params.low}+ weekly household income - ${params.suffix} households (Census ${params.year})`,
+              "type": "number",
+              "format": currencyFormat,
+              "source": sourceDetails(filename)
+            }
+          }]
+        ),
+        orEmpty(
+          R.where({
+            'high': R.test(/^nil/i)
+          }),
+          params => [{
+            regionType: params.regionType.toLowerCase(),
+            attribute: {
+              "name": `census${params.year}_0minus_weekly_household_income_${params.suffix}`,
+              "description": `Nil or negative weekly household income - ${params.suffix} households (Census ${params.year})`,
+              "type": "number",
+              "format": currencyFormat,
+              "source": sourceDetails(filename)
+            }
+          }]
+        )
+      )
+    )(params)
   }
 ]
-
-// regionAttributesForField :: [(String → String → Object)] → (String → String → [Object])
-const regionAttributesForField =
-  matchers => filename => field => R.chain(f => f(filename)(field))(matchers)
 
 // readCSV :: String → String → Promise [Object]
 const readCSV = regionColumnName => filepath => {
   return new Promise((resolve, reject) => {
     // TODO: make this more functional
     // (At least all the mutability is contained here.)
-    const attributeRetreiver =
-      regionAttributesForField(matchers)(path.basename(filepath))
+    const attributeRetreiver = field => {
+      return R.apply(chainApplyToAll, matchers)(path.basename(filepath), field)
+    }
     let attributeData = null
     const reader = fs.createReadStream(filepath)
     const parser = parseCSV({ columns: false })
