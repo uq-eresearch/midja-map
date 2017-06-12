@@ -16,14 +16,14 @@ const currencyFormat = {
   "style": "currency",
   "currency": "AUD"
 }
-const sourceDetails = filename => {
+const sourceDetails = (filename, field) => {
   return {
     "name": "Australian Bureau of Statistics",
     "license": {
       "type": "Creative Commons Attribution 2.5 Australia",
       "url": "https://creativecommons.org/licenses/by/2.5/au/"
     },
-    "notes": `from DataPack CSV: ${filename}`
+    "notes": `from DataPack CSV: ${filename}#${field}`
   }
 }
 
@@ -57,7 +57,7 @@ const matchers = [
               "description": `Median weekly household income - all households (Census ${params.year})`,
               "type": "number",
               "format": currencyFormat,
-              "source": sourceDetails(filename)
+              "source": sourceDetails(filename, field)
             }
           }]
         ),
@@ -70,7 +70,7 @@ const matchers = [
               "description": `Median weekly household income - indigenous households (Census ${params.year})`,
               "type": "number",
               "format": currencyFormat,
-              "source": sourceDetails(filename)
+              "source": sourceDetails(filename, field)
             }
           }]
         )
@@ -103,7 +103,7 @@ const matchers = [
               "description": `Year 12 educated - indigenous persons (Census ${params.year})`,
               "type": "number",
               "format": integerFormat,
-              "source": sourceDetails(filename)
+              "source": sourceDetails(filename, field)
             }
           }]
         ),
@@ -119,7 +119,7 @@ const matchers = [
               "description": `Total possibly educated persons - indigenous persons (Census ${params.year})`,
               "type": "number",
               "format": integerFormat,
-              "source": sourceDetails(filename)
+              "source": sourceDetails(filename, field)
             }
           }]
         ),
@@ -135,7 +135,7 @@ const matchers = [
               "description": `Year 12 educated - all persons (Census ${params.year})`,
               "type": "number",
               "format": integerFormat,
-              "source": sourceDetails(filename)
+              "source": sourceDetails(filename, field)
             }
           }]
         ),
@@ -151,7 +151,7 @@ const matchers = [
               "description": `Total possibly educated persons - all persons (Census ${params.year})`,
               "type": "number",
               "format": integerFormat,
-              "source": sourceDetails(filename)
+              "source": sourceDetails(filename, field)
             }
           }]
         )
@@ -190,7 +190,7 @@ const matchers = [
               "description": `Partially-unstated weekly household income - ${params.suffix} households (Census ${params.year})`,
               "type": "number",
               "format": currencyFormat,
-              "source": sourceDetails(filename)
+              "source": sourceDetails(filename, field)
             }
           }]
         ),
@@ -205,7 +205,7 @@ const matchers = [
               "description": `Completely-unstated weekly household income - ${params.suffix} households (Census ${params.year})`,
               "type": "number",
               "format": currencyFormat,
-              "source": sourceDetails(filename)
+              "source": sourceDetails(filename, field)
             }
           }]
         ),
@@ -220,7 +220,7 @@ const matchers = [
               "description": `\$${params.low} - \$${params.high} weekly household income - ${params.suffix} households (Census ${params.year})`,
               "type": "number",
               "format": currencyFormat,
-              "source": sourceDetails(filename)
+              "source": sourceDetails(filename, field)
             }
           }]
         ),
@@ -235,7 +235,7 @@ const matchers = [
               "description": `\$${params.low}+ weekly household income - ${params.suffix} households (Census ${params.year})`,
               "type": "number",
               "format": currencyFormat,
-              "source": sourceDetails(filename)
+              "source": sourceDetails(filename, field)
             }
           }]
         ),
@@ -250,7 +250,7 @@ const matchers = [
               "description": `Nil or negative weekly household income - ${params.suffix} households (Census ${params.year})`,
               "type": "number",
               "format": currencyFormat,
-              "source": sourceDetails(filename)
+              "source": sourceDetails(filename, field)
             }
           }]
         )
