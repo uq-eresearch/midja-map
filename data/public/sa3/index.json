@@ -1630,7 +1630,8 @@
         "license": {
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        }
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07_LGA/3.A15.4..LGA2011..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false&startPeriod=2011&endPeriod=2011"
       }
     },
     {
@@ -1643,7 +1644,8 @@
         "license": {
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        }
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07_LGA/3.A15.4..LGA2011..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false&startPeriod=2011&endPeriod=2011"
       }
     },
     {
@@ -1656,7 +1658,8 @@
         "license": {
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        }
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07_LGA/3.A15.4..LGA2011..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false&startPeriod=2011&endPeriod=2011"
       }
     },
     {
@@ -1669,7 +1672,8 @@
         "license": {
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        }
+        },
+        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07_LGA/3.A15.4..LGA2011..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false&startPeriod=2011&endPeriod=2011"
       }
     },
     {
@@ -3512,6 +3516,38 @@
       "description": "Proportion of dwellings owned (outright/mortgage) (Census 2011)",
       "type": "number",
       "expression": "1.0 * (census2011_dwellings_owned + census2011_dwellings_mortgage) / census2011_dwellings_all",
+      "format": {
+        "style": "percent"
+      },
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
+      "name": "census2011_proportion_year_12_educated_all_persons",
+      "description": "Year 12 educated proportion of population (Census 2011)",
+      "type": "number",
+      "expression": "1.0 * census2011_year_12_educated_all_persons / census2011_total_possibly_educated_all_persons",
+      "format": {
+        "style": "percent"
+      },
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
+      "name": "census2011_proportion_year_12_educated_indigenous_persons",
+      "description": "Year 12 educated proportion of indigenous population (Census 2011)",
+      "type": "number",
+      "expression": "1.0 * census2011_year_12_educated_indigenous_persons / census2011_total_possibly_educated_indigenous_persons",
       "format": {
         "style": "percent"
       },

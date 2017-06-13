@@ -4041,6 +4041,38 @@
       }
     },
     {
+      "name": "census2011_proportion_year_12_educated_all_persons",
+      "description": "Year 12 educated proportion of population (Census 2011)",
+      "type": "number",
+      "expression": "1.0 * census2011_year_12_educated_all_persons / census2011_total_possibly_educated_all_persons",
+      "format": {
+        "style": "percent"
+      },
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
+      "name": "census2011_proportion_year_12_educated_indigenous_persons",
+      "description": "Year 12 educated proportion of indigenous population (Census 2011)",
+      "type": "number",
+      "expression": "1.0 * census2011_year_12_educated_indigenous_persons / census2011_total_possibly_educated_indigenous_persons",
+      "format": {
+        "style": "percent"
+      },
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
       "name": "census2011_total_possibly_educated_all_persons",
       "description": "Total possibly educated persons - all persons (Census 2011)",
       "type": "number",
