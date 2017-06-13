@@ -256,6 +256,39 @@ const matchers = [
         )
       )
     )(params)
+  },
+  (filename, field) => {
+    const params =
+      R.evolve(
+        {
+          status: v => /indigenous/i.test(v) ? 'indigenous' : 'all'
+        },
+        R.merge(
+          extract(
+            /(\d{4})Census_I15._AUST_(\w+)_long/i,
+            'year',
+            'regionType')(filename),
+          extract(
+            /^persons_(indigenous|total)_(\d+)_(\d+)_years_(.*)$/i,
+            'status',
+            'low',
+            'high',
+            'qualification')(field)
+        )
+      )
+    return orEmpty(
+      hasKeys('year', 'regionType', 'status', 'low', 'high', 'qualification'),
+      params => [{
+        regionType: params.regionType.toLowerCase(),
+        attribute: {
+          "name": `census${params.year}_${params.status}_persons_${params.low}to${params.high}_${params.qualification}`,
+          "description": `Education level of ${params.status} persons ${params.low}-${params.high} years - ${params.qualification.replace(/_/g,' ')} (Census ${params.year})`,
+          "type": "number",
+          "format": integerFormat,
+          "source": sourceDetails(filename, field)
+        }
+      }]
+    )(params)
   }
 ]
 
