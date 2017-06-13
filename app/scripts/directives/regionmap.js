@@ -1,5 +1,7 @@
 'use strict';
 
+import L from 'leaflet'
+import 'leaflet.vectorgrid'
 import * as _ from 'lodash-es'
 const _p = _.partial.placeholder
 import * as colorbrewer from "colorbrewer"
@@ -11,7 +13,7 @@ import * as colorbrewer from "colorbrewer"
  * # cartodbMap
  */
 angular.module('midjaApp')
-  .directive('regionMap', function(L, $http, $rootScope, $q, dataService,
+  .directive('regionMap', function($http, $rootScope, $q, dataService,
     formattingService, $uibModal) {
 
     // tileserver-gl-light URL

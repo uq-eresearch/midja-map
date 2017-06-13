@@ -1,4 +1,3 @@
-import * as L from 'leaflet'
 import angular from 'angular'
 import 'angular-animate/angular-animate'
 import 'angular-route/angular-route'
@@ -20,4 +19,3 @@ export default angular
     'angular-loading-bar',
     'nvd3'
   ])
-  .constant('L', L)

@@ -2,7 +2,6 @@
 
 import * as _ from 'lodash-es'
 const _p = _.partial.placeholder
-import 'leaflet.vectorgrid'
 import csvStringify from 'csv-stringify'
 
 /**
