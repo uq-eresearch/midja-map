@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { readJson, writeJson } from 'fs-extra'
 const R = require('ramda')
-const parseCSV = require('csv-parser');
+const parseCSV = require('csv-parse');
 const extract = R.curry((p, ...ks) => R.pipe(
   R.match(p), R.ifElse(R.has('input'), R.tail, R.identity), R.zipObj(ks)))
 const hasKeys = (...ks) => R.allPass(R.map(R.has)(ks))
@@ -390,7 +390,10 @@ const readCSV = regionColumnName => filepath => {
     }
     let attributeData = null
     const reader = fs.createReadStream(filepath)
-    const parser = parseCSV({ columns: false })
+    const parser = parseCSV({
+      auto_parse: true,
+      columns: true
+    })
     parser.on('readable', function() {
       let record;
       while (record = parser.read()) {

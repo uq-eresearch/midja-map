@@ -1569,26 +1569,6 @@
       "resolved": "https://registry.npmjs.org/csv-parse/-/csv-parse-1.2.0.tgz",
       "dev": true
     },
-    "csv-parser": {
-      "version": "1.11.0",
-      "from": "csv-parser@latest",
-      "resolved": "https://registry.npmjs.org/csv-parser/-/csv-parser-1.11.0.tgz",
-      "dev": true,
-      "dependencies": {
-        "generate-function": {
-          "version": "1.1.0",
-          "from": "generate-function@>=1.0.1 <2.0.0",
-          "resolved": "https://registry.npmjs.org/generate-function/-/generate-function-1.1.0.tgz",
-          "dev": true
-        },
-        "minimist": {
-          "version": "1.2.0",
-          "from": "minimist@>=1.2.0 <2.0.0",
-          "resolved": "https://registry.npmjs.org/minimist/-/minimist-1.2.0.tgz",
-          "dev": true
-        }
-      }
-    },
     "csv-stringify": {
       "version": "1.0.4",
       "from": "csv-stringify@latest",
@@ -3812,20 +3792,6 @@
       "resolved": "https://registry.npmjs.org/ncname/-/ncname-1.0.0.tgz",
       "dev": true
     },
-    "ndjson": {
-      "version": "1.5.0",
-      "from": "ndjson@>=1.4.0 <2.0.0",
-      "resolved": "https://registry.npmjs.org/ndjson/-/ndjson-1.5.0.tgz",
-      "dev": true,
-      "dependencies": {
-        "minimist": {
-          "version": "1.2.0",
-          "from": "minimist@^1.2.0",
-          "resolved": "https://registry.npmjs.org/minimist/-/minimist-1.2.0.tgz",
-          "dev": true
-        }
-      }
-    },
     "negotiator": {
       "version": "0.6.1",
       "from": "negotiator@0.6.1",
@@ -5561,12 +5527,6 @@
           "dev": true
         }
       }
-    },
-    "split2": {
-      "version": "2.1.1",
-      "from": "split2@>=2.1.0 <3.0.0",
-      "resolved": "https://registry.npmjs.org/split2/-/split2-2.1.1.tgz",
-      "dev": true
     },
     "sprintf-js": {
       "version": "1.0.3",

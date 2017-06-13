@@ -29,7 +29,6 @@
     "css-loader": "^0.28.4",
     "csstyle": "^1.5.1",
     "csv-parse": "^1.2.0",
-    "csv-parser": "^1.11.0",
     "csv-stringify": "^1.0.4",
     "extract-text-webpack-plugin": "^2.1.0",
     "favicons-webpack-plugin": "0.0.7",
