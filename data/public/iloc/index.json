@@ -2175,22 +2175,6 @@
       }
     },
     {
-      "name": "census2011_all_persons_15to19_advanced_diploma_and_diploma_level",
-      "description": "Education level of all persons 15-19 years - Advanced Diploma and Diploma Level (Census 2011)",
-      "type": "number",
-      "format": {
-        "maximumFractionDigits": 0
-      },
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "notes": "from DataPack CSV: 2011Census_I15D_AUST_ILOC_long.csv#Persons_Total_15_19_years_Advanced_Diploma_and_Diploma_Level"
-      }
-    },
-    {
       "name": "census2011_aggregate_0to14_persons_indigenous",
       "description": "Indigenous Persons - Age 0-14 (Census 2011)",
       "expression": "census2011_0to4_persons_indigenous + census2011_5to9_persons_indigenous + census2011_10to14_persons_indigenous",
@@ -2240,6 +2224,86 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
+      }
+    },
+    {
+      "name": "census2011_all_females_indigenous",
+      "description": "Indigenous Females - All Ages (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I03C_AUST_ILOC_long.csv#Total_Indigenous_Females"
+      }
+    },
+    {
+      "name": "census2011_all_females_total",
+      "description": "Total Females - All Ages (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I03C_AUST_ILOC_long.csv#Total_Total_Females"
+      }
+    },
+    {
+      "name": "census2011_all_males_indigenous",
+      "description": "Indigenous Males - All Ages (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I03C_AUST_ILOC_long.csv#Total_Indigenous_Males"
+      }
+    },
+    {
+      "name": "census2011_all_males_total",
+      "description": "Total Males - All Ages (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I03C_AUST_ILOC_long.csv#Total_Total_Males"
+      }
+    },
+    {
+      "name": "census2011_all_persons_15to19_advanced_diploma_and_diploma_level",
+      "description": "Education level of all persons 15-19 years - Advanced Diploma and Diploma Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_ILOC_long.csv#Persons_Total_15_19_years_Advanced_Diploma_and_Diploma_Level"
       }
     },
     {
@@ -2992,6 +3056,38 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_ILOC_long.csv#Persons_Total_55_64_years_Total"
+      }
+    },
+    {
+      "name": "census2011_all_persons_indigenous",
+      "description": "Indigenous Persons - All Ages (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I03C_AUST_ILOC_long.csv#Total_Indigenous_Persons"
+      }
+    },
+    {
+      "name": "census2011_all_persons_total",
+      "description": "Total Persons - All Ages (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I03C_AUST_ILOC_long.csv#Total_Total_Persons"
       }
     },
     {
