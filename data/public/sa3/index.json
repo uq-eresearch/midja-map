@@ -87,6 +87,40 @@
       }
     },
     {
+      "name": "census2011_0minus_weekly_household_income_all",
+      "description": "Nil or negative weekly household income - all households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#Negative_Nil_income_Total_households"
+      }
+    },
+    {
+      "name": "census2011_0minus_weekly_household_income_indigenous",
+      "description": "Nil or negative weekly household income - indigenous households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#Negative_Nil_income_Households_with_Indigenous_persons"
+      }
+    },
+    {
       "name": "census2011_0to4_females_indigenous",
       "description": "Indigenous Females - Age 0-4 (Census 2011)",
       "type": "number",
@@ -162,6 +196,40 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A04.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false&startPeriod=2011&endPeriod=2011"
+      }
+    },
+    {
+      "name": "census2011_1000to1249_weekly_household_income_all",
+      "description": "$1000 - $1249 weekly household income - all households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#1000_1249_Total_households"
+      }
+    },
+    {
+      "name": "census2011_1000to1249_weekly_household_income_indigenous",
+      "description": "$1000 - $1249 weekly household income - indigenous households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#1000_1249_Households_with_Indigenous_persons"
       }
     },
     {
@@ -243,6 +311,74 @@
       }
     },
     {
+      "name": "census2011_1250to1499_weekly_household_income_all",
+      "description": "$1250 - $1499 weekly household income - all households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#1250_1499_Total_households"
+      }
+    },
+    {
+      "name": "census2011_1250to1499_weekly_household_income_indigenous",
+      "description": "$1250 - $1499 weekly household income - indigenous households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#1250_1499_Households_with_Indigenous_persons"
+      }
+    },
+    {
+      "name": "census2011_1500to1999_weekly_household_income_all",
+      "description": "$1500 - $1999 weekly household income - all households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#1500_1999_Total_households"
+      }
+    },
+    {
+      "name": "census2011_1500to1999_weekly_household_income_indigenous",
+      "description": "$1500 - $1999 weekly household income - indigenous households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#1500_1999_Households_with_Indigenous_persons"
+      }
+    },
+    {
       "name": "census2011_15to19_females_indigenous",
       "description": "Indigenous Females - Age 15-19 (Census 2011)",
       "type": "number",
@@ -318,6 +454,108 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A15.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false&startPeriod=2011&endPeriod=2011"
+      }
+    },
+    {
+      "name": "census2011_1to199_weekly_household_income_all",
+      "description": "$1 - $199 weekly household income - all households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#1_199_Total_households"
+      }
+    },
+    {
+      "name": "census2011_1to199_weekly_household_income_indigenous",
+      "description": "$1 - $199 weekly household income - indigenous households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#1_199_Households_with_Indigenous_persons"
+      }
+    },
+    {
+      "name": "census2011_2000to2499_weekly_household_income_all",
+      "description": "$2000 - $2499 weekly household income - all households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#2000_2499_Total_households"
+      }
+    },
+    {
+      "name": "census2011_2000to2499_weekly_household_income_indigenous",
+      "description": "$2000 - $2499 weekly household income - indigenous households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#2000_2499_Households_with_Indigenous_persons"
+      }
+    },
+    {
+      "name": "census2011_200to299_weekly_household_income_all",
+      "description": "$200 - $299 weekly household income - all households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#200_299_Total_households"
+      }
+    },
+    {
+      "name": "census2011_200to299_weekly_household_income_indigenous",
+      "description": "$200 - $299 weekly household income - indigenous households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#200_299_Households_with_Indigenous_persons"
       }
     },
     {
@@ -399,6 +637,40 @@
       }
     },
     {
+      "name": "census2011_2500to2999_weekly_household_income_all",
+      "description": "$2500 - $2999 weekly household income - all households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#2500_2999_Total_households"
+      }
+    },
+    {
+      "name": "census2011_2500to2999_weekly_household_income_indigenous",
+      "description": "$2500 - $2999 weekly household income - indigenous households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#2500_2999_Households_with_Indigenous_persons"
+      }
+    },
+    {
       "name": "census2011_25to29_females_indigenous",
       "description": "Indigenous Females - Age 25-29 (Census 2011)",
       "type": "number",
@@ -474,6 +746,74 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A25.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false&startPeriod=2011&endPeriod=2011"
+      }
+    },
+    {
+      "name": "census2011_3000plus_weekly_household_income_all",
+      "description": "$3000+ weekly household income - all households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#3000_or_more_Total_households"
+      }
+    },
+    {
+      "name": "census2011_3000plus_weekly_household_income_indigenous",
+      "description": "$3000+ weekly household income - indigenous households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#3000_or_more_Households_with_Indigenous_persons"
+      }
+    },
+    {
+      "name": "census2011_300to399_weekly_household_income_all",
+      "description": "$300 - $399 weekly household income - all households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#300_399_Total_households"
+      }
+    },
+    {
+      "name": "census2011_300to399_weekly_household_income_indigenous",
+      "description": "$300 - $399 weekly household income - indigenous households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#300_399_Households_with_Indigenous_persons"
       }
     },
     {
@@ -630,6 +970,40 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.A35.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false&startPeriod=2011&endPeriod=2011"
+      }
+    },
+    {
+      "name": "census2011_400to599_weekly_household_income_all",
+      "description": "$400 - $599 weekly household income - all households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#400_599_Total_households"
+      }
+    },
+    {
+      "name": "census2011_400to599_weekly_household_income_indigenous",
+      "description": "$400 - $599 weekly household income - indigenous households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#400_599_Households_with_Indigenous_persons"
       }
     },
     {
@@ -1023,6 +1397,40 @@
       }
     },
     {
+      "name": "census2011_600to799_weekly_household_income_all",
+      "description": "$600 - $799 weekly household income - all households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#600_799_Total_households"
+      }
+    },
+    {
+      "name": "census2011_600to799_weekly_household_income_indigenous",
+      "description": "$600 - $799 weekly household income - indigenous households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#600_799_Households_with_Indigenous_persons"
+      }
+    },
+    {
       "name": "census2011_60to64_females_indigenous",
       "description": "Indigenous Females - Age 60-64 (Census 2011)",
       "type": "number",
@@ -1179,6 +1587,40 @@
       }
     },
     {
+      "name": "census2011_800to999_weekly_household_income_all",
+      "description": "$800 - $999 weekly household income - all households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#800_999_Total_households"
+      }
+    },
+    {
+      "name": "census2011_800to999_weekly_household_income_indigenous",
+      "description": "$800 - $999 weekly household income - indigenous households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#800_999_Households_with_Indigenous_persons"
+      }
+    },
+    {
       "name": "census2011_aggregate_0to14_persons_indigenous",
       "description": "Indigenous Persons - Age 0-14 (Census 2011)",
       "expression": "census2011_0to4_persons_indigenous + census2011_5to9_persons_indigenous + census2011_10to14_persons_indigenous",
@@ -1287,6 +1729,774 @@
       }
     },
     {
+      "name": "census2011_all_persons_15to19_advanced_diploma_and_diploma_level",
+      "description": "Education level of all persons 15-19 years - Advanced Diploma and Diploma Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_15_19_years_Advanced_Diploma_and_Diploma_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_15to19_bachelor_degree_level",
+      "description": "Education level of all persons 15-19 years - Bachelor Degree Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_15_19_years_Bachelor_Degree_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_15to19_certificate_i_and_ii_level",
+      "description": "Education level of all persons 15-19 years - Certificate I and II Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_15_19_years_Certificate_I_and_II_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_15to19_certificate_iii_and_iv_level",
+      "description": "Education level of all persons 15-19 years - Certificate III and IV Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_15_19_years_Certificate_III_and_IV_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_15to19_certificate_level_nfd",
+      "description": "Education level of all persons 15-19 years - Certificate Level nfd (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_15_19_years_Certificate_Level_nfd"
+      }
+    },
+    {
+      "name": "census2011_all_persons_15to19_level_of_education_not_stated",
+      "description": "Education level of all persons 15-19 years - Level of education not stated (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_15_19_years_Level_of_education_not_stated"
+      }
+    },
+    {
+      "name": "census2011_all_persons_15to19_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
+      "description": "Education level of all persons 15-19 years - Postgraduate Degree Graduate Diploma and Graduate Certificate Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_15_19_years_Postgraduate_Degree_Graduate_Diploma_and_Graduate_Certificate_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_15to19_total",
+      "description": "Education level of all persons 15-19 years - Total (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_15_19_years_Total"
+      }
+    },
+    {
+      "name": "census2011_all_persons_20to24_advanced_diploma_and_diploma_level",
+      "description": "Education level of all persons 20-24 years - Advanced Diploma and Diploma Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_20_24_years_Advanced_Diploma_and_Diploma_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_20to24_bachelor_degree_level",
+      "description": "Education level of all persons 20-24 years - Bachelor Degree Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_20_24_years_Bachelor_Degree_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_20to24_certificate_i_and_ii_level",
+      "description": "Education level of all persons 20-24 years - Certificate I and II Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_20_24_years_Certificate_I_and_II_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_20to24_certificate_iii_and_iv_level",
+      "description": "Education level of all persons 20-24 years - Certificate III and IV Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_20_24_years_Certificate_III_and_IV_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_20to24_certificate_level_nfd",
+      "description": "Education level of all persons 20-24 years - Certificate Level nfd (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_20_24_years_Certificate_Level_nfd"
+      }
+    },
+    {
+      "name": "census2011_all_persons_20to24_level_of_education_not_stated",
+      "description": "Education level of all persons 20-24 years - Level of education not stated (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_20_24_years_Level_of_education_not_stated"
+      }
+    },
+    {
+      "name": "census2011_all_persons_20to24_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
+      "description": "Education level of all persons 20-24 years - Postgraduate Degree Graduate Diploma and Graduate Certificate Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_20_24_years_Postgraduate_Degree_Graduate_Diploma_and_Graduate_Certificate_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_20to24_total",
+      "description": "Education level of all persons 20-24 years - Total (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_20_24_years_Total"
+      }
+    },
+    {
+      "name": "census2011_all_persons_25to34_advanced_diploma_and_diploma_level",
+      "description": "Education level of all persons 25-34 years - Advanced Diploma and Diploma Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_25_34_years_Advanced_Diploma_and_Diploma_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_25to34_bachelor_degree_level",
+      "description": "Education level of all persons 25-34 years - Bachelor Degree Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_25_34_years_Bachelor_Degree_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_25to34_certificate_i_and_ii_level",
+      "description": "Education level of all persons 25-34 years - Certificate I and II Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_25_34_years_Certificate_I_and_II_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_25to34_certificate_iii_and_iv_level",
+      "description": "Education level of all persons 25-34 years - Certificate III and IV Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_25_34_years_Certificate_III_and_IV_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_25to34_certificate_level_nfd",
+      "description": "Education level of all persons 25-34 years - Certificate Level nfd (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_25_34_years_Certificate_Level_nfd"
+      }
+    },
+    {
+      "name": "census2011_all_persons_25to34_level_of_education_not_stated",
+      "description": "Education level of all persons 25-34 years - Level of education not stated (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_25_34_years_Level_of_education_not_stated"
+      }
+    },
+    {
+      "name": "census2011_all_persons_25to34_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
+      "description": "Education level of all persons 25-34 years - Postgraduate Degree Graduate Diploma and Graduate Certificate Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_25_34_years_Postgraduate_Degree_Graduate_Diploma_and_Graduate_Certificate_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_25to34_total",
+      "description": "Education level of all persons 25-34 years - Total (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_25_34_years_Total"
+      }
+    },
+    {
+      "name": "census2011_all_persons_35to44_advanced_diploma_and_diploma_level",
+      "description": "Education level of all persons 35-44 years - Advanced Diploma and Diploma Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_35_44_years_Advanced_Diploma_and_Diploma_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_35to44_bachelor_degree_level",
+      "description": "Education level of all persons 35-44 years - Bachelor Degree Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_35_44_years_Bachelor_Degree_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_35to44_certificate_i_and_ii_level",
+      "description": "Education level of all persons 35-44 years - Certificate I and II Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_35_44_years_Certificate_I_and_II_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_35to44_certificate_iii_and_iv_level",
+      "description": "Education level of all persons 35-44 years - Certificate III and IV Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_35_44_years_Certificate_III_and_IV_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_35to44_certificate_level_nfd",
+      "description": "Education level of all persons 35-44 years - Certificate Level nfd (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_35_44_years_Certificate_Level_nfd"
+      }
+    },
+    {
+      "name": "census2011_all_persons_35to44_level_of_education_not_stated",
+      "description": "Education level of all persons 35-44 years - Level of education not stated (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_35_44_years_Level_of_education_not_stated"
+      }
+    },
+    {
+      "name": "census2011_all_persons_35to44_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
+      "description": "Education level of all persons 35-44 years - Postgraduate Degree Graduate Diploma and Graduate Certificate Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_35_44_years_Postgraduate_Degree_Graduate_Diploma_and_Graduate_Certificate_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_35to44_total",
+      "description": "Education level of all persons 35-44 years - Total (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_35_44_years_Total"
+      }
+    },
+    {
+      "name": "census2011_all_persons_45to54_advanced_diploma_and_diploma_level",
+      "description": "Education level of all persons 45-54 years - Advanced Diploma and Diploma Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_45_54_years_Advanced_Diploma_and_Diploma_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_45to54_bachelor_degree_level",
+      "description": "Education level of all persons 45-54 years - Bachelor Degree Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_45_54_years_Bachelor_Degree_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_45to54_certificate_i_and_ii_level",
+      "description": "Education level of all persons 45-54 years - Certificate I and II Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_45_54_years_Certificate_I_and_II_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_45to54_certificate_iii_and_iv_level",
+      "description": "Education level of all persons 45-54 years - Certificate III and IV Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_45_54_years_Certificate_III_and_IV_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_45to54_certificate_level_nfd",
+      "description": "Education level of all persons 45-54 years - Certificate Level nfd (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_45_54_years_Certificate_Level_nfd"
+      }
+    },
+    {
+      "name": "census2011_all_persons_45to54_level_of_education_not_stated",
+      "description": "Education level of all persons 45-54 years - Level of education not stated (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_45_54_years_Level_of_education_not_stated"
+      }
+    },
+    {
+      "name": "census2011_all_persons_45to54_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
+      "description": "Education level of all persons 45-54 years - Postgraduate Degree Graduate Diploma and Graduate Certificate Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_45_54_years_Postgraduate_Degree_Graduate_Diploma_and_Graduate_Certificate_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_45to54_total",
+      "description": "Education level of all persons 45-54 years - Total (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_45_54_years_Total"
+      }
+    },
+    {
+      "name": "census2011_all_persons_55to64_advanced_diploma_and_diploma_level",
+      "description": "Education level of all persons 55-64 years - Advanced Diploma and Diploma Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_55_64_years_Advanced_Diploma_and_Diploma_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_55to64_bachelor_degree_level",
+      "description": "Education level of all persons 55-64 years - Bachelor Degree Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_55_64_years_Bachelor_Degree_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_55to64_certificate_i_and_ii_level",
+      "description": "Education level of all persons 55-64 years - Certificate I and II Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_55_64_years_Certificate_I_and_II_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_55to64_certificate_iii_and_iv_level",
+      "description": "Education level of all persons 55-64 years - Certificate III and IV Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_55_64_years_Certificate_III_and_IV_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_55to64_certificate_level_nfd",
+      "description": "Education level of all persons 55-64 years - Certificate Level nfd (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_55_64_years_Certificate_Level_nfd"
+      }
+    },
+    {
+      "name": "census2011_all_persons_55to64_level_of_education_not_stated",
+      "description": "Education level of all persons 55-64 years - Level of education not stated (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_55_64_years_Level_of_education_not_stated"
+      }
+    },
+    {
+      "name": "census2011_all_persons_55to64_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
+      "description": "Education level of all persons 55-64 years - Postgraduate Degree Graduate Diploma and Graduate Certificate Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_55_64_years_Postgraduate_Degree_Graduate_Diploma_and_Graduate_Certificate_Level"
+      }
+    },
+    {
+      "name": "census2011_all_persons_55to64_total",
+      "description": "Education level of all persons 55-64 years - Total (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA3_long.csv#Persons_Total_55_64_years_Total"
+      }
+    },
+    {
       "name": "census2011_all_persons_indigenous",
       "description": "Indigenous Persons - All Ages (Census 2011)",
       "type": "number",
@@ -1310,6 +2520,104 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B07/3.TT.TOT..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false&startPeriod=2011&endPeriod=2011"
+      }
+    },
+    {
+      "name": "census2011_average_household_size_all",
+      "description": "Average household size - all (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 1
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I04_AUST_SA3_long.csv#Average_household_size_Total"
+      }
+    },
+    {
+      "name": "census2011_average_household_size_indigenous",
+      "description": "Average household size - indigenous (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 1
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I04_AUST_SA3_long.csv#Average_household_size_Indigenous_persons_households_with_Indigenous_persons"
+      }
+    },
+    {
+      "name": "census2011_average_number_of_persons_per_bedroom_all",
+      "description": "Average number of persons per bedroom - all (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 1
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I04_AUST_SA3_long.csv#Average_number_of_persons_per_bedroom_Total"
+      }
+    },
+    {
+      "name": "census2011_average_number_of_persons_per_bedroom_indigenous",
+      "description": "Average number of persons per bedroom - indigenous (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 1
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I04_AUST_SA3_long.csv#Average_number_of_persons_per_bedroom_Indigenous_persons_households_with_Indigenous_persons"
+      }
+    },
+    {
+      "name": "census2011_completely_unstated_weekly_household_income_all",
+      "description": "Completely-unstated weekly household income - all households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#All_incomes_not_stated_Total_households"
+      }
+    },
+    {
+      "name": "census2011_completely_unstated_weekly_household_income_indigenous",
+      "description": "Completely-unstated weekly household income - indigenous households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#All_incomes_not_stated_Households_with_Indigenous_persons"
       }
     },
     {
@@ -1352,6 +2660,842 @@
       }
     },
     {
+      "name": "census2011_indigenous_persons_15to19_advanced_diploma_and_diploma_level",
+      "description": "Education level of indigenous persons 15-19 years - Advanced Diploma and Diploma Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_15_19_years_Advanced_Diploma_and_Diploma_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_15to19_bachelor_degree_level",
+      "description": "Education level of indigenous persons 15-19 years - Bachelor Degree Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_15_19_years_Bachelor_Degree_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_15to19_certificate_i_and_ii_level",
+      "description": "Education level of indigenous persons 15-19 years - Certificate I and II Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_15_19_years_Certificate_I_and_II_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_15to19_certificate_iii_and_iv_level",
+      "description": "Education level of indigenous persons 15-19 years - Certificate III and IV Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_15_19_years_Certificate_III_and_IV_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_15to19_certificate_level_nfd",
+      "description": "Education level of indigenous persons 15-19 years - Certificate Level nfd (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_15_19_years_Certificate_Level_nfd"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_15to19_level_of_education_not_stated",
+      "description": "Education level of indigenous persons 15-19 years - Level of education not stated (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_15_19_years_Level_of_education_not_stated"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_15to19_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
+      "description": "Education level of indigenous persons 15-19 years - Postgraduate Degree Graduate Diploma and Graduate Certificate Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_15_19_years_Postgraduate_Degree_Graduate_Diploma_and_Graduate_Certificate_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_15to19_total",
+      "description": "Education level of indigenous persons 15-19 years - Total (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_15_19_years_Total"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_20to24_advanced_diploma_and_diploma_level",
+      "description": "Education level of indigenous persons 20-24 years - Advanced Diploma and Diploma Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_20_24_years_Advanced_Diploma_and_Diploma_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_20to24_bachelor_degree_level",
+      "description": "Education level of indigenous persons 20-24 years - Bachelor Degree Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_20_24_years_Bachelor_Degree_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_20to24_certificate_i_and_ii_level",
+      "description": "Education level of indigenous persons 20-24 years - Certificate I and II Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_20_24_years_Certificate_I_and_II_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_20to24_certificate_iii_and_iv_level",
+      "description": "Education level of indigenous persons 20-24 years - Certificate III and IV Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_20_24_years_Certificate_III_and_IV_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_20to24_certificate_level_nfd",
+      "description": "Education level of indigenous persons 20-24 years - Certificate Level nfd (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_20_24_years_Certificate_Level_nfd"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_20to24_level_of_education_not_stated",
+      "description": "Education level of indigenous persons 20-24 years - Level of education not stated (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_20_24_years_Level_of_education_not_stated"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_20to24_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
+      "description": "Education level of indigenous persons 20-24 years - Postgraduate Degree Graduate Diploma and Graduate Certificate Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_20_24_years_Postgraduate_Degree_Graduate_Diploma_and_Graduate_Certificate_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_20to24_total",
+      "description": "Education level of indigenous persons 20-24 years - Total (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_20_24_years_Total"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_25to34_advanced_diploma_and_diploma_level",
+      "description": "Education level of indigenous persons 25-34 years - Advanced Diploma and Diploma Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_25_34_years_Advanced_Diploma_and_Diploma_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_25to34_bachelor_degree_level",
+      "description": "Education level of indigenous persons 25-34 years - Bachelor Degree Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_25_34_years_Bachelor_Degree_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_25to34_certificate_i_and_ii_level",
+      "description": "Education level of indigenous persons 25-34 years - Certificate I and II Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_25_34_years_Certificate_I_and_II_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_25to34_certificate_iii_and_iv_level",
+      "description": "Education level of indigenous persons 25-34 years - Certificate III and IV Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_25_34_years_Certificate_III_and_IV_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_25to34_certificate_level_nfd",
+      "description": "Education level of indigenous persons 25-34 years - Certificate Level nfd (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_25_34_years_Certificate_Level_nfd"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_25to34_level_of_education_not_stated",
+      "description": "Education level of indigenous persons 25-34 years - Level of education not stated (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_25_34_years_Level_of_education_not_stated"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_25to34_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
+      "description": "Education level of indigenous persons 25-34 years - Postgraduate Degree Graduate Diploma and Graduate Certificate Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_25_34_years_Postgraduate_Degree_Graduate_Diploma_and_Graduate_Certificate_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_25to34_total",
+      "description": "Education level of indigenous persons 25-34 years - Total (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_25_34_years_Total"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_35to44_advanced_diploma_and_diploma_level",
+      "description": "Education level of indigenous persons 35-44 years - Advanced Diploma and Diploma Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_35_44_years_Advanced_Diploma_and_Diploma_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_35to44_bachelor_degree_level",
+      "description": "Education level of indigenous persons 35-44 years - Bachelor Degree Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_35_44_years_Bachelor_Degree_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_35to44_certificate_i_and_ii_level",
+      "description": "Education level of indigenous persons 35-44 years - Certificate I and II Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_35_44_years_Certificate_I_and_II_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_35to44_certificate_iii_and_iv_level",
+      "description": "Education level of indigenous persons 35-44 years - Certificate III and IV Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_35_44_years_Certificate_III_and_IV_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_35to44_certificate_level_nfd",
+      "description": "Education level of indigenous persons 35-44 years - Certificate Level nfd (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_35_44_years_Certificate_Level_nfd"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_35to44_level_of_education_not_stated",
+      "description": "Education level of indigenous persons 35-44 years - Level of education not stated (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_35_44_years_Level_of_education_not_stated"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_35to44_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
+      "description": "Education level of indigenous persons 35-44 years - Postgraduate Degree Graduate Diploma and Graduate Certificate Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_35_44_years_Postgraduate_Degree_Graduate_Diploma_and_Graduate_Certificate_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_35to44_total",
+      "description": "Education level of indigenous persons 35-44 years - Total (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_35_44_years_Total"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_45to54_advanced_diploma_and_diploma_level",
+      "description": "Education level of indigenous persons 45-54 years - Advanced Diploma and Diploma Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_45_54_years_Advanced_Diploma_and_Diploma_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_45to54_bachelor_degree_level",
+      "description": "Education level of indigenous persons 45-54 years - Bachelor Degree Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_45_54_years_Bachelor_Degree_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_45to54_certificate_i_and_ii_level",
+      "description": "Education level of indigenous persons 45-54 years - Certificate I and II Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_45_54_years_Certificate_I_and_II_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_45to54_certificate_iii_and_iv_level",
+      "description": "Education level of indigenous persons 45-54 years - Certificate III and IV Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_45_54_years_Certificate_III_and_IV_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_45to54_certificate_level_nfd",
+      "description": "Education level of indigenous persons 45-54 years - Certificate Level nfd (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_45_54_years_Certificate_Level_nfd"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_45to54_level_of_education_not_stated",
+      "description": "Education level of indigenous persons 45-54 years - Level of education not stated (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_45_54_years_Level_of_education_not_stated"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_45to54_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
+      "description": "Education level of indigenous persons 45-54 years - Postgraduate Degree Graduate Diploma and Graduate Certificate Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_45_54_years_Postgraduate_Degree_Graduate_Diploma_and_Graduate_Certificate_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_45to54_total",
+      "description": "Education level of indigenous persons 45-54 years - Total (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_45_54_years_Total"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_55to64_advanced_diploma_and_diploma_level",
+      "description": "Education level of indigenous persons 55-64 years - Advanced Diploma and Diploma Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_55_64_years_Advanced_Diploma_and_Diploma_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_55to64_bachelor_degree_level",
+      "description": "Education level of indigenous persons 55-64 years - Bachelor Degree Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_55_64_years_Bachelor_Degree_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_55to64_certificate_i_and_ii_level",
+      "description": "Education level of indigenous persons 55-64 years - Certificate I and II Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_55_64_years_Certificate_I_and_II_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_55to64_certificate_iii_and_iv_level",
+      "description": "Education level of indigenous persons 55-64 years - Certificate III and IV Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_55_64_years_Certificate_III_and_IV_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_55to64_certificate_level_nfd",
+      "description": "Education level of indigenous persons 55-64 years - Certificate Level nfd (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_55_64_years_Certificate_Level_nfd"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_55to64_level_of_education_not_stated",
+      "description": "Education level of indigenous persons 55-64 years - Level of education not stated (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_55_64_years_Level_of_education_not_stated"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_55to64_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
+      "description": "Education level of indigenous persons 55-64 years - Postgraduate Degree Graduate Diploma and Graduate Certificate Level (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_55_64_years_Postgraduate_Degree_Graduate_Diploma_and_Graduate_Certificate_Level"
+      }
+    },
+    {
+      "name": "census2011_indigenous_persons_55to64_total",
+      "description": "Education level of indigenous persons 55-64 years - Total (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA3_long.csv#Persons_Indigenous_55_64_years_Total"
+      }
+    },
+    {
+      "name": "census2011_median_weekly_household_income_all",
+      "description": "Median weekly household income - all households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I04_AUST_SA3_long.csv#Median_total_household_income_weekly_Total"
+      }
+    },
+    {
+      "name": "census2011_median_weekly_household_income_indigenous",
+      "description": "Median weekly household income - indigenous households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I04_AUST_SA3_long.csv#Median_total_household_income_weekly_Indigenous_persons_households_with_Indigenous_persons"
+      }
+    },
+    {
+      "name": "census2011_partially_unstated_weekly_household_income_all",
+      "description": "Partially-unstated weekly household income - all households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#Partial_income_stated_Total_households"
+      }
+    },
+    {
+      "name": "census2011_partially_unstated_weekly_household_income_indigenous",
+      "description": "Partially-unstated weekly household income - indigenous households (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_SA3_long.csv#Partial_income_stated_Households_with_Indigenous_persons"
+      }
+    },
+    {
       "name": "census2011_proportion_all_persons_indigenous",
       "description": "Indigenous proportion of population (Census 2011)",
       "type": "number",
@@ -1381,6 +3525,70 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
+      }
+    },
+    {
+      "name": "census2011_total_possibly_educated_all_persons",
+      "description": "Total possibly educated persons - all persons (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I06_AUST_SA3_long.csv#Persons_Total_Total"
+      }
+    },
+    {
+      "name": "census2011_total_possibly_educated_indigenous_persons",
+      "description": "Total possibly educated persons - indigenous persons (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I06_AUST_SA3_long.csv#Persons_Total_Indigenous"
+      }
+    },
+    {
+      "name": "census2011_year_12_educated_all_persons",
+      "description": "Year 12 educated - all persons (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I06_AUST_SA3_long.csv#Persons_Year_12_or_equivalent_Total"
+      }
+    },
+    {
+      "name": "census2011_year_12_educated_indigenous_persons",
+      "description": "Year 12 educated - indigenous persons (Census 2011)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I06_AUST_SA3_long.csv#Persons_Year_12_or_equivalent_Indigenous"
       }
     },
     {
