@@ -85,7 +85,7 @@ const matchers = [
           'year',
           'regionType')(filename),
         extract(
-          /^persons_(year_12|total)_.*(indigenous|total)$/i,
+          /^persons_(year_12_or_equivalent|total)_(indigenous|total)$/i,
           'prefix',
           'suffix')(field));
     return orEmpty(
@@ -93,7 +93,7 @@ const matchers = [
       chainApplyToAll(
         orEmpty(
           R.where({
-            'prefix': R.test(/^year_12$/i),
+            'prefix': R.test(/^year_12/i),
             'suffix': R.test(/^indigenous$/i)
           }),
           params => [{
@@ -125,7 +125,7 @@ const matchers = [
         ),
         orEmpty(
           R.where({
-            'prefix': R.test(/^year_12$/i),
+            'prefix': R.test(/^year_12/i),
             'suffix': R.test(/^total$/i)
           }),
           params => [{
