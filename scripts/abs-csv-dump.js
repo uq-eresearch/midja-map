@@ -377,6 +377,32 @@ const matchers = [
         )
       )
     )(params)
+  },
+  (filename, field) => {
+    const params =
+      R.merge(
+        extract(
+          /(\d{4})Census_I03._AUST_(ILOC)_long/i,
+          'year',
+          'regionType')(filename),
+        extract(
+          /^total_(indigenous|total)_(males|females|persons)$/i,
+          'status',
+          'gender')(field)
+      )
+    return orEmpty(
+      hasKeys('year', 'regionType', 'status', 'gender'),
+      params => [{
+        regionType: params.regionType.toLowerCase(),
+        attribute: {
+          "name": `census${params.year}_all_${params.gender}_${params.status}`.toLowerCase(),
+          "description": `${params.status} ${params.gender} - All Ages (Census ${params.year})`,
+          "type": "number",
+          "format": integerFormat,
+          "source": sourceDetails(filename, field)
+        }
+      }]
+    )(params)
   }
 ]
 
