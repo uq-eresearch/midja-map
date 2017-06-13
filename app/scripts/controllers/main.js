@@ -296,6 +296,17 @@ angular.module('midjaApp')
       return _.orderBy(xs, iteratees)
     }
 
+    vm.sortByEducation = (xs) => {
+      const sorter = v => _.findIndex([
+        /none/,
+        /certificate/,
+        /diploma/,
+        /bachelor/,
+        /postgraduate/
+      ], p => p.test(v))
+      return _.sortBy(xs, _.flow(_.property('name'), sorter))
+    }
+
     // google chart does not refresh on window resize
     angular.element($window).bind('resize', function() {
       if (vm.chartobj.chart) {

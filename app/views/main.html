@@ -470,6 +470,20 @@
             attribute-selector="'census2011_(aggregate_\\d+\\w+|\\d+plus)_persons_total'"
             sorter="vm.sortByAttributeNameNumbers">
           </topic-breakdown-bar>
+          <topic-breakdown-bar
+            description="Indigenous working age persons tertiary education (2011)"
+            region-type="vm.regionType"
+            region="selectedRegion"
+            attribute-selector="'census2011_aggregate_indigenous_working_age_persons_tertiary_education_(none|certificate|diploma|bachelor|postgraduate)'"
+            sorter="vm.sortByEducation">
+          </topic-breakdown-bar>
+          <topic-breakdown-bar
+            description="All working age persons tertiary education (2011)"
+            region-type="vm.regionType"
+            region="selectedRegion"
+            attribute-selector="'census2011_aggregate_all_working_age_persons_tertiary_education_(none|certificate|diploma|bachelor|postgraduate)'"
+            sorter="vm.sortByEducation">
+          </topic-breakdown-bar>
           <population-pyramid
             description="All residents by age/sex (2015 estimate)"
             region-type="vm.regionType"

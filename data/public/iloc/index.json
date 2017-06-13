@@ -2180,7 +2180,7 @@
       "expression": "census2011_0to4_persons_indigenous + census2011_5to9_persons_indigenous + census2011_10to14_persons_indigenous",
       "type": "number",
       "source": {
-        "name": "Australian Bureau of Statistics",
+        "name": "ABS Data",
         "license": {
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
@@ -2193,7 +2193,7 @@
       "expression": "census2011_0to4_persons_total + census2011_5to9_persons_total + census2011_10to14_persons_total",
       "type": "number",
       "source": {
-        "name": "Australian Bureau of Statistics",
+        "name": "ABS Data",
         "license": {
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
@@ -2206,7 +2206,7 @@
       "expression": "census2011_15to19_persons_indigenous + census2011_20to24_persons_indigenous + census2011_25to29_persons_indigenous + census2011_30to34_persons_indigenous + census2011_35to39_persons_indigenous + census2011_40to44_persons_indigenous + census2011_45to49_persons_indigenous + census2011_50to54_persons_indigenous + census2011_55to59_persons_indigenous",
       "type": "number",
       "source": {
-        "name": "Australian Bureau of Statistics",
+        "name": "ABS Data",
         "license": {
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
@@ -2219,7 +2219,189 @@
       "expression": "census2011_15to19_persons_total + census2011_20to24_persons_total + census2011_25to29_persons_total + census2011_30to34_persons_total + census2011_35to39_persons_total + census2011_40to44_persons_total + census2011_45to49_persons_total + census2011_50to54_persons_total + census2011_55to59_persons_total",
       "type": "number",
       "source": {
-        "name": "Australian Bureau of Statistics",
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
+      "name": "census2011_aggregate_all_working_age_persons_tertiary_education_any",
+      "description": "Working age (15-64) tertiary education - any (Census 2011)",
+      "expression": "census2011_aggregate_all_working_age_persons_tertiary_education_certificate + census2011_aggregate_all_working_age_persons_tertiary_education_diploma + census2011_aggregate_all_working_age_persons_tertiary_education_bachelor + census2011_aggregate_all_working_age_persons_tertiary_education_postgraduate",
+      "type": "number",
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
+      "name": "census2011_aggregate_all_working_age_persons_tertiary_education_bachelor",
+      "description": "Working age (15-64) tertiary education - bachelor degree (Census 2011)",
+      "expression": "census2011_all_persons_15to19_bachelor_degree_level + census2011_all_persons_20to24_bachelor_degree_level + census2011_all_persons_25to34_bachelor_degree_level + census2011_all_persons_25to34_bachelor_degree_level + census2011_all_persons_35to44_bachelor_degree_level + census2011_all_persons_45to54_bachelor_degree_level + census2011_all_persons_55to64_bachelor_degree_level",
+      "type": "number",
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
+      "name": "census2011_aggregate_all_working_age_persons_tertiary_education_certificate",
+      "description": "Working age (15-64) tertiary education - certificate (Census 2011)",
+      "expression": "census2011_all_persons_15to19_certificate_i_and_ii_level + census2011_all_persons_20to24_certificate_i_and_ii_level + census2011_all_persons_25to34_certificate_i_and_ii_level + census2011_all_persons_25to34_certificate_i_and_ii_level + census2011_all_persons_35to44_certificate_i_and_ii_level + census2011_all_persons_45to54_certificate_i_and_ii_level + census2011_all_persons_55to64_certificate_i_and_ii_level + census2011_all_persons_15to19_certificate_iii_and_iv_level + census2011_all_persons_20to24_certificate_iii_and_iv_level + census2011_all_persons_25to34_certificate_iii_and_iv_level + census2011_all_persons_25to34_certificate_iii_and_iv_level + census2011_all_persons_35to44_certificate_iii_and_iv_level + census2011_all_persons_45to54_certificate_iii_and_iv_level + census2011_all_persons_55to64_certificate_iii_and_iv_level + census2011_all_persons_15to19_certificate_level_nfd + census2011_all_persons_20to24_certificate_level_nfd + census2011_all_persons_25to34_certificate_level_nfd + census2011_all_persons_25to34_certificate_level_nfd + census2011_all_persons_35to44_certificate_level_nfd + census2011_all_persons_45to54_certificate_level_nfd + census2011_all_persons_55to64_certificate_level_nfd",
+      "type": "number",
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
+      "name": "census2011_aggregate_all_working_age_persons_tertiary_education_diploma",
+      "description": "Working age (15-64) tertiary education - diploma (Census 2011)",
+      "expression": "census2011_all_persons_15to19_advanced_diploma_and_diploma_level + census2011_all_persons_20to24_advanced_diploma_and_diploma_level + census2011_all_persons_25to34_advanced_diploma_and_diploma_level + census2011_all_persons_25to34_advanced_diploma_and_diploma_level + census2011_all_persons_35to44_advanced_diploma_and_diploma_level + census2011_all_persons_45to54_advanced_diploma_and_diploma_level + census2011_all_persons_55to64_advanced_diploma_and_diploma_level",
+      "type": "number",
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
+      "name": "census2011_aggregate_all_working_age_persons_tertiary_education_none",
+      "description": "Working age (15-64) tertiary education - none or unstated (Census 2011)",
+      "expression": "census2011_aggregate_all_working_age_persons_tertiary_education_total - census2011_aggregate_all_working_age_persons_tertiary_education_any",
+      "type": "number",
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
+      "name": "census2011_aggregate_all_working_age_persons_tertiary_education_postgraduate",
+      "description": "Working age (15-64) tertiary education - postgraduate (Census 2011)",
+      "expression": "census2011_all_persons_15to19_postgraduate_degree_graduate_diploma_and_graduate_certificate_level + census2011_all_persons_20to24_postgraduate_degree_graduate_diploma_and_graduate_certificate_level + census2011_all_persons_25to34_postgraduate_degree_graduate_diploma_and_graduate_certificate_level + census2011_all_persons_25to34_postgraduate_degree_graduate_diploma_and_graduate_certificate_level + census2011_all_persons_35to44_postgraduate_degree_graduate_diploma_and_graduate_certificate_level + census2011_all_persons_45to54_postgraduate_degree_graduate_diploma_and_graduate_certificate_level + census2011_all_persons_55to64_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
+      "type": "number",
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
+      "name": "census2011_aggregate_all_working_age_persons_tertiary_education_total",
+      "description": "Working age (15-64) tertiary education - total persons (Census 2011)",
+      "expression": "census2011_all_persons_15to19_total + census2011_all_persons_20to24_total + census2011_all_persons_25to34_total + census2011_all_persons_25to34_total + census2011_all_persons_35to44_total + census2011_all_persons_45to54_total + census2011_all_persons_55to64_total",
+      "type": "number",
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
+      "name": "census2011_aggregate_indigenous_working_age_persons_tertiary_education_any",
+      "description": "Working age (15-64) tertiary education - any (Census 2011)",
+      "expression": "census2011_aggregate_indigenous_working_age_persons_tertiary_education_certificate + census2011_aggregate_indigenous_working_age_persons_tertiary_education_diploma + census2011_aggregate_indigenous_working_age_persons_tertiary_education_bachelor + census2011_aggregate_indigenous_working_age_persons_tertiary_education_postgraduate",
+      "type": "number",
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
+      "name": "census2011_aggregate_indigenous_working_age_persons_tertiary_education_bachelor",
+      "description": "Working age (15-64) tertiary education - bachelor degree (Census 2011)",
+      "expression": "census2011_indigenous_persons_15to19_bachelor_degree_level + census2011_indigenous_persons_20to24_bachelor_degree_level + census2011_indigenous_persons_25to34_bachelor_degree_level + census2011_indigenous_persons_25to34_bachelor_degree_level + census2011_indigenous_persons_35to44_bachelor_degree_level + census2011_indigenous_persons_45to54_bachelor_degree_level + census2011_indigenous_persons_55to64_bachelor_degree_level",
+      "type": "number",
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
+      "name": "census2011_aggregate_indigenous_working_age_persons_tertiary_education_certificate",
+      "description": "Working age (15-64) tertiary education - certificate (Census 2011)",
+      "expression": "census2011_indigenous_persons_15to19_certificate_i_and_ii_level + census2011_indigenous_persons_20to24_certificate_i_and_ii_level + census2011_indigenous_persons_25to34_certificate_i_and_ii_level + census2011_indigenous_persons_25to34_certificate_i_and_ii_level + census2011_indigenous_persons_35to44_certificate_i_and_ii_level + census2011_indigenous_persons_45to54_certificate_i_and_ii_level + census2011_indigenous_persons_55to64_certificate_i_and_ii_level + census2011_indigenous_persons_15to19_certificate_iii_and_iv_level + census2011_indigenous_persons_20to24_certificate_iii_and_iv_level + census2011_indigenous_persons_25to34_certificate_iii_and_iv_level + census2011_indigenous_persons_25to34_certificate_iii_and_iv_level + census2011_indigenous_persons_35to44_certificate_iii_and_iv_level + census2011_indigenous_persons_45to54_certificate_iii_and_iv_level + census2011_indigenous_persons_55to64_certificate_iii_and_iv_level + census2011_indigenous_persons_15to19_certificate_level_nfd + census2011_indigenous_persons_20to24_certificate_level_nfd + census2011_indigenous_persons_25to34_certificate_level_nfd + census2011_indigenous_persons_25to34_certificate_level_nfd + census2011_indigenous_persons_35to44_certificate_level_nfd + census2011_indigenous_persons_45to54_certificate_level_nfd + census2011_indigenous_persons_55to64_certificate_level_nfd",
+      "type": "number",
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
+      "name": "census2011_aggregate_indigenous_working_age_persons_tertiary_education_diploma",
+      "description": "Working age (15-64) tertiary education - diploma (Census 2011)",
+      "expression": "census2011_indigenous_persons_15to19_advanced_diploma_and_diploma_level + census2011_indigenous_persons_20to24_advanced_diploma_and_diploma_level + census2011_indigenous_persons_25to34_advanced_diploma_and_diploma_level + census2011_indigenous_persons_25to34_advanced_diploma_and_diploma_level + census2011_indigenous_persons_35to44_advanced_diploma_and_diploma_level + census2011_indigenous_persons_45to54_advanced_diploma_and_diploma_level + census2011_indigenous_persons_55to64_advanced_diploma_and_diploma_level",
+      "type": "number",
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
+      "name": "census2011_aggregate_indigenous_working_age_persons_tertiary_education_none",
+      "description": "Working age (15-64) tertiary education - none or unstated (Census 2011)",
+      "expression": "census2011_aggregate_indigenous_working_age_persons_tertiary_education_total - census2011_aggregate_indigenous_working_age_persons_tertiary_education_any",
+      "type": "number",
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
+      "name": "census2011_aggregate_indigenous_working_age_persons_tertiary_education_postgraduate",
+      "description": "Working age (15-64) tertiary education - postgraduate (Census 2011)",
+      "expression": "census2011_indigenous_persons_15to19_postgraduate_degree_graduate_diploma_and_graduate_certificate_level + census2011_indigenous_persons_20to24_postgraduate_degree_graduate_diploma_and_graduate_certificate_level + census2011_indigenous_persons_25to34_postgraduate_degree_graduate_diploma_and_graduate_certificate_level + census2011_indigenous_persons_25to34_postgraduate_degree_graduate_diploma_and_graduate_certificate_level + census2011_indigenous_persons_35to44_postgraduate_degree_graduate_diploma_and_graduate_certificate_level + census2011_indigenous_persons_45to54_postgraduate_degree_graduate_diploma_and_graduate_certificate_level + census2011_indigenous_persons_55to64_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
+      "type": "number",
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
+      "name": "census2011_aggregate_indigenous_working_age_persons_tertiary_education_total",
+      "description": "Working age (15-64) tertiary education - total persons (Census 2011)",
+      "expression": "census2011_indigenous_persons_15to19_total + census2011_indigenous_persons_20to24_total + census2011_indigenous_persons_25to34_total + census2011_indigenous_persons_25to34_total + census2011_indigenous_persons_35to44_total + census2011_indigenous_persons_45to54_total + census2011_indigenous_persons_55to64_total",
+      "type": "number",
+      "source": {
+        "name": "ABS Data",
         "license": {
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
@@ -4029,6 +4211,22 @@
       "description": "Indigenous proportion of population (Census 2011)",
       "type": "number",
       "expression": "1.0 * census2011_all_persons_indigenous / census2011_all_persons_total",
+      "format": {
+        "style": "percent"
+      },
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
+      "name": "census2011_proportion_all_persons_tertiary_educated",
+      "description": "Tertiary-educated proportion of working age population (Census 2011)",
+      "type": "number",
+      "expression": "1.0 * census2011_aggregate_all_working_age_persons_tertiary_education_any / census2011_aggregate_all_working_age_persons_tertiary_education_total",
       "format": {
         "style": "percent"
       },
