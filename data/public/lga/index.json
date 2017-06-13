@@ -1697,7 +1697,7 @@
     },
     {
       "name": "census2011_aggregate_all_working_age_persons_tertiary_education_any",
-      "description": "Working age (15-64) tertiary education - any (Census 2011)",
+      "description": "All working age persons (15-64) tertiary education - any (Census 2011)",
       "expression": "census2011_aggregate_all_working_age_persons_tertiary_education_certificate + census2011_aggregate_all_working_age_persons_tertiary_education_diploma + census2011_aggregate_all_working_age_persons_tertiary_education_bachelor + census2011_aggregate_all_working_age_persons_tertiary_education_postgraduate",
       "type": "number",
       "source": {
@@ -1710,7 +1710,7 @@
     },
     {
       "name": "census2011_aggregate_all_working_age_persons_tertiary_education_bachelor",
-      "description": "Working age (15-64) tertiary education - bachelor degree (Census 2011)",
+      "description": "All working age persons (15-64) tertiary education - bachelor degree (Census 2011)",
       "expression": "census2011_all_persons_15to19_bachelor_degree_level + census2011_all_persons_20to24_bachelor_degree_level + census2011_all_persons_25to34_bachelor_degree_level + census2011_all_persons_25to34_bachelor_degree_level + census2011_all_persons_35to44_bachelor_degree_level + census2011_all_persons_45to54_bachelor_degree_level + census2011_all_persons_55to64_bachelor_degree_level",
       "type": "number",
       "source": {
@@ -1723,7 +1723,7 @@
     },
     {
       "name": "census2011_aggregate_all_working_age_persons_tertiary_education_certificate",
-      "description": "Working age (15-64) tertiary education - certificate (Census 2011)",
+      "description": "All working age persons (15-64) tertiary education - certificate (Census 2011)",
       "expression": "census2011_all_persons_15to19_certificate_i_and_ii_level + census2011_all_persons_20to24_certificate_i_and_ii_level + census2011_all_persons_25to34_certificate_i_and_ii_level + census2011_all_persons_25to34_certificate_i_and_ii_level + census2011_all_persons_35to44_certificate_i_and_ii_level + census2011_all_persons_45to54_certificate_i_and_ii_level + census2011_all_persons_55to64_certificate_i_and_ii_level + census2011_all_persons_15to19_certificate_iii_and_iv_level + census2011_all_persons_20to24_certificate_iii_and_iv_level + census2011_all_persons_25to34_certificate_iii_and_iv_level + census2011_all_persons_25to34_certificate_iii_and_iv_level + census2011_all_persons_35to44_certificate_iii_and_iv_level + census2011_all_persons_45to54_certificate_iii_and_iv_level + census2011_all_persons_55to64_certificate_iii_and_iv_level + census2011_all_persons_15to19_certificate_level_nfd + census2011_all_persons_20to24_certificate_level_nfd + census2011_all_persons_25to34_certificate_level_nfd + census2011_all_persons_25to34_certificate_level_nfd + census2011_all_persons_35to44_certificate_level_nfd + census2011_all_persons_45to54_certificate_level_nfd + census2011_all_persons_55to64_certificate_level_nfd",
       "type": "number",
       "source": {
@@ -1736,7 +1736,7 @@
     },
     {
       "name": "census2011_aggregate_all_working_age_persons_tertiary_education_diploma",
-      "description": "Working age (15-64) tertiary education - diploma (Census 2011)",
+      "description": "All working age persons (15-64) tertiary education - diploma (Census 2011)",
       "expression": "census2011_all_persons_15to19_advanced_diploma_and_diploma_level + census2011_all_persons_20to24_advanced_diploma_and_diploma_level + census2011_all_persons_25to34_advanced_diploma_and_diploma_level + census2011_all_persons_25to34_advanced_diploma_and_diploma_level + census2011_all_persons_35to44_advanced_diploma_and_diploma_level + census2011_all_persons_45to54_advanced_diploma_and_diploma_level + census2011_all_persons_55to64_advanced_diploma_and_diploma_level",
       "type": "number",
       "source": {
@@ -1749,7 +1749,7 @@
     },
     {
       "name": "census2011_aggregate_all_working_age_persons_tertiary_education_none",
-      "description": "Working age (15-64) tertiary education - none or unstated (Census 2011)",
+      "description": "All working age persons (15-64) tertiary education - none or unstated (Census 2011)",
       "expression": "census2011_aggregate_all_working_age_persons_tertiary_education_total - census2011_aggregate_all_working_age_persons_tertiary_education_any",
       "type": "number",
       "source": {
@@ -1762,7 +1762,7 @@
     },
     {
       "name": "census2011_aggregate_all_working_age_persons_tertiary_education_postgraduate",
-      "description": "Working age (15-64) tertiary education - postgraduate (Census 2011)",
+      "description": "All working age persons (15-64) tertiary education - postgraduate (Census 2011)",
       "expression": "census2011_all_persons_15to19_postgraduate_degree_graduate_diploma_and_graduate_certificate_level + census2011_all_persons_20to24_postgraduate_degree_graduate_diploma_and_graduate_certificate_level + census2011_all_persons_25to34_postgraduate_degree_graduate_diploma_and_graduate_certificate_level + census2011_all_persons_25to34_postgraduate_degree_graduate_diploma_and_graduate_certificate_level + census2011_all_persons_35to44_postgraduate_degree_graduate_diploma_and_graduate_certificate_level + census2011_all_persons_45to54_postgraduate_degree_graduate_diploma_and_graduate_certificate_level + census2011_all_persons_55to64_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
       "type": "number",
       "source": {
@@ -1775,7 +1775,7 @@
     },
     {
       "name": "census2011_aggregate_all_working_age_persons_tertiary_education_total",
-      "description": "Working age (15-64) tertiary education - total persons (Census 2011)",
+      "description": "All working age persons (15-64) tertiary education - total persons (Census 2011)",
       "expression": "census2011_all_persons_15to19_total + census2011_all_persons_20to24_total + census2011_all_persons_25to34_total + census2011_all_persons_25to34_total + census2011_all_persons_35to44_total + census2011_all_persons_45to54_total + census2011_all_persons_55to64_total",
       "type": "number",
       "source": {
@@ -1788,7 +1788,7 @@
     },
     {
       "name": "census2011_aggregate_indigenous_working_age_persons_tertiary_education_any",
-      "description": "Working age (15-64) tertiary education - any (Census 2011)",
+      "description": "Indigenous working age persons (15-64) tertiary education - any (Census 2011)",
       "expression": "census2011_aggregate_indigenous_working_age_persons_tertiary_education_certificate + census2011_aggregate_indigenous_working_age_persons_tertiary_education_diploma + census2011_aggregate_indigenous_working_age_persons_tertiary_education_bachelor + census2011_aggregate_indigenous_working_age_persons_tertiary_education_postgraduate",
       "type": "number",
       "source": {
@@ -1801,7 +1801,7 @@
     },
     {
       "name": "census2011_aggregate_indigenous_working_age_persons_tertiary_education_bachelor",
-      "description": "Working age (15-64) tertiary education - bachelor degree (Census 2011)",
+      "description": "Indigenous working age persons (15-64) tertiary education - bachelor degree (Census 2011)",
       "expression": "census2011_indigenous_persons_15to19_bachelor_degree_level + census2011_indigenous_persons_20to24_bachelor_degree_level + census2011_indigenous_persons_25to34_bachelor_degree_level + census2011_indigenous_persons_25to34_bachelor_degree_level + census2011_indigenous_persons_35to44_bachelor_degree_level + census2011_indigenous_persons_45to54_bachelor_degree_level + census2011_indigenous_persons_55to64_bachelor_degree_level",
       "type": "number",
       "source": {
@@ -1814,7 +1814,7 @@
     },
     {
       "name": "census2011_aggregate_indigenous_working_age_persons_tertiary_education_certificate",
-      "description": "Working age (15-64) tertiary education - certificate (Census 2011)",
+      "description": "Indigenous working age persons (15-64) tertiary education - certificate (Census 2011)",
       "expression": "census2011_indigenous_persons_15to19_certificate_i_and_ii_level + census2011_indigenous_persons_20to24_certificate_i_and_ii_level + census2011_indigenous_persons_25to34_certificate_i_and_ii_level + census2011_indigenous_persons_25to34_certificate_i_and_ii_level + census2011_indigenous_persons_35to44_certificate_i_and_ii_level + census2011_indigenous_persons_45to54_certificate_i_and_ii_level + census2011_indigenous_persons_55to64_certificate_i_and_ii_level + census2011_indigenous_persons_15to19_certificate_iii_and_iv_level + census2011_indigenous_persons_20to24_certificate_iii_and_iv_level + census2011_indigenous_persons_25to34_certificate_iii_and_iv_level + census2011_indigenous_persons_25to34_certificate_iii_and_iv_level + census2011_indigenous_persons_35to44_certificate_iii_and_iv_level + census2011_indigenous_persons_45to54_certificate_iii_and_iv_level + census2011_indigenous_persons_55to64_certificate_iii_and_iv_level + census2011_indigenous_persons_15to19_certificate_level_nfd + census2011_indigenous_persons_20to24_certificate_level_nfd + census2011_indigenous_persons_25to34_certificate_level_nfd + census2011_indigenous_persons_25to34_certificate_level_nfd + census2011_indigenous_persons_35to44_certificate_level_nfd + census2011_indigenous_persons_45to54_certificate_level_nfd + census2011_indigenous_persons_55to64_certificate_level_nfd",
       "type": "number",
       "source": {
@@ -1827,7 +1827,7 @@
     },
     {
       "name": "census2011_aggregate_indigenous_working_age_persons_tertiary_education_diploma",
-      "description": "Working age (15-64) tertiary education - diploma (Census 2011)",
+      "description": "Indigenous working age persons (15-64) tertiary education - diploma (Census 2011)",
       "expression": "census2011_indigenous_persons_15to19_advanced_diploma_and_diploma_level + census2011_indigenous_persons_20to24_advanced_diploma_and_diploma_level + census2011_indigenous_persons_25to34_advanced_diploma_and_diploma_level + census2011_indigenous_persons_25to34_advanced_diploma_and_diploma_level + census2011_indigenous_persons_35to44_advanced_diploma_and_diploma_level + census2011_indigenous_persons_45to54_advanced_diploma_and_diploma_level + census2011_indigenous_persons_55to64_advanced_diploma_and_diploma_level",
       "type": "number",
       "source": {
@@ -1840,7 +1840,7 @@
     },
     {
       "name": "census2011_aggregate_indigenous_working_age_persons_tertiary_education_none",
-      "description": "Working age (15-64) tertiary education - none or unstated (Census 2011)",
+      "description": "Indigenous working age persons (15-64) tertiary education - none or unstated (Census 2011)",
       "expression": "census2011_aggregate_indigenous_working_age_persons_tertiary_education_total - census2011_aggregate_indigenous_working_age_persons_tertiary_education_any",
       "type": "number",
       "source": {
@@ -1853,7 +1853,7 @@
     },
     {
       "name": "census2011_aggregate_indigenous_working_age_persons_tertiary_education_postgraduate",
-      "description": "Working age (15-64) tertiary education - postgraduate (Census 2011)",
+      "description": "Indigenous working age persons (15-64) tertiary education - postgraduate (Census 2011)",
       "expression": "census2011_indigenous_persons_15to19_postgraduate_degree_graduate_diploma_and_graduate_certificate_level + census2011_indigenous_persons_20to24_postgraduate_degree_graduate_diploma_and_graduate_certificate_level + census2011_indigenous_persons_25to34_postgraduate_degree_graduate_diploma_and_graduate_certificate_level + census2011_indigenous_persons_25to34_postgraduate_degree_graduate_diploma_and_graduate_certificate_level + census2011_indigenous_persons_35to44_postgraduate_degree_graduate_diploma_and_graduate_certificate_level + census2011_indigenous_persons_45to54_postgraduate_degree_graduate_diploma_and_graduate_certificate_level + census2011_indigenous_persons_55to64_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
       "type": "number",
       "source": {
@@ -1866,7 +1866,7 @@
     },
     {
       "name": "census2011_aggregate_indigenous_working_age_persons_tertiary_education_total",
-      "description": "Working age (15-64) tertiary education - total persons (Census 2011)",
+      "description": "Indigenous working age persons (15-64) tertiary education - total persons (Census 2011)",
       "expression": "census2011_indigenous_persons_15to19_total + census2011_indigenous_persons_20to24_total + census2011_indigenous_persons_25to34_total + census2011_indigenous_persons_25to34_total + census2011_indigenous_persons_35to44_total + census2011_indigenous_persons_45to54_total + census2011_indigenous_persons_55to64_total",
       "type": "number",
       "source": {
