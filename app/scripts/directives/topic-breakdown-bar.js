@@ -47,7 +47,9 @@ angular.module('midjaApp')
                 const lastChar = v => v.slice(v.length - 1)
                 const initChars = v => v.slice(0, v.length - 1)
                 function removeCommon(vs) {
-                  if (_.uniqBy(vs, firstChar).length <= 1) {
+                  if (vs.length <= 1) {
+                    return vs;
+                  } else if (_.uniqBy(vs, firstChar).length <= 1) {
                     return removeCommon(_.map(vs, tailChars));
                   } else if (_.uniqBy(vs, lastChar).length <= 1) {
                     return removeCommon(_.map(vs, initChars));
