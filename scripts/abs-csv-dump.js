@@ -322,6 +322,61 @@ const matchers = [
         }
       }]
     )(params)
+  },
+  (filename, field) => {
+    const params =
+      R.evolve(
+        {
+          high: v => v.replace(/_?years_?/i, '')
+        },
+        R.merge(
+          extract(
+            /(\d{4})Census_I03._AUST_(\w+)_long/i,
+            'year',
+            'regionType')(filename),
+          extract(
+            /^age_years_(\d+)_(\d+_years|years_and_over)_(indigenous|total)_(males|females|persons)$/i,
+            'low',
+            'high',
+            'status',
+            'gender')(field)
+        )
+      )
+    return orEmpty(
+      hasKeys('year', 'regionType', 'low', 'high', 'status', 'gender'),
+      chainApplyToAll(
+        orEmpty(
+          R.where({
+            'high': R.test(/^\d+$/)
+          }),
+          params => [{
+            regionType: params.regionType.toLowerCase(),
+            attribute: {
+              "name": `census${params.year}_${params.low}to${params.high}_${params.gender}_${params.status}`.toLowerCase(),
+              "description": `${params.status} ${params.gender} - Age ${params.low}-${params.high} (Census ${params.year})`,
+              "type": "number",
+              "format": integerFormat,
+              "source": sourceDetails(filename, field)
+            }
+          }]
+        ),
+        orEmpty(
+          R.where({
+            'high': R.equals("and_over")
+          }),
+          params => [{
+            regionType: params.regionType.toLowerCase(),
+            attribute: {
+              "name": `census${params.year}_${params.low}plus_${params.gender}_${params.status}`.toLowerCase(),
+              "description": `${params.status} ${params.gender} - Age ${params.low}+ (Census ${params.year})`,
+              "type": "number",
+              "format": integerFormat,
+              "source": sourceDetails(filename, field)
+            }
+          }]
+        )
+      )
+    )(params)
   }
 ]
 
