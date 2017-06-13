@@ -331,7 +331,7 @@ const matchers = [
         },
         R.merge(
           extract(
-            /(\d{4})Census_I03._AUST_(\w+)_long/i,
+            /(\d{4})Census_I03._AUST_(ILOC)_long/i,
             'year',
             'regionType')(filename),
           extract(
