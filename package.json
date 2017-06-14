@@ -68,6 +68,8 @@
     "node": ">=6.0.0"
   },
   "scripts": {
+    "import:abs:sdmx": "$(npm bin)/babel-node scripts/abs-sdmx-dump.js",
+    "import:abs:csv": "$(npm bin)/babel-node scripts/abs-csv-dump.js",
     "build": "$(npm bin)/webpack --progress",
     "serve": "$(npm bin)/webpack-dev-server --open",
     "test": "NODE_ENV=testing $(npm bin)/karma start --single-run",
