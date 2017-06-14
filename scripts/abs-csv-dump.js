@@ -403,6 +403,35 @@ const matchers = [
         }
       }]
     )(params)
+  },
+  (filename, field) => {
+    const params =
+      R.merge(
+        extract(
+          /(\d{4})Census_I04_AUST_(\w+)_long/i,
+          'year',
+          'regionType')(filename),
+        extract(
+          /^(proportion_of_dwellings_that_need_1_or_more_extra_bedrooms)_(.*?indigenous|total)/i,
+          'name',
+          'status')(field)
+      )
+    return orEmpty(
+      hasKeys('year', 'regionType', 'name', 'status'),
+      params => [{
+        regionType: params.regionType.toLowerCase(),
+        attribute: {
+          "name": `census${params.year}_${params.name}_${params.status}`.toLowerCase(),
+          "description": `${params.name.replace(/_/g, ' ')} - ${params.status.replace(/_/g, '-')} (Census ${params.year})`,
+          "type": "number",
+          "format": {
+            "style": "percent"
+          },
+          "source": sourceDetails(filename, field)
+        },
+        transform: v => Number.parseFloat(v+"e-2")
+      }]
+    )(params)
   }
 ]
 
@@ -430,18 +459,21 @@ const readCSV = regionColumnName => filepath => {
             if (R.isEmpty(attributes)) {
               return []
             } else {
-              return {
-                field: field,
-                regionAttributes: attributes,
-                data: {}
-              }
+              return R.map(v => {
+                return {
+                  field: field,
+                  regionAttribute: v,
+                  data: {}
+                }
+              }, attributes)
             }
           })(fields)
         }
         attributeData.forEach(obj => {
           var region = record[regionColumnName]
-          var value = record[obj.field]
-          obj.data[region] = value
+          obj.data[region] = (obj.regionAttribute.transform || R.identity)(
+            record[obj.field]
+          )
         })
       }
     })
@@ -451,9 +483,7 @@ const readCSV = regionColumnName => filepath => {
     });
     // When we are done, test that the parsed output matched what expected
     parser.on('finish', function() {
-      resolve(R.chain(obj => {
-        return R.map(R.merge({ data: obj.data }))(obj.regionAttributes)
-      })(attributeData))
+      resolve(attributeData)
     })
     reader.pipe(parser)
   })
@@ -479,12 +509,12 @@ const attributeDataTargetFile = regionAttribute => targetFile(
   regionAttribute.attribute.name + '.json')
 
 // writeAttributeToFile :: Object → Promise Object
-const writeAttributeDataToFile = regionAttribute => {
+const writeAttributeDataToFile = attributeData => {
   return writeJson(
-      attributeDataTargetFile(regionAttribute),
-      regionAttribute.data,
+      attributeDataTargetFile(attributeData.regionAttribute),
+      attributeData.data,
       jsonOptions
-    ).then(R.always(regionAttribute))
+    ).then(R.always(attributeData))
 }
 
 // writeIndex :: (String, [Object]) → Promise [Object]
@@ -537,6 +567,7 @@ const prog =
   R.pipeP(
     readCSVs,
     writeAttributes,
+    R.map(R.prop('regionAttribute')),
     writeIndexes)
 
 const argsIO = process.argv.slice(2)

@@ -1,92 +1,6 @@
 {
   "attributes": [
     {
-      "name": "average_household_size_indigenous_persons_households_with_indigenous_persons",
-      "description": "Average household size - households with indigenous persons",
-      "type": "number",
-      "format": {
-        "maximumFractionDigits": 1,
-        "minimumFractionDigits": 1
-      },
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "https://www.censusdata.abs.gov.au/datapacks/DataPacks?action=getzip&file=2011_IP_SA3_for_AUST_long-header.zip#2011%20Census%20IP%20Statistical%20Areas%20Level%203%20for%20AUST/AUST/2011Census_I04_AUST_SA3_long.csv"
-      }
-    },
-    {
-      "name": "average_household_size_non_indigenous_persons_other_households",
-      "description": "Average household size - non-indigenous households",
-      "type": "number",
-      "format": {
-        "maximumFractionDigits": 1,
-        "minimumFractionDigits": 1
-      },
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "https://www.censusdata.abs.gov.au/datapacks/DataPacks?action=getzip&file=2011_IP_SA3_for_AUST_long-header.zip#2011%20Census%20IP%20Statistical%20Areas%20Level%203%20for%20AUST/AUST/2011Census_I04_AUST_SA3_long.csv"
-      }
-    },
-    {
-      "name": "average_household_size_total",
-      "description": "Average household size - total",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "https://www.censusdata.abs.gov.au/datapacks/DataPacks?action=getzip&file=2011_IP_SA3_for_AUST_long-header.zip#2011%20Census%20IP%20Statistical%20Areas%20Level%203%20for%20AUST/AUST/2011Census_I04_AUST_SA3_long.csv"
-      }
-    },
-    {
-      "name": "average_number_of_persons_per_bedroom_indigenous_persons_households_with_indigenous_persons",
-      "description": "Average number of persons per bedroom - households with indigenous persons",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "https://www.censusdata.abs.gov.au/datapacks/DataPacks?action=getzip&file=2011_IP_SA3_for_AUST_long-header.zip#2011%20Census%20IP%20Statistical%20Areas%20Level%203%20for%20AUST/AUST/2011Census_I04_AUST_SA3_long.csv"
-      }
-    },
-    {
-      "name": "average_number_of_persons_per_bedroom_non_indigenous_persons_other_households",
-      "description": "Average number of persons per bedroom - non-indigenous households",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "https://www.censusdata.abs.gov.au/datapacks/DataPacks?action=getzip&file=2011_IP_SA3_for_AUST_long-header.zip#2011%20Census%20IP%20Statistical%20Areas%20Level%203%20for%20AUST/AUST/2011Census_I04_AUST_SA3_long.csv"
-      }
-    },
-    {
-      "name": "average_number_of_persons_per_bedroom_total",
-      "description": "Average number of persons per bedroom - total",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "https://www.censusdata.abs.gov.au/datapacks/DataPacks?action=getzip&file=2011_IP_SA3_for_AUST_long-header.zip#2011%20Census%20IP%20Statistical%20Areas%20Level%203%20for%20AUST/AUST/2011Census_I04_AUST_SA3_long.csv"
-      }
-    },
-    {
       "name": "census2011_0minus_weekly_household_income_all",
       "description": "Nil or negative weekly household income - all households (Census 2011)",
       "type": "number",
@@ -3722,6 +3636,54 @@
       }
     },
     {
+      "name": "census2011_proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_indigenous",
+      "description": "Proportion of dwellings that need 1 or more extra bedrooms - Indigenous (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "percent"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I04_AUST_SA3_long.csv#Proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_Indigenous_persons_households_with_Indigenous_persons"
+      }
+    },
+    {
+      "name": "census2011_proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_non_indigenous",
+      "description": "Proportion of dwellings that need 1 or more extra bedrooms - Non-Indigenous (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "percent"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I04_AUST_SA3_long.csv#Proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_Non_Indigenous_persons_other_households"
+      }
+    },
+    {
+      "name": "census2011_proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_total",
+      "description": "Proportion of dwellings that need 1 or more extra bedrooms - Total (Census 2011)",
+      "type": "number",
+      "format": {
+        "style": "percent"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2011Census_I04_AUST_SA3_long.csv#Proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_Total"
+      }
+    },
+    {
       "name": "census2011_proportion_year_12_educated_all_persons",
       "description": "Year 12 educated proportion of population (Census 2011)",
       "type": "number",
@@ -4895,54 +4857,6 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_ERP_ASGS/ERP.3.TT.SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false&startPeriod=2015&endPeriod=2015"
-      }
-    },
-    {
-      "name": "proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_indigenous_persons_households_with_indigenous_persons",
-      "description": "Proportion of dwellings that need 1 or more extra bedrooms - households with indigenous persons",
-      "type": "number",
-      "format": {
-        "style": "percent"
-      },
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "https://www.censusdata.abs.gov.au/datapacks/DataPacks?action=getzip&file=2011_IP_SA3_for_AUST_long-header.zip#2011%20Census%20IP%20Statistical%20Areas%20Level%203%20for%20AUST/AUST/2011Census_I04_AUST_SA3_long.csv"
-      }
-    },
-    {
-      "name": "proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_non_indigenous_persons_other_households",
-      "description": "Proportion of dwellings that need 1 or more extra bedrooms - non-indigenous households",
-      "type": "number",
-      "format": {
-        "style": "percent"
-      },
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "https://www.censusdata.abs.gov.au/datapacks/DataPacks?action=getzip&file=2011_IP_SA3_for_AUST_long-header.zip#2011%20Census%20IP%20Statistical%20Areas%20Level%203%20for%20AUST/AUST/2011Census_I04_AUST_SA3_long.csv"
-      }
-    },
-    {
-      "name": "proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_total",
-      "description": "Proportion of dwellings that need 1 or more extra bedrooms - total",
-      "type": "number",
-      "format": {
-        "style": "percent"
-      },
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "https://www.censusdata.abs.gov.au/datapacks/DataPacks?action=getzip&file=2011_IP_SA3_for_AUST_long-header.zip#2011%20Census%20IP%20Statistical%20Areas%20Level%203%20for%20AUST/AUST/2011Census_I04_AUST_SA3_long.csv"
       }
     },
     {
