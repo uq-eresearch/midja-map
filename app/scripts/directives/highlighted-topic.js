@@ -10,7 +10,7 @@ import './styles/highlighted-topic.css'
  */
 angular.module('midjaApp')
   .directive('highlightedTopic', function(
-    dataService, formattingService, $timeout) {
+    dataService, formattingService, $compile, $timeout) {
 
     function attributeMatcher(attributeSelector) {
       // TODO: Handle regex/function selectors
@@ -37,13 +37,13 @@ angular.module('midjaApp')
     }
 
     function link(scope, element, attrs) {
+      $compile(element.contents())(scope)
       const populateHook = () => {
         return populate(scope)
       }
       scope.$watch('attributeSelector', populateHook)
       scope.$watch('region', populateHook)
       scope.$watch('regionType', populateHook)
-      console.log(scope)
     }
 
     return {

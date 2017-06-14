@@ -1,4 +1,5 @@
 <div class="time-series-chart" ng-show="chart">
-  <nvd3 class="chart" options="chart.options" data="chart.data"></nvd3>
+  <nvd3 class="chart"
+    api="chartApi" options="chart.options" data="chart.data"></nvd3>
   <span class="description" title="{{attribute.name}}">{{description}}</span>
 </div>

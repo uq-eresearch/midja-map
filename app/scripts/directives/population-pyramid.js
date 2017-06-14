@@ -159,7 +159,12 @@ angular.module('midjaApp')
       scope.$watch('attributeSelector', populateHook)
       scope.$watch('region', populateHook)
       scope.$watch('regionType', populateHook)
-      console.log(scope)
+      scope.$watch('refreshOn', () => {
+        $timeout(() => {
+          console.log(scope.description, "refresh")
+          scope.chartApi.refresh()
+        })
+      })
     }
 
     return {
@@ -172,7 +177,8 @@ angular.module('midjaApp')
         sorter: '=',
         description: '@',
         region: '=',
-        regionType: '='
+        regionType: '=',
+        refreshOn: '=?'
       }
     };
   });

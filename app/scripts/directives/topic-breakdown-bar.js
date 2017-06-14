@@ -118,13 +118,18 @@ angular.module('midjaApp')
 
     function link(scope, element, attrs) {
       $compile(element.contents())(scope)
-      const populateHook = () => {
+      const populateHook = _.debounce(() => {
         return populate(scope)
-      }
+      }, 100)
       scope.$watch('attributeSelector', populateHook)
       scope.$watch('region', populateHook)
       scope.$watch('regionType', populateHook)
-      console.log(scope)
+      scope.$watch('refreshOn', () => {
+        $timeout(() => {
+          console.log(scope.description, "refresh")
+          scope.chartApi.refresh()
+        })
+      })
     }
 
     return {
@@ -137,7 +142,8 @@ angular.module('midjaApp')
         sorter: '=',
         description: '@',
         region: '=',
-        regionType: '='
+        regionType: '=',
+        refreshOn: '=?'
       }
     };
   });

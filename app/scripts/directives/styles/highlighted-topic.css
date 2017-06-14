@@ -2,11 +2,14 @@
   text-align: right;
 }
 
+.highlighted-topic * {
+  display: inline-block;
+}
+
 .highlighted-topic .description {
   text-transform: uppercase;
-  font-size: 125%;
+  font-size: 110%;
   color: #444444;
-  display: inline-block;
   width: 50%;
   text-align: left;
   padding-left: 1em;
@@ -14,4 +17,5 @@
 
 .highlighted-topic .value {
   font-size: 300%;
+  width: 50%;
 }

@@ -4,6 +4,7 @@ import 'angular-route/angular-route'
 import 'angular-sanitize/angular-sanitize'
 import accordion from 'angular-ui-bootstrap/src/accordion'
 import modal from 'angular-ui-bootstrap/src/modal'
+import tabs from 'angular-ui-bootstrap/src/tabs'
 import 'ui-select'
 import 'angular-loading-bar'
 import 'angular-nvd3'
@@ -15,6 +16,7 @@ export default angular
     'ngSanitize',
     accordion,
     modal,
+    tabs,
     'ui.select',
     'angular-loading-bar',
     'nvd3'
