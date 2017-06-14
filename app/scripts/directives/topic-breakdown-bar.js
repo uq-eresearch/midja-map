@@ -86,7 +86,7 @@ angular.module('midjaApp')
                       color: (attributes.length > 10) ?
                         d3.scale.category20().range() :
                         d3.scale.category10().range(),
-                      height: 60+(attributes.length * 10),
+                      height: 50+(attributes.length * 10),
                       x: _.constant(''),
                       y: _.property('value'),
                       showControls: false,
