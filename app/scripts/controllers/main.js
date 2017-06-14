@@ -307,13 +307,6 @@ angular.module('midjaApp')
       return _.sortBy(xs, _.flow(_.property('name'), sorter))
     }
 
-    // google chart does not refresh on window resize
-    angular.element($window).bind('resize', function() {
-      if (vm.chartobj.chart) {
-        vm.chartobj.redraw();
-      }
-    });
-
     function activate(regionType) {
       return $q(function(resolve) {
           var excludeOps = [];
