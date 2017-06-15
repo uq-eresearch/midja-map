@@ -95,7 +95,6 @@ angular.module('midjaApp')
       function changeEmitter(baseEventName) {
         return function(newVal, oldVal) {
           if (!_.isEqual(newVal, oldVal)) {
-            console.log(baseEventName + ':change', newVal, oldVal);
             scope.$emit(baseEventName + ':change', newVal, oldVal);
           }
         }

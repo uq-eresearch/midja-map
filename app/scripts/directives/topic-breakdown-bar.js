@@ -127,7 +127,6 @@ angular.module('midjaApp')
       scope.$watch('regionType', populateHook)
       scope.$watch('refreshOn', () => {
         $timeout(() => {
-          console.log(scope.description, "refresh")
           scope.chartApi.refresh()
         })
       })
