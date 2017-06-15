@@ -1,3 +1,5 @@
+var R = require('ramda')
+
 module.exports = function(config) {
   'use strict';
 
@@ -19,7 +21,11 @@ module.exports = function(config) {
     },
 
     // webpack configuration
-    webpack: require("./webpack.config.js"),
+    webpack: R.merge(
+      require("./webpack.config.js"),
+      {
+        devtool: 'inline-source-map',
+      }),
     webpackMiddleware: {
       stats: "errors-only"
     },

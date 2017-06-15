@@ -42,17 +42,21 @@ angular.module('midjaApp')
                   scope.chart = null
                   return
                 }
-                const firstChar = v => v.slice(0, 1)
-                const tailChars = v => v.slice(1)
-                const lastChar = v => v.slice(v.length - 1)
-                const initChars = v => v.slice(0, v.length - 1)
+                const valueFor =
+                  _.flow(
+                    _.property('name'),
+                    _.propertyOf(
+                      _.zipObject(attributeNames, vs)))
+                const words = s => s.split(/\s/)
+                const firstWord = v => _.head(words(v))
+                const tailWords = v => _.tail(words(v)).join(" ")
+                const lastWord = v => _.last(words(v))
+                const initWords = v => _.initial(words(v)).join(" ")
                 function removeCommon(vs) {
-                  if (vs.length <= 1) {
-                    return vs;
-                  } else if (_.uniqBy(vs, firstChar).length <= 1) {
-                    return removeCommon(_.map(vs, tailChars));
-                  } else if (_.uniqBy(vs, lastChar).length <= 1) {
-                    return removeCommon(_.map(vs, initChars));
+                  if (_.uniqBy(vs, firstWord).length <= 1) {
+                    return removeCommon(_.map(vs, tailWords));
+                  } else if (_.uniqBy(vs, lastWord).length <= 1) {
+                    return removeCommon(_.map(vs, initWords));
                   } else {
                     return vs;
                   }
@@ -67,19 +71,16 @@ angular.module('midjaApp')
                           attributes,
                           _.property('description'))))))
                 scope.chart = {
-                  data: _.map(
-                    _.zip(attributes, vs),
-                    _.spread(function (attribute, v) {
-                      return {
-                        "key": labelFor(attribute),
-                        "values": [
-                          {
-                            "value": v
-                          }
-                        ]
-                      };
-                    })
-                  ),
+                  data: _.map(attributes, attribute => {
+                    return {
+                      "key": labelFor(attribute),
+                      "values": [
+                        {
+                          "value": valueFor(attribute)
+                        }
+                      ]
+                    };
+                  }),
                   options: {
                     chart: {
                       type: 'multiBarHorizontalChart',

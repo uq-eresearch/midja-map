@@ -1,6 +1,10 @@
 'use strict';
 
 import * as _ from 'lodash-es'
+import {
+  sortByAttributeNameNumbers,
+  sortByEducation
+} from '../../../lib/attribute/sorters'
 const _p = _.partial.placeholder
 import csvStringify from 'csv-stringify'
 
@@ -280,32 +284,9 @@ angular.module('midjaApp')
 
     vm.dataColumnVisible = true;
 
-    vm.sortByAttributeNameNumbers = (xs) => {
-      const rows = _.map(
-        xs,
-        _.flow(
-          _.property('name'),
-          v => _.map(v.match(/\d+/g), _.toNumber)))
-      const columns = _.unzip(rows)
-      const iteratees = _.map(
-        columns,
-        _.flow( // Create (attribute -> column value) lookup
-          _.partial(_.zipObject, _.map(xs, _.property('name'))), // Name map
-          _.propertyOf, // Name-based lookup
-          _.partial(_.flow, _.property('name')))) // Pre-apply name extraction
-      return _.orderBy(xs, iteratees)
-    }
+    vm.sortByAttributeNameNumbers = sortByAttributeNameNumbers
 
-    vm.sortByEducation = (xs) => {
-      const sorter = v => _.findIndex([
-        /none/,
-        /certificate/,
-        /diploma/,
-        /bachelor/,
-        /postgraduate/
-      ], p => p.test(v))
-      return _.sortBy(xs, _.flow(_.property('name'), sorter))
-    }
+    vm.sortByEducation = sortByEducation
 
     function activate(regionType) {
       return $q(function(resolve) {
