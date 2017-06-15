@@ -2,8 +2,7 @@
 
 import L from 'leaflet'
 import 'leaflet.vectorgrid'
-import * as _ from 'lodash-es'
-const _p = _.partial.placeholder
+import _ from 'lodash-es'
 import * as colorbrewer from "colorbrewer"
 
 /**
@@ -14,7 +13,7 @@ import * as colorbrewer from "colorbrewer"
  */
 angular.module('midjaApp')
   .directive('regionMap', function($http, $rootScope, $q, dataService,
-    formattingService, $uibModal) {
+    formattingService, $timeout, $uibModal) {
 
     // tileserver-gl-light URL
     var tileserverBaseUrl = "https://tiles.map.midja.org";
@@ -125,8 +124,9 @@ angular.module('midjaApp')
           scope.regions,
           _.flow(
             _.property('code'),
-            _.partial(_.isEqual, regionCode)));
-        if (!region) {
+            _.partial(_.isEqual, regionCode)
+          ));
+        if (!region || (scope._bucketFilter && !scope._bucketFilter(region))) {
           return hideStyle();
         }
         return (
@@ -250,7 +250,8 @@ angular.module('midjaApp')
             }
           };
           scope.$emit('legend:set',
-            'regions', 'right', getLegend(choroplethTopic, buckets, colorer));
+            'regions', 'right',
+            getLegend(scope, choroplethTopic, buckets, colorer));
           scope.styles = _.defaults({
             regions: function(region) {
               var color = regionColor(region);
@@ -315,7 +316,8 @@ angular.module('midjaApp')
             }
           }, scope.styles);
           scope.$emit('legend:set',
-            'points', 'left', getLegend(bubblesTopic, buckets, colorer));
+            'points', 'left',
+            getLegend(scope, bubblesTopic, buckets, colorer));
         } else {
           scope.styles = _.defaults({
             points: null
@@ -378,17 +380,20 @@ angular.module('midjaApp')
       };
     }
 
-    function getLegend(topic, buckets, colorer) {
+    function getLegend(scope, topic, buckets, colorer) {
       var div = L.DomUtil.create('div', 'legend');
       var ul = L.DomUtil.create('ul', '', div);
       buckets.forEach(function(bucket) {
         var li = L.DomUtil.create('li', '', ul);
+        li.onmouseover = () => scope.$emit('bucket:mouseover', topic, bucket)
+        li.onmouseout = () => scope.$emit('bucket:mouseout', topic, bucket)
+        li.onclick = () => scope.$emit('bucket:click', topic, bucket)
         var bullet = L.DomUtil.create('div', 'bullet', li);
         angular.element(bullet).css("background", colorer(bucket.min));
         var text = L.DomUtil.create('span', '', li);
         text.innerHTML = _.map(
           [bucket.min, bucket.max],
-          _.partial(formattingService.formatNumber, _p, topic.format)
+          _.partial(formattingService.formatNumber, _, topic.format)
         ).join(" - ");
       });
       return div;
@@ -538,6 +543,20 @@ angular.module('midjaApp')
           legends[type].remove();
         }
       });
+
+      scope.$on('bucket:mouseover', (evt, topic, bucket) => {
+        const valueFor = _.flow(
+          _.property('code'),
+          _.propertyOf(scope.regionData),
+          _.property(topic.name))
+        scope._bucketFilter = _.flow(valueFor, bucket.contains)
+        scope.vectorGrid.smartRedraw()
+      })
+
+      scope.$on('bucket:mouseout', (evt) => {
+        scope._bucketFilter = null
+        scope.vectorGrid.smartRedraw()
+      })
     }
 
   });

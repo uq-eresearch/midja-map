@@ -157,6 +157,15 @@ accordion h2, h3 {
 
 .leaflet-control.legend li {
   padding: 2px;
+  cursor: pointer;
+}
+
+.leaflet-control.legend li:hover {
+  font-weight: bold;
+}
+
+.leaflet-control.legend li:hover .bullet {
+  border-color: black;
 }
 
 .leaflet-control.legend .bullet {
