@@ -1,7 +1,6 @@
 'use strict';
 
-import * as _ from 'lodash-es'
-const _p = _.partial.placeholder
+import _ from 'lodash-es'
 import * as ss from 'simple-statistics'
 
 /**
@@ -22,7 +21,7 @@ angular.module('midjaApp')
         return _.flow(
           _.property('code'),
           removeNonNumericCharacters,
-          _.partial(_.startsWith, _p,
+          _.partial(_.startsWith, _,
             removeNonNumericCharacters(sourceRegion.code)));
       }
       return {
@@ -102,7 +101,7 @@ angular.module('midjaApp')
         var testF =
           subregionTests[region.type][immediateTargetRegionType](region);
         return getRegions(immediateTargetRegionType)
-          .then(_.partial(_.filter, _p, testF))
+          .then(_.partial(_.filter, _, testF))
           .then(function(subregions) {
             return $q.all(
               _.map(subregions,
@@ -132,7 +131,7 @@ angular.module('midjaApp')
       }
       return _.flow(
         toLowerCase,
-        _.partial(_.startsWith, _p, toLowerCase(prefix)));
+        _.partial(_.startsWith, _, toLowerCase(prefix)));
     }
 
     function getRegionsStartingWith(regionType, prefix) {
@@ -174,7 +173,7 @@ angular.module('midjaApp')
           });
         default:
           return getAttribute(regionType, 'region_name')
-            .then(_.partial(_.map, _p, locBuilder));
+            .then(_.partial(_.map, _, locBuilder));
       }
     }
 
@@ -196,6 +195,7 @@ angular.module('midjaApp')
               _.property('name'),
               _.partial(_.isEqual, attribute)));
           if (!attributeMetadata) {
+            console.log(`Attempted to get unknown attribute: ${attribute}`)
             return {};
           } else if (attributeMetadata.expression) {
             // Collect variables and evaluate expression
@@ -244,7 +244,15 @@ angular.module('midjaApp')
             .get('/data/private/' + regionType + '/index.json')
             .then(_.property('data'))
             .then(tagAttributes('private'))
-            .then(_.partial(_.merge, {}, publicData))
+            .then(_.partial(_.mergeWith, {}, publicData, _, (a, b) => {
+              if (_.isUndefined(a)) {
+                return b
+              } else if (_.isArray(a) && _.isArray(b)) {
+                return a.concat(b)
+              } else {
+                return a.merge(b)
+              }
+            }))
             .catch(_.constant(publicData))
         });
     }
