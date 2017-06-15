@@ -189,7 +189,7 @@ const matchers = [
               "name": `census${params.year}_partially_unstated_weekly_household_income_${params.suffix}`,
               "description": `Partially-unstated weekly household income - ${params.suffix} households (Census ${params.year})`,
               "type": "number",
-              "format": currencyFormat,
+              "format": integerFormat,
               "source": sourceDetails(filename, field)
             }
           }]
@@ -204,7 +204,7 @@ const matchers = [
               "name": `census${params.year}_completely_unstated_weekly_household_income_${params.suffix}`,
               "description": `Completely-unstated weekly household income - ${params.suffix} households (Census ${params.year})`,
               "type": "number",
-              "format": currencyFormat,
+              "format": integerFormat,
               "source": sourceDetails(filename, field)
             }
           }]
@@ -219,7 +219,7 @@ const matchers = [
               "name": `census${params.year}_${params.low}to${params.high}_weekly_household_income_${params.suffix}`,
               "description": `\$${params.low} - \$${params.high} weekly household income - ${params.suffix} households (Census ${params.year})`,
               "type": "number",
-              "format": currencyFormat,
+              "format": integerFormat,
               "source": sourceDetails(filename, field)
             }
           }]
@@ -234,7 +234,7 @@ const matchers = [
               "name": `census${params.year}_${params.low}plus_weekly_household_income_${params.suffix}`,
               "description": `\$${params.low}+ weekly household income - ${params.suffix} households (Census ${params.year})`,
               "type": "number",
-              "format": currencyFormat,
+              "format": integerFormat,
               "source": sourceDetails(filename, field)
             }
           }]
@@ -249,7 +249,7 @@ const matchers = [
               "name": `census${params.year}_0minus_weekly_household_income_${params.suffix}`,
               "description": `Nil or negative weekly household income - ${params.suffix} households (Census ${params.year})`,
               "type": "number",
-              "format": currencyFormat,
+              "format": integerFormat,
               "source": sourceDetails(filename, field)
             }
           }]

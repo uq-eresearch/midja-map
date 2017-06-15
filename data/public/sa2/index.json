@@ -5,8 +5,7 @@
       "description": "Nil or negative weekly household income - all households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -22,8 +21,7 @@
       "description": "Nil or negative weekly household income - indigenous households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -117,8 +115,7 @@
       "description": "$1000 - $1249 weekly household income - all households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -134,8 +131,7 @@
       "description": "$1000 - $1249 weekly household income - indigenous households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -229,8 +225,7 @@
       "description": "$1250 - $1499 weekly household income - all households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -246,8 +241,7 @@
       "description": "$1250 - $1499 weekly household income - indigenous households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -263,8 +257,7 @@
       "description": "$1500 - $1999 weekly household income - all households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -280,8 +273,7 @@
       "description": "$1500 - $1999 weekly household income - indigenous households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -375,8 +367,7 @@
       "description": "$1 - $199 weekly household income - all households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -392,8 +383,7 @@
       "description": "$1 - $199 weekly household income - indigenous households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -409,8 +399,7 @@
       "description": "$2000 - $2499 weekly household income - all households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -426,8 +415,7 @@
       "description": "$2000 - $2499 weekly household income - indigenous households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -443,8 +431,7 @@
       "description": "$200 - $299 weekly household income - all households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -460,8 +447,7 @@
       "description": "$200 - $299 weekly household income - indigenous households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -555,8 +541,7 @@
       "description": "$2500 - $2999 weekly household income - all households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -572,8 +557,7 @@
       "description": "$2500 - $2999 weekly household income - indigenous households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -667,8 +651,7 @@
       "description": "$3000+ weekly household income - all households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -684,8 +667,7 @@
       "description": "$3000+ weekly household income - indigenous households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -701,8 +683,7 @@
       "description": "$300 - $399 weekly household income - all households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -718,8 +699,7 @@
       "description": "$300 - $399 weekly household income - indigenous households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -891,8 +871,7 @@
       "description": "$400 - $599 weekly household income - all households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -908,8 +887,7 @@
       "description": "$400 - $599 weekly household income - indigenous households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -1315,8 +1293,7 @@
       "description": "$600 - $799 weekly household income - all households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -1332,8 +1309,7 @@
       "description": "$600 - $799 weekly household income - indigenous households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -1505,8 +1481,7 @@
       "description": "$800 - $999 weekly household income - all households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -1522,8 +1497,7 @@
       "description": "$800 - $999 weekly household income - indigenous households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -2683,8 +2657,7 @@
       "description": "Completely-unstated weekly household income - all households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -2700,8 +2673,7 @@
       "description": "Completely-unstated weekly household income - indigenous households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -3558,8 +3530,7 @@
       "description": "Partially-unstated weekly household income - all households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -3575,8 +3546,7 @@
       "description": "Partially-unstated weekly household income - indigenous households (Census 2011)",
       "type": "number",
       "format": {
-        "style": "currency",
-        "currency": "AUD"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
