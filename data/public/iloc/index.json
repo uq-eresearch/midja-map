@@ -1,16 +1,6 @@
 {
   "attributes": [
     {
-      "name": "area_albers_sqkm",
-      "description": "Area of region (sq km)",
-      "type": "number"
-    },
-    {
-      "name": "cdep_atsi",
-      "description": "Percentage employed ATSI in CDEP",
-      "type": "number"
-    },
-    {
       "name": "census2011_0minus_weekly_household_income_all",
       "description": "Nil or negative weekly household income - all households (Census 2011)",
       "type": "number",
@@ -4005,95 +3995,6 @@
       }
     },
     {
-      "name": "d_n_b_c_i",
-      "description": "Overcrowding Indigenous",
-      "type": "number"
-    },
-    {
-      "name": "d_n_b_c_n",
-      "description": "Overcrowding non-Indigenous",
-      "type": "number"
-    },
-    {
-      "name": "d_n_b_c_t",
-      "description": "Overcrowding Total",
-      "type": "number"
-    },
-    {
-      "name": "emp_atsi",
-      "description": "Percentage ATSI persons over 15 years old and employed",
-      "type": "number"
-    },
-    {
-      "name": "family1parent_atsi",
-      "description": "Percentage ATSI households one family one parent",
-      "type": "number"
-    },
-    {
-      "name": "familymulti_atsi",
-      "description": "Percentage ATSI households multi family",
-      "type": "number"
-    },
-    {
-      "name": "home_ownership_potential_v2",
-      "description": "Potential Home Ownership based on Household Size, Income and Employment V2",
-      "type": "number"
-    },
-    {
-      "name": "improv_atsi",
-      "description": "Percentage ATSI households living in improvised dwelling",
-      "type": "number"
-    },
-    {
-      "name": "internet_atsi",
-      "description": "Percentage ATSI households with internet at home",
-      "type": "number"
-    },
-    {
-      "name": "labour_atsi",
-      "description": "Percentage ATSI persons in the labour force",
-      "type": "number"
-    },
-    {
-      "name": "lang_atsi",
-      "description": "Percentage ATSI persons speak Indigenous language at home",
-      "type": "number"
-    },
-    {
-      "name": "lessyr12_atsi",
-      "description": "Percentage ATSI persons over 15 years old with less than year 12 education",
-      "type": "number"
-    },
-    {
-      "name": "lone_atsi",
-      "description": "Percentage ATSI households lone person",
-      "type": "number"
-    },
-    {
-      "name": "normalized_amount_of_loans",
-      "description": "Total Amount of IBA loans per Indigenous person",
-      "type": "number",
-      "format": {
-        "style": "currency",
-        "currency": "AUD"
-      }
-    },
-    {
-      "name": "normalized_number_of_loans",
-      "description": "Total Number of IBA loans per Indigenous person",
-      "type": "number"
-    },
-    {
-      "name": "num_apps",
-      "description": "Number of IBA loan applications",
-      "type": "number"
-    },
-    {
-      "name": "potential_home_ownership",
-      "description": "Potential Home Ownership based on Household Size, Income and Employment",
-      "type": "number"
-    },
-    {
       "name": "ra_name",
       "description": "Remoteness Area name",
       "type": "string"
@@ -4102,15 +4003,6 @@
       "name": "region_name",
       "description": "Indigenous Location name",
       "type": "string"
-    },
-    {
-      "name": "total_loan",
-      "description": "Total combined IBA loan amount",
-      "type": "number",
-      "format": {
-        "style": "currency",
-        "currency": "AUD"
-      }
     }
   ]
 }

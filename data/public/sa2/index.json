@@ -5335,19 +5335,6 @@
         },
         "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_SEIFA_SA2/.IRSD.SCORE/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false&startPeriod=2011&endPeriod=2011"
       }
-    },
-    {
-      "name": "seifa_irsd_score",
-      "description": "SEIFA Index of Relative Socio-economic Disadvantage score",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_SEIFA_SA2/.IRSD.SCORE/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
     }
   ]
 }

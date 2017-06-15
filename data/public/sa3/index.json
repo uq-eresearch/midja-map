@@ -3780,49 +3780,6 @@
       }
     },
     {
-      "name": "dwellings_all",
-      "description": "Occupied private dwellings - All tenures",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B32/TOT.OPD..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "dwellings_mortgage",
-      "description": "Occupied private dwellings - Owned with a mortgage",
-      "type": "number",
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B32/2.OPD..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
-      "name": "dwellings_owned",
-      "description": "Occupied private dwellings - Owned outright",
-      "type": "number",
-      "format": {
-        "maximumFractionDigits": 1,
-        "minimumFractionDigits": 1
-      },
-      "source": {
-        "name": "Australian Bureau of Statistics",
-        "license": {
-          "type": "Creative Commons Attribution 2.5 Australia",
-          "url": "https://creativecommons.org/licenses/by/2.5/au/"
-        },
-        "url": "http://stat.data.abs.gov.au/sdmx-json/data/ABS_CENSUS2011_B32/1.OPD..SA3..A/all?dimensionAtObservation=TIME_PERIOD&detail=full&includeHistory=false"
-      }
-    },
-    {
       "name": "erp2011_persons_all",
       "description": "Estimated Resident Population All Ages - Persons (2011)",
       "type": "number",

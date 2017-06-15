@@ -218,17 +218,35 @@ angular.module('midjaApp')
               return _.zipObject(commonRegions, series);
             });
           } else {
+            const accessType = attributeMetadata.access
             return $http
-              .get('/data/' + regionType + '/' + attribute + '.json')
+              .get(`/data/${accessType}/${regionType}/${attribute}.json`)
               .then(_.property('data'));
           }
         });
     }
 
     function getMetadataFromRemote(regionType) {
+      const tagAttributes = tag => data =>
+        _.assign(
+          data,
+          {
+            "attributes": _.map(
+              data.attributes,
+              attr => _.defaults(attr, { access: tag }))
+          })
       return $http
-        .get('/data/' + regionType + '/index.json')
-        .then(_.property('data'));
+        .get('/data/public/' + regionType + '/index.json')
+        .then(_.property('data'))
+        .then(tagAttributes('public'))
+        .then(publicData => {
+          return $http
+            .get('/data/private/' + regionType + '/index.json')
+            .then(_.property('data'))
+            .then(tagAttributes('private'))
+            .then(_.partial(_.merge, {}, publicData))
+            .catch(_.constant(publicData))
+        });
     }
 
     function getAttributesForRegions(regionType, attributeNames, regions) {

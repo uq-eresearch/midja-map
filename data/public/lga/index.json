@@ -1,16 +1,6 @@
 {
   "attributes": [
     {
-      "name": "afford",
-      "description": "Affordability",
-      "type": "number"
-    },
-    {
-      "name": "afford_in",
-      "description": "Affordability Index",
-      "type": "number"
-    },
-    {
       "name": "census2011_0minus_weekly_household_income_all",
       "description": "Nil or negative weekly household income - all households (Census 2011)",
       "type": "number",
@@ -3772,60 +3762,6 @@
         },
         "notes": "from DataPack CSV: 2011Census_I06_AUST_LGA_long.csv#Persons_Year_12_or_equivalent_Indigenous"
       }
-    },
-    {
-      "name": "f_time",
-      "description": "Percentage of Indigenous in Full-time Employment",
-      "type": "number"
-    },
-    {
-      "name": "f_time_in",
-      "description": "Full-time Employment Index",
-      "type": "number"
-    },
-    {
-      "name": "home_o_in",
-      "description": "Home Ownership Index",
-      "type": "number"
-    },
-    {
-      "name": "iba_a_loan",
-      "description": "IBA Total Amount of Loans",
-      "type": "number",
-      "format": {
-        "style": "currency",
-        "currency": "AUD"
-      }
-    },
-    {
-      "name": "iba_n_loan",
-      "description": "IBA Total Number of Loans",
-      "type": "number"
-    },
-    {
-      "name": "median_inc",
-      "description": "Annual Median Indigenous Household Income",
-      "type": "number"
-    },
-    {
-      "name": "median_mor",
-      "description": "Annual Median Mortgage Repayment",
-      "type": "number"
-    },
-    {
-      "name": "no_home",
-      "description": "Percentage of Indigenous households without own home",
-      "type": "number"
-    },
-    {
-      "name": "own_home",
-      "description": "Percentage of Indigenous households with own home",
-      "type": "number"
-    },
-    {
-      "name": "piho",
-      "description": "Potential Indigenous Home Ownership",
-      "type": "number"
     },
     {
       "name": "ra_name",

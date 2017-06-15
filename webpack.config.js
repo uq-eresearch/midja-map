@@ -95,8 +95,7 @@ module.exports = {
   plugins: [
     new CleanObsoleteChunks(),
     new CopyWebpackPlugin([
-      { from: 'data/public', to: 'data' },
-      { from: 'data/private', to: 'data' }
+      { from: 'data', to: 'data' }
     ]),
     new ExtractTextWebpackPlugin({
       filename: 'assets/style-[contenthash].css'
