@@ -54,8 +54,10 @@
     "mathjs": "^3.13.3",
     "mustache": "^2.3.0",
     "node-sass": "^4.5.3",
+    "osmosis": "^1.1.4",
     "phantomjs-prebuilt": ">=2.1.14",
     "ramda": "^0.24.1",
+    "request-promise-native": "^1.0.4",
     "sass-loader": "^6.0.5",
     "sdmx-rest": "^2.5.1",
     "simple-statistics": "^4.1.0",
@@ -64,7 +66,8 @@
     "webpack": "^2.6.1",
     "webpack-clean-obsolete-chunks": "^0.1.9",
     "webpack-dev-server": "^2.4.5",
-    "webpack-visualizer-plugin": "^0.1.11"
+    "webpack-visualizer-plugin": "^0.1.11",
+    "xlsx": "^0.10.5"
   },
   "engines": {
     "node": ">=6.0.0"
