@@ -1,11 +1,10 @@
 'use strict';
 
-import * as _ from 'lodash-es'
+import _ from 'lodash-es'
 import {
   sortByAttributeNameNumbers,
   sortByEducation
 } from '../../../lib/attribute/sorters'
-const _p = _.partial.placeholder
 import csvStringify from 'csv-stringify'
 
 /**
@@ -465,8 +464,8 @@ angular.module('midjaApp')
           }
         })
         .then(_.flatten)
-        .then(_.partial(_.uniq, _p, false, _.property('code')))
-        .then(_.partial(_.filter, _p,
+        .then(_.partial(_.uniq, _, false, _.property('code')))
+        .then(_.partial(_.filter, _,
           function(region) {
             return !_.includes(vm.filterPlaces, region.code)
           }
@@ -662,7 +661,7 @@ angular.module('midjaApp')
             lookupAttributesForRegion, // Create lookup by topic name
             _.partial(_.flow, _.property('name')), // Handle topic as input
             _.partial(_.map, [depVar].concat(indepVars)), // Lookup values
-            _.partial(_.every, _p, isValidNumber)); // Check all values are OK
+            _.partial(_.every, _, isValidNumber)); // Check all values are OK
           var usableRegions = _.filter(regions, doesRegionHaveCompleteData);
           var topicSeries = _.chain(usableRegions)
             .map(lookupAttributesForRegion)
@@ -731,7 +730,7 @@ angular.module('midjaApp')
         var doesRegionHaveValidXY = _.flow(
           lookupAttributesForRegion,
           _.partial(_.map, [xVar, yVar]), // Lookup X/Y values
-          _.partial(_.every, _p, isValidNumber));
+          _.partial(_.every, _, isValidNumber));
         var lookupRemotenessForRegion = _.flow(
           lookupAttributesForRegion,
           function (f) { return f('ra_name') || "Unknown Remoteness"; })
