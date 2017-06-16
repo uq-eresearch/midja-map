@@ -22,65 +22,64 @@ const mapValuesDeep = (f, obj) => R.mapObjIndexed(
   obj
 )
 
-function buildQueries(config) {
-  const dimensionNames = R.map(R.prop('name'), config.dimensions)
-  const dimensionPermutations =
-    R.reduce(
-      (m, dimension) => R.chain(
-        dv => R.map(ds => R.concat(ds, [dv]), m),
-        dimension.values
-      ),
-      [[]],
-      config.dimensions)
-  return R.chain((period) => {
-    return dimensionPermutations.map((dSeq) => {
-      const key = dSeq.map(R.prop('code')).join('.')
-      const sdmxJsonQuery = sdmxrest.getDataQuery({
-        flow: config.flow,
-        key: key,
-        start: period,
-        end: period
-      })
-      var templateContext = R.merge(
-        R.zipObj(
-          dimensionNames,
-          R.addIndex(R.map)(
-            (v, i) => R.merge(v, R.objOf('seriesIndex', i)),
-            dSeq)
-        ),
-        {
-          period: period,
-          query: {
-            object: sdmxJsonQuery,
-            url: sdmxrest.getUrl(sdmxJsonQuery, absService)
-          }
-        });
-      const kdi = R.findIndex(
-        d => d.name == config.keyDimension,
-        config.dimensions)
-      return R.merge(
-        mapValuesDeep(
-          (tmpl) =>
-            (typeof tmpl == 'string') ?
-            Mustache.render(tmpl, templateContext) :
-            tmpl,
-          config.templates
-        ),
-        {
-          keyDimensionIndex: kdi,
-          keyTransform: (v => (config.keyPrefix || "") + v),
-          query: sdmxJsonQuery
-        })
-    })
-  }, config.periods)
-}
+// [Object] -> [[Object]]
+const dimensionPermutations =
+  R.reduce(
+    (m, dimension) => R.chain(
+      dv => R.map(ds => R.concat(ds, [dv]), m),
+      dimension.values
+    ),
+    [[]])
 
-const writeJsonDict = filepath => data => {
-  return fs.ensureDir(path.dirname(filepath))
+const buildQueries = (config) =>
+  R.chain(
+    (dSeq) => R.map(
+      (period) => {
+        const sdmxJsonQuery = sdmxrest.getDataQuery({
+          flow: config.flow,
+          key: R.pluck('code', dSeq).join('.'),
+          start: period,
+          end: period
+        })
+        const templateContext = R.merge(
+          R.zipObj(
+            R.pluck('name', config.dimensions),
+            R.addIndex(R.map)(
+              (v, i) => R.merge(v, R.objOf('seriesIndex', i)),
+              dSeq)
+          ),
+          {
+            period: period,
+            query: {
+              object: sdmxJsonQuery,
+              url: sdmxrest.getUrl(sdmxJsonQuery, absService)
+            }
+          })
+        const kdi = R.findIndex(
+          d => d.name == config.keyDimension,
+          config.dimensions)
+        return R.merge(
+          mapValuesDeep(
+            (tmpl) =>
+              (typeof tmpl == 'string') ?
+              Mustache.render(tmpl, templateContext) :
+              tmpl,
+            config.templates
+          ),
+          {
+            keyDimensionIndex: kdi,
+            keyTransform: (v => (config.keyPrefix || "") + v),
+            query: sdmxJsonQuery
+          })
+      },
+      config.periods),
+    dimensionPermutations(config.dimensions))
+
+const writeJsonDict = filepath => data =>
+  fs.ensureDir(path.dirname(filepath))
     .then(() => fs.writeJson(filepath, data, {spaces: 2}))
     .then(() => console.log("Wrote " + filepath))
     .then(() => filepath)
-}
 
 const extractDataFromSdmxJson = (keyIndex, keyTransform) => dataStr => {
   const data = JSON.parse(dataStr)
@@ -111,7 +110,7 @@ function doQuery(attrQuery) {
           .then(writeJsonDict(filepath))
           .then(R.always(attrQuery))
           .catch((e) => {
-            console.log(attrQuery);
+            console.log(attrQuery)
             throw e
           })
     })
