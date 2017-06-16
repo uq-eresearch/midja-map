@@ -1,3 +1,4 @@
+const Mustache = require('mustache')
 const _ = require('lodash')
 const fs = require('fs-extra')
 const path = require('path')
@@ -55,7 +56,11 @@ function buildQueries(config) {
         d => d.name == config.keyDimension)
       return _.defaults({},
         mapValuesDeep(
-          config.templates, (tmpl) => _.template(tmpl)(templateContext)
+          config.templates,
+          (tmpl) =>
+            (typeof tmpl == 'string') ?
+            Mustache.render(tmpl, templateContext) :
+            tmpl
         ), {
           keyDimensionIndex: kdi,
           keyTransform: (v => (config.keyPrefix || "") + v),

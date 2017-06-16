@@ -52,6 +52,7 @@
     "leaflet.vectorgrid": "^1.2.0",
     "lodash-es": "^4.17.4",
     "mathjs": "^3.13.3",
+    "mustache": "^2.3.0",
     "node-sass": "^4.5.3",
     "phantomjs-prebuilt": ">=2.1.14",
     "ramda": "^0.24.1",

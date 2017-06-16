@@ -1,11 +1,11 @@
 [{
   "flow": "ABS_ERP_ASGS",
   "templates": {
-    "filepath": "<%=regionType.name%>/<%=measure.name%><%=period%>_<%=gender.name%>_<%=age.name%>.json",
-    "group": "<%=regionType.name%>",
+    "filepath": "{{{regionType.name}}}/{{{measure.name}}}{{{period}}}_{{{gender.name}}}_{{{age.name}}}.json",
+    "group": "{{{regionType.name}}}",
     "attribute": {
-      "name": "<%=measure.name%><%=period%>_<%=gender.name%>_<%=age.name%>",
-      "description": "<%= measure.description %> <%=age.description%> - <%=gender.description%> (<%=period%>)",
+      "name": "{{{measure.name}}}{{{period}}}_{{{gender.name}}}_{{{age.name}}}",
+      "description": "{{{measure.description}}} {{{age.description}}} - {{{gender.description}}} ({{{period}}})",
       "type": "number",
       "hidden": true,
       "format": {
@@ -17,7 +17,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "url": "<%=query.url%>"
+        "url": "{{{query.url}}}"
       }
     }
   },
@@ -163,11 +163,11 @@
 },{
   "flow": "ABS_ERP_ASGS",
   "templates": {
-    "filepath": "<%=regionType.name%>/<%=measure.name%><%=period%>_<%=gender.name%>_<%=age.name%>.json",
-    "group": "<%=regionType.name%>",
+    "filepath": "{{{regionType.name}}}/{{{measure.name}}}{{{period}}}_{{{gender.name}}}_{{{age.name}}}.json",
+    "group": "{{{regionType.name}}}",
     "attribute": {
-      "name": "<%=measure.name%><%=period%>_<%=gender.name%>_<%=age.name%>",
-      "description": "<%= measure.description %> <%=age.description%> - <%=gender.description%> (<%=period%>)",
+      "name": "{{{measure.name}}}{{{period}}}_{{{gender.name}}}_{{{age.name}}}",
+      "description": "{{{measure.description}}} {{{age.description}}} - {{{gender.description}}} ({{{period}}})",
       "type": "number",
       "hidden": true,
       "format": {
@@ -179,7 +179,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "url": "<%=query.url%>"
+        "url": "{{{query.url}}}"
       }
     }
   },
@@ -248,11 +248,11 @@
 },{
   "flow": "ABS_CENSUS2011_B07",
   "templates": {
-    "filepath": "<%=regionType.name%>/census<%=period%>_<%=age.name%>_<%=gender.name%>_<%=status.name%>.json",
-    "group": "<%=regionType.name%>",
+    "filepath": "{{{regionType.name}}}/census{{{period}}}_{{{age.name}}}_{{{gender.name}}}_{{{status.name}}}.json",
+    "group": "{{{regionType.name}}}",
     "attribute": {
-      "name": "census<%=period%>_<%=age.name%>_<%=gender.name%>_<%=status.name%>",
-      "description": "<%=status.description%> <%=gender.description%> - <%=age.description%> (Census <%=period%>)",
+      "name": "census{{{period}}}_{{{age.name}}}_{{{gender.name}}}_{{{status.name}}}",
+      "description": "{{{status.description}}} {{{gender.description}}} - {{{age.description}}} (Census {{{period}}})",
       "type": "number",
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -260,7 +260,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "url": "<%=query.url%>"
+        "url": "{{{query.url}}}"
       }
     }
   },
@@ -403,11 +403,11 @@
 {
   "flow": "ABS_CENSUS2011_B07_LGA",
   "templates": {
-    "filepath": "<%=regionType.name%>/census<%=period%>_<%=age.name%>_<%=gender.name%>_<%=status.name%>.json",
-    "group": "<%=regionType.name%>",
+    "filepath": "{{{regionType.name}}}/census{{{period}}}_{{{age.name}}}_{{{gender.name}}}_{{{status.name}}}.json",
+    "group": "{{{regionType.name}}}",
     "attribute": {
-      "name": "census<%=period%>_<%=age.name%>_<%=gender.name%>_<%=status.name%>",
-      "description": "<%=status.description%> <%=gender.description%> - <%=age.description%> (Census <%=period%>)",
+      "name": "census{{{period}}}_{{{age.name}}}_{{{gender.name}}}_{{{status.name}}}",
+      "description": "{{{status.description}}} {{{gender.description}}} - {{{age.description}}} (Census {{{period}}})",
       "type": "number",
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -415,7 +415,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "url": "<%=query.url%>"
+        "url": "{{{query.url}}}"
       }
     }
   },
@@ -554,11 +554,11 @@
 {
   "flow": "ABS_CENSUS2011_B32",
   "templates": {
-    "filepath": "<%=regionType.name%>/census<%=period%>_<%=type.name%>_<%=tenure.name%>.json",
-    "group": "<%=regionType.name%>",
+    "filepath": "{{{regionType.name}}}/census{{{period}}}_{{{type.name}}}_{{{tenure.name}}}.json",
+    "group": "{{{regionType.name}}}",
     "attribute": {
-      "name": "census<%=period%>_<%=type.name%>_<%=tenure.name%>",
-      "description": "<%=type.description%> - <%=tenure.description%> (<%=period%>)",
+      "name": "census{{{period}}}_{{{type.name}}}_{{{tenure.name}}}",
+      "description": "{{{type.description}}} - {{{tenure.description}}} ({{{period}}})",
       "type": "number",
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -566,7 +566,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "url": "<%=query.url%>"
+        "url": "{{{query.url}}}"
       }
     }
   },
@@ -641,11 +641,11 @@
 {
   "flow": "ABS_CENSUS2011_B32_LGA",
   "templates": {
-    "filepath": "<%=regionType.name%>/census<%=period%>_<%=type.name%>_<%=tenure.name%>.json",
-    "group": "<%=regionType.name%>",
+    "filepath": "{{{regionType.name}}}/census{{{period}}}_{{{type.name}}}_{{{tenure.name}}}.json",
+    "group": "{{{regionType.name}}}",
     "attribute": {
-      "name": "census<%=period%>_<%=type.name%>_<%=tenure.name%>",
-      "description": "<%=type.description%> - <%=tenure.description%> (<%=period%>)",
+      "name": "census{{{period}}}_{{{type.name}}}_{{{tenure.name}}}",
+      "description": "{{{type.description}}} - {{{tenure.description}}} ({{{period}}})",
       "type": "number",
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -653,7 +653,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "url": "<%=query.url%>"
+        "url": "{{{query.url}}}"
       }
     }
   },
@@ -724,11 +724,11 @@
 {
   "flow": "ABS_SEIFA_SA2",
   "templates": {
-    "filepath": "sa2/seifa<%=period%>_<%=index.name%>_<%=measure.name%>.json",
+    "filepath": "sa2/seifa{{{period}}}_{{{index.name}}}_{{{measure.name}}}.json",
     "group": "sa2",
     "attribute": {
-      "name": "seifa<%=period%>_<%=index.name%>_<%=measure.name%>",
-      "description": "SEIFA <%=index.description%> <%=measure.description%> (<%=period%>)",
+      "name": "seifa{{{period}}}_{{{index.name}}}_{{{measure.name}}}",
+      "description": "SEIFA {{{index.description}}} {{{measure.description}}} ({{{period}}})",
       "type": "number",
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -736,7 +736,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "url": "<%=query.url%>"
+        "url": "{{{query.url}}}"
       }
     }
   },

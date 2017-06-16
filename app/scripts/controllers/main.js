@@ -22,16 +22,14 @@ angular.module('midjaApp')
     var vm = this;
     vm.propTopicsOnly = false;
 
-    var scatterPlotTooltipTemplate =
-      _.template(
-        "<h3><%= name %></h3>"+
-        "<dl>"+
-        "<dt><%=x.name%></dt>"+
-        "<dd><%=x.value%></dd>"+
-        "<dt><%=y.name%></dt>"+
-        "<dd><%=y.value%></dd>"+
-        "</dl>"
-      );
+    var scatterPlotTooltipTemplate = d =>
+      `<h3>${d.name}</h3>`+
+      `<dl>`+
+      `<dt>${d.x.name}</dt>`+
+      `<dd>${d.x.value}</dd>`+
+      `<dt>${d.y.name}</dt>`+
+      `<dd>${d.y.value}</dd>`+
+      `</dl>`
     vm.scatterOptions = {
       chart: {
         type: 'scatterChart',

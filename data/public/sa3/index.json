@@ -3753,9 +3753,9 @@
       "name": "erp2011_persons_all",
       "description": "Estimated Resident Population All Ages - Persons (2011)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -3770,9 +3770,9 @@
       "name": "erp2012_persons_all",
       "description": "Estimated Resident Population All Ages - Persons (2012)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -3787,9 +3787,9 @@
       "name": "erp2013_persons_all",
       "description": "Estimated Resident Population All Ages - Persons (2013)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -3804,9 +3804,9 @@
       "name": "erp2014_persons_all",
       "description": "Estimated Resident Population All Ages - Persons (2014)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -3821,9 +3821,9 @@
       "name": "erp2015_females_0to4",
       "description": "Estimated Resident Population Age 0-4 - Females (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -3838,9 +3838,9 @@
       "name": "erp2015_females_10to14",
       "description": "Estimated Resident Population Age 10-14 - Females (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -3855,9 +3855,9 @@
       "name": "erp2015_females_15to19",
       "description": "Estimated Resident Population Age 15-19 - Females (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -3872,9 +3872,9 @@
       "name": "erp2015_females_20to24",
       "description": "Estimated Resident Population Age 20-24 - Females (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -3889,9 +3889,9 @@
       "name": "erp2015_females_25to29",
       "description": "Estimated Resident Population Age 25-29 - Females (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -3906,9 +3906,9 @@
       "name": "erp2015_females_30to34",
       "description": "Estimated Resident Population Age 30-34 - Females (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -3923,9 +3923,9 @@
       "name": "erp2015_females_35to39",
       "description": "Estimated Resident Population Age 35-39 - Females (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -3940,9 +3940,9 @@
       "name": "erp2015_females_40to44",
       "description": "Estimated Resident Population Age 40-44 - Females (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -3957,9 +3957,9 @@
       "name": "erp2015_females_45to49",
       "description": "Estimated Resident Population Age 45-49 - Females (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -3974,9 +3974,9 @@
       "name": "erp2015_females_50to54",
       "description": "Estimated Resident Population Age 50-54 - Females (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -3991,9 +3991,9 @@
       "name": "erp2015_females_55to59",
       "description": "Estimated Resident Population Age 55-59 - Females (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4008,9 +4008,9 @@
       "name": "erp2015_females_5to9",
       "description": "Estimated Resident Population Age 5-9 - Females (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4025,9 +4025,9 @@
       "name": "erp2015_females_60to64",
       "description": "Estimated Resident Population Age 60-64 - Females (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4042,9 +4042,9 @@
       "name": "erp2015_females_65to69",
       "description": "Estimated Resident Population Age 65-69 - Females (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4059,9 +4059,9 @@
       "name": "erp2015_females_70to74",
       "description": "Estimated Resident Population Age 70-74 - Females (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4076,9 +4076,9 @@
       "name": "erp2015_females_75to79",
       "description": "Estimated Resident Population Age 75-79 - Females (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4093,9 +4093,9 @@
       "name": "erp2015_females_80to84",
       "description": "Estimated Resident Population Age 80-84 - Females (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4110,9 +4110,9 @@
       "name": "erp2015_females_85andover",
       "description": "Estimated Resident Population Age 85+ - Females (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4127,9 +4127,9 @@
       "name": "erp2015_females_all",
       "description": "Estimated Resident Population All Ages - Females (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4144,9 +4144,9 @@
       "name": "erp2015_males_0to4",
       "description": "Estimated Resident Population Age 0-4 - Males (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4161,9 +4161,9 @@
       "name": "erp2015_males_10to14",
       "description": "Estimated Resident Population Age 10-14 - Males (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4178,9 +4178,9 @@
       "name": "erp2015_males_15to19",
       "description": "Estimated Resident Population Age 15-19 - Males (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4195,9 +4195,9 @@
       "name": "erp2015_males_20to24",
       "description": "Estimated Resident Population Age 20-24 - Males (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4212,9 +4212,9 @@
       "name": "erp2015_males_25to29",
       "description": "Estimated Resident Population Age 25-29 - Males (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4229,9 +4229,9 @@
       "name": "erp2015_males_30to34",
       "description": "Estimated Resident Population Age 30-34 - Males (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4246,9 +4246,9 @@
       "name": "erp2015_males_35to39",
       "description": "Estimated Resident Population Age 35-39 - Males (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4263,9 +4263,9 @@
       "name": "erp2015_males_40to44",
       "description": "Estimated Resident Population Age 40-44 - Males (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4280,9 +4280,9 @@
       "name": "erp2015_males_45to49",
       "description": "Estimated Resident Population Age 45-49 - Males (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4297,9 +4297,9 @@
       "name": "erp2015_males_50to54",
       "description": "Estimated Resident Population Age 50-54 - Males (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4314,9 +4314,9 @@
       "name": "erp2015_males_55to59",
       "description": "Estimated Resident Population Age 55-59 - Males (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4331,9 +4331,9 @@
       "name": "erp2015_males_5to9",
       "description": "Estimated Resident Population Age 5-9 - Males (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4348,9 +4348,9 @@
       "name": "erp2015_males_60to64",
       "description": "Estimated Resident Population Age 60-64 - Males (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4365,9 +4365,9 @@
       "name": "erp2015_males_65to69",
       "description": "Estimated Resident Population Age 65-69 - Males (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4382,9 +4382,9 @@
       "name": "erp2015_males_70to74",
       "description": "Estimated Resident Population Age 70-74 - Males (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4399,9 +4399,9 @@
       "name": "erp2015_males_75to79",
       "description": "Estimated Resident Population Age 75-79 - Males (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4416,9 +4416,9 @@
       "name": "erp2015_males_80to84",
       "description": "Estimated Resident Population Age 80-84 - Males (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4433,9 +4433,9 @@
       "name": "erp2015_males_85andover",
       "description": "Estimated Resident Population Age 85+ - Males (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4450,9 +4450,9 @@
       "name": "erp2015_males_all",
       "description": "Estimated Resident Population All Ages - Males (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4467,9 +4467,9 @@
       "name": "erp2015_persons_0to4",
       "description": "Estimated Resident Population Age 0-4 - Persons (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4484,9 +4484,9 @@
       "name": "erp2015_persons_10to14",
       "description": "Estimated Resident Population Age 10-14 - Persons (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4501,9 +4501,9 @@
       "name": "erp2015_persons_15to19",
       "description": "Estimated Resident Population Age 15-19 - Persons (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4518,9 +4518,9 @@
       "name": "erp2015_persons_20to24",
       "description": "Estimated Resident Population Age 20-24 - Persons (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4535,9 +4535,9 @@
       "name": "erp2015_persons_25to29",
       "description": "Estimated Resident Population Age 25-29 - Persons (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4552,9 +4552,9 @@
       "name": "erp2015_persons_30to34",
       "description": "Estimated Resident Population Age 30-34 - Persons (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4569,9 +4569,9 @@
       "name": "erp2015_persons_35to39",
       "description": "Estimated Resident Population Age 35-39 - Persons (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4586,9 +4586,9 @@
       "name": "erp2015_persons_40to44",
       "description": "Estimated Resident Population Age 40-44 - Persons (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4603,9 +4603,9 @@
       "name": "erp2015_persons_45to49",
       "description": "Estimated Resident Population Age 45-49 - Persons (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4620,9 +4620,9 @@
       "name": "erp2015_persons_50to54",
       "description": "Estimated Resident Population Age 50-54 - Persons (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4637,9 +4637,9 @@
       "name": "erp2015_persons_55to59",
       "description": "Estimated Resident Population Age 55-59 - Persons (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4654,9 +4654,9 @@
       "name": "erp2015_persons_5to9",
       "description": "Estimated Resident Population Age 5-9 - Persons (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4671,9 +4671,9 @@
       "name": "erp2015_persons_60to64",
       "description": "Estimated Resident Population Age 60-64 - Persons (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4688,9 +4688,9 @@
       "name": "erp2015_persons_65to69",
       "description": "Estimated Resident Population Age 65-69 - Persons (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4705,9 +4705,9 @@
       "name": "erp2015_persons_70to74",
       "description": "Estimated Resident Population Age 70-74 - Persons (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4722,9 +4722,9 @@
       "name": "erp2015_persons_75to79",
       "description": "Estimated Resident Population Age 75-79 - Persons (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4739,9 +4739,9 @@
       "name": "erp2015_persons_80to84",
       "description": "Estimated Resident Population Age 80-84 - Persons (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4756,9 +4756,9 @@
       "name": "erp2015_persons_85andover",
       "description": "Estimated Resident Population Age 85+ - Persons (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",
@@ -4773,9 +4773,9 @@
       "name": "erp2015_persons_all",
       "description": "Estimated Resident Population All Ages - Persons (2015)",
       "type": "number",
-      "hidden": "true",
+      "hidden": true,
       "format": {
-        "maximumFractionDigits": "0"
+        "maximumFractionDigits": 0
       },
       "source": {
         "name": "Australian Bureau of Statistics",

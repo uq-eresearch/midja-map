@@ -16,10 +16,10 @@ angular.module('midjaApp')
     formattingService, $timeout, $uibModal) {
 
     // tileserver-gl-light URL
-    var tileserverBaseUrl = "https://tiles.map.midja.org";
-    var tileJsonUrlTmpl = _.template(
-      tileserverBaseUrl + "/data/<%=regionType%>.json");
-    var defaultStyles = {
+    const tileserverBaseUrl = "https://tiles.map.midja.org"
+    const tileJsonUrlTmpl = d =>
+      `${tileserverBaseUrl}/data/${d.regionType}.json`
+    const defaultStyles = {
       'regions': _.constant({
         weight: 1,
         color: '#000000',
@@ -33,8 +33,8 @@ angular.module('midjaApp')
         color: '#000000',
         opacity: 0
       })
-    };
-    var regionHeadingTmpl = _.template("<%=name%> (<%=code%>)");
+    }
+    const regionHeadingTmpl = d => `${d.name} (${d.code})`
 
     // Modified VectorGrid which can take a layer order, so our points can be
     // consistently rendered above regions.
@@ -62,11 +62,7 @@ angular.module('midjaApp')
     // Generate random ID for map
     var mapId = 'map-' + Math.random().toString().slice(2);
     // Create template using ID
-    var template = _.template(
-      '<div id="<%=id%>" class="region-map"></div>'
-    )({
-      id: mapId
-    });
+    var template = `<div id="${mapId}" class="region-map"></div>`
 
     var map = null;
     var regionLayers = null;
