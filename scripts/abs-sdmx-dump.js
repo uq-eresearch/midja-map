@@ -1,5 +1,5 @@
 const Mustache = require('mustache')
-const _ = require('lodash')
+const R = require('ramda')
 const fs = require('fs-extra')
 const path = require('path')
 const sdmxrest = require('sdmx-rest')
@@ -17,57 +17,62 @@ const headers = {
   }
 }
 
-const mapValuesDeep = (obj, f) => _.mapValues(
-  obj,
-  v => _.isObject(v) ? mapValuesDeep(v, f) : f(v)
+const mapValuesDeep = (f, obj) => R.mapObjIndexed(
+  v => R.type(v) == 'Object' ? mapValuesDeep(f, v) : f(v),
+  obj
 )
 
 function buildQueries(config) {
-  const dimensionNames = config.dimensions.map(_.property('name'))
+  const dimensionNames = R.map(R.prop('name'), config.dimensions)
   const dimensionPermutations =
-    _.reduce(config.dimensions, (m, dimension) => {
-      return _.flatMap(
-        dimension.values, (dv) => _.map(m, ds => _.concat(ds, [dv]))
-      )
-    }, [[]])
-  return _.flatMap(config.periods, (period) => {
+    R.reduce(
+      (m, dimension) => R.chain(
+        dv => R.map(ds => R.concat(ds, [dv]), m),
+        dimension.values
+      ),
+      [[]],
+      config.dimensions)
+  return R.chain((period) => {
     return dimensionPermutations.map((dSeq) => {
-      const key = dSeq.map(_.property('code')).join('.');
+      const key = dSeq.map(R.prop('code')).join('.')
       const sdmxJsonQuery = sdmxrest.getDataQuery({
         flow: config.flow,
         key: key,
         start: period,
         end: period
       })
-      var templateContext = _.defaults({},
-        _.zipObject(
+      var templateContext = R.merge(
+        R.zipObj(
           dimensionNames,
-          _.map(dSeq, (v, i) => _.defaults(v, {
-            seriesIndex: i
-          }))), {
+          R.addIndex(R.map)(
+            (v, i) => R.merge(v, R.objOf('seriesIndex', i)),
+            dSeq)
+        ),
+        {
           period: period,
           query: {
             object: sdmxJsonQuery,
             url: sdmxrest.getUrl(sdmxJsonQuery, absService)
           }
         });
-      const kdi = _.findIndex(
-        config.dimensions,
-        d => d.name == config.keyDimension)
-      return _.defaults({},
+      const kdi = R.findIndex(
+        d => d.name == config.keyDimension,
+        config.dimensions)
+      return R.merge(
         mapValuesDeep(
-          config.templates,
           (tmpl) =>
             (typeof tmpl == 'string') ?
             Mustache.render(tmpl, templateContext) :
-            tmpl
-        ), {
+            tmpl,
+          config.templates
+        ),
+        {
           keyDimensionIndex: kdi,
           keyTransform: (v => (config.keyPrefix || "") + v),
           query: sdmxJsonQuery
         })
     })
-  })
+  }, config.periods)
 }
 
 const writeJsonDict = filepath => data => {
@@ -79,19 +84,19 @@ const writeJsonDict = filepath => data => {
 
 const extractDataFromSdmxJson = (keyIndex, keyTransform) => dataStr => {
   const data = JSON.parse(dataStr)
-  const keys = _.map(
-    data.structure.dimensions.series[keyIndex].values,
-    _.flow(
-      _.property('id'),
-      keyTransform))
-  const values = _.map(
-    _.values(data.dataSets[0].series),
-    v => v.observations["0"][0])
+  const keys = R.map(
+    R.pipe(
+      R.prop('id'),
+      keyTransform),
+    data.structure.dimensions.series[keyIndex].values)
+  const values = R.map(
+    v => v.observations["0"][0],
+    R.values(data.dataSets[0].series))
   if (keys.length != values.length) {
     throw Error(keys.length + " keys, but " + values.length +
       " values!")
   }
-  return _.zipObject(keys, values)
+  return R.zipObj(keys, values)
 }
 
 function doQuery(attrQuery) {
@@ -104,41 +109,42 @@ function doQuery(attrQuery) {
           .then(extractDataFromSdmxJson(
             attrQuery.keyDimensionIndex, attrQuery.keyTransform))
           .then(writeJsonDict(filepath))
-          .then(_.constant(attrQuery))
+          .then(R.always(attrQuery))
           .catch((e) => {
             console.log(attrQuery);
             throw e
-          });
+          })
     })
 }
 
 // Run
 fs.readJson(path.resolve(__dirname, 'abs-sdmx-dump-config.json'))
-  .then(configs => _.flatMap(configs, buildQueries))
-  .then(queries => Promise.all(queries.map(doQuery)))
-  .then(queries => {
-    return Promise.all(_.map(
-      _.groupBy(queries, _.property('group')),
+  .then(R.chain(buildQueries))
+  .then(R.map(doQuery))
+  .then(queryPromises => Promise.all(queryPromises))
+  .then(R.groupBy(R.prop('group')))
+  .then(
+    R.mapObjIndexed(
       (queries, group) => {
+        const attributes = R.map(R.prop('attribute'), queries)
         const indexFile = path.join(outputDir, group, 'index.json')
         return fs.readJson(indexFile)
-          .then((index) => {
-            const attributes = _.map(queries, _.property('attribute'))
-            return _.assign({},
-              index,
-              {
-                attributes:
-                  _.sortBy(
-                    _.unionBy(
-                      attributes, index.attributes,
-                      _.property('name')),
-                    _.property('name'))
-              })
-          })
+          .then(
+            R.over(
+              R.lensProp('attributes'),
+              R.pipe(
+                R.unionWith(R.eqProps('name'), attributes),
+                R.sortBy(R.prop('name'))
+              )
+            )
+          )
           .then((modifiedIndex) => {
             console.log("Updating index for " + group)
             return writeJsonDict(indexFile)(modifiedIndex)
           })
-      }))
-  })
+      }
+    )
+  )
+  .then(R.values)
+  .then(promises => Promise.all(promises))
   .catch(e => console.log(e))
