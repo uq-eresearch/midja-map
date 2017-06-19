@@ -1,10 +1,11 @@
-import Buffer from 'safe-buffer'
 import R from 'ramda'
 import XLSX from 'xlsx'
 import osmosis from 'osmosis'
 import { readFile } from 'fs-extra'
 import rp from 'request-promise-native'
 import { writeIndex, writeAttributeData } from '../lib/attribute/import'
+import { basename } from 'path'
+const debug = require('debug')(basename(__filename, '.js'))
 
 const accessType = 'private'
 const regionType = 'sa3'
@@ -29,7 +30,7 @@ const fetchLinks = (url) => new Promise((resolve, reject) => {
     .done(function() {
       resolve(R.uniq(links))
     })
-    .log(console.log)
+    .log(debug)
     .error(console.log)
 })
 
@@ -58,7 +59,7 @@ const workbookToSheetRows =
     R.map(R.flip(XLSX.utils.sheet_to_json)({ header: 1, raw: true }))
   )
 
-const rowsToAttribute = (year, sourceUrl) => rows => {
+const rowsToAttributeAndData = (year, sourceUrl) => rows => {
   const title =
     R.pipe(
       R.filter(R.complement(R.isEmpty)),
@@ -126,35 +127,51 @@ const rowsToAttribute = (year, sourceUrl) => rows => {
   }]
 }
 
-// writeAttributeDataToFiles :: [Object] -> Promise [Object]
-const writeAttributeDataToFiles =
-  mapP(
-    tapP(
-      R.pipe(
-        R.props(['attribute', 'data']),
-        R.apply(writeAttributeData(accessType, regionType))
-      )
+// writeAttributeDataToFile :: Object -> Promise [Object]
+const writeAttributeDataToFile =
+  tapP(
+    R.pipe(
+      R.props(['attribute', 'data']),
+      R.apply(writeAttributeData(accessType, regionType))
     )
   )
 
+// attributesFromRemoteSpreadsheet :: (String, String) -> Promise [Object]
+const extractAttributeAndDataFromSheet = (year, sourceUrl) =>
+  R.pipe(
+    rowsToAttributeAndData(year, sourceUrl),
+    mapP( // Zero or one attribute
+      attributeAndData =>
+        writeAttributeDataToFile(attributeAndData)
+          .then(R.prop('attribute'))
+          .then(R.tap(attr => debug(`Wrote data for ${attr.name}`)))
+    )
+  )
 
+// attributesFromRemoteSpreadsheet :: String -> String -> Promise [Object]
+const attributesFromRemoteSpreadsheet = year => link =>
+  download(link)
+    .then(R.tap(bs => debug(`Downloaded ${link} (${bs.length} bytes)`)))
+    .then(bufferToSpreadsheet)
+    .then(workbookToSheetRows)
+    .then(chainP(extractAttributeAndDataFromSheet(year, link)))
+    .then(R.tap(attrs =>
+      debug(`${basename(link)} yielded ${attrs.length} attributes`)))
+    .catch(e => {
+      debug("Error: %O", e)
+      return []
+    })
+
+// Main flow
 chainP(
     year =>
       fetchLinks(indexUrl(year))
         .then(
-          chainP(
-            link =>
-              download(link)
-                .then(bufferToSpreadsheet)
-                .then(workbookToSheetRows)
-                .then(R.chain(rowsToAttribute(year, link)))
-          )
+          chainP(attributesFromRemoteSpreadsheet(year))
         ),
     years
   )
-  .then(writeAttributeDataToFiles)
-  .then(R.pluck('attribute'))
-  .then(tapP(writeIndex(accessType, regionType)))
-  .then(R.pluck('name')) // Attribute Names
-  .then(console.log)
-  .catch(console.log)
+  .then(tapP(writeIndex(accessType, regionType))) // Update index file
+  .then(attrs =>
+    console.log(`Wrote ${attrs.length} attributes to ${regionType} index`))
+  .catch(debug)
