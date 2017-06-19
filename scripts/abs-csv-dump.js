@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { readJson, writeJson } from 'fs-extra'
+import { writeIndex, writeAttributeData } from '../lib/attribute/import'
 const R = require('ramda')
 const parseCSV = require('csv-parse');
 const extract = R.curry((p, ...ks) => R.pipe(
@@ -8,6 +8,8 @@ const extract = R.curry((p, ...ks) => R.pipe(
 const hasKeys = (...ks) => R.allPass(R.map(R.has)(ks))
 const chainApplyToAll =
   (...fs) => (...args) => R.chain(f => R.apply(f)(args))(fs)
+
+const accessType = 'public'
 
 const integerFormat = {
   "maximumFractionDigits": 0
@@ -489,50 +491,14 @@ const readCSV = regionColumnName => filepath => {
   })
 }
 
-const jsonOptions = {
-  spaces: 2
-}
-
-// targetFile :: (String, String) → String
-const targetFile = (regionType, filename) => path.resolve(
-  __dirname, '..', 'data', 'public',
-  regionType,
-  filename
-)
-
-// indexTargetFile :: String → String
-const indexTargetFile = regionType => targetFile(regionType, 'index.json')
-
-// attributeDataTargetFile :: Object → String
-const attributeDataTargetFile = regionAttribute => targetFile(
-  regionAttribute.regionType,
-  regionAttribute.attribute.name + '.json')
-
 // writeAttributeToFile :: Object → Promise Object
 const writeAttributeDataToFile = attributeData => {
-  return writeJson(
-      attributeDataTargetFile(attributeData.regionAttribute),
-      attributeData.data,
-      jsonOptions
+  return writeAttributeData(
+      accessType,
+      attributeData.regionAttribute.regionType,
+      attributeData.regionAttribute.attribute,
+      attributeData.data
     ).then(R.always(attributeData))
-}
-
-// writeIndex :: (String, [Object]) → Promise [Object]
-const writeIndex = (regionType, updatedAttributes) => {
-  const modifyAttributes = (currentAttributes) => R.sortBy(
-    R.prop('name'),
-    R.unionWith(
-      R.eqBy(R.prop('name')),
-      updatedAttributes,
-      currentAttributes)
-  )
-  const attrsLens = R.lensProp('attributes')
-  const indexFile = indexTargetFile(regionType)
-  R.pipeP(
-    () => readJson(indexFile),
-    R.over(attrsLens, modifyAttributes),
-    R.curryN(3, writeJson)(indexFile, R.__, jsonOptions)
-  )()
 }
 
 // combinedPromise :: (a → [Promise b]) → (a → Promise [b])
@@ -550,16 +516,16 @@ const writeAttributes = combinedPromise(R.map(writeAttributeDataToFile))
 // writeIndexes :: [Object] -> Promise [Object]
 const writeIndexes =
   R.pipe(
-    R.groupBy(R.prop('regionType')), // [{k: v}]
-    R.toPairs,                       // [[k, v]]
+    R.groupBy(R.prop('regionType')),        // [{k: v}]
+    R.toPairs,                              // [[k, v]]
     R.map(
       R.over(
         R.lensIndex(1),
         R.map(R.prop('attribute'))
       )
-    ),                               // [[k, v]]
-    R.map(R.apply(writeIndex)),      // [Promise Object]
-    combinedPromise                  // Promise [Object]
+    ),                                      // [[k, v]]
+    R.map(R.apply(writeIndex(accessType))), // [Promise Object]
+    combinedPromise                         // Promise [Object]
   )
 
 // prog :: [String] → Promise [Object]

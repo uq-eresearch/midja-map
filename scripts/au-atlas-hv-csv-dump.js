@@ -1,10 +1,12 @@
 import R from 'ramda'
 import XLSX from 'xlsx'
-import fs from 'fs-extra'
 import osmosis from 'osmosis'
+import { readFile } from 'fs-extra'
 import rp from 'request-promise-native'
-import { readFile, writeJson } from 'fs-extra'
+import { writeIndex, writeAttributeData } from '../lib/attribute/import'
 
+const accessType = 'private'
+const regionType = 'sa3'
 const years = [2015, 2017]
 
 const indexUrl = (year) =>
@@ -30,7 +32,9 @@ const fetchLinks = (url) => new Promise((resolve, reject) => {
     .error(console.log)
 })
 
-const reducePromises = (promises) => Promise.all(promises)
+const mapP = R.curry((f, vs) => Promise.all(R.map(f, vs)))
+const chainP = R.curry((f, vs) => mapP(f, vs).then(R.unnest))
+const tapP = R.curry((f, v) => f(v).then(R.always(v)))
 
 const fetchAllLinks = () =>
   Promise.all(R.chain(R.pipe(indexUrl, fetchLinks), years))
@@ -134,6 +138,18 @@ const rowsToAttribute = (year, sourceUrl) => rows => {
   }]
 }
 
+// writeAttributeDataToFiles :: [Object] -> Promise [Object]
+const writeAttributeDataToFiles =
+  mapP(
+    tapP(
+      R.pipe(
+        R.props(['attribute', 'data']),
+        R.apply(writeAttributeData(accessType, regionType))
+      )
+    )
+  )
+
+
 
 /*
 fetchAllLinks()
@@ -141,25 +157,22 @@ fetchAllLinks()
   .then(R.map(downloadSpreadsheet))
   .then(reducePromises)
 */
-reducePromises(
-  R.map(
+chainP(
     year =>
       testLinks(year)
         .then(
-          R.pipe(
-            R.map(
-              link =>
-                download(link)
-                  .then(bufferToSpreadsheet)
-                  .then(workbookToSheetRows)
-                  .then(R.chain(rowsToAttribute(year, link)))
-            ),
-            reducePromises
+          chainP(
+            link =>
+              download(link)
+                .then(bufferToSpreadsheet)
+                .then(workbookToSheetRows)
+                .then(R.chain(rowsToAttribute(year, link)))
           )
-        )
-        .then(R.unnest),
+        ),
     years
-  ))
-  .then(R.unnest)
+  )
+  .then(writeAttributeDataToFiles)
+  .then(R.pluck('attribute'))
+  .then(tapP(writeIndex(accessType, regionType)))
   .then(console.log)
   .catch(console.log)
