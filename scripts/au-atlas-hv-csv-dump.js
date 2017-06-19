@@ -1,3 +1,4 @@
+import Buffer from 'safe-buffer'
 import R from 'ramda'
 import XLSX from 'xlsx'
 import osmosis from 'osmosis'
@@ -43,25 +44,12 @@ const fetchAllLinks = () =>
 const download = link =>
   R.startsWith('file://', link) ?
   readFile(link.replace('file://', '')) :
-  rp(link)
+  rp({
+    url: link,
+    encoding: null
+  })
 
 const bufferToSpreadsheet = (buffer) => XLSX.read(buffer, { type: "buffer"})
-
-const testLinks = (year) =>
-  Promise.all(
-    R.map(
-      v => 'file://' + v,
-      {
-        '2015': [
-          '/tmp/Chapter-1_Version_17Nov2015.xlsx'
-        ],
-        '2017': [
-          '/tmp/Data-file-1.1-Chronic-obstructive-pulmonary-disease.xlsx',
-          '/tmp/Data-file-2.1-Acute-myocardial-infarction.xlsx'
-        ]
-      }[year+'']
-    )
-  )
 
 const workbookToSheetRows =
   R.pipe(
@@ -150,16 +138,9 @@ const writeAttributeDataToFiles =
   )
 
 
-
-/*
-fetchAllLinks()
-  .then(R.take(1))
-  .then(R.map(downloadSpreadsheet))
-  .then(reducePromises)
-*/
 chainP(
     year =>
-      testLinks(year)
+      fetchLinks(indexUrl(year))
         .then(
           chainP(
             link =>
@@ -174,5 +155,6 @@ chainP(
   .then(writeAttributeDataToFiles)
   .then(R.pluck('attribute'))
   .then(tapP(writeIndex(accessType, regionType)))
+  .then(R.pluck('name')) // Attribute Names
   .then(console.log)
   .catch(console.log)
