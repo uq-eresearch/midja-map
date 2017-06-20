@@ -1,5 +1,9 @@
 'use strict';
 
+require('jasmine-check').install()
+
+import R from 'ramda'
+
 describe('Filter: propsFilter', function() {
 
   // load the filter's module
@@ -11,10 +15,33 @@ describe('Filter: propsFilter', function() {
     propsFilter = $filter('propsFilter');
   }));
 
-  it('should return the input prefixed with "propsFilter filter:"',
-    function() {
-      var text = 'angularjs';
-      expect(propsFilter(text)).toBe(text);
-    });
+  check.it(
+    'should not change non-array input',
+    gen.primitive,
+    (v) => {
+      expect(propsFilter(v, { foo: 'bar' })).toBe(v);
+    }
+  )
+
+  const genValue =
+    gen.object({
+      name: gen.asciiString,
+      description: gen.asciiString
+    })
+
+  check.it(
+    'should select objects based on case-insensitive substring property matching',
+    gen.array(genValue),
+    gen.object({
+      name: gen.alphaNumString
+    }),
+    (values, spec) => {
+      const output = propsFilter(values, spec)
+      R.filter(
+        v => v.name.toLowerCase().indexOf(spec.name.toLowerCase()) > -1,
+        values
+      ).forEach(v => expect(output).toContain(v))
+    }
+  )
 
 });
