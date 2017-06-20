@@ -177,3 +177,8 @@ accordion h2, h3 {
   border-radius: 50%;
   opacity: 0.7;
 }
+
+.wrap-whole-words {
+  white-space: pre-line;
+  word-wrap: break-word;
+}

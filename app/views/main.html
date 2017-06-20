@@ -15,6 +15,46 @@
     </div>
   </script>
 
+  <script type="text/ng-template" id="topic-details.html">
+    <div class="modal-header">
+      <h3 class="modal-title">{{topic.description}}</h3>
+    </div>
+    <div class="modal-body">
+      <dl>
+        <dt>Name</dt>
+        <dd><pre ng-bind="topic.name"></pre></dd>
+      </dl>
+      <dl>
+        <dt>Description</dt>
+        <dd ng-bind="topic.description"></dd>
+      </dl>
+      <dl ng-if="topic.expression">
+        <dt>Expression</dt>
+        <dd>
+          <pre class="wrap-whole-words"
+            ng-bind="topic.expression"></pre>
+        </dd>
+      </dl>
+      <dl>
+        <dt>Source</dt>
+        <dd ng-bind="topic.source.name"></dd>
+      </dl>
+      <dl ng-if="topic.source.notes">
+        <dt>Source Notes</dt>
+        <dd><pre ng-bind="topic.source.notes"></pre></dd>
+      </dl>
+      <dl ng-if="topic.source.url">
+        <dt>Source URL</dt>
+        <dd>
+          <a href="{{topic.source.url}}">{{topic.source.url}}</a>
+        </dd>
+      </dl>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" type="button" ng-click="ok()">Close</button>
+    </div>
+  </script>
+
   <div class="container-fluid +fullheight">
 
     <div class="row +fullheight">
@@ -47,19 +87,25 @@
             <label style="margin-top: 20px;">Choose a Place
               <small class="text-muted">Required</small>
             </label>
-            <ui-select theme="bootstrap" ng-model="vm.vis.locations[0]" ng-disabled="disabled" reset-search-input="true" style="width: 100%;" on-select="vm.selectedLocationsChanged($item, $model)" on-remove="vm.selectedLocationsChanged($item, $model)">
+            <ui-select theme="bootstrap" ng-model="vm.vis.locations[0]"
+                ng-disabled="disabled"
+                reset-search-input="true"
+                style="width: 100%;"
+                on-select="vm.selectedLocationsChanged($item, $model)"
+                on-remove="vm.selectedLocationsChanged($item, $model)">
               <ui-select-match placeholder="Search for a place">
                 {{ $select.selected.name }}
                 <span class="text-uppercase text-muted">
-                                {{ $select.selected.type }}
-                            </span>
+                  {{ $select.selected.type }}
+                </span>
               </ui-select-match>
-              <ui-select-choices repeat="location in vm.locations | propsFilter: {name: $select.search}" refresh="vm.refreshLocations($select.search)" refresh-delay="0">
-
+              <ui-select-choices repeat="location in vm.locations | propsFilter: {name: $select.search}"
+                  refresh="vm.refreshLocations($select.search)"
+                  refresh-delay="0">
                 <span ng-bind-html="location.name | highlight: $select.search"></span>
                 <span class="text-uppercase text-muted">
-                                {{ location.type }}
-                            </span>
+                  {{ location.type }}
+                </span>
               </ui-select-choices>
             </ui-select>
 
@@ -79,18 +125,25 @@
               <p>Choose a comparison place
                 <small class="text-muted">Optional</small>
               </p>
-              <ui-select theme="bootstrap" ng-model="vm.vis.locations[1]" ng-disabled="disabled" reset-search-input="true" style="width: 100%;" on-select="vm.selectedLocationsChanged($item, $model)" on-remove="vm.selectedLocationsChanged($item, $model)">
+              <ui-select theme="bootstrap" ng-model="vm.vis.locations[1]"
+                  ng-disabled="disabled"
+                  reset-search-input="true"
+                  style="width: 100%;"
+                  on-select="vm.selectedLocationsChanged($item, $model)"
+                  on-remove="vm.selectedLocationsChanged($item, $model)">
                 <ui-select-match placeholder="Search for a place" allow-clear="true">
                   {{ $select.selected.name }}
                   <span class="text-uppercase text-muted">
-                                    {{ $select.selected.type }}
-                                </span>
+                    {{ $select.selected.type }}
+                  </span>
                 </ui-select-match>
-                <ui-select-choices repeat="location in vm.locations | propsFilter: {name: $select.search}" refresh="vm.refreshLocations($select.search)" refresh-delay="0">
+                <ui-select-choices repeat="location in vm.locations | propsFilter: {name: $select.search}"
+                    refresh="vm.refreshLocations($select.search)"
+                    refresh-delay="0">
                   <span ng-bind-html="location.name | highlight: $select.search"></span>
                   <span class="text-uppercase text-muted">
-                                    {{ location.type }}
-                                </span>
+                    {{ location.type }}
+                  </span>
                 </ui-select-choices>
               </ui-select>
             </div>
@@ -122,11 +175,19 @@
                 <small class="text-muted">Required</small>
               </label>
 
-              <ui-select multiple theme="bootstrap" ng-model="vm.vis.topics" ng-disabled="disabled" reset-search-input="true" style="width: 100%;" on-select="vm.selectedTopicsChanged($item, $model)" on-remove="vm.selectedTopicsChanged($item, $model)">
+              <ui-select multiple
+                  theme="bootstrap"
+                  ng-model="vm.vis.topics"
+                  ng-disabled="disabled"
+                  reset-search-input="true"
+                  style="width: 100%;"
+                  on-select="vm.selectedTopicsChanged($item, $model)"
+                  on-remove="vm.selectedTopicsChanged($item, $model)">
                 <ui-select-match placeholder="Select 1 or More Topics">
-                  <span class="text-capitalize">{{ $item.description }}</span>
+                  <span ng-click="showTopicDetails($item)" ng-bind="$item.description" class="text-capitalize"></span>
                 </ui-select-match>
-                <ui-select-choices repeat="attribute in vm.attributes | propsFilter: {description: $select.search} | orderBy: 'description'">
+                <ui-select-choices
+                    repeat="attribute in vm.attributes | propsFilter: {description: $select.search} | orderBy: 'description'">
                   <div ng-bind-html="attribute.description | highlight: $select.search"></div>
                 </ui-select-choices>
               </ui-select>

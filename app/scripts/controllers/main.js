@@ -846,6 +846,20 @@ angular.module('midjaApp')
       });
     };
 
+    $scope.showTopicDetails = function(item) {
+      $uibModal.open({
+        animation: true,
+        size: 'lg',
+        templateUrl: 'topic-details.html',
+        controller: 'TopicDetailsModalInstanceCtrl',
+        resolve: {
+          topic: function() {
+            return item;
+          }
+        }
+      });
+    };
+
   });
 
 angular.module('midjaApp').controller('ModalInstanceCtrl', function($scope,
@@ -923,3 +937,19 @@ angular.module('midjaApp').controller('DetailsModalInstanceCtrl', function(
     $uibModalInstance.dismiss('cancel');
   };
 });
+
+angular.module('midjaApp')
+  .controller(
+    'TopicDetailsModalInstanceCtrl',
+    ($scope, $uibModalInstance, topic) => {
+      $scope.topic = topic;
+
+      $scope.ok = function() {
+        $uibModalInstance.close();
+      };
+
+      $scope.cancel = function() {
+        $uibModalInstance.dismiss('cancel');
+      };
+    }
+  )
