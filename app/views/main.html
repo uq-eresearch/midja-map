@@ -37,7 +37,17 @@
       </dl>
       <dl>
         <dt>Source</dt>
-        <dd ng-bind="topic.source.name"></dd>
+        <dd ng-init="s = topic.source.name">
+          <span ng-if="s" ng-bind="s"></span>
+          <span ng-if="!s">Unknown</span>
+        </dd>
+      </dl>
+      <dl ng-if="topic.source.license" ng-init="l = topic.source.license">
+        <dt>Source Licence</dt>
+        <dd>
+          <a ng-if="l.url" href="{{l.url}}" ng-bind="l.type"></a>
+          <span ng-if="!l.url" ng-bind="l.type"></span>
+        </dd>
       </dl>
       <dl ng-if="topic.source.notes">
         <dt>Source Notes</dt>
