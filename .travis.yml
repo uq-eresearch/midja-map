@@ -1,4 +1,24 @@
-language: node_js
-node_js:
-  - '6'
-  - '7'
+sudo: required
+dist: trusty
+group: edge
+services:
+  - docker
+env:
+  - NODEJS_VERSION='6'
+  - NODEJS_VERSION='7'
+  - NODEJS_VERSION='8'
+before_install:
+  - docker pull node:${NODEJS_VERSION}
+  - >
+      docker run
+      -v "$PWD":/usr/src/app
+      -w /usr/src/app
+      node:${NODEJS_VERSION}
+      /bin/bash -c "npm -q install"
+script:
+  - >
+      docker run
+      -v "$PWD":/usr/src/app
+      -w /usr/src/app
+      node:${NODEJS_VERSION}
+      /bin/bash -c "npm test"
