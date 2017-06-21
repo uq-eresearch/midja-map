@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <h3 class="modal-title">Scatter Plot</h3>
+</div>
+<div class="modal-body">
+  <div>
+    <label>
+      <input type="checkbox" ng-change="vm.generateScatterPlot()" ng-model="vm.scatterPlot.useRemoteness"> Use Remoteness
+    </label>
+    <label>
+      <input type="checkbox" ng-change="vm.generateScatterPlot()" ng-model="vm.scatterPlot.labelLocations"> Label Locations
+    </label>
+  </div>
+  <div>
+    <nvd3 id="scatterGraphModal" options="modalCfg" data="vm.scatterPlot.results"></nvd3>
+  </div>
+  <button ng-click="vm.requestScatterDownload('pdf')">Request PDF</button>
+  <button ng-click="vm.requestScatterDownload('png')">Request PNG</button>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+</div>

@@ -494,9 +494,9 @@ export default function regionMap($http, $rootScope, $q, dataService,
       dataService.getAttributesForRegions(regionType, attrNames, [{
         'code': region.code
       }]).then(function(data) {
-        var modalInstance = $uibModal.open({
+        let modalInstance = $uibModal.open({
           animation: true,
-          templateUrl: 'details.html',
+          template: require('../../views/region-details-modal.html'),
           controller: 'RegionDetailsModalController',
           resolve: {
             context: {
@@ -508,6 +508,7 @@ export default function regionMap($http, $rootScope, $q, dataService,
             }
           }
         });
+        modalInstance.result.catch((e) => console.log(e))
       });
     }, 100);
     scope.$on('vector-grid:dblclick', showRegionModal);

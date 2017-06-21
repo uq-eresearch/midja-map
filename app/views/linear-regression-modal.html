@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <h3 class="modal-title">Linear Regression</h3>
+</div>
+<div class="modal-body">
+  <div>
+    <nvd3 id="RegressionGraphModal" options="modalCfg" data="vm.linearRegression.resultsData"></nvd3>
+  </div>
+  <button ng-click="vm.requestScatterDownload('pdf')">Request PDF</button>
+  <button ng-click="vm.requestScatterDownload('png')">Request PNG</button>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+</div>

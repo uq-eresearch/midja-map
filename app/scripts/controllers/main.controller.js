@@ -399,7 +399,6 @@ export default function MainController(
     if (vm.vis.locations.length == 2 && !vm.vis.locations[1]) {
       vm.vis.locations.pop();
     }
-    console.log(vm.remotenessAreas);
 
     Promise.resolve(function() {
         switch (vm.vis.regionTypeSelection) {
@@ -798,56 +797,40 @@ export default function MainController(
       });
   }
 
-  $scope.openScatterModal = function() {
-
-    var modalInstance = $uibModal.open({
-      animation: true,
-      size: 'lg',
-      templateUrl: 'scatter.html',
-      controller: 'ScatterPlotModalController',
-      resolve: {
-        vm: function() {
-          return vm;
-        }
-      }
-    });
-
-    modalInstance.result.then(function() {}, function() {
-
-    });
-  };
-
-  $scope.openRegModal = function() {
-    var modalInstance = $uibModal.open({
-      animation: true,
-      size: 'lg',
-      templateUrl: 'regression.html',
-      controller: 'LinearRegressionModalController',
-      resolve: {
-        vm: function() {
-          return vm;
-        }
-      }
-    });
-
-    //TODO: try without
-    modalInstance.result.then(function() {}, function() {
-
-    });
-  };
-
-  $scope.showTopicDetails = function(item) {
+  $scope.openScatterModal = () => {
     $uibModal.open({
       animation: true,
       size: 'lg',
-      templateUrl: 'topic-details.html',
+      template: require('../../views/scatter-plot-modal.html'),
+      controller: 'ScatterPlotModalController',
+      resolve: {
+        vm: () => vm
+      }
+    })
+  }
+
+  $scope.openRegModal = () => {
+    $uibModal.open({
+      animation: true,
+      size: 'lg',
+      template: require('../../views/linear-regression-modal.html'),
+      controller: 'LinearRegressionModalController',
+      resolve: {
+        vm: () => vm
+      }
+    })
+  }
+
+  $scope.showTopicDetails = (item) => {
+    $uibModal.open({
+      animation: true,
+      size: 'lg',
+      template: require('../../views/topic-details-modal.html'),
       controller: 'TopicDetailsModalController',
       resolve: {
-        topic: function() {
-          return item;
-        }
+        topic: () => item
       }
-    });
-  };
+    })
+  }
 
 }

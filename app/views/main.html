@@ -1,69 +1,6 @@
 <div class="+fullheight">
 
-  <script type="text/ng-template" id="details.html">
-    <div class="modal-header">
-      <h3 class="modal-title">{{context.heading}}</h3>
-    </div>
-    <div class="modal-body">
-      <dl ng-repeat="attr in context.attributes">
-        <dt>{{attr.description}}</dt>
-        <dd>{{context.formatNumber(context.getValue(attr.name))}}</dd>
-      </dl>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-primary" type="button" ng-click="ok()">Close</button>
-    </div>
-  </script>
 
-  <script type="text/ng-template" id="topic-details.html">
-    <div class="modal-header">
-      <h3 class="modal-title">{{topic.description}}</h3>
-    </div>
-    <div class="modal-body">
-      <dl>
-        <dt>Name</dt>
-        <dd><pre ng-bind="topic.name"></pre></dd>
-      </dl>
-      <dl>
-        <dt>Description</dt>
-        <dd ng-bind="topic.description"></dd>
-      </dl>
-      <dl ng-if="topic.expression">
-        <dt>Expression</dt>
-        <dd>
-          <pre class="wrap-whole-words"
-            ng-bind="topic.expression"></pre>
-        </dd>
-      </dl>
-      <dl>
-        <dt>Source</dt>
-        <dd ng-init="s = topic.source.name">
-          <span ng-if="s" ng-bind="s"></span>
-          <span ng-if="!s">Unknown</span>
-        </dd>
-      </dl>
-      <dl ng-if="topic.source.license" ng-init="l = topic.source.license">
-        <dt>Source Licence</dt>
-        <dd>
-          <a ng-if="l.url" href="{{l.url}}" ng-bind="l.type"></a>
-          <span ng-if="!l.url" ng-bind="l.type"></span>
-        </dd>
-      </dl>
-      <dl ng-if="topic.source.notes">
-        <dt>Source Notes</dt>
-        <dd><pre ng-bind="topic.source.notes"></pre></dd>
-      </dl>
-      <dl ng-if="topic.source.url">
-        <dt>Source URL</dt>
-        <dd>
-          <a href="{{topic.source.url}}">{{topic.source.url}}</a>
-        </dd>
-      </dl>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-primary" type="button" ng-click="ok()">Close</button>
-    </div>
-  </script>
 
   <div class="container-fluid +fullheight">
 
@@ -325,32 +262,7 @@
                       <button ng-click="vm.requestScatterDownload('pdf')">Request PDF</button>
                       <button ng-click="vm.requestScatterDownload('png')">Request PNG</button>
 
-                      <script type="text/ng-template" id="scatter.html">
-                        <div class="modal-header">
-                          <h3 class="modal-title">Scatter Plot</h3>
-                        </div>
-                        <div class="modal-body">
-                          <div>
-                            <label>
-                              <input type="checkbox" ng-change="vm.generateScatterPlot()" ng-model="vm.scatterPlot.useRemoteness"> Use Remoteness
-                            </label>
-                            <label>
-                              <input type="checkbox" ng-change="vm.generateScatterPlot()" ng-model="vm.scatterPlot.labelLocations"> Label Locations
-                            </label>
-                          </div>
-                          <div>
-                            <nvd3 id="scatterGraphModal" options="modalCfg" data="vm.scatterPlot.results"></nvd3>
-                          </div>
-                          <button ng-click="vm.requestScatterDownload('pdf')">Request PDF</button>
-                          <button ng-click="vm.requestScatterDownload('png')">Request PNG</button>
-                        </div>
-                        <div class="modal-footer">
-                          <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-                        </div>
-                      </script>
-
                       <button type="button" class="btn btn-default" ng-click="openScatterModal()">Enlarge</button>
-
                     </div>
 
                   </div>
@@ -429,22 +341,6 @@
                       <p>
                         <button ng-click="vm.requestLinearRegressionDownload('pdf')">Request PDF</button>
                         <button ng-click="vm.requestLinearRegressionDownload('png')">Request PNG</button>
-
-                        <script type="text/ng-template" id="regression.html">
-                          <div class="modal-header">
-                            <h3 class="modal-title">Linear Regression</h3>
-                          </div>
-                          <div class="modal-body">
-                            <div>
-                              <nvd3 id="RegressionGraphModal" options="modalCfg" data="vm.linearRegression.resultsData"></nvd3>
-                            </div>
-                            <button ng-click="vm.requestScatterDownload('pdf')">Request PDF</button>
-                            <button ng-click="vm.requestScatterDownload('png')">Request PNG</button>
-                          </div>
-                          <div class="modal-footer">
-                            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-                          </div>
-                        </script>
 
                         <button type="button" class="btn btn-default" ng-click="openRegModal()">Enlarge</button>
                       </p>
