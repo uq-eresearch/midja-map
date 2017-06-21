@@ -50,13 +50,10 @@
   <div ng-view="" class="+fullheight"></div>
 </div>
 
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-
 <script>
-google.load("visualization", "1.1", {packages:["bar"]});
-google.setOnLoadCallback(function() {
+window.onload = function() {
   angular.bootstrap(document, ['midjaApp']);
-});
+};
 </script>
 
 </body>

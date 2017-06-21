@@ -109,7 +109,7 @@
                   {{ $select.selected.type }}
                 </span>
               </ui-select-match>
-              <ui-select-choices repeat="location in vm.locations | propsFilter: {name: $select.search}"
+              <ui-select-choices repeat="location in vm.locations | props: {name: $select.search}"
                   refresh="vm.refreshLocations($select.search)"
                   refresh-delay="0">
                 <span ng-bind-html="location.name | highlight: $select.search"></span>
@@ -147,7 +147,7 @@
                     {{ $select.selected.type }}
                   </span>
                 </ui-select-match>
-                <ui-select-choices repeat="location in vm.locations | propsFilter: {name: $select.search}"
+                <ui-select-choices repeat="location in vm.locations | props: {name: $select.search}"
                     refresh="vm.refreshLocations($select.search)"
                     refresh-delay="0">
                   <span ng-bind-html="location.name | highlight: $select.search"></span>
@@ -197,7 +197,7 @@
                   <span ng-click="showTopicDetails($item)" ng-bind="$item.description" class="text-capitalize"></span>
                 </ui-select-match>
                 <ui-select-choices
-                    repeat="attribute in vm.attributes | propsFilter: {description: $select.search} | orderBy: 'description'">
+                    repeat="attribute in vm.attributes | props: {description: $select.search} | orderBy: 'description'">
                   <div ng-bind-html="attribute.description | highlight: $select.search"></div>
                 </ui-select-choices>
               </ui-select>
@@ -233,7 +233,7 @@
                       <ui-select-match placeholder="Select topics of interest(s)">
                         <span class="text-capitalize">{{$select.selected.description }}</span>
                       </ui-select-match>
-                      <ui-select-choices repeat="attribute in vm.vis.topics | propsFilter: {description: $select.search}">
+                      <ui-select-choices repeat="attribute in vm.vis.topics | props: {description: $select.search}">
                         <div ng-bind-html="attribute.description | highlight: $select.search"></div>
                       </ui-select-choices>
                     </ui-select>
@@ -250,7 +250,7 @@
                       <ui-select-match placeholder="Select topics of interest(s)">
                         <span class="text-capitalize">{{$select.selected.description }}</span>
                       </ui-select-match>
-                      <ui-select-choices repeat="attribute in vm.vis.topics | propsFilter: {description: $select.search}">
+                      <ui-select-choices repeat="attribute in vm.vis.topics | props: {description: $select.search}">
                         <div ng-bind-html="attribute.description | highlight: $select.search"></div>
                       </ui-select-choices>
                     </ui-select>
@@ -293,7 +293,7 @@
                         <ui-select-match placeholder="Select X-axis">
                           <span class="text-capitalize">{{$select.selected.description}}</span>
                         </ui-select-match>
-                        <ui-select-choices repeat="attribute in vm.vis.topics | propsFilter: {description: $select.search}">
+                        <ui-select-choices repeat="attribute in vm.vis.topics | props: {description: $select.search}">
                           <div ng-bind-html="attribute.description | highlight: $select.search"></div>
                         </ui-select-choices>
                       </ui-select>
@@ -305,7 +305,7 @@
                         <ui-select-match placeholder="Select Y-axis">
                           <span class="text-capitalize">{{$select.selected.description}}</span>
                         </ui-select-match>
-                        <ui-select-choices repeat="attribute in vm.vis.topics | propsFilter: {description: $select.search}">
+                        <ui-select-choices repeat="attribute in vm.vis.topics | props: {description: $select.search}">
                           <div ng-bind-html="attribute.description | highlight: $select.search"></div>
                         </ui-select-choices>
                       </ui-select>
@@ -382,7 +382,7 @@
                         <ui-select-match placeholder="Select dependent variable">
                           <span class="text-capitalize">{{$select.selected.description }}</span>
                         </ui-select-match>
-                        <ui-select-choices repeat="attribute in vm.vis.topics | propsFilter: {description: $select.search}">
+                        <ui-select-choices repeat="attribute in vm.vis.topics | props: {description: $select.search}">
                           <div ng-bind-html="attribute.description | highlight: $select.search"></div>
                         </ui-select-choices>
                       </ui-select>
@@ -398,7 +398,7 @@
                         <ui-select-match placeholder="Select independent variables">
                           <span class="text-capitalize">{{ $item.description }}</span>
                         </ui-select-match>
-                        <ui-select-choices repeat="attribute in vm.vis.topics | propsFilter: {description: $select.search}">
+                        <ui-select-choices repeat="attribute in vm.vis.topics | props: {description: $select.search}">
                           <div ng-bind-html="attribute.description | highlight: $select.search"></div>
                         </ui-select-choices>
                       </ui-select>

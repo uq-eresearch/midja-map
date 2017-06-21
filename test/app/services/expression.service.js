@@ -3,7 +3,7 @@
 describe('Service: expressionService', function() {
 
   // load the service's module
-  beforeEach(angular.mock.module('midjaApp'));
+  beforeEach(angular.mock.module('midjaApp.services'));
 
   // instantiate service
   var expressionService;

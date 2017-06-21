@@ -4,22 +4,22 @@ require('jasmine-check').install()
 
 import R from 'ramda'
 
-describe('Filter: propsFilter', function() {
+describe('Filter: props', function() {
 
   // load the filter's module
   beforeEach(angular.mock.module('midjaApp'));
 
   // initialize a new instance of the filter before each test
-  var propsFilter;
+  var props;
   beforeEach(inject(function($filter) {
-    propsFilter = $filter('propsFilter');
+    props = $filter('props');
   }));
 
   check.it(
     'should not change non-array input',
     gen.primitive,
     (v) => {
-      expect(propsFilter(v, { foo: 'bar' })).toBe(v);
+      expect(props(v, { foo: 'bar' })).toBe(v);
     }
   )
 
@@ -36,7 +36,7 @@ describe('Filter: propsFilter', function() {
       name: gen.alphaNumString
     }),
     (values, spec) => {
-      const output = propsFilter(values, spec)
+      const output = props(values, spec)
       R.filter(
         v => v.name.toLowerCase().indexOf(spec.name.toLowerCase()) > -1,
         values
