@@ -7,7 +7,7 @@ import csvStringify from 'csv-stringify'
 
 export default function MainController(
     dataService, formattingService, statsService,
-    $q, $http, $scope, $uibModal, $timeout, $window, $document) {
+    $q, $http, $scope, $uibModal, $timeout, $window, $document, $filter) {
   var vm = this;
   vm.propTopicsOnly = false;
 
@@ -478,7 +478,7 @@ export default function MainController(
       .catch((e) => { console.log(e, e.stack) });
   }
 
-  function selectedTopicsChanged($item, $model) {
+  function selectedTopicsChanged() {
     if (vm.vis.topics.length === 1) {
       var topic = vm.vis.topics[0];
       // set the default for the map
@@ -831,6 +831,29 @@ export default function MainController(
         topic: () => item
       }
     })
+  }
+
+  $scope.showTopicSelectionModal = () => {
+    $uibModal.open({
+      animation: true,
+      size: 'lg',
+      template: require('../../views/topic-selection-modal.html'),
+      controller: 'TopicSelectionModalController',
+      resolve: {
+        topics: () => $filter('orderBy')(vm.attributes, 'description'),
+        currentlySelectedTopics: () => vm.vis.topics
+      }
+    }).result
+      .then((selectedTopics) => {
+        $timeout(() => {
+          vm.vis.topics = selectedTopics
+        })
+      })
+  }
+
+  $scope.deselectTopic = (topic) => {
+    vm.vis.topics = _.without(vm.vis.topics, topic)
+    selectedTopicsChanged()
   }
 
 }

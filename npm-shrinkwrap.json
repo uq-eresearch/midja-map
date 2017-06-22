@@ -120,6 +120,12 @@
       "resolved": "https://registry.npmjs.org/angular-animate/-/angular-animate-1.6.4.tgz",
       "dev": true
     },
+    "angular-data-table": {
+      "version": "0.8.0",
+      "from": "git+https://github.com/jonshaffer/angular-data-table.git",
+      "resolved": "git+https://github.com/jonshaffer/angular-data-table.git#981a9f6b346f34ba0fb5158c89afdef56258042b",
+      "dev": true
+    },
     "angular-jwt": {
       "version": "0.1.9",
       "from": "angular-jwt@>=0.1.9 <0.2.0",

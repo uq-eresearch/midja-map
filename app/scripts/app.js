@@ -11,6 +11,11 @@ import 'ui-select'
 import 'angular-loading-bar'
 import 'angular-nvd3'
 
+import dataTable from '../../node_modules/angular-data-table/release/dataTable.es6'
+import '../../node_modules/angular-data-table/release/dataTable.css'
+import '../../node_modules/angular-data-table/release/material.css'
+import '../../node_modules/angular-data-table/release/icons.css'
+
 import './directives'
 import './filters'
 import './services'
@@ -27,6 +32,8 @@ import ScatterPlotModalController from
   './controllers/scatter-plot-modal.controller'
 import TopicDetailsModalController from
   './controllers/topic-details-modal.controller'
+import TopicSelectionModalController from
+  './controllers/topic-selection-modal.controller'
 
 export default angular
   .module('midjaApp', [
@@ -39,6 +46,7 @@ export default angular
     'ui.select',
     'angular-loading-bar',
     'nvd3',
+    'data-table',
     'midjaApp.directives',
     'midjaApp.filters',
     'midjaApp.services'
@@ -56,6 +64,9 @@ export default angular
   .controller(
     'TopicDetailsModalController',
     TopicDetailsModalController)
+  .controller(
+    'TopicSelectionModalController',
+    TopicSelectionModalController)
   .config(function($routeProvider, uiSelectConfig,
     $httpProvider, $locationProvider) {
     uiSelectConfig.resetSearchInput = true;

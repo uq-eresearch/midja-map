@@ -1,0 +1,24 @@
+<div class="modal-header">
+  <h3 class="modal-title">Select topics</h3>
+</div>
+<div class="modal-body">
+  <div class="input-group">
+    <input type="text"
+      class="form-control"
+      placeholder="Search for..."
+      ng-model="search">
+    <span class="input-group-btn" style="height: 100%">
+      <button class="btn btn-default" style="height: 100%" type="button">
+        <span class="fa fa-eraser" ng-click="search = ''"></span>
+      </button>
+    </span>
+  </div>
+  <br>
+  <dtable class="material dt"
+      options="tableOptions"
+      rows="visibleTopics"
+      selected="selectedTopics"></dtable>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" type="button" ng-click="ok()">Close</button>
+</div>

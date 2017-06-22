@@ -114,44 +114,38 @@
 
 
           <div ng-show="vm.vis.locations.length > 0">
-            <h2><i class="fa fa-list-alt"></i> Topics of interest</h2>
+            <div>
+              <h2><i class="fa fa-list-alt"></i> Topics of interest</h2>
 
-            <div class="form-group">
+              <button
+                  ng-show="vm.vis.topics.length == 0"
+                  ng-click="showTopicSelectionModal()"
+                  class="btn btn-primary">
+                Choose topic(s) of interest
+              </button>
 
-              <label>Choose topic(s) of interest
-                <small class="text-muted">Required</small>
-              </label>
-
-              <ui-select multiple
-                  theme="bootstrap"
-                  ng-model="vm.vis.topics"
-                  ng-disabled="disabled"
-                  reset-search-input="true"
-                  style="width: 100%;"
-                  on-select="vm.selectedTopicsChanged($item, $model)"
-                  on-remove="vm.selectedTopicsChanged($item, $model)">
-                <ui-select-match placeholder="Select 1 or More Topics">
-                  <span ng-click="showTopicDetails($item)" ng-bind="$item.description" class="text-capitalize"></span>
-                </ui-select-match>
-                <ui-select-choices
-                    repeat="attribute in vm.attributes | props: {description: $select.search} | orderBy: 'description'">
-                  <div ng-bind-html="attribute.description | highlight: $select.search"></div>
-                </ui-select-choices>
-              </ui-select>
-
-              <label>
-                <input ng-model="vm.propTopicsOnly" ng-change="vm.showPropTopicsOnly(vm.propTopicsOnly)" type="checkbox"><small>Show only proportional variables</small>
-              </label>
-
-              <p class="text-muted" ng-show="vm.vis.topics.length" style="margin-top:10px;">
-                <small>
-                  <i class="fa fa-info-circle"></i>
-                  Click in the box again to add another topic of interest.
-                </small>
-              </p>
+              <div ng-show="vm.vis.topics.length > 0">
+                <div>
+                  <button class="btn btn-info"
+                      ng-click="showTopicSelectionModal()">
+                    <span class="fa fa-pencil-square-o"></span>
+                    {{vm.vis.topics.length}} selected
+                  </button>
+                </div>
+                <br />
+                <ul class="list-group">
+                  <li class="list-group-item" ng-repeat="topic in vm.vis.topics">
+                    <button class="btn btn-link fa fa-close pull-right"
+                      title="Remove"
+                      ng-click="deselectTopic(topic)"></button>
+                    <a href="#"
+                      ng-bind="topic.description"
+                      ng-mousedown="showTopicDetails(topic); $event.preventDefault();"
+                      title="{{topic.name}}"></a>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <!-- topic choice -->
-
 
             <div>
               <h2><i class="fa fa-map-marker"></i> Map Visualisation</h2>

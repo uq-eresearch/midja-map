@@ -9,6 +9,7 @@
   "dependencies": {},
   "devDependencies": {
     "angular-animate": "^1.6.4",
+    "angular-data-table": "git+https://github.com/jonshaffer/angular-data-table.git",
     "angular-jwt": "^0.1.9",
     "angular-loading-bar": "^0.9.0",
     "angular-mocks": "^1.6.4",
