@@ -11,7 +11,7 @@ import 'ui-select'
 import 'angular-loading-bar'
 import 'angular-nvd3'
 
-import dataTable from '../../node_modules/angular-data-table/release/dataTable.es6'
+import dataTable from 'angular-data-table'
 import '../../node_modules/angular-data-table/release/dataTable.css'
 import '../../node_modules/angular-data-table/release/material.css'
 import '../../node_modules/angular-data-table/release/icons.css'
