@@ -143,6 +143,9 @@ const applyAttributeDefinitions = (defs) =>
 // writeDataForAttribute :: attribute -> data -> Promise attribute
 const writeDataForAttribute = (attribute, data) =>
   writeAttributeData('public', 'lga', attribute, data)
+    .then(R.tap(() =>
+      console.log(`Wrote data for ${attribute.name}`)
+    ))
     .then(R.always(attribute))
 
 readFile('/tmp/SocialHousingRegister.csv')
@@ -177,8 +180,9 @@ readFile('/tmp/SocialHousingRegister.csv')
   )
   .then(attributes =>
     writeIndex('public', 'lga', attributes)
+      .then(R.tap(() =>
+        console.log(`Wrote to index ${attributes.length} attributes`)
+      ))
       .then(R.always(attributes))
   )
-  .then(R.pluck('name'))
-  .then(console.log)
   .catch(console.log)
