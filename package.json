@@ -77,6 +77,7 @@
     "import:abs:sdmx": "$(npm bin)/babel-node scripts/abs-sdmx-dump.js",
     "import:abs:csv": "$(npm bin)/babel-node scripts/abs-csv-dump.js",
     "import:aahv:web": "$(npm bin)/babel-node --stack-trace-limit=1000 scripts/aahv-crawler.js",
+    "import:qldsh:web": "$(npm bin)/babel-node scripts/qld-social-housing-import.js",
     "build": "$(npm bin)/webpack --progress",
     "serve": "$(npm bin)/webpack-dev-server --open",
     "test": "NODE_ENV=testing $(npm bin)/karma start --single-run",
