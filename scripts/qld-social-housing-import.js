@@ -1,6 +1,7 @@
 import R from 'ramda'
 import path from 'path'
-import { readFile, readJSON } from 'fs-extra'
+import { readJSON } from 'fs-extra'
+import rp from 'request-promise-native'
 import parseCSV from 'csv-parse'
 import { median } from 'simple-statistics'
 import { writeIndex, writeAttributeData } from '../lib/attribute/import'
@@ -148,8 +149,7 @@ const writeDataForAttribute = (attribute, data) =>
     ))
     .then(R.always(attribute))
 
-readFile('/tmp/SocialHousingRegister.csv')
-  .then(buf => buf.toString('utf8'))
+rp(csvUrl)
   .then(csvParser({
     auto_parse: true,
     columns: true
