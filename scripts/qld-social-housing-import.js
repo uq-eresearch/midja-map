@@ -107,10 +107,11 @@ const attributeDefinitions = [
   {
     attribute: attributeDef(
       'indigenous_median_waiting_application_age',
-      'Median age (in months) of waiting social housing applications - all'),
+      'Median age (in months) of waiting social housing applications - indigenous'),
     f: R.pipe(
+      R.filter(isIndigenous),
       R.pluck('Timeon_housingregister'),
-      median
+      R.ifElse(R.isEmpty, R.always(null), median)
     )
   },
   {
@@ -137,7 +138,12 @@ const applyAttributeDefinitions = (defs) =>
         defs
       )
     ),
-    R.map(R.objOf('data')),   // Nest {region_code: v} data in object
+    R.map(
+      R.pipe(
+        R.pickBy(R.complement(R.isNil)), // Remove null values
+        R.objOf('data') // Nest {region_code: v} data in object
+      )
+    ),
     R.zipWith(R.merge, defs)  // Merge data into attribute definition
   )
 

@@ -3787,7 +3787,7 @@
     },
     {
       "name": "qldgov_social_housing_indigenous_median_waiting_application_age",
-      "description": "Median age (in months) of waiting social housing applications - all",
+      "description": "Median age (in months) of waiting social housing applications - indigenous",
       "type": "number",
       "source": {
         "name": "Queensland Government - Department of Housing and Public Works",
