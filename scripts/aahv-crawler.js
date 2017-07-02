@@ -31,7 +31,7 @@ const fetchLinks = (url) => new Promise((resolve, reject) => {
       resolve(R.uniq(links))
     })
     .log(debug)
-    .error(console.log)
+    .error(e => { console.log(e, e.stack) })
 })
 
 const mapP = R.curry((f, vs) => Promise.all(R.map(f, vs)))

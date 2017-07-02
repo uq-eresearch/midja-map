@@ -98,7 +98,7 @@ export default function dataService($http, $q, expressionService) {
               _.partial(getSubregions, targetRegionType))
           ).then(_.flatten);
         })
-        .catch(console.log)
+        .catch(e => { console.log(e, e.stack) })
     }
   }
 

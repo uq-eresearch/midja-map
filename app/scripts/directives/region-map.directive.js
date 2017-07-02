@@ -508,7 +508,7 @@ export default function regionMap($http, $rootScope, $q, dataService,
             }
           }
         });
-        modalInstance.result.catch((e) => console.log(e))
+        modalInstance.result.catch(e => { console.log(e, e.stack) })
       });
     }, 100);
     scope.$on('vector-grid:dblclick', showRegionModal);

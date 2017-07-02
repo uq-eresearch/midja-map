@@ -475,7 +475,7 @@ export default function MainController(
         generateScatterPlot();
         generateLinearRegression();
       })
-      .catch((e) => { console.log(e, e.stack) });
+      .catch(e => { console.log(e, e.stack) });
   }
 
   function selectedTopicsChanged() {
