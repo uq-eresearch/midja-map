@@ -3929,6 +3929,57 @@
       }
     },
     {
+      "name": "qldgov_social_housing_tenancies_proportion_all_overcrowded_households",
+      "description": "Proportion of overcrowded social housing households - all",
+      "type": "number",
+      "expression": "qldgov_social_housing_tenancies_all_overcrowded_households / qldgov_social_housing_tenancies_all_households",
+      "format": {
+        "style": "percent"
+      },
+      "source": {
+        "name": "Queensland Government - Department of Housing and Public Works",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
+        },
+        "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/TenanciesGovernmentManagedSocialRentalHousing.csv"
+      }
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_proportion_indigenous_overcrowded_households",
+      "description": "Proportion of overcrowded social housing households - indigenous",
+      "type": "number",
+      "expression": "qldgov_social_housing_tenancies_indigenous_overcrowded_households / qldgov_social_housing_tenancies_indigenous_households",
+      "format": {
+        "style": "percent"
+      },
+      "source": {
+        "name": "Queensland Government - Department of Housing and Public Works",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
+        },
+        "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/TenanciesGovernmentManagedSocialRentalHousing.csv"
+      }
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_proportion_nonindigenous_overcrowded_households",
+      "description": "Proportion of overcrowded social housing households - non-indigenous or unknown",
+      "type": "number",
+      "expression": "qldgov_social_housing_tenancies_nonindigenous_overcrowded_households / qldgov_social_housing_tenancies_nonindigenous_households",
+      "format": {
+        "style": "percent"
+      },
+      "source": {
+        "name": "Queensland Government - Department of Housing and Public Works",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
+        },
+        "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/TenanciesGovernmentManagedSocialRentalHousing.csv"
+      }
+    },
+    {
       "name": "ra_name",
       "description": "Remoteness Area name",
       "type": "string"
