@@ -3813,7 +3813,7 @@
     },
     {
       "name": "qldgov_social_housing_tenancies_all_households",
-      "description": "Number of social housing households - all",
+      "description": "Number of government-managed social rental housing households - all",
       "type": "number",
       "source": {
         "name": "Queensland Government - Department of Housing and Public Works",
@@ -3826,7 +3826,7 @@
     },
     {
       "name": "qldgov_social_housing_tenancies_all_overcrowded_households",
-      "description": "Number of overcrowded social housing households - all",
+      "description": "Number of overcrowded government-managed social rental housing households - all",
       "type": "number",
       "source": {
         "name": "Queensland Government - Department of Housing and Public Works",
@@ -3839,7 +3839,7 @@
     },
     {
       "name": "qldgov_social_housing_tenancies_all_people",
-      "description": "Number of people in social housing - all",
+      "description": "Number of people in government-managed social rental housing - all",
       "type": "number",
       "source": {
         "name": "Queensland Government - Department of Housing and Public Works",
@@ -3852,7 +3852,7 @@
     },
     {
       "name": "qldgov_social_housing_tenancies_indigenous_households",
-      "description": "Number of social housing households - indigenous",
+      "description": "Number of government-managed social rental housing households - indigenous",
       "type": "number",
       "source": {
         "name": "Queensland Government - Department of Housing and Public Works",
@@ -3865,7 +3865,7 @@
     },
     {
       "name": "qldgov_social_housing_tenancies_indigenous_overcrowded_households",
-      "description": "Number of overcrowded social housing households - indigenous",
+      "description": "Number of overcrowded government-managed social rental housing households - indigenous",
       "type": "number",
       "source": {
         "name": "Queensland Government - Department of Housing and Public Works",
@@ -3878,7 +3878,7 @@
     },
     {
       "name": "qldgov_social_housing_tenancies_indigenous_people",
-      "description": "Number of people in social housing - indigenous",
+      "description": "Number of people in government-managed social rental housing - indigenous",
       "type": "number",
       "source": {
         "name": "Queensland Government - Department of Housing and Public Works",
@@ -3891,7 +3891,7 @@
     },
     {
       "name": "qldgov_social_housing_tenancies_nonindigenous_households",
-      "description": "Number of social housing households - non-indigenous or unknown",
+      "description": "Number of government-managed social rental housing households - non-indigenous or unknown",
       "type": "number",
       "source": {
         "name": "Queensland Government - Department of Housing and Public Works",
@@ -3904,7 +3904,7 @@
     },
     {
       "name": "qldgov_social_housing_tenancies_nonindigenous_overcrowded_households",
-      "description": "Number of overcrowded social housing households - non-indigenous or unknown",
+      "description": "Number of overcrowded government-managed social rental housing households - non-indigenous or unknown",
       "type": "number",
       "source": {
         "name": "Queensland Government - Department of Housing and Public Works",
@@ -3917,7 +3917,7 @@
     },
     {
       "name": "qldgov_social_housing_tenancies_nonindigenous_people",
-      "description": "Number of people in social housing - non-indigenous or unknown",
+      "description": "Number of people in government-managed social rental housing - non-indigenous or unknown",
       "type": "number",
       "source": {
         "name": "Queensland Government - Department of Housing and Public Works",
