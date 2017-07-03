@@ -3561,7 +3561,7 @@
       "name": "census2011_proportion_all_persons_indigenous",
       "description": "Indigenous proportion of population (Census 2011)",
       "type": "number",
-      "expression": "1.0 * census2011_all_persons_indigenous / census2011_all_persons_total",
+      "expression": "census2011_all_persons_indigenous / census2011_all_persons_total",
       "format": {
         "style": "percent"
       },
@@ -3577,7 +3577,7 @@
       "name": "census2011_proportion_all_persons_tertiary_educated",
       "description": "Tertiary-educated proportion of working age population (Census 2011)",
       "type": "number",
-      "expression": "1.0 * census2011_aggregate_all_working_age_persons_tertiary_education_any / census2011_aggregate_all_working_age_persons_tertiary_education_total",
+      "expression": "census2011_aggregate_all_working_age_persons_tertiary_education_any / census2011_aggregate_all_working_age_persons_tertiary_education_total",
       "format": {
         "style": "percent"
       },
@@ -3641,7 +3641,7 @@
       "name": "census2011_proportion_year_12_educated_all_persons",
       "description": "Year 12 educated proportion of population (Census 2011)",
       "type": "number",
-      "expression": "1.0 * census2011_year_12_educated_all_persons / census2011_total_possibly_educated_all_persons",
+      "expression": "census2011_year_12_educated_all_persons / census2011_total_possibly_educated_all_persons",
       "format": {
         "style": "percent"
       },
@@ -3657,7 +3657,7 @@
       "name": "census2011_proportion_year_12_educated_indigenous_persons",
       "description": "Year 12 educated proportion of indigenous population (Census 2011)",
       "type": "number",
-      "expression": "1.0 * census2011_year_12_educated_indigenous_persons / census2011_total_possibly_educated_indigenous_persons",
+      "expression": "census2011_year_12_educated_indigenous_persons / census2011_total_possibly_educated_indigenous_persons",
       "format": {
         "style": "percent"
       },
