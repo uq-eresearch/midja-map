@@ -3852,7 +3852,7 @@
     },
     {
       "name": "qldgov_social_housing_tenancies_indigenous_households",
-      "description": "Number of government-managed social rental housing households - indigenous",
+      "description": "Number of government-managed social rental housing tenancies - indigenous",
       "type": "number",
       "source": {
         "name": "Queensland Government - Department of Housing and Public Works",
@@ -3865,7 +3865,7 @@
     },
     {
       "name": "qldgov_social_housing_tenancies_indigenous_overcrowded_households",
-      "description": "Number of overcrowded government-managed social rental housing households - indigenous",
+      "description": "Number of overcrowded government-managed social rental housing tenancies - indigenous",
       "type": "number",
       "source": {
         "name": "Queensland Government - Department of Housing and Public Works",
@@ -3891,7 +3891,7 @@
     },
     {
       "name": "qldgov_social_housing_tenancies_nonindigenous_households",
-      "description": "Number of government-managed social rental housing households - non-indigenous or unknown",
+      "description": "Number of government-managed social rental housing tenancies - non-indigenous or unknown",
       "type": "number",
       "source": {
         "name": "Queensland Government - Department of Housing and Public Works",
@@ -3904,7 +3904,7 @@
     },
     {
       "name": "qldgov_social_housing_tenancies_nonindigenous_overcrowded_households",
-      "description": "Number of overcrowded government-managed social rental housing households - non-indigenous or unknown",
+      "description": "Number of overcrowded government-managed social rental housing tenancies - non-indigenous or unknown",
       "type": "number",
       "source": {
         "name": "Queensland Government - Department of Housing and Public Works",
@@ -3930,7 +3930,7 @@
     },
     {
       "name": "qldgov_social_housing_tenancies_proportion_all_overcrowded_households",
-      "description": "Proportion of overcrowded social housing households - all",
+      "description": "Proportion of government-managed social rental housing tenancies with overcrowding - all",
       "type": "number",
       "expression": "qldgov_social_housing_tenancies_all_overcrowded_households / qldgov_social_housing_tenancies_all_households",
       "format": {
@@ -3947,7 +3947,7 @@
     },
     {
       "name": "qldgov_social_housing_tenancies_proportion_indigenous_overcrowded_households",
-      "description": "Proportion of overcrowded social housing households - indigenous",
+      "description": "Proportion of government-managed social rental housing tenancies with overcrowding - indigenous",
       "type": "number",
       "expression": "qldgov_social_housing_tenancies_indigenous_overcrowded_households / qldgov_social_housing_tenancies_indigenous_households",
       "format": {
@@ -3964,7 +3964,7 @@
     },
     {
       "name": "qldgov_social_housing_tenancies_proportion_nonindigenous_overcrowded_households",
-      "description": "Proportion of overcrowded social housing households - non-indigenous or unknown",
+      "description": "Proportion of government-managed social rental housing tenancies with overcrowding - non-indigenous or unknown",
       "type": "number",
       "expression": "qldgov_social_housing_tenancies_nonindigenous_overcrowded_households / qldgov_social_housing_tenancies_nonindigenous_households",
       "format": {

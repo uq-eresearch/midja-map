@@ -104,7 +104,7 @@ const attributeDefinitions = [
   {
     attribute: attributeDef(
       'indigenous_households',
-      'Number of government-managed social rental housing households - indigenous'),
+      'Number of government-managed social rental housing tenancies - indigenous'),
     f: R.pipe(
       R.filter(isIndigenous),
       R.length
@@ -113,7 +113,7 @@ const attributeDefinitions = [
   {
     attribute: attributeDef(
       'indigenous_overcrowded_households',
-      'Number of overcrowded government-managed social rental housing households - indigenous'),
+      'Number of overcrowded government-managed social rental housing tenancies - indigenous'),
     f: R.pipe(
       R.filter(R.both(isIndigenous, isOvercrowded)),
       R.length
@@ -133,7 +133,7 @@ const attributeDefinitions = [
   {
     attribute: attributeDef(
       'nonindigenous_households',
-      'Number of government-managed social rental housing households - non-indigenous or unknown'),
+      'Number of government-managed social rental housing tenancies - non-indigenous or unknown'),
     f: R.pipe(
       R.filter(isNotIndigenous),
       R.length
@@ -142,7 +142,7 @@ const attributeDefinitions = [
   {
     attribute: attributeDef(
       'nonindigenous_overcrowded_households',
-      'Number of overcrowded government-managed social rental housing households' +
+      'Number of overcrowded government-managed social rental housing tenancies' +
       ' - non-indigenous or unknown'),
     f: R.pipe(
       R.filter(R.both(isNotIndigenous, isOvercrowded)),
