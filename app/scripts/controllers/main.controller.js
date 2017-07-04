@@ -214,9 +214,6 @@ export default function MainController(
     'sa3_2011': 'SA3 (2011)'
   };
   vm.filters = [
-    'Indigenous Population >= 150',
-    'Indigenous Households >= 20',
-    'Affordability >= 3',
     'Indigenous QLD LGAs'
   ]
   vm.filterPlaces = [];
@@ -284,48 +281,6 @@ export default function MainController(
     return $q(function(resolve) {
         var excludeOps = [];
         if (vm.vis.regionTypeSelection.indexOf('lga') == 0) {
-          if (vm.vis.filter["Indigenous Population >= 150"]) {
-            excludeOps.push(
-              dataService.getAttribute(regionType, 'indigenous')
-              .then(function(data) {
-                return _.chain(data)
-                  .pairs()
-                  .filter(function(p) {
-                    return p[1] < 150;
-                  })
-                  .map(_.first)
-                  .value();
-              })
-            );
-          }
-          if (vm.vis.filter["Indigenous Households >= 20"]) {
-            excludeOps.push(
-              dataService.getAttribute(regionType, 'n_indig_h')
-              .then(function(data) {
-                return _.chain(data)
-                  .pairs()
-                  .filter(function(p) {
-                    return p[1] < 20;
-                  })
-                  .map(_.first)
-                  .value();
-              })
-            );
-          }
-          if (vm.vis.filter["Affordability >= 3"]) {
-            excludeOps.push(
-              dataService.getAttribute(regionType, 'afford')
-              .then(function(data) {
-                return _.chain(data)
-                  .pairs()
-                  .filter(function(p) {
-                    return p[1] < 3;
-                  })
-                  .map(_.first)
-                  .value();
-              })
-            );
-          }
           if (vm.vis.filter["Indigenous QLD LGAs"]) {
             var indigenousCouncilCodes = [
               'LGA30250', // Aurukun Shire Council
