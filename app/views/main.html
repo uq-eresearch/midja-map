@@ -15,12 +15,12 @@
             <label>Location Type
               <small class="text-muted">Required</small>
             </label>
-            <div ng-repeat="sel in vm.regionTypeSelectorOptions">
+            <div ng-repeat="(sel,desc) in vm.regionTypeSelectorOptions">
               <label>
-                <input type="radio" ng-model="vm.vis.regionTypeSelection" value="{{ sel }}" ng-change="vm.selectedLocationsChanged()"> {{ sel }}
+                <input type="radio" ng-model="vm.vis.regionTypeSelection" value="{{ sel }}" ng-change="vm.selectedLocationsChanged()"> {{ desc }}
               </label>
             </div>
-            <div ng-show="vm.vis.regionTypeSelection === 'LGAs'">
+            <div ng-show="vm.vis.regionTypeSelection.indexOf('lga') == 0">
               <label>Filter
                 <small class="text-muted">Optional</small>
               </label>
@@ -43,7 +43,7 @@
               <ui-select-match placeholder="Search for a place">
                 {{ $select.selected.name }}
                 <span class="text-uppercase text-muted">
-                  {{ $select.selected.type }}
+                  {{ $select.selected.type.split('_')[0] }}
                 </span>
               </ui-select-match>
               <ui-select-choices repeat="location in vm.locations | props: {name: $select.search}"
@@ -51,7 +51,7 @@
                   refresh-delay="0">
                 <span ng-bind-html="location.name | highlight: $select.search"></span>
                 <span class="text-uppercase text-muted">
-                  {{ location.type }}
+                  {{ location.type.split('_')[0] }}
                 </span>
               </ui-select-choices>
             </ui-select>

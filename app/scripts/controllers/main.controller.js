@@ -157,7 +157,7 @@ export default function MainController(
   }
 
   vm.vis = {
-    regionTypeSelection: "LGAs",
+    regionTypeSelection: "lga_2011",
     filter: {
       "Indigenous Population >= 150": false,
       "Indigenous Households >= 20": false,
@@ -207,7 +207,12 @@ export default function MainController(
   vm.isDataSelected = isDataSelected;
 
   selectedPlacesChanged();
-  vm.regionTypeSelectorOptions = ['LGAs', 'ILOCs', 'SA2s', 'SA3s'];
+  vm.regionTypeSelectorOptions = {
+    'lga_2011': 'LGA (2011)',
+    'iloc_2011': 'ILOC (2011)',
+    'sa2_2011': 'SA2 (2011)',
+    'sa3_2011': 'SA3 (2011)'
+  };
   vm.filters = [
     'Indigenous Population >= 150',
     'Indigenous Households >= 20',
@@ -278,7 +283,7 @@ export default function MainController(
   function activate(regionType) {
     return $q(function(resolve) {
         var excludeOps = [];
-        if (vm.vis.regionTypeSelection == 'LGAs') {
+        if (vm.vis.regionTypeSelection.indexOf('lga') == 0) {
           if (vm.vis.filter["Indigenous Population >= 150"]) {
             excludeOps.push(
               dataService.getAttribute(regionType, 'indigenous')
@@ -400,15 +405,8 @@ export default function MainController(
       vm.vis.locations.pop();
     }
 
-    Promise.resolve(function() {
-        switch (vm.vis.regionTypeSelection) {
-          case 'ILOCs': return "iloc";
-          case 'LGAs':  return "lga";
-          case 'SA2s':  return "sa2";
-          case 'SA3s':  return "sa3";
-          default:      return vm.regionType;
-        }
-      }()).then(function(regionType) {
+    Promise.resolve(vm.vis.regionTypeSelection)
+      .then(function(regionType) {
         var previousRegionType = vm.regionType;
         vm.regionType = regionType;
         if (regionType == previousRegionType) {

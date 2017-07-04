@@ -16,24 +16,24 @@ export default function dataService($http, $q, expressionService) {
     }
     return {
       'country': {
-        'state': _.constant(_.constant(true))
+        'state_2011': _.constant(_.constant(true))
       },
-      'state': {
-        'ireg': commonNumericPrefix,
-        'sa4': commonNumericPrefix,
-        'lga': commonNumericPrefix
+      'state_2011': {
+        'ireg_2011': commonNumericPrefix,
+        'sa4_2011': commonNumericPrefix,
+        'lga_2011': commonNumericPrefix
       },
-      'sa4': {
-        'sa3': commonNumericPrefix
+      'sa4_2011': {
+        'sa3_2011': commonNumericPrefix
       },
-      'sa3': {
-        'sa2': commonNumericPrefix
+      'sa3_2011': {
+        'sa2_2011': commonNumericPrefix
       },
-      'ireg': {
-        'iare': commonNumericPrefix
+      'ireg_2011': {
+        'iare_2011': commonNumericPrefix
       },
-      'iare': {
-        'iloc': commonNumericPrefix
+      'iare_2011': {
+        'iloc_2011': commonNumericPrefix
       }
     };
   }());
