@@ -407,13 +407,10 @@ export default function regionMap($http, $rootScope, $q, dataService,
     resizeMap();
 
     // add a nice baselayer from Stamen
-    const tileLayerAttribution =
-      '&copy; '+
-      '<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> '+
-      'contributors'
     L.tileLayer(
-      'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-        attribution: tileLayerAttribution
+      'https://maps.nlp.nokia.com/maptiler/v2/maptile/newest/normal.day/{z}/{x}/{y}/' +
+      '256/png8?lg=eng&token=A7tBPacePg9Mj_zghvKt9Q&app_id=KuYppsdXZznpffJsKT24', {
+        attribution: 'Stamen'
       }).addTo(map);
 
     var topicAttribution = L.control.attribution({
