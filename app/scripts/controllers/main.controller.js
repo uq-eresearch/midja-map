@@ -209,9 +209,12 @@ export default function MainController(
   selectedPlacesChanged();
   vm.regionTypeSelectorOptions = {
     'lga_2011': 'LGA (2011)',
+    'lga_2016': 'LGA (2016)',
     'iloc_2011': 'ILOC (2011)',
     'sa2_2011': 'SA2 (2011)',
-    'sa3_2011': 'SA3 (2011)'
+    'sa2_2016': 'SA2 (2016)',
+    'sa3_2011': 'SA3 (2011)',
+    'sa3_2016': 'SA3 (2016)'
   };
   vm.filters = [
     'Indigenous QLD LGAs'

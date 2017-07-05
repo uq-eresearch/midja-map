@@ -15,17 +15,23 @@ export default function highlightedTopic(
     }
     return dataService.getAvailableAttributes(scope.regionType)
       .then(attributeMatcher(scope.attributeSelector))
-      .then((attribute) => {
-        return dataService.getAttributesForRegions(
-            scope.regionType, [attribute.name], [scope.region])
+      .then((attribute) =>
+        attribute ?
+          dataService.getAttributesForRegions(
+              scope.regionType, [attribute.name], [scope.region])
             .then(_.flow(
               _.property(scope.region.code),
               _.property(attribute.name)))
             .then(v => $timeout(() => {
               scope.attribute = attribute
               scope.value = v
+            })) :
+          Promise.resolve(null)
+            .then(() => $timeout(() => {
+              scope.attribute = null
+              scope.value = null
             }))
-      })
+      )
   }
 
   function link(scope, element, attrs) {
