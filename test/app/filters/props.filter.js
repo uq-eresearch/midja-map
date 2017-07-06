@@ -19,7 +19,7 @@ describe('Filter: props', function() {
     'should not change non-array input',
     gen.primitive,
     (v) => {
-      expect(props(v, { foo: 'bar' })).toBe(v);
+      expect(props(v, { foo: 'bar' })).toEqual(v);
     }
   )
 
