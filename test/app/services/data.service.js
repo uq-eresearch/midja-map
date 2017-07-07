@@ -1,5 +1,7 @@
 'use strict';
 
+import { expect } from 'chai'
+
 describe('Service: dataService', function () {
 
     // load the service's module
@@ -12,7 +14,7 @@ describe('Service: dataService', function () {
     }));
 
     it('should do something', function () {
-        expect(!!dataService).toBe(true);
+        expect(!!dataService).to.be.true;
     });
 
 

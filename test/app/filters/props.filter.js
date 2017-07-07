@@ -1,10 +1,12 @@
 'use strict';
 
-require('jasmine-check').install()
+import { expect } from 'chai'
+require('mocha-testcheck').install()
 
 import R from 'ramda'
 
 describe('Filter: props', function() {
+  this.timeout(5000)
 
   // load the filter's module
   beforeEach(angular.mock.module('midjaApp'));
@@ -19,7 +21,7 @@ describe('Filter: props', function() {
     'should not change non-array input',
     gen.primitive,
     (v) => {
-      expect(props(v, { foo: 'bar' })).toEqual(v);
+      expect(props(v, { foo: 'bar' })).to.deep.equal(v);
     }
   )
 
@@ -40,7 +42,7 @@ describe('Filter: props', function() {
       R.filter(
         v => v.name.toLowerCase().indexOf(spec.name.toLowerCase()) > -1,
         values
-      ).forEach(v => expect(output).toContain(v))
+      ).forEach(v => expect(output).to.include(v))
     }
   )
 

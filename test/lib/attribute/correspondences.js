@@ -1,6 +1,7 @@
 'use strict';
 
-require('jasmine-check').install()
+import { expect } from 'chai'
+require('mocha-testcheck').install()
 
 import R from 'ramda'
 import { transformerWith } from '../../../lib/attribute/correspondences'
@@ -54,7 +55,7 @@ describe('correspondences', () => {
         const output = transformer(input)
         const expectedOutputKeys = outputKeys(input)
         const actualOutputKeys = sorted(R.keys(output))
-        expect(actualOutputKeys).toEqual(expectedOutputKeys)
+        expect(actualOutputKeys).to.deep.equal(expectedOutputKeys)
       })
 
   })

@@ -5,7 +5,7 @@ module.exports = function(config) {
 
   config.set({
     // testing framework to use (jasmine/mocha/qunit/...)
-    frameworks: ['jasmine', 'jasmine-diff'],
+    frameworks: ['mocha'],
 
     // list of files / patterns to load in the browser
     files: [

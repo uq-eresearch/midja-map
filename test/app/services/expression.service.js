@@ -1,5 +1,7 @@
 'use strict';
 
+import { expect } from 'chai'
+
 describe('Service: expressionService', function() {
 
   // load the service's module
@@ -13,17 +15,17 @@ describe('Service: expressionService', function() {
 
   describe('parser', function() {
     it('should exist', function() {
-      expect(expressionService.parse).toBeTruthy();
+      expect(expressionService.parse).to.be.ok;
     });
 
     it('should extract variables', function() {
       var expr = expressionService.parse("z * x + c");
-      expect(expr.variables).toEqual(['c', 'x', 'z']);
+      expect(expr.variables).to.deep.equal(['c', 'x', 'z']);
     });
 
     it('should provide evaluation', function() {
       var expr = expressionService.parse("z * x + c");
-      expect(expr.evaluate({ x: 2, z: 3, c: 1})).toEqual(7);
+      expect(expr.evaluate({ x: 2, z: 3, c: 1})).to.equal(7);
     });
   });
 

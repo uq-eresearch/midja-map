@@ -1,11 +1,13 @@
 'use strict';
 
-require('jasmine-check').install()
+import { expect } from 'chai'
+require('mocha-testcheck').install()
 
 import R from 'ramda'
 import * as sorters from '../../../lib/attribute/sorters'
 
-describe('sorters', () => {
+describe('sorters', function() {
+  this.timeout(5000)
 
   const genNonNumericString = gen.string.then(v => v.replace(/\d/g, ''))
   const genPositiveNumber = gen.int.then(Math.abs)
@@ -31,7 +33,7 @@ describe('sorters', () => {
             tuples)
         )
         R.zip(sortedNums, sortedAttributes).forEach(R.apply((num, attr) => {
-          expect(attr.name.indexOf(num+"") != -1).toBe(true)
+          expect(attr.name).to.include(num+"")
         }))
       })
 
