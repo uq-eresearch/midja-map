@@ -25,7 +25,7 @@ const csvParser = options => text =>
 // lgaRegionResolver :: [String] → (String → Object)
 const lgaRegionResolver = names => {
   const nameLookupFile = path.resolve(
-    __dirname, '..', 'data', 'public', 'lga', 'region_name.json')
+    __dirname, '..', 'data', 'public', 'lga_2011', 'region_name.json')
   return readJSON(nameLookupFile)
     .then((lgaNameLookup) => {
       const regions = R.map(
@@ -185,17 +185,20 @@ const applyAttributeDefinitions = (defs) =>
 
 // writeDataForAttribute :: attribute -> data -> Promise attribute
 const writeDataForAttribute = (attribute, data) =>
-  writeAttributeData('public', 'lga', attribute, data)
+  writeAttributeData('public', 'lga_2011', attribute, data)
     .then(R.tap(() =>
       console.log(`Wrote data for ${attribute.name}`)
     ))
     .then(R.always(attribute))
 
-rp(csvUrl)
-  .then(csvParser({
-    auto_parse: true,
-    columns: true
-  }))
+const pRows =
+  rp(csvUrl)
+    .then(csvParser({
+      auto_parse: true,
+      columns: true
+    }))
+
+pRows
   .then(rows =>
     lgaRegionResolver(R.uniq(R.pluck('LGA', rows)))
       .then(regionResolver => {
@@ -220,7 +223,7 @@ rp(csvUrl)
     )
   )
   .then(attributes =>
-    writeIndex('public', 'lga', attributes)
+    writeIndex('public', 'lga_2011', attributes)
       .then(R.tap(() =>
         console.log(`Wrote to index ${attributes.length} attributes`)
       ))

@@ -1,8 +1,8 @@
 [{
   "flow": "ABS_ERP_ASGS",
   "templates": {
-    "filepath": "{{{regionType.name}}}/{{{measure.name}}}{{{period}}}_{{{gender.name}}}_{{{age.name}}}.json",
-    "group": "{{{regionType.name}}}",
+    "filepath": "{{{regionType.name}}}_2011/{{{measure.name}}}{{{period}}}_{{{gender.name}}}_{{{age.name}}}.json",
+    "group": "{{{regionType.name}}}_2011",
     "attribute": {
       "name": "{{{measure.name}}}{{{period}}}_{{{gender.name}}}_{{{age.name}}}",
       "description": "{{{measure.description}}} {{{age.description}}} - {{{gender.description}}} ({{{period}}})",
@@ -163,8 +163,8 @@
 },{
   "flow": "ABS_ERP_ASGS",
   "templates": {
-    "filepath": "{{{regionType.name}}}/{{{measure.name}}}{{{period}}}_{{{gender.name}}}_{{{age.name}}}.json",
-    "group": "{{{regionType.name}}}",
+    "filepath": "{{{regionType.name}}}_2011/{{{measure.name}}}{{{period}}}_{{{gender.name}}}_{{{age.name}}}.json",
+    "group": "{{{regionType.name}}}_2011",
     "attribute": {
       "name": "{{{measure.name}}}{{{period}}}_{{{gender.name}}}_{{{age.name}}}",
       "description": "{{{measure.description}}} {{{age.description}}} - {{{gender.description}}} ({{{period}}})",
@@ -248,8 +248,8 @@
 },{
   "flow": "ABS_CENSUS2011_B07",
   "templates": {
-    "filepath": "{{{regionType.name}}}/census{{{period}}}_{{{age.name}}}_{{{gender.name}}}_{{{status.name}}}.json",
-    "group": "{{{regionType.name}}}",
+    "filepath": "{{{regionType.name}}}_{{period}}/census{{{period}}}_{{{age.name}}}_{{{gender.name}}}_{{{status.name}}}.json",
+    "group": "{{{regionType.name}}}_{{period}}",
     "attribute": {
       "name": "census{{{period}}}_{{{age.name}}}_{{{gender.name}}}_{{{status.name}}}",
       "description": "{{{status.description}}} {{{gender.description}}} - {{{age.description}}} (Census {{{period}}})",
@@ -403,8 +403,8 @@
 {
   "flow": "ABS_CENSUS2011_B07_LGA",
   "templates": {
-    "filepath": "{{{regionType.name}}}/census{{{period}}}_{{{age.name}}}_{{{gender.name}}}_{{{status.name}}}.json",
-    "group": "{{{regionType.name}}}",
+    "filepath": "{{{regionType.name}}}_{{period}}/census{{{period}}}_{{{age.name}}}_{{{gender.name}}}_{{{status.name}}}.json",
+    "group": "{{{regionType.name}}}_{{period}}",
     "attribute": {
       "name": "census{{{period}}}_{{{age.name}}}_{{{gender.name}}}_{{{status.name}}}",
       "description": "{{{status.description}}} {{{gender.description}}} - {{{age.description}}} (Census {{{period}}})",
@@ -554,8 +554,8 @@
 {
   "flow": "ABS_CENSUS2011_B32",
   "templates": {
-    "filepath": "{{{regionType.name}}}/census{{{period}}}_{{{type.name}}}_{{{tenure.name}}}.json",
-    "group": "{{{regionType.name}}}",
+    "filepath": "{{{regionType.name}}}_{{period}}/census{{{period}}}_{{{type.name}}}_{{{tenure.name}}}.json",
+    "group": "{{{regionType.name}}}_{{period}}",
     "attribute": {
       "name": "census{{{period}}}_{{{type.name}}}_{{{tenure.name}}}",
       "description": "{{{type.description}}} - {{{tenure.description}}} ({{{period}}})",
@@ -641,8 +641,8 @@
 {
   "flow": "ABS_CENSUS2011_B32_LGA",
   "templates": {
-    "filepath": "{{{regionType.name}}}/census{{{period}}}_{{{type.name}}}_{{{tenure.name}}}.json",
-    "group": "{{{regionType.name}}}",
+    "filepath": "{{{regionType.name}}}_{{period}}/census{{{period}}}_{{{type.name}}}_{{{tenure.name}}}.json",
+    "group": "{{{regionType.name}}}_{{period}}",
     "attribute": {
       "name": "census{{{period}}}_{{{type.name}}}_{{{tenure.name}}}",
       "description": "{{{type.description}}} - {{{tenure.description}}} ({{{period}}})",
@@ -724,8 +724,8 @@
 {
   "flow": "ABS_SEIFA_SA2",
   "templates": {
-    "filepath": "sa2/seifa{{{period}}}_{{{index.name}}}_{{{measure.name}}}.json",
-    "group": "sa2",
+    "filepath": "sa2_{{period}}/seifa{{{period}}}_{{{index.name}}}_{{{measure.name}}}.json",
+    "group": "sa2_{{period}}",
     "attribute": {
       "name": "seifa{{{period}}}_{{{index.name}}}_{{{measure.name}}}",
       "description": "SEIFA {{{index.description}}} {{{measure.description}}} ({{{period}}})",

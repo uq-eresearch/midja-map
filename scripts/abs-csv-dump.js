@@ -53,7 +53,7 @@ const matchers = [
         orEmpty(
           R.pipe(R.prop('suffix'), R.test(/total$/i)),
           params => [{
-            regionType: params.regionType.toLowerCase(),
+            regionType: params.regionType.toLowerCase() + '_' + params.year,
             attribute: {
               "name": `census${params.year}_median_weekly_household_income_all`,
               "description": `Median weekly household income - all households (Census ${params.year})`,
@@ -66,7 +66,7 @@ const matchers = [
         orEmpty(
           R.pipe(R.prop('suffix'), R.test(/with_indigenous_persons$/i)),
           params => [{
-            regionType: params.regionType.toLowerCase(),
+            regionType: params.regionType.toLowerCase() + '_' + params.year,
             attribute: {
               "name": `census${params.year}_median_weekly_household_income_indigenous`,
               "description": `Median weekly household income - indigenous households (Census ${params.year})`,
@@ -99,7 +99,7 @@ const matchers = [
             'suffix': R.test(/^indigenous$/i)
           }),
           params => [{
-            regionType: params.regionType.toLowerCase(),
+            regionType: params.regionType.toLowerCase() + '_' + params.year,
             attribute: {
               "name": `census${params.year}_year_12_educated_indigenous_persons`,
               "description": `Year 12 educated - indigenous persons (Census ${params.year})`,
@@ -115,7 +115,7 @@ const matchers = [
             'suffix': R.test(/^indigenous$/i)
           }),
           params => [{
-            regionType: params.regionType.toLowerCase(),
+            regionType: params.regionType.toLowerCase() + '_' + params.year,
             attribute: {
               "name": `census${params.year}_total_possibly_educated_indigenous_persons`,
               "description": `Total possibly educated persons - indigenous persons (Census ${params.year})`,
@@ -131,7 +131,7 @@ const matchers = [
             'suffix': R.test(/^total$/i)
           }),
           params => [{
-            regionType: params.regionType.toLowerCase(),
+            regionType: params.regionType.toLowerCase() + '_' + params.year,
             attribute: {
               "name": `census${params.year}_year_12_educated_all_persons`,
               "description": `Year 12 educated - all persons (Census ${params.year})`,
@@ -147,7 +147,7 @@ const matchers = [
             'suffix': R.test(/^total$/i)
           }),
           params => [{
-            regionType: params.regionType.toLowerCase(),
+            regionType: params.regionType.toLowerCase() + '_' + params.year,
             attribute: {
               "name": `census${params.year}_total_possibly_educated_all_persons`,
               "description": `Total possibly educated persons - all persons (Census ${params.year})`,
@@ -186,7 +186,7 @@ const matchers = [
             'low': R.test(/^partial$/i)
           }),
           params => [{
-            regionType: params.regionType.toLowerCase(),
+            regionType: params.regionType.toLowerCase() + '_' + params.year,
             attribute: {
               "name": `census${params.year}_partially_unstated_weekly_household_income_${params.suffix}`,
               "description": `Partially-unstated weekly household income - ${params.suffix} households (Census ${params.year})`,
@@ -201,7 +201,7 @@ const matchers = [
             'low': R.test(/^all$/i)
           }),
           params => [{
-            regionType: params.regionType.toLowerCase(),
+            regionType: params.regionType.toLowerCase() + '_' + params.year,
             attribute: {
               "name": `census${params.year}_completely_unstated_weekly_household_income_${params.suffix}`,
               "description": `Completely-unstated weekly household income - ${params.suffix} households (Census ${params.year})`,
@@ -216,7 +216,7 @@ const matchers = [
             'high': R.test(/^\d+$/)
           }),
           params => [{
-            regionType: params.regionType.toLowerCase(),
+            regionType: params.regionType.toLowerCase() + '_' + params.year,
             attribute: {
               "name": `census${params.year}_${params.low}to${params.high}_weekly_household_income_${params.suffix}`,
               "description": `\$${params.low} - \$${params.high} weekly household income - ${params.suffix} households (Census ${params.year})`,
@@ -231,7 +231,7 @@ const matchers = [
             'high': R.test(/more$/)
           }),
           params => [{
-            regionType: params.regionType.toLowerCase(),
+            regionType: params.regionType.toLowerCase() + '_' + params.year,
             attribute: {
               "name": `census${params.year}_${params.low}plus_weekly_household_income_${params.suffix}`,
               "description": `\$${params.low}+ weekly household income - ${params.suffix} households (Census ${params.year})`,
@@ -246,7 +246,7 @@ const matchers = [
             'high': R.test(/^nil/i)
           }),
           params => [{
-            regionType: params.regionType.toLowerCase(),
+            regionType: params.regionType.toLowerCase() + '_' + params.year,
             attribute: {
               "name": `census${params.year}_0minus_weekly_household_income_${params.suffix}`,
               "description": `Nil or negative weekly household income - ${params.suffix} households (Census ${params.year})`,
@@ -281,7 +281,7 @@ const matchers = [
     return orEmpty(
       hasKeys('year', 'regionType', 'status', 'low', 'high', 'qualification'),
       params => [{
-        regionType: params.regionType.toLowerCase(),
+        regionType: params.regionType.toLowerCase() + '_' + params.year,
         attribute: {
           "name": `census${params.year}_${params.status}_persons_${params.low}to${params.high}_${params.qualification}`.toLowerCase(),
           "description": `Education level of ${params.status} persons ${params.low}-${params.high} years - ${params.qualification.replace(/_/g,' ')} (Census ${params.year})`,
@@ -312,7 +312,7 @@ const matchers = [
     return orEmpty(
       hasKeys('year', 'regionType', 'statistic', 'status'),
       params => [{
-        regionType: params.regionType.toLowerCase(),
+        regionType: params.regionType.toLowerCase() + '_' + params.year,
         attribute: {
           "name": `census${params.year}_${params.statistic}_${params.status}`.toLowerCase(),
           "description": `${params.statistic.replace(/_/g,' ')} - ${params.status} (Census ${params.year})`,
@@ -352,7 +352,7 @@ const matchers = [
             'high': R.test(/^\d+$/)
           }),
           params => [{
-            regionType: params.regionType.toLowerCase(),
+            regionType: params.regionType.toLowerCase() + '_' + params.year,
             attribute: {
               "name": `census${params.year}_${params.low}to${params.high}_${params.gender}_${params.status}`.toLowerCase(),
               "description": `${params.status} ${params.gender} - Age ${params.low}-${params.high} (Census ${params.year})`,
@@ -367,7 +367,7 @@ const matchers = [
             'high': R.equals("and_over")
           }),
           params => [{
-            regionType: params.regionType.toLowerCase(),
+            regionType: params.regionType.toLowerCase() + '_' + params.year,
             attribute: {
               "name": `census${params.year}_${params.low}plus_${params.gender}_${params.status}`.toLowerCase(),
               "description": `${params.status} ${params.gender} - Age ${params.low}+ (Census ${params.year})`,
@@ -395,7 +395,7 @@ const matchers = [
     return orEmpty(
       hasKeys('year', 'regionType', 'status', 'gender'),
       params => [{
-        regionType: params.regionType.toLowerCase(),
+        regionType: params.regionType.toLowerCase() + '_' + params.year,
         attribute: {
           "name": `census${params.year}_all_${params.gender}_${params.status}`.toLowerCase(),
           "description": `${params.status} ${params.gender} - All Ages (Census ${params.year})`,
@@ -421,7 +421,7 @@ const matchers = [
     return orEmpty(
       hasKeys('year', 'regionType', 'name', 'status'),
       params => [{
-        regionType: params.regionType.toLowerCase(),
+        regionType: params.regionType.toLowerCase() + '_' + params.year,
         attribute: {
           "name": `census${params.year}_${params.name}_${params.status}`.toLowerCase(),
           "description": `${params.name.replace(/_/g, ' ')} - ${params.status.replace(/_/g, '-')} (Census ${params.year})`,

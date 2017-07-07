@@ -25,7 +25,7 @@ const csvParser = options => text =>
 // lgaRegionResolver :: [String] → (String → Object)
 const lgaRegionResolver = names => {
   const nameLookupFile = path.resolve(
-    __dirname, '..', 'data', 'public', 'lga', 'region_name.json')
+    __dirname, '..', 'data', 'public', 'lga_2011', 'region_name.json')
   const nameTransforms = R.pipe(
     R.replace(/City Council/i, '(C)'),
     R.replace(/Regional Council/i, '(R)'),
@@ -149,7 +149,7 @@ const applyAttributeDefinitions = (defs) =>
 
 // writeDataForAttribute :: attribute -> data -> Promise attribute
 const writeDataForAttribute = (attribute, data) =>
-  writeAttributeData('public', 'lga', attribute, data)
+  writeAttributeData('public', 'lga_2011', attribute, data)
     .then(R.tap(() =>
       console.log(`Wrote data for ${attribute.name}`)
     ))
@@ -185,7 +185,7 @@ rp(csvUrl)
     )
   )
   .then(attributes =>
-    writeIndex('public', 'lga', attributes)
+    writeIndex('public', 'lga_2011', attributes)
       .then(R.tap(() =>
         console.log(`Wrote to index ${attributes.length} attributes`)
       ))

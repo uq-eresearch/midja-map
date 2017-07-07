@@ -8,7 +8,7 @@ import { basename } from 'path'
 const debug = require('debug')(basename(__filename, '.js'))
 
 const accessType = 'private'
-const regionType = 'sa3'
+const regionType = 'sa3_2011'
 const years = [2015, 2017]
 
 const indexUrl = (year) =>
