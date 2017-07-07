@@ -1,4 +1,6 @@
+import R from 'ramda'
 import _ from 'lodash-es'
+import { transformerWith } from '../../../lib/attribute/correspondences'
 import * as ss from 'simple-statistics'
 
 export default function dataService($http, $q, expressionService) {
@@ -184,6 +186,12 @@ export default function dataService($http, $q, expressionService) {
     ).then(_.flatten);
   }
 
+  function getCorrespondences(sourceRegionType, targetRegionType) {
+    return $http
+      .get(`/correspondences/${sourceRegionType}/${targetRegionType}.json`)
+      .then(_.property('data'));
+  }
+
   function getAttributeFromRemote(regionType, attribute) {
     return getAvailableAttributes(regionType)
       .then(function(availableAttributes) {
@@ -195,6 +203,12 @@ export default function dataService($http, $q, expressionService) {
         if (!attributeMetadata) {
           console.log(`Attempted to get unknown attribute: ${attribute}`)
           return {};
+        } else if (attributeMetadata.from) {
+          return getCorrespondences(attributeMetadata.from, regionType)
+            .then(correspondences =>
+              getAttributeFromRemote(attributeMetadata.from, attribute)
+                .then(transformerWith(correspondences))
+            );
         } else if (attributeMetadata.expression) {
           // Collect variables and evaluate expression
           var expr = expressionService.parse(attributeMetadata.expression);
@@ -252,7 +266,51 @@ export default function dataService($http, $q, expressionService) {
             }
           }))
           .catch(_.constant(publicData))
-      });
+      })
+      .then(metadata => {
+        const externalAttributes =
+          R.groupBy(
+            R.prop('from'),
+            R.filter(
+              R.has('from'),
+              R.defaultTo([], metadata.attributes)
+            )
+          )
+        return Promise.all(
+          R.map(
+            getMetadata,
+            R.keys(externalAttributes)
+          )
+        ).then(
+          R.zip(R.values(externalAttributes))
+        ).then(
+          R.chain(R.apply(
+            (attributes, externalMetadata) =>
+              R.map(
+                attribute =>
+                  R.mergeDeepLeft(
+                    attribute,
+                    R.defaultTo(
+                      {},
+                      R.find(
+                        R.propEq('name', attribute.name),
+                        R.defaultTo([], externalMetadata.attributes)
+                      )
+                    )
+                  ),
+                attributes
+              )
+          ))
+        ).then(mergedAttributes =>
+          R.over(
+            R.lensProp('attributes'),
+            R.pipe(
+              R.unionWith(R.eqProps('name'), mergedAttributes),
+              R.sortBy(R.prop('name'))
+            ),
+            metadata)
+        )
+      })
   }
 
   function getAttributesForRegions(regionType, attributeNames, regions) {

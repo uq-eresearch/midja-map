@@ -95,6 +95,7 @@ module.exports = {
   plugins: [
     new CleanObsoleteChunks(),
     new CopyWebpackPlugin([
+      { from: 'correspondences', to: 'correspondences' },
       { from: 'data', to: 'data' }
     ]),
     new ExtractTextWebpackPlugin({

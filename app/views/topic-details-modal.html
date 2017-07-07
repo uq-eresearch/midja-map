@@ -17,6 +17,12 @@
         ng-bind="topic.expression"></pre>
     </dd>
   </dl>
+  <dl ng-if="topic.from">
+    <dt>Original Geography</dt>
+    <dd>
+      <code ng-bind="topic.from"></code>
+    </dd>
+  </dl>
   <dl>
     <dt>Source</dt>
     <dd ng-init="s = topic.source.name">
