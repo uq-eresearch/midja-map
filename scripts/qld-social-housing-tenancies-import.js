@@ -62,6 +62,9 @@ const attributeDef = (name, desc) => {
     name: 'qldgov_social_housing_tenancies_'+name,
     description: desc,
     type: 'number',
+    format: {
+      "maximumFractionDigits": 0
+    },
     source: {
       name: 'Queensland Government - Department of Housing and Public Works',
       license: {
