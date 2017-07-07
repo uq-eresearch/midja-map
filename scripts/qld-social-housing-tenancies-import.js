@@ -22,10 +22,10 @@ const csvParser = options => text =>
     }
   })
 
-// lgaRegionResolver :: [String] → (String → Object)
-const lgaRegionResolver = names => {
+// regionNameResolver :: String → Promise (String → Object)
+const regionNameResolver = regionType => {
   const nameLookupFile = path.resolve(
-    __dirname, '..', 'data', 'public', 'lga_2011', 'region_name.json')
+    __dirname, '..', 'data', 'public', regionType, 'region_name.json')
   return readJSON(nameLookupFile)
     .then((lgaNameLookup) => {
       const regions = R.map(
@@ -34,26 +34,24 @@ const lgaRegionResolver = names => {
       )
       const matcher = source =>
         R.find(R.pipe(R.prop('name'), R.startsWith(source)), regions)
-      const regionResolver =
-        R.pickBy(R.is(Object), R.zipObj(names, R.map(matcher, names)))
-      return R.flip(R.prop)(regionResolver)
+      return R.memoize(matcher) // Need to cache for fast resolution
     })
 }
 
-// isIndigenous :: Object => Boolean
+// isIndigenous :: Object → Boolean
 const isIndigenous = R.pipe(
   R.prop('Indig_H'),
   R.equals(1)
 )
 const isNotIndigenous = R.complement(isIndigenous)
 
-// isOvercrowded :: Object => Boolean
+// isOvercrowded :: Object → Boolean
 const isOvercrowded = R.pipe(
   R.prop('Occupancy'),
   R.equals('Overcrowded')
 )
 
-// intoOrZero :: any => Number
+// intoOrZero :: any → Number
 const intOrZero = R.pipe(
   Number.parseInt,
   R.defaultTo(0)
@@ -183,14 +181,35 @@ const applyAttributeDefinitions = (defs) =>
     R.zipWith(R.merge, defs)  // Merge data into attribute definition
   )
 
-// writeDataForAttribute :: attribute -> data -> Promise attribute
-const writeDataForAttribute = (attribute, data) =>
-  writeAttributeData('public', 'lga_2011', attribute, data)
+// writeDataForAttribute :: regionType → (attribute, data) → Promise attribute
+const writeDataForAttribute = regionType => (attribute, data) =>
+  writeAttributeData('public', regionType, attribute, data)
     .then(R.tap(() =>
-      console.log(`Wrote data for ${attribute.name}`)
+      console.log(`Wrote ${regionType} data for ${attribute.name}`)
     ))
     .then(R.always(attribute))
 
+// processGroupedRows :: (String, {k: [Object]}) → Promise
+const processGroupedRows = (regionType, groupedRows) =>
+  Promise.all(
+    R.map(
+      R.pipe(
+        R.props(['attribute', 'data']),
+        R.apply(writeDataForAttribute(regionType))
+      ),
+      applyAttributeDefinitions(attributeDefinitions)(groupedRows)
+    )
+  ).then(attributes =>
+    writeIndex('public', regionType, attributes)
+      .then(R.tap(() =>
+        console.log(
+          `Wrote ${attributes.length} attributes to ${regionType} index`
+        )
+      ))
+      .then(R.always(attributes))
+  )
+
+// Get CSV rows
 const pRows =
   rp(csvUrl)
     .then(csvParser({
@@ -198,35 +217,46 @@ const pRows =
       columns: true
     }))
 
+// Get region resolvers for region types
+const pResolvers =
+  regionNameResolver('lga_2011')
+    .then(lgaRegionResolver => {
+      return {
+        "lga_2011": R.pipe(
+          R.prop('LGA'),
+          lgaRegionResolver,
+          R.defaultTo({}),
+          R.prop('code')
+        ),
+        "postcode_2011": R.pipe(
+          R.prop('Postcode'),
+          R.ifElse(R.isNil, R.identity, R.toString)
+        )
+      }
+    })
+
+// With rows and resolvers...
 pRows
   .then(rows =>
-    lgaRegionResolver(R.uniq(R.pluck('LGA', rows)))
-      .then(regionResolver => {
-        const rowRegionResolver = R.pipe(R.prop('LGA'), regionResolver)
-        return R.groupBy(
-          R.pipe(rowRegionResolver, R.prop('code')),
-          R.filter(
-            R.pipe(rowRegionResolver, R.is(Object)),
-            rows))
-      })
+    pResolvers
+      .then(
+        R.mapObjIndexed(
+          resolver =>
+            R.groupBy(
+              resolver,
+              R.filter(
+                R.pipe(resolver, R.is(String)),
+                rows
+              )
+            )
+        )
+      )
   )
-  .then(applyAttributeDefinitions(attributeDefinitions))
   .then(
     R.pipe(
-      R.map(
-        R.pipe(
-          R.props(['attribute', 'data']),
-          R.apply(writeDataForAttribute)
-        )
-      ),
+      R.toPairs,
+      R.map(R.apply(processGroupedRows)),
       vs => Promise.all(vs)
     )
-  )
-  .then(attributes =>
-    writeIndex('public', 'lga_2011', attributes)
-      .then(R.tap(() =>
-        console.log(`Wrote to index ${attributes.length} attributes`)
-      ))
-      .then(R.always(attributes))
   )
   .catch(e => { console.log(e, e.stack) })
