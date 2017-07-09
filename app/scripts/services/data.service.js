@@ -1,9 +1,10 @@
 import R from 'ramda'
 import _ from 'lodash-es'
 import { transformerWith } from '../../../lib/attribute/correspondences'
-import * as ss from 'simple-statistics'
+import ss from 'simple-statistics'
+import expression from '../../../lib/attribute/expression'
 
-export default function dataService($http, $q, expressionService) {
+export default function dataService($http, $q) {
   // Tests to determine if child region is in parent
   var subregionTests = (function() {
     function commonNumericPrefix(sourceRegion) {
@@ -211,7 +212,7 @@ export default function dataService($http, $q, expressionService) {
             );
         } else if (attributeMetadata.expression) {
           // Collect variables and evaluate expression
-          var expr = expressionService.parse(attributeMetadata.expression);
+          var expr = expression(attributeMetadata.expression);
           return $q.all(
             _.map(
               expr.variables,
