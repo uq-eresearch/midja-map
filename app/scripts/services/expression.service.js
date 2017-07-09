@@ -1,23 +1,23 @@
-import _ from 'lodash-es'
+import R from 'ramda'
 import { parse as mathjsParse } from 'mathjs'
 
 export default function expressionService($injector) {
-  var service = {};
+  const extractVariables =
+    R.pipe(
+      R.filter(R.propEq('type', 'SymbolNode')),
+      R.pluck('name'),
+      R.uniq,
+      R.sortBy(R.identity)
+    )
 
-  service.parse = function expressionService$parse(expr) {
-    var obj = {};
-    var fNode = mathjsParse(expr);
-    var code = fNode.compile();
-    var isSymbolNode = _.flow(
-      _.property('type'),
-      _.partial(_.isEqual, 'SymbolNode'));
-    obj.variables =
-      _.uniq(_.map(fNode.filter(isSymbolNode), _.property('name'))).sort();
-    obj.evaluate = function(scope) {
-      return code.eval(scope);
-    };
-    return obj;
-  };
+  function parse(expr) {
+    const fNode = mathjsParse(expr)
+    const code = fNode.compile()
+    return {
+      evaluate: scope => code.eval(scope),
+      variables: extractVariables(fNode)
+    }
+  }
 
-  return service;
+  return R.objOf('parse', parse)
 }
