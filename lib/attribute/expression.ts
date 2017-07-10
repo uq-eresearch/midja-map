@@ -1,8 +1,10 @@
 import R from 'ramda'
 import { parse as mathjsParse } from 'mathjs'
 
+type Scope = {[variable: string]: any}
+
 interface Expression {
-  evaluate: (scope: object) => any,
+  evaluate: (scope: Scope) => any,
   variables: string[]
 };
 

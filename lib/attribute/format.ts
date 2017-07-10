@@ -15,8 +15,8 @@ const numberFormat = R.memoize(function(fmt) {
   }
 })
 
-function formatNumber(n, fmt) {
-  let formatter = (numberFormat(fmt) || defaultFormat);
+function formatNumber(n: any, fmt: string): string {
+  const formatter: Intl.NumberFormat = (numberFormat(fmt) || defaultFormat);
   if (R.is(Number, n) && isFinite(n) && formatter) {
     return formatter.format(n)
   } else if (R.isNil(n)) {
