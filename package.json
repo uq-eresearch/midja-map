@@ -8,6 +8,8 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@types/mathjs": "0.0.34",
+    "@types/ramda": "^0.24.2",
     "angular-animate": "^1.6.4",
     "angular-data-table": "git+https://github.com/jonshaffer/angular-data-table.git",
     "angular-jwt": "^0.1.9",
@@ -63,6 +65,8 @@
     "sdmx-rest": "^2.5.1",
     "simple-statistics": "^4.1.0",
     "style-loader": "^0.18.1",
+    "ts-loader": "^2.2.2",
+    "typescript": "^2.4.1",
     "ui-select": "^0.19.8",
     "webpack": "^2.6.1",
     "webpack-clean-obsolete-chunks": "^0.1.9",

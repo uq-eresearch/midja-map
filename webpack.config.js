@@ -7,6 +7,18 @@ var FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var Visualizer = require('webpack-visualizer-plugin');
 
+const babelOptions = {
+  presets: [
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 versions", "safari >= 7"]
+      },
+      "modules": false,
+      "debug": true
+    }]
+  ]
+}
+
 module.exports = {
   target: 'web',
   entry: {
@@ -20,20 +32,27 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: babelOptions
+          },
+          {
+            loader: 'ts-loader'
+          }
+        ]
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          presets: [
-            ["env", {
-              "targets": {
-                "browsers": ["last 2 versions", "safari >= 7"]
-              },
-              "modules": false,
-              "debug": true
-            }]
-          ]
-        }
+        use: [
+          {
+            loader: 'babel-loader',
+            options: babelOptions
+          }
+        ]
       },
       {
         test: /\.scss$/,
@@ -70,6 +89,9 @@ module.exports = {
         loader: 'file-loader?name=./assets/[name]-[sha512:hash:base32:16].[ext]'
       }
     ]
+  },
+  resolve: {
+    extensions: ['.ts', '.js']
   },
   devtool: 'source-map',
   devServer: {
