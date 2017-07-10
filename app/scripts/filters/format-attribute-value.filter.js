@@ -1,9 +1,10 @@
 import { isNumber } from 'lodash-es'
+import { formatNumber } from '../../../lib/attribute/format'
 
-export default function formatAttributeValueFilter(formattingService) {
+export default function formatAttributeValueFilter() {
   return (v, attribute) => {
     if (isNumber(v)) {
-      return formattingService.formatNumber(v, attribute.format)
+      return formatNumber(v, attribute.format)
     } else {
       return v
     }

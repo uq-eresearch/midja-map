@@ -2,9 +2,10 @@ import L from 'leaflet'
 import 'leaflet.vectorgrid'
 import _ from 'lodash-es'
 import * as colorbrewer from "colorbrewer"
+import { formatNumber } from '../../../lib/attribute/format'
 
 export default function regionMap($http, $rootScope, $q, dataService,
-    formattingService, $timeout, $uibModal) {
+    $timeout, $uibModal) {
 
   // tileserver-gl-light URL
   const tileserverBaseUrl = "https://tiles.map.midja.org"
@@ -380,7 +381,7 @@ export default function regionMap($http, $rootScope, $q, dataService,
       var text = L.DomUtil.create('span', '', li);
       text.innerHTML = _.map(
         [bucket.min, bucket.max],
-        _.partial(formattingService.formatNumber, _, topic.format)
+        _.partial(formatNumber, _, topic.format)
       ).join(" - ");
     });
     return div;
@@ -469,7 +470,7 @@ export default function regionMap($http, $rootScope, $q, dataService,
             var dt = L.DomUtil.create('dt', '', dl);
             dt.innerHTML=topic.description;
             var dd = L.DomUtil.create('dd', '', dl);
-            dd.innerHTML=formattingService.formatNumber(
+            dd.innerHTML=formatNumber(
               data[topic.name], topic.format);
           })
         }
@@ -504,7 +505,7 @@ export default function regionMap($http, $rootScope, $q, dataService,
               attributes: attributes,
               getValue: _.propertyOf(
                   _.first(_.values(data))),
-              formatNumber: formattingService.formatNumber
+              formatNumber: formatNumber
             }
           }
         });

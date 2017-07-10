@@ -1,8 +1,9 @@
 import _ from 'lodash-es'
 import './styles/time-series-chart.css'
+import { formatNumber } from '../../../lib/attribute/format'
 
 export default function timeSeriesChart(
-    dataService, formattingService, $compile, $timeout) {
+    dataService, $compile, $timeout) {
 
   function attributeMatcher(attributeSelector) {
     // TODO: Handle function selectors
@@ -91,7 +92,7 @@ export default function timeSeriesChart(
                       right: 20
                     },
                     yAxis: {
-                      tickFormat: formattingService.formatNumber
+                      tickFormat: formatNumber
                     }
                   }
                 }

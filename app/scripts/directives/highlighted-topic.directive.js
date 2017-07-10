@@ -2,7 +2,7 @@ import _ from 'lodash-es'
 import './styles/highlighted-topic.css'
 
 export default function highlightedTopic(
-    dataService, formattingService, $compile, $timeout) {
+    dataService, $compile, $timeout) {
 
   function attributeMatcher(attributeSelector) {
     // TODO: Handle regex/function selectors

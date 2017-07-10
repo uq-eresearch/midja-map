@@ -1,8 +1,9 @@
 import _ from 'lodash-es'
 import './styles/topic-breakdown-bar.css'
+import { formatNumber } from '../../../lib/attribute/format'
 
 export default function topicBreakdownBar(
-    dataService, formattingService, $compile, $timeout) {
+    dataService, $compile, $timeout) {
 
   function attributeMatcher(attributeSelector) {
     // TODO: Handle function selectors
@@ -85,7 +86,7 @@ export default function topicBreakdownBar(
                     showControls: false,
                     showLegend: true,
                     showValues: true,
-                    valueFormat: formattingService.formatNumber,
+                    valueFormat: formatNumber,
                     stacked: true,
                     showXAxis: false,
                     margin: {
@@ -93,7 +94,7 @@ export default function topicBreakdownBar(
                       bottom: 20
                     },
                     yAxis: {
-                      tickFormat: formattingService.formatNumber
+                      tickFormat: formatNumber
                     }
                   },
                   caption: {

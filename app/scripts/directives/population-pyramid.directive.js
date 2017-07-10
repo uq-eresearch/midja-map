@@ -1,8 +1,9 @@
 import _ from 'lodash-es'
 import './styles/population-pyramid.css'
+import { formatNumber } from '../../../lib/attribute/format'
 
 export default function populationPyramid(
-    dataService, formattingService, $compile, $timeout) {
+    dataService, $compile, $timeout) {
 
   function attributeMatcher(attributeSelector) {
     // TODO: Handle function selectors
@@ -114,7 +115,7 @@ export default function populationPyramid(
                     showValues: true,
                     valueFormat: _.flow(
                       Math.abs,
-                      formattingService.formatNumber
+                      formatNumber
                     ),
                     stacked: true,
                     showXAxis: true,
@@ -126,7 +127,7 @@ export default function populationPyramid(
                     yAxis: {
                       tickFormat: _.flow(
                         Math.abs,
-                        formattingService.formatNumber
+                        formatNumber
                       )
                     }
                   },

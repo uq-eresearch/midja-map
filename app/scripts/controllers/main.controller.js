@@ -6,7 +6,7 @@ import {
 import csvStringify from 'csv-stringify'
 
 export default function MainController(
-    dataService, formattingService, statsService,
+    dataService, statsService,
     $q, $http, $scope, $uibModal, $timeout, $window, $document, $filter) {
   var vm = this;
   vm.propTopicsOnly = false;
