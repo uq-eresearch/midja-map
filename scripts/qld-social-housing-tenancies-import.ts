@@ -78,118 +78,113 @@ const attributeDef = (name: string, desc: string) => {
   }
 }
 
-interface AttributeDefinition {
-  attribute: Attribute,
-  f: (rows: object[]) => any
-}
+type AttributeDefinition = [Attribute, (rows: object[]) => any]
 
 const attributeDefinitions: AttributeDefinition[] = [
-  {
-    attribute: attributeDef(
+  [
+    attributeDef(
       'all_households',
       'Number of government-managed social rental housing households - all'),
-    f: R.length
-  },
-  {
-    attribute: attributeDef(
+    R.length
+  ],
+  [
+    attributeDef(
       'all_overcrowded_households',
       'Number of overcrowded government-managed social rental housing households - all'),
-    f: R.pipe(
+    R.pipe(
       R.filter(isOvercrowded),
       R.length
     )
-  },
-  {
-    attribute: attributeDef(
+  ],
+  [
+    attributeDef(
       'all_people',
       'Number of people in government-managed social rental housing - all'),
-    f: R.pipe(
+    R.pipe(
       R.pluck('Occs'),
       R.map(intOrZero),
       R.sum
     )
-  },
-  {
-    attribute: attributeDef(
+  ],
+  [
+    attributeDef(
       'indigenous_households',
       'Number of government-managed social rental housing tenancies - indigenous'),
-    f: R.pipe(
+    R.pipe(
       R.filter(isIndigenous),
       R.length
     )
-  },
-  {
-    attribute: attributeDef(
+  ],
+  [
+    attributeDef(
       'indigenous_overcrowded_households',
       'Number of overcrowded government-managed social rental housing tenancies - indigenous'),
-    f: R.pipe(
+    R.pipe(
       R.filter(R.both(isIndigenous, isOvercrowded)),
       R.length
     )
-  },
-  {
-    attribute: attributeDef(
+  ],
+  [
+    attributeDef(
       'indigenous_people',
       'Number of people in government-managed social rental housing - indigenous'),
-    f: R.pipe(
+    R.pipe(
       R.filter(isIndigenous),
       R.pluck('Occs'),
       R.map(intOrZero),
       R.sum
     )
-  },
-  {
-    attribute: attributeDef(
+  ],
+  [
+    attributeDef(
       'nonindigenous_households',
       'Number of government-managed social rental housing tenancies - non-indigenous or unknown'),
-    f: R.pipe(
+    R.pipe(
       R.filter(isNotIndigenous),
       R.length
     )
-  },
-  {
-    attribute: attributeDef(
+  ],
+  [
+    attributeDef(
       'nonindigenous_overcrowded_households',
       'Number of overcrowded government-managed social rental housing tenancies' +
       ' - non-indigenous or unknown'),
-    f: R.pipe(
+    R.pipe(
       R.filter(R.both(isNotIndigenous, isOvercrowded)),
       R.length
     )
-  },
-  {
-    attribute: attributeDef(
+  ],
+  [
+    attributeDef(
       'nonindigenous_people',
       'Number of people in government-managed social rental housing - non-indigenous or unknown'),
-    f: R.pipe(
+    R.pipe(
       R.filter(isNotIndigenous),
       R.pluck('Occs'),
       R.map(intOrZero),
       R.sum
     )
-  }
+  ]
 ]
 
 // applyAttributeDefinitions :: {String: [Object]} → [Object]
-const applyAttributeDefinitions = (defs: AttributeDefinition[]) =>
-  R.pipe(
-    R.juxt( // Apply all attribute.f functions
+const applyAttributeDefinitions:
+    (defs: AttributeDefinition[]) =>
+    (groupedRows: { [code: string]: object[] }) =>
+    R.KeyValuePair<Attribute, AttributeData>[] =
+  defs =>
+    R.pipe(
+      R.juxt( // Apply all attribute.f functions
+        R.map(
+          R.mapObjIndexed, // Apply f across {region_code: [row]} object
+          R.pluck(1, defs)
+        )
+      ),
       R.map(
-        R.pipe( // Apply attribute.f across {region_code: [row]} object
-          R.prop('f'),
-          R.mapObjIndexed
-        ),
-        defs
-      )
-    ),
-    R.map(
-      R.pipe(
-        R.pickBy(R.complement(R.isNil)), // Remove null values
-        R.objOf('data') // Nest {region_code: v} data in object
-      )
-    ),
-    R.zipWith(R.merge, defs)  // Merge data into attribute definition
-  )
+        R.pickBy(R.complement(R.isNil)) // Remove null values
+      ),
+      R.zip(R.pluck(0, defs))  // Merge data into attribute definition
+    )
 
 // writeDataForAttribute :: regionType → (attribute, data) → Promise attribute
 const writeDataForAttribute =
@@ -205,10 +200,7 @@ const writeDataForAttribute =
 const processGroupedRows = (regionType: string, groupedRows: {string: object[]}) =>
   Promise.all(
     R.map(
-      R.pipe(
-        R.props(['attribute', 'data']),
-        tupled2(writeDataForAttribute(regionType))
-      ),
+      tupled2(writeDataForAttribute(regionType)),
       applyAttributeDefinitions(attributeDefinitions)(groupedRows)
     )
   ).then(attributes =>
