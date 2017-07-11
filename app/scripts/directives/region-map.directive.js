@@ -23,7 +23,8 @@ export default function regionMap($http, $rootScope, $q, dataService,
     'points': _.constant({
       weight: 0.1,
       color: '#000000',
-      opacity: 0
+      opacity: 0,
+      radius: 1
     })
   }
   const regionHeadingTmpl = d => `${d.name} (${d.code})`
@@ -105,7 +106,8 @@ export default function regionMap($http, $rootScope, $q, dataService,
     return function(properties, zoom) {
       var hideStyle = _.constant({
         opacity: 0,
-        fillOpacity: 0
+        fillOpacity: 0,
+        radius: 1
       });
       var regionCode = properties.region_code
       var region = _.find(
@@ -146,7 +148,7 @@ export default function regionMap($http, $rootScope, $q, dataService,
          bounds: bounds,
          interactive: true,
          layerOrder: ['regions', 'points'],
-         rendererFactory: L.canvas.tile,
+         rendererFactory: L.svg.tile,
          vectorTileLayerStyles: styles,
          getFeatureId: function(feature) {
            var randomId = 'feature-'+(Math.random()+"").slice(2);
