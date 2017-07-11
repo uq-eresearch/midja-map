@@ -162,7 +162,9 @@ export default function regionMap($http, $rootScope, $q, dataService,
            _.keys(tile._features).forEach(function(featureId) {
              vectorGrid.resetFeatureStyle(featureId);
            });
-           tile._redraw();
+           if (tile._redraw) {
+             tile._redraw();
+           }
          });
        }, 100);
        var resolveRegion = function (regionCode) {
