@@ -1,9 +1,20 @@
 interface Attribute {
-  name: string,
-  description: string,
-  type: string
+  readonly name: string,
+  readonly description: string,
+  readonly type: string
 }
 
-type AttributeData = {[code: string]: number}
+type AttributeData = {
+  readonly [code: string]: any
+}
 
-type Correspondences = { [source: string]: { [target: string]: number }}
+type Correspondences = {
+  readonly [source: string]: {
+    readonly [target: string]: number
+  }
+}
+
+interface Region {
+  readonly code: string,
+  readonly name: string
+}

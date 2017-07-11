@@ -8,6 +8,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@types/csv-parse": "^1.1.8",
     "@types/fs-extra": "^3.0.3",
     "@types/mathjs": "0.0.34",
     "@types/ramda": "^0.24.2",
@@ -21,6 +22,7 @@
     "angular-sanitize": "^1.6.4",
     "angular-storage": "0.0.15",
     "angular-ui-bootstrap": "^2.5.0",
+    "axios": "^0.16.2",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",

@@ -1,29 +1,31 @@
+import '../lib/types'
 import R from 'ramda'
 import path from 'path'
 import { readJSON } from 'fs-extra'
-import rp from 'request-promise-native'
+import axios from 'axios'
 import parseCSV from 'csv-parse'
-import { median } from 'simple-statistics'
 import { writeIndex, writeAttributeData } from '../lib/attribute/import'
+import { tupled2 } from '../lib/util'
 
 const csvUrl =
   'http://www.hpw.qld.gov.au/SiteCollectionDocuments/TenanciesGovernmentManagedSocialRentalHousing.csv'
 
 // csvParser :: Object → String → Promise [Object]
-const csvParser = options => text =>
-  new Promise((resolve, reject) => {
-    try {
-      parseCSV(text, options, (err, data) => {
-        if (err) reject(err)
-        else resolve(data)
-      })
-    } catch (e) {
-      reject(e)
-    }
-  })
+const csvParser: (options: object) => (text: string) => Promise<object[]> =
+  options => text =>
+    new Promise((resolve, reject) => {
+      try {
+        parseCSV(text, options, (err, data) => {
+          if (err) reject(err)
+          else resolve(data)
+        })
+      } catch (e) {
+        reject(e)
+      }
+    })
 
 // regionNameResolver :: String → Promise (String → Object)
-const regionNameResolver = regionType => {
+const regionNameResolver = (regionType: string) => {
   const nameLookupFile = path.resolve(
     __dirname, '..', 'data', 'public', regionType, 'region_name.json')
   return readJSON(nameLookupFile)
@@ -32,7 +34,7 @@ const regionNameResolver = regionType => {
         R.zipObj(['code', 'name']),
         R.toPairs(lgaNameLookup)
       )
-      const matcher = source =>
+      const matcher = (source: string) =>
         R.find(R.pipe(R.prop('name'), R.startsWith(source)), regions)
       return R.memoize(matcher) // Need to cache for fast resolution
     })
@@ -57,7 +59,7 @@ const intOrZero = R.pipe(
   R.defaultTo(0)
 )
 
-const attributeDef = (name, desc) => {
+const attributeDef = (name: string, desc: string) => {
   return {
     name: 'qldgov_social_housing_tenancies_'+name,
     description: desc,
@@ -76,7 +78,12 @@ const attributeDef = (name, desc) => {
   }
 }
 
-const attributeDefinitions = [
+interface AttributeDefinition {
+  attribute: Attribute,
+  f: (rows: object[]) => any
+}
+
+const attributeDefinitions: AttributeDefinition[] = [
   {
     attribute: attributeDef(
       'all_households',
@@ -164,7 +171,7 @@ const attributeDefinitions = [
 ]
 
 // applyAttributeDefinitions :: {String: [Object]} → [Object]
-const applyAttributeDefinitions = (defs) =>
+const applyAttributeDefinitions = (defs: AttributeDefinition[]) =>
   R.pipe(
     R.juxt( // Apply all attribute.f functions
       R.map(
@@ -185,20 +192,22 @@ const applyAttributeDefinitions = (defs) =>
   )
 
 // writeDataForAttribute :: regionType → (attribute, data) → Promise attribute
-const writeDataForAttribute = regionType => (attribute, data) =>
-  writeAttributeData('public', regionType, attribute, data)
-    .then(R.tap(() =>
-      console.log(`Wrote ${regionType} data for ${attribute.name}`)
-    ))
-    .then(R.always(attribute))
+const writeDataForAttribute =
+  (regionType: string) =>
+    (attribute: Attribute, data: AttributeData) =>
+      writeAttributeData('public', regionType, attribute, data)
+        .then(R.tap(() =>
+          console.log(`Wrote ${regionType} data for ${attribute.name}`)
+        ))
+        .then(R.always(attribute))
 
 // processGroupedRows :: (String, {k: [Object]}) → Promise
-const processGroupedRows = (regionType, groupedRows) =>
+const processGroupedRows = (regionType: string, groupedRows: {string: object[]}) =>
   Promise.all(
     R.map(
       R.pipe(
         R.props(['attribute', 'data']),
-        R.apply(writeDataForAttribute(regionType))
+        tupled2(writeDataForAttribute(regionType))
       ),
       applyAttributeDefinitions(attributeDefinitions)(groupedRows)
     )
@@ -213,28 +222,35 @@ const processGroupedRows = (regionType, groupedRows) =>
   )
 
 // Get CSV rows
-const pRows =
-  rp(csvUrl)
+const pRows: Promise<object[]> =
+  axios.get(csvUrl)
+    .then(R.prop('data'))
     .then(csvParser({
       auto_parse: true,
       columns: true
     }))
 
+
+type RegionResolver = (row: object) => string|null
 // Get region resolvers for region types
-const pResolvers =
+const pResolvers: Promise<{[s: string]: RegionResolver}> =
   regionNameResolver('lga_2011')
-    .then(lgaRegionResolver => {
-      return {
-        "lga_2011": R.pipe(
-          R.prop('LGA'),
+    .then((lgaRegionResolver: (s: string) => Region|null) => {
+      const lgaResolver: RegionResolver =
+        R.pipe(
+          R.prop<string>('LGA'),
           lgaRegionResolver,
-          R.defaultTo({}),
-          R.prop('code')
-        ),
-        "postcode_2011": R.pipe(
+          R.defaultTo<Region>({'code': null, 'name': null}),
+          (v: Region) => v.code
+        )
+      const postcodeResolver: RegionResolver =
+        R.pipe(
           R.prop('Postcode'),
           R.ifElse(R.isNil, R.identity, R.toString)
         )
+      return {
+        "lga_2011": lgaResolver,
+        "postcode_2011": postcodeResolver
       }
     })
 
@@ -244,7 +260,7 @@ pRows
     pResolvers
       .then(
         R.mapObjIndexed(
-          resolver =>
+          (resolver: RegionResolver) =>
             R.groupBy(
               resolver,
               R.filter(
@@ -258,7 +274,7 @@ pRows
   .then(
     R.pipe(
       R.toPairs,
-      R.map(R.apply(processGroupedRows)),
+      R.map(tupled2(processGroupedRows)),
       vs => Promise.all(vs)
     )
   )
