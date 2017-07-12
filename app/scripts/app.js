@@ -71,14 +71,13 @@ export default angular
     $httpProvider, $locationProvider) {
     uiSelectConfig.resetSearchInput = true;
     $routeProvider
-      .otherwise({
+      .when('/geography/:regionType' ,{
         template: require('../views/main.html'),
         controller: 'MainController',
         controllerAs: 'vm'
-      });
+      })
+      .otherwise('/geography/lga_2011');
   })
   .run(function($rootScope, $location) {
-    $rootScope.$on('$locationChangeStart', function() {
-      $location.path('/');
-    });
+    // Nothing special
   });

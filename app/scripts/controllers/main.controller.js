@@ -7,7 +7,7 @@ import csvStringify from 'csv-stringify'
 
 export default function MainController(
     dataService, statsService,
-    $q, $http, $scope, $uibModal, $timeout, $window, $document, $filter) {
+    $q, $http, $scope, $uibModal, $timeout, $filter, $route) {
   var vm = this;
   vm.propTopicsOnly = false;
 
@@ -157,7 +157,7 @@ export default function MainController(
   }
 
   vm.vis = {
-    regionTypeSelection: "lga_2011",
+    regionTypeSelection: $route.current.params.regionType,
     filter: {
       "Indigenous Population >= 150": false,
       "Indigenous Households >= 20": false,
@@ -810,6 +810,12 @@ export default function MainController(
   $scope.deselectTopic = (topic) => {
     vm.vis.topics = _.without(vm.vis.topics, topic)
     selectedTopicsChanged()
+  }
+
+  $scope.changeRegionType = (regionType) => {
+    $route.updateParams({
+      'regionType': regionType
+    })
   }
 
 }

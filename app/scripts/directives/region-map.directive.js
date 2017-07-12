@@ -1,3 +1,4 @@
+import angular from 'angular'
 import L from 'leaflet'
 import 'leaflet.vectorgrid'
 import _ from 'lodash-es'
@@ -52,11 +53,6 @@ export default function regionMap($http, $rootScope, $q, dataService,
     }
   })
 
-  // Generate random ID for map
-  var mapId = 'map-' + Math.random().toString().slice(2);
-  // Create template using ID
-  var template = `<div id="${mapId}" class="region-map"></div>`
-
   var map = null;
   var regionLayers = null;
 
@@ -72,10 +68,9 @@ export default function regionMap($http, $rootScope, $q, dataService,
   }
 
   return {
-    template: template,
+    template: '<div></div>',
     restrict: 'E',
     scope: scopeAttributes,
-    replace: true,
     link: postLink
   };
 
@@ -395,6 +390,12 @@ export default function regionMap($http, $rootScope, $q, dataService,
     setupEvents(scope);
     setupHooks(scope);
 
+    // Generate random ID for map
+    var mapId = 'map-' + Math.random().toString().slice(2);
+    // Create template using ID
+    var mapEl = angular.element(`<div id="${mapId}" class="region-map"></div>`)
+    element.append(mapEl)
+
     var map = L.map(mapId, {
       center: [-27, 134],
       doubleClickZoom: false,
@@ -550,6 +551,11 @@ export default function regionMap($http, $rootScope, $q, dataService,
       scope._bucketFilter = null
       scope.vectorGrid.smartRedraw()
     })
+
+    element.on('$destroy', function() {
+      map.remove()
+      element.remove(mapEl)
+    });
   }
 
 }

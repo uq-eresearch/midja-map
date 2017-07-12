@@ -17,7 +17,7 @@
             </label>
             <div ng-repeat="(sel,desc) in vm.regionTypeSelectorOptions">
               <label>
-                <input type="radio" ng-model="vm.vis.regionTypeSelection" value="{{ sel }}" ng-change="vm.selectedLocationsChanged()"> {{ desc }}
+                <input type="radio" ng-model="vm.vis.regionTypeSelection" value="{{ sel }}" ng-change="changeRegionType(sel)"> {{ desc }}
               </label>
             </div>
             <div ng-show="vm.vis.regionTypeSelection.indexOf('lga') == 0">
