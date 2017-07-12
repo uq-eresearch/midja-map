@@ -169,3 +169,26 @@ export const extractRowData:
         ),
       R.mapObjIndexed(applyAttributeDefinitions(attributeDefinitions))
     )
+
+export const importCSVData:
+    (
+      accessType: string,
+      regionResolvers: {[regionType: string]: RegionResolver},
+      attributeDefinitions: AttributeDefinition[]
+    ) =>
+    (csvData: string) =>
+    Promise<{[regionType: string]: Attribute[]}> =
+  (accessType, regionResolvers, attributeDefinitions) =>
+    text =>
+      csvTextParser({
+        auto_parse: true,
+        columns: true
+      })(text).then(
+        R.pipe(
+          extractRowData(regionResolvers, attributeDefinitions),
+          R.mapObjIndexed(R.flip(writeAttributesAndData(accessType))),
+          (vs: {[regionType: string]: Promise<Attribute[]>}) =>
+            Promise.all<Attribute[]>(R.values(vs))
+              .then(R.zipObj(R.keys(vs)))
+        )
+      )

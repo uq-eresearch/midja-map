@@ -1,12 +1,7 @@
 import R from 'ramda'
 import { median } from 'mathjs'
 import axios from 'axios'
-import {
-  csvTextParser,
-  extractRowData,
-  regionNameLookup,
-  writeAttributesAndData } from '../lib/attribute/import'
-import { tupled2 } from '../lib/util'
+import { importCSVData, regionNameLookup } from '../lib/attribute/import'
 
 const lga2011RegionNames = require('../data/public/lga_2011/region_name.json')
 
@@ -113,16 +108,5 @@ const regionResolvers: {[regionType: string]: (row: object) => Region|null} =
 
 axios.get(csvUrl)
   .then(R.prop('data'))
-  .then(csvTextParser({
-    auto_parse: true,
-    columns: true
-  }))
-  .then(extractRowData(regionResolvers, attributeDefinitions))
-  .then(
-    R.pipe(
-      R.toPairs,
-      R.map(tupled2(writeAttributesAndData('public'))),
-      vs => Promise.all(vs)
-    )
-  )
+  .then(importCSVData('public', regionResolvers, attributeDefinitions))
   .catch(e => { console.log(e, e.stack) })
