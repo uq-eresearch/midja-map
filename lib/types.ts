@@ -4,9 +4,16 @@ interface Attribute {
   readonly type: string
 }
 
-type AttributeData = {
-  readonly [code: string]: any
+type AttributeData = StringAttributeData | NumericAttributeData
+
+type StringAttributeData = {
+  readonly [code: string]: string
 }
+
+type NumericAttributeData = {
+  readonly [code: string]: number
+}
+
 
 type Correspondences = {
   readonly [source: string]: {
