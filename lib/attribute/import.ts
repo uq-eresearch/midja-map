@@ -50,6 +50,35 @@ export const writeAttributeData = R.curry(
       jsonOptions)
 )
 
+export const writeAttributesAndData = R.curry(
+    (
+      accessType: string,
+      regionType: string,
+      attributeAndDataPairs: [Attribute, AttributeData][]
+    ) =>
+  Promise.all(
+    R.map(
+      tupled2(
+        (attribute: Attribute, data: AttributeData) =>
+          writeAttributeData(accessType, regionType, attribute, data)
+            .then(R.tap(() =>
+              console.log(`Wrote ${regionType} data for ${attribute.name}`)
+            ))
+            .then(R.always(attribute))
+      ),
+      attributeAndDataPairs
+    )
+  ).then(attributes =>
+    writeIndex(accessType, regionType, attributes)
+      .then(R.tap(() =>
+        console.log(
+          `Wrote ${attributes.length} attributes to ${regionType} index`
+        )
+      ))
+      .then(R.always(attributes))
+  )
+)
+
 export const csvTextParser:
     (options: object) =>
     (text: string) =>

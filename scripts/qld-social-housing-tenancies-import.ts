@@ -5,8 +5,7 @@ import {
   csvTextParser,
   extractRowData,
   regionNameLookup,
-  writeIndex,
-  writeAttributeData } from '../lib/attribute/import'
+  writeAttributesAndData } from '../lib/attribute/import'
 import { tupled2 } from '../lib/util'
 
 const lga2011RegionNames = require('../data/public/lga_2011/region_name.json')
@@ -142,35 +141,6 @@ const attributeDefinitions: [Attribute, (rows: object[]) => any][] = [
   ]
 ]
 
-// writeDataForAttribute :: regionType → (attribute, data) → Promise attribute
-const writeDataForAttribute =
-  (regionType: string) =>
-    (attribute: Attribute, data: AttributeData) =>
-      writeAttributeData('public', regionType, attribute, data)
-        .then(R.tap(() =>
-          console.log(`Wrote ${regionType} data for ${attribute.name}`)
-        ))
-        .then(R.always(attribute))
-
-// processGroupedRows :: (String, {k: [Object]}) → Promise
-const processGroupedRows = (regionType: string, attributeAndDataPairs: [Attribute, AttributeData][]) =>
-  Promise.all(
-    R.map(
-      tupled2(writeDataForAttribute(regionType)),
-      attributeAndDataPairs
-    )
-  ).then(attributes =>
-    writeIndex('public', regionType, attributes)
-      .then(R.tap(() =>
-        console.log(
-          `Wrote ${attributes.length} attributes to ${regionType} index`
-        )
-      ))
-      .then(R.always(attributes))
-  )
-
-type RegionResolver = (row: object) => Region|null
-
 function postcodeToRegion(postcode: string): Region {
   return {
     code: postcode,
@@ -178,8 +148,7 @@ function postcodeToRegion(postcode: string): Region {
   }
 }
 
-// Get region resolvers for region types
-const regionResolvers: {[regionType: string]: RegionResolver} =
+const regionResolvers: {[regionType: string]: (row: object) => Region|null} =
   {
     "lga_2011": R.pipe(
       R.prop<string>('LGA'),
@@ -207,7 +176,7 @@ axios.get(csvUrl)
   .then(
     R.pipe(
       R.toPairs,
-      R.map(tupled2(processGroupedRows)),
+      R.map(tupled2(writeAttributesAndData('public'))),
       vs => Promise.all(vs)
     )
   )
