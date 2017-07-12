@@ -4787,6 +4787,56 @@
       }
     },
     {
+      "name": "qldgov_social_housing_dwellings_occupied",
+      "from": "postcode_2011"
+    },
+    {
+      "name": "qldgov_social_housing_dwellings_total",
+      "from": "postcode_2011"
+    },
+    {
+      "name": "qldgov_social_housing_dwellings_unoccupied",
+      "from": "postcode_2011"
+    },
+    {
+      "name": "qldgov_social_housing_dwellings_untenantable",
+      "from": "postcode_2011"
+    },
+    {
+      "name": "qldgov_social_housing_dwellings_proportion_occupied",
+      "description": "Proportion of public housing and state owned and managed indigenous housing dwellings occupied",
+      "type": "number",
+      "expression": "qldgov_social_housing_dwellings_occupied / qldgov_social_housing_dwellings_total",
+      "format": {
+        "style": "percent"
+      },
+      "source": {
+        "name": "Queensland Government - Department of Housing and Public Works",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
+        },
+        "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/PHSOMIHDwellingData.csv"
+      }
+    },
+    {
+      "name": "qldgov_social_housing_dwellings_proportion_unoccupied",
+      "description": "Proportion of public housing and state owned and managed indigenous housing dwellings unoccupied",
+      "type": "number",
+      "expression": "qldgov_social_housing_dwellings_unoccupied / qldgov_social_housing_dwellings_total",
+      "format": {
+        "style": "percent"
+      },
+      "source": {
+        "name": "Queensland Government - Department of Housing and Public Works",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
+        },
+        "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/PHSOMIHDwellingData.csv"
+      }
+    },
+    {
       "name": "qldgov_social_housing_tenancies_all_households",
       "from": "postcode_2011"
     },
