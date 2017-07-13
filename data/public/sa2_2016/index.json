@@ -1,6 +1,728 @@
 {
   "attributes": [
     {
+      "name": "census2016_0minus_weekly_household_income_all",
+      "description": "Nil or negative weekly household income - all households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#Neg_Nil_income_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_0minus_weekly_household_income_indigenous",
+      "description": "Nil or negative weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#Neg_Nil_inc_hh_with_Ind_psns"
+      }
+    },
+    {
+      "name": "census2016_1000to1249_weekly_household_income_all",
+      "description": "$1000 - $1249 weekly household income - all households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI1000_1249_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_1000to1249_weekly_household_income_indigenous",
+      "description": "$1000 - $1249 weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI1000_1249_Hh_with_Indig_psn"
+      }
+    },
+    {
+      "name": "census2016_1250to1499_weekly_household_income_all",
+      "description": "$1250 - $1499 weekly household income - all households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI1250_1499_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_1250to1499_weekly_household_income_indigenous",
+      "description": "$1250 - $1499 weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI1250_1499_Hh_with_Indig_psn"
+      }
+    },
+    {
+      "name": "census2016_1500to1999_weekly_household_income_all",
+      "description": "$1500 - $1999 weekly household income - all households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI1500_1999_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_1500to1999_weekly_household_income_indigenous",
+      "description": "$1500 - $1999 weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI1500_1999_Hh_with_Indig_psn"
+      }
+    },
+    {
+      "name": "census2016_150to299_weekly_household_income_all",
+      "description": "$150 - $299 weekly household income - all households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI150_299_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_150to299_weekly_household_income_indigenous",
+      "description": "$150 - $299 weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI150_299_Hhd_with_Indig_psns"
+      }
+    },
+    {
+      "name": "census2016_1to149_weekly_household_income_all",
+      "description": "$1 - $149 weekly household income - all households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI1_149_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_1to149_weekly_household_income_indigenous",
+      "description": "$1 - $149 weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI1_149_Hhd_with_Indig_psns"
+      }
+    },
+    {
+      "name": "census2016_2000to2499_weekly_household_income_all",
+      "description": "$2000 - $2499 weekly household income - all households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI2000_2499_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_2000to2499_weekly_household_income_indigenous",
+      "description": "$2000 - $2499 weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI2000_2499_Hh_with_Indig_psn"
+      }
+    },
+    {
+      "name": "census2016_2500to2999_weekly_household_income_all",
+      "description": "$2500 - $2999 weekly household income - all households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI2500_2999_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_2500to2999_weekly_household_income_indigenous",
+      "description": "$2500 - $2999 weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI2500_2999_Hh_with_Indig_psn"
+      }
+    },
+    {
+      "name": "census2016_3000plus_weekly_household_income_all",
+      "description": "$3000+ weekly household income - all households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI3000_more_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_3000plus_weekly_household_income_indigenous",
+      "description": "$3000+ weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI3000_more_Hh_with_Indig_psn"
+      }
+    },
+    {
+      "name": "census2016_300to399_weekly_household_income_all",
+      "description": "$300 - $399 weekly household income - all households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI300_399_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_300to399_weekly_household_income_indigenous",
+      "description": "$300 - $399 weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI300_399_Hhd_with_Indig_psns"
+      }
+    },
+    {
+      "name": "census2016_400to499_weekly_household_income_all",
+      "description": "$400 - $499 weekly household income - all households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI400_499_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_400to499_weekly_household_income_indigenous",
+      "description": "$400 - $499 weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI400_499_Hhd_with_Indig_psns"
+      }
+    },
+    {
+      "name": "census2016_500to649_weekly_household_income_all",
+      "description": "$500 - $649 weekly household income - all households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI500_649_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_500to649_weekly_household_income_indigenous",
+      "description": "$500 - $649 weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI500_649_Hhd_with_Indig_psns"
+      }
+    },
+    {
+      "name": "census2016_650to799_weekly_household_income_all",
+      "description": "$650 - $799 weekly household income - all households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI650_799_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_650to799_weekly_household_income_indigenous",
+      "description": "$650 - $799 weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI650_799_Hhd_with_Indig_psns"
+      }
+    },
+    {
+      "name": "census2016_800to999_weekly_household_income_all",
+      "description": "$800 - $999 weekly household income - all households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI800_999_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_800to999_weekly_household_income_indigenous",
+      "description": "$800 - $999 weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI800_999_Hh_with_Indig_psn"
+      }
+    },
+    {
+      "name": "census2016_average_household_size_all",
+      "description": "Average household size - all (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 1
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I04_AUS_SA2.csv#Avg_household_size_Tot"
+      }
+    },
+    {
+      "name": "census2016_average_household_size_indigenous",
+      "description": "Average household size - indigenous (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 1
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I04_AUS_SA2.csv#Av_hh_si_In_ps_hh_wi_Ind_psns"
+      }
+    },
+    {
+      "name": "census2016_average_number_of_persons_per_bedroom_all",
+      "description": "Average number of persons per bedroom - all (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 1
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I04_AUS_SA2.csv#Avg_Nu_psns_per_bed_Tot"
+      }
+    },
+    {
+      "name": "census2016_average_number_of_persons_per_bedroom_indigenous",
+      "description": "Average number of persons per bedroom - indigenous (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 1
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I04_AUS_SA2.csv#Av_N_p_pe_be_In_ps_hh_w_In_p"
+      }
+    },
+    {
+      "name": "census2016_completely_unstated_weekly_household_income_all",
+      "description": "Completely-unstated weekly household income - all households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#All_inc_NS_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_completely_unstated_weekly_household_income_indigenous",
+      "description": "Completely-unstated weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#All_inc_ns_Hh_with_Ind_psns"
+      }
+    },
+    {
+      "name": "census2016_median_weekly_household_income_all",
+      "description": "Median weekly household income - all households (Census 2016)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I04_AUS_SA2.csv#Med_hhd_inc_wk_Tot"
+      }
+    },
+    {
+      "name": "census2016_median_weekly_household_income_indigenous",
+      "description": "Median weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I04_AUS_SA2.csv#Me_hh_in_wk_In_ps_hh_In_ps"
+      }
+    },
+    {
+      "name": "census2016_partially_unstated_weekly_household_income_all",
+      "description": "Partially-unstated weekly household income - all households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#Partial_inc_stated_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_partially_unstated_weekly_household_income_indigenous",
+      "description": "Partially-unstated weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#Part_inc_st_Hh_with_Indig_psn"
+      }
+    },
+    {
+      "name": "census2016_proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_indigenous",
+      "description": "Proportion of dwellings that need 1 or more extra bedrooms - Indigenous (Census 2016)",
+      "type": "number",
+      "format": {
+        "style": "percent"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I04_AUS_SA2.csv#P_d_n_x_b_In_ps_hh_w_In_p"
+      }
+    },
+    {
+      "name": "census2016_proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_non_indigenous",
+      "description": "Proportion of dwellings that need 1 or more extra bedrooms - Non-Indigenous (Census 2016)",
+      "type": "number",
+      "format": {
+        "style": "percent"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I04_AUS_SA2.csv#P_d_n_x_b_No_In_p_oth_hh"
+      }
+    },
+    {
+      "name": "census2016_proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_total",
+      "description": "Proportion of dwellings that need 1 or more extra bedrooms - Total (Census 2016)",
+      "type": "number",
+      "format": {
+        "style": "percent"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I04_AUS_SA2.csv#P_d_n_x_b_Tot"
+      }
+    },
+    {
+      "name": "census2016_total_possibly_educated_all_persons",
+      "description": "Total possibly educated persons - all persons (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I06_AUS_SA2.csv#P_Tot_Tot"
+      }
+    },
+    {
+      "name": "census2016_total_possibly_educated_indigenous_persons",
+      "description": "Total possibly educated persons - indigenous persons (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I06_AUS_SA2.csv#P_Tot_Indigenous"
+      }
+    },
+    {
+      "name": "census2016_year_12_educated_all_persons",
+      "description": "Year 12 educated - all persons (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I06_AUS_SA2.csv#P_Y12_equivalent_Tot"
+      }
+    },
+    {
+      "name": "census2016_year_12_educated_indigenous_persons",
+      "description": "Year 12 educated - indigenous persons (Census 2016)",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I06_AUS_SA2.csv#P_Y12_equivalent_Indigenous"
+      }
+    },
+    {
       "name": "ra_name",
       "description": "Remoteness Area name",
       "type": "string"

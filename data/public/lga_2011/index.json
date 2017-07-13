@@ -13,7 +13,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#Negative_Nil_income_Total_households"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#Neg_Nil_income_Tot_hhlds"
       }
     },
     {
@@ -29,7 +29,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#Negative_Nil_income_Households_with_Indigenous_persons"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#Neg_Nil_inc_hh_with_Ind_psns"
       }
     },
     {
@@ -123,7 +123,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#1000_1249_Total_households"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#HI1000_1249_Tot_hhlds"
       }
     },
     {
@@ -139,7 +139,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#1000_1249_Households_with_Indigenous_persons"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#HI1000_1249_Hh_with_Indig_psn"
       }
     },
     {
@@ -233,7 +233,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#1250_1499_Total_households"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#HI1250_1499_Tot_hhlds"
       }
     },
     {
@@ -249,7 +249,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#1250_1499_Households_with_Indigenous_persons"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#HI1250_1499_Hh_with_Indig_psn"
       }
     },
     {
@@ -265,7 +265,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#1500_1999_Total_households"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#HI1500_1999_Tot_hhlds"
       }
     },
     {
@@ -281,7 +281,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#1500_1999_Households_with_Indigenous_persons"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#HI1500_1999_Hh_with_Indig_psn"
       }
     },
     {
@@ -375,7 +375,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#1_199_Total_households"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#HI1_199_Tot_hhlds"
       }
     },
     {
@@ -391,7 +391,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#1_199_Households_with_Indigenous_persons"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#HI1_199_Hhd_with_Indig_psns"
       }
     },
     {
@@ -407,7 +407,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#2000_2499_Total_households"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#HI2000_2499_Tot_hhlds"
       }
     },
     {
@@ -423,7 +423,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#2000_2499_Households_with_Indigenous_persons"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#HI2000_2499_Hh_with_Indig_psn"
       }
     },
     {
@@ -439,7 +439,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#200_299_Total_households"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#HI200_299_Tot_hhlds"
       }
     },
     {
@@ -455,7 +455,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#200_299_Households_with_Indigenous_persons"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#HI200_299_Hhd_with_Indig_psns"
       }
     },
     {
@@ -549,7 +549,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#2500_2999_Total_households"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#HI2500_2999_Tot_hhlds"
       }
     },
     {
@@ -565,7 +565,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#2500_2999_Households_with_Indigenous_persons"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#HI2500_2999_Hh_with_Indig_psn"
       }
     },
     {
@@ -659,7 +659,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#3000_or_more_Total_households"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#HI3000_more_Tot_hhlds"
       }
     },
     {
@@ -675,7 +675,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#3000_or_more_Households_with_Indigenous_persons"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#HI3000_more_Hh_with_Indig_psn"
       }
     },
     {
@@ -691,7 +691,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#300_399_Total_households"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#HI300_399_Tot_hhlds"
       }
     },
     {
@@ -707,7 +707,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#300_399_Households_with_Indigenous_persons"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#HI300_399_Hhd_with_Indig_psns"
       }
     },
     {
@@ -879,7 +879,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#400_599_Total_households"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#HI400_599_Tot_hhlds"
       }
     },
     {
@@ -895,7 +895,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#400_599_Households_with_Indigenous_persons"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#HI400_599_Hhd_with_Indig_psns"
       }
     },
     {
@@ -1301,7 +1301,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#600_799_Total_households"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#HI600_799_Tot_hhlds"
       }
     },
     {
@@ -1317,7 +1317,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#600_799_Households_with_Indigenous_persons"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#HI600_799_Hhd_with_Indig_psns"
       }
     },
     {
@@ -1489,7 +1489,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#800_999_Total_households"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#HI800_999_Tot_hhlds"
       }
     },
     {
@@ -1505,7 +1505,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#800_999_Households_with_Indigenous_persons"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#HI800_999_Hhd_with_Indig_psns"
       }
     },
     {
@@ -2601,7 +2601,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I04_AUST_LGA_long.csv#Average_household_size_Total"
+        "notes": "from DataPack CSV: 2011Census_I04_AUST_LGA_short.csv#Avg_household_size_Tot"
       }
     },
     {
@@ -2617,7 +2617,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I04_AUST_LGA_long.csv#Average_household_size_Indigenous_persons_households_with_Indigenous_persons"
+        "notes": "from DataPack CSV: 2011Census_I04_AUST_LGA_short.csv#Av_hh_si_In_ps_hh_wi_Ind_psns"
       }
     },
     {
@@ -2633,7 +2633,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I04_AUST_LGA_long.csv#Average_number_of_persons_per_bedroom_Total"
+        "notes": "from DataPack CSV: 2011Census_I04_AUST_LGA_short.csv#Avg_Nu_psns_per_bed_Tot"
       }
     },
     {
@@ -2649,7 +2649,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I04_AUST_LGA_long.csv#Average_number_of_persons_per_bedroom_Indigenous_persons_households_with_Indigenous_persons"
+        "notes": "from DataPack CSV: 2011Census_I04_AUST_LGA_short.csv#Av_N_p_pe_be_In_ps_hh_wi_In_p"
       }
     },
     {
@@ -2665,7 +2665,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#All_incomes_not_stated_Total_households"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#All_inc_NS_Tot_hhlds"
       }
     },
     {
@@ -2681,7 +2681,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#All_incomes_not_stated_Households_with_Indigenous_persons"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#All_inc_ns_Hh_with_Ind_psns"
       }
     },
     {
@@ -3505,7 +3505,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I04_AUST_LGA_long.csv#Median_total_household_income_weekly_Total"
+        "notes": "from DataPack CSV: 2011Census_I04_AUST_LGA_short.csv#Med_hhd_inc_wk_Tot"
       }
     },
     {
@@ -3522,7 +3522,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I04_AUST_LGA_long.csv#Median_total_household_income_weekly_Indigenous_persons_households_with_Indigenous_persons"
+        "notes": "from DataPack CSV: 2011Census_I04_AUST_LGA_short.csv#Me_hh_in_wk_In_ps_hh_In_ps"
       }
     },
     {
@@ -3538,7 +3538,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#Partial_income_stated_Total_households"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#Partial_inc_stated_Tot_hhlds"
       }
     },
     {
@@ -3554,7 +3554,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_long.csv#Partial_income_stated_Households_with_Indigenous_persons"
+        "notes": "from DataPack CSV: 2011Census_I13_AUST_LGA_short.csv#Part_inc_st_Hh_with_Indig_psn"
       }
     },
     {
@@ -3602,7 +3602,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I04_AUST_LGA_long.csv#Proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_Indigenous_persons_households_with_Indigenous_persons"
+        "notes": "from DataPack CSV: 2011Census_I04_AUST_LGA_short.csv#P_d_n_x_b_In_ps_hh_w_In_p"
       }
     },
     {
@@ -3618,7 +3618,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I04_AUST_LGA_long.csv#Proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_Non_Indigenous_persons_other_households"
+        "notes": "from DataPack CSV: 2011Census_I04_AUST_LGA_short.csv#P_d_n_x_b_No_In_p_oth_hh"
       }
     },
     {
@@ -3634,7 +3634,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I04_AUST_LGA_long.csv#Proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_Total"
+        "notes": "from DataPack CSV: 2011Census_I04_AUST_LGA_short.csv#P_d_n_x_b_Tot"
       }
     },
     {
@@ -3682,7 +3682,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I06_AUST_LGA_long.csv#Persons_Total_Total"
+        "notes": "from DataPack CSV: 2011Census_I06_AUST_LGA_short.csv#P_Tot_Tot"
       }
     },
     {
@@ -3698,7 +3698,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I06_AUST_LGA_long.csv#Persons_Total_Indigenous"
+        "notes": "from DataPack CSV: 2011Census_I06_AUST_LGA_short.csv#P_Tot_Indigenous"
       }
     },
     {
@@ -3714,7 +3714,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I06_AUST_LGA_long.csv#Persons_Year_12_or_equivalent_Total"
+        "notes": "from DataPack CSV: 2011Census_I06_AUST_LGA_short.csv#P_Y12_equivalent_Tot"
       }
     },
     {
@@ -3730,7 +3730,7 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
-        "notes": "from DataPack CSV: 2011Census_I06_AUST_LGA_long.csv#Persons_Year_12_or_equivalent_Indigenous"
+        "notes": "from DataPack CSV: 2011Census_I06_AUST_LGA_short.csv#P_Y12_equivalent_Indigenous"
       }
     },
     {
