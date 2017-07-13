@@ -1793,6 +1793,58 @@
       }
     },
     {
+      "name": "census2016_aggregate_0to14_persons_indigenous",
+      "description": "Indigenous Persons - Age 0-14 (Census 2016)",
+      "expression": "census2016_0to4_persons_indigenous + census2016_5to9_persons_indigenous + census2016_10to14_persons_indigenous",
+      "type": "number",
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
+      "name": "census2016_aggregate_0to14_persons_total",
+      "description": "Total Persons - Age 0-14 (Census 2016)",
+      "expression": "census2016_0to4_persons_total + census2016_5to9_persons_total + census2016_10to14_persons_total",
+      "type": "number",
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
+      "name": "census2016_aggregate_15to64_persons_indigenous",
+      "description": "Indigenous Persons - Age 15-64 (Census 2016)",
+      "expression": "census2016_15to19_persons_indigenous + census2016_20to24_persons_indigenous + census2016_25to29_persons_indigenous + census2016_30to34_persons_indigenous + census2016_35to39_persons_indigenous + census2016_40to44_persons_indigenous + census2016_45to49_persons_indigenous + census2016_50to54_persons_indigenous + census2016_55to59_persons_indigenous",
+      "type": "number",
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
+      "name": "census2016_aggregate_15to64_persons_total",
+      "description": "Total Persons - Age 15-64 (Census 2016)",
+      "expression": "census2016_15to19_persons_total + census2016_20to24_persons_total + census2016_25to29_persons_total + census2016_30to34_persons_total + census2016_35to39_persons_total + census2016_40to44_persons_total + census2016_45to49_persons_total + census2016_50to54_persons_total + census2016_55to59_persons_total",
+      "type": "number",
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      }
+    },
+    {
       "name": "census2016_all_females_indigenous",
       "description": "Indigenous Females - All Ages (Census 2016)",
       "type": "number",
@@ -2048,6 +2100,22 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2016Census_I13_AUS_SA3.csv#Part_inc_st_Hh_with_Indig_psn"
+      }
+    },
+    {
+      "name": "census2016_proportion_all_persons_indigenous",
+      "description": "Indigenous proportion of population (Census 2016)",
+      "type": "number",
+      "expression": "census2016_all_persons_indigenous / census2016_all_persons_total",
+      "format": {
+        "style": "percent"
+      },
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
       }
     },
     {
