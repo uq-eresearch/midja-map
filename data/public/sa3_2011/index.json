@@ -4837,6 +4837,22 @@
       "from": "postcode_2011"
     },
     {
+      "name": "qldgov_social_housing_expenditure_maintenance_events",
+      "from": "postcode_2011"
+    },
+    {
+      "name": "qldgov_social_housing_expenditure_maintenance_expenditure",
+      "from": "postcode_2011"
+    },
+    {
+      "name": "qldgov_social_housing_expenditure_modification_events",
+      "from": "postcode_2011"
+    },
+    {
+      "name": "qldgov_social_housing_expenditure_modification_expenditure",
+      "from": "postcode_2011"
+    },
+    {
       "name": "qldgov_social_housing_tenancies_all_households",
       "from": "postcode_2011"
     },
