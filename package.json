@@ -89,6 +89,7 @@
     "import:abs:csv": "scripts/build_and_run.sh scripts/abs-csv-dump.js",
     "import:aahv:web": "scripts/build_and_run.sh scripts/aahv-crawler.js",
     "import:qldshd:web": "scripts/build_and_run.sh scripts/qld-social-housing-dwellings-import.js",
+    "import:qldshe:web": "scripts/build_and_run.sh scripts/qld-social-housing-expenditure-import.js",
     "import:qldshr:web": "scripts/build_and_run.sh scripts/qld-social-housing-register-import.js",
     "import:qldsht:web": "scripts/build_and_run.sh scripts/qld-social-housing-tenancies-import.js",
     "build": "$(npm bin)/webpack --progress",
