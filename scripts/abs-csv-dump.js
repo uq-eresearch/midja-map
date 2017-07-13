@@ -377,10 +377,17 @@ const matchers = [
           status: v => v == 'Tot' ? 'Total' : 'Indigenous'
         },
         R.merge(
-          extract(
-            /(\d{4})Census_I03._AUST?_(ILOC)(?:_short)?\.csv$/i,
-            'year',
-            'regionType')(filename),
+          R.mergeWith(
+            R.defaultTo,
+            extract(
+              /^(2011)Census_I03._AUST_(ILOC)_short\.csv$/i,
+              'year',
+              'regionType')(filename),
+            extract(
+              /^(2016)Census_I03._AUS_(LGA|SA2|SA3)\.csv$/i,
+              'year',
+              'regionType')(filename)
+          ),
           extract(
             /^Age_(\d+)(_\d+|_?over)_(Indig|Tot)_?(M|F|P)$/i,
             'low',
@@ -440,10 +447,17 @@ const matchers = [
           status: v => v == 'Tot' ? 'Total' : 'Indigenous'
         },
         R.merge(
-          extract(
-            /(\d{4})Census_I03._AUST?_(ILOC)(?:_short)?\.csv$/i,
-            'year',
-            'regionType')(filename),
+          R.mergeWith(
+            R.defaultTo,
+            extract(
+              /^(2011)Census_I03._AUST_(ILOC)_short\.csv$/i,
+              'year',
+              'regionType')(filename),
+            extract(
+              /^(2016)Census_I03._AUS_(LGA|SA2|SA3)\.csv$/i,
+              'year',
+              'regionType')(filename)
+          ),
           extract(
             /^Tot_(Indig_|Tot)(M|F|P)$/i,
             'status',
