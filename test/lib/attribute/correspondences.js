@@ -4,59 +4,28 @@ import { expect } from 'chai'
 require('mocha-testcheck').install()
 
 import R from 'ramda'
-import { transformerWith } from '../../../lib/attribute/correspondences'
+import { convertByProportion } from '../../../lib/attribute/correspondences'
+import correspondenceFixture from './fixtures/correspondences.json'
 
 describe('correspondences', () => {
 
-  describe('transformerWith', () => {
+  describe('convertByProportion', () => {
 
-    const sorted = R.sortBy(R.identity)
-
-    const genSourceIds = gen.intWithin(100, 109).then(R.toString)
-    const genTargetIds = gen.intWithin(270, 299).then(R.toString)
-
-    check.it('takes correspondences and produces transfomer',
-      {
-        times: 20
-      },
-      gen.object(
-        genSourceIds,
-        gen.object(
-          genTargetIds,
-          gen.numberWithin(0.0001, 1.0),
-          {
-            minSize: 1
-          }
-        ),
-        {
-          minSize: 1
-        }
-      ),
-      gen.object(
-        genSourceIds,
-        gen.posNumber
-      ),
-      (correspondences, input) => {
-        const outputKeys =
-          R.pipe(
-            R.keys,
-            R.chain(
-              R.pipe(
-                R.flip(R.prop)(
-                  R.mapObjIndexed(R.keys, correspondences)
-                ),
-                R.defaultTo([])
-              )
-            ),
-            sorted,
-            R.uniq
-          )
-        const transformer = transformerWith(correspondences)
-        const output = transformer(input)
-        const expectedOutputKeys = outputKeys(input)
-        const actualOutputKeys = sorted(R.keys(output))
-        expect(actualOutputKeys).to.deep.equal(expectedOutputKeys)
+    it('converts using contributor proportions', () => {
+      const convert = convertByProportion(correspondenceFixture)
+      const input = {
+        "ο": 2,
+        "ω": 3,
+        'γ': 7,
+        'κ': 10
+      }
+      expect(convert(input)).to.deep.equal({
+        'c': 1,
+        'o': 5,
+        'g': 7,
+        'k': 9
       })
+    })
 
   })
 

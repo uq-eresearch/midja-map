@@ -1,6 +1,6 @@
 import R from 'ramda'
 import _ from 'lodash-es'
-import { transformerWith } from '../../../lib/attribute/correspondences'
+import { convertByProportion } from '../../../lib/attribute/correspondences'
 import ss from 'simple-statistics'
 import expression from '../../../lib/attribute/expression'
 
@@ -208,7 +208,7 @@ export default function dataService($http, $q) {
           return getCorrespondences(attributeMetadata.from, regionType)
             .then(correspondences =>
               getAttributeFromRemote(attributeMetadata.from, attribute)
-                .then(transformerWith(correspondences))
+                .then(convertByProportion(correspondences))
             );
         } else if (attributeMetadata.expression) {
           // Collect variables and evaluate expression

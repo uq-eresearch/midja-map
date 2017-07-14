@@ -16,8 +16,11 @@ type NumericAttributeData = {
 
 
 type Correspondences = {
-  readonly [source: string]: {
-    readonly [target: string]: number
+  readonly [target: string]: {
+    contributors: {
+      readonly [source: string]: number
+    },
+    quality: string|undefined
   }
 }
 

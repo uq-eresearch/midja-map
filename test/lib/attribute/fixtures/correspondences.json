@@ -1,0 +1,148 @@
+{
+  "a": {
+    "contributors": {
+      "α": 1
+    },
+    "quality": "good"
+  },
+  "b": {
+    "contributors": {
+      "β": 1
+    },
+    "quality": "good"
+  },
+  "c": {
+    "contributors": {
+      "κ": 0.1
+    },
+    "quality": "poor"
+  },
+  "d": {
+    "contributors": {
+      "δ": 1
+    },
+    "quality": "good"
+  },
+  "e": {
+    "contributors": {
+      "ε": 0.9,
+      "η": 1
+    },
+    "quality": "good"
+  },
+  "f": {
+    "contributors": {
+      "φ": 0.9
+    },
+    "quality": "good"
+  },
+  "g": {
+    "contributors": {
+      "γ": 1
+    },
+    "quality": "good"
+  },
+  "h": {
+    "contributors": {
+      "ε": 0.1
+    },
+    "quality": "good"
+  },
+  "i": {
+    "contributors": {
+      "ι": 1
+    },
+    "quality": "acceptable"
+  },
+  "j": {
+    "contributors": {}
+  },
+  "k": {
+    "contributors": {
+      "κ": 0.9
+    },
+    "quality": "acceptable"
+  },
+  "l": {
+    "contributors": {
+      "λ": 1
+    },
+    "quality": "good"
+  },
+  "m": {
+    "contributors": {
+      "μ": 1
+    },
+    "quality": "good"
+  },
+  "n": {
+    "contributors": {
+      "ν": 1
+    },
+    "quality": "good"
+  },
+  "o": {
+    "contributors": {
+      "ο": 1,
+      "ω": 1
+    },
+    "quality": "good"
+  },
+  "p": {
+    "contributors": {
+      "π": 1
+    },
+    "quality": "good"
+  },
+  "q": {
+    "contributors": {}
+  },
+  "r": {
+    "contributors": {
+      "ρ": 1
+    },
+    "quality": "good"
+  },
+  "s": {
+    "contributors": {
+      "σ": 1
+    },
+    "quality": "good"
+  },
+  "t": {
+    "contributors": {
+      "τ": 1
+    },
+    "quality": "good"
+  },
+  "u": {
+    "contributors": {
+      "υ": 0.7
+    },
+    "quality": "acceptable"
+  },
+  "v": {
+    "contributors": {}
+  },
+  "w": {
+    "contributors": {}
+  },
+  "x": {
+    "contributors": {
+      "ξ": 1
+    },
+    "quality": "good"
+  },
+  "y": {
+    "contributors": {
+      "υ": 0.3
+    },
+    "quality": "poor"
+  },
+  "z": {
+    "contributors": {
+      "ζ": 1
+    },
+    "quality": "good"
+  }
+}
