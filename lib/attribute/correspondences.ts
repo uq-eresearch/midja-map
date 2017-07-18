@@ -8,13 +8,29 @@ interface Correspondence {
   proportion: number
 }
 
+interface WeightedValue {
+  value: number,
+  weight: number
+}
+
+function weightedAverage(values: WeightedValue[]): number {
+  const weightTotal = R.reduce<number,number>(
+    R.add, 0, R.pluck('weight', values)
+  )
+  return R.sum(
+    R.map(wv => wv.value * wv.weight / weightTotal, values)
+  )
+}
+
 const splitSourceToTargets:
-    (correspondences: (source: string) => {[target: string]: number}) =>
-    (source: string, sv: number) => AttributeData =
-  correspondences =>
+    <T>(
+      correspondences: (source: string) => {[target: string]: number},
+      combinator: (sourceValue: number) => (proportion: number) => T
+    ) => (source: string, sv: number) => {[target: string]: T} =
+  (correspondences, combinator) =>
     (source, sv) =>
       R.mapObjIndexed(
-        R.multiply(sv),
+        combinator(sv),
         correspondences(source)
       )
 
@@ -58,8 +74,7 @@ const proportionLookup:
     R.partialRight(R.pipe, [R.defaultTo({})])
   )
 
-
-const convertByProportion:
+const convertByAverage:
     (correspondences: Correspondences) =>
     (sourceData: AttributeData) => AttributeData =
   correspondences =>
@@ -67,10 +82,27 @@ const convertByProportion:
       R.toPairs,
       R.map(tupled2(
         splitSourceToTargets(
-          proportionLookup(correspondences)
+          proportionLookup(correspondences),
+          (v: number) => (p: number) => { return [{ value: v, weight: p }] }
+        )
+      )),
+      R.reduce(R.mergeWith(R.concat), {}),
+      R.mapObjIndexed(weightedAverage)
+    )
+
+const convertBySum:
+    (correspondences: Correspondences) =>
+    (sourceData: AttributeData) => AttributeData =
+  correspondences =>
+    R.pipe(
+      R.toPairs,
+      R.map(tupled2(
+        splitSourceToTargets(
+          proportionLookup(correspondences),
+          R.multiply
         )
       )),
       R.reduce(R.mergeWith(R.add), {})
     )
 
-export { convertByProportion }
+export { convertByAverage, convertBySum }
