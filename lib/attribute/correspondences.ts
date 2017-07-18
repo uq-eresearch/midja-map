@@ -90,6 +90,38 @@ const convertByAverage:
       R.mapObjIndexed(weightedAverage)
     )
 
+const convertByPrimary:
+    (correspondences: Correspondences) =>
+    (sourceData: AttributeData) => AttributeData =
+  correspondences =>
+    R.pipe(
+      R.toPairs,
+      R.map(tupled2(
+        splitSourceToTargets(
+          proportionLookup(correspondences),
+          (v: number) => (p: number) => { return [{ value: v, weight: p }] }
+        )
+      )),
+      R.reduce(R.mergeWith(R.concat), {}),
+      R.mapObjIndexed<WeightedValue[], number>(
+        R.pipe<WeightedValue[], WeightedValue[], number[], number>(
+          values => {
+            const maxWeight: number = R.reduce(
+              R.maxBy<WeightedValue>(R.prop('weight')),
+              {
+                value: null,
+                weight: Number.NEGATIVE_INFINITY
+              },
+              values
+            ).weight
+            return R.filter(R.propEq('weight', maxWeight), values)
+          },
+          R.pluck('value'),
+          R.ifElse(vs => vs.length < 2, R.head, R.mean)
+        )
+      )
+    )
+
 const convertBySum:
     (correspondences: Correspondences) =>
     (sourceData: AttributeData) => AttributeData =
@@ -105,4 +137,4 @@ const convertBySum:
       R.reduce(R.mergeWith(R.add), {})
     )
 
-export { convertByAverage, convertBySum }
+export { convertByAverage, convertByPrimary, convertBySum }
