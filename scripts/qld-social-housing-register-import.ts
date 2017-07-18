@@ -4,6 +4,7 @@ import axios from 'axios'
 import { importCSVData, regionNameLookup } from '../lib/attribute/import'
 
 const lga2011RegionNames = require('../data/public/lga_2011/region_name.json')
+const lga2016RegionNames = require('../data/public/lga_2016/region_name.json')
 
 const csvUrl =
   'http://www.hpw.qld.gov.au/SiteCollectionDocuments/SocialHousingRegister.csv'
@@ -87,22 +88,40 @@ const attributeDefinitions: [Attribute, (rows: object[]) => any][] = [
   ]
 ]
 
+const removeLGASuffix =
+  R.pipe(
+    R.replace(/City Council/i, '(C)'),
+    R.replace(/Regional Council/i, '(R)'),
+    R.replace(/(Aboriginal )?Shire Council/i, '(S)')
+  )
+
 const regionResolvers: {[regionType: string]: (row: object) => Region|null} =
   {
     "lga_2011": R.pipe(
       R.prop<string>('LGA_Full Name'),
       regionNameLookup(
         R.pipe(
-          R.replace(/City Council/i, '(C)'),
-          R.replace(/Regional Council/i, '(R)'),
-          R.replace(/(Aboriginal )?Shire Council/i, '(S)'),
+          removeLGASuffix,
           source =>
             R.pipe(
               R.prop('name'),
               R.equals(source)
             )
         )
-      )(lga2011RegionNames)
+      )(lga2011RegionNames),
+    ),
+    "lga_2016": R.pipe(
+      R.prop<string>('LGA_Full Name'),
+      regionNameLookup(
+        R.pipe(
+          removeLGASuffix,
+          source =>
+            R.pipe(
+              R.prop('name'),
+              R.equals(source)
+            )
+        )
+      )(lga2016RegionNames)
     )
   }
 

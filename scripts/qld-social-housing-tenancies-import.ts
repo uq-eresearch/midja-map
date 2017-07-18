@@ -4,6 +4,7 @@ import axios from 'axios'
 import { importCSVData, regionNameLookup } from '../lib/attribute/import'
 
 const lga2011RegionNames = require('../data/public/lga_2011/region_name.json')
+const lga2016RegionNames = require('../data/public/lga_2016/region_name.json')
 
 const csvUrl =
   'http://www.hpw.qld.gov.au/SiteCollectionDocuments/TenanciesGovernmentManagedSocialRentalHousing.csv'
@@ -152,6 +153,16 @@ const regionResolvers: {[regionType: string]: (row: object) => Region|null} =
             R.startsWith(source)
           )
       )(lga2011RegionNames)
+    ),
+    "lga_2016": R.pipe(
+      R.prop<string>('LGA'),
+      regionNameLookup(
+        source =>
+          R.pipe(
+            R.prop('name'),
+            R.startsWith(source)
+          )
+      )(lga2016RegionNames)
     ),
     "postcode_2011": R.pipe(
       R.prop('Postcode'),
