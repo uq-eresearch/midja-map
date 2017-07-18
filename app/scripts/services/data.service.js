@@ -1,6 +1,9 @@
 import R from 'ramda'
 import _ from 'lodash-es'
-import { convertBySum } from '../../../lib/attribute/correspondences'
+import {
+  convertByAverage,
+  convertByPrimary,
+  convertBySum } from '../../../lib/attribute/correspondences'
 import ss from 'simple-statistics'
 import expression from '../../../lib/attribute/expression'
 
@@ -193,6 +196,15 @@ export default function dataService($http, $q) {
       .then(_.property('data'));
   }
 
+  function convert(attributeMetadata) {
+    switch (attributeMetadata.conversion) {
+      case 'average':   return convertByAverage;
+      case 'primary':   return convertByPrimary;
+      case 'sum':       return convertBySum;
+      default:          return convertBySum;
+    }
+  }
+
   function getAttributeFromRemote(regionType, attribute) {
     return getAvailableAttributes(regionType)
       .then(function(availableAttributes) {
@@ -208,7 +220,7 @@ export default function dataService($http, $q) {
           return getCorrespondences(attributeMetadata.from, regionType)
             .then(correspondences =>
               getAttributeFromRemote(attributeMetadata.from, attribute)
-                .then(convertBySum(correspondences))
+                .then(convert(attributeMetadata)(correspondences))
             );
         } else if (attributeMetadata.expression) {
           // Collect variables and evaluate expression

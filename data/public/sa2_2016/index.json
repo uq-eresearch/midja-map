@@ -2231,6 +2231,116 @@
       }
     },
     {
+      "name": "qldgov_social_housing_dwellings_occupied",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_dwellings_proportion_occupied",
+      "from": "sa2_2011",
+      "conversion": "average"
+    },
+    {
+      "name": "qldgov_social_housing_dwellings_proportion_unoccupied",
+      "from": "sa2_2011",
+      "conversion": "average"
+    },
+    {
+      "name": "qldgov_social_housing_dwellings_total",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_dwellings_unoccupied",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_dwellings_untenantable",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_expenditure_maintenance_events",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_expenditure_maintenance_expenditure",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_expenditure_modification_events",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_expenditure_modification_expenditure",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_all_households",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_all_overcrowded_households",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_all_people",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_indigenous_households",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_indigenous_overcrowded_households",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_indigenous_people",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_nonindigenous_households",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_nonindigenous_overcrowded_households",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_nonindigenous_people",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_proportion_all_overcrowded_households",
+      "from": "sa2_2011",
+      "conversion": "average"
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_proportion_indigenous_overcrowded_households",
+      "from": "sa2_2011",
+      "conversion": "average"
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_proportion_nonindigenous_overcrowded_households",
+      "from": "sa2_2011",
+      "conversion": "average"
+    },
+    {
       "name": "ra_name",
       "description": "Remoteness Area name",
       "type": "string"
