@@ -9,12 +9,12 @@ const lga2016RegionNames = require('../data/public/lga_2016/region_name.json')
 const csvUrl =
   'http://www.hpw.qld.gov.au/SiteCollectionDocuments/SocialHousingRegister.csv'
 
-// isIndigenous :: Object => Boolean
-const isIndigenous = R.pipe(
-  R.prop('Aboriginal and Torres Strait Islander'),
-  R.toLower,
-  R.equals('yes')
-)
+const isIndigenous: (row: object) => boolean =
+  R.pipe(
+    R.prop('Aboriginal and Torres Strait Islander'),
+    R.toLower,
+    R.equals('yes')
+  )
 
 const attributeDef = (name: string, desc: string) => {
   return {
