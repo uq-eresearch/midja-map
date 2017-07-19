@@ -16,6 +16,7 @@ import '../../node_modules/angular-data-table/release/dataTable.css'
 import '../../node_modules/angular-data-table/release/material.css'
 import '../../node_modules/angular-data-table/release/icons.css'
 
+import './components'
 import './directives'
 import './filters'
 import './services'
@@ -47,6 +48,7 @@ export default angular
     'angular-loading-bar',
     'nvd3',
     'data-table',
+    'midjaApp.components',
     'midjaApp.directives',
     'midjaApp.filters',
     'midjaApp.services'

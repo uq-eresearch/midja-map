@@ -165,7 +165,7 @@ export default function populationPyramid(
     link: link,
     replace: true,
     scope: {
-      attributeSelector: '=',
+      attributeSelector: '@',
       sorter: '=',
       description: '@',
       region: '=',

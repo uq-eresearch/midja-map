@@ -131,7 +131,7 @@ export default function topicBreakdownBar(
     link: link,
     replace: true,
     scope: {
-      attributeSelector: '=',
+      attributeSelector: '@',
       sorter: '=',
       description: '@',
       region: '=',

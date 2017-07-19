@@ -50,7 +50,7 @@ export default function highlightedTopic(
     link: link,
     replace: true,
     scope: {
-      attributeSelector: '=',
+      attributeSelector: '@',
       description: '@',
       region: '=',
       regionType: '='

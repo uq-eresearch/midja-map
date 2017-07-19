@@ -45,7 +45,9 @@ export default function timeSeriesChart(
               const lastWord = v => _.last(_.words(v))
               const initWords = v => _.initial(_.words(v)).join(" ")
               function removeCommon(vs) {
-                if (_.uniqBy(vs, firstWord).length <= 1) {
+                if (vs.length <= 1) {
+                  return vs;
+                } else if (_.uniqBy(vs, firstWord).length <= 1) {
                   return removeCommon(_.map(vs, tailWords));
                 } else if (_.uniqBy(vs, lastWord).length <= 1) {
                   return removeCommon(_.map(vs, initWords));
@@ -122,7 +124,7 @@ export default function timeSeriesChart(
     link: link,
     replace: true,
     scope: {
-      attributeSelector: '=',
+      attributeSelector: '@',
       sorter: '=',
       description: '@',
       region: '=',

@@ -1,0 +1,55 @@
+<h2 style="margin-top: 10px;">{{vm.region.name}}</h2>
+<uib-tabset active="sidebarActiveTab">
+  <uib-tab index="0" heading="Population">
+    <highlighted-topic
+      description="Indigenous"
+      region-type="vm.regionType"
+      region="vm.region"
+      attribute-selector="census2016_proportion_all_persons_indigenous">
+    </highlighted-topic>
+    <highlighted-topic
+      description="Population (Census&nbsp;2016)"
+      region-type="vm.regionType"
+      region="vm.region"
+      attribute-selector="census2016_all_persons_total">
+    </highlighted-topic>
+    <topic-breakdown-bar
+      description="All persons by age (2016)"
+      region-type="vm.regionType"
+      region="vm.region"
+      attribute-selector="census2016_(aggregate_\d+\w+|\d+plus)_persons_total"
+      sorter="vm.sortByAttributeNameNumbers"
+      refresh-on="sidebarActiveTab">
+    </topic-breakdown-bar>
+  </uib-tab>
+  <uib-tab index="2" heading="Income">
+    <highlighted-topic
+      description="Median Household - Indigenous"
+      region-type="vm.regionType"
+      region="vm.region"
+      attribute-selector="census2016_median_weekly_household_income_indigenous">
+    </highlighted-topic>
+    <topic-breakdown-bar
+      description="Indigenous households weekly income (2016)"
+      region-type="vm.regionType"
+      region="vm.region"
+      attribute-selector="census2016_(\d.+)_weekly_household_income_indigenous"
+      sorter="vm.sortByAttributeNameNumbers"
+      refresh-on="sidebarActiveTab">
+    </topic-breakdown-bar>
+    <highlighted-topic
+      description="Median Household - All"
+      region-type="vm.regionType"
+      region="vm.region"
+      attribute-selector="census2016_median_weekly_household_income_all">
+    </highlighted-topic>
+    <topic-breakdown-bar
+      description="All households weekly income (2016)"
+      region-type="vm.regionType"
+      region="vm.region"
+      attribute-selector="census2016_(\d.+)_weekly_household_income_all"
+      sorter="vm.sortByAttributeNameNumbers"
+      refresh-on="sidebarActiveTab">
+    </topic-breakdown-bar>
+  </uib-tab>
+</uib-tabset>
