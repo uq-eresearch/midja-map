@@ -8,9 +8,11 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@types/chai": "^4.0.1",
     "@types/csv-parse": "^1.1.8",
     "@types/fs-extra": "^3.0.3",
     "@types/mathjs": "0.0.34",
+    "@types/mocha": "^2.2.41",
     "@types/ramda": "^0.24.2",
     "angular-animate": "^1.6.4",
     "angular-data-table": "git+https://github.com/jonshaffer/angular-data-table.git",
