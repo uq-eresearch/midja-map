@@ -1,6 +1,4 @@
 declare module 'gdal' {
-  var noTypeInfoYet: any;
-
   export type GeoTransform = [
     number, /* top left x */
     number, /* w-e pixel resolution */

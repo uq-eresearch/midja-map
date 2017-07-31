@@ -1,4 +1,6 @@
 {
+    "baseUrl": "types",
+    "typeRoots": ["types"],
     "compileOnSave": false,
     "compilerOptions": {
         "allowSyntheticDefaultImports": true,

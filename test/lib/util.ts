@@ -1,5 +1,3 @@
-/// <reference path="../../node_modules/@types/mocha/index.d.ts" />
-/// <reference path="../../mocha-testcheck.d.ts" />
 import * as R from 'ramda'
 import { expect } from 'chai'
 import * as mathjs from 'mathjs'
