@@ -31,5 +31,9 @@ declare module 'gdal' {
     getGeometry(): any
   }
 
+  export class FeatureFields {
+    get(field: string | int): any
+  }
+
   export function open(...args: any[]): Dataset;
 }

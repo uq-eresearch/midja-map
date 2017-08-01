@@ -8,6 +8,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@turf/turf": "^4.5.2",
     "@types/chai": "^4.0.1",
     "@types/csv-parse": "^1.1.9",
     "@types/extract-zip": "^1.6.2",

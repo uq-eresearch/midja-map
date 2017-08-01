@@ -9,8 +9,9 @@ import { spawn } from 'child_process'
 import moment from 'moment'
 import * as osmosis from 'osmosis'
 import * as path from 'path'
-import * as yargs from 'yargs'
+import turf from '@turf/turf'
 import * as url from 'url'
+import * as yargs from 'yargs'
 const tmpDataDir = path.relative('.',
   path.resolve(__dirname, '..', 'tmp', 'data'))
 
@@ -291,7 +292,14 @@ yargs
         .choices('regionType', ['mb2011', 'mb2016']),
     handler: (args: { regionType: string }) => {
       const op = (feature: gdal.Feature) =>
-        Promise.resolve([feature.fields.toObject()])
+        Promise.resolve([{
+          name: feature.fields.get(0),
+          listedArea: feature.fields.get('ALBERS_SQM'),
+          calculatedArea: (() => {
+            const g = feature.getGeometry()
+            return g ? turf.area(g.toObject()) : g
+          })()
+        }])
       withFeatures(args.regionType as RegionType, op)
         .then(v => console.log(v))
         .catch(debug)
