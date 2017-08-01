@@ -10,7 +10,26 @@ declare module 'gdal' {
 
   export class Dataset {
     geoTransform: GeoTransform
+    layers: DatasetLayers
+    close(): void
   }
 
-  export function open(...args: any[]): any;
+  export class DatasetLayers {
+    map<T>(callback: (layer: Layer) => T): T[]
+  }
+
+  export class Layer {
+    features: LayerFeatures
+  }
+
+  export class LayerFeatures {
+    map<T>(callback: (feature: Feature) => T): T[]
+  }
+
+  export class Feature {
+    fields: any
+    getGeometry(): any
+  }
+
+  export function open(...args: any[]): Dataset;
 }
