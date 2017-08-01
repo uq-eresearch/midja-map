@@ -83,7 +83,8 @@ function download(
 type RegionType = "mb2011" | "mb2016"
 function withFeatures<T>(
     regionType: RegionType,
-    featureTransform: (feature: gdal.Feature) => Promise<T[]>): Promise<T[]> {
+    reduceF: (accumulator: T, feature: gdal.Feature) => Promise<T>,
+    accumulatorBase: T): Promise<T> {
   const urls: (regionType: RegionType) => string = R.flip(R.prop)({
     'mb2011': 'http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.001July%202011?OpenDocument',
     'mb2016': 'http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.001July%202016?OpenDocument'
@@ -179,7 +180,7 @@ function withFeatures<T>(
     )
   }
 
-  function withZip<T>(
+  function withZip(
       zipfilePath: string,
       f: (dirpath: string) => Promise<T>): Promise<T> {
     const extractionPath = path.resolve(
@@ -202,7 +203,7 @@ function withFeatures<T>(
     return opPromise
   }
 
-  function withDataset<T>(
+  function withDataset(
       file: string,
       f: (d: gdal.Dataset) => Promise<T>): Promise<T> {
     const dataset = gdal.open(file)
@@ -213,49 +214,53 @@ function withFeatures<T>(
     }
   }
 
-  function unnestPromises<T>(input: Promise<T[]>[]): Promise<T[]> {
-    return Promise.all(input).then<T[]>(R.reduce<T[], T[]>(R.concat, [] as T[]))
-  }
-
-  function withLayers<T>(
-      file: string,
-      f: (l: gdal.Layer) => Promise<T[]>): Promise<T[]> {
+  function processLayers(
+      accumP: Promise<T>,
+      file: string): Promise<T> {
     return withDataset(
       file,
-      dataset => unnestPromises(dataset.layers.map<Promise<T[]>>(f))
+      dataset => {
+        let aP = accumP
+        dataset.layers.forEach((layer: gdal.Layer) => {
+          aP = processFeatures(aP, layer)
+        })
+        return aP
+      }
     )
   }
 
-  function withFeatures<T>(
-      file: string,
-      f: (feature: gdal.Feature) => Promise<T[]>): Promise<T[]> {
-    return withLayers(
-      file,
-      layer => unnestPromises(layer.features.map<Promise<T[]>>(f))
-    )
+  function processFeatures(
+      accumP: Promise<T>,
+      layer: gdal.Layer): Promise<T> {
+    let aP = accumP
+    layer.features.forEach((feature: gdal.Feature) => {
+      aP = aP.then(acc => reduceF(acc, feature))
+    })
+    return aP
   }
 
-  function withZippedShapefiles<T>(
-      zipfile: string,
-      f: (shapefile: string) => Promise<T[]>): Promise<T[]> {
-    return withZip<T[]>(zipfile, dirpath => {
+  function processZippedShapefiles(
+      accumP: Promise<T>,
+      zipfile: string): Promise<T> {
+    return withZip(zipfile, dirpath => {
       return fs.readdir(dirpath)
         .then(R.filter(R.test(/.shp$/)))
         .then(R.map(file => path.resolve(dirpath, file)))
-        .then<T[]>(files => unnestPromises(files.map(f)))
+        .then<T>(
+          R.reduce(
+            processLayers,
+            accumP
+          )
+        )
     })
   }
 
   return fetchLinks(urls(regionType))
     .then<string[]>(ensureLinksDownloaded)
-    .then<T[]>((files: string[]) =>
-      unnestPromises(
-        files.map<Promise<T[]>>(filepath =>
-          withZippedShapefiles<T>(
-            filepath,
-            file => withFeatures(file, featureTransform)
-          )
-        )
+    .then<T>(
+      R.reduce<string, Promise<T>>(
+        processZippedShapefiles,
+        Promise.resolve(accumulatorBase)
       )
     )
 }
@@ -291,16 +296,15 @@ yargs
       yargs
         .choices('regionType', ['mb2011', 'mb2016']),
     handler: (args: { regionType: string }) => {
-      const op = (feature: gdal.Feature) =>
-        Promise.resolve([{
-          name: feature.fields.get(0),
-          listedArea: feature.fields.get('ALBERS_SQM'),
-          calculatedArea: (() => {
-            const g = feature.getGeometry()
-            return g ? turf.area(g.toObject()) : g
-          })()
-        }])
-      withFeatures(args.regionType as RegionType, op)
+      const op = (totalArea: number, feature: gdal.Feature) => {
+        const name = feature.fields.get(0)
+        const g = feature.getGeometry()
+        const featureArea: number = g ? turf.area(g.toObject()) : 0
+        if (Math.random() > 0.99)
+          debug(`${name}: ${featureArea}`)
+        return Promise.resolve(totalArea + featureArea)
+      }
+      withFeatures(args.regionType as RegionType, op, 0)
         .then(v => console.log(v))
         .catch(debug)
     }

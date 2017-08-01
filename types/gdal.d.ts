@@ -15,6 +15,7 @@ declare module 'gdal' {
   }
 
   export class DatasetLayers {
+    forEach<T>(callback: (layer: Layer) => T): void
     map<T>(callback: (layer: Layer) => T): T[]
   }
 
@@ -23,6 +24,7 @@ declare module 'gdal' {
   }
 
   export class LayerFeatures {
+    forEach<T>(callback: (feature: Feature) => T): void
     map<T>(callback: (feature: Feature) => T): T[]
   }
 
