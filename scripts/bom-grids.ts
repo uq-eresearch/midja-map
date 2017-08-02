@@ -1,5 +1,7 @@
 import * as R from 'ramda'
 import axios from 'axios'
+import { csvTextParser } from '../lib/attribute/import'
+import { WeightedMean } from '../lib/util'
 import extractZip from 'extract-zip'
 import * as fs from 'fs-extra'
 import * as gdal from 'gdal'
@@ -80,18 +82,78 @@ function download(
     })
 }
 
-type RegionType = "mb2011" | "mb2016"
+type MeshBlockType = "mb2011" | "mb2016"
+interface FileLink {
+  name: string,
+  link: string
+}
+type SavePathResolver = (filename: string) => string
+
+function ensureLinkDownloaded(
+    resolver: SavePathResolver): (linkObj: FileLink) => Promise<string> {
+  return (linkObj: FileLink) =>
+    axios.head(
+      linkObj.link,
+      {
+        httpAgent: httpAgent,
+        responseType: 'stream'
+      })
+      .then(response => {
+        const filename =
+          path.basename(
+            url.parse((response as any).request.path).pathname)
+        return filename
+      })
+      .then(filename => {
+        const filepath = resolver(filename)
+        function download() {
+          debug(`Downloading ${linkObj.name} to ${filename}`)
+          return fs.mkdirs(path.dirname(filepath))
+            .then(() => axios.get(
+              linkObj.link,
+              {
+                httpAgent: httpAgent,
+                responseType: 'stream'
+              })
+              .then((response: {data: NodeJS.ReadableStream}) => {
+                return new Promise<void>((resolve, reject) => {
+                  const writer = fs.createWriteStream(filepath)
+                  writer.on('finish', () => {
+                    debug("wrote "+filepath)
+                    resolve()
+                  })
+                  writer.on('error', (error: Error) => {
+                    debug(error)
+                    reject()
+                  })
+                  response.data.pipe(writer)
+                })
+              }))
+        }
+        return fs.access(filepath)
+          .then(() => {
+            debug(`Already have ${filepath}`)
+          })
+          .catch(download)
+          .then<string>(() => filepath)
+          .catch((e: Error) => {
+            debug(e)
+            throw e
+          })
+      })
+}
+
 function withFeatures<T>(
-    regionType: RegionType,
+    meshBlockType: MeshBlockType,
     reduceF: (accumulator: T, feature: gdal.Feature) => Promise<T>,
     accumulatorBase: T): Promise<T> {
-  const urls: (regionType: RegionType) => string = R.flip(R.prop)({
+  const urls: (meshBlockType: MeshBlockType) => string = R.flip(R.prop)({
     'mb2011': 'http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.001July%202011?OpenDocument',
     'mb2016': 'http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.001July%202016?OpenDocument'
   })
 
   const fetchLinks = (downloadPageUrl: string) => new Promise((resolve, reject) => {
-    var links: { name: string, link: string }[] = []
+    let links: FileLink[] = []
     osmosis
       .get(downloadPageUrl)
       .find('.listentry')
@@ -99,7 +161,7 @@ function withFeatures<T>(
         'name': 'td:first/text()',
         'link': 'td a @href'
       })
-      .data((data: {[k: string]: string}) => {
+      .data((data: FileLink) => {
         const linkData = R.evolve({
           'link': (l: string) => url.resolve(downloadPageUrl, l)
         }, data)
@@ -114,69 +176,17 @@ function withFeatures<T>(
       .error((e: Error) => { console.log(e, e.stack); reject(e) })
   })
 
-  interface FileLink {
-    name: string,
-    link: string
-  }
-  function ensureLinksDownloaded(links: FileLink[]): Promise<string[]> {
+  function ensureLinksDownloaded(linkObjs: FileLink[]): Promise<string[]> {
+    const savePathResolver = (filename: string) =>
+      path.resolve(
+        tmpDataDir,
+        'features',
+        'shapefiles',
+        meshBlockType,
+        filename
+      )
     return Promise.all<string>(
-      links.map<Promise<string>>((linkObj) => {
-        return axios.head(
-          linkObj.link,
-          {
-            httpAgent: httpAgent,
-            responseType: 'stream'
-          })
-          .then(response => {
-            const filename =
-              path.basename(
-                url.parse((response as any).request.path).pathname)
-            return filename
-          })
-          .then(filename => {
-            const filepath = path.resolve(
-              tmpDataDir,
-              'features',
-              'shapefiles',
-              regionType,
-              filename
-            )
-            function download() {
-              debug(`Downloading ${linkObj.name} to ${filename}`)
-              return fs.mkdirs(path.dirname(filepath))
-                .then(() => axios.get(
-                  linkObj.link,
-                  {
-                    httpAgent: httpAgent,
-                    responseType: 'stream'
-                  })
-                  .then((response: {data: NodeJS.ReadableStream}) => {
-                    return new Promise<void>((resolve, reject) => {
-                      const writer = fs.createWriteStream(filepath)
-                      writer.on('finish', () => {
-                        debug("wrote "+filepath)
-                        resolve()
-                      })
-                      writer.on('error', (error: Error) => {
-                        debug(error)
-                        reject()
-                      })
-                      response.data.pipe(writer)
-                    })
-                  }))
-            }
-            return fs.access(filepath)
-              .then(() => {
-                debug(`Already have ${filepath}`)
-              })
-              .catch(download)
-              .then<string>(() => filepath)
-              .catch((e: Error) => {
-                debug(e)
-                throw e
-              })
-          })
-      })
+      linkObjs.map(ensureLinkDownloaded(savePathResolver))
     )
   }
 
@@ -255,7 +265,7 @@ function withFeatures<T>(
     })
   }
 
-  return fetchLinks(urls(regionType))
+  return fetchLinks(urls(meshBlockType))
     .then<string[]>(ensureLinksDownloaded)
     .then<T>(
       R.reduce<string, Promise<T>>(
@@ -265,6 +275,99 @@ function withFeatures<T>(
     )
 }
 
+function fetchCensusCounts(
+    meshBlockType: MeshBlockType): Promise<(mbCode: string) => number> {
+  const downloadPageUrls: (meshBlockType: MeshBlockType) => string =
+    R.flip(R.prop)({
+      'mb2011': 'http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/2074.02011?OpenDocument',
+      'mb2016': 'http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/2074.02016?OpenDocument'
+    })
+
+  const fetchLink = (downloadPageUrl: string) => new Promise((resolve, reject) => {
+    let link: FileLink = null
+    osmosis
+      .get(downloadPageUrl)
+      .find('.listentry')
+      .set({
+        'name': 'td:first/text()',
+        'link': 'td a @href'
+      })
+      .data((data: FileLink) => {
+        const linkData = R.evolve({
+          'link': (l: string) => url.resolve(downloadPageUrl, l)
+        }, data)
+        const isDesiredLink =
+          R.where({
+            'name': R.test(/Census.*Counts/i),
+            'link': R.test(/\.csv/i)
+          }, linkData)
+        if (isDesiredLink) {
+          link = linkData
+        }
+      })
+      .done(function() {
+        if (link) {
+          resolve(link)
+        } else {
+          reject(Error("CSV link not found"))
+        }
+      })
+      .log(debug)
+      .error((e: Error) => { console.log(e, e.stack); reject(e) })
+  })
+
+  function processCsvFile(filepath: string): Promise<(code: string) => number> {
+    return fs.readFile(filepath)
+      .then<string>(v => v.toString('utf8'))
+      .then<object[]>(csvTextParser({
+        auto_parse: true,
+        columns: function(headerRow: string[]) {
+          const personsColumnIndex = R.findIndex(
+            R.test(/person/i),
+            headerRow
+          )
+          return R.range(0, headerRow.length).map(i => {
+            switch (i) {
+              case 0:                   return 'code'
+              case personsColumnIndex:  return 'persons'
+              default:                  return '_'+i
+            }
+          })
+        },
+        skip_empty_lines: true,
+        relax_column_count: true
+      }))
+      .then(R.map(R.props(['code', 'persons'])))
+      .then<{[code: string]: number}>(R.fromPairs)
+      .then(R.flip(R.prop))
+  }
+
+  return fetchLink(downloadPageUrls(meshBlockType))
+    .then<string>(ensureLinkDownloaded(
+      (filename: string) =>
+        path.resolve(
+          tmpDataDir,
+          'features',
+          'census',
+          meshBlockType,
+          filename
+        )
+    ))
+    .then(processCsvFile)
+
+}
+
+const fieldToRegionType: (fieldName: string) => string =
+  R.flip(R.prop)(
+    {
+      'SA2_MAIN11': 'sa2_2011',
+      'SA3_CODE11': 'sa3_2011',
+      'SA2_MAIN16': 'sa2_2016',
+      'SA3_CODE16': 'sa3_2016'
+    }
+  )
+// TODO: remove (just so compilation works)
+fieldToRegionType
 
 yargs
   .command({
@@ -290,22 +393,36 @@ yargs
     }
   })
   .command({
-    command: 'get-features <regionType>',
+    command: 'get-features <meshBlockType>',
     describe: 'download features for region type',
     builder: (yargs: yargs.Argv) =>
       yargs
-        .choices('regionType', ['mb2011', 'mb2016']),
-    handler: (args: { regionType: string }) => {
-      const op = (totalArea: number, feature: gdal.Feature) => {
-        const name = feature.fields.get(0)
-        const g = feature.getGeometry()
-        const featureArea: number = g ? turf.area(g.toObject()) : 0
-        if (Math.random() > 0.99)
-          debug(`${name}: ${featureArea}`)
-        return Promise.resolve(totalArea + featureArea)
-      }
-      withFeatures(args.regionType as RegionType, op, 0)
-        .then(v => console.log(v))
+        .choices('meshBlockType', ['mb2011', 'mb2016']),
+    handler: (args: { meshBlockType: MeshBlockType }) => {
+      fetchCensusCounts(args.meshBlockType)
+        .then((getCensusCount: (mbCode: string) => number) => {
+          const op = (mean: WeightedMean, feature: gdal.Feature) => {
+            const name = feature.fields.get(0)
+            const g = feature.getGeometry()
+            const featureArea: number = g ? turf.area(g.toObject()) : 0
+            const revisedMean =
+              featureArea > 0 ? // Zero area features are excluded from mean
+              mean.add(new WeightedMean(getCensusCount(name)/featureArea, featureArea)) :
+              mean
+            const parentFeatureCodes = R.fromPairs(
+              feature.fields.getNames()
+                .filter(R.pipe(fieldToRegionType, R.is(String)))
+                .map((k: string) =>
+                  [fieldToRegionType(k), feature.fields.get(k)]
+                )
+            )
+            if (Math.random() > 0.999)
+              debug(`${name}: ${JSON.stringify(parentFeatureCodes)} ${mean.value*1e6} persons/km²`)
+            return Promise.resolve(revisedMean)
+          }
+          return withFeatures(args.meshBlockType as MeshBlockType, op, new WeightedMean(0, 0))
+        })
+        .then((v: WeightedMean) => console.log(`Average population density of ${v.value*1e6} persons/km²`))
         .catch(debug)
     }
   })
