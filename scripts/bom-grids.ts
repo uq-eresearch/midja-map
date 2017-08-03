@@ -496,46 +496,22 @@ class PixelValueDistributor {
   }
 
   distribute(valueGetter: (p: Pixel) => number): FeatureValueMap {
-    const reduceWithIndex = R.addIndex(R.reduce)
-    return R.mapObjIndexed(
-      (wm: WeightedMean) => wm.value,
-      reduceWithIndex(
-        (acc: FWMM, ys, x) => {
-          return ys ?
-            reduceWithIndex(
-              (acc: FWMM, featureWeights: FeatureWeight[]|undefined, y) => {
-                if (featureWeights) {
-                  debug(`Processing (${x},${y}) for ${featureWeights.length} features`)
-                  const pixelValue = valueGetter([x, y])
-                  const updateWeightedMean =
-                    (fw: FeatureWeight) =>
-                    (wm: WeightedMean | undefined) => {
-                      const additional = new WeightedMean(pixelValue, fw.weight)
-                      return wm ? wm.add(additional) : additional
-                    }
-                  return R.reduce(
-                    (acc: FWMM, featureWeight: FeatureWeight) =>
-                      R.over(
-                        R.lensProp(featureWeight.featureName),
-                        updateWeightedMean(featureWeight),
-                        acc
-                      ),
-                    acc,
-                    featureWeights
-                  )
-                } else {
-                  return acc
-                }
-              },
-              acc,
-              ys
-            ) :
-            acc
-        },
-        {} as FWMM,
-        this.store
-      )
-    )
+    const output: FWMM = {}
+    for (let x = 0; x < this.store.length; x++) {
+      if (!this.store[x]) continue;
+      for (let y = 0; y < this.store[x].length; y++) {
+        if (!this.store[x][y]) continue;
+        const pixelValue = valueGetter([x, y])
+        for (let fw of this.store[x][y]) {
+          const wm = new WeightedMean(pixelValue, fw.weight)
+          output[fw.featureName] =
+            output[fw.featureName] ?
+            output[fw.featureName].add(wm) :
+            wm
+        }
+      }
+    }
+    return R.mapObjIndexed((wm: WeightedMean) => wm.value, output)
   }
 
 }
@@ -651,16 +627,17 @@ yargs
             .then((pvd: PixelValueDistributor) => {
               debug(`Distributing ${gridfile}`)
               return withDataset(gridfile, (dataset: gdal.Dataset) => {
-                return dataset.bands.map((band: gdal.Band) => {
-                  return pvd.distribute(
-                    (pixel: Pixel) => band.pixels.get(pixel[0], pixel[1])
-                  )
-                })
+                const band = dataset.bands.get(1)
+                return pvd.distribute(
+                  (pixel: Pixel) => band.pixels.get(pixel[0], pixel[1])
+                )
               })
             })
         })
         .then(R.tap(() => debug("Outputting distribution to JSON")))
-        .then(JSON.stringify)
+        .then(obj => JSON.stringify(obj, function(_0, v) {
+          return v.toFixed ? Number(v.toFixed(1)) : v;
+        }))
         .then(v => console.log(v))
         .catch(debug)
     }
