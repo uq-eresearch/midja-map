@@ -10,8 +10,24 @@ declare module 'gdal' {
 
   export class Dataset {
     geoTransform: GeoTransform
+    bands: DatasetBands
     layers: DatasetLayers
     close(): void
+  }
+
+  export class DatasetBands {
+    get(index: number): RasterBand
+    forEach<T>(callback: (band: RasterBand) => T): void
+    map<T>(callback: (band: RasterBand) => T): T[]
+  }
+
+  export class Band {
+    pixels: RasterBandPixels
+    size: { x: number, y, number }
+  }
+
+  export class RasterBandPixels {
+    get(x: number, y: number): number
   }
 
   export class DatasetLayers {

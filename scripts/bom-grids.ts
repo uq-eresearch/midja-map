@@ -6,18 +6,20 @@ import extractZip from 'extract-zip'
 import * as fs from 'fs-extra'
 import * as gdal from 'gdal'
 import * as http from 'http'
-import { createGzip as createCompressor } from 'zlib'
+import { createGzip, createGunzip } from 'zlib'
 import { spawn } from 'child_process'
 import moment from 'moment'
 import * as osmosis from 'osmosis'
 import * as path from 'path'
+import * as png from 'png-async'
+import * as turfMeta from '@turf/meta'
 import turf from '@turf/turf'
 import * as url from 'url'
 import * as yargs from 'yargs'
 const tmpDataDir = path.relative('.',
   path.resolve(__dirname, '..', 'tmp', 'data'))
 
-const debug = require('debug')('bom-download')
+const debug = require('debug')('bom-grid')
 
 const httpAgent = new http.Agent({
   keepAlive: true,
@@ -36,11 +38,6 @@ const urlResolvers: { [stat: string]: (datestamp: string) => string } = {
 
 const statisticUrl = (statistic: string, date: moment.Moment) => {
   return urlResolvers[statistic](date.format('YYYYMMDD'))
-}
-
-function outputFile(statistic: string, date: moment.Moment) {
-  const datestamp = date.format('YYYY-MM-DD')
-  return path.resolve(tmpDataDir, statistic, `${datestamp}.grid.gz`)
 }
 
 function download(
@@ -65,7 +62,7 @@ function download(
           stdio: 'pipe'
         })
         const writer = zcatProcess.stdout
-          .pipe(createCompressor())
+          .pipe(createGzip())
           .pipe(fs.createWriteStream(filepath))
         writer.on('finish', () => {
           zcatProcess.unref()
@@ -80,6 +77,18 @@ function download(
           .pipe(zcatProcess.stdin)
       })
     })
+}
+
+function ensureGridDownloaded(
+    statistic: string,
+    date: moment.Moment): Promise<string> {
+  const datestamp = date.format('YYYY-MM-DD')
+  const filepath =
+    path.resolve(tmpDataDir, statistic, `${datestamp}.grid.gz`)
+  return fs.access(filepath)
+    .then(() => debug(`Already have ${filepath}`))
+    .catch(() => download(statistic, date, filepath))
+    .then(() => filepath)
 }
 
 type MeshBlockType = "mb2011" | "mb2016"
@@ -143,9 +152,18 @@ function ensureLinkDownloaded(
       })
 }
 
+function withDataset<T>(file: string, f: (d: gdal.Dataset) => T): T {
+  const dataset = gdal.open(file)
+  try {
+    return f(dataset)
+  } finally {
+    dataset.close()
+  }
+}
+
 function withFeatures<T>(
     meshBlockType: MeshBlockType,
-    reduceF: (accumulator: T, feature: gdal.Feature) => Promise<T>,
+    reduceF: (accumulator: T, feature: gdal.Feature) => T | Promise<T>,
     accumulatorBase: T): Promise<T> {
   const urls: (meshBlockType: MeshBlockType) => string = R.flip(R.prop)({
     'mb2011': 'http://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1270.0.55.001July%202011?OpenDocument',
@@ -211,17 +229,6 @@ function withFeatures<T>(
       .then(removeFiles)
       .catch(removeFiles)
     return opPromise
-  }
-
-  function withDataset(
-      file: string,
-      f: (d: gdal.Dataset) => Promise<T>): Promise<T> {
-    const dataset = gdal.open(file)
-    try {
-      return f(dataset)
-    } finally {
-      dataset.close()
-    }
   }
 
   function processLayers(
@@ -366,8 +373,195 @@ const fieldToRegionType: (fieldName: string) => string =
       'SA3_CODE16': 'sa3_2016'
     }
   )
-// TODO: remove (just so compilation works)
-fieldToRegionType
+
+type BoundingBox = [number, number, number, number]
+type Pixel = [number, number]
+type Weighting = number
+interface WeightAllocation {
+  readonly weight: Weighting
+}
+class PixelWeight implements WeightAllocation {
+  readonly pixel: Pixel
+  readonly weight: Weighting
+  constructor(pixel: Pixel, weight: Weighting) {
+    this.pixel = pixel
+    this.weight = weight
+  }
+}
+class FeatureWeight implements WeightAllocation {
+  readonly featureName: string
+  readonly weight: Weighting
+  constructor(featureName: string, weight: Weighting) {
+    this.featureName = featureName
+    this.weight = weight
+  }
+}
+class PixelCanvas {
+  private readonly topLeftX: number // longitude
+  private readonly topLeftY: number // latitude
+  private readonly wePixelResolution: number // degrees longitude
+  private readonly nsPixelResolution: number // degrees latitude (negative)
+  readonly width: number  // in pixels
+  readonly height: number // in pixels
+
+  constructor(geoTransform: gdal.GeoTransform, size: { x: number, y: number }) {
+    this.topLeftX = geoTransform[0]
+    this.topLeftY = geoTransform[3]
+    this.wePixelResolution = geoTransform[1]
+    this.nsPixelResolution = geoTransform[5]
+    this.width = size.x
+    this.height = size.y
+  }
+
+  pixelToBoundingBox(pixel: Pixel): BoundingBox {
+    const wLong = pixel[0] * this.wePixelResolution + this.topLeftX
+    const nLat = pixel[1] * this.nsPixelResolution + this.topLeftY
+    const eLong = wLong + this.wePixelResolution
+    const sLat = nLat + this.nsPixelResolution
+    return [wLong, sLat, eLong, nLat]
+  }
+
+  gridForPolygon(geometry: turfMeta.Polygon): Pixel[] {
+    const bbox = turf.bbox(turf.feature(geometry))
+    const minPixelX = Math.floor((bbox[0]-this.topLeftX)/this.wePixelResolution)
+    const minPixelY = Math.floor((bbox[3]-this.topLeftY)/this.nsPixelResolution)
+    const maxPixelX = Math.floor((bbox[2]-this.topLeftX)/this.wePixelResolution)
+    const maxPixelY = Math.floor((bbox[1]-this.topLeftY)/this.nsPixelResolution)
+    return R.xprod(
+      R.range(Math.max(0, minPixelX), Math.min(this.width, maxPixelX + 1)),
+      R.range(Math.max(0, minPixelY), Math.min(this.height, maxPixelY + 1))
+    )
+  }
+
+}
+
+/**
+ * @param {gdal.GeoTransform} geoTransform - GDAL GeoTransform for raster
+ * @param {Polygon} geometry - layer polygon to map to raster
+ */
+function pixelWeights(pixelCanvas: PixelCanvas, geometry: turfMeta.Polygon): PixelWeight[] {
+  function computeIntersection(geometry: turfMeta.Polygon, pixel: Pixel) {
+    try {
+      return turf.bboxClip(geometry, pixelCanvas.pixelToBoundingBox(pixel))
+    } catch (e) {
+      return null
+    }
+  }
+  const geometryArea = turf.area(turf.feature(geometry))
+  const grid = pixelCanvas.gridForPolygon(geometry)
+
+  if (grid.length == 1) {
+    // No point calculating intersection - feature exists in single feature
+    return [ new PixelWeight(grid[0], 1.0) ]
+  } else {
+    return grid
+      .map<PixelWeight>((pixel: Pixel) => {
+        const intersection = computeIntersection(geometry, pixel)
+        return new PixelWeight(
+          pixel,
+          (
+            intersection ?
+            turf.area(intersection) / geometryArea :
+            0
+          )
+        )
+      })
+      .filter((pw: PixelWeight) => pw.weight > 0)
+  }
+}
+
+
+type FeatureValueMap = {[feature: string]: number}
+type FWMM = {[f: string]: WeightedMean}
+class PixelValueDistributor {
+
+  private readonly store: FeatureWeight[][][]
+
+  constructor(store: FeatureWeight[][][] = []) {
+    this.store = store
+  }
+
+  add(featureName: string, pixelWeights: PixelWeight[]): PixelValueDistributor {
+    return new PixelValueDistributor(R.reduce(
+      (store: FeatureWeight[][][], pixelWeight: PixelWeight) => {
+        return R.over(
+          R.lensPath(pixelWeight.pixel),
+          R.append(new FeatureWeight(featureName, pixelWeight.weight)),
+          store
+        )
+      },
+      this.store,
+      pixelWeights
+    ))
+  }
+
+  distribute(valueGetter: (p: Pixel) => number): FeatureValueMap {
+    const reduceWithIndex = R.addIndex(R.reduce)
+    return R.mapObjIndexed(
+      (wm: WeightedMean) => wm.value,
+      reduceWithIndex(
+        (acc: FWMM, ys, x) => {
+          return ys ?
+            reduceWithIndex(
+              (acc: FWMM, featureWeights: FeatureWeight[]|undefined, y) => {
+                if (featureWeights) {
+                  debug(`Processing (${x},${y}) for ${featureWeights.length} features`)
+                  const pixelValue = valueGetter([x, y])
+                  const updateWeightedMean =
+                    (fw: FeatureWeight) =>
+                    (wm: WeightedMean | undefined) => {
+                      const additional = new WeightedMean(pixelValue, fw.weight)
+                      return wm ? wm.add(additional) : additional
+                    }
+                  return R.reduce(
+                    (acc: FWMM, featureWeight: FeatureWeight) =>
+                      R.over(
+                        R.lensProp(featureWeight.featureName),
+                        updateWeightedMean(featureWeight),
+                        acc
+                      ),
+                    acc,
+                    featureWeights
+                  )
+                } else {
+                  return acc
+                }
+              },
+              acc,
+              ys
+            ) :
+            acc
+        },
+        {} as FWMM,
+        this.store
+      )
+    )
+  }
+
+}
+
+function gunzipToTemp(gzippedFile: string): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const outputFile = path.resolve(
+      path.dirname(gzippedFile),
+      path.basename(gzippedFile, '.gz')
+    )
+    if (gzippedFile == outputFile) {
+      throw Error("File not .gz: "+gzippedFile)
+    }
+    const reader = fs.createReadStream(gzippedFile)
+    const writer = fs.createWriteStream(outputFile)
+
+    writer.on('finish', () => {
+      resolve(outputFile)
+    })
+    writer.on('error', (error: Error) => {
+      reject(error)
+    })
+    // Start write process
+    reader.pipe(createGunzip()).pipe(writer)
+  })
+}
 
 yargs
   .command({
@@ -381,11 +575,7 @@ yargs
     handler: (args) => {
       for (let i = 0; i < args.days; i++) {
         const date = args.startDate.clone().add(i, 'day')
-        const filepath = outputFile(args.statistic, date)
-        fs.access(filepath)
-          .then(() => debug(`Already have ${filepath}`))
-          .catch(() => download(args.statistic, date, filepath))
-          .then(() => filepath)
+        ensureGridDownloaded(args.statistic, date)
           .catch((e: Error) => {
             debug(e)
           })
@@ -394,7 +584,7 @@ yargs
   })
   .command({
     command: 'get-features <meshBlockType>',
-    describe: 'download features for region type',
+    describe: 'download features for mesh block type',
     builder: (yargs: yargs.Argv) =>
       yargs
         .choices('meshBlockType', ['mb2011', 'mb2016']),
@@ -420,9 +610,110 @@ yargs
               debug(`${name}: ${JSON.stringify(parentFeatureCodes)} ${mean.value*1e6} persons/km²`)
             return Promise.resolve(revisedMean)
           }
-          return withFeatures(args.meshBlockType as MeshBlockType, op, new WeightedMean(0, 0))
+          return withFeatures(args.meshBlockType, op, new WeightedMean(0, 0))
         })
         .then((v: WeightedMean) => console.log(`Average population density of ${v.value*1e6} persons/km²`))
+        .catch(debug)
+    }
+  })
+  .command({
+    command: 'compute-intermediate <meshBlockType> <statistic> <startDate> [days]',
+    describe: 'compute intermediate stats for mesh block type',
+    builder: (yargs: yargs.Argv) =>
+      yargs
+        .choices('meshBlockType', ['mb2011', 'mb2016'])
+        .choices('statistic', R.keys(urlResolvers))
+        .coerce('startDate', (d) => moment(d))
+        .default('days', 1),
+    handler: (args: { meshBlockType: MeshBlockType, statistic: string, startDate: moment.Moment, days: number }) => {
+      // Just one day for now
+      ensureGridDownloaded(args.statistic, args.startDate)
+        .then(gunzipToTemp)
+        .then((gridfile) => {
+          const pixelCanvas = withDataset(
+            gridfile,
+            (dataset: gdal.Dataset) => new PixelCanvas(
+              dataset.geoTransform,
+              dataset.bands.get(1).size
+            )
+          )
+          const op = (pvd: PixelValueDistributor, feature: gdal.Feature) => {
+            const name = feature.fields.get(0)
+            if (feature.getGeometry()) {
+              const geometry = feature.getGeometry().toObject()
+              return pvd.add(name, pixelWeights(pixelCanvas, geometry))
+            } else {
+              return pvd
+            }
+          }
+          debug(`Building Pixel → Feature distribution for ${gridfile}`)
+          return withFeatures(args.meshBlockType, op, new PixelValueDistributor())
+            .then((pvd: PixelValueDistributor) => {
+              debug(`Distributing ${gridfile}`)
+              return withDataset(gridfile, (dataset: gdal.Dataset) => {
+                return dataset.bands.map((band: gdal.Band) => {
+                  return pvd.distribute(
+                    (pixel: Pixel) => band.pixels.get(pixel[0], pixel[1])
+                  )
+                })
+              })
+            })
+        })
+        .then(R.tap(() => debug("Outputting distribution to JSON")))
+        .then(JSON.stringify)
+        .then(v => console.log(v))
+        .catch(debug)
+    }
+  })
+
+  .command({
+    command: 'density-png <meshBlockType> <statistic> <date> <outfile>',
+    describe: 'compute density PNG for mesh block type',
+    builder: (yargs: yargs.Argv) =>
+      yargs
+        .choices('meshBlockType', ['mb2011', 'mb2016'])
+        .choices('statistic', R.keys(urlResolvers))
+        .coerce('date', (d) => moment(d)),
+    handler: (args: { meshBlockType: MeshBlockType, statistic: string, date: moment.Moment, outfile: string }) => {
+      // Just one day for now
+      ensureGridDownloaded(args.statistic, args.date)
+        .then(gunzipToTemp)
+        .then((gridfile) => {
+          const pixelCanvas = withDataset(
+            gridfile,
+            (dataset: gdal.Dataset) => new PixelCanvas(
+              dataset.geoTransform,
+              dataset.bands.get(1).size
+            )
+          )
+          const image = png.createImage({
+            width: pixelCanvas.width,
+            height: pixelCanvas.height
+          })
+          image.data.fill(0x00)
+          function pixelToBufferOffset(pixel: Pixel): number {
+            return (image.width * pixel[1] + pixel[0]) << 2
+          }
+          const op = (__: void, feature: gdal.Feature) => {
+            if (feature.getGeometry()) {
+              const geometry = feature.getGeometry().toObject()
+              for (let pw of pixelWeights(pixelCanvas, geometry)) {
+                const offset = pixelToBufferOffset(pw.pixel)
+                image.data.writeUInt8(
+                  Math.min(0xFF, image.data.readUInt8(offset) + 10),
+                  offset)
+                image.data.writeUInt8(0xFF, offset+3)
+              }
+            }
+          }
+          debug(`Building image data based on ${gridfile} geometry`)
+          return withFeatures(args.meshBlockType, op, null)
+            .then(() => {
+              debug(`Writing density PNG to ${args.outfile}`)
+              return image.pack().pipe(fs.createWriteStream(args.outfile))
+            })
+        })
+        .then(R.tap(() => debug("Finished writing PNG")))
         .catch(debug)
     }
   })
