@@ -50,8 +50,8 @@ const urlResolver = (cat: String) => (ds: String) => {
 }
 
 const urlResolvers: { [stat: string]: (datestamp: string) => string } = {
-  'min_temp': urlResolver('temperature/maxave'),
-  'max_temp': urlResolver('temperature/minave'),
+  'max_temp': urlResolver('temperature/maxave'),
+  'min_temp': urlResolver('temperature/minave'),
   'rainfall': urlResolver('rainfall/totals')
 }
 
