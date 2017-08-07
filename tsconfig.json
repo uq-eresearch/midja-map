@@ -4,6 +4,7 @@
     "compileOnSave": false,
     "compilerOptions": {
         "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
         "lib": [
             "dom",
             "es2015",
