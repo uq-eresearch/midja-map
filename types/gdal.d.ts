@@ -28,6 +28,7 @@ declare module 'gdal' {
 
   export class RasterBandPixels {
     get(x: number, y: number): number
+    read(x: number, y: number, width: number, height: number)
   }
 
   export class DatasetLayers {

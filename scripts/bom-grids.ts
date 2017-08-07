@@ -55,6 +55,12 @@ const urlResolvers: { [stat: string]: (datestamp: string) => string } = {
   'rainfall': urlResolver('rainfall/totals')
 }
 
+const statisticFractionDigits: (stat: string) => number = R.flip(R.prop)({
+  'max_temp': 2,
+  'min_temp': 2,
+  'rainfall': 1
+})
+
 const statisticUrl = (statistic: string, date: moment.Moment) => {
   return urlResolvers[statistic](date.format('YYYYMMDD'))
 }
@@ -404,6 +410,9 @@ class PixelWeight implements WeightAllocation {
     this.pixel = pixel
     this.weight = weight
   }
+  scale(n: number): PixelWeight {
+    return new PixelWeight(this.pixel, this.weight * n)
+  }
 }
 class FeatureWeight implements WeightAllocation {
   readonly featureName: string
@@ -512,6 +521,35 @@ class PixelValueDistributor {
     ))
   }
 
+  /**
+   * @return compacted PixelValueDistributor with merged feature weights
+   */
+  compact(): PixelValueDistributor {
+    const newStore: FeatureWeight[][][] = []
+    for (let x = 0; x < this.store.length; x++) {
+      if (!this.store[x]) continue;
+      newStore[x] = []
+      for (let y = 0; y < this.store[x].length; y++) {
+        if (!this.store[x][y]) continue;
+        newStore[x][y] = R.pipe(
+          R.groupBy((fw: FeatureWeight) => fw.featureName),
+          R.values,
+          R.map((fws: FeatureWeight[]) => {
+            if (fws.length < 2) {
+              return fws[0]
+            } else {
+              return new FeatureWeight(
+                fws[0].featureName,
+                R.sum(R.pluck('weight', fws))
+              )
+            }
+          })
+        )(this.store[x][y])
+      }
+    }
+    return new PixelValueDistributor(newStore)
+  }
+
   distribute(valueGetter: (p: Pixel) => number): FeatureValueMap {
     const output: FWMM = {}
     for (let x = 0; x < this.store.length; x++) {
@@ -536,12 +574,14 @@ class PixelValueDistributor {
   }
 
 }
+type PVDMap = {[regionType: string]: PixelValueDistributor}
 
 function gunzipToTemp(gzippedFile: string): Promise<string> {
   return new Promise((resolve, reject) => {
+    const suffix = '.'+Math.random().toString().slice(2)
     const outputFile = path.resolve(
       path.dirname(gzippedFile),
-      path.basename(gzippedFile, '.gz')
+      path.basename(gzippedFile, '.gz') + suffix
     )
     if (gzippedFile == outputFile) {
       throw Error("File not .gz: "+gzippedFile)
@@ -602,12 +642,14 @@ namespace ChildRequests {
       this.pvd = pvd
     }
     do(): FeatureValueMap {
-      return withDataset(this.gridfile, (dataset: gdal.Dataset) => {
-        const band = dataset.bands.get(1)
-        return this.pvd.distribute(
-          (pixel: Pixel) => band.pixels.get(pixel[0], pixel[1])
-        )
-      })
+      const pixelGetter =
+        withDataset(this.gridfile, (dataset: gdal.Dataset) => {
+          const band = dataset.bands.get(1)
+          const size = band.size
+          const pixels = band.pixels.read(0, 0, size.x, size.y)
+          return (pixel: Pixel) => pixels[(pixel[1]*size.x) + pixel[0]]
+        })
+      return this.pvd.distribute(pixelGetter)
     }
   }
 }
@@ -725,10 +767,12 @@ if (isChild) {
 
         function intermediateOutputFile(
             statistic: string,
-            date: moment.Moment): string {
+            date: moment.Moment,
+            regionType: string): string {
           const datestamp = date.format('YYYY-MM-DD')
           return path.resolve(
-            tmpDataDir, 'intermediate', statistic, `${datestamp}.json.gz`)
+            tmpDataDir, 'intermediate', regionType,
+            statistic, `${datestamp}.json.gz`)
         }
 
         function getPixelCanvas(statistic: string, date: moment.Moment) {
@@ -746,26 +790,51 @@ if (isChild) {
           )
         }
 
-        function generateDistributor(
-            pixelCanvas: PixelCanvas): Promise<PixelValueDistributor> {
-          const op = (pvd: PixelValueDistributor, feature: gdal.Feature) => {
-            const name = feature.fields.get(0)
-            if (feature.getGeometry()) {
-              const geometry = feature.getGeometry().toObject()
-              return pvd.add(name, pixelWeights(pixelCanvas, geometry))
-            } else {
-              return pvd
-            }
-          }
-          return withFeatures(
-            args.meshBlockType,
-            op,
-            new PixelValueDistributor())
+        function generateDistributors(
+            pixelCanvas: PixelCanvas): Promise<{[regionType: string]: PixelValueDistributor}> {
+          return fetchCensusCounts(args.meshBlockType)
+            .then((getCensusCount) => {
+              function regionFields(fieldNames: string[]): string[] {
+                return fieldNames.filter(
+                  R.pipe(fieldToRegionType, R.is(String))
+                )
+              }
+              const op = (pvds: PVDMap, feature: gdal.Feature) => {
+                const name = feature.fields.get(0)
+                const censusCount = getCensusCount(name)
+                if (feature.getGeometry() && censusCount > 0) {
+                  const geometry = feature.getGeometry().toObject()
+                  const pws = R.map(
+                    (pw: PixelWeight) => pw.scale(censusCount),
+                    pixelWeights(pixelCanvas, geometry)
+                  )
+                  return R.reduce(
+                    (pvds: PVDMap, field: string) => {
+                      return R.over(
+                        R.lensProp(fieldToRegionType(field)),
+                        (pvd: PixelValueDistributor|undefined) =>
+                          (pvd || new PixelValueDistributor())
+                            .add(feature.fields.get(field), pws),
+                        pvds
+                      )
+                    },
+                    pvds,
+                    regionFields(feature.fields.getNames())
+                  )
+                } else {
+                  return pvds
+                }
+              }
+              return withFeatures(args.meshBlockType, op, {} as PVDMap)
+                .then(R.mapObjIndexed(
+                  (pvd: PixelValueDistributor) => pvd.compact()
+                ))
+            })
         }
 
-        const getSharedDistributor:
-          (pixelCanvas: PixelCanvas) => Promise<PixelValueDistributor> =
-          R.memoize(generateDistributor)
+        const getSharedDistributors:
+          (pixelCanvas: PixelCanvas) => Promise<PVDMap> =
+          R.memoize(generateDistributors)
 
         function distributeGridfile(
             statistic: string,
@@ -785,33 +854,73 @@ if (isChild) {
           })
         }
 
+        function jsonSerializer(statistic: string): (x: any) => string {
+          const n = statisticFractionDigits(statistic)
+          return (x: string) => {
+            return JSON.stringify(x, function(_k, v) {
+              return v.toFixed ? Number(v.toFixed(n)) : v
+            }, 2)
+          }
+        }
+
+        function intermediateFileWriter(
+            statistic: string,
+            date: moment.Moment,
+            regionType: string): (fvm: FeatureValueMap) => Promise<string> {
+          const toJson = jsonSerializer(statistic)
+          return (obj: FeatureValueMap) => {
+            const outfile = intermediateOutputFile(
+              statistic,
+              date,
+              regionType
+            )
+            return fs.mkdirs(path.dirname(outfile))
+              .then(() => {
+                return gzipP(Buffer.from(toJson(obj), 'utf8'))
+                  .then((data) => fs.writeFile(outfile, data))
+                  .then(() => outfile)
+              })
+          }
+        }
+
         const jobs =
           R.map(
             (date: moment.Moment) => {
+              function msgF(msg: string): string {
+                return `${date.format('YYYY-MM-DD')} ${args.statistic}: ${msg}`
+              }
               function msgT<T>(msg: string): (v: T) => T {
-                return debugT<T>(
-                  `${date.format('YYYY-MM-DD')} ${args.statistic}: ${msg}`
-                )
+                return debugT<T>(msgF(msg))
               }
               return getPixelCanvas(args.statistic, date)
-                .then(getSharedDistributor)
+                .then(getSharedDistributors)
                 .then(msgT(`Distributing Pixels`))
                 .then(
-                  (pvd: PixelValueDistributor) =>
-                    distributeGridfile(args.statistic, date, pvd)
+                  (pvds: PVDMap) =>
+                    Promise.all(
+                      R.values(
+                        R.mapObjIndexed(
+                          (pvd: PixelValueDistributor, regionType: string) => {
+                            debug(msgF(`Distributing for ${regionType}`))
+                            return distributeGridfile(args.statistic, date, pvd)
+                              .then(
+                                intermediateFileWriter(
+                                  args.statistic,
+                                  date,
+                                  regionType
+                                )
+                              )
+                              .then((outfile: string) => {
+                                return debug(msgF(
+                                  `Wrote ${regionType} JSON to ${outfile}`))
+                              })
+                          },
+                          pvds
+                        )
+                      )
+                    )
                 )
-                .then((obj: FeatureValueMap) => {
-                  const outfile = intermediateOutputFile(
-                    args.statistic,
-                    date
-                  )
-                  return fs.mkdirs(path.dirname(outfile))
-                    .then(() => {
-                      return gzipP(Buffer.from(JSON.stringify(obj), 'utf8'))
-                        .then((data) => fs.writeFile(outfile, data))
-                    })
-                    .then(msgT(`Wrote JSON to ${outfile}`))
-                })
+
             },
             dates
           )
