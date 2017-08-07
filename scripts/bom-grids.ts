@@ -757,7 +757,12 @@ if (isChild) {
           .coerce('startDate', (d) => moment(d))
           .default('days', 1),
       handler: (args: { meshBlockType: MeshBlockType, statistic: string, startDate: moment.Moment, days: number }) => {
-        const distributionQueue = new PQueue({ concurrency: cpus().length })
+        const canvasQueue = new PQueue({
+          concurrency: Math.min(cpus().length, 4)
+        })
+        const distributionQueue = new PQueue({
+          concurrency: Math.min(cpus().length, 4)
+        })
 
         const dates: moment.Moment[] =
           R.map(
@@ -776,17 +781,19 @@ if (isChild) {
         }
 
         function getPixelCanvas(statistic: string, date: moment.Moment) {
-          return withGridfile(
-            statistic,
-            date,
-            (gridfile: string) =>
-              withDataset(
-                gridfile,
-                (dataset: gdal.Dataset) => new PixelCanvas(
-                  dataset.geoTransform,
-                  dataset.bands.get(1).size
+          return canvasQueue.add(() =>
+            withGridfile(
+              statistic,
+              date,
+              (gridfile: string) =>
+                withDataset(
+                  gridfile,
+                  (dataset: gdal.Dataset) => new PixelCanvas(
+                    dataset.geoTransform,
+                    dataset.bands.get(1).size
+                  )
                 )
-              )
+            )
           )
         }
 
