@@ -963,7 +963,7 @@ if (isChild) {
     })
     .command({
       command: 'compute-intermediate <regionType> <statistic> <startDate> [days]',
-      describe: 'compute intermediate stats for mesh block type',
+      describe: 'compute intermediate stats for region type',
       builder: (yargs: yargs.Argv) =>
         yargs
           .choices('regionType', ["sa2_2011", "sa3_2011", "sa2_2016", "sa3_2016"])
@@ -983,6 +983,37 @@ if (isChild) {
               ' intermediate outputs'
             )
           })
+          .catch(debug)
+      }
+    })
+    .command({
+      command: 'days-over <regionType> <statistic> <value> <startDate> [days]',
+      describe: 'compute days over value for region type',
+      builder: (yargs: yargs.Argv) =>
+        yargs
+          .choices('regionType', ["sa2_2011", "sa3_2011", "sa2_2016", "sa3_2016"])
+          .choices('statistic', R.keys(urlResolvers))
+          .coerce('startDate', (d) => moment(d))
+          .default('days', 1),
+      handler: (args: { regionType: RegionType, statistic: string, startDate: moment.Moment, days: number, value: number }) => {
+        const dates: moment.Moment[] =
+          R.map(
+            (nDays) => args.startDate.clone().add(nDays, 'day'),
+            R.range(0, args.days)
+          )
+        return getIntermediateOutputs(args.regionType, args.statistic, dates)
+          .then((outputs: FeatureValueMapRetriever[]) => {
+            return R.reduce(
+              (pCountFvm: Promise<FeatureValueMap>, retriever: FeatureValueMapRetriever) =>
+                pCountFvm.then((countFvm: FeatureValueMap) => {
+                  return retriever()
+                    .then(R.mapObjIndexed(v => v >= args.value ? 1 : 0))
+                    .then(R.mergeWith(R.add, countFvm))
+                }),
+              Promise.resolve<FeatureValueMap>({}),
+              outputs)
+          })
+          .then(v => console.log(JSON.stringify(v, null, 2)))
           .catch(debug)
       }
     })
