@@ -1018,6 +1018,46 @@ if (isChild) {
       }
     })
     .command({
+      command: 'region-series <regionType> <region> <statistic> <startDate> [days]',
+      describe: 'get data series for particular region',
+      builder: (yargs: yargs.Argv) =>
+        yargs
+          .choices('regionType', ["sa2_2011", "sa3_2011", "sa2_2016", "sa3_2016"])
+          .choices('statistic', R.keys(urlResolvers))
+          .option('json', {
+            describe: 'output as JSON',
+            type: 'boolean'
+          })
+          .coerce('startDate', (d) => moment(d))
+          .default('days', 1),
+      handler: (args: { regionType: RegionType, region: string, statistic: string, startDate: moment.Moment, days: number, json: boolean }) => {
+        const dates: moment.Moment[] =
+          R.map(
+            (nDays) => args.startDate.clone().add(nDays, 'day'),
+            R.range(0, args.days)
+          )
+        return getIntermediateOutputs(args.regionType, args.statistic, dates)
+          .then((outputs: FeatureValueMapRetriever[]) => {
+            return Promise.all(
+              R.map(
+                (retriever: FeatureValueMapRetriever) => {
+                  return retriever().then(fvm => fvm[args.region])
+                },
+                outputs
+              )
+            )
+          })
+          .then(v => {
+            if (args.json) {
+              console.log(JSON.stringify(v, null, 2))
+            } else {
+              console.log(v.join("\n"))
+            }
+          })
+          .catch(debug)
+      }
+    })
+    .command({
       command: 'density-png <meshBlockType> <statistic> <date> <outfile>',
       describe: 'map mesh block density as an equirectangular projection',
       builder: (yargs: yargs.Argv) =>
