@@ -1,7 +1,7 @@
 import * as R from 'ramda'
 import axios from 'axios'
 import { csvTextParser } from '../lib/attribute/import'
-import { WeightedMean } from '../lib/util'
+import { fromPromiseMap, tupled2, WeightedMean } from '../lib/util'
 import { autoserialize, autoserializeAs, Serialize, Deserialize } from 'cerialize'
 import * as cp from 'child_process'
 import extractZip from 'extract-zip'
@@ -125,6 +125,7 @@ function ensureGridDownloaded(
 }
 
 type MeshBlockType = "mb2011" | "mb2016"
+type RegionType = "sa2_2011" | "sa3_2011" | "sa2_2016" | "sa3_2016"
 interface FileLink {
   name: string,
   link: string
@@ -242,9 +243,10 @@ function withFeatures<T>(
   function withZip(
       zipfilePath: string,
       f: (dirpath: string) => Promise<T>): Promise<T> {
+    const suffix = '_'+Math.random().toString().slice(2)
     const extractionPath = path.resolve(
       path.dirname(zipfilePath),
-      path.basename(zipfilePath, '.zip'))
+      path.basename(zipfilePath, '.zip') + suffix)
     const removeFiles = () => fs.remove(extractionPath)
     const extractionPromise = new Promise(function(response, reject) {
       extractZip(zipfilePath, { dir: extractionPath }, (err) => {
@@ -395,15 +397,21 @@ function fetchCensusCounts(
 
 }
 
-const fieldToRegionType: (fieldName: string) => string =
-  R.flip(R.prop)(
-    {
-      'SA2_MAIN11': 'sa2_2011',
-      'SA3_CODE11': 'sa3_2011',
-      'SA2_MAIN16': 'sa2_2016',
-      'SA3_CODE16': 'sa3_2016'
-    }
-  )
+const sourceMeshBlockType: (regionType: RegionType) => MeshBlockType =
+  R.flip(R.prop)({
+    'sa2_2011': 'mb2011',
+    'sa3_2011': 'mb2011',
+    'sa2_2016': 'mb2016',
+    'sa3_2016': 'mb2016'
+  })
+
+const fieldToRegionType: (fieldName: string) => RegionType =
+  R.flip(R.prop)({
+    'SA2_MAIN11': 'sa2_2011',
+    'SA3_CODE11': 'sa3_2011',
+    'SA2_MAIN16': 'sa2_2016',
+    'SA3_CODE16': 'sa3_2016'
+  })
 
 type BoundingBox = [number, number, number, number]
 type Pixel = [number, number]
@@ -651,6 +659,150 @@ function getPixelCanvas(statistic: string, date: moment.Moment) {
   )
 }
 
+function regionFields(fieldNames: string[]): string[] {
+  return fieldNames.filter(
+    R.pipe(fieldToRegionType, R.is(String))
+  )
+}
+
+function generateDistributors(
+    meshBlockType: MeshBlockType,
+    pixelCanvas: PixelCanvas): Promise<{[regionType: string]: PixelValueDistributor}> {
+  return fetchCensusCounts(meshBlockType)
+    .then((getCensusCount) => {
+      const op = (pvds: PVDMap, feature: gdal.Feature) => {
+        const name = feature.fields.get(0)
+        const censusCount = getCensusCount(name)
+        if (feature.getGeometry() && censusCount > 0) {
+          const geometry = feature.getGeometry().toObject()
+          const pws = R.map(
+            (pw: PixelWeight) => pw.scale(censusCount),
+            pixelWeights(pixelCanvas, geometry)
+          )
+          return R.reduce(
+            (pvds: PVDMap, field: string) => {
+              return R.over(
+                R.lensProp(fieldToRegionType(field)),
+                (pvd: PixelValueDistributor|undefined) =>
+                  (pvd || new PixelValueDistributor())
+                    .add(feature.fields.get(field), pws),
+                pvds
+              )
+            },
+            pvds,
+            regionFields(feature.fields.getNames())
+          )
+        } else {
+          return pvds
+        }
+      }
+      return withFeatures(meshBlockType, op, {} as PVDMap)
+        .then(R.mapObjIndexed(
+          (pvd: PixelValueDistributor) => pvd.compact()
+        ))
+    })
+}
+
+function sharedDistributorGenerator(meshBlockType: MeshBlockType) {
+  return R.memoize(R.curry(generateDistributors)(meshBlockType))
+}
+
+function distributeGridfile(
+    statistic: string,
+    date: moment.Moment,
+    pvd: PixelValueDistributor): Promise<FeatureValueMap> {
+  return distributionQueue.add(() => {
+    return withGridfile(
+      statistic,
+      date,
+      (gridfile: string) =>
+        runInChild(
+          Serialize(
+            new ChildRequests.DistributeGridfile(gridfile, pvd)
+          )
+        )
+    )
+  })
+}
+
+function intermediateOutputFilepath(
+  statistic: string,
+  date: moment.Moment,
+  regionType: RegionType): string {
+const datestamp = date.format('YYYY-MM-DD')
+return path.resolve(
+  tmpDataDir, 'intermediate', regionType,
+  statistic, `${datestamp}.json.gz`)
+}
+
+function getExistingIntermediateOutput(
+    statistic: string,
+    date: moment.Moment,
+    regionType: RegionType): Promise<string> {
+  const filepath = intermediateOutputFilepath(statistic, date, regionType)
+  return fs.access(filepath)
+    .then(() => debug(`Already have ${filepath}`))
+    .then(() => filepath)
+}
+
+function buildIntermediateOutputs(
+    statistic: string,
+    date: moment.Moment,
+    pvds: PVDMap): Promise<{[regionType: string]: string}> {
+
+  function jsonSerializer(statistic: string): (x: any) => string {
+    const n = statisticFractionDigits(statistic)
+    return (x: string) => {
+      return JSON.stringify(x, function(_k, v) {
+        return v.toFixed ? Number(v.toFixed(n)) : v
+      }, 2)
+    }
+  }
+
+  function intermediateFileWriter(
+      statistic: string,
+      date: moment.Moment,
+      regionType: RegionType): (fvm: FeatureValueMap) => Promise<string> {
+    const toJson = jsonSerializer(statistic)
+    return (obj: FeatureValueMap) => {
+      const outfile = intermediateOutputFilepath(
+        statistic,
+        date,
+        regionType
+      )
+      return fs.mkdirs(path.dirname(outfile))
+        .then(() => {
+          return gzipP(Buffer.from(toJson(obj), 'utf8'))
+            .then((data) => fs.writeFile(outfile, data))
+            .then(() => outfile)
+        })
+    }
+  }
+  function msgF(msg: string): string {
+    return `${date.format('YYYY-MM-DD')} ${statistic}: ${msg}`
+  }
+  return fromPromiseMap(
+    R.mapObjIndexed(
+      (pvd: PixelValueDistributor, regionType: RegionType) => {
+        debug(msgF(`Distributing for ${regionType}`))
+        return distributeGridfile(statistic, date, pvd)
+          .then(
+            intermediateFileWriter(
+              statistic,
+              date,
+              regionType
+            )
+          )
+          .then(R.tap((outfile: string) => {
+            return debug(msgF(
+              `Wrote ${regionType} JSON to ${outfile}`))
+          }))
+      },
+      pvds
+    )
+  )
+}
+
 namespace ChildRequests {
   export interface Request<T> {
     readonly requestType: string
@@ -773,168 +925,63 @@ if (isChild) {
       }
     })
     .command({
-      command: 'compute-intermediate <meshBlockType> <statistic> <startDate> [days]',
+      command: 'compute-intermediate <regionType> <statistic> <startDate> [days]',
       describe: 'compute intermediate stats for mesh block type',
       builder: (yargs: yargs.Argv) =>
         yargs
-          .choices('meshBlockType', ['mb2011', 'mb2016'])
+          .choices('regionType', ["sa2_2011", "sa3_2011", "sa2_2016", "sa3_2016"])
           .choices('statistic', R.keys(urlResolvers))
           .coerce('startDate', (d) => moment(d))
           .default('days', 1),
-      handler: (args: { meshBlockType: MeshBlockType, statistic: string, startDate: moment.Moment, days: number }) => {
+      handler: (args: { regionType: RegionType, statistic: string, startDate: moment.Moment, days: number }) => {
+        const statistics = [args.statistic]
         const dates: moment.Moment[] =
           R.map(
             (nDays) => args.startDate.clone().add(nDays, 'day'),
             R.range(0, args.days)
           )
 
-        function intermediateOutputFile(
-            statistic: string,
-            date: moment.Moment,
-            regionType: string): string {
-          const datestamp = date.format('YYYY-MM-DD')
-          return path.resolve(
-            tmpDataDir, 'intermediate', regionType,
-            statistic, `${datestamp}.json.gz`)
-        }
+        const meshBlockType: MeshBlockType =
+          sourceMeshBlockType(args.regionType)
 
-        function generateDistributors(
-            pixelCanvas: PixelCanvas): Promise<{[regionType: string]: PixelValueDistributor}> {
-          return fetchCensusCounts(args.meshBlockType)
-            .then((getCensusCount) => {
-              function regionFields(fieldNames: string[]): string[] {
-                return fieldNames.filter(
-                  R.pipe(fieldToRegionType, R.is(String))
-                )
-              }
-              const op = (pvds: PVDMap, feature: gdal.Feature) => {
-                const name = feature.fields.get(0)
-                const censusCount = getCensusCount(name)
-                if (feature.getGeometry() && censusCount > 0) {
-                  const geometry = feature.getGeometry().toObject()
-                  const pws = R.map(
-                    (pw: PixelWeight) => pw.scale(censusCount),
-                    pixelWeights(pixelCanvas, geometry)
-                  )
-                  return R.reduce(
-                    (pvds: PVDMap, field: string) => {
-                      return R.over(
-                        R.lensProp(fieldToRegionType(field)),
-                        (pvd: PixelValueDistributor|undefined) =>
-                          (pvd || new PixelValueDistributor())
-                            .add(feature.fields.get(field), pws),
-                        pvds
-                      )
-                    },
-                    pvds,
-                    regionFields(feature.fields.getNames())
-                  )
-                } else {
-                  return pvds
-                }
-              }
-              return withFeatures(args.meshBlockType, op, {} as PVDMap)
-                .then(R.mapObjIndexed(
-                  (pvd: PixelValueDistributor) => pvd.compact()
-                ))
-            })
-        }
-
-        const getSharedDistributors:
-          (pixelCanvas: PixelCanvas) => Promise<PVDMap> =
-          R.memoize(generateDistributors)
-
-        function distributeGridfile(
-            statistic: string,
-            date: moment.Moment,
-            pvd: PixelValueDistributor): Promise<FeatureValueMap> {
-          return distributionQueue.add(() => {
-            return withGridfile(
-              statistic,
-              date,
-              (gridfile: string) =>
-                runInChild(
-                  Serialize(
-                    new ChildRequests.DistributeGridfile(gridfile, pvd)
-                  )
-                )
-            )
-          })
-        }
-
-        function jsonSerializer(statistic: string): (x: any) => string {
-          const n = statisticFractionDigits(statistic)
-          return (x: string) => {
-            return JSON.stringify(x, function(_k, v) {
-              return v.toFixed ? Number(v.toFixed(n)) : v
-            }, 2)
-          }
-        }
-
-        function intermediateFileWriter(
-            statistic: string,
-            date: moment.Moment,
-            regionType: string): (fvm: FeatureValueMap) => Promise<string> {
-          const toJson = jsonSerializer(statistic)
-          return (obj: FeatureValueMap) => {
-            const outfile = intermediateOutputFile(
-              statistic,
-              date,
-              regionType
-            )
-            return fs.mkdirs(path.dirname(outfile))
-              .then(() => {
-                return gzipP(Buffer.from(toJson(obj), 'utf8'))
-                  .then((data) => fs.writeFile(outfile, data))
-                  .then(() => outfile)
-              })
-          }
-        }
+        const fGenerateDistributors =
+          sharedDistributorGenerator(meshBlockType)
 
         const jobs =
           R.map(
-            (date: moment.Moment) => {
-              function msgF(msg: string): string {
-                return `${date.format('YYYY-MM-DD')} ${args.statistic}: ${msg}`
-              }
-              function msgT<T>(msg: string): (v: T) => T {
-                return debugT<T>(msgF(msg))
-              }
-              return getPixelCanvas(args.statistic, date)
-                .then(getSharedDistributors)
-                .then(msgT(`Distributing Pixels`))
-                .then(
-                  (pvds: PVDMap) =>
-                    Promise.all(
-                      R.values(
-                        R.mapObjIndexed(
-                          (pvd: PixelValueDistributor, regionType: string) => {
-                            debug(msgF(`Distributing for ${regionType}`))
-                            return distributeGridfile(args.statistic, date, pvd)
-                              .then(
-                                intermediateFileWriter(
-                                  args.statistic,
-                                  date,
-                                  regionType
-                                )
-                              )
-                              .then((outfile: string) => {
-                                return debug(msgF(
-                                  `Wrote ${regionType} JSON to ${outfile}`))
-                              })
-                          },
-                          pvds
-                        )
-                      )
+            tupled2((statistic: string, date: moment.Moment) => {
+              return getExistingIntermediateOutput(
+                  statistic,
+                  date,
+                  args.regionType
+                ).catch(() =>
+                  getPixelCanvas(statistic, date)
+                    .then(fGenerateDistributors)
+                    .then((pvds: PVDMap) =>
+                      buildIntermediateOutputs(args.statistic, date, pvds)
                     )
                 )
-
-            },
-            dates
+            }),
+            R.xprod(statistics, dates)
           )
 
         return Promise.all(jobs)
-          .then(debugT(`Wrote ${dates.length} intermediate outputs`))
+          .then(R.reduce(
+            function(
+                m: {[regionType: string]: string[]},
+                files: {[regionType: string]: string}) {
+              return R.evolve(
+                R.mapObjIndexed(v => R.append(v), files),
+                m
+              )
+            },
+            {} as {[regionType: string]: string[]}
+          ))
+          .then(R.tap((m: {[regionType: string]: string[]}) => {
+            for (let k in m) {
+              debug(`Wrote ${m[k].length} ${k} intermediate outputs`)
+            }
+          }))
           .catch(debug)
       }
     })
