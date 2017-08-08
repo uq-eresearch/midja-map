@@ -25,6 +25,14 @@ const tmpDataDir = path.relative('.',
 
 const isChild = !!process.send
 
+const canvasQueue = new PQueue({
+  concurrency: Math.min(cpus().length, 4)
+})
+
+const distributionQueue = new PQueue({
+  concurrency: Math.min(cpus().length, 4)
+})
+
 const debug = require('debug')('bom-grids')
 
 function debugT<T>(msg: string): (v: T) => T {
@@ -626,6 +634,23 @@ function withExtractedFile<T>(
     })
 }
 
+function getPixelCanvas(statistic: string, date: moment.Moment) {
+  return canvasQueue.add(() =>
+    withGridfile(
+      statistic,
+      date,
+      (gridfile: string) =>
+        withDataset(
+          gridfile,
+          (dataset: gdal.Dataset) => new PixelCanvas(
+            dataset.geoTransform,
+            dataset.bands.get(1).size
+          )
+        )
+    )
+  )
+}
+
 namespace ChildRequests {
   export interface Request<T> {
     readonly requestType: string
@@ -757,13 +782,6 @@ if (isChild) {
           .coerce('startDate', (d) => moment(d))
           .default('days', 1),
       handler: (args: { meshBlockType: MeshBlockType, statistic: string, startDate: moment.Moment, days: number }) => {
-        const canvasQueue = new PQueue({
-          concurrency: Math.min(cpus().length, 4)
-        })
-        const distributionQueue = new PQueue({
-          concurrency: Math.min(cpus().length, 4)
-        })
-
         const dates: moment.Moment[] =
           R.map(
             (nDays) => args.startDate.clone().add(nDays, 'day'),
@@ -778,23 +796,6 @@ if (isChild) {
           return path.resolve(
             tmpDataDir, 'intermediate', regionType,
             statistic, `${datestamp}.json.gz`)
-        }
-
-        function getPixelCanvas(statistic: string, date: moment.Moment) {
-          return canvasQueue.add(() =>
-            withGridfile(
-              statistic,
-              date,
-              (gridfile: string) =>
-                withDataset(
-                  gridfile,
-                  (dataset: gdal.Dataset) => new PixelCanvas(
-                    dataset.geoTransform,
-                    dataset.bands.get(1).size
-                  )
-                )
-            )
-          )
         }
 
         function generateDistributors(
@@ -939,24 +940,15 @@ if (isChild) {
     })
     .command({
       command: 'density-png <meshBlockType> <statistic> <date> <outfile>',
-      describe: 'compute density PNG for mesh block type',
+      describe: 'map mesh block density as an equirectangular projection',
       builder: (yargs: yargs.Argv) =>
         yargs
           .choices('meshBlockType', ['mb2011', 'mb2016'])
           .choices('statistic', R.keys(urlResolvers))
           .coerce('date', (d) => moment(d)),
       handler: (args: { meshBlockType: MeshBlockType, statistic: string, date: moment.Moment, outfile: string }) => {
-        // Just one day for now
-        ensureGridDownloaded(args.statistic, args.date)
-          .then(gunzipToTemp)
-          .then((gridfile) => {
-            const pixelCanvas = withDataset(
-              gridfile,
-              (dataset: gdal.Dataset) => new PixelCanvas(
-                dataset.geoTransform,
-                dataset.bands.get(1).size
-              )
-            )
+        getPixelCanvas(args.statistic, args.date)
+          .then((pixelCanvas: PixelCanvas) => {
             const image = png.createImage({
               width: pixelCanvas.width,
               height: pixelCanvas.height
@@ -977,7 +969,7 @@ if (isChild) {
                 }
               }
             }
-            debug(`Building image data based on ${gridfile} geometry`)
+            debug(`Building image data based on gridfile geometry`)
             return withFeatures(args.meshBlockType, op, null)
               .then(() => {
                 debug(`Writing density PNG to ${args.outfile}`)
