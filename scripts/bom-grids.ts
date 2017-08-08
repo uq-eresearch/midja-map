@@ -1,7 +1,7 @@
 import * as R from 'ramda'
 import axios from 'axios'
 import { csvTextParser } from '../lib/attribute/import'
-import { fromPromiseMap, tupled2, WeightedMean } from '../lib/util'
+import { fromPromiseMap, WeightedMean } from '../lib/util'
 import { autoserialize, autoserializeAs, Serialize, Deserialize } from 'cerialize'
 import * as cp from 'child_process'
 import extractZip from 'extract-zip'
@@ -735,14 +735,20 @@ return path.resolve(
   statistic, `${datestamp}.json.gz`)
 }
 
+type FeatureValueMapRetriever = () => Promise<FeatureValueMap>
 function getExistingIntermediateOutput(
     statistic: string,
     date: moment.Moment,
-    regionType: RegionType): Promise<string> {
+    regionType: RegionType): Promise<FeatureValueMapRetriever> {
   const filepath = intermediateOutputFilepath(statistic, date, regionType)
+  function readData(): Promise<FeatureValueMap> {
+    return withExtractedFile<Promise<FeatureValueMap>>(
+      filepath,
+      (f) => fs.readJSON(f)).then(R.identity)
+  }
   return fs.access(filepath)
     .then(() => debug(`Already have ${filepath}`))
-    .then(() => filepath)
+    .then(() => readData)
 }
 
 function buildIntermediateOutputs(
@@ -802,6 +808,37 @@ function buildIntermediateOutputs(
     )
   )
 }
+
+function getIntermediateOutputs(
+    regionType: RegionType,
+    statistic: string,
+    dates: moment.Moment[]): Promise<FeatureValueMapRetriever[]> {
+  const meshBlockType: MeshBlockType =
+    sourceMeshBlockType(regionType)
+  const fGenerateDistributors =
+    sharedDistributorGenerator(meshBlockType)
+  return Promise.all(R.map(
+    (date: moment.Moment) => {
+      const fGetExisting = () =>
+        getExistingIntermediateOutput(
+          statistic,
+          date,
+          regionType
+        )
+      return fGetExisting()
+        .catch(() =>
+          getPixelCanvas(statistic, date)
+            .then(fGenerateDistributors)
+            .then((pvds: PVDMap) =>
+              buildIntermediateOutputs(statistic, date, pvds)
+            )
+            .then(fGetExisting)
+        )
+    },
+    dates
+  ))
+}
+
 
 namespace ChildRequests {
   export interface Request<T> {
@@ -934,54 +971,18 @@ if (isChild) {
           .coerce('startDate', (d) => moment(d))
           .default('days', 1),
       handler: (args: { regionType: RegionType, statistic: string, startDate: moment.Moment, days: number }) => {
-        const statistics = [args.statistic]
         const dates: moment.Moment[] =
           R.map(
             (nDays) => args.startDate.clone().add(nDays, 'day'),
             R.range(0, args.days)
           )
-
-        const meshBlockType: MeshBlockType =
-          sourceMeshBlockType(args.regionType)
-
-        const fGenerateDistributors =
-          sharedDistributorGenerator(meshBlockType)
-
-        const jobs =
-          R.map(
-            tupled2((statistic: string, date: moment.Moment) => {
-              return getExistingIntermediateOutput(
-                  statistic,
-                  date,
-                  args.regionType
-                ).catch(() =>
-                  getPixelCanvas(statistic, date)
-                    .then(fGenerateDistributors)
-                    .then((pvds: PVDMap) =>
-                      buildIntermediateOutputs(args.statistic, date, pvds)
-                    )
-                )
-            }),
-            R.xprod(statistics, dates)
-          )
-
-        return Promise.all(jobs)
-          .then(R.reduce(
-            function(
-                m: {[regionType: string]: string[]},
-                files: {[regionType: string]: string}) {
-              return R.evolve(
-                R.mapObjIndexed(v => R.append(v), files),
-                m
-              )
-            },
-            {} as {[regionType: string]: string[]}
-          ))
-          .then(R.tap((m: {[regionType: string]: string[]}) => {
-            for (let k in m) {
-              debug(`Wrote ${m[k].length} ${k} intermediate outputs`)
-            }
-          }))
+        return getIntermediateOutputs(args.regionType, args.statistic, dates)
+          .then((outputs: any[]) => {
+            debug(
+              `Got ${outputs.length} ${args.regionType} ${args.statistic}`+
+              ' intermediate outputs'
+            )
+          })
           .catch(debug)
       }
     })
