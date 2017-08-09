@@ -1,5 +1,3 @@
-'use strict';
-
 import { expect } from 'chai'
 require('mocha-testcheck').install()
 
@@ -84,4 +82,4 @@ describe('correspondences', () => {
 
   })
 
-});
+})

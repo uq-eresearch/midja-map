@@ -1,7 +1,4 @@
-'use strict';
-
 import { expect } from 'chai'
-
 import { formatNumber } from '../../../lib/attribute/format'
 
 describe('format', function() {
