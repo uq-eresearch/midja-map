@@ -193,6 +193,70 @@
       }
     },
     {
+      "name": "bom_days_under_10_min_temp_2007_2016",
+      "description": "Days with minimum temperature under 10°C from 2007 to 2016",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Meteorology",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "https://creativecommons.org/licenses/by/3.0/au/"
+        },
+        "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
+      }
+    },
+    {
+      "name": "bom_days_under_15_max_temp_2007_2016",
+      "description": "Days with maximum temperature under 15°C from 2007 to 2016",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Meteorology",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "https://creativecommons.org/licenses/by/3.0/au/"
+        },
+        "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
+      }
+    },
+    {
+      "name": "bom_days_under_20_max_temp_2007_2016",
+      "description": "Days with maximum temperature under 20°C from 2007 to 2016",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Meteorology",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "https://creativecommons.org/licenses/by/3.0/au/"
+        },
+        "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
+      }
+    },
+    {
+      "name": "bom_days_under_5_min_temp_2007_2016",
+      "description": "Days with minimum temperature under 5°C from 2007 to 2016",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Meteorology",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "https://creativecommons.org/licenses/by/3.0/au/"
+        },
+        "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
+      }
+    },
+    {
       "name": "census2016_0minus_weekly_household_income_all",
       "description": "Nil or negative weekly household income - all households (Census 2016)",
       "type": "number",
