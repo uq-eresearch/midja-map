@@ -851,6 +851,68 @@ function getIntermediateOutputs(
   ))
 }
 
+function writeThresholdAttribute(
+    regionType: RegionType,
+    statistic: string,
+    testName: string,
+    testF: (regionValue: number, thresholdValue: number) => boolean,
+    thresholdValue: number,
+    startYear: string,
+    endYear: string): Promise<Attribute> {
+  const startDate = moment(startYear, 'YYYY')
+  const days =
+    moment(endYear, 'YYYY')
+      .add(1, 'year')
+      .diff(startDate, 'days')
+  const dates =
+    R.map(
+      (nDays) => startDate.clone().add(nDays, 'day'),
+      R.range(0, days)
+    )
+
+  const attribute = {
+    "name": `bom_days_${testName}_${thresholdValue}_${statistic}_${startYear}_${endYear}`,
+    "description": `Days with ${statisticDescription(statistic)} ${testName} ${thresholdValue}${statisticUnit(statistic)} from ${startYear} to ${endYear}`,
+    "type": "number",
+    "format": {
+      "maximumFractionDigits": 0
+    },
+    "source": {
+      "name": "Australian Bureau of Meteorology",
+      "license": {
+        "type": "Creative Commons Attribution 3.0 Australia",
+        "url": "https://creativecommons.org/licenses/by/3.0/au/"
+      },
+      "notes": `Derived from ${dates.length} ABS grid files:\n` +
+        [R.head(dates), R.last(dates)]
+          .map(d => statisticUrl(statistic, d))
+          .join("\n...\n")
+    }
+  };
+
+  return getIntermediateOutputs(regionType, statistic, dates)
+    .then((outputs: FeatureValueMapRetriever[]) => {
+      return R.reduce(
+        (pCountFvm: Promise<FeatureValueMap>, retriever: FeatureValueMapRetriever) =>
+          pCountFvm.then((countFvm: FeatureValueMap) => {
+            return retriever()
+              .then(R.mapObjIndexed(
+                (v: number) => testF(v, thresholdValue) ? 1 : 0
+              ))
+              .then(R.mergeWith(R.add, countFvm))
+          }),
+        Promise.resolve<FeatureValueMap>({}),
+        outputs)
+    })
+    .then(attributeData =>
+      writeAttributesAndData(
+        'public',
+        regionType,
+        [[attribute, attributeData]])
+    )
+    .then(v => v[0])
+    .catch(debug)
+}
 
 namespace ChildRequests {
   export interface Request<T> {
@@ -1009,56 +1071,35 @@ if (isChild) {
           .string('endYear')
           .default('days', 1),
       handler: (args: { regionType: RegionType, statistic: string, startYear: string, endYear: string, value: number }) => {
-        const startDate = moment(args.startYear, 'YYYY')
-        const days =
-          moment(args.endYear, 'YYYY')
-            .add(1, 'year')
-            .diff(startDate, 'days')
-        const dates =
-          R.map(
-            (nDays) => startDate.clone().add(nDays, 'day'),
-            R.range(0, days)
-          )
-
-        const attribute = {
-          "name": `bom_days_over_${args.value}_${args.statistic}_${args.startYear}_${args.endYear}`,
-          "description": `Days with ${statisticDescription(args.statistic)} over ${args.value}${statisticUnit(args.statistic)} from ${args.startYear} to ${args.endYear}`,
-          "type": "number",
-          "format": {
-            "maximumFractionDigits": 0
-          },
-          "source": {
-            "name": "Australian Bureau of Meteorology",
-            "license": {
-              "type": "Creative Commons Attribution 3.0 Australia",
-              "url": "https://creativecommons.org/licenses/by/3.0/au/"
-            },
-            "notes": `Derived from ${dates.length} ABS grid files:\n` +
-              [R.head(dates), R.last(dates)]
-                .map(d => statisticUrl(args.statistic, d))
-                .join("\n...\n")
-          }
-        };
-
-        return getIntermediateOutputs(args.regionType, args.statistic, dates)
-          .then((outputs: FeatureValueMapRetriever[]) => {
-            return R.reduce(
-              (pCountFvm: Promise<FeatureValueMap>, retriever: FeatureValueMapRetriever) =>
-                pCountFvm.then((countFvm: FeatureValueMap) => {
-                  return retriever()
-                    .then(R.mapObjIndexed(v => v >= args.value ? 1 : 0))
-                    .then(R.mergeWith(R.add, countFvm))
-                }),
-              Promise.resolve<FeatureValueMap>({}),
-              outputs)
-          })
-          .then(attributeData =>
-            writeAttributesAndData(
-              'public',
-              args.regionType,
-              [[attribute, attributeData]])
-          )
-          .catch(debug)
+        return writeThresholdAttribute(
+            args.regionType,
+            args.statistic,
+            'over',
+            R.gte,
+            args.value,
+            args.startYear,
+            args.endYear)
+      }
+    })
+    .command({
+      command: 'days-under <regionType> <statistic> <value> <startYear> <endYear>',
+      describe: 'add/update attribute: days under value for region type',
+      builder: (yargs: yargs.Argv) =>
+        yargs
+          .choices('regionType', ["sa2_2011", "sa3_2011", "sa2_2016", "sa3_2016"])
+          .choices('statistic', R.keys(urlResolvers))
+          .string('startYear')
+          .string('endYear')
+          .default('days', 1),
+      handler: (args: { regionType: RegionType, statistic: string, startYear: string, endYear: string, value: number }) => {
+        return writeThresholdAttribute(
+            args.regionType,
+            args.statistic,
+            'under',
+            R.lte,
+            args.value,
+            args.startYear,
+            args.endYear)
       }
     })
     .command({
