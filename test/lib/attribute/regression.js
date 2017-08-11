@@ -1,7 +1,7 @@
 import { expect } from 'chai'
 import * as R from 'ramda'
 import {
-  multivariateLinearRegression
+  multipleLinearRegression
 } from '../../../lib/attribute/regression'
 
 import indep1 from '../../../data/public/sa2_2016/census2016_all_males_total.json'
@@ -10,9 +10,9 @@ import dep from '../../../data/public/sa2_2016/census2016_all_persons_total.json
 
 describe('regression', function() {
 
-  describe('multivariateLinearRegression', function() {
+  describe('multipleLinearRegression', function() {
     it('should exist', function() {
-      expect(multivariateLinearRegression).to.be.ok
+      expect(multipleLinearRegression).to.be.ok
     });
 
     it('should work with contrived data', function() {
@@ -36,7 +36,7 @@ describe('regression', function() {
           'd': 2
         }
       ]
-      const output = multivariateLinearRegression(
+      const output = multipleLinearRegression(
         R.head(kvs),
         R.tail(kvs)
       )
@@ -54,7 +54,7 @@ describe('regression', function() {
     })
 
     it('should work with real data', function() {
-      const output = multivariateLinearRegression(
+      const output = multipleLinearRegression(
         dep,
         [indep1, indep2]
       )

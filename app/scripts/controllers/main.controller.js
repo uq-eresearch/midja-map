@@ -1,8 +1,12 @@
+import * as R from 'ramda'
 import _ from 'lodash-es'
 import {
   sortByAttributeNameNumbers,
   sortByEducation
 } from '../../../lib/attribute/sorters'
+import {
+  multipleLinearRegression,
+} from '../../../lib/attribute/regression'
 import csvStringify from 'csv-stringify'
 
 export default function MainController(
@@ -517,12 +521,6 @@ export default function MainController(
       .length) {
       return;
     }
-    var resultsData = [];
-
-    var topics = _.map(
-      [vm.linearRegression.dependent].concat(
-        vm.linearRegression.independents),
-      _.property('name'));
     var regions = vm.vis.regions;
 
     var data = {
@@ -541,7 +539,7 @@ export default function MainController(
         key: "Data",
         values: [{
           "label": vm.linearRegression.dependent.description,
-          "value": context.lrResult.adj_rsquared
+          "value": context.lrResult.adjustedRSquared
         }]
       }];
       vm.linearRegression.results = context.lrResult;
@@ -575,8 +573,8 @@ export default function MainController(
         {
           key: "Line",
           values: [],
-          intercept: lrResult.coefficients['(Intercept)'],
-          slope: lrResult.coefficients[indepVar.name]
+          intercept: lrResult.equation.intercept,
+          slope: lrResult.equation.coefficients[0]
         }
       ];
 
@@ -591,39 +589,36 @@ export default function MainController(
       buildBarChart :
       buildPlot;
 
-    dataService.getAttributesForRegions(vm.regionType, topics, regions)
+    const topics =
+      [vm.linearRegression.dependent].concat(
+        vm.linearRegression.independents)
+    Promise.all(
+      R.map(
+        attr => dataService.getAttribute(vm.regionType, attr),
+        R.pluck('name', topics)
+      )
+    ).then(topicData => {
+        return R.map(R.pick(R.pluck('code', regions)), topicData)
+      })
       .then(function(topicData) {
-        var depVar = vm.linearRegression.dependent;
-        var indepVars = vm.linearRegression.independents;
-        var lookupAttributesForRegion =_.flow(
-          _.property('code'), // Get region code
-          _.propertyOf(topicData), // Get region data
-          _.propertyOf) // Turn dictionary object into lookup function
-        var isValidNumber = function(v) {
-          return _.isNumber(v) && !_.isNaN(v);
-        };
-        var doesRegionHaveCompleteData = _.flow(
-          lookupAttributesForRegion, // Create lookup by topic name
-          _.partial(_.flow, _.property('name')), // Handle topic as input
-          _.partial(_.map, [depVar].concat(indepVars)), // Lookup values
-          _.partial(_.every, _, isValidNumber)); // Check all values are OK
-        var usableRegions = _.filter(regions, doesRegionHaveCompleteData);
-        var topicSeries = _.chain(usableRegions)
-          .map(lookupAttributesForRegion)
-          // Get region's data for topics (like a row)
-          .map(_.partial(_.map, topics))
-          // Convert region rows to attributes of topic data
-          .unzip()
-          .value();
-        data.data = _.zipObject(topics, topicSeries);
-        return statsService.linearRegression(data)
-          .then(function(lrResult) {
-            return {
-              regions: usableRegions,
-              topicSeries: _.zipObject(topics, topicSeries),
-              lrResult: lrResult
-            };
-          });
+        const result = multipleLinearRegression(
+          R.head(topicData),
+          R.tail(topicData)
+        )
+        return {
+          regions: R.filter(
+            R.pipe(
+              R.prop('code'),
+              R.flip(R.contains)(result.keySet)
+            ),
+            regions
+          ),
+          topicSeries: R.zipObj(
+            R.pluck('name', topics),
+            R.map(R.props(result.keySet), topicData)
+          ),
+          lrResult: result
+        }
       })
       .then(buildF);
 

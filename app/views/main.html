@@ -319,18 +319,31 @@
                       </div>
 
                       <dl>
-                        <dt>Adjusted R&sup2;</dt>
+                        <dt>Data points</dt>
                         <dd>
-                          {{ vm.linearRegression.results.adj_rsquared }}
-                        </dd>
-
-                        <dt>p</dt>
-                        <dd>
-                          {{ vm.linearRegression.results.p }}
+                          {{ vm.linearRegression.results.keySet.length }}
                         </dd>
 
                         <dt>Equation</dt>
-                        <dd>{{ vm.linearRegression.results.equation }}</dd>
+                        <dd>
+                          <div ng-repeat="topic in vm.linearRegression.independents">
+                            <span ng-if="!$first"> + </span>
+                            {{ vm.linearRegression.results.equation.coefficients[$index] }}
+                            &times;
+                            <a href="#"
+                              ng-bind="topic.description"
+                              ng-mousedown="showTopicDetails(topic); $event.preventDefault();"
+                              title="{{topic.name}}"></a>
+                          </div>
+                          <div>
+                            + {{ vm.linearRegression.results.equation.intercept }}
+                          </div>
+                        </dd>
+
+                        <dt>Adjusted R&sup2;</dt>
+                        <dd>
+                          {{ vm.linearRegression.results.adjustedRSquared }}
+                        </dd>
                       </dl>
                       <p>
                         <button ng-click="vm.requestLinearRegressionDownload('pdf')">Request PDF</button>

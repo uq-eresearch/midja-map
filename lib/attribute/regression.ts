@@ -4,7 +4,7 @@ import mathjs from 'mathjs'
 import { rSquared } from 'simple-statistics'
 import '../types'
 
-class MultivariateLinearEquation {
+class MultipleLinearEquation {
   readonly coefficients: number[]
   readonly intercept: number
   constructor(coeff: number[], b: number) {
@@ -28,7 +28,7 @@ class MultivariateLinearEquation {
   }
 }
 
-function multivariateLinearRegression(
+function multipleLinearRegression(
     dependantVariable: NumericAttributeData,
     independantVariables: NumericAttributeData[]) {
   const sharedKeys = R.reduce(
@@ -49,7 +49,7 @@ function multivariateLinearRegression(
   )
   const y: number[][] = R.map((v: number) => [v], propsF(dependantVariable))
   const weights = solveLeastSquare(x, y)
-  const equation = new MultivariateLinearEquation(
+  const equation = new MultipleLinearEquation(
     R.take(independantVariables.length, R.pluck(0, weights)),
     R.last(weights)[0]
   )
@@ -94,5 +94,5 @@ function adjustedRSquared(r2: number, n: number, k: number) {
 }
 
 export {
-  multivariateLinearRegression
+  multipleLinearRegression
 }
