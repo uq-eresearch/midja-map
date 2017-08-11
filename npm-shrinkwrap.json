@@ -5818,6 +5818,12 @@
       "resolved": "https://registry.npmjs.org/number-is-nan/-/number-is-nan-1.0.1.tgz",
       "dev": true
     },
+    "numeric": {
+      "version": "1.2.6",
+      "from": "numeric@latest",
+      "resolved": "https://registry.npmjs.org/numeric/-/numeric-1.2.6.tgz",
+      "dev": true
+    },
     "nvd3": {
       "version": "1.8.5",
       "from": "nvd3@>=1.7.1 <2.0.0",
