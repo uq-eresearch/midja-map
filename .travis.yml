@@ -22,3 +22,16 @@ script:
       -w /usr/src/app
       node:${NODEJS_VERSION}
       /bin/bash -c "npm test"
+after_success:
+  - >
+      docker run
+      -v "$PWD":/usr/src/app
+      -w /usr/src/app
+      node:${NODEJS_VERSION}
+      /bin/bash -c "npm run build"
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: dist
+  github_token: $GITHUB_TOKEN
+  condition: "$NODEJS_VERSION = 8"
