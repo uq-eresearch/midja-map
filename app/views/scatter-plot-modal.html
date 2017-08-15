@@ -13,8 +13,15 @@
   <div>
     <nvd3 id="scatterGraphModal" options="modalCfg" data="vm.scatterPlot.results"></nvd3>
   </div>
-  <button ng-click="vm.requestScatterDownload('pdf')">Request PDF</button>
-  <button ng-click="vm.requestScatterDownload('png')">Request PNG</button>
+  <a data-download-link
+    role="button" class="btn btn-default"
+    filename="'data.png'"
+    mime-type="'image/png'"
+    content="vm.nvd3ToPng('scatterGraphModal')"
+    ng-disabled="!vm.scatterPlot.results">
+    <i class="fa fa-image"></i>
+    Download (PNG)
+  </a>
 </div>
 <div class="modal-footer">
   <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>

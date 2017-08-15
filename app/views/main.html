@@ -253,8 +253,16 @@
                       <div>
                         <nvd3 id="scatterGraph" options="vm.scatterOptions" data="vm.scatterPlot.results"></nvd3>
                       </div>
-                      <button ng-click="vm.requestScatterDownload('pdf')">Request PDF</button>
-                      <button ng-click="vm.requestScatterDownload('png')">Request PNG</button>
+
+                      <a data-download-link
+                        role="button" class="btn btn-default"
+                        filename="'data.png'"
+                        mime-type="'image/png'"
+                        content="vm.nvd3ToPng('scatterGraph')"
+                        ng-disabled="!vm.scatterPlot.results">
+                        <i class="fa fa-image"></i>
+                        Download (PNG)
+                      </a>
 
                       <button type="button" class="btn btn-default" ng-click="openScatterModal()">Enlarge</button>
                     </div>
@@ -346,8 +354,15 @@
                         </dd>
                       </dl>
                       <p>
-                        <button ng-click="vm.requestLinearRegressionDownload('pdf')">Request PDF</button>
-                        <button ng-click="vm.requestLinearRegressionDownload('png')">Request PNG</button>
+                        <a data-download-link
+                          role="button" class="btn btn-default"
+                          filename="'data.png'"
+                          mime-type="'image/png'"
+                          content="vm.nvd3ToPng('RegressionGraph')"
+                          ng-disabled="!vm.linearRegression.resultsData">
+                          <i class="fa fa-image"></i>
+                          Download (PNG)
+                        </a>
 
                         <button type="button" class="btn btn-default" ng-click="openRegModal()">Enlarge</button>
                       </p>

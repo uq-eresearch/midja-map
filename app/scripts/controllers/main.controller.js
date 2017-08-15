@@ -7,6 +7,7 @@ import {
 import {
   multipleLinearRegression,
 } from '../../../lib/attribute/regression'
+import { svgAsPngUri } from 'save-svg-as-png'
 import csvStringify from 'csv-stringify'
 
 export default function MainController(
@@ -232,9 +233,6 @@ export default function MainController(
   vm.selectedScatterXChanged = selectedScatterXChanged;
   vm.selectedScatterYChanged = selectedScatterYChanged;
   vm.generateScatterPlot = generateScatterPlot;
-
-  vm.requestScatterDownload = requestScatterDownload;
-  vm.requestLinearRegressionDownload = requestLinearRegressionDownload;
 
   vm.clearLabels = clearLabels;
 
@@ -725,28 +723,21 @@ export default function MainController(
     });
   }
 
-  function requestScatterDownload(fileType) {
-    vm.scatterPlot.filename = null;
-    vm.scatterPlot.sendData.fileType = fileType
-    $http.post('/phantomjs/receive', vm.scatterPlot.sendData).then(
-      function(
-        response) {
-        vm.scatterPlot.filename = response.data;
-        var newWindow = window.open('')
-        newWindow.location = "/phantomjs/" + response.data;
-      });
-  }
+  const nvd3ToPng = R.memoize(
+    (parentElementId) => () => {
+      const nvd3El = document.getElementById(parentElementId)
+      const svgEl = nvd3El.querySelector('svg')
+      return new Promise((resolve, reject) => {
+          svgAsPngUri(svgEl, {}, resolve)
+        })
+        .then(dataUri => dataUri.replace('data:image/png;base64,',''))
+        .then(data => {
+          return atob(data)
+        })
+    }
+  )
 
-  function requestLinearRegressionDownload(fileType) {
-    vm.linearRegression.filename = null;
-    vm.linearRegression.sendData.fileType = fileType
-    $http.post('/phantomjs/receive', vm.linearRegression.sendData).then(
-      function(response) {
-        vm.linearRegression.filename = response.data;
-        var newWindow = window.open('')
-        newWindow.location = "/phantomjs/" + response.data;
-      });
-  }
+  vm.nvd3ToPng = nvd3ToPng
 
   $scope.openScatterModal = () => {
     $uibModal.open({

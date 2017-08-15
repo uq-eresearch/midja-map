@@ -83,6 +83,7 @@
     "ramda": "https://registry.npmjs.org/ramda/-/ramda-0.24.1.tgz",
     "request-promise-native": "^1.0.4",
     "sass-loader": "^6.0.5",
+    "save-svg-as-png": "^1.2.0",
     "sdmx-rest": "^2.5.1",
     "simple-statistics": "^4.1.0",
     "source-map-support": "https://registry.npmjs.org/source-map-support/-/source-map-support-0.4.15.tgz",
