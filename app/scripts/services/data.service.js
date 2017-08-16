@@ -192,7 +192,7 @@ export default function dataService($http, $q) {
 
   function getCorrespondences(sourceRegionType, targetRegionType) {
     return $http
-      .get(`/correspondences/${sourceRegionType}/${targetRegionType}.json`)
+      .get(`./correspondences/${sourceRegionType}/${targetRegionType}.json`)
       .then(_.property('data'));
   }
 
@@ -245,7 +245,7 @@ export default function dataService($http, $q) {
         } else {
           const accessType = attributeMetadata.access
           return $http
-            .get(`/data/${accessType}/${regionType}/${attribute}.json`)
+            .get(`./data/${accessType}/${regionType}/${attribute}.json`)
             .then(_.property('data'));
         }
       });
@@ -261,12 +261,12 @@ export default function dataService($http, $q) {
             attr => _.defaults(attr, { access: tag }))
         })
     return $http
-      .get('/data/public/' + regionType + '/index.json')
+      .get('./data/public/' + regionType + '/index.json')
       .then(_.property('data'))
       .then(tagAttributes('public'))
       .then(publicData => {
         return $http
-          .get('/data/private/' + regionType + '/index.json')
+          .get('./data/private/' + regionType + '/index.json')
           .then(_.property('data'))
           .then(tagAttributes('private'))
           .then(_.partial(_.mergeWith, {}, publicData, _, (a, b) => {
