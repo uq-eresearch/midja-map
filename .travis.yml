@@ -13,6 +13,7 @@ before_install:
       docker run
       -v "$PWD":/usr/src/app
       -w /usr/src/app
+      -u $(id -u)
       node:${NODEJS_VERSION}
       /bin/bash -c "npm -q install --no-optional"
 script:
@@ -20,6 +21,7 @@ script:
       docker run
       -v "$PWD":/usr/src/app
       -w /usr/src/app
+      -u $(id -u)
       node:${NODEJS_VERSION}
       /bin/bash -c "npm test"
 after_success:
@@ -27,6 +29,7 @@ after_success:
       docker run
       -v "$PWD":/usr/src/app
       -w /usr/src/app
+      -u $(id -u)
       node:${NODEJS_VERSION}
       /bin/bash -c "npm run build"
 deploy:
