@@ -15,7 +15,7 @@ before_install:
       -w /usr/src/app
       -u $(id -u)
       node:${NODEJS_VERSION}
-      /bin/bash -c "npm install --no-optional"
+      /bin/bash -c "pwd && id && npm install --no-optional"
 script:
   - >
       docker run
