@@ -11,15 +11,15 @@ before_install:
   - docker pull node:${NODEJS_VERSION}
   - >
       docker run
-      -v "$PWD":/usr/src/app
+      -v $(pwd):/usr/src/app
       -w /usr/src/app
       -u $(id -u)
       node:${NODEJS_VERSION}
-      /bin/bash -c "npm -q install --no-optional"
+      /bin/bash -c "npm install --no-optional"
 script:
   - >
       docker run
-      -v "$PWD":/usr/src/app
+      -v $(pwd):/usr/src/app
       -w /usr/src/app
       -u $(id -u)
       node:${NODEJS_VERSION}
@@ -27,7 +27,7 @@ script:
 after_success:
   - >
       docker run
-      -v "$PWD":/usr/src/app
+      -v $(pwd):/usr/src/app
       -w /usr/src/app
       -u $(id -u)
       node:${NODEJS_VERSION}
