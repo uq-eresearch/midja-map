@@ -7,6 +7,7 @@ const fs = require('fs-extra')
 const path = require('path')
 const webpack = require('webpack')
 const nodeExternals = require('webpack-node-externals')
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
 
 const scriptsPath = path.resolve(__dirname, 'scripts')
 
@@ -86,5 +87,8 @@ module.exports = {
   devtool: 'inline-source-map',
   externals: [
     nodeExternals()
+  ],
+  plugins: [
+    new HardSourceWebpackPlugin()
   ]
 };
