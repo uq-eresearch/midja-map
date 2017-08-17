@@ -9,9 +9,7 @@ env:
   - NODEJS_VERSION='8'
 before_install:
   - docker pull node:${NODEJS_VERSION}
-  - git config --global user.name "$(git log -1 --format="format:%an")"
-  - git config --global user.email "$(git log -1 --format="format:%ae")"
-  - cp $HOME/.gitconfig .
+  - ./travis_docker.sh /bin/bash -c 'git config --global user.name "$(git log -1 --format="format:%an")" && git config --global user.email "$(git log -1 --format="format:%ae")"'
   - ./travis_docker.sh /bin/bash -c "npm install --no-optional"
 script:
   - ./travis_docker.sh /bin/bash -c "npm test"
