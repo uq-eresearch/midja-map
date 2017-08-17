@@ -9,29 +9,13 @@ env:
   - NODEJS_VERSION='8'
 before_install:
   - docker pull node:${NODEJS_VERSION}
-  - >
-      docker run
-      -v $(pwd):/usr/src/app
-      -w /usr/src/app
-      -u $(id -u):$(id -g)
-      node:${NODEJS_VERSION}
-      /bin/bash -c "pwd && id && npm install --no-optional"
+  - git config --global user.name "$(git log -1 --format="format:%an")"
+  - git config --global user.email "$(git log -1 --format="format:%ae")"
+  - ./travis_docker.sh /bin/bash -c "npm install --no-optional"
 script:
-  - >
-      docker run
-      -v $(pwd):/usr/src/app
-      -w /usr/src/app
-      -u $(id -u):$(id -g)
-      node:${NODEJS_VERSION}
-      /bin/bash -c "npm test"
+  - ./travis_docker.sh /bin/bash -c "npm test"
 after_success:
-  - >
-      docker run
-      -v $(pwd):/usr/src/app
-      -w /usr/src/app
-      -u $(id -u):$(id -g)
-      node:${NODEJS_VERSION}
-      /bin/bash -c "npm run build"
+  - ./travis_docker.sh /bin/bash -c "npm run build"
 deploy:
   provider: pages
   skip_cleanup: true
