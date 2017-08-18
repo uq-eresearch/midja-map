@@ -4,6 +4,10 @@ interface Attribute {
   readonly type: string
 }
 
+interface AttributeIndex {
+  readonly attributes : Attribute[]
+}
+
 type AttributeData = StringAttributeData | NumericAttributeData
 
 type StringAttributeData = {
@@ -13,7 +17,6 @@ type StringAttributeData = {
 type NumericAttributeData = {
   readonly [code: string]: number
 }
-
 
 type Correspondences = {
   readonly [target: string]: {
@@ -28,3 +31,12 @@ interface Region {
   readonly code: string,
   readonly name: string
 }
+
+type AttributeIndexFetcher = (
+  regionType: string
+) => Promise<AttributeIndex>
+
+type AttributeDataFetcher = (
+  regionType: string,
+  attribute: Attribute
+) => Promise<AttributeData>

@@ -6,7 +6,7 @@ import {
   convertBySum } from '../../../lib/attribute/correspondences'
 import ss from 'simple-statistics'
 import expression from '../../../lib/attribute/expression'
-import { mergeIndexes } from '../../../lib/attribute/index'
+import { buildIndexFetcher } from '../../../lib/attribute/index'
 
 export default function dataService($http, $q) {
   // Tests to determine if child region is in parent
@@ -72,7 +72,14 @@ export default function dataService($http, $q) {
       return _.map(arguments, _.identity).join(":");
     });
 
-  var getMetadata = _.memoize(getMetadataFromRemote);
+  function jsonDataFileFetcher(accessType, regionType, filename) {
+    return $http
+      .get(`./data/${accessType}/${regionType}/${filename}`)
+      .then(R.prop('data'))
+  }
+
+  const getMetadataFromRemote = buildIndexFetcher(jsonDataFileFetcher)
+  const getMetadata = R.memoize(getMetadataFromRemote);
 
   return {
     getAvailableAttributes: getAvailableAttributes,
@@ -250,73 +257,6 @@ export default function dataService($http, $q) {
             .then(_.property('data'));
         }
       });
-  }
-
-  function getMetadataFromRemote(regionType) {
-    const tagAttributes = tag => data =>
-      _.assign(
-        data,
-        {
-          "attributes": _.map(
-            data.attributes,
-            attr => _.defaults(attr, { access: tag }))
-        })
-    return $http
-      .get('./data/public/' + regionType + '/index.json')
-      .then(_.property('data'))
-      .then(tagAttributes('public'))
-      .then(publicData => {
-        return $http
-          .get('./data/private/' + regionType + '/index.json')
-          .then(_.property('data'))
-          .then(tagAttributes('private'))
-          .then(R.curry(mergeIndexes)(publicData))
-          .catch(_.constant(publicData))
-      })
-      .then(metadata => {
-        const externalAttributes =
-          R.groupBy(
-            R.prop('from'),
-            R.filter(
-              R.has('from'),
-              R.defaultTo([], metadata.attributes)
-            )
-          )
-        return Promise.all(
-          R.map(
-            getMetadata,
-            R.keys(externalAttributes)
-          )
-        ).then(
-          R.zip(R.values(externalAttributes))
-        ).then(
-          R.chain(R.apply(
-            (attributes, externalMetadata) =>
-              R.map(
-                attribute =>
-                  R.mergeDeepLeft(
-                    attribute,
-                    R.defaultTo(
-                      {},
-                      R.find(
-                        R.propEq('name', attribute.name),
-                        R.defaultTo([], externalMetadata.attributes)
-                      )
-                    )
-                  ),
-                attributes
-              )
-          ))
-        ).then(mergedAttributes =>
-          R.over(
-            R.lensProp('attributes'),
-            R.pipe(
-              R.unionWith(R.eqProps('name'), mergedAttributes),
-              R.sortBy(R.prop('name'))
-            ),
-            metadata)
-        )
-      })
   }
 
   function getAttributesForRegions(regionType, attributeNames, regions) {
