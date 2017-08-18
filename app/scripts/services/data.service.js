@@ -6,6 +6,7 @@ import {
   convertBySum } from '../../../lib/attribute/correspondences'
 import ss from 'simple-statistics'
 import expression from '../../../lib/attribute/expression'
+import { mergeIndexes } from '../../../lib/attribute/index'
 
 export default function dataService($http, $q) {
   // Tests to determine if child region is in parent
@@ -269,15 +270,7 @@ export default function dataService($http, $q) {
           .get('./data/private/' + regionType + '/index.json')
           .then(_.property('data'))
           .then(tagAttributes('private'))
-          .then(_.partial(_.mergeWith, {}, publicData, _, (a, b) => {
-            if (_.isUndefined(a)) {
-              return b
-            } else if (_.isArray(a) && _.isArray(b)) {
-              return a.concat(b)
-            } else {
-              return a.merge(b)
-            }
-          }))
+          .then(R.curry(mergeIndexes)(publicData))
           .catch(_.constant(publicData))
       })
       .then(metadata => {
