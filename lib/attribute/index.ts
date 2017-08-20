@@ -2,13 +2,6 @@ import * as R from 'ramda'
 import { tupled2 } from '../util'
 import '../types'
 
-type JsonDataFileFetcher = (
-  accessType: string,
-  regionType: string,
-  filename: string
-) => Promise<object>
-
-
 function mergeIndexes(
       a: AttributeIndex,
       b: AttributeIndex): AttributeIndex {

@@ -112,6 +112,7 @@
     "import:qldshe:web": "scripts/build_and_run.sh scripts/qld-social-housing-expenditure-import.js",
     "import:qldshr:web": "scripts/build_and_run.sh scripts/qld-social-housing-register-import.js",
     "import:qldsht:web": "scripts/build_and_run.sh scripts/qld-social-housing-tenancies-import.js",
+    "generate:lrgdf": "scripts/build_and_run.sh scripts/linear-regression-gdf.js",
     "build": "$(npm bin)/webpack --progress",
     "serve": "$(npm bin)/webpack-dev-server --open",
     "test": "NODE_ENV=testing $(npm bin)/karma start --single-run",

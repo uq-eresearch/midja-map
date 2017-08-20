@@ -32,11 +32,17 @@ interface Region {
   readonly name: string
 }
 
+type JsonDataFileFetcher = (
+  accessType: string,
+  regionType: string,
+  filename: string
+) => Promise<object>
+
 type AttributeIndexFetcher = (
   regionType: string
 ) => Promise<AttributeIndex>
 
 type AttributeDataFetcher = (
   regionType: string,
-  attribute: Attribute
+  attributeName: string
 ) => Promise<AttributeData>

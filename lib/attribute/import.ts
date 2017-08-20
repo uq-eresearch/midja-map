@@ -42,6 +42,31 @@ export const writeIndex = R.curry(
   }
 )
 
+export function readAttributeIndexes(regionType: string) {
+  function readAttributeIndex(accessType: string) {
+    return readJson(
+      indexTargetFile(accessType, regionType)
+    )
+  }
+  return Promise.all(R.map(
+      (accessType: string) =>
+        readAttributeIndex(accessType).catch(R.always({})),
+      ['public', 'private']
+    ))
+    .then(tupled2(R.mergeDeepWith(R.concat)))
+}
+
+export const readAttributeData = R.curry(
+  (regionType: string, attribute: Attribute) =>
+    readJson(
+      attributeDataTargetFile('public', regionType, attribute),
+    ).catch((_e) =>
+      readJson(
+        attributeDataTargetFile('private', regionType, attribute)
+      )
+    ).then<AttributeData>((v: AttributeData) => v)
+)
+
 export const writeAttributeData = R.curry(
   (accessType: string, regionType: string, attribute: Attribute, data: AttributeData) =>
     writeJson(

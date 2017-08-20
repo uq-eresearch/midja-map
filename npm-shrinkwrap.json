@@ -4097,7 +4097,7 @@
     },
     "get-stdin": {
       "version": "4.0.1",
-      "from": "get-stdin@>=4.0.1 <5.0.0",
+      "from": "https://registry.npmjs.org/get-stdin/-/get-stdin-4.0.1.tgz",
       "resolved": "https://registry.npmjs.org/get-stdin/-/get-stdin-4.0.1.tgz",
       "dev": true
     },

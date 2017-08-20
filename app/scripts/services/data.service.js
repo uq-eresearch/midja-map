@@ -1,10 +1,7 @@
 import R from 'ramda'
 import _ from 'lodash-es'
-import {
-  convertByAverage,
-  convertByPrimary,
-  convertBySum } from '../../../lib/attribute/correspondences'
 import ss from 'simple-statistics'
+import { buildAttributeDataFetcher } from '../../../lib/attribute/data'
 import expression from '../../../lib/attribute/expression'
 import { buildIndexFetcher } from '../../../lib/attribute/index'
 
@@ -66,12 +63,6 @@ export default function dataService($http, $q) {
     .fromPairs()
     .value();
 
-  var getAttribute = _.memoize(
-    _.ary(getAttributeFromRemote, 2),
-    function() {
-      return _.map(arguments, _.identity).join(":");
-    });
-
   function jsonDataFileFetcher(accessType, regionType, filename) {
     return $http
       .get(`./data/${accessType}/${regionType}/${filename}`)
@@ -80,6 +71,11 @@ export default function dataService($http, $q) {
 
   const getMetadataFromRemote = buildIndexFetcher(jsonDataFileFetcher)
   const getMetadata = R.memoize(getMetadataFromRemote);
+  const getAttribute = buildAttributeDataFetcher(
+    jsonDataFileFetcher,
+    getCorrespondences,
+    getMetadata
+  )
 
   return {
     getAvailableAttributes: getAvailableAttributes,
@@ -93,7 +89,7 @@ export default function dataService($http, $q) {
   };
 
   function getAvailableAttributes(regionType) {
-    return getMetadata(regionType).then(_.property('attributes'));
+    return getMetadata(regionType).then(R.prop('attributes'))
   }
 
   function getSubregions(targetRegionType, region) {
@@ -202,61 +198,6 @@ export default function dataService($http, $q) {
     return $http
       .get(`./correspondences/${sourceRegionType}/${targetRegionType}.json`)
       .then(_.property('data'));
-  }
-
-  function convert(attributeMetadata) {
-    switch (attributeMetadata.conversion) {
-      case 'average':   return convertByAverage;
-      case 'primary':   return convertByPrimary;
-      case 'sum':       return convertBySum;
-      default:          return convertBySum;
-    }
-  }
-
-  function getAttributeFromRemote(regionType, attribute) {
-    return getAvailableAttributes(regionType)
-      .then(function(availableAttributes) {
-        var attributeMetadata = _.find(
-          availableAttributes,
-          _.flow(
-            _.property('name'),
-            _.partial(_.isEqual, attribute)));
-        if (!attributeMetadata) {
-          console.log(`Attempted to get unknown attribute: ${attribute}`)
-          return {};
-        } else if (attributeMetadata.from) {
-          return getCorrespondences(attributeMetadata.from, regionType)
-            .then(correspondences =>
-              getAttributeFromRemote(attributeMetadata.from, attribute)
-                .then(convert(attributeMetadata)(correspondences))
-            );
-        } else if (attributeMetadata.expression) {
-          // Collect variables and evaluate expression
-          var expr = expression(attributeMetadata.expression);
-          return $q.all(
-            _.map(
-              expr.variables,
-              _.partial(getAttribute, regionType))
-          ).then(function(attributesData) {
-            var commonRegions = _.intersection.apply(null,
-              _.map(attributesData, _.keys)).sort();
-            var series = _.chain(commonRegions)
-              .map(function(region) {
-                return _.zipObject(
-                  expr.variables,
-                  _.map(attributesData, _.property(region)));
-              })
-              .map(expr.evaluate)
-              .value();
-            return _.zipObject(commonRegions, series);
-          });
-        } else {
-          const accessType = attributeMetadata.access
-          return $http
-            .get(`./data/${accessType}/${regionType}/${attribute}.json`)
-            .then(_.property('data'));
-        }
-      });
   }
 
   function getAttributesForRegions(regionType, attributeNames, regions) {
