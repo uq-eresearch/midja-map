@@ -1,11 +1,11 @@
 import { expect } from 'chai'
-import index.mergeIndexes from '../../../lib/attribute/index'
+import { buildIndexFetcher } from '../../../lib/attribute/index'
 
-describe.only('index', function() {
+describe('index', function() {
 
   describe('buildIndexFetcher', function() {
     it('should exist', function() {
-      expect(index.buildIndexFetcher).to.be.ok
+      expect(buildIndexFetcher).to.be.ok
     })
   })
 
