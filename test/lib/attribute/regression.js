@@ -21,19 +21,22 @@ describe('regression', function() {
           'a': 10,
           'b': 7,
           'c': 10,
-          'd': 10
+          'd': 10,
+          'e': 20,
         },
         {
           'a': 1,
           'b': 2,
           'c': 3,
-          'd': 4
+          'd': 4,
+          'e': 10
         },
         {
           'a': 8,
           'b': 3,
           'c': 4,
-          'd': 2
+          'd': 2,
+          'e': NaN
         }
       ]
       const output = multipleLinearRegression(
@@ -69,8 +72,8 @@ describe('regression', function() {
       expect(output.equation.coefficients[1]).to.be.closeTo(1, 0.01)
       expect(output.equation.intercept).to.be.closeTo(0, 1)
       expect(output.adjustedRSquared).to.be.closeTo(1, 0.01)
-    });
+    })
 
   })
 
-});
+})

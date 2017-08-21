@@ -33,7 +33,7 @@ function multipleLinearRegression(
     independantVariables: NumericAttributeData[]) {
   const sharedKeys = R.reduce(
     (ks: string[], independantVariable: NumericAttributeData) =>
-      R.intersection(ks, R.keys(independantVariable)),
+      R.intersection(ks, R.keys(R.pickBy(isFinite, independantVariable))),
     R.keys(dependantVariable),
     independantVariables
   )
