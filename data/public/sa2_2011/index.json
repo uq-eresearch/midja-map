@@ -1937,7 +1937,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_aggregate_all_working_age_persons_tertiary_education_bachelor",
@@ -1950,7 +1951,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_aggregate_all_working_age_persons_tertiary_education_certificate",
@@ -1963,7 +1965,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_aggregate_all_working_age_persons_tertiary_education_diploma",
@@ -1976,7 +1979,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_aggregate_all_working_age_persons_tertiary_education_none",
@@ -1989,7 +1993,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_aggregate_all_working_age_persons_tertiary_education_postgraduate",
@@ -2002,7 +2007,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_aggregate_all_working_age_persons_tertiary_education_total",
@@ -2015,7 +2021,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_aggregate_indigenous_working_age_persons_tertiary_education_any",
@@ -2028,7 +2035,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_aggregate_indigenous_working_age_persons_tertiary_education_bachelor",
@@ -2041,7 +2049,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_aggregate_indigenous_working_age_persons_tertiary_education_certificate",
@@ -2054,7 +2063,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_aggregate_indigenous_working_age_persons_tertiary_education_diploma",
@@ -2067,7 +2077,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_aggregate_indigenous_working_age_persons_tertiary_education_none",
@@ -2080,7 +2091,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_aggregate_indigenous_working_age_persons_tertiary_education_postgraduate",
@@ -2093,7 +2105,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_aggregate_indigenous_working_age_persons_tertiary_education_total",
@@ -2106,7 +2119,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_females_indigenous",
@@ -2178,7 +2192,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_15_19_years_Advanced_Diploma_and_Diploma_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_15to19_bachelor_degree_level",
@@ -2194,7 +2209,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_15_19_years_Bachelor_Degree_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_15to19_certificate_i_and_ii_level",
@@ -2210,7 +2226,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_15_19_years_Certificate_I_and_II_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_15to19_certificate_iii_and_iv_level",
@@ -2226,7 +2243,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_15_19_years_Certificate_III_and_IV_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_15to19_certificate_level_nfd",
@@ -2242,7 +2260,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_15_19_years_Certificate_Level_nfd"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_15to19_level_of_education_not_stated",
@@ -2258,7 +2277,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_15_19_years_Level_of_education_not_stated"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_15to19_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
@@ -2274,7 +2294,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_15_19_years_Postgraduate_Degree_Graduate_Diploma_and_Graduate_Certificate_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_15to19_total",
@@ -2290,7 +2311,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_15_19_years_Total"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_20to24_advanced_diploma_and_diploma_level",
@@ -2306,7 +2328,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_20_24_years_Advanced_Diploma_and_Diploma_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_20to24_bachelor_degree_level",
@@ -2322,7 +2345,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_20_24_years_Bachelor_Degree_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_20to24_certificate_i_and_ii_level",
@@ -2338,7 +2362,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_20_24_years_Certificate_I_and_II_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_20to24_certificate_iii_and_iv_level",
@@ -2354,7 +2379,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_20_24_years_Certificate_III_and_IV_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_20to24_certificate_level_nfd",
@@ -2370,7 +2396,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_20_24_years_Certificate_Level_nfd"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_20to24_level_of_education_not_stated",
@@ -2386,7 +2413,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_20_24_years_Level_of_education_not_stated"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_20to24_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
@@ -2402,7 +2430,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_20_24_years_Postgraduate_Degree_Graduate_Diploma_and_Graduate_Certificate_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_20to24_total",
@@ -2418,7 +2447,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_20_24_years_Total"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_25to34_advanced_diploma_and_diploma_level",
@@ -2434,7 +2464,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_25_34_years_Advanced_Diploma_and_Diploma_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_25to34_bachelor_degree_level",
@@ -2450,7 +2481,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_25_34_years_Bachelor_Degree_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_25to34_certificate_i_and_ii_level",
@@ -2466,7 +2498,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_25_34_years_Certificate_I_and_II_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_25to34_certificate_iii_and_iv_level",
@@ -2482,7 +2515,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_25_34_years_Certificate_III_and_IV_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_25to34_certificate_level_nfd",
@@ -2498,7 +2532,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_25_34_years_Certificate_Level_nfd"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_25to34_level_of_education_not_stated",
@@ -2514,7 +2549,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_25_34_years_Level_of_education_not_stated"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_25to34_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
@@ -2530,7 +2566,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_25_34_years_Postgraduate_Degree_Graduate_Diploma_and_Graduate_Certificate_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_25to34_total",
@@ -2546,7 +2583,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_25_34_years_Total"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_35to44_advanced_diploma_and_diploma_level",
@@ -2562,7 +2600,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_35_44_years_Advanced_Diploma_and_Diploma_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_35to44_bachelor_degree_level",
@@ -2578,7 +2617,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_35_44_years_Bachelor_Degree_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_35to44_certificate_i_and_ii_level",
@@ -2594,7 +2634,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_35_44_years_Certificate_I_and_II_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_35to44_certificate_iii_and_iv_level",
@@ -2610,7 +2651,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_35_44_years_Certificate_III_and_IV_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_35to44_certificate_level_nfd",
@@ -2626,7 +2668,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_35_44_years_Certificate_Level_nfd"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_35to44_level_of_education_not_stated",
@@ -2642,7 +2685,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_35_44_years_Level_of_education_not_stated"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_35to44_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
@@ -2658,7 +2702,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_35_44_years_Postgraduate_Degree_Graduate_Diploma_and_Graduate_Certificate_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_35to44_total",
@@ -2674,7 +2719,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_35_44_years_Total"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_45to54_advanced_diploma_and_diploma_level",
@@ -2690,7 +2736,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_45_54_years_Advanced_Diploma_and_Diploma_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_45to54_bachelor_degree_level",
@@ -2706,7 +2753,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_45_54_years_Bachelor_Degree_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_45to54_certificate_i_and_ii_level",
@@ -2722,7 +2770,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_45_54_years_Certificate_I_and_II_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_45to54_certificate_iii_and_iv_level",
@@ -2738,7 +2787,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_45_54_years_Certificate_III_and_IV_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_45to54_certificate_level_nfd",
@@ -2754,7 +2804,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_45_54_years_Certificate_Level_nfd"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_45to54_level_of_education_not_stated",
@@ -2770,7 +2821,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_45_54_years_Level_of_education_not_stated"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_45to54_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
@@ -2786,7 +2838,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_45_54_years_Postgraduate_Degree_Graduate_Diploma_and_Graduate_Certificate_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_45to54_total",
@@ -2802,7 +2855,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_45_54_years_Total"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_55to64_advanced_diploma_and_diploma_level",
@@ -2818,7 +2872,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_55_64_years_Advanced_Diploma_and_Diploma_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_55to64_bachelor_degree_level",
@@ -2834,7 +2889,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_55_64_years_Bachelor_Degree_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_55to64_certificate_i_and_ii_level",
@@ -2850,7 +2906,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_55_64_years_Certificate_I_and_II_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_55to64_certificate_iii_and_iv_level",
@@ -2866,7 +2923,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_55_64_years_Certificate_III_and_IV_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_55to64_certificate_level_nfd",
@@ -2882,7 +2940,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_55_64_years_Certificate_Level_nfd"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_55to64_level_of_education_not_stated",
@@ -2898,7 +2957,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_55_64_years_Level_of_education_not_stated"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_55to64_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
@@ -2914,7 +2974,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_55_64_years_Postgraduate_Degree_Graduate_Diploma_and_Graduate_Certificate_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_55to64_total",
@@ -2930,7 +2991,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15D_AUST_SA2_long.csv#Persons_Total_55_64_years_Total"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_all_persons_indigenous",
@@ -3118,7 +3180,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_15_19_years_Advanced_Diploma_and_Diploma_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_15to19_bachelor_degree_level",
@@ -3134,7 +3197,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_15_19_years_Bachelor_Degree_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_15to19_certificate_i_and_ii_level",
@@ -3150,7 +3214,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_15_19_years_Certificate_I_and_II_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_15to19_certificate_iii_and_iv_level",
@@ -3166,7 +3231,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_15_19_years_Certificate_III_and_IV_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_15to19_certificate_level_nfd",
@@ -3182,7 +3248,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_15_19_years_Certificate_Level_nfd"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_15to19_level_of_education_not_stated",
@@ -3198,7 +3265,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_15_19_years_Level_of_education_not_stated"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_15to19_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
@@ -3214,7 +3282,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_15_19_years_Postgraduate_Degree_Graduate_Diploma_and_Graduate_Certificate_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_15to19_total",
@@ -3230,7 +3299,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_15_19_years_Total"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_20to24_advanced_diploma_and_diploma_level",
@@ -3246,7 +3316,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_20_24_years_Advanced_Diploma_and_Diploma_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_20to24_bachelor_degree_level",
@@ -3262,7 +3333,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_20_24_years_Bachelor_Degree_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_20to24_certificate_i_and_ii_level",
@@ -3278,7 +3350,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_20_24_years_Certificate_I_and_II_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_20to24_certificate_iii_and_iv_level",
@@ -3294,7 +3367,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_20_24_years_Certificate_III_and_IV_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_20to24_certificate_level_nfd",
@@ -3310,7 +3384,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_20_24_years_Certificate_Level_nfd"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_20to24_level_of_education_not_stated",
@@ -3326,7 +3401,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_20_24_years_Level_of_education_not_stated"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_20to24_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
@@ -3342,7 +3418,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_20_24_years_Postgraduate_Degree_Graduate_Diploma_and_Graduate_Certificate_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_20to24_total",
@@ -3358,7 +3435,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_20_24_years_Total"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_25to34_advanced_diploma_and_diploma_level",
@@ -3374,7 +3452,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_25_34_years_Advanced_Diploma_and_Diploma_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_25to34_bachelor_degree_level",
@@ -3390,7 +3469,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_25_34_years_Bachelor_Degree_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_25to34_certificate_i_and_ii_level",
@@ -3406,7 +3486,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_25_34_years_Certificate_I_and_II_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_25to34_certificate_iii_and_iv_level",
@@ -3422,7 +3503,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_25_34_years_Certificate_III_and_IV_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_25to34_certificate_level_nfd",
@@ -3438,7 +3520,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_25_34_years_Certificate_Level_nfd"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_25to34_level_of_education_not_stated",
@@ -3454,7 +3537,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_25_34_years_Level_of_education_not_stated"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_25to34_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
@@ -3470,7 +3554,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_25_34_years_Postgraduate_Degree_Graduate_Diploma_and_Graduate_Certificate_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_25to34_total",
@@ -3486,7 +3571,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_25_34_years_Total"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_35to44_advanced_diploma_and_diploma_level",
@@ -3502,7 +3588,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_35_44_years_Advanced_Diploma_and_Diploma_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_35to44_bachelor_degree_level",
@@ -3518,7 +3605,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_35_44_years_Bachelor_Degree_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_35to44_certificate_i_and_ii_level",
@@ -3534,7 +3622,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_35_44_years_Certificate_I_and_II_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_35to44_certificate_iii_and_iv_level",
@@ -3550,7 +3639,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_35_44_years_Certificate_III_and_IV_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_35to44_certificate_level_nfd",
@@ -3566,7 +3656,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_35_44_years_Certificate_Level_nfd"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_35to44_level_of_education_not_stated",
@@ -3582,7 +3673,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_35_44_years_Level_of_education_not_stated"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_35to44_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
@@ -3598,7 +3690,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_35_44_years_Postgraduate_Degree_Graduate_Diploma_and_Graduate_Certificate_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_35to44_total",
@@ -3614,7 +3707,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_35_44_years_Total"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_45to54_advanced_diploma_and_diploma_level",
@@ -3630,7 +3724,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_45_54_years_Advanced_Diploma_and_Diploma_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_45to54_bachelor_degree_level",
@@ -3646,7 +3741,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_45_54_years_Bachelor_Degree_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_45to54_certificate_i_and_ii_level",
@@ -3662,7 +3758,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_45_54_years_Certificate_I_and_II_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_45to54_certificate_iii_and_iv_level",
@@ -3678,7 +3775,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_45_54_years_Certificate_III_and_IV_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_45to54_certificate_level_nfd",
@@ -3694,7 +3792,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_45_54_years_Certificate_Level_nfd"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_45to54_level_of_education_not_stated",
@@ -3710,7 +3809,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_45_54_years_Level_of_education_not_stated"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_45to54_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
@@ -3726,7 +3826,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_45_54_years_Postgraduate_Degree_Graduate_Diploma_and_Graduate_Certificate_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_45to54_total",
@@ -3742,7 +3843,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_45_54_years_Total"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_55to64_advanced_diploma_and_diploma_level",
@@ -3758,7 +3860,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_55_64_years_Advanced_Diploma_and_Diploma_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_55to64_bachelor_degree_level",
@@ -3774,7 +3877,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_55_64_years_Bachelor_Degree_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_55to64_certificate_i_and_ii_level",
@@ -3790,7 +3894,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_55_64_years_Certificate_I_and_II_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_55to64_certificate_iii_and_iv_level",
@@ -3806,7 +3911,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_55_64_years_Certificate_III_and_IV_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_55to64_certificate_level_nfd",
@@ -3822,7 +3928,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_55_64_years_Certificate_Level_nfd"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_55to64_level_of_education_not_stated",
@@ -3838,7 +3945,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_55_64_years_Level_of_education_not_stated"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_55to64_postgraduate_degree_graduate_diploma_and_graduate_certificate_level",
@@ -3854,7 +3962,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_55_64_years_Postgraduate_Degree_Graduate_Diploma_and_Graduate_Certificate_Level"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_indigenous_persons_55to64_total",
@@ -3870,7 +3979,8 @@
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         },
         "notes": "from DataPack CSV: 2011Census_I15C_AUST_SA2_long.csv#Persons_Indigenous_55_64_years_Total"
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_median_weekly_household_income_all",
@@ -3988,7 +4098,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "housing"
     },
     {
       "name": "census2011_proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_indigenous",
@@ -5686,7 +5797,8 @@
           "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
         },
         "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/PHSOMIHDwellingData.csv"
-      }
+      },
+      "category": "housing"
     },
     {
       "name": "qldgov_social_housing_dwellings_proportion_unoccupied",
@@ -5703,7 +5815,8 @@
           "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
         },
         "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/PHSOMIHDwellingData.csv"
-      }
+      },
+      "category": "housing"
     },
     {
       "name": "qldgov_social_housing_dwellings_total",
@@ -5784,7 +5897,8 @@
           "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
         },
         "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/TenanciesGovernmentManagedSocialRentalHousing.csv"
-      }
+      },
+      "category": "housing"
     },
     {
       "name": "qldgov_social_housing_tenancies_proportion_indigenous_overcrowded_households",
@@ -5801,7 +5915,8 @@
           "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
         },
         "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/TenanciesGovernmentManagedSocialRentalHousing.csv"
-      }
+      },
+      "category": "housing"
     },
     {
       "name": "qldgov_social_housing_tenancies_proportion_nonindigenous_overcrowded_households",
@@ -5818,7 +5933,8 @@
           "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
         },
         "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/TenanciesGovernmentManagedSocialRentalHousing.csv"
-      }
+      },
+      "category": "housing"
     },
     {
       "name": "ra_name",

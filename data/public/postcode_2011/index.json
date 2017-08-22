@@ -49,7 +49,8 @@
           "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
         },
         "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/PHSOMIHDwellingData.csv"
-      }
+      },
+      "category": "housing"
     },
     {
       "name": "qldgov_social_housing_dwellings_untenantable",
