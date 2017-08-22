@@ -3,13 +3,23 @@ import parseCSV from 'csv-parse'
 import { readJson, writeJson } from 'fs-extra'
 import path from 'path'
 import '../types'
+import { buildAttributeDataFetcher } from './data'
+import { buildIndexFetcher } from './index'
 import { tupled2 } from '../util'
 
 const jsonOptions = {
   spaces: 2
 }
 
-const targetFile =
+const targetCorrespondenceFile =
+  (fromRegionType: string, toRegionType: string) =>
+    path.resolve(
+      __dirname, '..', '..', 'correspondences',
+      fromRegionType,
+      `${toRegionType}.json`
+    )
+
+const targetDataFile =
   (accessType: string, regionType: string, filename: string) =>
     path.resolve(
       __dirname, '..', '..', 'data',
@@ -19,11 +29,11 @@ const targetFile =
     )
 
 const indexTargetFile = (accessType: string, regionType: string) =>
-  targetFile(accessType, regionType, 'index.json')
+  targetDataFile(accessType, regionType, 'index.json')
 
 const attributeDataTargetFile =
   (accessType: string, regionType: string, attribute: Attribute) =>
-    targetFile(accessType, regionType, `${attribute.name}.json`)
+    targetDataFile(accessType, regionType, `${attribute.name}.json`)
 
 export const writeIndex = R.curry(
   (accessType: string, regionType: string, updatedAttributes: Attribute[]) => {
@@ -42,29 +52,28 @@ export const writeIndex = R.curry(
   }
 )
 
-export function readAttributeIndexes(regionType: string) {
-  function readAttributeIndex(accessType: string) {
-    return readJson(
-      indexTargetFile(accessType, regionType)
-    )
-  }
-  return Promise.all(R.map(
-      (accessType: string) =>
-        readAttributeIndex(accessType).catch(R.always({})),
-      ['public', 'private']
-    ))
-    .then(tupled2(R.mergeDeepWith(R.concat)))
+function jsonCorrespondenceFileFetcher(
+    fromRegionType: string,
+    toRegionType: string,) {
+  return readJson(targetCorrespondenceFile(fromRegionType, toRegionType))
 }
 
+function jsonDataFileFetcher(
+    accessType: string,
+    regionType: string,
+    filename: string) {
+  return readJson(targetDataFile(accessType, regionType, filename))
+}
+
+export const readAttributeIndex = R.memoize(
+  buildIndexFetcher(jsonDataFileFetcher)
+)
+
 export const readAttributeData = R.curry(
-  (regionType: string, attribute: Attribute) =>
-    readJson(
-      attributeDataTargetFile('public', regionType, attribute),
-    ).catch((_e) =>
-      readJson(
-        attributeDataTargetFile('private', regionType, attribute)
-      )
-    ).then<AttributeData>((v: AttributeData) => v)
+  buildAttributeDataFetcher(
+    jsonDataFileFetcher,
+    jsonCorrespondenceFileFetcher,
+    readAttributeIndex)
 )
 
 export const writeAttributeData = R.curry(
