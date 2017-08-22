@@ -4,6 +4,7 @@
       "name": "census2016_0minus_weekly_household_income_all",
       "description": "Nil or negative weekly household income - all households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -20,6 +21,7 @@
       "name": "census2016_0minus_weekly_household_income_indigenous",
       "description": "Nil or negative weekly household income - indigenous households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -36,6 +38,7 @@
       "name": "census2016_0to4_females_indigenous",
       "description": "Indigenous Females - Age 0-4 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -52,6 +55,7 @@
       "name": "census2016_0to4_females_total",
       "description": "Total Females - Age 0-4 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -68,6 +72,7 @@
       "name": "census2016_0to4_males_indigenous",
       "description": "Indigenous Males - Age 0-4 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -84,6 +89,7 @@
       "name": "census2016_0to4_males_total",
       "description": "Total Males - Age 0-4 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -100,6 +106,7 @@
       "name": "census2016_0to4_persons_indigenous",
       "description": "Indigenous Persons - Age 0-4 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -116,6 +123,7 @@
       "name": "census2016_0to4_persons_total",
       "description": "Total Persons - Age 0-4 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -132,6 +140,7 @@
       "name": "census2016_1000to1249_weekly_household_income_all",
       "description": "$1000 - $1249 weekly household income - all households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -148,6 +157,7 @@
       "name": "census2016_1000to1249_weekly_household_income_indigenous",
       "description": "$1000 - $1249 weekly household income - indigenous households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -164,6 +174,7 @@
       "name": "census2016_10to14_females_indigenous",
       "description": "Indigenous Females - Age 10-14 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -180,6 +191,7 @@
       "name": "census2016_10to14_females_total",
       "description": "Total Females - Age 10-14 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -196,6 +208,7 @@
       "name": "census2016_10to14_males_indigenous",
       "description": "Indigenous Males - Age 10-14 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -212,6 +225,7 @@
       "name": "census2016_10to14_males_total",
       "description": "Total Males - Age 10-14 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -228,6 +242,7 @@
       "name": "census2016_10to14_persons_indigenous",
       "description": "Indigenous Persons - Age 10-14 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -244,6 +259,7 @@
       "name": "census2016_10to14_persons_total",
       "description": "Total Persons - Age 10-14 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -260,6 +276,7 @@
       "name": "census2016_1250to1499_weekly_household_income_all",
       "description": "$1250 - $1499 weekly household income - all households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -276,6 +293,7 @@
       "name": "census2016_1250to1499_weekly_household_income_indigenous",
       "description": "$1250 - $1499 weekly household income - indigenous households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -292,6 +310,7 @@
       "name": "census2016_1500to1999_weekly_household_income_all",
       "description": "$1500 - $1999 weekly household income - all households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -308,6 +327,7 @@
       "name": "census2016_1500to1999_weekly_household_income_indigenous",
       "description": "$1500 - $1999 weekly household income - indigenous households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -324,6 +344,7 @@
       "name": "census2016_150to299_weekly_household_income_all",
       "description": "$150 - $299 weekly household income - all households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -340,6 +361,7 @@
       "name": "census2016_150to299_weekly_household_income_indigenous",
       "description": "$150 - $299 weekly household income - indigenous households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -356,6 +378,7 @@
       "name": "census2016_15to19_females_indigenous",
       "description": "Indigenous Females - Age 15-19 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -372,6 +395,7 @@
       "name": "census2016_15to19_females_total",
       "description": "Total Females - Age 15-19 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -388,6 +412,7 @@
       "name": "census2016_15to19_males_indigenous",
       "description": "Indigenous Males - Age 15-19 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -404,6 +429,7 @@
       "name": "census2016_15to19_males_total",
       "description": "Total Males - Age 15-19 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -420,6 +446,7 @@
       "name": "census2016_15to19_persons_indigenous",
       "description": "Indigenous Persons - Age 15-19 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -436,6 +463,7 @@
       "name": "census2016_15to19_persons_total",
       "description": "Total Persons - Age 15-19 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -452,6 +480,7 @@
       "name": "census2016_1to149_weekly_household_income_all",
       "description": "$1 - $149 weekly household income - all households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -468,6 +497,7 @@
       "name": "census2016_1to149_weekly_household_income_indigenous",
       "description": "$1 - $149 weekly household income - indigenous households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -484,6 +514,7 @@
       "name": "census2016_2000to2499_weekly_household_income_all",
       "description": "$2000 - $2499 weekly household income - all households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -500,6 +531,7 @@
       "name": "census2016_2000to2499_weekly_household_income_indigenous",
       "description": "$2000 - $2499 weekly household income - indigenous households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -516,6 +548,7 @@
       "name": "census2016_20to24_females_indigenous",
       "description": "Indigenous Females - Age 20-24 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -532,6 +565,7 @@
       "name": "census2016_20to24_females_total",
       "description": "Total Females - Age 20-24 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -548,6 +582,7 @@
       "name": "census2016_20to24_males_indigenous",
       "description": "Indigenous Males - Age 20-24 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -564,6 +599,7 @@
       "name": "census2016_20to24_males_total",
       "description": "Total Males - Age 20-24 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -580,6 +616,7 @@
       "name": "census2016_20to24_persons_indigenous",
       "description": "Indigenous Persons - Age 20-24 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -596,6 +633,7 @@
       "name": "census2016_20to24_persons_total",
       "description": "Total Persons - Age 20-24 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -612,6 +650,7 @@
       "name": "census2016_2500to2999_weekly_household_income_all",
       "description": "$2500 - $2999 weekly household income - all households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -628,6 +667,7 @@
       "name": "census2016_2500to2999_weekly_household_income_indigenous",
       "description": "$2500 - $2999 weekly household income - indigenous households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -644,6 +684,7 @@
       "name": "census2016_25to29_females_indigenous",
       "description": "Indigenous Females - Age 25-29 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -660,6 +701,7 @@
       "name": "census2016_25to29_females_total",
       "description": "Total Females - Age 25-29 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -676,6 +718,7 @@
       "name": "census2016_25to29_males_indigenous",
       "description": "Indigenous Males - Age 25-29 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -692,6 +735,7 @@
       "name": "census2016_25to29_males_total",
       "description": "Total Males - Age 25-29 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -708,6 +752,7 @@
       "name": "census2016_25to29_persons_indigenous",
       "description": "Indigenous Persons - Age 25-29 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -724,6 +769,7 @@
       "name": "census2016_25to29_persons_total",
       "description": "Total Persons - Age 25-29 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -740,6 +786,7 @@
       "name": "census2016_3000plus_weekly_household_income_all",
       "description": "$3000+ weekly household income - all households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -756,6 +803,7 @@
       "name": "census2016_3000plus_weekly_household_income_indigenous",
       "description": "$3000+ weekly household income - indigenous households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -772,6 +820,7 @@
       "name": "census2016_300to399_weekly_household_income_all",
       "description": "$300 - $399 weekly household income - all households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -788,6 +837,7 @@
       "name": "census2016_300to399_weekly_household_income_indigenous",
       "description": "$300 - $399 weekly household income - indigenous households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -804,6 +854,7 @@
       "name": "census2016_30to34_females_indigenous",
       "description": "Indigenous Females - Age 30-34 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -820,6 +871,7 @@
       "name": "census2016_30to34_females_total",
       "description": "Total Females - Age 30-34 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -836,6 +888,7 @@
       "name": "census2016_30to34_males_indigenous",
       "description": "Indigenous Males - Age 30-34 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -852,6 +905,7 @@
       "name": "census2016_30to34_males_total",
       "description": "Total Males - Age 30-34 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -868,6 +922,7 @@
       "name": "census2016_30to34_persons_indigenous",
       "description": "Indigenous Persons - Age 30-34 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -884,6 +939,7 @@
       "name": "census2016_30to34_persons_total",
       "description": "Total Persons - Age 30-34 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -900,6 +956,7 @@
       "name": "census2016_35to39_females_indigenous",
       "description": "Indigenous Females - Age 35-39 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -916,6 +973,7 @@
       "name": "census2016_35to39_females_total",
       "description": "Total Females - Age 35-39 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -932,6 +990,7 @@
       "name": "census2016_35to39_males_indigenous",
       "description": "Indigenous Males - Age 35-39 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -948,6 +1007,7 @@
       "name": "census2016_35to39_males_total",
       "description": "Total Males - Age 35-39 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -964,6 +1024,7 @@
       "name": "census2016_35to39_persons_indigenous",
       "description": "Indigenous Persons - Age 35-39 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -980,6 +1041,7 @@
       "name": "census2016_35to39_persons_total",
       "description": "Total Persons - Age 35-39 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -996,6 +1058,7 @@
       "name": "census2016_400to499_weekly_household_income_all",
       "description": "$400 - $499 weekly household income - all households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1012,6 +1075,7 @@
       "name": "census2016_400to499_weekly_household_income_indigenous",
       "description": "$400 - $499 weekly household income - indigenous households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1028,6 +1092,7 @@
       "name": "census2016_40to44_females_indigenous",
       "description": "Indigenous Females - Age 40-44 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1044,6 +1109,7 @@
       "name": "census2016_40to44_females_total",
       "description": "Total Females - Age 40-44 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1060,6 +1126,7 @@
       "name": "census2016_40to44_males_indigenous",
       "description": "Indigenous Males - Age 40-44 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1076,6 +1143,7 @@
       "name": "census2016_40to44_males_total",
       "description": "Total Males - Age 40-44 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1092,6 +1160,7 @@
       "name": "census2016_40to44_persons_indigenous",
       "description": "Indigenous Persons - Age 40-44 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1108,6 +1177,7 @@
       "name": "census2016_40to44_persons_total",
       "description": "Total Persons - Age 40-44 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1124,6 +1194,7 @@
       "name": "census2016_45to49_females_indigenous",
       "description": "Indigenous Females - Age 45-49 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1140,6 +1211,7 @@
       "name": "census2016_45to49_females_total",
       "description": "Total Females - Age 45-49 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1156,6 +1228,7 @@
       "name": "census2016_45to49_males_indigenous",
       "description": "Indigenous Males - Age 45-49 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1172,6 +1245,7 @@
       "name": "census2016_45to49_males_total",
       "description": "Total Males - Age 45-49 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1188,6 +1262,7 @@
       "name": "census2016_45to49_persons_indigenous",
       "description": "Indigenous Persons - Age 45-49 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1204,6 +1279,7 @@
       "name": "census2016_45to49_persons_total",
       "description": "Total Persons - Age 45-49 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1220,6 +1296,7 @@
       "name": "census2016_500to649_weekly_household_income_all",
       "description": "$500 - $649 weekly household income - all households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1236,6 +1313,7 @@
       "name": "census2016_500to649_weekly_household_income_indigenous",
       "description": "$500 - $649 weekly household income - indigenous households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1252,6 +1330,7 @@
       "name": "census2016_50to54_females_indigenous",
       "description": "Indigenous Females - Age 50-54 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1268,6 +1347,7 @@
       "name": "census2016_50to54_females_total",
       "description": "Total Females - Age 50-54 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1284,6 +1364,7 @@
       "name": "census2016_50to54_males_indigenous",
       "description": "Indigenous Males - Age 50-54 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1300,6 +1381,7 @@
       "name": "census2016_50to54_males_total",
       "description": "Total Males - Age 50-54 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1316,6 +1398,7 @@
       "name": "census2016_50to54_persons_indigenous",
       "description": "Indigenous Persons - Age 50-54 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1332,6 +1415,7 @@
       "name": "census2016_50to54_persons_total",
       "description": "Total Persons - Age 50-54 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1348,6 +1432,7 @@
       "name": "census2016_55to59_females_indigenous",
       "description": "Indigenous Females - Age 55-59 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1364,6 +1449,7 @@
       "name": "census2016_55to59_females_total",
       "description": "Total Females - Age 55-59 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1380,6 +1466,7 @@
       "name": "census2016_55to59_males_indigenous",
       "description": "Indigenous Males - Age 55-59 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1396,6 +1483,7 @@
       "name": "census2016_55to59_males_total",
       "description": "Total Males - Age 55-59 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1412,6 +1500,7 @@
       "name": "census2016_55to59_persons_indigenous",
       "description": "Indigenous Persons - Age 55-59 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1428,6 +1517,7 @@
       "name": "census2016_55to59_persons_total",
       "description": "Total Persons - Age 55-59 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1444,6 +1534,7 @@
       "name": "census2016_5to9_females_indigenous",
       "description": "Indigenous Females - Age 5-9 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1460,6 +1551,7 @@
       "name": "census2016_5to9_females_total",
       "description": "Total Females - Age 5-9 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1476,6 +1568,7 @@
       "name": "census2016_5to9_males_indigenous",
       "description": "Indigenous Males - Age 5-9 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1492,6 +1585,7 @@
       "name": "census2016_5to9_males_total",
       "description": "Total Males - Age 5-9 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1508,6 +1602,7 @@
       "name": "census2016_5to9_persons_indigenous",
       "description": "Indigenous Persons - Age 5-9 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1524,6 +1619,7 @@
       "name": "census2016_5to9_persons_total",
       "description": "Total Persons - Age 5-9 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1540,6 +1636,7 @@
       "name": "census2016_60to64_females_indigenous",
       "description": "Indigenous Females - Age 60-64 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1556,6 +1653,7 @@
       "name": "census2016_60to64_females_total",
       "description": "Total Females - Age 60-64 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1572,6 +1670,7 @@
       "name": "census2016_60to64_males_indigenous",
       "description": "Indigenous Males - Age 60-64 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1588,6 +1687,7 @@
       "name": "census2016_60to64_males_total",
       "description": "Total Males - Age 60-64 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1604,6 +1704,7 @@
       "name": "census2016_60to64_persons_indigenous",
       "description": "Indigenous Persons - Age 60-64 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1620,6 +1721,7 @@
       "name": "census2016_60to64_persons_total",
       "description": "Total Persons - Age 60-64 (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1636,6 +1738,7 @@
       "name": "census2016_650to799_weekly_household_income_all",
       "description": "$650 - $799 weekly household income - all households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1652,6 +1755,7 @@
       "name": "census2016_650to799_weekly_household_income_indigenous",
       "description": "$650 - $799 weekly household income - indigenous households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1668,6 +1772,7 @@
       "name": "census2016_65plus_females_indigenous",
       "description": "Indigenous Females - Age 65+ (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1684,6 +1789,7 @@
       "name": "census2016_65plus_females_total",
       "description": "Total Females - Age 65+ (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1700,6 +1806,7 @@
       "name": "census2016_65plus_males_indigenous",
       "description": "Indigenous Males - Age 65+ (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1716,6 +1823,7 @@
       "name": "census2016_65plus_males_total",
       "description": "Total Males - Age 65+ (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1732,6 +1840,7 @@
       "name": "census2016_65plus_persons_indigenous",
       "description": "Indigenous Persons - Age 65+ (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1748,6 +1857,7 @@
       "name": "census2016_65plus_persons_total",
       "description": "Total Persons - Age 65+ (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1764,6 +1874,7 @@
       "name": "census2016_800to999_weekly_household_income_all",
       "description": "$800 - $999 weekly household income - all households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1780,6 +1891,7 @@
       "name": "census2016_800to999_weekly_household_income_indigenous",
       "description": "$800 - $999 weekly household income - indigenous households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1848,6 +1960,7 @@
       "name": "census2016_all_females_indigenous",
       "description": "Indigenous Females - All Ages (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1864,6 +1977,7 @@
       "name": "census2016_all_females_total",
       "description": "Total Females - All Ages (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1880,6 +1994,7 @@
       "name": "census2016_all_males_indigenous",
       "description": "Indigenous Males - All Ages (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1896,6 +2011,7 @@
       "name": "census2016_all_males_total",
       "description": "Total Males - All Ages (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1912,6 +2028,7 @@
       "name": "census2016_all_persons_indigenous",
       "description": "Indigenous Persons - All Ages (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1928,6 +2045,7 @@
       "name": "census2016_all_persons_total",
       "description": "Total Persons - All Ages (Census 2016)",
       "type": "number",
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -1944,6 +2062,7 @@
       "name": "census2016_average_household_size_all",
       "description": "Average household size - all (Census 2016)",
       "type": "number",
+      "category": "housing",
       "format": {
         "maximumFractionDigits": 1
       },
@@ -1960,6 +2079,7 @@
       "name": "census2016_average_household_size_indigenous",
       "description": "Average household size - indigenous (Census 2016)",
       "type": "number",
+      "category": "housing",
       "format": {
         "maximumFractionDigits": 1
       },
@@ -1976,6 +2096,7 @@
       "name": "census2016_average_number_of_persons_per_bedroom_all",
       "description": "Average number of persons per bedroom - all (Census 2016)",
       "type": "number",
+      "category": "housing",
       "format": {
         "maximumFractionDigits": 1
       },
@@ -1992,6 +2113,7 @@
       "name": "census2016_average_number_of_persons_per_bedroom_indigenous",
       "description": "Average number of persons per bedroom - indigenous (Census 2016)",
       "type": "number",
+      "category": "housing",
       "format": {
         "maximumFractionDigits": 1
       },
@@ -2008,6 +2130,7 @@
       "name": "census2016_completely_unstated_weekly_household_income_all",
       "description": "Completely-unstated weekly household income - all households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -2024,6 +2147,7 @@
       "name": "census2016_completely_unstated_weekly_household_income_indigenous",
       "description": "Completely-unstated weekly household income - indigenous households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -2040,6 +2164,7 @@
       "name": "census2016_median_weekly_household_income_all",
       "description": "Median weekly household income - all households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "style": "currency",
         "currency": "AUD"
@@ -2057,6 +2182,7 @@
       "name": "census2016_median_weekly_household_income_indigenous",
       "description": "Median weekly household income - indigenous households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "style": "currency",
         "currency": "AUD"
@@ -2074,6 +2200,7 @@
       "name": "census2016_partially_unstated_weekly_household_income_all",
       "description": "Partially-unstated weekly household income - all households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -2090,6 +2217,7 @@
       "name": "census2016_partially_unstated_weekly_household_income_indigenous",
       "description": "Partially-unstated weekly household income - indigenous households (Census 2016)",
       "type": "number",
+      "category": "socioeconomics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -2122,6 +2250,7 @@
       "name": "census2016_proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_indigenous",
       "description": "Proportion of dwellings that need 1 or more extra bedrooms - Indigenous (Census 2016)",
       "type": "number",
+      "category": "housing",
       "format": {
         "style": "percent"
       },
@@ -2138,6 +2267,7 @@
       "name": "census2016_proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_non_indigenous",
       "description": "Proportion of dwellings that need 1 or more extra bedrooms - Non-Indigenous (Census 2016)",
       "type": "number",
+      "category": "housing",
       "format": {
         "style": "percent"
       },
@@ -2154,6 +2284,7 @@
       "name": "census2016_proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_total",
       "description": "Proportion of dwellings that need 1 or more extra bedrooms - Total (Census 2016)",
       "type": "number",
+      "category": "housing",
       "format": {
         "style": "percent"
       },
@@ -2170,6 +2301,7 @@
       "name": "census2016_total_possibly_educated_all_persons",
       "description": "Total possibly educated persons - all persons (Census 2016)",
       "type": "number",
+      "category": "education",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -2186,6 +2318,7 @@
       "name": "census2016_total_possibly_educated_indigenous_persons",
       "description": "Total possibly educated persons - indigenous persons (Census 2016)",
       "type": "number",
+      "category": "education",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -2202,6 +2335,7 @@
       "name": "census2016_year_12_educated_all_persons",
       "description": "Year 12 educated - all persons (Census 2016)",
       "type": "number",
+      "category": "education",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -2218,6 +2352,7 @@
       "name": "census2016_year_12_educated_indigenous_persons",
       "description": "Year 12 educated - indigenous persons (Census 2016)",
       "type": "number",
+      "category": "education",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -2234,6 +2369,7 @@
       "name": "qldgov_social_housing_all_applications",
       "description": "Number applications waiting for social housing - all",
       "type": "number",
+      "category": "housing",
       "source": {
         "name": "Queensland Government - Department of Housing and Public Works",
         "license": {
@@ -2247,6 +2383,7 @@
       "name": "qldgov_social_housing_all_median_waiting_application_age",
       "description": "Median age (in months) of waiting social housing applications - all",
       "type": "number",
+      "category": "housing",
       "source": {
         "name": "Queensland Government - Department of Housing and Public Works",
         "license": {
@@ -2260,6 +2397,7 @@
       "name": "qldgov_social_housing_all_people",
       "description": "Number people waiting for social housing - all",
       "type": "number",
+      "category": "housing",
       "source": {
         "name": "Queensland Government - Department of Housing and Public Works",
         "license": {
@@ -2273,6 +2411,7 @@
       "name": "qldgov_social_housing_expenditure_maintenance_events",
       "description": "Social housing maintenance events",
       "type": "number",
+      "category": "housing",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -2289,6 +2428,7 @@
       "name": "qldgov_social_housing_expenditure_maintenance_expenditure",
       "description": "Social housing maintenance expenditure",
       "type": "number",
+      "category": "housing",
       "format": {
         "style": "currency",
         "currency": "AUD"
@@ -2306,6 +2446,7 @@
       "name": "qldgov_social_housing_expenditure_modification_events",
       "description": "Social housing modification events",
       "type": "number",
+      "category": "housing",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -2322,6 +2463,7 @@
       "name": "qldgov_social_housing_expenditure_modification_expenditure",
       "description": "Social housing modification expenditure",
       "type": "number",
+      "category": "housing",
       "format": {
         "style": "currency",
         "currency": "AUD"
@@ -2339,6 +2481,7 @@
       "name": "qldgov_social_housing_indigenous_applications",
       "description": "Number applications waiting for social housing - indigenous",
       "type": "number",
+      "category": "housing",
       "source": {
         "name": "Queensland Government - Department of Housing and Public Works",
         "license": {
@@ -2352,6 +2495,7 @@
       "name": "qldgov_social_housing_indigenous_median_waiting_application_age",
       "description": "Median age (in months) of waiting social housing applications - indigenous",
       "type": "number",
+      "category": "housing",
       "source": {
         "name": "Queensland Government - Department of Housing and Public Works",
         "license": {
@@ -2365,6 +2509,7 @@
       "name": "qldgov_social_housing_indigenous_people",
       "description": "Number people waiting for social housing - indigenous",
       "type": "number",
+      "category": "housing",
       "source": {
         "name": "Queensland Government - Department of Housing and Public Works",
         "license": {
@@ -2378,6 +2523,7 @@
       "name": "qldgov_social_housing_tenancies_all_households",
       "description": "Number of government-managed social rental housing households - all",
       "type": "number",
+      "category": "housing",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -2394,6 +2540,7 @@
       "name": "qldgov_social_housing_tenancies_all_overcrowded_households",
       "description": "Number of overcrowded government-managed social rental housing households - all",
       "type": "number",
+      "category": "housing",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -2410,6 +2557,7 @@
       "name": "qldgov_social_housing_tenancies_all_people",
       "description": "Number of people in government-managed social rental housing - all",
       "type": "number",
+      "category": "housing",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -2426,6 +2574,7 @@
       "name": "qldgov_social_housing_tenancies_indigenous_households",
       "description": "Number of government-managed social rental housing tenancies - indigenous",
       "type": "number",
+      "category": "housing",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -2442,6 +2591,7 @@
       "name": "qldgov_social_housing_tenancies_indigenous_overcrowded_households",
       "description": "Number of overcrowded government-managed social rental housing tenancies - indigenous",
       "type": "number",
+      "category": "housing",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -2458,6 +2608,7 @@
       "name": "qldgov_social_housing_tenancies_indigenous_people",
       "description": "Number of people in government-managed social rental housing - indigenous",
       "type": "number",
+      "category": "housing",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -2474,6 +2625,7 @@
       "name": "qldgov_social_housing_tenancies_nonindigenous_households",
       "description": "Number of government-managed social rental housing tenancies - non-indigenous or unknown",
       "type": "number",
+      "category": "housing",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -2490,6 +2642,7 @@
       "name": "qldgov_social_housing_tenancies_nonindigenous_overcrowded_households",
       "description": "Number of overcrowded government-managed social rental housing tenancies - non-indigenous or unknown",
       "type": "number",
+      "category": "housing",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -2506,6 +2659,7 @@
       "name": "qldgov_social_housing_tenancies_nonindigenous_people",
       "description": "Number of people in government-managed social rental housing - non-indigenous or unknown",
       "type": "number",
+      "category": "housing",
       "format": {
         "maximumFractionDigits": 0
       },
