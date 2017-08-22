@@ -25,6 +25,7 @@ const attributeDef = (name: string, desc: string, formatType: string) => {
     name: 'qldgov_social_housing_expenditure_'+name,
     description: desc,
     type: 'number',
+    category: 'housing',
     format: formatFor(formatType),
     source: {
       name: 'Queensland Government - Department of Housing and Public Works',

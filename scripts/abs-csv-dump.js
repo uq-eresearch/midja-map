@@ -58,6 +58,7 @@ const matchers = [
               "name": `census${params.year}_median_weekly_household_income_all`,
               "description": `Median weekly household income - all households (Census ${params.year})`,
               "type": "number",
+              "category": "socioeconomics",
               "format": currencyFormat,
               "source": sourceDetails(filename, field)
             }
@@ -71,6 +72,7 @@ const matchers = [
               "name": `census${params.year}_median_weekly_household_income_indigenous`,
               "description": `Median weekly household income - indigenous households (Census ${params.year})`,
               "type": "number",
+              "category": "socioeconomics",
               "format": currencyFormat,
               "source": sourceDetails(filename, field)
             }
@@ -104,6 +106,7 @@ const matchers = [
               "name": `census${params.year}_year_12_educated_indigenous_persons`,
               "description": `Year 12 educated - indigenous persons (Census ${params.year})`,
               "type": "number",
+              "category": "education",
               "format": integerFormat,
               "source": sourceDetails(filename, field)
             }
@@ -120,6 +123,7 @@ const matchers = [
               "name": `census${params.year}_total_possibly_educated_indigenous_persons`,
               "description": `Total possibly educated persons - indigenous persons (Census ${params.year})`,
               "type": "number",
+              "category": "education",
               "format": integerFormat,
               "source": sourceDetails(filename, field)
             }
@@ -136,6 +140,7 @@ const matchers = [
               "name": `census${params.year}_year_12_educated_all_persons`,
               "description": `Year 12 educated - all persons (Census ${params.year})`,
               "type": "number",
+              "category": "education",
               "format": integerFormat,
               "source": sourceDetails(filename, field)
             }
@@ -152,6 +157,7 @@ const matchers = [
               "name": `census${params.year}_total_possibly_educated_all_persons`,
               "description": `Total possibly educated persons - all persons (Census ${params.year})`,
               "type": "number",
+              "category": "education",
               "format": integerFormat,
               "source": sourceDetails(filename, field)
             }
@@ -192,6 +198,7 @@ const matchers = [
               "name": `census${params.year}_partially_unstated_weekly_household_income_${params.suffix}`.toLowerCase(),
               "description": `Partially-unstated weekly household income - ${params.suffix} households (Census ${params.year})`,
               "type": "number",
+              "category": "socioeconomics",
               "format": integerFormat,
               "source": sourceDetails(filename, field)
             }
@@ -207,6 +214,7 @@ const matchers = [
               "name": `census${params.year}_completely_unstated_weekly_household_income_${params.suffix}`,
               "description": `Completely-unstated weekly household income - ${params.suffix} households (Census ${params.year})`,
               "type": "number",
+              "category": "socioeconomics",
               "format": integerFormat,
               "source": sourceDetails(filename, field)
             }
@@ -222,6 +230,7 @@ const matchers = [
               "name": `census${params.year}_${params.low}to${params.high}_weekly_household_income_${params.suffix}`,
               "description": `\$${params.low} - \$${params.high} weekly household income - ${params.suffix} households (Census ${params.year})`,
               "type": "number",
+              "category": "socioeconomics",
               "format": integerFormat,
               "source": sourceDetails(filename, field)
             }
@@ -237,6 +246,7 @@ const matchers = [
               "name": `census${params.year}_${params.low}plus_weekly_household_income_${params.suffix}`,
               "description": `\$${params.low}+ weekly household income - ${params.suffix} households (Census ${params.year})`,
               "type": "number",
+              "category": "socioeconomics",
               "format": integerFormat,
               "source": sourceDetails(filename, field)
             }
@@ -252,6 +262,7 @@ const matchers = [
               "name": `census${params.year}_0minus_weekly_household_income_${params.suffix}`,
               "description": `Nil or negative weekly household income - ${params.suffix} households (Census ${params.year})`,
               "type": "number",
+              "category": "socioeconomics",
               "format": integerFormat,
               "source": sourceDetails(filename, field)
             }
@@ -287,6 +298,7 @@ const matchers = [
           "name": `census${params.year}_${params.status}_persons_${params.low}to${params.high}_${params.qualification}`.toLowerCase(),
           "description": `Education level of ${params.status} persons ${params.low}-${params.high} years - ${params.qualification.replace(/_/g,' ')} (Census ${params.year})`,
           "type": "number",
+          "category": "education",
           "format": integerFormat,
           "source": sourceDetails(filename, field)
         }
@@ -318,6 +330,7 @@ const matchers = [
           "name": `census${params.year}_average_household_size_${params.status}`.toLowerCase(),
           "description": `Average household size - ${params.status} (Census ${params.year})`,
           "type": "number",
+          "category": "housing",
           "format": {
             "maximumFractionDigits": 1
           },
@@ -351,6 +364,7 @@ const matchers = [
           "name": `census${params.year}_average_number_of_persons_per_bedroom_${params.status}`.toLowerCase(),
           "description": `Average number of persons per bedroom - ${params.status} (Census ${params.year})`,
           "type": "number",
+          "category": "housing",
           "format": {
             "maximumFractionDigits": 1
           },
@@ -409,6 +423,7 @@ const matchers = [
               "name": `census${params.year}_${params.low}to${params.high}_${params.gender}_${params.status}`.toLowerCase(),
               "description": `${params.status} ${params.gender} - Age ${params.low}-${params.high} (Census ${params.year})`,
               "type": "number",
+              "category": "demographics",
               "format": integerFormat,
               "source": sourceDetails(filename, field)
             }
@@ -424,6 +439,7 @@ const matchers = [
               "name": `census${params.year}_${params.low}plus_${params.gender}_${params.status}`.toLowerCase(),
               "description": `${params.status} ${params.gender} - Age ${params.low}+ (Census ${params.year})`,
               "type": "number",
+              "category": "demographics",
               "format": integerFormat,
               "source": sourceDetails(filename, field)
             }
@@ -472,6 +488,7 @@ const matchers = [
           "name": `census${params.year}_all_${params.gender}_${params.status}`.toLowerCase(),
           "description": `${params.status} ${params.gender} - All Ages (Census ${params.year})`,
           "type": "number",
+          "category": "demographics",
           "format": integerFormat,
           "source": sourceDetails(filename, field)
         }
@@ -507,6 +524,7 @@ const matchers = [
           "name": `census${params.year}_proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_${params.status.replace('-', '_')}`.toLowerCase(),
           "description": `Proportion of dwellings that need 1 or more extra bedrooms - ${params.status} (Census ${params.year})`,
           "type": "number",
+          "category": "housing",
           "format": {
             "style": "percent"
           },

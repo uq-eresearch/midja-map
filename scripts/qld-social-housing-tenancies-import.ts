@@ -34,6 +34,7 @@ const attributeDef: (name: string, desc: string) => Attribute =
       name: 'qldgov_social_housing_tenancies_'+name,
       description: desc,
       type: 'number',
+      category: 'housing',
       format: {
         "maximumFractionDigits": 0
       },

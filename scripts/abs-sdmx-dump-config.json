@@ -7,7 +7,7 @@
       "name": "{{{measure.name}}}{{{period}}}_{{{gender.name}}}_{{{age.name}}}",
       "description": "{{{measure.description}}} {{{age.description}}} - {{{gender.description}}} ({{{period}}})",
       "type": "number",
-      "hidden": true,
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -169,7 +169,7 @@
       "name": "{{{measure.name}}}{{{period}}}_{{{gender.name}}}_{{{age.name}}}",
       "description": "{{{measure.description}}} {{{age.description}}} - {{{gender.description}}} ({{{period}}})",
       "type": "number",
-      "hidden": true,
+      "category": "demographics",
       "format": {
         "maximumFractionDigits": 0
       },
@@ -254,6 +254,7 @@
       "name": "census{{{period}}}_{{{age.name}}}_{{{gender.name}}}_{{{status.name}}}",
       "description": "{{{status.description}}} {{{gender.description}}} - {{{age.description}}} (Census {{{period}}})",
       "type": "number",
+      "category": "demographics",
       "source": {
         "name": "Australian Bureau of Statistics",
         "license": {
@@ -409,6 +410,7 @@
       "name": "census{{{period}}}_{{{age.name}}}_{{{gender.name}}}_{{{status.name}}}",
       "description": "{{{status.description}}} {{{gender.description}}} - {{{age.description}}} (Census {{{period}}})",
       "type": "number",
+      "category": "demographics",
       "source": {
         "name": "Australian Bureau of Statistics",
         "license": {
@@ -560,6 +562,7 @@
       "name": "census{{{period}}}_{{{type.name}}}_{{{tenure.name}}}",
       "description": "{{{type.description}}} - {{{tenure.description}}} ({{{period}}})",
       "type": "number",
+      "category": "housing",
       "source": {
         "name": "Australian Bureau of Statistics",
         "license": {
@@ -647,6 +650,7 @@
       "name": "census{{{period}}}_{{{type.name}}}_{{{tenure.name}}}",
       "description": "{{{type.description}}} - {{{tenure.description}}} ({{{period}}})",
       "type": "number",
+      "category": "housing",
       "source": {
         "name": "Australian Bureau of Statistics",
         "license": {
@@ -730,6 +734,7 @@
       "name": "seifa{{{period}}}_{{{index.name}}}_{{{measure.name}}}",
       "description": "SEIFA {{{index.description}}} {{{measure.description}}} ({{{period}}})",
       "type": "number",
+      "category": "socioeconomics",
       "source": {
         "name": "Australian Bureau of Statistics",
         "license": {

@@ -874,6 +874,7 @@ function writeThresholdAttribute(
     "name": `bom_days_${testName}_${thresholdValue}_${statistic}_${startYear}_${endYear}`,
     "description": `Days with ${statisticDescription(statistic)} ${testName} ${thresholdValue}${statisticUnit(statistic)} from ${startYear} to ${endYear}`,
     "type": "number",
+    "category": "environmental",
     "format": {
       "maximumFractionDigits": 0
     },

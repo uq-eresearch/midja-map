@@ -21,6 +21,7 @@ const attributeDef = (name: string, desc: string) => {
     name: 'qldgov_social_housing_'+name,
     description: desc,
     type: 'number',
+    category: 'housing',
     source: {
       name: 'Queensland Government - Department of Housing and Public Works',
       license: {

@@ -119,6 +119,7 @@ const rowsToAttributeAndData = (year, sourceUrl) => rows => {
       description: attributeDescription +
         ` (Australian Atlas of Health Variation ${year})`,
       type: 'number',
+      category: 'health',
       source: {
         name: sourceName,
         url: sourceUrl
