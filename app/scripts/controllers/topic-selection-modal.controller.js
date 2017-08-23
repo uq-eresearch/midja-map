@@ -44,6 +44,7 @@ export default function TopicSelectionModalController(
     columnMode: 'flex',
     multiSelect: true,
     selectable: true,
+    sortType: 'multiple',
     columns: [
       {
         name: "Topic",
@@ -53,6 +54,13 @@ export default function TopicSelectionModalController(
           const text = highlight(scope.$cell, scope.$row.highlightValue || '')
           return `<span title="${scope.$row.name}">${text}</span>`
         }
+      },
+      {
+        name: "Category",
+        prop: "category",
+        group: true,
+        sort: 'asc',
+        className: "capitalize"
       },
       {
         name: "Source",

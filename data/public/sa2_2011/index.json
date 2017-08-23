@@ -14,7 +14,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/rainfall/totals/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/rainfall/totals/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_over_150_rainfall_2007_2016",
@@ -30,7 +31,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/rainfall/totals/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/rainfall/totals/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_over_200_rainfall_2007_2016",
@@ -46,7 +48,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/rainfall/totals/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/rainfall/totals/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_over_25_min_temp_2007_2016",
@@ -62,7 +65,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_over_26_min_temp_2007_2016",
@@ -78,7 +82,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_over_27_min_temp_2007_2016",
@@ -94,7 +99,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_over_28_min_temp_2007_2016",
@@ -110,7 +116,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_over_29_min_temp_2007_2016",
@@ -126,7 +133,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_over_30_max_temp_2007_2016",
@@ -142,7 +150,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_over_30_min_temp_2007_2016",
@@ -158,7 +167,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_over_35_max_temp_2007_2016",
@@ -174,7 +184,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_over_40_max_temp_2007_2016",
@@ -190,7 +201,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_under_10_min_temp_2007_2016",
@@ -206,7 +218,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_under_15_max_temp_2007_2016",
@@ -222,7 +235,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_under_20_max_temp_2007_2016",
@@ -238,7 +252,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_under_5_min_temp_2007_2016",
@@ -254,7 +269,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "census2011_0minus_weekly_household_income_all",
@@ -1885,7 +1901,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "demographics"
     },
     {
       "name": "census2011_aggregate_0to14_persons_total",
@@ -1898,7 +1915,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "demographics"
     },
     {
       "name": "census2011_aggregate_15to64_persons_indigenous",
@@ -1911,7 +1929,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "demographics"
     },
     {
       "name": "census2011_aggregate_15to64_persons_total",
@@ -1924,7 +1943,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "demographics"
     },
     {
       "name": "census2011_aggregate_all_working_age_persons_tertiary_education_any",
@@ -4066,7 +4086,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "demographics"
     },
     {
       "name": "census2011_proportion_all_persons_tertiary_educated",
@@ -4082,7 +4103,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_proportion_dwellings_owned_or_mortgaged",
@@ -4166,7 +4188,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_proportion_year_12_educated_indigenous_persons",
@@ -4182,7 +4205,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_total_possibly_educated_all_persons",
@@ -5303,7 +5327,8 @@
           "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
         },
         "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
-      }
+      },
+      "category": "demographics"
     },
     {
       "name": "gipop_angina_10yr_avg_admissions",
@@ -5319,7 +5344,8 @@
           "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
         },
         "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "gipop_angina_lq",
@@ -5336,7 +5362,8 @@
           "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
         },
         "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "gipop_ccf_10yr_avg_admissions",
@@ -5352,7 +5379,8 @@
           "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
         },
         "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "gipop_ccf_lq",
@@ -5369,7 +5397,8 @@
           "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
         },
         "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "gipop_cellulitis_10yr_avg_admissions",
@@ -5385,7 +5414,8 @@
           "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
         },
         "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "gipop_cellulitis_lq",
@@ -5402,7 +5432,8 @@
           "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
         },
         "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "gipop_chronic_acscs_10yr_avg_admissions",
@@ -5418,7 +5449,8 @@
           "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
         },
         "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "gipop_chronic_acscs_lq",
@@ -5435,7 +5467,8 @@
           "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
         },
         "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "gipop_copd_10yr_avg_admissions",
@@ -5451,7 +5484,8 @@
           "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
         },
         "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "gipop_copd_lq",
@@ -5468,7 +5502,8 @@
           "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
         },
         "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "gipop_dental_10yr_avg_admissions",
@@ -5484,7 +5519,8 @@
           "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
         },
         "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "gipop_dental_lq",
@@ -5501,7 +5537,8 @@
           "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
         },
         "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "gipop_diabetes_10yr_avg_admissions",
@@ -5517,7 +5554,8 @@
           "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
         },
         "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "gipop_diabetes_lq",
@@ -5534,7 +5572,8 @@
           "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
         },
         "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "gipop_ent_10yr_avg_admissions",
@@ -5550,7 +5589,8 @@
           "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
         },
         "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "gipop_ent_lq",
@@ -5567,7 +5607,8 @@
           "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
         },
         "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "gipop_epilepsy_10yr_avg_admissions",
@@ -5583,7 +5624,8 @@
           "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
         },
         "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "gipop_epilepsy_lq",
@@ -5600,7 +5642,8 @@
           "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
         },
         "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "gipop_uti_10yr_avg_admissions",
@@ -5616,7 +5659,8 @@
           "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
         },
         "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "gipop_uti_lq",
@@ -5633,7 +5677,8 @@
           "url": "https://creativecommons.org/licenses/by-nc-sa/3.0/"
         },
         "url": "https://grattan.edu.au/wp-content/uploads/2016/07/874-Perils-of-Place.pdf"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "phidu_admissions_for_circulatory_system_diseases_persons_all_hospitals_asr_per_100k",
@@ -5646,7 +5691,8 @@
           "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
         },
         "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "phidu_admissions_for_circulatory_system_diseases_persons_public_hospitals_asr_per_100k",
@@ -5659,7 +5705,8 @@
           "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
         },
         "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "phidu_admissions_for_digestive_system_diseases_persons_all_hospitals_asr_per_100k",
@@ -5672,7 +5719,8 @@
           "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
         },
         "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "phidu_admissions_for_digestive_system_diseases_persons_public_hospitals_asr_per_100k",
@@ -5685,7 +5733,8 @@
           "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
         },
         "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "phidu_admissions_for_injury_poisoning_and_other_external_causes_persons_all_hospitals_asr_per_100k",
@@ -5698,7 +5747,8 @@
           "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
         },
         "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "phidu_admissions_for_injury_poisoning_and_other_external_causes_persons_public_hospitals_asr_per_100k",
@@ -5711,7 +5761,8 @@
           "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
         },
         "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "phidu_admissions_for_respiratory_system_diseases_persons_all_hospitals_asr_per_100k",
@@ -5724,7 +5775,8 @@
           "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
         },
         "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "phidu_admissions_for_respiratory_system_diseases_persons_public_hospitals_asr_per_100k",
@@ -5737,7 +5789,8 @@
           "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
         },
         "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
-      }
+      },
+      "category": "health"
     },
     {
       "name": "phidu_median_age_at_death_of_females",
@@ -5750,7 +5803,8 @@
           "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
         },
         "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
-      }
+      },
+      "category": "demographics"
     },
     {
       "name": "phidu_median_age_at_death_of_males",
@@ -5763,7 +5817,8 @@
           "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
         },
         "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
-      }
+      },
+      "category": "demographics"
     },
     {
       "name": "phidu_median_age_at_death_of_persons",
@@ -5776,7 +5831,8 @@
           "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
         },
         "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
-      }
+      },
+      "category": "demographics"
     },
     {
       "name": "qldgov_social_housing_dwellings_occupied",

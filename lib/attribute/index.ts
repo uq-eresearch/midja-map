@@ -84,6 +84,16 @@ export function buildIndexFetcher(
               ),
             metadata
           )
+        ).then(
+          R.over(
+            R.lensProp('attributes'),
+            R.map(
+              R.over(
+                R.lensProp('category'),
+                R.defaultTo('uncategorized')
+              )
+            )
+          )
         )
       })
   }

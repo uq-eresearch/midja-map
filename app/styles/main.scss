@@ -182,3 +182,7 @@ accordion h2, h3 {
   white-space: pre-line;
   word-wrap: break-word;
 }
+
+.capitalize, .dt-group-row-label {
+  text-transform: capitalize;
+}

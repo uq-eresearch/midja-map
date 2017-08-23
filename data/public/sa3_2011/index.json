@@ -14,7 +14,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/rainfall/totals/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/rainfall/totals/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_over_150_rainfall_2007_2016",
@@ -30,7 +31,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/rainfall/totals/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/rainfall/totals/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_over_200_rainfall_2007_2016",
@@ -46,7 +48,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/rainfall/totals/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/rainfall/totals/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_over_25_min_temp_2007_2016",
@@ -62,7 +65,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_over_26_min_temp_2007_2016",
@@ -78,7 +82,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_over_27_min_temp_2007_2016",
@@ -94,7 +99,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_over_28_min_temp_2007_2016",
@@ -110,7 +116,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_over_29_min_temp_2007_2016",
@@ -126,7 +133,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_over_30_max_temp_2007_2016",
@@ -142,7 +150,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_over_30_min_temp_2007_2016",
@@ -158,7 +167,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_over_35_max_temp_2007_2016",
@@ -174,7 +184,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_over_40_max_temp_2007_2016",
@@ -190,7 +201,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_under_10_min_temp_2007_2016",
@@ -206,7 +218,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_under_15_max_temp_2007_2016",
@@ -222,7 +235,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_under_20_max_temp_2007_2016",
@@ -238,7 +252,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "bom_days_under_5_min_temp_2007_2016",
@@ -254,7 +269,8 @@
           "url": "https://creativecommons.org/licenses/by/3.0/au/"
         },
         "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
-      }
+      },
+      "category": "environment"
     },
     {
       "name": "census2011_0minus_weekly_household_income_all",
@@ -1885,7 +1901,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "demographics"
     },
     {
       "name": "census2011_aggregate_0to14_persons_total",
@@ -1898,7 +1915,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "demographics"
     },
     {
       "name": "census2011_aggregate_15to64_persons_indigenous",
@@ -1911,7 +1929,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "demographics"
     },
     {
       "name": "census2011_aggregate_15to64_persons_total",
@@ -1924,7 +1943,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "demographics"
     },
     {
       "name": "census2011_aggregate_all_working_age_persons_tertiary_education_any",
@@ -4066,7 +4086,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "demographics"
     },
     {
       "name": "census2011_proportion_all_persons_tertiary_educated",
@@ -4082,7 +4103,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_proportion_dwellings_owned_or_mortgaged",
@@ -4098,7 +4120,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "housing"
     },
     {
       "name": "census2011_proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_indigenous",
@@ -4165,7 +4188,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_proportion_year_12_educated_indigenous_persons",
@@ -4181,7 +4205,8 @@
           "type": "Creative Commons Attribution 2.5 Australia",
           "url": "https://creativecommons.org/licenses/by/2.5/au/"
         }
-      }
+      },
+      "category": "education"
     },
     {
       "name": "census2011_total_possibly_educated_all_persons",
@@ -5307,7 +5332,8 @@
           "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
         },
         "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/PHSOMIHDwellingData.csv"
-      }
+      },
+      "category": "housing"
     },
     {
       "name": "qldgov_social_housing_dwellings_proportion_unoccupied",
@@ -5324,7 +5350,8 @@
           "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
         },
         "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/PHSOMIHDwellingData.csv"
-      }
+      },
+      "category": "housing"
     },
     {
       "name": "qldgov_social_housing_dwellings_total",
@@ -5405,7 +5432,8 @@
           "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
         },
         "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/TenanciesGovernmentManagedSocialRentalHousing.csv"
-      }
+      },
+      "category": "housing"
     },
     {
       "name": "qldgov_social_housing_tenancies_proportion_indigenous_overcrowded_households",
@@ -5422,7 +5450,8 @@
           "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
         },
         "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/TenanciesGovernmentManagedSocialRentalHousing.csv"
-      }
+      },
+      "category": "housing"
     },
     {
       "name": "qldgov_social_housing_tenancies_proportion_nonindigenous_overcrowded_households",
@@ -5439,7 +5468,8 @@
           "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
         },
         "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/TenanciesGovernmentManagedSocialRentalHousing.csv"
-      }
+      },
+      "category": "housing"
     },
     {
       "name": "ra_name",
