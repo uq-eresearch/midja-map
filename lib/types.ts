@@ -1,7 +1,20 @@
 interface Attribute {
   readonly name: string,
   readonly description: string,
-  readonly type: string
+  readonly type: string,
+  readonly category?: string,
+  readonly format?: Intl.NumberFormatOptions,
+  readonly source?: AttributeSource
+}
+
+interface AttributeSource {
+  readonly name: string,
+  readonly license?: {
+    type: string,
+    url: string
+  }
+  readonly notes?: string
+  readonly url?: string
 }
 
 interface AttributeIndex {
