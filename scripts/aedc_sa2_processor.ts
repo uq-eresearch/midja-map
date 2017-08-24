@@ -6,9 +6,9 @@ import { tupled2 } from '../lib/util'
 
 const stateNames = R.values(require('../data/public/state/region_name.json'))
 const sa2RegionMap: {[code: string]: string} =
-  require('../data/public/sa2_2016/region_name.json')
+  require('../data/public/sa2_2011/region_name.json')
 const sa3RegionMap: {[code: string]: string} =
-  require('../data/public/sa3_2016/region_name.json')
+  require('../data/public/sa3_2011/region_name.json')
 
 const sa2ReportFilename = process.argv[2]
 
