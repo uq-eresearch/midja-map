@@ -71,10 +71,12 @@ export default function dataService($http, $q) {
 
   const getMetadataFromRemote = buildIndexFetcher(jsonDataFileFetcher)
   const getMetadata = R.memoize(getMetadataFromRemote);
-  const getAttribute = buildAttributeDataFetcher(
-    jsonDataFileFetcher,
-    getCorrespondences,
-    getMetadata
+  const getAttribute = R.memoize(
+    buildAttributeDataFetcher(
+      jsonDataFileFetcher,
+      getCorrespondences,
+      getMetadata
+    )
   )
 
   return {
