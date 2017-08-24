@@ -64,6 +64,23 @@ function attributeFromDescription(desc: string): Attribute {
 
 function filterTableRows(table: any[][]) {
   return R.pipe(
+    R.chain(
+      (row: any[]) => {
+        if (R.contains('/', row[0])) {
+          return R.map(
+            (cells: any[]) => cells.concat(row.slice(2)),
+            R.transpose(
+              R.map(
+                R.split('/'),
+                row.slice(0,2)
+              )
+            )
+          )
+        } else {
+          return [ row ]
+        }
+      }
+    ),
     R.filter(
       R.pipe(
         (row: any[]) => row[0] as string,
