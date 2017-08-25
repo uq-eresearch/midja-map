@@ -49,7 +49,7 @@ export default function TopicSelectionModalController(
       {
         name: "Topic",
         prop: 'description',
-        flexGrow: 2,
+        flexGrow: 6,
         cellRenderer: (scope) => {
           const text = highlight(scope.$cell, scope.$row.highlightValue || '')
           return `<span title="${scope.$row.name}">${text}</span>`
@@ -58,14 +58,14 @@ export default function TopicSelectionModalController(
       {
         name: "Category",
         prop: "category",
-        group: true,
+        flexGrow: 2,
         sort: 'asc',
         className: "capitalize"
       },
       {
         name: "Source",
         prop: 'source',
-        flexGrow: 1,
+        flexGrow: 3,
         cellRenderer: (scope) => {
           const text = highlight(
             scope.$cell && scope.$cell.name || '',
@@ -91,11 +91,22 @@ export default function TopicSelectionModalController(
       })
   })
 
+  $scope.grouping = 'none'
+  $scope.groupByOptions = ['none', 'category']
+  $scope.groupBy = function(opt) {
+    $scope.grouping = opt
+    $scope.tableOptions.columns.forEach(column => { delete column.group })
+    if (opt != 'none') {
+      const col = $scope.tableOptions.columns.find(c => c.prop == opt)
+      col.group = true
+    }
+  }
+
   $scope.ok = function() {
     $uibModalInstance.close(topicsFrom($scope.topics, $scope.selectedTopics))
-  };
+  }
 
   $scope.cancel = function() {
     $uibModalInstance.dismiss();
-  };
+  }
 }

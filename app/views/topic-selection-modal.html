@@ -18,6 +18,15 @@
       options="tableOptions"
       rows="visibleTopics"
       selected="selectedTopics"></dtable>
+  <br>
+  <div class="input-group">
+    <label for="attribute-grouping-selection">Group by:</label>
+    <ul id="attribute-grouping-selection" class="nav nav-pills">
+      <li ng-repeat="opt in groupByOptions" role="presentation" ng-class="{active: opt==grouping}">
+        <a class="capitalize" href ng-click="groupBy(opt)">{{opt}}</a>
+      </li>
+    </ul>
+  </div>
 </div>
 <div class="modal-footer">
   <button class="btn btn-primary" type="button" ng-click="ok()">Close</button>
