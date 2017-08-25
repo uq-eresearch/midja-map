@@ -107,7 +107,7 @@
     "import:abs:sdmx": "scripts/build_and_run.sh scripts/abs-sdmx-dump.js",
     "import:abs:csv": "scripts/build_and_run.sh scripts/abs-csv-dump.js",
     "import:aahv:web": "scripts/build_and_run.sh scripts/aahv-crawler.js",
-    "import:aedc:xlsx": "scripts/build_and_run.sh scripts/aedc_sa2_processor.js",
+    "import:aedc:xlsx": "scripts/build_and_run.sh scripts/aedc-sa2-processor.js",
     "import:bom:web": "scripts/build_and_run.sh scripts/bom-grids.js",
     "import:qldshd:web": "scripts/build_and_run.sh scripts/qld-social-housing-dwellings-import.js",
     "import:qldshe:web": "scripts/build_and_run.sh scripts/qld-social-housing-expenditure-import.js",

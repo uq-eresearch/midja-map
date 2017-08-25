@@ -37,7 +37,7 @@ const convertFiveDigitSA2Cached = R.memoize(
   convertFiveDigitSA2(R.keys(sa2RegionMap))
 )
 
-function attributeFromDescription(desc: string): Attribute {
+function buildAttribute(desc: string, demergedRows: string[]): Attribute {
   const attributeName =
     R.pipe(
       R.toLower,
@@ -56,6 +56,9 @@ function attributeFromDescription(desc: string): Attribute {
     },
     'source': {
       'name': 'Australian Early Development Census',
+      'notes':
+        'AEDC merged the following regions, so they share common values:\n' +
+        demergedRows.join("\n"),
       'url': 'https://www.aedc.gov.au/resources/detail/'+
         'public-table-by-statistical-area-level-2-(sa2)-2009-2015'
     }
@@ -68,7 +71,10 @@ function filterTableRows(table: any[][]) {
       (row: any[]) => {
         if (R.contains('/', row[0])) {
           return R.map(
-            (cells: any[]) => cells.concat(row.slice(2)),
+            R.pipe(
+              (cells: any[]) => cells.concat(row.slice(2)),
+              R.append(row[1])
+            ),
             R.transpose(
               R.map(
                 R.split('/'),
@@ -77,7 +83,7 @@ function filterTableRows(table: any[][]) {
             )
           )
         } else {
-          return [ row ]
+          return [ R.append(null, row) ]
         }
       }
     ),
@@ -163,8 +169,6 @@ function processSheet(sheet: xlsx.WorkSheet): [Attribute, AttributeData][] {
   function attributeForColumnName(
       columnName: string,
       index: number): [Attribute, AttributeData] {
-    const attribute: Attribute =
-      attributeFromDescription(`${sheetHeader} - ${columnName}`)
     const attributeData: NumericAttributeData =
       R.pickBy(
         isFinite,
@@ -176,6 +180,15 @@ function processSheet(sheet: xlsx.WorkSheet): [Attribute, AttributeData][] {
           )
         )
       )
+    const demergedRows: string[] =
+      R.pipe(
+        R.filter((row: any[]) => !!attributeData[row[0]]),
+        R.map((row: any[]) => R.last(row)),
+        R.reject(R.isNil),
+        R.uniq
+      )(rows)
+    const attribute: Attribute =
+      buildAttribute(`${sheetHeader} - ${columnName}`, demergedRows)
     return [attribute, attributeData]
   }
   return R.pipe(
