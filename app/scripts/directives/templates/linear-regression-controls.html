@@ -1,0 +1,111 @@
+<div>
+  <div ng-hide="(regions.length > 1) && (topics.length > 1)">
+    <p class="text-muted">
+      To perform a linear regression:
+    </p>
+    <ol>
+      <li class="text-muted">Select at least two locations.</li>
+      <li class="text-muted">Select at least two topics of interest.</li>
+    </ol>
+  </div>
+
+  <div ng-if="(regions.length > 1) && (topics.length > 1)">
+
+    <div class="form-group">
+      <label>Choose a dependent variable
+        <small class="text-muted">Optional</small>
+      </label>
+
+      <ui-select theme="bootstrap"
+          ng-model="linearRegression.dependent"
+          ng-disabled="disabled"
+          reset-search-input="true"
+          style="width: 100%;"
+          on-select="selectedDependentChanged($item, $model)">
+        <ui-select-match placeholder="Select dependent variable">
+          <span class="text-capitalize">{{$select.selected.description}}</span>
+        </ui-select-match>
+        <ui-select-choices repeat="attribute in topics | props: {description: $select.search}">
+          <div ng-bind-html="attribute.description | highlight: $select.search"></div>
+        </ui-select-choices>
+      </ui-select>
+
+    </div>
+
+    <div class="form-group">
+      <label>
+        Choose independent variables
+        <small class="text-muted">Optional</small>
+      </label>
+      <ui-select multiple theme="bootstrap"
+          ng-model="linearRegression.independents"
+          ng-disabled="disabled"
+          reset-search-input="true"
+          style="width: 100%;"
+          on-select="selectedIndependentsChanged($item, $model)"
+          on-remove="selectedIndependentsChanged($item, $model)">
+        <ui-select-match placeholder="Select independent variables">
+          <span class="text-capitalize">{{ $item.description }}</span>
+        </ui-select-match>
+        <ui-select-choices repeat="attribute in topics | props: {description: $select.search}">
+          <div ng-bind-html="attribute.description | highlight: $select.search"></div>
+        </ui-select-choices>
+      </ui-select>
+    </div>
+
+    <div ng-show="linearRegression.results">
+      <div ng-show="linearRegression.sendData.indepVars.length==1">
+        <nvd3 id="RegressionGraph"
+          options="regressionOptions"
+          data="linearRegression.resultsData"></nvd3>
+      </div>
+      <div ng-show="linearRegression.sendData.indepVars.length>1">
+        <nvd3 id="RegressionGraph"
+          options="barRegressionOptions"
+          data="linearRegression.resultsData"></nvd3>
+      </div>
+
+      <dl>
+        <dt>Data points</dt>
+        <dd>
+          {{ linearRegression.results.keySet.length }}
+        </dd>
+
+        <dt>Equation</dt>
+        <dd>
+          <div ng-repeat="topic in linearRegression.independents">
+            <span ng-if="!$first"> + </span>
+            {{ linearRegression.results.equation.coefficients[$index] }}
+            &times;
+            <a href="#"
+              ng-bind="topic.description"
+              ng-mousedown="showTopicDetails(topic); $event.preventDefault();"
+              title="{{topic.name}}"></a>
+          </div>
+          <div>
+            + {{ linearRegression.results.equation.intercept }}
+          </div>
+        </dd>
+
+        <dt>Adjusted R&sup2;</dt>
+        <dd>
+          {{ linearRegression.results.adjustedRSquared }}
+        </dd>
+      </dl>
+      <p>
+        <a data-download-link
+            role="button" class="btn btn-default"
+            filename="'data.png'"
+            mime-type="'image/png'"
+            content="nvd3ToPng('RegressionGraph')"
+            ng-disabled="!linearRegression.resultsData">
+          <i class="fa fa-image"></i>
+          Download (PNG)
+        </a>
+
+        <button type="button" class="btn btn-default"
+          ng-click="openRegModal()">Enlarge</button>
+      </p>
+    </div>
+  </div>
+</div>

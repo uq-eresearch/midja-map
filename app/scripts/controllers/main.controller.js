@@ -207,8 +207,6 @@ export default function MainController(
   vm.selectedLocationsChanged = selectedPlacesChanged;
   vm.selectedFiltersChanged = selectedFiltersChanged;
   vm.selectedTopicsChanged = selectedTopicsChanged;
-  vm.selectedDependentChanged = selectedDependentChanged;
-  vm.selectedIndependentsChanged = selectedIndependentsChanged;
   vm.isDataSelected = isDataSelected;
 
   selectedPlacesChanged();
@@ -431,7 +429,6 @@ export default function MainController(
       }).then(function(regions) {
         vm.vis.regions = regions;
         generateScatterPlot();
-        generateLinearRegression();
       })
       .catch(e => { console.log(e, e.stack) });
   }
@@ -504,124 +501,6 @@ export default function MainController(
       });
 
   }
-
-
-  function selectedDependentChanged($item, $model) {
-    generateLinearRegression();
-  }
-
-  function selectedIndependentsChanged($item, $model) {
-    generateLinearRegression();
-  }
-
-  function generateLinearRegression() {
-    if (!vm.linearRegression.dependent || !vm.linearRegression.independents
-      .length) {
-      return;
-    }
-    var regions = vm.vis.regions;
-
-    var data = {
-      "depVar": vm.linearRegression.dependent.name,
-      "depLabel": vm.linearRegression.dependent.description,
-      "indepVars": _.map(
-        vm.linearRegression.independents,
-        _.property('name')),
-      "indepVarLabels": _.map(
-        vm.linearRegression.independents,
-        _.property('description'))
-    };
-
-    function buildBarChart(context) {
-      vm.linearRegression.resultsData = [{
-        key: "Data",
-        values: [{
-          "label": vm.linearRegression.dependent.description,
-          "value": context.lrResult.adjustedRSquared
-        }]
-      }];
-      vm.linearRegression.results = context.lrResult;
-      data.raw = vm.linearRegression.resultsData;
-      data.modelType = "bar";
-      vm.linearRegression.sendData = data;
-    }
-
-    function buildPlot(context) {
-      var lrResult = context.lrResult;
-      var depVar = vm.linearRegression.dependent;
-      var indepVar = _.first(vm.linearRegression.independents);
-
-      vm.regressionOptions["chart"]["xAxis"] = {
-        "axisLabel": indepVar.description
-      };
-      vm.regressionOptions["chart"]["yAxis"] = {
-        "axisLabel": depVar.description
-      };
-
-      var resultsData = [
-        {
-          key: 'Data',
-          values: _.map(
-            _.zip(
-              context.topicSeries[indepVar.name],
-              context.topicSeries[depVar.name],
-              _.map(context.regions, _.property('name'))),
-            _.partial(_.zipObject, ['x', 'y', 'name']))
-        },
-        {
-          key: "Line",
-          values: [],
-          intercept: lrResult.equation.intercept,
-          slope: lrResult.equation.coefficients[0]
-        }
-      ];
-
-      vm.linearRegression.resultsData = resultsData;
-      vm.linearRegression.results = lrResult;
-      data.raw = vm.linearRegression.resultsData;
-      vm.linearRegression.sendData = data;
-    }
-
-    var buildF =
-      vm.linearRegression.independents.length > 1 ?
-      buildBarChart :
-      buildPlot;
-
-    const topics =
-      [vm.linearRegression.dependent].concat(
-        vm.linearRegression.independents)
-    Promise.all(
-      R.map(
-        attr => dataService.getAttribute(vm.regionType, attr),
-        R.pluck('name', topics)
-      )
-    ).then(topicData => {
-        return R.map(R.pick(R.pluck('code', regions)), topicData)
-      })
-      .then(function(topicData) {
-        const result = multipleLinearRegression(
-          R.head(topicData),
-          R.tail(topicData)
-        )
-        return {
-          regions: R.filter(
-            R.pipe(
-              R.prop('code'),
-              R.flip(R.contains)(result.keySet)
-            ),
-            regions
-          ),
-          topicSeries: R.zipObj(
-            R.pluck('name', topics),
-            R.map(R.props(result.keySet), topicData)
-          ),
-          lrResult: result
-        }
-      })
-      .then(buildF);
-
-  }
-
 
   function showPropTopicsOnly(isChecked) {
     if (isChecked) {
@@ -745,18 +624,6 @@ export default function MainController(
       size: 'lg',
       template: require('../../views/scatter-plot-modal.html'),
       controller: 'ScatterPlotModalController',
-      resolve: {
-        vm: () => vm
-      }
-    })
-  }
-
-  $scope.openRegModal = () => {
-    $uibModal.open({
-      animation: true,
-      size: 'lg',
-      template: require('../../views/linear-regression-modal.html'),
-      controller: 'LinearRegressionModalController',
       resolve: {
         vm: () => vm
       }

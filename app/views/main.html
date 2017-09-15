@@ -275,99 +275,10 @@
                   <div uib-accordion-heading>
                     <h3>Linear Regression</h3>
                   </div>
-                  <div ng-hide="(vm.vis.regions.length > 1) && (vm.vis.topics.length > 1)">
-                    <p class="text-muted">
-                      To perform a linear regression:
-                    </p>
-                    <ol>
-                      <li class="text-muted">Select at least two locations.</li>
-                      <li class="text-muted">Select at least two topics of interest.</li>
-                    </ol>
-                  </div>
-
-                  <div ng-show="(vm.vis.regions.length > 1) && (vm.vis.topics.length > 1)">
-
-                    <div class="form-group">
-                      <label>Choose a dependent variable
-                        <small class="text-muted">Optional</small>
-                      </label>
-
-                      <ui-select theme="bootstrap" ng-model="vm.linearRegression.dependent" ng-disabled="disabled" reset-search-input="true" style="width: 100%;" on-select="vm.selectedDependentChanged($item, $model)">
-                        <ui-select-match placeholder="Select dependent variable">
-                          <span class="text-capitalize">{{$select.selected.description }}</span>
-                        </ui-select-match>
-                        <ui-select-choices repeat="attribute in vm.vis.topics | props: {description: $select.search}">
-                          <div ng-bind-html="attribute.description | highlight: $select.search"></div>
-                        </ui-select-choices>
-                      </ui-select>
-
-                    </div>
-
-                    <div class="form-group">
-                      <label>
-                        Choose independent variables
-                        <small class="text-muted">Optional</small>
-                      </label>
-                      <ui-select multiple theme="bootstrap" ng-model="vm.linearRegression.independents" ng-disabled="disabled" reset-search-input="true" style="width: 100%;" on-select="vm.selectedIndependentsChanged($item, $model)" on-remove="vm.selectedIndependentsChanged($item, $model)">
-                        <ui-select-match placeholder="Select independent variables">
-                          <span class="text-capitalize">{{ $item.description }}</span>
-                        </ui-select-match>
-                        <ui-select-choices repeat="attribute in vm.vis.topics | props: {description: $select.search}">
-                          <div ng-bind-html="attribute.description | highlight: $select.search"></div>
-                        </ui-select-choices>
-                      </ui-select>
-                    </div>
-
-                    <div ng-show="vm.linearRegression.results">
-                      <div ng-show="vm.linearRegression.sendData.indepVars.length==1">
-                        <nvd3 id="RegressionGraph" options="vm.regressionOptions" data="vm.linearRegression.resultsData"></nvd3>
-                      </div>
-                      <div ng-show="vm.linearRegression.sendData.indepVars.length>1">
-                        <nvd3 id="RegressionGraph" options="vm.barRegressionOptions" data="vm.linearRegression.resultsData"></nvd3>
-                      </div>
-
-                      <dl>
-                        <dt>Data points</dt>
-                        <dd>
-                          {{ vm.linearRegression.results.keySet.length }}
-                        </dd>
-
-                        <dt>Equation</dt>
-                        <dd>
-                          <div ng-repeat="topic in vm.linearRegression.independents">
-                            <span ng-if="!$first"> + </span>
-                            {{ vm.linearRegression.results.equation.coefficients[$index] }}
-                            &times;
-                            <a href="#"
-                              ng-bind="topic.description"
-                              ng-mousedown="showTopicDetails(topic); $event.preventDefault();"
-                              title="{{topic.name}}"></a>
-                          </div>
-                          <div>
-                            + {{ vm.linearRegression.results.equation.intercept }}
-                          </div>
-                        </dd>
-
-                        <dt>Adjusted R&sup2;</dt>
-                        <dd>
-                          {{ vm.linearRegression.results.adjustedRSquared }}
-                        </dd>
-                      </dl>
-                      <p>
-                        <a data-download-link
-                          role="button" class="btn btn-default"
-                          filename="'data.png'"
-                          mime-type="'image/png'"
-                          content="vm.nvd3ToPng('RegressionGraph')"
-                          ng-disabled="!vm.linearRegression.resultsData">
-                          <i class="fa fa-image"></i>
-                          Download (PNG)
-                        </a>
-
-                        <button type="button" class="btn btn-default" ng-click="openRegModal()">Enlarge</button>
-                      </p>
-                    </div>
-                  </div>
+                  <linear-regression-controls
+                    region-type="vm.regionType"
+                    regions="vm.vis.regions"
+                    topics="vm.vis.topics"></linear-regression-controls>
                 </div>
               </div>
             </div>
