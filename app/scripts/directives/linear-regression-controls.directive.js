@@ -1,5 +1,4 @@
 import R from 'ramda'
-import _ from 'lodash-es'
 import {
   multipleLinearRegression,
 } from '../../../lib/attribute/regression'
@@ -142,15 +141,17 @@ export default function linearRegressionControls(
         "axisLabel": depVar.description
       };
 
-      var resultsData = [
+      let resultsData = [
         {
           key: 'Data',
-          values: _.map(
-            _.zip(
+          values: R.map(
+            R.zipObj(['x', 'y', 'name']),
+            R.transpose([
               context.topicSeries[indepVar.name],
               context.topicSeries[depVar.name],
-              _.map(context.regions, _.property('name'))),
-            _.partial(_.zipObject, ['x', 'y', 'name']))
+              R.pluck('name', context.regions)
+            ])
+          )
         },
         {
           key: "Line",
@@ -158,7 +159,7 @@ export default function linearRegressionControls(
           intercept: lrResult.equation.intercept,
           slope: lrResult.equation.coefficients[0]
         }
-      ];
+      ]
 
       scope.linearRegression.resultsData = resultsData;
       scope.linearRegression.results = lrResult;

@@ -4,9 +4,6 @@ import {
   sortByAttributeNameNumbers,
   sortByEducation
 } from '../../../lib/attribute/sorters'
-import {
-  multipleLinearRegression,
-} from '../../../lib/attribute/regression'
 import { svgAsPngUri } from 'save-svg-as-png'
 import csvStringify from 'csv-stringify'
 
