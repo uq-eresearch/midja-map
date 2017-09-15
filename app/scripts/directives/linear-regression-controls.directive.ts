@@ -1,10 +1,32 @@
 import R from 'ramda'
 import {
+  scaleOrdinal,
+  schemeCategory10,
+} from 'd3-scale'
+import {
   multipleLinearRegression,
 } from '../../../lib/attribute/regression'
+import { formatNumber } from '../../../lib/attribute/format'
 import { svgAsPngUri } from 'save-svg-as-png'
 
-function tooltipTemplate(d) {
+interface NameValue {
+  name: string
+  value: number
+}
+
+interface ChartPoint {
+  name: string
+  x: number
+  y: number
+}
+
+interface TooltipChartPoint {
+  name: string
+  x: NameValue
+  y: NameValue
+}
+
+function tooltipTemplate(d: TooltipChartPoint) {
   return  `<h3>${d.name}</h3>`+
           `<dl>`+
           `<dt>${d.x.name}</dt>`+
@@ -14,7 +36,7 @@ function tooltipTemplate(d) {
           `</dl>`
 }
 
-function initializeScope(scope) {
+function initializeScope(scope: any) {
   scope.linearRegression = {
     dependent: null,
     independents: []
@@ -25,7 +47,7 @@ function initializeScope(scope) {
       height: 450,
       width: 350,
       showLegend: false,
-      color: d3.scale.category10().range(),
+      color: scaleOrdinal(schemeCategory10).range(),
       scatter: {
         onlyCircles: true
       },
@@ -40,7 +62,7 @@ function initializeScope(scope) {
       interactive: true,
       tooltip: {
         contentGenerator: R.pipe(
-          function(d) {
+          function(d: { point: ChartPoint }): TooltipChartPoint {
             return {
               name: d.point.name,
               x: {
@@ -68,15 +90,17 @@ function initializeScope(scope) {
         right: 60
       },
       width: 350,
-      x: function(d) {
+      x: function(d: { label: string }) {
         return d.label;
       },
-      y: function(d) {
+      y: function(d: { value: number }) {
         return d.value + (1e-10);
       },
       showValues: true,
-      valueFormat: function(d) {
-        return d3.format(',.3f')(d);
+      valueFormat: function(d: number) {
+        return formatNumber(d, {
+          maximumFractionDigits: 3
+        })
       },
       legend: {
         updateState: false
@@ -95,16 +119,16 @@ function initializeScope(scope) {
 }
 
 export default function linearRegressionControls(
-      $compile, $uibModal, dataService) {
+      $compile: any, $uibModal: any, dataService: any) {
 
-  function generateLinearRegression(scope) {
+  function generateLinearRegression(scope: any) {
     if (!scope.linearRegression.dependent ||
         !scope.linearRegression.independents.length) {
       return;
     }
     var regions = scope.regions;
 
-    var data = {
+    var data: any = {
       "depVar": scope.linearRegression.dependent.name,
       "depLabel": scope.linearRegression.dependent.description,
       "indepVars": R.pluck(
@@ -115,7 +139,7 @@ export default function linearRegressionControls(
         scope.linearRegression.independents)
     };
 
-    function buildBarChart(context) {
+    function buildBarChart(context: any) {
       scope.linearRegression.resultsData = [{
         key: "Data",
         values: [{
@@ -129,10 +153,10 @@ export default function linearRegressionControls(
       scope.linearRegression.sendData = data;
     }
 
-    function buildPlot(context) {
+    function buildPlot(context: any) {
       var lrResult = context.lrResult
       var depVar = scope.linearRegression.dependent
-      var indepVar = R.head(scope.linearRegression.independents)
+      var indepVar: any = R.head(scope.linearRegression.independents)
 
       scope.regressionOptions["chart"]["xAxis"] = {
         "axisLabel": indepVar.description
@@ -155,7 +179,7 @@ export default function linearRegressionControls(
         },
         {
           key: "Line",
-          values: [],
+          values: [] as any[],
           intercept: lrResult.equation.intercept,
           slope: lrResult.equation.coefficients[0]
         }
@@ -181,9 +205,9 @@ export default function linearRegressionControls(
         attr => dataService.getAttribute(scope.regionType, attr),
         R.pluck('name', topics)
       )
-    ).then(topicData => {
+    ).then((topicData: NumericAttributeData[])  => {
       return R.map(R.pick(R.pluck('code', regions)), topicData)
-    }).then(function(topicData) {
+    }).then((topicData: NumericAttributeData[]) => {
       const result = multipleLinearRegression(
         R.head(topicData),
         R.tail(topicData)
@@ -205,13 +229,11 @@ export default function linearRegressionControls(
     }).then(buildF);
   }
 
-  function link(scope, element, attrs) {
+  function link(scope: any, element: any, _attrs: any) {
     $compile(element.contents())(scope)
     initializeScope(scope)
-    scope.selectedDependentChanged =
-      ($item, $model) => generateLinearRegression(scope)
-    scope.selectedIndependentsChanged =
-      ($item, $model) => generateLinearRegression(scope)
+    scope.selectedDependentChanged = () => generateLinearRegression(scope)
+    scope.selectedIndependentsChanged = () => generateLinearRegression(scope)
     scope.openRegModal = () => {
       $uibModal.open({
         animation: true,
@@ -227,13 +249,13 @@ export default function linearRegressionControls(
       (parentElementId) => () => {
         const nvd3El = document.getElementById(parentElementId)
         const svgEl = nvd3El.querySelector('svg')
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, _reject) => {
             svgAsPngUri(svgEl, {}, resolve)
           })
-          .then(dataUri => dataUri.replace('data:image/png;base64,',''))
-          .then(data => {
-            return atob(data)
-          })
+          .then(
+            (dataUri: string) => dataUri.replace('data:image/png;base64,','')
+          )
+          .then((data: string) => atob(data))
       }
     )
 

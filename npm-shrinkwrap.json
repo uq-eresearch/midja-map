@@ -562,6 +562,18 @@
       "resolved": "https://registry.npmjs.org/@types/csv-parse/-/csv-parse-1.1.9.tgz",
       "dev": true
     },
+    "@types/d3-scale": {
+      "version": "1.0.10",
+      "from": "@types/d3-scale@latest",
+      "resolved": "https://registry.npmjs.org/@types/d3-scale/-/d3-scale-1.0.10.tgz",
+      "dev": true
+    },
+    "@types/d3-time": {
+      "version": "1.0.7",
+      "from": "@types/d3-time@*",
+      "resolved": "https://registry.npmjs.org/@types/d3-time/-/d3-time-1.0.7.tgz",
+      "dev": true
+    },
     "@types/extract-zip": {
       "version": "1.6.2",
       "from": "@types/extract-zip@latest",
@@ -2445,10 +2457,52 @@
       "resolved": "https://registry.npmjs.org/d3-array/-/d3-array-1.2.0.tgz",
       "dev": true
     },
+    "d3-collection": {
+      "version": "1.0.4",
+      "from": "d3-collection@>=1.0.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/d3-collection/-/d3-collection-1.0.4.tgz",
+      "dev": true
+    },
+    "d3-color": {
+      "version": "1.0.3",
+      "from": "d3-color@>=1.0.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/d3-color/-/d3-color-1.0.3.tgz",
+      "dev": true
+    },
+    "d3-format": {
+      "version": "1.2.0",
+      "from": "d3-format@>=1.0.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/d3-format/-/d3-format-1.2.0.tgz",
+      "dev": true
+    },
     "d3-geo": {
       "version": "1.6.4",
       "from": "d3-geo@>=1.6.3 <2.0.0",
       "resolved": "https://registry.npmjs.org/d3-geo/-/d3-geo-1.6.4.tgz",
+      "dev": true
+    },
+    "d3-interpolate": {
+      "version": "1.1.5",
+      "from": "d3-interpolate@>=1.0.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/d3-interpolate/-/d3-interpolate-1.1.5.tgz",
+      "dev": true
+    },
+    "d3-scale": {
+      "version": "1.0.6",
+      "from": "d3-scale@latest",
+      "resolved": "https://registry.npmjs.org/d3-scale/-/d3-scale-1.0.6.tgz",
+      "dev": true
+    },
+    "d3-time": {
+      "version": "1.0.7",
+      "from": "d3-time@>=1.0.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/d3-time/-/d3-time-1.0.7.tgz",
+      "dev": true
+    },
+    "d3-time-format": {
+      "version": "2.0.5",
+      "from": "d3-time-format@>=2.0.0 <3.0.0",
+      "resolved": "https://registry.npmjs.org/d3-time-format/-/d3-time-format-2.0.5.tgz",
       "dev": true
     },
     "dashdash": {

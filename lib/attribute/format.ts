@@ -15,7 +15,7 @@ const numberFormat = R.memoize(function(fmt) {
   }
 })
 
-function formatNumber(n: any, fmt: string): string {
+function formatNumber(n: any, fmt: object): string {
   const formatter: Intl.NumberFormat = (numberFormat(fmt) || defaultFormat);
   if (R.is(Number, n) && isFinite(n) && formatter) {
     return formatter.format(n)
