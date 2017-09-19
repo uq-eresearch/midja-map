@@ -53,6 +53,27 @@
       </ui-select>
     </div>
 
+    <div class="form-group">
+      <label>Group by
+        <small class="text-muted">Optional</small>
+      </label>
+
+      <ui-select theme="bootstrap"
+          ng-model="linearRegression.groupBy"
+          ng-disabled="disabled"
+          reset-search-input="true"
+          style="width: 100%;"
+          on-select="selectedDependentChanged($item, $model)">
+        <ui-select-match placeholder="Select group-by variable" allow-clear="true">
+          <span class="text-capitalize">{{$select.selected.description}}</span>
+        </ui-select-match>
+        <ui-select-choices repeat="attribute in topics | props: {description: $select.search}">
+          <div ng-bind-html="attribute.description | highlight: $select.search"></div>
+        </ui-select-choices>
+      </ui-select>
+
+    </div>
+
     <div ng-show="linearRegression.results">
       <div ng-show="linearRegression.sendData.indepVars.length==1">
         <nvd3 id="RegressionGraph"

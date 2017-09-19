@@ -8,6 +8,7 @@ import {
 } from '../../../lib/attribute/regression'
 import { formatNumber } from '../../../lib/attribute/format'
 import { svgAsPngUri } from 'save-svg-as-png'
+import { groupSingular } from '../../../lib/grouping'
 
 interface NameValue {
   name: string
@@ -164,26 +165,50 @@ export default function linearRegressionControls(
       scope.regressionOptions["chart"]["yAxis"] = {
         "axisLabel": depVar.description
       };
+      scope.regressionOptions["chart"]["showLegend"] =
+          R.keys(context.groups).length > 1
 
-      let resultsData = [
-        {
-          key: 'Data',
-          values: R.map(
-            R.zipObj(['x', 'y', 'name']),
-            R.transpose([
-              context.topicSeries[indepVar.name],
-              context.topicSeries[depVar.name],
-              R.pluck('name', context.regions)
-            ])
+      const points = R.map(
+        R.zipObj(['x', 'y', 'name']),
+        R.transpose([
+          context.topicSeries[indepVar.name],
+          context.topicSeries[depVar.name],
+          R.pluck('name', context.regions)
+        ])
+      )
+
+      let resultsData: any[] = R.concat(
+        [
+          {
+            key: "Equation",
+            values: [] as any[],
+            intercept: lrResult.equation.intercept,
+            slope: lrResult.equation.coefficients[0]
+          }
+        ],
+        R.values(
+          R.mapObjIndexed(
+            (groupRegionCodes: string[], groupName: string) => {
+              const regionIndexes: number[] = R.addIndex(R.reduce)(
+                (indexes: number[], region: Region, index: number) =>
+                  R.contains(region.code, groupRegionCodes) ?
+                  R.append(index, indexes) :
+                  indexes,
+                [] as number[],
+                context.regions as Region[]
+              )
+              return {
+                key: groupName,
+                values: R.map(
+                  (i: number) => points[i],
+                  regionIndexes
+                )
+              }
+            },
+            context.groups
           )
-        },
-        {
-          key: "Line",
-          values: [] as any[],
-          intercept: lrResult.equation.intercept,
-          slope: lrResult.equation.coefficients[0]
-        }
-      ]
+        )
+      )
 
       scope.linearRegression.resultsData = resultsData;
       scope.linearRegression.results = lrResult;
@@ -196,9 +221,13 @@ export default function linearRegressionControls(
       buildBarChart :
       buildPlot;
 
+    const dependent = scope.linearRegression.dependent
+    const independents = scope.linearRegression.independents
+    const groupBy = scope.linearRegression.groupBy
     const topics =
-      [scope.linearRegression.dependent].concat(
-        scope.linearRegression.independents)
+      [dependent]
+        .concat(independents)
+        .concat(groupBy ? [groupBy] : [])
 
     Promise.all(
       R.map(
@@ -210,9 +239,29 @@ export default function linearRegressionControls(
     }).then((topicData: NumericAttributeData[]) => {
       const result = multipleLinearRegression(
         R.head(topicData),
-        R.tail(topicData)
+        R.take(independents.length, R.tail(topicData))
       )
+      const regionGroups = (function() {
+        if (groupBy) {
+          const pairs = R.toPairs(R.last(topicData))
+          const groupedPairs =
+            groupSingular(Math.min(pairs.length, 5), pairs, R.last)
+          const names = R.map(
+            (pairs: [string, number][]) => {
+              const series: number[] = R.pluck(1, pairs)
+              const min = R.reduce(R.min, Number.POSITIVE_INFINITY, series)
+              const max = R.reduce(R.max, Number.NEGATIVE_INFINITY, series)
+              return `${min} - ${max}`
+            },
+            groupedPairs
+          )
+          return R.zipObj(names, R.map(R.pluck(0), groupedPairs))
+        } else {
+          return { "Data": R.keys(R.head(topicData)) }
+        }
+      })()
       return {
+        groups: regionGroups,
         regions: R.filter(
           R.pipe(
             R.prop('code'),

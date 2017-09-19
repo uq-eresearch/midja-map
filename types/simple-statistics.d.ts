@@ -1,6 +1,8 @@
 
 declare namespace SimpleStatistics {
 
+  function ckmeans(x: number[], nClusters: number): number[][]
+
   function linearRegression(
     data: [number, number][]): { m: number, b: number }
 
