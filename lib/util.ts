@@ -1,10 +1,21 @@
+type F2<A, B, Z> = (a:A, b:B) => Z
+type F3<A, B, C, Z> = (a:A, b:B, c:C) => Z
+type TF2<A, B, Z> = (t: [A, B]) => Z
+type TF3<A, B, C, Z> = (t: [A, B, C]) => Z
+
 /**
 Convert 2-ary function to take single tuple.
 */
-const tupled2: (<T, U, V>(f1: (k:T, v:U) => V) => ((t: [T, U]) => V)) =
+export const tupled2: (<A, B, Z>(f1: F2<A,B,Z>) => TF2<A,B,Z>) =
   f => t => f(t[0], t[1])
 
-function fromPromiseMap<T>(
+/**
+Convert 3-ary function to take single tuple.
+*/
+export const tupled3: (<A, B, C, Z>(f1: F3<A,B,C,Z>) => TF3<A,B,C,Z>) =
+  f => t => f(t[0], t[1], t[2])
+
+export function fromPromiseMap<T>(
     m:{[k: string]: Promise<T>}): Promise<{[k: string]: T}> {
   const ks = [] as string[]
   const ps = [] as Promise<T>[]
@@ -21,7 +32,7 @@ function fromPromiseMap<T>(
   })
 }
 
-class WeightedMean {
+export class WeightedMean {
   private readonly v: number
   private readonly w: number
   constructor(value: number, weight: number) {
@@ -43,10 +54,4 @@ class WeightedMean {
   get value(): number {
     return this.v
   }
-}
-
-export {
-  tupled2,
-  fromPromiseMap,
-  WeightedMean
 }

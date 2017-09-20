@@ -41,8 +41,9 @@ type Correspondences = {
 }
 
 interface Region {
-  readonly code: string,
+  readonly code: string
   readonly name: string
+  readonly type?: string
 }
 
 type JsonDataFileFetcher = (

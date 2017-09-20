@@ -4,6 +4,7 @@ import ss from 'simple-statistics'
 import { buildAttributeDataFetcher } from '../../../lib/attribute/data'
 import expression from '../../../lib/attribute/expression'
 import { buildIndexFetcher } from '../../../lib/attribute/index'
+import { buildRegionFetcher } from '../../../lib/regions'
 
 export default function dataService($http, $q) {
   // Tests to determine if child region is in parent
@@ -50,19 +51,6 @@ export default function dataService($http, $q) {
     };
   }());
 
-  // Map child back to parent
-  var parentRegionTypes = _.chain(subregionTests)
-    .map(function(fMap, parentType) {
-      return _.map(
-        fMap,
-        function(f, childType) {
-          return [childType, parentType];
-        });
-    })
-    .flatten()
-    .fromPairs()
-    .value();
-
   function jsonDataFileFetcher(accessType, regionType, filename) {
     return $http
       .get(`./data/${accessType}/${regionType}/${filename}`)
@@ -78,12 +66,13 @@ export default function dataService($http, $q) {
       getMetadata
     )
   )
+  const regionFetcher = buildRegionFetcher(getAttribute)
 
   return {
     getAvailableAttributes: getAvailableAttributes,
     getAttribute: getAttribute,
-    getSubregions: getSubregions,
-    getRegionsAtOrAbove: getRegionsAtOrAbove,
+    getSubregions: regionFetcher.getSubregions,
+    getRegionsAtOrAbove: regionFetcher.getRegionsAtOrAbove,
     getCkmeansBuckets: getCkmeansBuckets,
     getRegionsStartingWith: getRegionsStartingWith,
     filterByRemotenessArea: filterByRemotenessArea,
@@ -92,34 +81,6 @@ export default function dataService($http, $q) {
 
   function getAvailableAttributes(regionType) {
     return getMetadata(regionType).then(R.prop('attributes'))
-  }
-
-  function getSubregions(targetRegionType, region) {
-    var transitions =
-      _.chain(getRegionTypeHeirarchy(targetRegionType))
-      .reverse()
-      .dropWhile(_.negate(_.partial(_.isEqual, region.type)))
-      .value();
-    if (_.isEmpty(transitions)) {
-      throw Error(
-        "Cannot convert " + region.type +
-        " to " + targetRegionType);
-    } else if (_.size(transitions) == 1) {
-      return [region];
-    } else {
-      var immediateTargetRegionType = transitions[1];
-      var testF =
-        subregionTests[region.type][immediateTargetRegionType](region);
-      return getRegions(immediateTargetRegionType)
-        .then(_.partial(_.filter, _, testF))
-        .then(function(subregions) {
-          return $q.all(
-            _.map(subregions,
-              _.partial(getSubregions, targetRegionType))
-          ).then(_.flatten);
-        })
-        .catch(e => { console.log(e, e.stack) })
-    }
   }
 
   function filterByRemotenessArea(regions, regionType, remotenessAreaNames) {
@@ -145,7 +106,7 @@ export default function dataService($http, $q) {
   }
 
   function getRegionsStartingWith(regionType, prefix) {
-    return getRegionsAtOrAbove(regionType)
+    return regionFetcher.getRegionsAtOrAbove(regionType)
       .then(function(regions) {
         return _.filter(regions,
           _.flow(
@@ -157,43 +118,6 @@ export default function dataService($http, $q) {
           regions,
           _.flow(_.property('name'), _.size));
       })
-  }
-
-  function getRegionTypeHeirarchy(regionType) {
-    var r = regionType;
-    var rs = [r];
-    while (r = parentRegionTypes[r]) {
-      rs.push(r);
-    }
-    return rs;
-  }
-
-  function getRegions(regionType) {
-    function locBuilder(name, code) {
-      return {
-        code: code,
-        name: name,
-        type: regionType
-      };
-    }
-    switch (regionType) {
-      case 'country':
-        return $q(function(resolve) {
-          resolve(locBuilder('Australia', ''));
-        });
-      default:
-        return getAttribute(regionType, 'region_name')
-          .then(_.partial(_.map, _, locBuilder));
-    }
-  }
-
-  function getRegionsAtOrAbove(regionType) {
-    var regionTypes = getRegionTypeHeirarchy(regionType);
-    return $q.all(
-      _.map(
-        regionTypes,
-        getRegions)
-    ).then(_.flatten);
   }
 
   function getCorrespondences(sourceRegionType, targetRegionType) {
