@@ -13,14 +13,19 @@ export default function regionMap($http, $rootScope, $q, dataService,
   const tileJsonUrlTmpl = d =>
     `${tileserverBaseUrl}/data/${d.regionType}.json`
   const defaultStyles = {
-    'regions': _.constant({
-      weight: 1,
-      color: '#000000',
-      fillColor: '#ffffff',
-      opacity: 1,
-      fillOpacity: 0.7,
-      fill: true
-    }),
+    'regions': (region, scope) => {
+      const isSelectedRegion =
+        scope.selectedRegion &&
+        scope.selectedRegion.code == region.code
+      return {
+        weight: isSelectedRegion ? 3 : 1,
+        color: isSelectedRegion ? '#00ff00' : '#000000',
+        fillColor: '#ffffff',
+        opacity: 1,
+        fillOpacity: 0.7,
+        fill: true
+      }
+    },
     'points': _.constant({
       weight: 0.1,
       color: '#000000',
@@ -116,7 +121,7 @@ export default function regionMap($http, $rootScope, $q, dataService,
       }
       return (
         scope.styles[layer] || defaultStyles[layer] || hideStyle
-      )(region);
+      )(region, scope);
     };
   }
 
@@ -242,7 +247,7 @@ export default function regionMap($http, $rootScope, $q, dataService,
         scope.styles = _.defaults({
           regions: function(region) {
             var color = regionColor(region);
-            var baseStyle = defaultStyles['regions'](region);
+            var baseStyle = defaultStyles['regions'](region, scope);
             if (color) {
               return _.defaults({
                 fillColor: color
@@ -288,7 +293,7 @@ export default function regionMap($http, $rootScope, $q, dataService,
           points: function(region) {
             var color = regionColor(region);
             var size = regionSize(region);
-            var baseStyle = defaultStyles['points'](region);
+            var baseStyle = defaultStyles['points'](region, scope);
             if (color && size) {
               return _.defaults({
                 fill: true,
@@ -330,6 +335,7 @@ export default function regionMap($http, $rootScope, $q, dataService,
     scope.$on('region-data:change', redraw);
     scope.$on('choropleth-visible:change', redraw);
     scope.$on('bubbles-visible:change', redraw);
+    scope.$on('selected-region:change', redraw);
   }
 
   function generateBuckets(values) {

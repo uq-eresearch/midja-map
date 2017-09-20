@@ -540,6 +540,12 @@ export default function MainController(
 
   vm.nvd3ToPng = nvd3ToPng
 
+  $scope.onRegionSelect = (region) => {
+    $timeout(() => {
+      $scope.selectedRegion = region
+    })
+  }
+
   $scope.openScatterModal = () => {
     $uibModal.open({
       animation: true,

@@ -38,6 +38,12 @@ function tooltipTemplate(d: TooltipChartPoint) {
 }
 
 function initializeScope(scope: any) {
+  function getRegion(code: string): Region {
+    return R.find(
+      R.propEq('code', code),
+      scope.regions
+    )
+  }
   scope.linearRegression = {
     dependent: null,
     independents: []
@@ -50,7 +56,21 @@ function initializeScope(scope: any) {
       showLegend: false,
       color: scaleOrdinal(schemeCategory10).range(),
       scatter: {
-        onlyCircles: true
+        onlyCircles: true,
+        dispatch: {
+          elementClick: function(evt: { point: { code: string }}) {
+            const region = getRegion(evt.point.code)
+            if (region && R.is(Function, scope.onRegionClick)) {
+              scope.onRegionClick(region)
+            }
+          },
+          elementMouseover: function(evt: { point: { code: string }}) {
+            const region = getRegion(evt.point.code)
+            if (region && R.is(Function, scope.onRegionHover)) {
+              scope.onRegionHover(region)
+            }
+          }
+        }
       },
       legend: {
         updateState: false
@@ -169,11 +189,12 @@ export default function linearRegressionControls(
           R.keys(context.groups).length > 1
 
       const points = R.map(
-        R.zipObj(['x', 'y', 'name']),
+        R.zipObj(['x', 'y', 'name', 'code']),
         R.transpose([
           context.topicSeries[indepVar.name],
           context.topicSeries[depVar.name],
-          R.pluck('name', context.regions)
+          R.pluck('name', context.regions),
+          R.pluck('code', context.regions)
         ])
       )
 
@@ -321,6 +342,8 @@ export default function linearRegressionControls(
     replace: true,
     transclude: true,
     scope: {
+      onRegionHover: '=?',
+      onRegionClick: '=?',
       regionType: '=',
       regions: '=',
       topics: '='
