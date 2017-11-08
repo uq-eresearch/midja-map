@@ -31,10 +31,12 @@ class MultipleLinearEquation {
 function multipleLinearRegression(
     dependantVariable: NumericAttributeData,
     independantVariables: NumericAttributeData[]) {
+  const keysWhereFinite = (data: NumericAttributeData) =>
+    R.keys(R.pickBy(isFinite, data))
   const sharedKeys = R.reduce(
     (ks: string[], independantVariable: NumericAttributeData) =>
-      R.intersection(ks, R.keys(R.pickBy(isFinite, independantVariable))),
-    R.keys(dependantVariable),
+      R.intersection(ks, keysWhereFinite(independantVariable)),
+    keysWhereFinite(dependantVariable),
     independantVariables
   )
   const propsF: (obj: any) => number[] = R.props(sharedKeys)
