@@ -111,6 +111,7 @@
     "import:aahv:web": "scripts/build_and_run.sh scripts/aahv-crawler.js",
     "import:aedc:xlsx": "scripts/build_and_run.sh scripts/aedc-sa2-processor.js",
     "import:bom:web": "scripts/build_and_run.sh scripts/bom-grids.js",
+    "import:phidu:xls": "scripts/build_and_run.sh scripts/phidu-shaa-processor.js",
     "import:qldshd:web": "scripts/build_and_run.sh scripts/qld-social-housing-dwellings-import.js",
     "import:qldshe:web": "scripts/build_and_run.sh scripts/qld-social-housing-expenditure-import.js",
     "import:qldshr:web": "scripts/build_and_run.sh scripts/qld-social-housing-register-import.js",
