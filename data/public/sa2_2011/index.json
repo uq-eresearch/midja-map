@@ -5681,6 +5681,636 @@
       "category": "health"
     },
     {
+      "name": "phidu_shaa_admissions_for_all_cancers_persons_all_hospitals_2012_to_2013_asr_per_100000",
+      "description": "Admissions for all cancers - persons - All hospitals - 2012 to 2013 - ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_admissions_for_all_cancers_persons_public_hospitals_2012_to_2013_asr_per_100000",
+      "description": "Admissions for all cancers - persons - Public hospitals - 2012 to 2013 - ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_admissions_for_circulatory_system_diseases_persons_all_hospitals_2012_to_2013_asr_per_100000",
+      "description": "Admissions for circulatory system diseases - persons - All hospitals - 2012 to 2013 - ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_admissions_for_circulatory_system_diseases_persons_public_hospitals_2012_to_2013_asr_per_100000",
+      "description": "Admissions for circulatory system diseases - persons - Public hospitals - 2012 to 2013 - ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_admissions_for_digestive_system_diseases_persons_all_hospitals_2012_to_2013_asr_per_100000",
+      "description": "Admissions for digestive system diseases - persons - All hospitals - 2012 to 2013 - ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_admissions_for_digestive_system_diseases_persons_public_hospitals_2012_to_2013_asr_per_100000",
+      "description": "Admissions for digestive system diseases - persons - Public hospitals - 2012 to 2013 - ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_admissions_for_genitourinary_system_diseases_persons_all_hospitals_2012_to_2013_asr_per_100000",
+      "description": "Admissions for genitourinary system diseases - persons - All hospitals - 2012 to 2013 - ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_admissions_for_genitourinary_system_diseases_persons_public_hospitals_2012_to_2013_asr_per_100000",
+      "description": "Admissions for genitourinary system diseases - persons - Public hospitals - 2012 to 2013 - ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_admissions_for_infectious_and_parasitic_diseases_persons_all_hospitals_2012_to_2013_asr_per_100000",
+      "description": "Admissions for infectious and parasitic diseases - persons - All hospitals - 2012 to 2013 - ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_admissions_for_infectious_and_parasitic_diseases_persons_public_hospitals_2012_to_2013_asr_per_100000",
+      "description": "Admissions for infectious and parasitic diseases - persons - Public hospitals - 2012 to 2013 - ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_admissions_for_injury_poisoning_and_other_external_causes_persons_all_hospitals_2012_to_2013_asr_per_100000",
+      "description": "Admissions for injury - poisoning and other external causes - persons - All hospitals - 2012 to 2013 - ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_admissions_for_injury_poisoning_and_other_external_causes_persons_public_hospitals_2012_to_2013_asr_per_100000",
+      "description": "Admissions for injury - poisoning and other external causes - persons - Public hospitals - 2012 to 2013 - ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_admissions_for_mental_health_related_conditions_persons_all_hospitals_2012_to_2013_asr_per_100000",
+      "description": "Admissions for mental health related conditions - persons - All hospitals - 2012 to 2013 - ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_admissions_for_mental_health_related_conditions_persons_public_hospitals_2012_to_2013_asr_per_100000",
+      "description": "Admissions for mental health related conditions - persons - Public hospitals - 2012 to 2013 - ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_admissions_for_musculoskeletal_system_and_connective_tissue_diseases_persons_all_hospitals_2012_to_2013_asr_per_100000",
+      "description": "Admissions for musculoskeletal system and connective tissue diseases - persons - All hospitals - 2012 to 2013 - ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_admissions_for_musculoskeletal_system_and_connective_tissue_diseases_persons_public_hospitals_2012_to_2013_asr_per_100000",
+      "description": "Admissions for musculoskeletal system and connective tissue diseases - persons - Public hospitals - 2012 to 2013 - ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_admissions_for_respiratory_system_diseases_persons_all_hospitals_2012_to_2013_asr_per_100000",
+      "description": "Admissions for respiratory system diseases - persons - All hospitals - 2012 to 2013 - ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_admissions_for_respiratory_system_diseases_persons_public_hospitals_2012_to_2013_asr_per_100000",
+      "description": "Admissions for respiratory system diseases - persons - Public hospitals - 2012 to 2013 - ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_deaths_from_breast_cancer_females_0_to_74_years_2010_to_2014_average_annual_asr_per_100000",
+      "description": "Deaths from breast cancer (females) - 0 to 74 years - 2010 to 2014 - Average annual ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_deaths_from_cancer_0_to_74_years_2010_to_2014_average_annual_asr_per_100000",
+      "description": "Deaths from cancer - 0 to 74 years - 2010 to 2014 - Average annual ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_deaths_from_cerebrovascular_diseases_0_to_74_years_2010_to_2014_average_annual_asr_per_100000",
+      "description": "Deaths from cerebrovascular diseases - 0 to 74 years - 2010 to 2014 - Average annual ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_deaths_from_chronic_obstructive_pulmonary_disease_0_to_74_years_2010_to_2014_average_annual_asr_per_100000",
+      "description": "Deaths from chronic obstructive pulmonary disease - 0 to 74 years - 2010 to 2014 - Average annual ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_deaths_from_circulatory_system_diseases_0_to_74_years_2010_to_2014_average_annual_asr_per_100000",
+      "description": "Deaths from circulatory system diseases - 0 to 74 years - 2010 to 2014 - Average annual ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_deaths_from_colorectal_cancer_0_to_74_years_2010_to_2014_average_annual_asr_per_100000",
+      "description": "Deaths from colorectal cancer - 0 to 74 years - 2010 to 2014 - Average annual ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_deaths_from_endocrine_nutritional_and_metabolic_diseases_deaths_from_diabetes_0_to_74_years_2010_to_2014_average_annual_asr_per_100000",
+      "description": "Deaths from endocrine - nutritional and metabolic diseases - Deaths from diabetes - 0 to 74 years - 2010 to 2014 - Average annual ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_deaths_from_external_causes_0_to_74_years_2010_to_2014_average_annual_asr_per_100000",
+      "description": "Deaths from external causes - 0 to 74 years - 2010 to 2014 - Average annual ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_deaths_from_ischaemic_heart_disease_0_to_74_years_2010_to_2014_average_annual_asr_per_100000",
+      "description": "Deaths from ischaemic heart disease - 0 to 74 years - 2010 to 2014 - Average annual ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_deaths_from_lung_cancer_0_to_74_years_2010_to_2014_average_annual_asr_per_100000",
+      "description": "Deaths from lung cancer - 0 to 74 years - 2010 to 2014 - Average annual ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_deaths_from_respiratory_system_diseases_0_to_74_years_2010_to_2014_average_annual_asr_per_100000",
+      "description": "Deaths from respiratory system diseases - 0 to 74 years - 2010 to 2014 - Average annual ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_deaths_from_road_traffic_injuries_0_to_74_years_2010_to_2014_average_annual_asr_per_100000",
+      "description": "Deaths from road traffic injuries - 0 to 74 years - 2010 to 2014 - Average annual ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_deaths_from_suicide_and_selfinflicted_injuries_0_to_74_years_2010_to_2014_average_annual_asr_per_100000",
+      "description": "Deaths from suicide and self-inflicted injuries - 0 to 74 years - 2010 to 2014 - Average annual ASR per 100,000",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_estimated_number_of_females_with_mental_and_behavioural_problems_modelled_estimates_2011_to_2012_asr_per_100",
+      "description": "Estimated number of females with mental and behavioural problems (modelled estimates) - 2011 to 2012 - ASR per 100",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_estimated_number_of_males_with_mental_and_behavioural_problems_modelled_estimates_2011_to_2012_asr_per_100",
+      "description": "Estimated number of males with mental and behavioural problems (modelled estimates) - 2011 to 2012 - ASR per 100",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_estimated_number_of_people_aged_18_years_and_over_with_diabetes_mellitus_modelled_estimates_2011_to_2012_asr_per_100",
+      "description": "Estimated number of people aged 18 years and over with diabetes mellitus (modelled estimates) - 2011 to 2012 - ASR per 100",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_estimated_number_of_people_aged_18_years_and_over_with_high_blood_cholesterol_modelled_estimates_2011_to_2012_asr_per_100",
+      "description": "Estimated number of people aged 18 years and over with high blood cholesterol (modelled estimates) - 2011 to 2012 - ASR per 100",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_estimated_number_of_people_aged_2_years_and_over_with_circulatory_system_diseases_modelled_estimates_2011_to_2012_asr_per_100",
+      "description": "Estimated number of people aged 2 years and over with circulatory system diseases (modelled estimates) - 2011 to 2012 - ASR per 100",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_estimated_number_of_people_with_arthritis_modelled_estimates_2011_to_2012_asr_per_100",
+      "description": "Estimated number of people with arthritis (modelled estimates) - 2011 to 2012 - ASR per 100",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_estimated_number_of_people_with_asthma_modelled_estimates_2011_to_2012_asr_per_100",
+      "description": "Estimated number of people with asthma (modelled estimates) - 2011 to 2012 - ASR per 100",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_estimated_number_of_people_with_chronic_obstructive_pulmonary_disease_modelled_estimates_2011_to_2012_asr_per_100",
+      "description": "Estimated number of people with chronic obstructive pulmonary disease (modelled estimates) - 2011 to 2012 - ASR per 100",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_estimated_number_of_people_with_mental_and_behavioural_problems_modelled_estimates_2011_to_2012_asr_per_100",
+      "description": "Estimated number of people with mental and behavioural problems (modelled estimates) - 2011 to 2012 - ASR per 100",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_estimated_number_of_people_with_musculoskeletal_system_diseases_modelled_estimates_2011_to_2012_asr_per_100",
+      "description": "Estimated number of people with musculoskeletal system diseases (modelled estimates) - 2011 to 2012 - ASR per 100",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_estimated_number_of_people_with_respiratory_system_diseases_modelled_estimates_2011_to_2012_asr_per_100",
+      "description": "Estimated number of people with respiratory system diseases (modelled estimates) - 2011 to 2012 - ASR per 100",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_median_age_at_death_of_females_2010_to_2014_median_age_years",
+      "description": "Median age at death of females - 2010 to 2014 - Median age (years)",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_median_age_at_death_of_males_2010_to_2014_median_age_years",
+      "description": "Median age at death of males - 2010 to 2014 - Median age (years)",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
+      "name": "phidu_shaa_median_age_at_death_of_persons_2010_to_2014_median_age_years",
+      "description": "Median age at death of persons - 2010 to 2014 - Median age (years)",
+      "type": "number",
+      "category": "health",
+      "source": {
+        "name": "PHIDU Social Health Atlas of Australia",
+        "license": {
+          "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
+          "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+        },
+        "url": "http://www.phidu.torrens.edu.au/current/data/sha-aust/pha/phidu_data_pha_aust.xls"
+      }
+    },
+    {
       "name": "qldgov_social_housing_dwellings_occupied",
       "from": "postcode_2011"
     },

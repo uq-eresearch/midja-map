@@ -90,13 +90,14 @@ function extractAttributeAndDataFromSheet(
     R.map((obj: { c: number, cell: { w: string } }) => {
       const title = obj.cell.w
         .replace(/^\W+/, '')
-        .replace(/,/g, ' -')
+        .replace(/\s+/g, ' ')
+        .replace(/,\s/g, ' - ')
       const subtitle = getCell(obj.c, subtitleRow).w
         .replace(/[–\/](\d+)/, ' to 20$1')
       const valueHeader = getCell(
         obj.c + valueColOffset,
         valueHeaderRow
-      ).w.replace(/,/g, '')
+      ).w.replace(/,\s/g, ' - ')
       const description = `${title} - ${subtitle} - ${valueHeader}`
       const values = R.chain(
         (r: number) => {
@@ -123,10 +124,11 @@ function extractAttributeAndDataFromSheet(
         },
         R.range(valueHeaderRow + 1, nRows)
       )
-      const name = description.toLowerCase()
-        .replace(/[-()]/g, '')
-        .replace(/\s+/g, '_')
-
+      const name = 'phidu_shaa_' +
+        description.toLowerCase()
+          .replace(/,/g, '')
+          .replace(/[-()]/g, '')
+          .replace(/\s+/g, '_')
       return [
         {
           name,
