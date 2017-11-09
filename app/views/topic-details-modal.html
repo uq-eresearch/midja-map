@@ -37,15 +37,15 @@
       <span ng-if="!l.url" ng-bind="l.type"></span>
     </dd>
   </dl>
-  <dl ng-if="topic.source.notes">
-    <dt>Source Notes</dt>
-    <dd><pre ng-bind="topic.source.notes"></pre></dd>
-  </dl>
   <dl ng-if="topic.source.url">
     <dt>Source URL</dt>
     <dd>
       <a href="{{topic.source.url}}">{{topic.source.url}}</a>
     </dd>
+  </dl>
+  <dl ng-if="topic.source.notes">
+    <dt>Source Notes</dt>
+    <dd><pre ng-bind="topic.source.notes"></pre></dd>
   </dl>
 </div>
 <div class="modal-footer">

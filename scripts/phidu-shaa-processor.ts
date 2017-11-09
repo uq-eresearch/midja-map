@@ -6,6 +6,7 @@ import R from 'ramda'
 import XLSX from 'xlsx'
 import { writeAttributesAndData } from '../lib/attribute/import'
 
+const sa22011RegionNames = require('../data/public/sa2_2011/region_name.json')
 const debug = require('debug')('phidu-shaa-processor')
 
 const httpAgent = new http.Agent({
@@ -99,31 +100,61 @@ function extractAttributeAndDataFromSheet(
         valueHeaderRow
       ).w.replace(/,\s/g, ' - ')
       const description = `${title} - ${subtitle} - ${valueHeader}`
-      const values = R.chain(
-        (r: number) => {
-          const codeCell = getCell(codeCol, r)
-          const valueCell = getCell(obj.c + valueColOffset, r)
-          const pair = R.map(
-            (obj: any) => obj && obj.w.replace(',', ''),
-            [codeCell, valueCell]
-          )
-          if (R.all(R.test(/^\d[\d\.]*$/), pair)) {
-            const value = parseFloat(pair[1])
-            const sa2Codes = lookup[pair[0]]
-            return R.reduce(
-              R.merge,
-              {},
-              R.map(
-                (code: string) => R.objOf(code, value),
-                sa2Codes || []
-              )
+      const values = R.reduce(
+        R.merge,
+        {},
+        R.chain(
+          (r: number) => {
+            const codeCell = getCell(codeCol, r)
+            const valueCell = getCell(obj.c + valueColOffset, r)
+            const pair = R.map(
+              (obj: any) => obj && obj.w.replace(',', ''),
+              [codeCell, valueCell]
             )
-          } else {
-            return []
-          }
-        },
-        R.range(valueHeaderRow + 1, nRows)
+            if (R.all(R.test(/^\d[\d\.]*$/), pair)) {
+              const value = parseFloat(pair[1])
+              const sa2Codes = lookup[pair[0]]
+              return R.reduce(
+                R.merge,
+                {},
+                R.map(
+                  (code: string) => R.objOf(code, value),
+                  sa2Codes || []
+                )
+              )
+            } else {
+              return []
+            }
+          },
+          R.range(valueHeaderRow + 1, nRows)
+        )
       )
+      const valueKeyExists = R.flip(R.has)(values)
+      const merges = R.filter(
+        R.allPass([
+          (sa2Codes: string) => sa2Codes.length > 1,
+          R.any(valueKeyExists)
+        ]),
+        R.values(lookup)
+      )
+      const notes =
+        "PHIDU has merged data for the following SA2s in this dataset:\n" +
+        R.join(
+          "\n",
+          R.map(
+            R.pipe(
+              R.map(
+                (code: string) => {
+                  const name = sa22011RegionNames[code]
+                  return `${name} (${code})`
+                }
+              ),
+              R.join(' / '),
+              (s: string) => ' * ' + s
+            ),
+            merges
+          )
+        )
       const name = 'phidu_shaa_' +
         description.toLowerCase()
           .replace(/,/g, '')
@@ -139,12 +170,13 @@ function extractAttributeAndDataFromSheet(
             "name": "PHIDU Social Health Atlas of Australia",
             "license": {
               "type": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Australia",
-              "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/"
+              "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/au/",
             },
-            "url": spreadsheetUrl
+            "url": spreadsheetUrl,
+            notes
           }
         },
-        R.reduce(R.merge, {}, values)
+        values
       ] as [Attribute, AttributeData]
     })
   )(R.range(2, nCols))
