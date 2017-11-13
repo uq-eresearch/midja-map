@@ -13,19 +13,14 @@ export default function regionMap($http, $rootScope, $q, dataService,
   const tileJsonUrlTmpl = d =>
     `${tileserverBaseUrl}/data/${d.regionType}.json`
   const defaultStyles = {
-    'regions': (region, scope) => {
-      const isSelectedRegion =
-        scope.selectedRegion &&
-        scope.selectedRegion.code == region.code
-      return {
-        weight: isSelectedRegion ? 3 : 1,
-        color: isSelectedRegion ? '#00ff00' : '#000000',
-        fillColor: '#ffffff',
-        opacity: 1,
-        fillOpacity: 0.7,
-        fill: true
-      }
-    },
+    'regions': _.constant({
+      weight: 1,
+      color: '#000000',
+      fillColor: '#ffffff',
+      opacity: 1,
+      fillOpacity: 0.7,
+      fill: true
+    }),
     'points': _.constant({
       weight: 0.1,
       color: '#000000',
