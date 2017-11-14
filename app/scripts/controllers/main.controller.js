@@ -196,7 +196,7 @@ export default function MainController(
     }
   }
 
-  vm.dataColumnVisible = true;
+  vm.dataColumnVisible = false;
 
   vm.sortByAttributeNameNumbers = sortByAttributeNameNumbers
 
