@@ -75,12 +75,12 @@
     </div>
 
     <div ng-show="linearRegression.results">
-      <div ng-show="linearRegression.sendData.indepVars.length==1">
+      <div ng-if="linearRegression.sendData.indepVars.length==1">
         <nvd3 id="RegressionGraph"
           options="regressionOptions"
           data="linearRegression.resultsData"></nvd3>
       </div>
-      <div ng-show="linearRegression.sendData.indepVars.length>1">
+      <div ng-if="linearRegression.sendData.indepVars.length>1">
         <nvd3 id="RegressionGraph"
           options="barRegressionOptions"
           data="linearRegression.resultsData"></nvd3>

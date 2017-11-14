@@ -48,6 +48,29 @@ function initializeScope(scope: any) {
     dependent: null,
     independents: []
   }
+  const hoverF = (() => {
+    let previousHoveringEls: Element[] = [];
+    type Evt = { element: Element, point: { code: string }};
+    return (evt: Evt) => {
+      const region = getRegion(evt.point.code)
+      if (region && R.is(Function, scope.onRegionHover)) {
+        scope.onRegionHover(region)
+      }
+      // Fix for missing mouseout events
+      const hoveringEls = (function() {
+        const els =
+          evt.element.parentElement.parentElement
+            .getElementsByClassName('hover')
+        return R.range(0, els.length).map((i: number) => els.item(i))
+      })();
+      if (hoveringEls.length > 1) {
+        R.intersection(previousHoveringEls, hoveringEls)
+          .forEach((el: Element) => el.classList.remove('hover'))
+      }
+      previousHoveringEls = hoveringEls;
+    }
+  })();
+
   scope.regressionOptions = {
     chart: {
       type: 'scatterChart',
@@ -56,20 +79,14 @@ function initializeScope(scope: any) {
       showLegend: false,
       color: scaleOrdinal(schemeCategory10).range(),
       scatter: {
+        duration: 0,
         onlyCircles: true,
+        clipVoronoi: true,
+        clipRadius: 3,
+        interactiveUpdateDelay: 0,
         dispatch: {
-          elementClick: function(evt: { point: { code: string }}) {
-            const region = getRegion(evt.point.code)
-            if (region && R.is(Function, scope.onRegionClick)) {
-              scope.onRegionClick(region)
-            }
-          },
-          elementMouseover: function(evt: { point: { code: string }}) {
-            const region = getRegion(evt.point.code)
-            if (region && R.is(Function, scope.onRegionHover)) {
-              scope.onRegionHover(region)
-            }
-          }
+          elementClick: hoverF,
+          elementMouseover: hoverF
         }
       },
       legend: {
@@ -82,6 +99,9 @@ function initializeScope(scope: any) {
       useInteractiveGuideline: false,
       interactive: true,
       tooltip: {
+        duration: 0,
+        hideDelay: 0,
+        snapDistance: 3,
         contentGenerator: R.pipe(
           function(d: { point: ChartPoint }): TooltipChartPoint {
             return {
@@ -220,9 +240,12 @@ export default function linearRegressionControls(
               )
               return {
                 key: groupName,
-                values: R.map(
-                  (i: number) => points[i],
-                  regionIndexes
+                values: R.uniqBy(
+                  R.pipe(R.pick(['x', 'y']), JSON.stringify),
+                  R.map(
+                    (i: number) => points[i],
+                    regionIndexes
+                  )
                 )
               }
             },
