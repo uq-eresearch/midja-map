@@ -1,0 +1,60 @@
+<!doctype html>
+<html class="no-js" style="height: 100%;" id="csstyle">
+<head>
+    <meta charset="utf-8">
+    <title>Midja Map Maker</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<!-- Viewport settings-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons-5677db0c5d8a508e3b60f981e9e3484a/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="assets/icons-5677db0c5d8a508e3b60f981e9e3484a/favicon-16x16.png"><link rel="shortcut icon" href="assets/icons-5677db0c5d8a508e3b60f981e9e3484a/favicon.ico"><link href="assets/style-6566f07babcfc741a7f1d00ae0fde563.css" rel="stylesheet"></head>
+<body class="+fullheight">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Midja</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li >
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li ><a href="//midja.org/about">About</a></li>
+                <li ><a href="//midja.org/people">People</a></li>
+                <li ><a href="//midja.org/contact">Contact</a></li>
+                <li ><a href="//midja.org/groups">Groups</a></li>
+                <li ><a href="//midja.org/dataset" title="Registry of data sets">Data Registry</a></li>
+                <li ><a href="//midja.org/bibliography" title="">Bibliography</a></li>
+                <li class="active"><a href="">Visualisations</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Add your site or application content here -->
+<div class="+fullheight" style="padding-top: 50px;">
+  <div ng-view="" class="+fullheight"></div>
+</div>
+
+<script>
+window.onload = function() {
+  angular.bootstrap(document, ['midjaApp']);
+};
+</script>
+
+<script type="text/javascript" src="assets/app-2e9ca299db48eb83f162.js"></script></body>
+</html>

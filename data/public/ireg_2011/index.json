@@ -1,0 +1,9 @@
+{
+  "attributes": [
+    {
+      "name": "region_name",
+      "description": "Indigenous Region name",
+      "type": "string"
+    }
+  ]
+}

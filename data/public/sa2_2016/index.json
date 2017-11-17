@@ -1,0 +1,2766 @@
+{
+  "attributes": [
+    {
+      "name": "bom_days_over_100_rainfall_2007_2016",
+      "description": "Days with rainfall over 100mm from 2007 to 2016",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Meteorology",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "https://creativecommons.org/licenses/by/3.0/au/"
+        },
+        "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/rainfall/totals/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/rainfall/totals/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
+      },
+      "category": "environment"
+    },
+    {
+      "name": "bom_days_over_150_rainfall_2007_2016",
+      "description": "Days with rainfall over 150mm from 2007 to 2016",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Meteorology",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "https://creativecommons.org/licenses/by/3.0/au/"
+        },
+        "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/rainfall/totals/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/rainfall/totals/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
+      },
+      "category": "environment"
+    },
+    {
+      "name": "bom_days_over_200_rainfall_2007_2016",
+      "description": "Days with rainfall over 200mm from 2007 to 2016",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Meteorology",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "https://creativecommons.org/licenses/by/3.0/au/"
+        },
+        "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/rainfall/totals/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/rainfall/totals/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
+      },
+      "category": "environment"
+    },
+    {
+      "name": "bom_days_over_25_min_temp_2007_2016",
+      "description": "Days with minimum temperature over 25°C from 2007 to 2016",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Meteorology",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "https://creativecommons.org/licenses/by/3.0/au/"
+        },
+        "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
+      },
+      "category": "environment"
+    },
+    {
+      "name": "bom_days_over_26_min_temp_2007_2016",
+      "description": "Days with minimum temperature over 26°C from 2007 to 2016",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Meteorology",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "https://creativecommons.org/licenses/by/3.0/au/"
+        },
+        "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
+      },
+      "category": "environment"
+    },
+    {
+      "name": "bom_days_over_27_min_temp_2007_2016",
+      "description": "Days with minimum temperature over 27°C from 2007 to 2016",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Meteorology",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "https://creativecommons.org/licenses/by/3.0/au/"
+        },
+        "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
+      },
+      "category": "environment"
+    },
+    {
+      "name": "bom_days_over_28_min_temp_2007_2016",
+      "description": "Days with minimum temperature over 28°C from 2007 to 2016",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Meteorology",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "https://creativecommons.org/licenses/by/3.0/au/"
+        },
+        "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
+      },
+      "category": "environment"
+    },
+    {
+      "name": "bom_days_over_29_min_temp_2007_2016",
+      "description": "Days with minimum temperature over 29°C from 2007 to 2016",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Meteorology",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "https://creativecommons.org/licenses/by/3.0/au/"
+        },
+        "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
+      },
+      "category": "environment"
+    },
+    {
+      "name": "bom_days_over_30_max_temp_2007_2016",
+      "description": "Days with maximum temperature over 30°C from 2007 to 2016",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Meteorology",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "https://creativecommons.org/licenses/by/3.0/au/"
+        },
+        "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
+      },
+      "category": "environment"
+    },
+    {
+      "name": "bom_days_over_30_min_temp_2007_2016",
+      "description": "Days with minimum temperature over 30°C from 2007 to 2016",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Meteorology",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "https://creativecommons.org/licenses/by/3.0/au/"
+        },
+        "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
+      },
+      "category": "environment"
+    },
+    {
+      "name": "bom_days_over_35_max_temp_2007_2016",
+      "description": "Days with maximum temperature over 35°C from 2007 to 2016",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Meteorology",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "https://creativecommons.org/licenses/by/3.0/au/"
+        },
+        "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
+      },
+      "category": "environment"
+    },
+    {
+      "name": "bom_days_over_40_max_temp_2007_2016",
+      "description": "Days with maximum temperature over 40°C from 2007 to 2016",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Meteorology",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "https://creativecommons.org/licenses/by/3.0/au/"
+        },
+        "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
+      },
+      "category": "environment"
+    },
+    {
+      "name": "bom_days_under_10_min_temp_2007_2016",
+      "description": "Days with minimum temperature under 10°C from 2007 to 2016",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Meteorology",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "https://creativecommons.org/licenses/by/3.0/au/"
+        },
+        "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
+      },
+      "category": "environment"
+    },
+    {
+      "name": "bom_days_under_15_max_temp_2007_2016",
+      "description": "Days with maximum temperature under 15°C from 2007 to 2016",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Meteorology",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "https://creativecommons.org/licenses/by/3.0/au/"
+        },
+        "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
+      },
+      "category": "environment"
+    },
+    {
+      "name": "bom_days_under_20_max_temp_2007_2016",
+      "description": "Days with maximum temperature under 20°C from 2007 to 2016",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Meteorology",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "https://creativecommons.org/licenses/by/3.0/au/"
+        },
+        "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/maxave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
+      },
+      "category": "environment"
+    },
+    {
+      "name": "bom_days_under_5_min_temp_2007_2016",
+      "description": "Days with minimum temperature under 5°C from 2007 to 2016",
+      "type": "number",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Meteorology",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "https://creativecommons.org/licenses/by/3.0/au/"
+        },
+        "notes": "Derived from 3653 ABS grid files:\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2007010120070101.grid.Z\n...\nhttp://www.bom.gov.au/web03/ncc/www/awap/temperature/minave/daily/grid/0.05/history/nat/2016123120161231.grid.Z"
+      },
+      "category": "environment"
+    },
+    {
+      "name": "census2016_0minus_weekly_household_income_all",
+      "description": "Nil or negative weekly household income - all households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#Neg_Nil_income_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_0minus_weekly_household_income_indigenous",
+      "description": "Nil or negative weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#Neg_Nil_inc_hh_with_Ind_psns"
+      }
+    },
+    {
+      "name": "census2016_0to4_females_indigenous",
+      "description": "Indigenous Females - Age 0-4 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03A_AUS_SA2.csv#Age_0_4_Indig_F"
+      }
+    },
+    {
+      "name": "census2016_0to4_females_total",
+      "description": "Total Females - Age 0-4 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03A_AUS_SA2.csv#Age_0_4_TotF"
+      }
+    },
+    {
+      "name": "census2016_0to4_males_indigenous",
+      "description": "Indigenous Males - Age 0-4 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03A_AUS_SA2.csv#Age_0_4_Indig_M"
+      }
+    },
+    {
+      "name": "census2016_0to4_males_total",
+      "description": "Total Males - Age 0-4 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03A_AUS_SA2.csv#Age_0_4_TotM"
+      }
+    },
+    {
+      "name": "census2016_0to4_persons_indigenous",
+      "description": "Indigenous Persons - Age 0-4 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03A_AUS_SA2.csv#Age_0_4_Indig_P"
+      }
+    },
+    {
+      "name": "census2016_0to4_persons_total",
+      "description": "Total Persons - Age 0-4 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03A_AUS_SA2.csv#Age_0_4_TotP"
+      }
+    },
+    {
+      "name": "census2016_1000to1249_weekly_household_income_all",
+      "description": "$1000 - $1249 weekly household income - all households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI1000_1249_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_1000to1249_weekly_household_income_indigenous",
+      "description": "$1000 - $1249 weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI1000_1249_Hh_with_Indig_psn"
+      }
+    },
+    {
+      "name": "census2016_10to14_females_indigenous",
+      "description": "Indigenous Females - Age 10-14 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_10_14_Indig_F"
+      }
+    },
+    {
+      "name": "census2016_10to14_females_total",
+      "description": "Total Females - Age 10-14 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_10_14_TotF"
+      }
+    },
+    {
+      "name": "census2016_10to14_males_indigenous",
+      "description": "Indigenous Males - Age 10-14 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_10_14_Indig_M"
+      }
+    },
+    {
+      "name": "census2016_10to14_males_total",
+      "description": "Total Males - Age 10-14 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_10_14_TotM"
+      }
+    },
+    {
+      "name": "census2016_10to14_persons_indigenous",
+      "description": "Indigenous Persons - Age 10-14 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_10_14_Indig_P"
+      }
+    },
+    {
+      "name": "census2016_10to14_persons_total",
+      "description": "Total Persons - Age 10-14 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_10_14_TotP"
+      }
+    },
+    {
+      "name": "census2016_1250to1499_weekly_household_income_all",
+      "description": "$1250 - $1499 weekly household income - all households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI1250_1499_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_1250to1499_weekly_household_income_indigenous",
+      "description": "$1250 - $1499 weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI1250_1499_Hh_with_Indig_psn"
+      }
+    },
+    {
+      "name": "census2016_1500to1999_weekly_household_income_all",
+      "description": "$1500 - $1999 weekly household income - all households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI1500_1999_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_1500to1999_weekly_household_income_indigenous",
+      "description": "$1500 - $1999 weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI1500_1999_Hh_with_Indig_psn"
+      }
+    },
+    {
+      "name": "census2016_150to299_weekly_household_income_all",
+      "description": "$150 - $299 weekly household income - all households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI150_299_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_150to299_weekly_household_income_indigenous",
+      "description": "$150 - $299 weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI150_299_Hhd_with_Indig_psns"
+      }
+    },
+    {
+      "name": "census2016_15to19_females_indigenous",
+      "description": "Indigenous Females - Age 15-19 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_15_19_Indig_F"
+      }
+    },
+    {
+      "name": "census2016_15to19_females_total",
+      "description": "Total Females - Age 15-19 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_15_19_TotF"
+      }
+    },
+    {
+      "name": "census2016_15to19_males_indigenous",
+      "description": "Indigenous Males - Age 15-19 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_15_19_Indig_M"
+      }
+    },
+    {
+      "name": "census2016_15to19_males_total",
+      "description": "Total Males - Age 15-19 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_15_19_TotM"
+      }
+    },
+    {
+      "name": "census2016_15to19_persons_indigenous",
+      "description": "Indigenous Persons - Age 15-19 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_15_19_Indig_P"
+      }
+    },
+    {
+      "name": "census2016_15to19_persons_total",
+      "description": "Total Persons - Age 15-19 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_15_19_TotP"
+      }
+    },
+    {
+      "name": "census2016_1to149_weekly_household_income_all",
+      "description": "$1 - $149 weekly household income - all households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI1_149_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_1to149_weekly_household_income_indigenous",
+      "description": "$1 - $149 weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI1_149_Hhd_with_Indig_psns"
+      }
+    },
+    {
+      "name": "census2016_2000to2499_weekly_household_income_all",
+      "description": "$2000 - $2499 weekly household income - all households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI2000_2499_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_2000to2499_weekly_household_income_indigenous",
+      "description": "$2000 - $2499 weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI2000_2499_Hh_with_Indig_psn"
+      }
+    },
+    {
+      "name": "census2016_20to24_females_indigenous",
+      "description": "Indigenous Females - Age 20-24 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_20_24_Indig_F"
+      }
+    },
+    {
+      "name": "census2016_20to24_females_total",
+      "description": "Total Females - Age 20-24 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_20_24_TotF"
+      }
+    },
+    {
+      "name": "census2016_20to24_males_indigenous",
+      "description": "Indigenous Males - Age 20-24 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_20_24_Indig_M"
+      }
+    },
+    {
+      "name": "census2016_20to24_males_total",
+      "description": "Total Males - Age 20-24 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_20_24_TotM"
+      }
+    },
+    {
+      "name": "census2016_20to24_persons_indigenous",
+      "description": "Indigenous Persons - Age 20-24 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_20_24_Indig_P"
+      }
+    },
+    {
+      "name": "census2016_20to24_persons_total",
+      "description": "Total Persons - Age 20-24 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_20_24_TotP"
+      }
+    },
+    {
+      "name": "census2016_2500to2999_weekly_household_income_all",
+      "description": "$2500 - $2999 weekly household income - all households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI2500_2999_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_2500to2999_weekly_household_income_indigenous",
+      "description": "$2500 - $2999 weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI2500_2999_Hh_with_Indig_psn"
+      }
+    },
+    {
+      "name": "census2016_25to29_females_indigenous",
+      "description": "Indigenous Females - Age 25-29 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_25_29_Indig_F"
+      }
+    },
+    {
+      "name": "census2016_25to29_females_total",
+      "description": "Total Females - Age 25-29 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_25_29_TotF"
+      }
+    },
+    {
+      "name": "census2016_25to29_males_indigenous",
+      "description": "Indigenous Males - Age 25-29 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_25_29_Indig_M"
+      }
+    },
+    {
+      "name": "census2016_25to29_males_total",
+      "description": "Total Males - Age 25-29 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_25_29_TotM"
+      }
+    },
+    {
+      "name": "census2016_25to29_persons_indigenous",
+      "description": "Indigenous Persons - Age 25-29 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_25_29_Indig_P"
+      }
+    },
+    {
+      "name": "census2016_25to29_persons_total",
+      "description": "Total Persons - Age 25-29 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_25_29_TotP"
+      }
+    },
+    {
+      "name": "census2016_3000plus_weekly_household_income_all",
+      "description": "$3000+ weekly household income - all households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI3000_more_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_3000plus_weekly_household_income_indigenous",
+      "description": "$3000+ weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI3000_more_Hh_with_Indig_psn"
+      }
+    },
+    {
+      "name": "census2016_300to399_weekly_household_income_all",
+      "description": "$300 - $399 weekly household income - all households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI300_399_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_300to399_weekly_household_income_indigenous",
+      "description": "$300 - $399 weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI300_399_Hhd_with_Indig_psns"
+      }
+    },
+    {
+      "name": "census2016_30to34_females_indigenous",
+      "description": "Indigenous Females - Age 30-34 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_30_34_Indig_F"
+      }
+    },
+    {
+      "name": "census2016_30to34_females_total",
+      "description": "Total Females - Age 30-34 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_30_34_TotF"
+      }
+    },
+    {
+      "name": "census2016_30to34_males_indigenous",
+      "description": "Indigenous Males - Age 30-34 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_30_34_Indig_M"
+      }
+    },
+    {
+      "name": "census2016_30to34_males_total",
+      "description": "Total Males - Age 30-34 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_30_34_TotM"
+      }
+    },
+    {
+      "name": "census2016_30to34_persons_indigenous",
+      "description": "Indigenous Persons - Age 30-34 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_30_34_Indig_P"
+      }
+    },
+    {
+      "name": "census2016_30to34_persons_total",
+      "description": "Total Persons - Age 30-34 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_30_34_TotP"
+      }
+    },
+    {
+      "name": "census2016_35to39_females_indigenous",
+      "description": "Indigenous Females - Age 35-39 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_35_39_Indig_F"
+      }
+    },
+    {
+      "name": "census2016_35to39_females_total",
+      "description": "Total Females - Age 35-39 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_35_39_TotF"
+      }
+    },
+    {
+      "name": "census2016_35to39_males_indigenous",
+      "description": "Indigenous Males - Age 35-39 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_35_39_Indig_M"
+      }
+    },
+    {
+      "name": "census2016_35to39_males_total",
+      "description": "Total Males - Age 35-39 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_35_39_TotM"
+      }
+    },
+    {
+      "name": "census2016_35to39_persons_indigenous",
+      "description": "Indigenous Persons - Age 35-39 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_35_39_Indig_P"
+      }
+    },
+    {
+      "name": "census2016_35to39_persons_total",
+      "description": "Total Persons - Age 35-39 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_35_39_TotP"
+      }
+    },
+    {
+      "name": "census2016_400to499_weekly_household_income_all",
+      "description": "$400 - $499 weekly household income - all households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI400_499_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_400to499_weekly_household_income_indigenous",
+      "description": "$400 - $499 weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI400_499_Hhd_with_Indig_psns"
+      }
+    },
+    {
+      "name": "census2016_40to44_females_indigenous",
+      "description": "Indigenous Females - Age 40-44 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_40_44_Indig_F"
+      }
+    },
+    {
+      "name": "census2016_40to44_females_total",
+      "description": "Total Females - Age 40-44 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_40_44_TotF"
+      }
+    },
+    {
+      "name": "census2016_40to44_males_indigenous",
+      "description": "Indigenous Males - Age 40-44 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_40_44_Indig_M"
+      }
+    },
+    {
+      "name": "census2016_40to44_males_total",
+      "description": "Total Males - Age 40-44 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_40_44_TotM"
+      }
+    },
+    {
+      "name": "census2016_40to44_persons_indigenous",
+      "description": "Indigenous Persons - Age 40-44 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03B_AUS_SA2.csv#Age_40_44_Indig_P"
+      }
+    },
+    {
+      "name": "census2016_40to44_persons_total",
+      "description": "Total Persons - Age 40-44 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_40_44_TotP"
+      }
+    },
+    {
+      "name": "census2016_45to49_females_indigenous",
+      "description": "Indigenous Females - Age 45-49 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_45_49_Indig_F"
+      }
+    },
+    {
+      "name": "census2016_45to49_females_total",
+      "description": "Total Females - Age 45-49 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_45_49_TotF"
+      }
+    },
+    {
+      "name": "census2016_45to49_males_indigenous",
+      "description": "Indigenous Males - Age 45-49 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_45_49_Indig_M"
+      }
+    },
+    {
+      "name": "census2016_45to49_males_total",
+      "description": "Total Males - Age 45-49 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_45_49_TotM"
+      }
+    },
+    {
+      "name": "census2016_45to49_persons_indigenous",
+      "description": "Indigenous Persons - Age 45-49 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_45_49_Indig_P"
+      }
+    },
+    {
+      "name": "census2016_45to49_persons_total",
+      "description": "Total Persons - Age 45-49 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_45_49_TotP"
+      }
+    },
+    {
+      "name": "census2016_500to649_weekly_household_income_all",
+      "description": "$500 - $649 weekly household income - all households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI500_649_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_500to649_weekly_household_income_indigenous",
+      "description": "$500 - $649 weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI500_649_Hhd_with_Indig_psns"
+      }
+    },
+    {
+      "name": "census2016_50to54_females_indigenous",
+      "description": "Indigenous Females - Age 50-54 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_50_54_Indig_F"
+      }
+    },
+    {
+      "name": "census2016_50to54_females_total",
+      "description": "Total Females - Age 50-54 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_50_54_TotF"
+      }
+    },
+    {
+      "name": "census2016_50to54_males_indigenous",
+      "description": "Indigenous Males - Age 50-54 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_50_54_Indig_M"
+      }
+    },
+    {
+      "name": "census2016_50to54_males_total",
+      "description": "Total Males - Age 50-54 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_50_54_TotM"
+      }
+    },
+    {
+      "name": "census2016_50to54_persons_indigenous",
+      "description": "Indigenous Persons - Age 50-54 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_50_54_Indig_P"
+      }
+    },
+    {
+      "name": "census2016_50to54_persons_total",
+      "description": "Total Persons - Age 50-54 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_50_54_TotP"
+      }
+    },
+    {
+      "name": "census2016_55to59_females_indigenous",
+      "description": "Indigenous Females - Age 55-59 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_55_59_Indig_F"
+      }
+    },
+    {
+      "name": "census2016_55to59_females_total",
+      "description": "Total Females - Age 55-59 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_55_59_TotF"
+      }
+    },
+    {
+      "name": "census2016_55to59_males_indigenous",
+      "description": "Indigenous Males - Age 55-59 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_55_59_Indig_M"
+      }
+    },
+    {
+      "name": "census2016_55to59_males_total",
+      "description": "Total Males - Age 55-59 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_55_59_TotM"
+      }
+    },
+    {
+      "name": "census2016_55to59_persons_indigenous",
+      "description": "Indigenous Persons - Age 55-59 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_55_59_Indig_P"
+      }
+    },
+    {
+      "name": "census2016_55to59_persons_total",
+      "description": "Total Persons - Age 55-59 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_55_59_TotP"
+      }
+    },
+    {
+      "name": "census2016_5to9_females_indigenous",
+      "description": "Indigenous Females - Age 5-9 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03A_AUS_SA2.csv#Age_5_9_Indig_F"
+      }
+    },
+    {
+      "name": "census2016_5to9_females_total",
+      "description": "Total Females - Age 5-9 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03A_AUS_SA2.csv#Age_5_9_TotF"
+      }
+    },
+    {
+      "name": "census2016_5to9_males_indigenous",
+      "description": "Indigenous Males - Age 5-9 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03A_AUS_SA2.csv#Age_5_9_Indig_M"
+      }
+    },
+    {
+      "name": "census2016_5to9_males_total",
+      "description": "Total Males - Age 5-9 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03A_AUS_SA2.csv#Age_5_9_TotM"
+      }
+    },
+    {
+      "name": "census2016_5to9_persons_indigenous",
+      "description": "Indigenous Persons - Age 5-9 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03A_AUS_SA2.csv#Age_5_9_Indig_P"
+      }
+    },
+    {
+      "name": "census2016_5to9_persons_total",
+      "description": "Total Persons - Age 5-9 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03A_AUS_SA2.csv#Age_5_9_TotP"
+      }
+    },
+    {
+      "name": "census2016_60to64_females_indigenous",
+      "description": "Indigenous Females - Age 60-64 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_60_64_Indig_F"
+      }
+    },
+    {
+      "name": "census2016_60to64_females_total",
+      "description": "Total Females - Age 60-64 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_60_64_TotF"
+      }
+    },
+    {
+      "name": "census2016_60to64_males_indigenous",
+      "description": "Indigenous Males - Age 60-64 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_60_64_Indig_M"
+      }
+    },
+    {
+      "name": "census2016_60to64_males_total",
+      "description": "Total Males - Age 60-64 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_60_64_TotM"
+      }
+    },
+    {
+      "name": "census2016_60to64_persons_indigenous",
+      "description": "Indigenous Persons - Age 60-64 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_60_64_Indig_P"
+      }
+    },
+    {
+      "name": "census2016_60to64_persons_total",
+      "description": "Total Persons - Age 60-64 (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_60_64_TotP"
+      }
+    },
+    {
+      "name": "census2016_650to799_weekly_household_income_all",
+      "description": "$650 - $799 weekly household income - all households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI650_799_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_650to799_weekly_household_income_indigenous",
+      "description": "$650 - $799 weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI650_799_Hhd_with_Indig_psns"
+      }
+    },
+    {
+      "name": "census2016_65plus_females_indigenous",
+      "description": "Indigenous Females - Age 65+ (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_65over_Indig_F"
+      }
+    },
+    {
+      "name": "census2016_65plus_females_total",
+      "description": "Total Females - Age 65+ (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_65_over_TotF"
+      }
+    },
+    {
+      "name": "census2016_65plus_males_indigenous",
+      "description": "Indigenous Males - Age 65+ (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_65over_Indig_M"
+      }
+    },
+    {
+      "name": "census2016_65plus_males_total",
+      "description": "Total Males - Age 65+ (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_65_over_TotM"
+      }
+    },
+    {
+      "name": "census2016_65plus_persons_indigenous",
+      "description": "Indigenous Persons - Age 65+ (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_65over_Indig_P"
+      }
+    },
+    {
+      "name": "census2016_65plus_persons_total",
+      "description": "Total Persons - Age 65+ (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Age_65_over_TotP"
+      }
+    },
+    {
+      "name": "census2016_800to999_weekly_household_income_all",
+      "description": "$800 - $999 weekly household income - all households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI800_999_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_800to999_weekly_household_income_indigenous",
+      "description": "$800 - $999 weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#HI800_999_Hh_with_Indig_psn"
+      }
+    },
+    {
+      "name": "census2016_aggregate_0to14_persons_indigenous",
+      "description": "Indigenous Persons - Age 0-14 (Census 2016)",
+      "expression": "census2016_0to4_persons_indigenous + census2016_5to9_persons_indigenous + census2016_10to14_persons_indigenous",
+      "type": "number",
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      },
+      "category": "demographics"
+    },
+    {
+      "name": "census2016_aggregate_0to14_persons_total",
+      "description": "Total Persons - Age 0-14 (Census 2016)",
+      "expression": "census2016_0to4_persons_total + census2016_5to9_persons_total + census2016_10to14_persons_total",
+      "type": "number",
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      },
+      "category": "demographics"
+    },
+    {
+      "name": "census2016_aggregate_15to64_persons_indigenous",
+      "description": "Indigenous Persons - Age 15-64 (Census 2016)",
+      "expression": "census2016_15to19_persons_indigenous + census2016_20to24_persons_indigenous + census2016_25to29_persons_indigenous + census2016_30to34_persons_indigenous + census2016_35to39_persons_indigenous + census2016_40to44_persons_indigenous + census2016_45to49_persons_indigenous + census2016_50to54_persons_indigenous + census2016_55to59_persons_indigenous",
+      "type": "number",
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      },
+      "category": "demographics"
+    },
+    {
+      "name": "census2016_aggregate_15to64_persons_total",
+      "description": "Total Persons - Age 15-64 (Census 2016)",
+      "expression": "census2016_15to19_persons_total + census2016_20to24_persons_total + census2016_25to29_persons_total + census2016_30to34_persons_total + census2016_35to39_persons_total + census2016_40to44_persons_total + census2016_45to49_persons_total + census2016_50to54_persons_total + census2016_55to59_persons_total",
+      "type": "number",
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      },
+      "category": "demographics"
+    },
+    {
+      "name": "census2016_all_females_indigenous",
+      "description": "Indigenous Females - All Ages (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Tot_Indig_F"
+      }
+    },
+    {
+      "name": "census2016_all_females_total",
+      "description": "Total Females - All Ages (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Tot_TotF"
+      }
+    },
+    {
+      "name": "census2016_all_males_indigenous",
+      "description": "Indigenous Males - All Ages (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Tot_Indig_M"
+      }
+    },
+    {
+      "name": "census2016_all_males_total",
+      "description": "Total Males - All Ages (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Tot_TotM"
+      }
+    },
+    {
+      "name": "census2016_all_persons_indigenous",
+      "description": "Indigenous Persons - All Ages (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Tot_Indig_P"
+      }
+    },
+    {
+      "name": "census2016_all_persons_total",
+      "description": "Total Persons - All Ages (Census 2016)",
+      "type": "number",
+      "category": "demographics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I03C_AUS_SA2.csv#Tot_TotP"
+      }
+    },
+    {
+      "name": "census2016_average_household_size_all",
+      "description": "Average household size - all (Census 2016)",
+      "type": "number",
+      "category": "housing",
+      "format": {
+        "maximumFractionDigits": 1
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I04_AUS_SA2.csv#Avg_household_size_Tot"
+      }
+    },
+    {
+      "name": "census2016_average_household_size_indigenous",
+      "description": "Average household size - indigenous (Census 2016)",
+      "type": "number",
+      "category": "housing",
+      "format": {
+        "maximumFractionDigits": 1
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I04_AUS_SA2.csv#Av_hh_si_In_ps_hh_wi_Ind_psns"
+      }
+    },
+    {
+      "name": "census2016_average_number_of_persons_per_bedroom_all",
+      "description": "Average number of persons per bedroom - all (Census 2016)",
+      "type": "number",
+      "category": "housing",
+      "format": {
+        "maximumFractionDigits": 1
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I04_AUS_SA2.csv#Avg_Nu_psns_per_bed_Tot"
+      }
+    },
+    {
+      "name": "census2016_average_number_of_persons_per_bedroom_indigenous",
+      "description": "Average number of persons per bedroom - indigenous (Census 2016)",
+      "type": "number",
+      "category": "housing",
+      "format": {
+        "maximumFractionDigits": 1
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I04_AUS_SA2.csv#Av_N_p_pe_be_In_ps_hh_w_In_p"
+      }
+    },
+    {
+      "name": "census2016_completely_unstated_weekly_household_income_all",
+      "description": "Completely-unstated weekly household income - all households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#All_inc_NS_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_completely_unstated_weekly_household_income_indigenous",
+      "description": "Completely-unstated weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#All_inc_ns_Hh_with_Ind_psns"
+      }
+    },
+    {
+      "name": "census2016_median_weekly_household_income_all",
+      "description": "Median weekly household income - all households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I04_AUS_SA2.csv#Med_hhd_inc_wk_Tot"
+      }
+    },
+    {
+      "name": "census2016_median_weekly_household_income_indigenous",
+      "description": "Median weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I04_AUS_SA2.csv#Me_hh_in_wk_In_ps_hh_In_ps"
+      }
+    },
+    {
+      "name": "census2016_partially_unstated_weekly_household_income_all",
+      "description": "Partially-unstated weekly household income - all households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#Partial_inc_stated_Tot_hhlds"
+      }
+    },
+    {
+      "name": "census2016_partially_unstated_weekly_household_income_indigenous",
+      "description": "Partially-unstated weekly household income - indigenous households (Census 2016)",
+      "type": "number",
+      "category": "socioeconomics",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I13_AUS_SA2.csv#Part_inc_st_Hh_with_Indig_psn"
+      }
+    },
+    {
+      "name": "census2016_proportion_all_persons_indigenous",
+      "description": "Indigenous proportion of population (Census 2016)",
+      "type": "number",
+      "expression": "census2016_all_persons_indigenous / census2016_all_persons_total",
+      "format": {
+        "style": "percent"
+      },
+      "source": {
+        "name": "ABS Data",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        }
+      },
+      "category": "demographics"
+    },
+    {
+      "name": "census2016_proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_indigenous",
+      "description": "Proportion of dwellings that need 1 or more extra bedrooms - Indigenous (Census 2016)",
+      "type": "number",
+      "category": "housing",
+      "format": {
+        "style": "percent"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I04_AUS_SA2.csv#P_d_n_x_b_In_ps_hh_w_In_p"
+      }
+    },
+    {
+      "name": "census2016_proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_non_indigenous",
+      "description": "Proportion of dwellings that need 1 or more extra bedrooms - Non-Indigenous (Census 2016)",
+      "type": "number",
+      "category": "housing",
+      "format": {
+        "style": "percent"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I04_AUS_SA2.csv#P_d_n_x_b_No_In_p_oth_hh"
+      }
+    },
+    {
+      "name": "census2016_proportion_of_dwellings_that_need_1_or_more_extra_bedrooms_total",
+      "description": "Proportion of dwellings that need 1 or more extra bedrooms - Total (Census 2016)",
+      "type": "number",
+      "category": "housing",
+      "format": {
+        "style": "percent"
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I04_AUS_SA2.csv#P_d_n_x_b_Tot"
+      }
+    },
+    {
+      "name": "census2016_total_possibly_educated_all_persons",
+      "description": "Total possibly educated persons - all persons (Census 2016)",
+      "type": "number",
+      "category": "education",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I06_AUS_SA2.csv#P_Tot_Tot"
+      }
+    },
+    {
+      "name": "census2016_total_possibly_educated_indigenous_persons",
+      "description": "Total possibly educated persons - indigenous persons (Census 2016)",
+      "type": "number",
+      "category": "education",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I06_AUS_SA2.csv#P_Tot_Indigenous"
+      }
+    },
+    {
+      "name": "census2016_year_12_educated_all_persons",
+      "description": "Year 12 educated - all persons (Census 2016)",
+      "type": "number",
+      "category": "education",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I06_AUS_SA2.csv#P_Y12_equivalent_Tot"
+      }
+    },
+    {
+      "name": "census2016_year_12_educated_indigenous_persons",
+      "description": "Year 12 educated - indigenous persons (Census 2016)",
+      "type": "number",
+      "category": "education",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Australian Bureau of Statistics",
+        "license": {
+          "type": "Creative Commons Attribution 2.5 Australia",
+          "url": "https://creativecommons.org/licenses/by/2.5/au/"
+        },
+        "notes": "from DataPack CSV: 2016Census_I06_AUS_SA2.csv#P_Y12_equivalent_Indigenous"
+      }
+    },
+    {
+      "name": "qldgov_social_housing_dwellings_occupied",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_dwellings_proportion_occupied",
+      "from": "sa2_2011",
+      "conversion": "average"
+    },
+    {
+      "name": "qldgov_social_housing_dwellings_proportion_unoccupied",
+      "from": "sa2_2011",
+      "conversion": "average"
+    },
+    {
+      "name": "qldgov_social_housing_dwellings_total",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_dwellings_unoccupied",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_dwellings_untenantable",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_expenditure_maintenance_events",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_expenditure_maintenance_expenditure",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_expenditure_modification_events",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_expenditure_modification_expenditure",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_all_households",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_all_overcrowded_households",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_all_people",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_indigenous_households",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_indigenous_overcrowded_households",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_indigenous_people",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_nonindigenous_households",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_nonindigenous_overcrowded_households",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_nonindigenous_people",
+      "from": "sa2_2011",
+      "conversion": "sum"
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_proportion_all_overcrowded_households",
+      "from": "sa2_2011",
+      "conversion": "average"
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_proportion_indigenous_overcrowded_households",
+      "from": "sa2_2011",
+      "conversion": "average"
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_proportion_nonindigenous_overcrowded_households",
+      "from": "sa2_2011",
+      "conversion": "average"
+    },
+    {
+      "name": "ra_name",
+      "description": "Remoteness Area name",
+      "type": "string"
+    },
+    {
+      "name": "region_name",
+      "description": "Statistical Area Level 2 (SA2) name",
+      "type": "string"
+    }
+  ]
+}

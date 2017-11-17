@@ -1,0 +1,296 @@
+{
+  "attributes": [
+    {
+      "name": "qldgov_social_housing_dwellings_occupied",
+      "description": "Number of public housing and state owned and managed indigenous housing occupied dwellings",
+      "type": "number",
+      "category": "housing",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Queensland Government - Department of Housing and Public Works",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
+        },
+        "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/PHSOMIHDwellingData.csv"
+      }
+    },
+    {
+      "name": "qldgov_social_housing_dwellings_total",
+      "description": "Number of public housing and state owned and managed indigenous housing total dwellings",
+      "type": "number",
+      "category": "housing",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Queensland Government - Department of Housing and Public Works",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
+        },
+        "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/PHSOMIHDwellingData.csv"
+      }
+    },
+    {
+      "name": "qldgov_social_housing_dwellings_unoccupied",
+      "description": "Number of public housing and state owned and managed indigenous housing unoccupied dwellings",
+      "type": "number",
+      "expression": "qldgov_social_housing_dwellings_total - qldgov_social_housing_dwellings_occupied - qldgov_social_housing_dwellings_untenantable",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Queensland Government - Department of Housing and Public Works",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
+        },
+        "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/PHSOMIHDwellingData.csv"
+      },
+      "category": "housing"
+    },
+    {
+      "name": "qldgov_social_housing_dwellings_untenantable",
+      "description": "Number of public housing and state owned and managed indigenous housing untenantable dwellings",
+      "type": "number",
+      "category": "housing",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Queensland Government - Department of Housing and Public Works",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
+        },
+        "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/PHSOMIHDwellingData.csv"
+      }
+    },
+    {
+      "name": "qldgov_social_housing_expenditure_maintenance_events",
+      "description": "Social housing maintenance events",
+      "type": "number",
+      "category": "housing",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Queensland Government - Department of Housing and Public Works",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
+        },
+        "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/OpenDataPropertyMaintenanceModifications.csv"
+      }
+    },
+    {
+      "name": "qldgov_social_housing_expenditure_maintenance_expenditure",
+      "description": "Social housing maintenance expenditure",
+      "type": "number",
+      "category": "housing",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Queensland Government - Department of Housing and Public Works",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
+        },
+        "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/OpenDataPropertyMaintenanceModifications.csv"
+      }
+    },
+    {
+      "name": "qldgov_social_housing_expenditure_modification_events",
+      "description": "Social housing modification events",
+      "type": "number",
+      "category": "housing",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Queensland Government - Department of Housing and Public Works",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
+        },
+        "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/OpenDataPropertyMaintenanceModifications.csv"
+      }
+    },
+    {
+      "name": "qldgov_social_housing_expenditure_modification_expenditure",
+      "description": "Social housing modification expenditure",
+      "type": "number",
+      "category": "housing",
+      "format": {
+        "style": "currency",
+        "currency": "AUD"
+      },
+      "source": {
+        "name": "Queensland Government - Department of Housing and Public Works",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
+        },
+        "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/OpenDataPropertyMaintenanceModifications.csv"
+      }
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_all_households",
+      "description": "Number of government-managed social rental housing households - all",
+      "type": "number",
+      "category": "housing",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Queensland Government - Department of Housing and Public Works",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
+        },
+        "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/TenanciesGovernmentManagedSocialRentalHousing.csv"
+      }
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_all_overcrowded_households",
+      "description": "Number of overcrowded government-managed social rental housing households - all",
+      "type": "number",
+      "category": "housing",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Queensland Government - Department of Housing and Public Works",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
+        },
+        "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/TenanciesGovernmentManagedSocialRentalHousing.csv"
+      }
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_all_people",
+      "description": "Number of people in government-managed social rental housing - all",
+      "type": "number",
+      "category": "housing",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Queensland Government - Department of Housing and Public Works",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
+        },
+        "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/TenanciesGovernmentManagedSocialRentalHousing.csv"
+      }
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_indigenous_households",
+      "description": "Number of government-managed social rental housing tenancies - indigenous",
+      "type": "number",
+      "category": "housing",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Queensland Government - Department of Housing and Public Works",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
+        },
+        "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/TenanciesGovernmentManagedSocialRentalHousing.csv"
+      }
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_indigenous_overcrowded_households",
+      "description": "Number of overcrowded government-managed social rental housing tenancies - indigenous",
+      "type": "number",
+      "category": "housing",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Queensland Government - Department of Housing and Public Works",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
+        },
+        "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/TenanciesGovernmentManagedSocialRentalHousing.csv"
+      }
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_indigenous_people",
+      "description": "Number of people in government-managed social rental housing - indigenous",
+      "type": "number",
+      "category": "housing",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Queensland Government - Department of Housing and Public Works",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
+        },
+        "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/TenanciesGovernmentManagedSocialRentalHousing.csv"
+      }
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_nonindigenous_households",
+      "description": "Number of government-managed social rental housing tenancies - non-indigenous or unknown",
+      "type": "number",
+      "category": "housing",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Queensland Government - Department of Housing and Public Works",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
+        },
+        "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/TenanciesGovernmentManagedSocialRentalHousing.csv"
+      }
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_nonindigenous_overcrowded_households",
+      "description": "Number of overcrowded government-managed social rental housing tenancies - non-indigenous or unknown",
+      "type": "number",
+      "category": "housing",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Queensland Government - Department of Housing and Public Works",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
+        },
+        "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/TenanciesGovernmentManagedSocialRentalHousing.csv"
+      }
+    },
+    {
+      "name": "qldgov_social_housing_tenancies_nonindigenous_people",
+      "description": "Number of people in government-managed social rental housing - non-indigenous or unknown",
+      "type": "number",
+      "category": "housing",
+      "format": {
+        "maximumFractionDigits": 0
+      },
+      "source": {
+        "name": "Queensland Government - Department of Housing and Public Works",
+        "license": {
+          "type": "Creative Commons Attribution 3.0 Australia",
+          "url": "http://www.hpw.qld.gov.au/aboutus/Pages/copyright.aspx"
+        },
+        "url": "http://www.hpw.qld.gov.au/SiteCollectionDocuments/TenanciesGovernmentManagedSocialRentalHousing.csv"
+      }
+    }
+  ]
+}
