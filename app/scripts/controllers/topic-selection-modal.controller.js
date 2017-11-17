@@ -102,6 +102,16 @@ export default function TopicSelectionModalController(
     }
   }
 
+  $scope.initDataTable = function() {
+    // Kludge to handle row placement error
+    setTimeout(function() {
+      const bodyEls = document.getElementsByClassName('dt-body');
+      for (let i = 0; i < bodyEls.length; i++) {
+        bodyEls.item(i).scrollTop = 1;
+      }
+    }, 100);
+  };
+
   $scope.ok = function() {
     $uibModalInstance.close(topicsFrom($scope.topics, $scope.selectedTopics))
   }
